@@ -1,6 +1,6 @@
 # PyroImage Original Protection
 
-PyroImage original-image active-protection MVP for provenance patrol, local visual-fingerprint verification, evidence packaging, and budget-guarded Google Cloud Vision `WEB_DETECTION`.
+PyroImage TTD MVP for original-image active protection, provenance patrol, local visual-fingerprint verification, evidence packaging, and budget-guarded Google Cloud Vision `WEB_DETECTION`.
 
 ## Commands
 
