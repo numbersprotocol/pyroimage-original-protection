@@ -19,16 +19,24 @@ npm run build:pages
 
 GitHub Pages deploys the static Vite build from `dist/` using `.github/workflows/deploy-pages.yml`.
 
-The default GitHub Pages route is:
+The build uses relative asset paths so it works on both GitHub's private Pages environment URL and the public project route if Pages visibility is later changed to public.
+
+Current private Pages environment URL:
 
 ```text
-/pyroimage-original-protection/
+https://upgraded-adventure-r2go1ky.pages.github.io/
 ```
 
-Patrol artifacts are served under:
+Public project route, if enabled:
 
 ```text
-/pyroimage-original-protection/ttd-mvp/
+https://numbersprotocol.github.io/pyroimage-original-protection/
+```
+
+Patrol artifacts are served relative to the active Pages root:
+
+```text
+./ttd-mvp/
 ```
 
 ## Patrol Runtime

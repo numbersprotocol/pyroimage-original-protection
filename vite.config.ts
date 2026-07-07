@@ -4,7 +4,7 @@ import tailwindcss from '@tailwindcss/vite'
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: '/pyroimage-original-protection/',
+  base: './',
   plugins: [react(), tailwindcss()],
   server: {
     host: '0.0.0.0',
