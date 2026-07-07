@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-07-07T07:54:28.639Z",
-  "run_id": "ttd-patrol-20260707T075428Z",
+  "generated_at": "2026-07-07T11:14:36.760Z",
+  "run_id": "ttd-patrol-20260707T111435Z",
   "monitoring_label": "source-agnostic automated patrol",
   "adapter": {
     "id": "seedUrls",
@@ -27,18 +27,18 @@
     "phase2_index_rows": 300,
     "match_threshold": 16
   },
-  "started_at": "2026-07-07T07:54:28.251Z",
-  "completed_at": "2026-07-07T07:54:28.639Z",
+  "started_at": "2026-07-07T11:14:35.537Z",
+  "completed_at": "2026-07-07T11:14:36.760Z",
   "status": "completed",
   "source_runs": [
     {
-      "run_id": "ttd-patrol-20260707T075428Z-seed-reencoded-copy-bafybeigzo5r",
+      "run_id": "ttd-patrol-20260707T111435Z-seed-reencoded-copy-bafybeigzo5r",
       "source_id": "SEED-URLS",
       "source_name": "Seed URL adapter",
       "source_url": "seed://ttd-mvp/reencoded-protected-thumbnail",
       "run_mode": "automated_seed_url_fetch",
-      "started_at": "2026-07-07T07:54:28.266Z",
-      "completed_at": "2026-07-07T07:54:28.504Z",
+      "started_at": "2026-07-07T11:14:35.552Z",
+      "completed_at": "2026-07-07T11:14:36.304Z",
       "query_terms": [
         "1.jpg",
         "林怡文",
@@ -55,8 +55,8 @@
       "notes": "Real fetched candidate matched the protected asset within the configured perceptual-hash threshold.",
       "fetched_content_type": "image/jpeg",
       "fetched_bytes": 68011,
-      "transformed_bytes": 6182,
-      "candidate_sha256": "be94e78c136cc4502c10b496a54b4b587ca6f6f489282cc86f0844ee7f2659ad",
+      "transformed_bytes": 6183,
+      "candidate_sha256": "b53070db5a76edbfba6f42387d344ce0030f9f6e6789eccf3274773e9e3ec13f",
       "candidate_fingerprint": "ahash:ff3ff81000010138;dhash:0d0d3c5c65e9813e",
       "top_index_match_asset_id": "bafybeigzo5rkfshhubaazvw2xsvruskzrglb3gefyjtln3w3r4crhufmwm",
       "top_index_match_distance": 1,
@@ -65,13 +65,13 @@
       "threshold": 16
     },
     {
-      "run_id": "ttd-patrol-20260707T075428Z-seed-unrelated-bafybeicak5op",
+      "run_id": "ttd-patrol-20260707T111435Z-seed-unrelated-bafybeicak5op",
       "source_id": "SEED-URLS",
       "source_name": "Seed URL adapter",
       "source_url": "seed://ttd-mvp/unrelated-thumbnail",
       "run_mode": "automated_seed_url_fetch",
-      "started_at": "2026-07-07T07:54:28.505Z",
-      "completed_at": "2026-07-07T07:54:28.639Z",
+      "started_at": "2026-07-07T11:14:36.304Z",
+      "completed_at": "2026-07-07T11:14:36.759Z",
       "query_terms": [
         "1.jpg",
         "林怡文",

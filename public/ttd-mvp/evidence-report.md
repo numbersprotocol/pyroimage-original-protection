@@ -1,6 +1,6 @@
 # PyroImage Patrol Evidence Reports
 
-Generated at: 2026-07-07T07:54:28.900Z
+Generated at: 2026-07-07T11:14:36.934Z
 Report count: 1
 
 ## REPORT-CASE-PATROL-SEED-REENCODED-COPY-BAFYBEIGZO5R
@@ -8,7 +8,7 @@ Report count: 1
 Alert ID: ALERT-CASE_PATROL_SEED-REENCODED-COPY-BAFYBEIGZO5R
 Case ID: case_patrol_seed-reencoded-copy-bafybeigzo5r
 Report label: actual patrol hash-match report pending human review
-Generated at: 2026-07-07T07:54:28.900Z
+Generated at: 2026-07-07T11:14:36.934Z
 
 ### Summary
 
@@ -34,7 +34,7 @@ This report packages a real fetched-candidate perceptual-hash match for internal
 - Source type: seed_url
 - Source URL: seed://ttd-mvp/reencoded-protected-thumbnail
 - Candidate image reference: https://dia-cdn.numbersprotocol.io/thumbnails/2025/08/31/10/49/13/HISCZ8fDjdPj3HURcZt4_1.jpg
-- Retrieved at: 2026-07-07T07:54:28.504Z
+- Retrieved at: 2026-07-07T11:14:36.304Z
 - Screenshot status: not_captured_phase_1_seed_adapter
 - Query terms: 1.jpg, 林怡文, 水源地、溪流景象, bafybeigzo5rkfsh
 - Evidence label: actual
@@ -51,7 +51,7 @@ This report packages a real fetched-candidate perceptual-hash match for internal
 
 ### Patrol Run Metadata
 
-- Run ID: ttd-patrol-20260707T075428Z
+- Run ID: ttd-patrol-20260707T111435Z
 - Adapter: seedUrls
 - Source run status: match_alert_created
 - Candidates attempted: 2
