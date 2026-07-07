@@ -1,0 +1,757 @@
+{
+  "generated_at": "2026-07-07T07:53:02.580Z",
+  "match_basis": "local aHash64+dHash64 hamming distance; lower distance is more similar",
+  "self_match_queries": [
+    {
+      "query_asset_id": "bafybeigzo5rkfshhubaazvw2xsvruskzrglb3gefyjtln3w3r4crhufmwm",
+      "query_title": "1.jpg",
+      "query_time_ms": 19.766,
+      "threshold": {
+        "exact_match_distance": 0,
+        "likely_same_or_controlled_transform_max_combined_distance": 16,
+        "distance_scale": "0 to 128 combined Hamming distance across aHash64 and dHash64; lower is more similar"
+      },
+      "top_match": {
+        "asset_id": "bafybeigzo5rkfshhubaazvw2xsvruskzrglb3gefyjtln3w3r4crhufmwm",
+        "display_title": "1.jpg",
+        "ahash_distance": 0,
+        "dhash_distance": 0,
+        "combined_distance": 0,
+        "similarity_score": 1,
+        "match_basis": "local aHash64+dHash64 hamming distance; lower distance is more similar"
+      },
+      "top_matches": [
+        {
+          "asset_id": "bafybeigzo5rkfshhubaazvw2xsvruskzrglb3gefyjtln3w3r4crhufmwm",
+          "display_title": "1.jpg",
+          "ahash_distance": 0,
+          "dhash_distance": 0,
+          "combined_distance": 0,
+          "similarity_score": 1,
+          "match_basis": "local aHash64+dHash64 hamming distance; lower distance is more similar"
+        },
+        {
+          "asset_id": "bafybeidzww6rc64qc7f5krivjrvvuqikv5f457nf53srjnys5cc6tp5gwa",
+          "display_title": "EDD_6862.JPG",
+          "ahash_distance": 12,
+          "dhash_distance": 29,
+          "combined_distance": 41,
+          "similarity_score": 0.6797,
+          "match_basis": "local aHash64+dHash64 hamming distance; lower distance is more similar"
+        },
+        {
+          "asset_id": "bafybeidyqgupdhodqnjwpndjpdbfqdzlk7xf4mgs6jyns566gjyjtepjha",
+          "display_title": "374_photo__20240113.jpg",
+          "ahash_distance": 17,
+          "dhash_distance": 25,
+          "combined_distance": 42,
+          "similarity_score": 0.6719,
+          "match_basis": "local aHash64+dHash64 hamming distance; lower distance is more similar"
+        },
+        {
+          "asset_id": "bafybeiazfwp5qmd5vduneeu2i3yj4okzqvqyagr4hdr5qyiracglwoikpq",
+          "display_title": "EDD_5551.JPG",
+          "ahash_distance": 17,
+          "dhash_distance": 26,
+          "combined_distance": 43,
+          "similarity_score": 0.6641,
+          "match_basis": "local aHash64+dHash64 hamming distance; lower distance is more similar"
+        },
+        {
+          "asset_id": "bafybeiajryrwstia22issgebjjfmo72j44nhlowe4wr6zn5lmppkykrzmm",
+          "display_title": "15.jpg",
+          "ahash_distance": 18,
+          "dhash_distance": 26,
+          "combined_distance": 44,
+          "similarity_score": 0.6563,
+          "match_basis": "local aHash64+dHash64 hamming distance; lower distance is more similar"
+        }
+      ],
+      "pass": true
+    },
+    {
+      "query_asset_id": "bafybeiasixb43gfbhad4byuhzyqawcdoiazxt5drlkez3dbkhdicyq5vfu",
+      "query_title": "2.jpg",
+      "query_time_ms": 5.848,
+      "threshold": {
+        "exact_match_distance": 0,
+        "likely_same_or_controlled_transform_max_combined_distance": 16,
+        "distance_scale": "0 to 128 combined Hamming distance across aHash64 and dHash64; lower is more similar"
+      },
+      "top_match": {
+        "asset_id": "bafybeiasixb43gfbhad4byuhzyqawcdoiazxt5drlkez3dbkhdicyq5vfu",
+        "display_title": "2.jpg",
+        "ahash_distance": 0,
+        "dhash_distance": 0,
+        "combined_distance": 0,
+        "similarity_score": 1,
+        "match_basis": "local aHash64+dHash64 hamming distance; lower distance is more similar"
+      },
+      "top_matches": [
+        {
+          "asset_id": "bafybeiasixb43gfbhad4byuhzyqawcdoiazxt5drlkez3dbkhdicyq5vfu",
+          "display_title": "2.jpg",
+          "ahash_distance": 0,
+          "dhash_distance": 0,
+          "combined_distance": 0,
+          "similarity_score": 1,
+          "match_basis": "local aHash64+dHash64 hamming distance; lower distance is more similar"
+        },
+        {
+          "asset_id": "bafybeidk4xg3ro37mq7pjui7hqjtve4uhj7fsjlebqid2uym4mqs6cl244",
+          "display_title": "44_YUCHIHWEI_20240110.jpg",
+          "ahash_distance": 16,
+          "dhash_distance": 25,
+          "combined_distance": 41,
+          "similarity_score": 0.6797,
+          "match_basis": "local aHash64+dHash64 hamming distance; lower distance is more similar"
+        },
+        {
+          "asset_id": "bafybeih2e5ztq74vn3g52ojbtkdddm3ddz4kyqd5f47dxbehnx76h3jagq",
+          "display_title": "Untitled bafybeih2e5z",
+          "ahash_distance": 10,
+          "dhash_distance": 32,
+          "combined_distance": 42,
+          "similarity_score": 0.6719,
+          "match_basis": "local aHash64+dHash64 hamming distance; lower distance is more similar"
+        },
+        {
+          "asset_id": "bafybeiccqah3est5ksdl3pkklittghylv4vk4ssgfvmnhlyauacvpgrlti",
+          "display_title": "37_YUCHIHWEI_20240113.jpg",
+          "ahash_distance": 15,
+          "dhash_distance": 28,
+          "combined_distance": 43,
+          "similarity_score": 0.6641,
+          "match_basis": "local aHash64+dHash64 hamming distance; lower distance is more similar"
+        },
+        {
+          "asset_id": "bafybeifgdnjt73njba2gav5hrla43t5jovybndhsp5e4a4lw4sefmkg4iy",
+          "display_title": "EDD_7665.JPG",
+          "ahash_distance": 24,
+          "dhash_distance": 21,
+          "combined_distance": 45,
+          "similarity_score": 0.6484,
+          "match_basis": "local aHash64+dHash64 hamming distance; lower distance is more similar"
+        }
+      ],
+      "pass": true
+    },
+    {
+      "query_asset_id": "bafybeib4ynfd3f4cfz6ulxgqacff2oifmukbv2fxu5uekw5y7yqgvs4jpm",
+      "query_title": "3.jpg",
+      "query_time_ms": 5.739,
+      "threshold": {
+        "exact_match_distance": 0,
+        "likely_same_or_controlled_transform_max_combined_distance": 16,
+        "distance_scale": "0 to 128 combined Hamming distance across aHash64 and dHash64; lower is more similar"
+      },
+      "top_match": {
+        "asset_id": "bafybeib4ynfd3f4cfz6ulxgqacff2oifmukbv2fxu5uekw5y7yqgvs4jpm",
+        "display_title": "3.jpg",
+        "ahash_distance": 0,
+        "dhash_distance": 0,
+        "combined_distance": 0,
+        "similarity_score": 1,
+        "match_basis": "local aHash64+dHash64 hamming distance; lower distance is more similar"
+      },
+      "top_matches": [
+        {
+          "asset_id": "bafybeib4ynfd3f4cfz6ulxgqacff2oifmukbv2fxu5uekw5y7yqgvs4jpm",
+          "display_title": "3.jpg",
+          "ahash_distance": 0,
+          "dhash_distance": 0,
+          "combined_distance": 0,
+          "similarity_score": 1,
+          "match_basis": "local aHash64+dHash64 hamming distance; lower distance is more similar"
+        },
+        {
+          "asset_id": "bafybeiegmheqitc4n5u7hlviqo5nu6yb4tz66ihcchni7zikwzctunrscm",
+          "display_title": "13_YUCHIHWEI_20240103.jpg",
+          "ahash_distance": 17,
+          "dhash_distance": 25,
+          "combined_distance": 42,
+          "similarity_score": 0.6719,
+          "match_basis": "local aHash64+dHash64 hamming distance; lower distance is more similar"
+        },
+        {
+          "asset_id": "bafybeia4z2yzudi3qmofonlqcxbyjhp4ybrr3f5ds6iathpmp6gdr5ot2a",
+          "display_title": "025_photo_20240103.jpg",
+          "ahash_distance": 17,
+          "dhash_distance": 26,
+          "combined_distance": 43,
+          "similarity_score": 0.6641,
+          "match_basis": "local aHash64+dHash64 hamming distance; lower distance is more similar"
+        },
+        {
+          "asset_id": "bafybeie5ymr7euxsocvxwfsawo23ymh4p75676cgvpellui4kavwquqoma",
+          "display_title": "12_YUCHIHWEI_20240110.jpg",
+          "ahash_distance": 17,
+          "dhash_distance": 28,
+          "combined_distance": 45,
+          "similarity_score": 0.6484,
+          "match_basis": "local aHash64+dHash64 hamming distance; lower distance is more similar"
+        },
+        {
+          "asset_id": "bafybeibjmohq325dfsupanais4euv22sxg5vrh7jlsruh2jplw2xj7at2u",
+          "display_title": "018_photo_20240103.jpg",
+          "ahash_distance": 18,
+          "dhash_distance": 29,
+          "combined_distance": 47,
+          "similarity_score": 0.6328,
+          "match_basis": "local aHash64+dHash64 hamming distance; lower distance is more similar"
+        }
+      ],
+      "pass": true
+    },
+    {
+      "query_asset_id": "bafybeiduu5knot2tmuqj6au6ttyaa2zu3tqwmvvketsunx4tr7zniz7rui",
+      "query_title": "8.jpg",
+      "query_time_ms": 6.528,
+      "threshold": {
+        "exact_match_distance": 0,
+        "likely_same_or_controlled_transform_max_combined_distance": 16,
+        "distance_scale": "0 to 128 combined Hamming distance across aHash64 and dHash64; lower is more similar"
+      },
+      "top_match": {
+        "asset_id": "bafybeiduu5knot2tmuqj6au6ttyaa2zu3tqwmvvketsunx4tr7zniz7rui",
+        "display_title": "8.jpg",
+        "ahash_distance": 0,
+        "dhash_distance": 0,
+        "combined_distance": 0,
+        "similarity_score": 1,
+        "match_basis": "local aHash64+dHash64 hamming distance; lower distance is more similar"
+      },
+      "top_matches": [
+        {
+          "asset_id": "bafybeiduu5knot2tmuqj6au6ttyaa2zu3tqwmvvketsunx4tr7zniz7rui",
+          "display_title": "8.jpg",
+          "ahash_distance": 0,
+          "dhash_distance": 0,
+          "combined_distance": 0,
+          "similarity_score": 1,
+          "match_basis": "local aHash64+dHash64 hamming distance; lower distance is more similar"
+        },
+        {
+          "asset_id": "bafybeigysegu6rgtfoxf37lb5w7dhdzwcqzbdzzstpoyrn2tmmfa4gtcxu",
+          "display_title": "317_photo__20240113.jpg",
+          "ahash_distance": 14,
+          "dhash_distance": 27,
+          "combined_distance": 41,
+          "similarity_score": 0.6797,
+          "match_basis": "local aHash64+dHash64 hamming distance; lower distance is more similar"
+        },
+        {
+          "asset_id": "bafybeihc3z6sf2ysisuwamzm6jl2rvfvpass63jweeyn7gktwny665q6o4",
+          "display_title": "32_YUCHIHWEI_20240106.jpg",
+          "ahash_distance": 18,
+          "dhash_distance": 23,
+          "combined_distance": 41,
+          "similarity_score": 0.6797,
+          "match_basis": "local aHash64+dHash64 hamming distance; lower distance is more similar"
+        },
+        {
+          "asset_id": "bafybeids4cijw2z253eomotlfi6iugs7tvt3pu6ntxsjcf4vgct5bzkvsi",
+          "display_title": "10_YUCHIHWEI_20240106.jpg",
+          "ahash_distance": 17,
+          "dhash_distance": 25,
+          "combined_distance": 42,
+          "similarity_score": 0.6719,
+          "match_basis": "local aHash64+dHash64 hamming distance; lower distance is more similar"
+        },
+        {
+          "asset_id": "bafybeiaycmwxdqvzadrnqs2u3bmpds4c24aeictfm3yhey2ukq3asa3t4e",
+          "display_title": "IMG_8114.JPG",
+          "ahash_distance": 24,
+          "dhash_distance": 19,
+          "combined_distance": 43,
+          "similarity_score": 0.6641,
+          "match_basis": "local aHash64+dHash64 hamming distance; lower distance is more similar"
+        }
+      ],
+      "pass": true
+    },
+    {
+      "query_asset_id": "bafybeiczqijzi45y64alei2k3oifz3oygoykds4fguv7fmhy3ks3pybjdy",
+      "query_title": "12.jpg",
+      "query_time_ms": 3.847,
+      "threshold": {
+        "exact_match_distance": 0,
+        "likely_same_or_controlled_transform_max_combined_distance": 16,
+        "distance_scale": "0 to 128 combined Hamming distance across aHash64 and dHash64; lower is more similar"
+      },
+      "top_match": {
+        "asset_id": "bafybeiczqijzi45y64alei2k3oifz3oygoykds4fguv7fmhy3ks3pybjdy",
+        "display_title": "12.jpg",
+        "ahash_distance": 0,
+        "dhash_distance": 0,
+        "combined_distance": 0,
+        "similarity_score": 1,
+        "match_basis": "local aHash64+dHash64 hamming distance; lower distance is more similar"
+      },
+      "top_matches": [
+        {
+          "asset_id": "bafybeiczqijzi45y64alei2k3oifz3oygoykds4fguv7fmhy3ks3pybjdy",
+          "display_title": "12.jpg",
+          "ahash_distance": 0,
+          "dhash_distance": 0,
+          "combined_distance": 0,
+          "similarity_score": 1,
+          "match_basis": "local aHash64+dHash64 hamming distance; lower distance is more similar"
+        },
+        {
+          "asset_id": "bafybeifu6xivhsnhad72exu3yv7ou2phiben3d7uoo3fyafyiybvzlfxge",
+          "display_title": "15_YUCHIHWEI_20240106.jpg",
+          "ahash_distance": 18,
+          "dhash_distance": 23,
+          "combined_distance": 41,
+          "similarity_score": 0.6797,
+          "match_basis": "local aHash64+dHash64 hamming distance; lower distance is more similar"
+        },
+        {
+          "asset_id": "bafybeida6dh4uu4eh42wpeqphqudejzn77hjhktha2swpy272w7xkon5qa",
+          "display_title": "04_YUCHIHWEI_20240112.jpg",
+          "ahash_distance": 21,
+          "dhash_distance": 22,
+          "combined_distance": 43,
+          "similarity_score": 0.6641,
+          "match_basis": "local aHash64+dHash64 hamming distance; lower distance is more similar"
+        },
+        {
+          "asset_id": "bafybeied6dmubxhqpfim23iom3ludgmrqmz7esdrrkiqaqhj2t45svbwiu",
+          "display_title": "06_YUCHIHWEI_20240112.jpg",
+          "ahash_distance": 16,
+          "dhash_distance": 27,
+          "combined_distance": 43,
+          "similarity_score": 0.6641,
+          "match_basis": "local aHash64+dHash64 hamming distance; lower distance is more similar"
+        },
+        {
+          "asset_id": "bafybeif6yaxqisd7fu3tip5jsezo2xeheiq4cftcwfgenllotnigt4lcba",
+          "display_title": "33_YUCHIHWEI_20240106.jpg",
+          "ahash_distance": 22,
+          "dhash_distance": 21,
+          "combined_distance": 43,
+          "similarity_score": 0.6641,
+          "match_basis": "local aHash64+dHash64 hamming distance; lower distance is more similar"
+        }
+      ],
+      "pass": true
+    },
+    {
+      "query_asset_id": "bafybeidrz32gj4pjokxpq7ntazvybq4zcma5bl34sugt2cjhffe74ixxeq",
+      "query_title": "7.jpg",
+      "query_time_ms": 3.818,
+      "threshold": {
+        "exact_match_distance": 0,
+        "likely_same_or_controlled_transform_max_combined_distance": 16,
+        "distance_scale": "0 to 128 combined Hamming distance across aHash64 and dHash64; lower is more similar"
+      },
+      "top_match": {
+        "asset_id": "bafybeidrz32gj4pjokxpq7ntazvybq4zcma5bl34sugt2cjhffe74ixxeq",
+        "display_title": "7.jpg",
+        "ahash_distance": 0,
+        "dhash_distance": 0,
+        "combined_distance": 0,
+        "similarity_score": 1,
+        "match_basis": "local aHash64+dHash64 hamming distance; lower distance is more similar"
+      },
+      "top_matches": [
+        {
+          "asset_id": "bafybeidrz32gj4pjokxpq7ntazvybq4zcma5bl34sugt2cjhffe74ixxeq",
+          "display_title": "7.jpg",
+          "ahash_distance": 0,
+          "dhash_distance": 0,
+          "combined_distance": 0,
+          "similarity_score": 1,
+          "match_basis": "local aHash64+dHash64 hamming distance; lower distance is more similar"
+        },
+        {
+          "asset_id": "bafybeicl5eotay2xyogehiiihzi7ljf36nwtsacuwgirdt7uc6qx56w4fa",
+          "display_title": "00_YUCHIHWEI_20240106.jpg",
+          "ahash_distance": 27,
+          "dhash_distance": 17,
+          "combined_distance": 44,
+          "similarity_score": 0.6563,
+          "match_basis": "local aHash64+dHash64 hamming distance; lower distance is more similar"
+        },
+        {
+          "asset_id": "bafybeifslkb6ph6r5lqzy3xg73nrvfhvmbarevd46pgyz3t4w7oxqtxzpy",
+          "display_title": "13_YUCHIHWEI_20240113.jpg",
+          "ahash_distance": 25,
+          "dhash_distance": 23,
+          "combined_distance": 48,
+          "similarity_score": 0.625,
+          "match_basis": "local aHash64+dHash64 hamming distance; lower distance is more similar"
+        },
+        {
+          "asset_id": "bafybeigl77drngpu66go4npyeuj4tqamape4e37rcsn4exrlbi3sum7wiq",
+          "display_title": "30_YUCHIHWEI_20240112.jpg",
+          "ahash_distance": 27,
+          "dhash_distance": 21,
+          "combined_distance": 48,
+          "similarity_score": 0.625,
+          "match_basis": "local aHash64+dHash64 hamming distance; lower distance is more similar"
+        },
+        {
+          "asset_id": "bafybeidr3smftol2hxelez7kneqna4x652fj4644cnrzusfatvqsskarii",
+          "display_title": "29_YUCHIHWEI_20240110.jpg",
+          "ahash_distance": 25,
+          "dhash_distance": 25,
+          "combined_distance": 50,
+          "similarity_score": 0.6094,
+          "match_basis": "local aHash64+dHash64 hamming distance; lower distance is more similar"
+        }
+      ],
+      "pass": true
+    },
+    {
+      "query_asset_id": "bafybeihw4ofxozmzdidkw2z6upjchf6egqgrlsm3jlxqnhc5x4fnhe52oi",
+      "query_title": "16.jpg",
+      "query_time_ms": 4.373,
+      "threshold": {
+        "exact_match_distance": 0,
+        "likely_same_or_controlled_transform_max_combined_distance": 16,
+        "distance_scale": "0 to 128 combined Hamming distance across aHash64 and dHash64; lower is more similar"
+      },
+      "top_match": {
+        "asset_id": "bafybeihw4ofxozmzdidkw2z6upjchf6egqgrlsm3jlxqnhc5x4fnhe52oi",
+        "display_title": "16.jpg",
+        "ahash_distance": 0,
+        "dhash_distance": 0,
+        "combined_distance": 0,
+        "similarity_score": 1,
+        "match_basis": "local aHash64+dHash64 hamming distance; lower distance is more similar"
+      },
+      "top_matches": [
+        {
+          "asset_id": "bafybeihw4ofxozmzdidkw2z6upjchf6egqgrlsm3jlxqnhc5x4fnhe52oi",
+          "display_title": "16.jpg",
+          "ahash_distance": 0,
+          "dhash_distance": 0,
+          "combined_distance": 0,
+          "similarity_score": 1,
+          "match_basis": "local aHash64+dHash64 hamming distance; lower distance is more similar"
+        },
+        {
+          "asset_id": "bafybeihifire62ak44iq4xc4i3zjoxy42fwzp7opzgi5xffcx5hbyhmenm",
+          "display_title": "82_YUCHIHWEI_20240110.jpg",
+          "ahash_distance": 11,
+          "dhash_distance": 26,
+          "combined_distance": 37,
+          "similarity_score": 0.7109,
+          "match_basis": "local aHash64+dHash64 hamming distance; lower distance is more similar"
+        },
+        {
+          "asset_id": "bafybeih2e5ztq74vn3g52ojbtkdddm3ddz4kyqd5f47dxbehnx76h3jagq",
+          "display_title": "Untitled bafybeih2e5z",
+          "ahash_distance": 13,
+          "dhash_distance": 25,
+          "combined_distance": 38,
+          "similarity_score": 0.7031,
+          "match_basis": "local aHash64+dHash64 hamming distance; lower distance is more similar"
+        },
+        {
+          "asset_id": "bafybeifcxdueifp6de6z5xjdjyt6f7jijgp7iq62cjbybvmdcqgt6b3gh4",
+          "display_title": "08_YUCHIHWEI_20240106.jpg",
+          "ahash_distance": 17,
+          "dhash_distance": 23,
+          "combined_distance": 40,
+          "similarity_score": 0.6875,
+          "match_basis": "local aHash64+dHash64 hamming distance; lower distance is more similar"
+        },
+        {
+          "asset_id": "bafybeicak5opr2pqhm7cweggwixyj5bok4ajprva6tlqiifrunnevlen4q",
+          "display_title": "05_YUCHIHWEI_20240106.jpg",
+          "ahash_distance": 24,
+          "dhash_distance": 20,
+          "combined_distance": 44,
+          "similarity_score": 0.6563,
+          "match_basis": "local aHash64+dHash64 hamming distance; lower distance is more similar"
+        }
+      ],
+      "pass": true
+    },
+    {
+      "query_asset_id": "bafybeie7tm534wz7nm6wib6icnfhnpqus5ex4r2tqjq3nqecwnirl5y4fm",
+      "query_title": "5.jpg",
+      "query_time_ms": 5.401,
+      "threshold": {
+        "exact_match_distance": 0,
+        "likely_same_or_controlled_transform_max_combined_distance": 16,
+        "distance_scale": "0 to 128 combined Hamming distance across aHash64 and dHash64; lower is more similar"
+      },
+      "top_match": {
+        "asset_id": "bafybeie7tm534wz7nm6wib6icnfhnpqus5ex4r2tqjq3nqecwnirl5y4fm",
+        "display_title": "5.jpg",
+        "ahash_distance": 0,
+        "dhash_distance": 0,
+        "combined_distance": 0,
+        "similarity_score": 1,
+        "match_basis": "local aHash64+dHash64 hamming distance; lower distance is more similar"
+      },
+      "top_matches": [
+        {
+          "asset_id": "bafybeie7tm534wz7nm6wib6icnfhnpqus5ex4r2tqjq3nqecwnirl5y4fm",
+          "display_title": "5.jpg",
+          "ahash_distance": 0,
+          "dhash_distance": 0,
+          "combined_distance": 0,
+          "similarity_score": 1,
+          "match_basis": "local aHash64+dHash64 hamming distance; lower distance is more similar"
+        },
+        {
+          "asset_id": "bafybeia4ewhwg6zfuvmuw2kfsn3ku4tbiyu5acbul3nv3dflogqf3qxssu",
+          "display_title": "28_YUCHIHWEI_20240112.jpg",
+          "ahash_distance": 21,
+          "dhash_distance": 22,
+          "combined_distance": 43,
+          "similarity_score": 0.6641,
+          "match_basis": "local aHash64+dHash64 hamming distance; lower distance is more similar"
+        },
+        {
+          "asset_id": "bafybeif27v3bxfe4hc232pe5jwqpb3d2a5oehulag3qu5kcdpnramae54e",
+          "display_title": "68_YUCHIHWEI_20240110.jpg",
+          "ahash_distance": 24,
+          "dhash_distance": 20,
+          "combined_distance": 44,
+          "similarity_score": 0.6563,
+          "match_basis": "local aHash64+dHash64 hamming distance; lower distance is more similar"
+        },
+        {
+          "asset_id": "bafybeibdt3oalrkuh3siv7upymh7q3fbf3oslrsrgmeft7tsyai3oqd2z4",
+          "display_title": "62_YUCHIHWEI_20240113.jpg",
+          "ahash_distance": 21,
+          "dhash_distance": 25,
+          "combined_distance": 46,
+          "similarity_score": 0.6406,
+          "match_basis": "local aHash64+dHash64 hamming distance; lower distance is more similar"
+        },
+        {
+          "asset_id": "bafybeicbawuibw7idnx3w6rvncojo2wzve4vydohodm33pw4cgiditctza",
+          "display_title": "EDD_8109.JPG",
+          "ahash_distance": 17,
+          "dhash_distance": 29,
+          "combined_distance": 46,
+          "similarity_score": 0.6406,
+          "match_basis": "local aHash64+dHash64 hamming distance; lower distance is more similar"
+        }
+      ],
+      "pass": true
+    },
+    {
+      "query_asset_id": "bafybeicfsturomryz5lounf3ya3qz25e7wxco3uqqcwl2vpe2hiqwja6ya",
+      "query_title": "6.jpg",
+      "query_time_ms": 3.806,
+      "threshold": {
+        "exact_match_distance": 0,
+        "likely_same_or_controlled_transform_max_combined_distance": 16,
+        "distance_scale": "0 to 128 combined Hamming distance across aHash64 and dHash64; lower is more similar"
+      },
+      "top_match": {
+        "asset_id": "bafybeicfsturomryz5lounf3ya3qz25e7wxco3uqqcwl2vpe2hiqwja6ya",
+        "display_title": "6.jpg",
+        "ahash_distance": 0,
+        "dhash_distance": 0,
+        "combined_distance": 0,
+        "similarity_score": 1,
+        "match_basis": "local aHash64+dHash64 hamming distance; lower distance is more similar"
+      },
+      "top_matches": [
+        {
+          "asset_id": "bafybeicfsturomryz5lounf3ya3qz25e7wxco3uqqcwl2vpe2hiqwja6ya",
+          "display_title": "6.jpg",
+          "ahash_distance": 0,
+          "dhash_distance": 0,
+          "combined_distance": 0,
+          "similarity_score": 1,
+          "match_basis": "local aHash64+dHash64 hamming distance; lower distance is more similar"
+        },
+        {
+          "asset_id": "bafybeiazfwp5qmd5vduneeu2i3yj4okzqvqyagr4hdr5qyiracglwoikpq",
+          "display_title": "EDD_5551.JPG",
+          "ahash_distance": 22,
+          "dhash_distance": 19,
+          "combined_distance": 41,
+          "similarity_score": 0.6797,
+          "match_basis": "local aHash64+dHash64 hamming distance; lower distance is more similar"
+        },
+        {
+          "asset_id": "bafybeiejlqrch63rcxikajlpdvwk5qjw2gfk4ebrmxitaewv5xdyqu2lve",
+          "display_title": "07_YUCHIHWEI_20240113.jpg",
+          "ahash_distance": 22,
+          "dhash_distance": 25,
+          "combined_distance": 47,
+          "similarity_score": 0.6328,
+          "match_basis": "local aHash64+dHash64 hamming distance; lower distance is more similar"
+        },
+        {
+          "asset_id": "bafybeief3glrxbo76w23lnnfmkiahe6ennh7g6twd6juibzcoo3n42mf7u",
+          "display_title": "003_photo_20240103.jpg",
+          "ahash_distance": 21,
+          "dhash_distance": 27,
+          "combined_distance": 48,
+          "similarity_score": 0.625,
+          "match_basis": "local aHash64+dHash64 hamming distance; lower distance is more similar"
+        },
+        {
+          "asset_id": "bafybeienxt25cs5k3wnixx2trg3m4r37c5jh4yrpc2d34jmczrfxcvutr4",
+          "display_title": "02_YUCHIHWEI_20240103.jpg",
+          "ahash_distance": 21,
+          "dhash_distance": 27,
+          "combined_distance": 48,
+          "similarity_score": 0.625,
+          "match_basis": "local aHash64+dHash64 hamming distance; lower distance is more similar"
+        }
+      ],
+      "pass": true
+    },
+    {
+      "query_asset_id": "bafybeie4kelfqph3anq4pszs4o65xsnldwv2q3pxjw4zizm3t3ksoxsxce",
+      "query_title": "10.jpg",
+      "query_time_ms": 3.822,
+      "threshold": {
+        "exact_match_distance": 0,
+        "likely_same_or_controlled_transform_max_combined_distance": 16,
+        "distance_scale": "0 to 128 combined Hamming distance across aHash64 and dHash64; lower is more similar"
+      },
+      "top_match": {
+        "asset_id": "bafybeie4kelfqph3anq4pszs4o65xsnldwv2q3pxjw4zizm3t3ksoxsxce",
+        "display_title": "10.jpg",
+        "ahash_distance": 0,
+        "dhash_distance": 0,
+        "combined_distance": 0,
+        "similarity_score": 1,
+        "match_basis": "local aHash64+dHash64 hamming distance; lower distance is more similar"
+      },
+      "top_matches": [
+        {
+          "asset_id": "bafybeie4kelfqph3anq4pszs4o65xsnldwv2q3pxjw4zizm3t3ksoxsxce",
+          "display_title": "10.jpg",
+          "ahash_distance": 0,
+          "dhash_distance": 0,
+          "combined_distance": 0,
+          "similarity_score": 1,
+          "match_basis": "local aHash64+dHash64 hamming distance; lower distance is more similar"
+        },
+        {
+          "asset_id": "bafybeid6lvg7uwm7y36movq5ue34rtc55xxild4v5jig3tbmdj2gjb25cm",
+          "display_title": "021_photo_20240103.jpg",
+          "ahash_distance": 18,
+          "dhash_distance": 26,
+          "combined_distance": 44,
+          "similarity_score": 0.6563,
+          "match_basis": "local aHash64+dHash64 hamming distance; lower distance is more similar"
+        },
+        {
+          "asset_id": "bafybeifv4tr3hkkrxn5htczat2pgh75podmaj4vmxhofxf2bd6quevsf3u",
+          "display_title": "11_YUCHIHWEI_20240103.jpg",
+          "ahash_distance": 18,
+          "dhash_distance": 26,
+          "combined_distance": 44,
+          "similarity_score": 0.6563,
+          "match_basis": "local aHash64+dHash64 hamming distance; lower distance is more similar"
+        },
+        {
+          "asset_id": "bafybeigolpttsznfazrlozpdenaxpqex7o4fycky2dzvzun2db6slfg3oq",
+          "display_title": "73_YUCHIHWEI_20240110.jpg",
+          "ahash_distance": 21,
+          "dhash_distance": 26,
+          "combined_distance": 47,
+          "similarity_score": 0.6328,
+          "match_basis": "local aHash64+dHash64 hamming distance; lower distance is more similar"
+        },
+        {
+          "asset_id": "bafybeiat6z3stjwq45wfyn3u5tyepoyedeg4urzdwxsnl4uzxncfbeddsi",
+          "display_title": "16_YUCHIHWEI_20240106.jpg",
+          "ahash_distance": 23,
+          "dhash_distance": 25,
+          "combined_distance": 48,
+          "similarity_score": 0.625,
+          "match_basis": "local aHash64+dHash64 hamming distance; lower distance is more similar"
+        }
+      ],
+      "pass": true
+    }
+  ],
+  "transformed_fixture": {
+    "fixture_id": "controlled_resize_reencode_fixture_001",
+    "source_asset_id": "bafybeigzo5rkfshhubaazvw2xsvruskzrglb3gefyjtln3w3r4crhufmwm",
+    "transformation_notes": "Controlled local resize to 160px width and JPEG re-encode via ffmpeg; no external source claim.",
+    "fingerprint_type": "local_ahash64_dhash64_from_controlled_resize",
+    "fingerprint_value": "ahash:ff3ff81000010138;dhash:0d0d3c5c65e9813e",
+    "ahash64": "ff3ff81000010138",
+    "dhash64": "0d0d3c5c65e9813e",
+    "image_width_px": 160,
+    "image_height_px": 160,
+    "bytes_generated": 6182,
+    "signed_query_written_to_artifact": false
+  },
+  "transformed_query_result": {
+    "query_asset_id": "bafybeigzo5rkfshhubaazvw2xsvruskzrglb3gefyjtln3w3r4crhufmwm",
+    "query_title": "Controlled resize/re-encode fixture",
+    "query_time_ms": 4.591,
+    "threshold": {
+      "exact_match_distance": 0,
+      "likely_same_or_controlled_transform_max_combined_distance": 16,
+      "distance_scale": "0 to 128 combined Hamming distance across aHash64 and dHash64; lower is more similar"
+    },
+    "top_match": {
+      "asset_id": "bafybeigzo5rkfshhubaazvw2xsvruskzrglb3gefyjtln3w3r4crhufmwm",
+      "display_title": "1.jpg",
+      "ahash_distance": 1,
+      "dhash_distance": 0,
+      "combined_distance": 1,
+      "similarity_score": 0.9922,
+      "match_basis": "local aHash64+dHash64 hamming distance; lower distance is more similar"
+    },
+    "top_matches": [
+      {
+        "asset_id": "bafybeigzo5rkfshhubaazvw2xsvruskzrglb3gefyjtln3w3r4crhufmwm",
+        "display_title": "1.jpg",
+        "ahash_distance": 1,
+        "dhash_distance": 0,
+        "combined_distance": 1,
+        "similarity_score": 0.9922,
+        "match_basis": "local aHash64+dHash64 hamming distance; lower distance is more similar"
+      },
+      {
+        "asset_id": "bafybeidyqgupdhodqnjwpndjpdbfqdzlk7xf4mgs6jyns566gjyjtepjha",
+        "display_title": "374_photo__20240113.jpg",
+        "ahash_distance": 16,
+        "dhash_distance": 25,
+        "combined_distance": 41,
+        "similarity_score": 0.6797,
+        "match_basis": "local aHash64+dHash64 hamming distance; lower distance is more similar"
+      },
+      {
+        "asset_id": "bafybeidzww6rc64qc7f5krivjrvvuqikv5f457nf53srjnys5cc6tp5gwa",
+        "display_title": "EDD_6862.JPG",
+        "ahash_distance": 13,
+        "dhash_distance": 29,
+        "combined_distance": 42,
+        "similarity_score": 0.6719,
+        "match_basis": "local aHash64+dHash64 hamming distance; lower distance is more similar"
+      },
+      {
+        "asset_id": "bafybeiajryrwstia22issgebjjfmo72j44nhlowe4wr6zn5lmppkykrzmm",
+        "display_title": "15.jpg",
+        "ahash_distance": 17,
+        "dhash_distance": 26,
+        "combined_distance": 43,
+        "similarity_score": 0.6641,
+        "match_basis": "local aHash64+dHash64 hamming distance; lower distance is more similar"
+      },
+      {
+        "asset_id": "bafybeiazfwp5qmd5vduneeu2i3yj4okzqvqyagr4hdr5qyiracglwoikpq",
+        "display_title": "EDD_5551.JPG",
+        "ahash_distance": 18,
+        "dhash_distance": 26,
+        "combined_distance": 44,
+        "similarity_score": 0.6563,
+        "match_basis": "local aHash64+dHash64 hamming distance; lower distance is more similar"
+      }
+    ],
+    "pass": true,
+    "transformation_notes": "Controlled local resize to 160px width and JPEG re-encode via ffmpeg; no external source claim."
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "generated_at": "2026-07-07T07:54:28.639Z",
+  "run_id": "ttd-patrol-20260707T075428Z",
+  "adapter": "seedUrls",
+  "expected_filter": "all",
+  "threshold": 16,
+  "validations": [
+    {
+      "candidate_id": "seed-reencoded-copy-bafybeigzo5r",
+      "expected": "match",
+      "verdict": "match",
+      "protected_asset_distance": 1,
+      "top_index_match_asset_id": "bafybeigzo5rkfshhubaazvw2xsvruskzrglb3gefyjtln3w3r4crhufmwm",
+      "pass": true
+    },
+    {
+      "candidate_id": "seed-unrelated-bafybeicak5op",
+      "expected": "no_match",
+      "verdict": "no_match",
+      "protected_asset_distance": 81,
+      "top_index_match_asset_id": "bafybeicak5opr2pqhm7cweggwixyj5bok4ajprva6tlqiifrunnevlen4q",
+      "pass": true
+    }
+  ],
+  "pass": {
+    "reencoded_seed_match_alert_created": true,
+    "unrelated_seed_no_alert": true,
+    "source_adapter_completed": true,
+    "budget_guard_respected": true,
+    "paid_api_policy_respected": true,
+    "signed_query_strings_written_to_artifacts": false,
+    "all": true
+  }
+}

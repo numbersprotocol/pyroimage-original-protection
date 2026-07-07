@@ -1,0 +1,68 @@
+{
+  "generated_at": "2026-07-07T07:54:28.900Z",
+  "phase": "Phase 3: Scheduler + evidence hardening",
+  "expected": {
+    "report_count_source": "alerts.json",
+    "required_sections": [
+      "protected_original",
+      "candidate_use",
+      "match_explanation",
+      "run_metadata",
+      "review_state",
+      "recommended_next_step",
+      "public_use_label",
+      "limitations"
+    ],
+    "allowed_review_statuses": [
+      "pending_human_review",
+      "false_positive",
+      "authorized_use",
+      "confirmed_by_partner",
+      "not_reviewed"
+    ],
+    "public_use_labels": [
+      "actual_pending_review",
+      "simulated",
+      "internal_only"
+    ],
+    "prohibited_claim_guardrails": [
+      "final-violation-claim",
+      "source-use-certainty-claim",
+      "automatic-enforcement-claim",
+      "broad-web-realtime-claim"
+    ]
+  },
+  "actual": {
+    "report_count": 1,
+    "alert_count": 1,
+    "monitoring_run_id": "ttd-patrol-20260707T075428Z",
+    "adapter_id": "seedUrls",
+    "candidates_attempted": 2,
+    "alerts_created": 1,
+    "paid_api_used": false,
+    "budget_guard_respected": true,
+    "empty_state_reason": ""
+  },
+  "pass": {
+    "report_count_matches_alerts": true,
+    "all_reports_from_alerts": true,
+    "empty_state_when_no_alerts": true,
+    "all_required_sections_present": true,
+    "protected_original_metadata_present": true,
+    "candidate_source_details_present": true,
+    "match_explanation_complete": true,
+    "run_metadata_present": true,
+    "review_state_supported": true,
+    "actual_reports_labelled_pending_review": true,
+    "reports_not_market_validation": true,
+    "no_signed_url_query_strings": true,
+    "no_prohibited_public_claims": true,
+    "removed_client_name_not_present": true,
+    "paid_api_policy_respected": true
+  },
+  "limitations": [
+    "Reports are generated from local patrol artifacts.",
+    "Reports are internal-only until a human reviewer verifies source context and authorization.",
+    "Zero-alert patrols intentionally produce zero evidence reports."
+  ]
+}

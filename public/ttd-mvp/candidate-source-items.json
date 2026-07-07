@@ -1,0 +1,116 @@
+[
+  {
+    "candidate_item_id": "CSI-SRC-01-bafybeigzo5r",
+    "source_id": "SRC-01",
+    "source_url": "https://tw.news.yahoo.com/",
+    "retrieved_at": "2026-06-19T08:47:02.605Z",
+    "screenshot_path_or_status": "not_captured_yet_manual_review_required",
+    "query_terms": [
+      "1.jpg",
+      "林怡文",
+      "水源地、溪流景象",
+      "bafybeigzo5rkfsh"
+    ],
+    "review_status": "unreviewed",
+    "public_claim_status": "internal_only",
+    "protected_asset_id": "bafybeigzo5rkfshhubaazvw2xsvruskzrglb3gefyjtln3w3r4crhufmwm",
+    "evidence_label": "actual_source_configuration_pending_review",
+    "match_claim_status": "no_match_claimed",
+    "notes": "Candidate source item is prepared for human review and does not assert reuse or infringement."
+  },
+  {
+    "candidate_item_id": "CSI-SRC-03-bafybeigzo5r",
+    "source_id": "SRC-03",
+    "source_url": "https://news.google.com/search?q=1.jpg%20%E6%9E%97%E6%80%A1%E6%96%87%20%E6%B0%B4%E6%BA%90%E5%9C%B0%E3%80%81%E6%BA%AA%E6%B5%81%E6%99%AF%E8%B1%A1%20bafybeigzo5rkfsh&hl=zh-TW&gl=TW&ceid=TW:zh-Hant",
+    "retrieved_at": "2026-06-19T08:47:02.605Z",
+    "screenshot_path_or_status": "not_captured_yet_manual_review_required",
+    "query_terms": [
+      "1.jpg",
+      "林怡文",
+      "水源地、溪流景象",
+      "bafybeigzo5rkfsh"
+    ],
+    "review_status": "unreviewed",
+    "public_claim_status": "internal_only",
+    "protected_asset_id": "bafybeigzo5rkfshhubaazvw2xsvruskzrglb3gefyjtln3w3r4crhufmwm",
+    "evidence_label": "actual_source_configuration_pending_review",
+    "match_claim_status": "no_match_claimed",
+    "notes": "Candidate source item is prepared for human review and does not assert reuse or infringement."
+  },
+  {
+    "candidate_item_id": "CSI-SRC-07-bafybeigzo5r",
+    "source_id": "SRC-07",
+    "source_url": "https://www.dcard.tw/",
+    "retrieved_at": "2026-06-19T08:47:02.605Z",
+    "screenshot_path_or_status": "not_captured_yet_manual_review_required",
+    "query_terms": [
+      "1.jpg",
+      "林怡文",
+      "水源地、溪流景象",
+      "bafybeigzo5rkfsh"
+    ],
+    "review_status": "unreviewed",
+    "public_claim_status": "internal_only",
+    "protected_asset_id": "bafybeigzo5rkfshhubaazvw2xsvruskzrglb3gefyjtln3w3r4crhufmwm",
+    "evidence_label": "actual_source_configuration_pending_review",
+    "match_claim_status": "no_match_claimed",
+    "notes": "Candidate source item is prepared for human review and does not assert reuse or infringement."
+  },
+  {
+    "candidate_item_id": "CSI-SRC-10-bafybeigzo5r",
+    "source_id": "SRC-10",
+    "source_url": "https://cofacts.tw/",
+    "retrieved_at": "2026-06-19T08:47:02.605Z",
+    "screenshot_path_or_status": "not_captured_yet_manual_review_required",
+    "query_terms": [
+      "1.jpg",
+      "林怡文",
+      "水源地、溪流景象",
+      "bafybeigzo5rkfsh"
+    ],
+    "review_status": "unreviewed",
+    "public_claim_status": "internal_only",
+    "protected_asset_id": "bafybeigzo5rkfshhubaazvw2xsvruskzrglb3gefyjtln3w3r4crhufmwm",
+    "evidence_label": "actual_source_configuration_pending_review",
+    "match_claim_status": "no_match_claimed",
+    "notes": "Candidate source item is prepared for human review and does not assert reuse or infringement."
+  },
+  {
+    "candidate_item_id": "CSI-SRC-14-bafybeigzo5r",
+    "source_id": "SRC-14",
+    "source_url": "https://www.google.com/search?q=1.jpg%20%E6%9E%97%E6%80%A1%E6%96%87%20%E6%B0%B4%E6%BA%90%E5%9C%B0%E3%80%81%E6%BA%AA%E6%B5%81%E6%99%AF%E8%B1%A1%20bafybeigzo5rkfsh",
+    "retrieved_at": "2026-06-19T08:47:02.605Z",
+    "screenshot_path_or_status": "not_captured_yet_manual_review_required",
+    "query_terms": [
+      "1.jpg",
+      "林怡文",
+      "水源地、溪流景象",
+      "bafybeigzo5rkfsh"
+    ],
+    "review_status": "unreviewed",
+    "public_claim_status": "internal_only",
+    "protected_asset_id": "bafybeigzo5rkfshhubaazvw2xsvruskzrglb3gefyjtln3w3r4crhufmwm",
+    "evidence_label": "actual_source_configuration_pending_review",
+    "match_claim_status": "no_match_claimed",
+    "notes": "Candidate source item is prepared for human review and does not assert reuse or infringement."
+  },
+  {
+    "candidate_item_id": "CSI-SRC-14-SIM-bafybeigzo5r",
+    "source_id": "SRC-14",
+    "source_url": "https://example.invalid/ttd-mvp/controlled-repost-candidate",
+    "retrieved_at": "2026-06-19T08:47:02.605Z",
+    "screenshot_path_or_status": "fixture_placeholder_not_public_evidence",
+    "query_terms": [
+      "1.jpg",
+      "林怡文",
+      "水源地、溪流景象",
+      "bafybeigzo5rkfsh"
+    ],
+    "review_status": "simulated",
+    "public_claim_status": "internal_only",
+    "protected_asset_id": "bafybeigzo5rkfshhubaazvw2xsvruskzrglb3gefyjtln3w3r4crhufmwm",
+    "evidence_label": "simulated_fixture",
+    "match_claim_status": "controlled_simulation_only",
+    "notes": "Controlled fixture reserved for demo fallback; it is not an actual source finding."
+  }
+]

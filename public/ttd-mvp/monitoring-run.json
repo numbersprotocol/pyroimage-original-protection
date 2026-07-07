@@ -1,0 +1,107 @@
+{
+  "generated_at": "2026-07-07T07:54:28.639Z",
+  "run_id": "ttd-patrol-20260707T075428Z",
+  "monitoring_label": "source-agnostic automated patrol",
+  "adapter": {
+    "id": "seedUrls",
+    "mode": "zero_cost_seed_urls",
+    "expected_filter": "all",
+    "paid_api_used": false,
+    "billable_enabled": false,
+    "dry_run": false,
+    "budget_guard_respected": true,
+    "details": {
+      "dry_run": false,
+      "billable_enabled": false,
+      "paid_api_used": false,
+      "budget_guard_respected": true,
+      "seeds_available": 2,
+      "expected_filter": "all"
+    }
+  },
+  "run_scope": {
+    "protected_assets_considered": 1,
+    "candidates_attempted": 2,
+    "candidates_matched": 1,
+    "alerts_created": 1,
+    "phase2_index_rows": 300,
+    "match_threshold": 16
+  },
+  "started_at": "2026-07-07T07:54:28.251Z",
+  "completed_at": "2026-07-07T07:54:28.639Z",
+  "status": "completed",
+  "source_runs": [
+    {
+      "run_id": "ttd-patrol-20260707T075428Z-seed-reencoded-copy-bafybeigzo5r",
+      "source_id": "SEED-URLS",
+      "source_name": "Seed URL adapter",
+      "source_url": "seed://ttd-mvp/reencoded-protected-thumbnail",
+      "run_mode": "automated_seed_url_fetch",
+      "started_at": "2026-07-07T07:54:28.266Z",
+      "completed_at": "2026-07-07T07:54:28.504Z",
+      "query_terms": [
+        "1.jpg",
+        "林怡文",
+        "水源地、溪流景象",
+        "bafybeigzo5rkfsh"
+      ],
+      "protected_asset_id": "bafybeigzo5rkfshhubaazvw2xsvruskzrglb3gefyjtln3w3r4crhufmwm",
+      "candidate_id": "seed-reencoded-copy-bafybeigzo5r",
+      "candidate_image_ref": "https://dia-cdn.numbersprotocol.io/thumbnails/2025/08/31/10/49/13/HISCZ8fDjdPj3HURcZt4_1.jpg",
+      "screenshot_path_or_status": "not_captured_phase_1_seed_adapter",
+      "review_status": "not_reviewed",
+      "public_claim_status": "internal_only",
+      "status": "match_alert_created",
+      "notes": "Real fetched candidate matched the protected asset within the configured perceptual-hash threshold.",
+      "fetched_content_type": "image/jpeg",
+      "fetched_bytes": 68011,
+      "transformed_bytes": 6182,
+      "candidate_sha256": "be94e78c136cc4502c10b496a54b4b587ca6f6f489282cc86f0844ee7f2659ad",
+      "candidate_fingerprint": "ahash:ff3ff81000010138;dhash:0d0d3c5c65e9813e",
+      "top_index_match_asset_id": "bafybeigzo5rkfshhubaazvw2xsvruskzrglb3gefyjtln3w3r4crhufmwm",
+      "top_index_match_distance": 1,
+      "protected_asset_distance": 1,
+      "protected_asset_similarity_score": 0.9922,
+      "threshold": 16
+    },
+    {
+      "run_id": "ttd-patrol-20260707T075428Z-seed-unrelated-bafybeicak5op",
+      "source_id": "SEED-URLS",
+      "source_name": "Seed URL adapter",
+      "source_url": "seed://ttd-mvp/unrelated-thumbnail",
+      "run_mode": "automated_seed_url_fetch",
+      "started_at": "2026-07-07T07:54:28.505Z",
+      "completed_at": "2026-07-07T07:54:28.639Z",
+      "query_terms": [
+        "1.jpg",
+        "林怡文",
+        "水源地、溪流景象",
+        "bafybeigzo5rkfsh"
+      ],
+      "protected_asset_id": "bafybeigzo5rkfshhubaazvw2xsvruskzrglb3gefyjtln3w3r4crhufmwm",
+      "candidate_id": "seed-unrelated-bafybeicak5op",
+      "candidate_image_ref": "https://dia-cdn.numbersprotocol.io/thumbnails/2024/01/08/13/05/10/tJdAffb9AacnGBTHDxlE_005_wix_20240106.jpg",
+      "screenshot_path_or_status": "not_captured_phase_1_seed_adapter",
+      "review_status": "not_reviewed",
+      "public_claim_status": "internal_only",
+      "status": "no_match",
+      "notes": "Real fetched candidate did not match the protected asset; no alert was created.",
+      "fetched_content_type": "image/jpeg",
+      "fetched_bytes": 46058,
+      "transformed_bytes": 46058,
+      "candidate_sha256": "6fcd490a11e835b262bd35e68d7aef903f77a546c2684977f61d6a4c2e3eba24",
+      "candidate_fingerprint": "ahash:000000ffdf7fb300;dhash:101106a9c9129100",
+      "top_index_match_asset_id": "bafybeicak5opr2pqhm7cweggwixyj5bok4ajprva6tlqiifrunnevlen4q",
+      "top_index_match_distance": 0,
+      "protected_asset_distance": 81,
+      "protected_asset_similarity_score": 0.3672,
+      "threshold": 16
+    }
+  ],
+  "limitations": [
+    "Phase 1 uses zero-cost seedUrls candidates to prove the patrol pipeline without paid reverse-image search.",
+    "A seed match is a real fetched-image hash match, but it is not an external infringement claim.",
+    "Screenshot capture and external source context are added in later phases.",
+    "Google Cloud Vision WEB_DETECTION is not called in seedUrls mode; paid API spend is NT$0."
+  ]
+}

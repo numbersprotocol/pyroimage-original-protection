@@ -1,0 +1,196 @@
+name: PyroImage Patrol
+
+on:
+  schedule:
+    - cron: "17 3 * * *"
+  workflow_dispatch:
+    inputs:
+      adapter:
+        description: "Patrol source adapter"
+        required: true
+        default: "seedUrls"
+        type: choice
+        options:
+          - seedUrls
+          - vision
+      billable_vision:
+        description: "Allow budget-guarded Google Vision WEB_DETECTION calls"
+        required: true
+        default: false
+        type: boolean
+      protected_asset_limit:
+        description: "Maximum protected assets to query when adapter=vision"
+        required: true
+        default: "1"
+        type: string
+
+permissions:
+  contents: write
+
+concurrency:
+  group: ttd-patrol-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  patrol:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: "20"
+          cache: "npm"
+          cache-dependency-path: package-lock.json
+
+      - name: Install ffmpeg
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg
+          ffmpeg -version
+          ffprobe -version
+
+      - name: Install TTD dependencies
+        run: npm ci
+
+      - name: Configure patrol runtime
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          DISPATCH_ADAPTER: ${{ inputs.adapter }}
+          DISPATCH_BILLABLE_VISION: ${{ inputs.billable_vision }}
+          DISPATCH_PROTECTED_ASSET_LIMIT: ${{ inputs.protected_asset_limit }}
+          GCP_TTD_PATROL_SA_JSON: ${{ secrets.GCP_TTD_PATROL_SA_JSON }}
+          TTD_GCP_PROJECT_ID_INPUT: ${{ vars.TTD_GCP_PROJECT_ID }}
+        run: |
+          set -euo pipefail
+
+          adapter="${DISPATCH_ADAPTER:-seedUrls}"
+          billable="${DISPATCH_BILLABLE_VISION:-false}"
+          protected_asset_limit="${DISPATCH_PROTECTED_ASSET_LIMIT:-1}"
+
+          if [ "$EVENT_NAME" = "schedule" ]; then
+            adapter="vision"
+            billable="true"
+          fi
+
+          if [ -n "${GCP_TTD_PATROL_SA_JSON:-}" ]; then
+            credential_path="$RUNNER_TEMP/gcp-ttd-patrol-sa.json"
+            printf '%s' "$GCP_TTD_PATROL_SA_JSON" > "$credential_path"
+            chmod 600 "$credential_path"
+            echo "GOOGLE_APPLICATION_CREDENTIALS=$credential_path" >> "$GITHUB_ENV"
+          else
+            billable="false"
+            echo "TTD_VISION_DRY_RUN=1" >> "$GITHUB_ENV"
+          fi
+
+          echo "TTD_PATROL_ADAPTER=$adapter" >> "$GITHUB_ENV"
+          echo "TTD_PATROL_PROTECTED_ASSET_LIMIT=$protected_asset_limit" >> "$GITHUB_ENV"
+          echo "TTD_GCP_PROJECT_ID=${TTD_GCP_PROJECT_ID_INPUT:-pyroimage-x402}" >> "$GITHUB_ENV"
+          echo "TTD_VISION_MONTHLY_CAP_NTD=1000" >> "$GITHUB_ENV"
+          echo "TTD_VISION_STOP_RATIO=0.9" >> "$GITHUB_ENV"
+          echo "TTD_PATROL_STRICT=1" >> "$GITHUB_ENV"
+
+          if [ "$adapter" = "vision" ] && [ "$billable" = "true" ] && [ -n "${GCP_TTD_PATROL_SA_JSON:-}" ]; then
+            echo "TTD_VISION_BILLABLE=1" >> "$GITHUB_ENV"
+            echo "TTD_VISION_DRY_RUN=0" >> "$GITHUB_ENV"
+          else
+            echo "TTD_VISION_BILLABLE=0" >> "$GITHUB_ENV"
+          fi
+
+      - name: Run patrol and build artifacts
+        run: |
+          npm run ttd:patrol
+          npm run ttd:report
+          npm run ttd:verify
+          npm run ttd:dashboard
+          npm run ttd:handback
+          npm run build:pages
+
+      - name: Validate patrol artifacts
+        run: |
+          set -euo pipefail
+          node <<'NODE'
+          const fs = require("node:fs");
+          const patrol = JSON.parse(fs.readFileSync("public/ttd-mvp/patrol-validation.json", "utf8"));
+          const report = JSON.parse(fs.readFileSync("public/ttd-mvp/report-validation.json", "utf8"));
+          const verification = JSON.parse(fs.readFileSync("public/ttd-mvp/verification-validation.json", "utf8"));
+          const dashboard = JSON.parse(fs.readFileSync("public/ttd-mvp/dashboard-validation.json", "utf8"));
+          const handback = JSON.parse(fs.readFileSync("public/ttd-mvp/demo-validation.json", "utf8"));
+          if (patrol.pass?.all !== true) {
+            throw new Error(`patrol-validation failed: ${JSON.stringify(patrol.pass)}`);
+          }
+          if (!Object.values(report.pass || {}).every(Boolean)) {
+            throw new Error(`report-validation failed: ${JSON.stringify(report.pass)}`);
+          }
+          if (verification.pass?.all !== true) {
+            throw new Error(`verification-validation failed: ${JSON.stringify(verification.pass)}`);
+          }
+          if (!Object.values(dashboard.pass || {}).every(Boolean)) {
+            throw new Error(`dashboard-validation failed: ${JSON.stringify(dashboard.pass)}`);
+          }
+          if (!Object.values(handback.pass || {}).every(Boolean)) {
+            throw new Error(`demo-validation failed: ${JSON.stringify(handback.pass)}`);
+          }
+          NODE
+
+          files=(
+            public/ttd-mvp/alerts.json
+            public/ttd-mvp/cases.json
+            public/ttd-mvp/monitoring-run.json
+            public/ttd-mvp/patrol-validation.json
+            public/ttd-mvp/review-states.json
+            public/ttd-mvp/evidence-report.json
+            public/ttd-mvp/evidence-report.md
+            public/ttd-mvp/report-validation.json
+            public/ttd-mvp/verification-fixtures.json
+            public/ttd-mvp/verification-validation.json
+            public/ttd-mvp/dashboard-metrics.json
+            public/ttd-mvp/dashboard-validation.json
+            public/ttd-mvp/demo-handback.json
+            public/ttd-mvp/demo-handback.md
+            public/ttd-mvp/demo-validation.json
+            .patrol-state/vision-cost-log.json
+            .patrol-state/vision-web-detection-cache.json
+          )
+          if grep -E -I -i 'Expires=|Signature=|Key-Pair-Id|X-Amz-|Policy=' "${files[@]}"; then
+            echo "Signed query material leaked into patrol artifacts." >&2
+            exit 1
+          fi
+
+      - name: Commit updated patrol artifacts
+        run: |
+          set -euo pipefail
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add \
+            public/ttd-mvp/alerts.json \
+            public/ttd-mvp/cases.json \
+            public/ttd-mvp/monitoring-run.json \
+            public/ttd-mvp/patrol-validation.json \
+            public/ttd-mvp/alert-validation.json \
+            public/ttd-mvp/review-states.json \
+            public/ttd-mvp/evidence-report.json \
+            public/ttd-mvp/evidence-report.md \
+            public/ttd-mvp/report-validation.json \
+            public/ttd-mvp/verification-fixtures.json \
+            public/ttd-mvp/verification-validation.json \
+            public/ttd-mvp/dashboard-metrics.json \
+            public/ttd-mvp/dashboard-validation.json \
+            public/ttd-mvp/demo-handback.json \
+            public/ttd-mvp/demo-handback.md \
+            public/ttd-mvp/demo-validation.json \
+            .patrol-state/vision-cost-log.json \
+            .patrol-state/vision-web-detection-cache.json
+
+          if git diff --cached --quiet; then
+            echo "No patrol artifact changes to commit."
+            exit 0
+          fi
+
+          git commit -m "chore: update TTD patrol artifacts"
+          git push

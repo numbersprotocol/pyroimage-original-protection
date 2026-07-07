@@ -1,0 +1,95 @@
+{
+  "generated_at": "2026-06-19T06:21:55.274Z",
+  "source": {
+    "api_endpoint": "https://dia-backend.numbersprotocol.io/api/v3/assets/",
+    "api_filter": {
+      "owner_service_name": "Pyro Image"
+    },
+    "full_seed_file": ".omni/harness/pyroimage-api-seed.jsonl",
+    "demo_seed_file": ".omni/harness/pyroimage-demo-seed-300.jsonl",
+    "manifest_file": ".omni/harness/pyroimage-api-seed-manifest.json"
+  },
+  "expected": {
+    "full_seed_rows": 4329,
+    "demo_seed_rows": 300,
+    "c2pa_distribution": {
+      "signed": 16,
+      "unsigned": 3840,
+      "null": 473
+    }
+  },
+  "actual": {
+    "full_seed_rows_loaded": 4329,
+    "demo_seed_rows_loaded": 300,
+    "unique_asset_id_count": 4329,
+    "duplicate_asset_id_count": 0,
+    "duplicate_cid_count": 0,
+    "source_type_counts": {
+      "original": 4329
+    },
+    "public_access_counts": {
+      "true": 4329
+    },
+    "mime_type_counts": {
+      "image/jpeg": 4302,
+      "image/png": 25,
+      "application/pdf": 1,
+      "video/mp4": 1
+    },
+    "image_rows_included_for_visual_demo": 4327,
+    "non_image_rows_excluded_from_visual_demo": 2,
+    "missing_media_count": 0,
+    "c2pa_status_counts": {
+      "unsigned": 3840,
+      "signed": 16,
+      "null": 473
+    },
+    "demo_candidate_count": 300,
+    "p0_visual_review_queue_count": 61,
+    "demo_rows_missing_from_full_seed_count": 0,
+    "rows_with_any_missing_checked_field": 452
+  },
+  "labels": {
+    "protected_originals": "actual 4,329 via Numbers API / MVP baseline 4,329",
+    "demo_seed_rows": "actual 300 metadata rows / selected screenshots require visual review",
+    "suspected_events": "0 actual until monitoring produces a human-review-safe case",
+    "partner_feedback": "0 actual / outreach pending",
+    "tool_spend_twd": "actual NT$0; no paid calls logged"
+  },
+  "pass": {
+    "full_seed_row_count_matches": true,
+    "demo_seed_row_count_matches": true,
+    "unique_asset_id_count_matches_loaded_rows": true,
+    "no_duplicate_asset_ids": true,
+    "expected_c2pa_distribution_matches": true,
+    "no_demo_rows_missing_from_full_seed": true,
+    "signed_cdn_query_strings_redacted_in_outputs": true,
+    "paid_api_disabled_by_default": true
+  },
+  "missing_fields_by_field": {
+    "asset_id": 0,
+    "cid": 0,
+    "uuid": 0,
+    "original_url": 0,
+    "snapshot_url": 1,
+    "mime_type": 0,
+    "source_type": 0,
+    "public_access": 0,
+    "creator_name": 450,
+    "rights_holder_owner_name": 0,
+    "rights_status": 0,
+    "provenance_status": 0,
+    "c2pa_status": 0,
+    "certificate_link": 2,
+    "uploaded_at": 0,
+    "demo_candidate": 0,
+    "p0_candidate_needs_visual_review": 0,
+    "recommended_c2pa_action": 0
+  },
+  "limitations": [
+    "Demo seed rows are actual metadata samples but still require visual review before final screenshots.",
+    "Signed CDN URL query strings are intentionally redacted from public static artifacts; refresh via DIA API before image fetch or screenshot capture.",
+    "Non-image rows are preserved in exclusions and excluded from visual-demo eligibility by default.",
+    "No suspected match exists yet; suspected_events remains 0 actual."
+  ]
+}

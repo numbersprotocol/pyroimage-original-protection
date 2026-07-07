@@ -1,0 +1,53 @@
+{
+  "generated_at": "2026-06-19T08:47:02.605Z",
+  "monitoring_label": "specified-source monitoring",
+  "expected": {
+    "source_count": 14,
+    "demo_source_count": 5,
+    "demo_source_ids": [
+      "SRC-01",
+      "SRC-03",
+      "SRC-07",
+      "SRC-10",
+      "SRC-14"
+    ],
+    "allowed_run_modes": [
+      "manual_review",
+      "search_query_only",
+      "simulated_fixture"
+    ]
+  },
+  "actual": {
+    "source_count": 14,
+    "source_ids_in_markdown_count": 14,
+    "demo_source_count": 5,
+    "source_run_count": 6,
+    "candidate_source_item_count": 6,
+    "run_mode_counts": {
+      "manual_review": 3,
+      "search_query_only": 2,
+      "simulated_fixture": 1
+    },
+    "protected_asset_id": "bafybeigzo5rkfshhubaazvw2xsvruskzrglb3gefyjtln3w3r4crhufmwm",
+    "phase2_index_rows": 300
+  },
+  "pass": {
+    "all_14_sources_represented": true,
+    "pm_markdown_contains_all_source_ids": true,
+    "demo_subset_identified": true,
+    "source_required_fields_present": true,
+    "run_required_fields_present": true,
+    "candidate_required_fields_present": true,
+    "run_modes_are_safe": true,
+    "no_unsafe_automation": true,
+    "wording_uses_specified_source_monitoring": true,
+    "broad_web_claim_absent": true,
+    "paid_api_disabled_by_default": true
+  },
+  "limitations": [
+    "This phase is a local fixture and configuration layer, not an automated crawler.",
+    "Candidate source items are unreviewed or simulated; they do not assert suspected reuse.",
+    "Source automation requires future robots, terms, API, or partner authorization review.",
+    "Paid search and reverse-image APIs remain disabled."
+  ]
+}

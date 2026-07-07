@@ -1,0 +1,69 @@
+{
+  "generated_at": "2026-07-07T07:53:02.580Z",
+  "source": {
+    "phase1_demo_assets": "public/ttd-mvp/demo-assets.json",
+    "phase1_normalized_assets": "public/ttd-mvp/assets-normalized.jsonl",
+    "phase1_input_dir": "4ef90e87-3829-4222-9089-d723acdd91d2/pyroimage-original-protection/public/ttd-mvp",
+    "phase2_output_dir": "4ef90e87-3829-4222-9089-d723acdd91d2/pyroimage-original-protection/public/ttd-mvp",
+    "dia_api_refresh_enabled": true,
+    "dia_api_endpoint": "https://dia-backend.numbersprotocol.io/api/v3/assets/",
+    "dia_api_filter": {
+      "owner_service_name": "Pyro Image"
+    },
+    "dia_api_pages_fetched": 22,
+    "dia_api_max_pages": 50,
+    "index_scope": "demo",
+    "media_source": "refreshed DIA thumbnail URLs used transiently; signed query strings are not written to artifacts"
+  },
+  "coverage": {
+    "protected_originals_baseline": 4329,
+    "full_image_rows_target": 4327,
+    "demo_seed_rows": 300,
+    "demo_visual_eligible_rows": 300,
+    "source_rows": 300,
+    "source_visual_eligible_rows": 300,
+    "attempted_rows": 300,
+    "indexed_rows": 300,
+    "failed_fetches": 0,
+    "non_image_exclusions_in_full_seed": 2,
+    "excluded_attempt_rows": 0,
+    "index_coverage_label": "actual indexed sample / target full baseline"
+  },
+  "fingerprint": {
+    "type": "local_ahash64_dhash64_from_thumbnail",
+    "implementation": "ffmpeg grayscale 9x8 resize; aHash64 over first 8x8 pixels; dHash64 over adjacent 9x8 pixels",
+    "distance_scale": "0 to 128 combined Hamming distance across aHash64 and dHash64; lower is more similar",
+    "threshold": {
+      "exact_match_distance": 0,
+      "likely_same_or_controlled_transform_max_combined_distance": 16
+    }
+  },
+  "performance": {
+    "total_bytes_fetched": 13660890,
+    "average_self_match_query_ms": 6.295,
+    "concurrency": 6,
+    "fetch_timeout_ms": 15000
+  },
+  "tests": {
+    "self_match_sample_size": 10,
+    "self_match_pass_count": 10,
+    "transformed_fixture_pass": true,
+    "transformed_fixture_id": "controlled_resize_reencode_fixture_001"
+  },
+  "pass": {
+    "indexed_documented_subset_or_demo_seed": true,
+    "full_scope_path_supported": true,
+    "ten_self_matches_pass": true,
+    "transformed_fixture_pass": true,
+    "no_paid_api_used": true,
+    "signed_query_strings_written_to_artifacts": false
+  },
+  "limitations": [
+    "Phase 2 indexes refreshed thumbnails, not full-resolution originals, to keep the MVP local-first and bounded.",
+    "Default scope is the 300-row demo seed. Set TTD_INDEX_SCOPE=full and raise TTD_INDEX_LIMIT to scale toward all reachable image rows from the 4,329-row baseline.",
+    "Phase 1 redacted CDN URLs return 403 without signed query strings; this script refreshes public DIA thumbnail URLs transiently and never writes signed query strings to public artifacts.",
+    "The local hash is a smoke-test similarity adapter, not a production infringement detector.",
+    "The transformed fixture is controlled resize/re-encode evidence for workflow readiness, not an external suspected match.",
+    "Paid reverse image search remains disabled and unneeded for this phase."
+  ]
+}

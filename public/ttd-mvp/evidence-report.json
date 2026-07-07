@@ -1,0 +1,105 @@
+{
+  "generated_at": "2026-07-07T07:54:28.900Z",
+  "report_count": 1,
+  "source": "runPatrol.js artifacts",
+  "monitoring_run_id": "ttd-patrol-20260707T075428Z",
+  "empty_state": null,
+  "reports": [
+    {
+      "report_id": "REPORT-CASE-PATROL-SEED-REENCODED-COPY-BAFYBEIGZO5R",
+      "alert_id": "ALERT-CASE_PATROL_SEED-REENCODED-COPY-BAFYBEIGZO5R",
+      "case_id": "case_patrol_seed-reencoded-copy-bafybeigzo5r",
+      "generated_at": "2026-07-07T07:54:28.900Z",
+      "report_label": "actual patrol hash-match report pending human review",
+      "report_artifact_path": "ttd-mvp/evidence-report.md",
+      "can_open_from_alert": true,
+      "summary": "This report packages a real fetched-candidate perceptual-hash match for internal human review. It is not a public source-use claim until a reviewer verifies source context and authorization.",
+      "sections": {
+        "protected_original": {
+          "asset_id": "bafybeigzo5rkfshhubaazvw2xsvruskzrglb3gefyjtln3w3r4crhufmwm",
+          "title": "1.jpg",
+          "creator": "林怡文",
+          "owner": "林怡文",
+          "uploaded_at": "2025-08-31T10:48:54.839856Z",
+          "c2pa_status": "signed",
+          "provenance_status": "c2pa_signed",
+          "certificate_link": "https://verify.numbersprotocol.io/asset-profile/bafybeigzo5rkfshhubaazvw2xsvruskzrglb3gefyjtln3w3r4crhufmwm",
+          "image_ref": "https://dia-cdn.numbersprotocol.io/files/2025/08/31/10/48/59/JjtgzcUomnHDXbl6dpQc_1.jpg",
+          "snapshot_ref": "https://dia-cdn.numbersprotocol.io/files/2025/08/31/10/49/09/uObXXh21XUo12tNklhJX_1.jpg",
+          "rights_status": "approved_for_public_demo_report_deck_per_sofia_2026_06_18"
+        },
+        "candidate_use": {
+          "source_id": "SEED-URLS",
+          "source_name": "Seed URL adapter",
+          "source_type": "seed_url",
+          "source_url": "seed://ttd-mvp/reencoded-protected-thumbnail",
+          "source_page": "seed://ttd-mvp/reencoded-protected-thumbnail",
+          "candidate_image_ref": "https://dia-cdn.numbersprotocol.io/thumbnails/2025/08/31/10/49/13/HISCZ8fDjdPj3HURcZt4_1.jpg",
+          "retrieved_at": "2026-07-07T07:54:28.504Z",
+          "screenshot_status": "not_captured_phase_1_seed_adapter",
+          "query_terms": [
+            "1.jpg",
+            "林怡文",
+            "水源地、溪流景象",
+            "bafybeigzo5rkfsh"
+          ],
+          "evidence_label": "actual",
+          "public_claim_status": "internal_only",
+          "source_fixture_label": "seed_urls_real_fetched_candidate",
+          "risk_note": ""
+        },
+        "match_explanation": {
+          "match_basis": "real fetched candidate image compared to protected asset via local aHash64+dHash64 hamming distance",
+          "similarity_score": 0.9922,
+          "similarity_distance": 1,
+          "similarity_threshold": 16,
+          "distance_scale": "0 to 128 combined Hamming distance across aHash64 and dHash64; lower is more similar",
+          "transformation_notes": "Fetched candidate image was re-encoded locally to 160px JPEG via ffmpeg before fingerprinting.",
+          "candidate_sha256": "be94e78c136cc4502c10b496a54b4b587ca6f6f489282cc86f0844ee7f2659ad",
+          "candidate_fingerprint": "ahash:ff3ff81000010138;dhash:0d0d3c5c65e9813e",
+          "protected_asset_distance": 1
+        },
+        "run_metadata": {
+          "run_id": "ttd-patrol-20260707T075428Z",
+          "adapter_id": "seedUrls",
+          "adapter_mode": "zero_cost_seed_urls",
+          "source_run_id": "ttd-patrol-20260707T075428Z-seed-reencoded-copy-bafybeigzo5r",
+          "source_run_status": "match_alert_created",
+          "candidates_attempted": 2,
+          "candidates_matched": 1,
+          "alerts_created": 1,
+          "protected_assets_considered": 1,
+          "paid_api_used": false,
+          "budget_guard_respected": true
+        },
+        "review_state": {
+          "current_status": "pending_human_review",
+          "alert_status": "pending_human_review",
+          "current_state_note": "Real seed patrol match awaits human review before any public claim.",
+          "available_statuses": [
+            "pending_human_review",
+            "false_positive",
+            "authorized_use",
+            "confirmed_by_partner"
+          ],
+          "reviewer_instruction": "Keep the report internal until a human reviewer checks source context, rights-owner status, and authorization."
+        },
+        "recommended_next_step": "Use this seed match to verify the patrol pipeline. Replace seed adapter candidates with Vision or authorized channel candidates before making external infringement claims.",
+        "public_use_label": {
+          "label": "actual_pending_review",
+          "public_claim_status": "internal_only",
+          "counts_toward_market_validation": false,
+          "suspected_events_actual": 0,
+          "simulated_cases": 0,
+          "deck_use_rule": "Internal review package only; do not count as a confirmed external infringement."
+        },
+        "limitations": [
+          "The local similarity score is a workflow signal, not a final source-use decision.",
+          "The case remains pending human review and internal-only.",
+          "Screenshot capture is best-effort; not_captured status means the report relies on URL and hash evidence only.",
+          "Public infringement or takedown claims require separate source-context and authorization review."
+        ]
+      }
+    }
+  ]
+}

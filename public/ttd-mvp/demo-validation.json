@@ -1,0 +1,52 @@
+{
+  "generated_at": "2026-07-07T07:54:29.685Z",
+  "phase": "Phase 4: Verification Portal And UI Integration Handback",
+  "actual": {
+    "route": "/pyroimage-original-protection",
+    "local_url": "http://127.0.0.1:4173/pyroimage-original-protection",
+    "public_artifact_urls": [
+      "/pyroimage-original-protection/ttd-mvp/dashboard-metrics.json",
+      "/pyroimage-original-protection/ttd-mvp/dashboard-validation.json",
+      "/pyroimage-original-protection/ttd-mvp/verification-fixtures.json",
+      "/pyroimage-original-protection/ttd-mvp/verification-validation.json",
+      "/pyroimage-original-protection/ttd-mvp/demo-handback.json",
+      "/pyroimage-original-protection/ttd-mvp/demo-validation.json"
+    ],
+    "completed_phase_count": 6,
+    "dashboard_screen_count": 7,
+    "five_minute_flow_steps": 8,
+    "qa_viewports": [
+      "desktop 1920x1080",
+      "mobile 390x844"
+    ],
+    "suspected_events": 0,
+    "evidence_reports": 1,
+    "tool_spend_twd": 0,
+    "paid_api_used": false,
+    "cost_log_header_only": false,
+    "qa_status": "pending_qa_sub_loop"
+  },
+  "pass": {
+    "local_runbook_documents_test_and_build": true,
+    "qa_ready_desktop_and_mobile": true,
+    "all_completed_phases_summarized": true,
+    "five_minute_flow_covers_required_screens": true,
+    "pm_can_record_without_unstable_live_crawling": true,
+    "handback_summary_complete": true,
+    "simulated_cases_not_market_validation": true,
+    "required_wording_present": true,
+    "no_signed_url_query_strings": true,
+    "no_prohibited_public_claims": true,
+    "removed_client_name_not_present": true,
+    "paid_api_disabled_and_unused": true
+  },
+  "limitations": [
+    "Designated-channel patrol is bounded by configured sources, adapter availability, and platform rules; it is not an unrestricted crawler.",
+    "目前 seed adapter 的 pending-review alert 只證明 real fetch/hash pipeline；外部侵權主張仍需 Vision 或授權通路與人工複審。",
+    "suspected_events 仍為 0 actual until real case exists。",
+    "partner_feedback 仍為 0 actual / outreach pending。",
+    "Origin verification supports review workflows but does not replace brand-owner authorization checks.",
+    "目前沒有預設啟用付費 API；Vision billable path 需 GH secret + 明確 billable flag + budget guard。",
+    "任何公開對外說法仍需 PM/法務/partner human review 後再定稿。"
+  ]
+}

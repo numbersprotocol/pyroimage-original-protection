@@ -1,0 +1,31 @@
+{
+  "generated_at": "2026-07-07T07:54:29.142Z",
+  "phase": "Phase 4: Verification portal + UI integration",
+  "actual": {
+    "query_count": 3,
+    "indexed_rows": 300,
+    "threshold": 16,
+    "verdict_codes": [
+      "registered_original",
+      "registered_derivative",
+      "not_registered"
+    ],
+    "no_paid_api_used": true
+  },
+  "pass": {
+    "known_original_verified": true,
+    "controlled_transform_verified": true,
+    "known_non_original_rejected": true,
+    "all_queries_have_certificate_or_clear_no_match": true,
+    "no_paid_api_used": true,
+    "no_signed_url_query_strings": true,
+    "evidence_labels_honest": true,
+    "all": true
+  },
+  "limitations": [
+    "The static portal validates precomputed local fingerprints only.",
+    "A pasted arbitrary image URL cannot be fingerprinted in the browser-only GitHub Pages runtime.",
+    "A positive origin match verifies relation to a protected original; it is not a public infringement claim.",
+    "The indexed MVP library currently covers the documented 300-row protection sample while preserving the 4,329-row PyroImage baseline target."
+  ]
+}

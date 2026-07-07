@@ -1,0 +1,45 @@
+{
+  "generated_for": "Phase 1 zero-cost SourceAdapter smoke test",
+  "adapter": "seedUrls",
+  "notes": [
+    "Seeds intentionally reference existing protected assets by asset_id; signed media URLs are resolved transiently from demo-assets.json at runtime and are not duplicated here.",
+    "The match seed verifies the real fetch -> re-encode -> perceptual-hash alert path.",
+    "The no_match seed verifies that an unrelated fetched image does not create an alert for the target protected asset."
+  ],
+  "seeds": [
+    {
+      "seed_id": "seed-reencoded-copy-bafybeigzo5r",
+      "enabled": true,
+      "protected_asset_id": "bafybeigzo5rkfshhubaazvw2xsvruskzrglb3gefyjtln3w3r4crhufmwm",
+      "source_id": "SEED-URLS",
+      "source_name": "Seed URL adapter",
+      "source_type": "seed_url",
+      "source_url": "seed://ttd-mvp/reencoded-protected-thumbnail",
+      "source_page": "seed://ttd-mvp/reencoded-protected-thumbnail",
+      "image_url_from": {
+        "asset_id": "bafybeigzo5rkfshhubaazvw2xsvruskzrglb3gefyjtln3w3r4crhufmwm",
+        "field": "thumbnail_url"
+      },
+      "transform": "reencode_jpeg_160",
+      "expected": "match",
+      "notes": "Real fetched protected thumbnail re-encoded locally to verify alert generation without paid APIs."
+    },
+    {
+      "seed_id": "seed-unrelated-bafybeicak5op",
+      "enabled": true,
+      "protected_asset_id": "bafybeigzo5rkfshhubaazvw2xsvruskzrglb3gefyjtln3w3r4crhufmwm",
+      "source_id": "SEED-URLS",
+      "source_name": "Seed URL adapter",
+      "source_type": "seed_url",
+      "source_url": "seed://ttd-mvp/unrelated-thumbnail",
+      "source_page": "seed://ttd-mvp/unrelated-thumbnail",
+      "image_url_from": {
+        "asset_id": "bafybeicak5opr2pqhm7cweggwixyj5bok4ajprva6tlqiifrunnevlen4q",
+        "field": "thumbnail_url"
+      },
+      "transform": "none",
+      "expected": "no_match",
+      "notes": "Known distant image-index row for the target protected asset; expected combined distance is far above the alert threshold."
+    }
+  ]
+}

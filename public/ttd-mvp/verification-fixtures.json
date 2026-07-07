@@ -1,0 +1,407 @@
+{
+  "generated_at": "2026-07-07T07:54:29.142Z",
+  "phase": "Phase 4: Verification portal + UI integration",
+  "route": "/pyroimage-original-protection",
+  "verification_mode": "static precomputed local fingerprint verification for GitHub Pages; arbitrary uploads require a future runtime fingerprint service",
+  "library": {
+    "index_source": "image-index.jsonl",
+    "indexed_rows": 300,
+    "protected_originals_baseline": 4329,
+    "full_image_rows_target": 4327,
+    "scope_label": "actual indexed sample / target full baseline",
+    "match_basis": "local aHash64+dHash64 hamming distance; lower distance is more similar",
+    "threshold": 16,
+    "distance_scale": "0 to 128 combined Hamming distance across aHash64 and dHash64",
+    "paid_api_used": false
+  },
+  "queries": [
+    {
+      "query_id": "known-original-bafybeigzo5r",
+      "query_type": "known_original_url",
+      "input_label": "known-original",
+      "accepted_inputs": [
+        "asset:bafybeigzo5rkfshhubaazvw2xsvruskzrglb3gefyjtln3w3r4crhufmwm",
+        "bafybeigzo5rkfshhubaazvw2xsvruskzrglb3gefyjtln3w3r4crhufmwm",
+        "https://verify.numbersprotocol.io/asset-profile/bafybeigzo5rkfshhubaazvw2xsvruskzrglb3gefyjtln3w3r4crhufmwm",
+        "https://dia-cdn.numbersprotocol.io/thumbnails/2025/08/31/10/49/13/HISCZ8fDjdPj3HURcZt4_1.jpg"
+      ],
+      "display": {
+        "zh": "已知原作",
+        "en": "Known original",
+        "title": "1.jpg",
+        "subtitle": "水源地、溪流景象"
+      },
+      "query_asset_id": "bafybeigzo5rkfshhubaazvw2xsvruskzrglb3gefyjtln3w3r4crhufmwm",
+      "query_fingerprint": {
+        "ahash64": "ff3ff81000010178",
+        "dhash64": "0d0d3c5c65e9813e",
+        "fingerprint_value": "ahash:ff3ff81000010178;dhash:0d0d3c5c65e9813e"
+      },
+      "result": {
+        "query_asset_id": "bafybeigzo5rkfshhubaazvw2xsvruskzrglb3gefyjtln3w3r4crhufmwm",
+        "query_title": "1.jpg",
+        "query_time_ms": 22.172,
+        "threshold": {
+          "exact_match_distance": 0,
+          "likely_same_or_controlled_transform_max_combined_distance": 16,
+          "distance_scale": "0 to 128 combined Hamming distance across aHash64 and dHash64; lower is more similar"
+        },
+        "top_match": {
+          "asset_id": "bafybeigzo5rkfshhubaazvw2xsvruskzrglb3gefyjtln3w3r4crhufmwm",
+          "display_title": "1.jpg",
+          "creator_name": "林怡文",
+          "certificate_link": "https://verify.numbersprotocol.io/asset-profile/bafybeigzo5rkfshhubaazvw2xsvruskzrglb3gefyjtln3w3r4crhufmwm",
+          "media_ref": "https://dia-cdn.numbersprotocol.io/thumbnails/2025/08/31/10/49/13/HISCZ8fDjdPj3HURcZt4_1.jpg",
+          "ahash_distance": 0,
+          "dhash_distance": 0,
+          "combined_distance": 0,
+          "similarity_score": 1,
+          "match_basis": "local aHash64+dHash64 hamming distance; lower distance is more similar"
+        },
+        "top_matches": [
+          {
+            "asset_id": "bafybeigzo5rkfshhubaazvw2xsvruskzrglb3gefyjtln3w3r4crhufmwm",
+            "display_title": "1.jpg",
+            "creator_name": "林怡文",
+            "certificate_link": "https://verify.numbersprotocol.io/asset-profile/bafybeigzo5rkfshhubaazvw2xsvruskzrglb3gefyjtln3w3r4crhufmwm",
+            "media_ref": "https://dia-cdn.numbersprotocol.io/thumbnails/2025/08/31/10/49/13/HISCZ8fDjdPj3HURcZt4_1.jpg",
+            "ahash_distance": 0,
+            "dhash_distance": 0,
+            "combined_distance": 0,
+            "similarity_score": 1,
+            "match_basis": "local aHash64+dHash64 hamming distance; lower distance is more similar"
+          },
+          {
+            "asset_id": "bafybeidzww6rc64qc7f5krivjrvvuqikv5f457nf53srjnys5cc6tp5gwa",
+            "display_title": "EDD_6862.JPG",
+            "creator_name": "eddjhong",
+            "certificate_link": "https://verify.numbersprotocol.io/asset-profile?nid=bafybeidzww6rc64qc7f5krivjrvvuqikv5f457nf53srjnys5cc6tp5gwa",
+            "media_ref": "https://dia-cdn.numbersprotocol.io/thumbnails/2024/03/13/09/54/34/xsnIsScLIiOLa01I6lu1_EDD_6862.JPG.jpg",
+            "ahash_distance": 12,
+            "dhash_distance": 29,
+            "combined_distance": 41,
+            "similarity_score": 0.6797,
+            "match_basis": "local aHash64+dHash64 hamming distance; lower distance is more similar"
+          },
+          {
+            "asset_id": "bafybeidyqgupdhodqnjwpndjpdbfqdzlk7xf4mgs6jyns566gjyjtepjha",
+            "display_title": "374_photo__20240113.jpg",
+            "creator_name": "余志偉yuchihwei",
+            "certificate_link": "https://verify.numbersprotocol.io/asset-profile?nid=bafybeidyqgupdhodqnjwpndjpdbfqdzlk7xf4mgs6jyns566gjyjtepjha",
+            "media_ref": "https://dia-cdn.numbersprotocol.io/thumbnails/2024/01/14/06/49/16/1LnoXvdrFT2yNrciPMA9_374_photo__20240113.jpg",
+            "ahash_distance": 17,
+            "dhash_distance": 25,
+            "combined_distance": 42,
+            "similarity_score": 0.6719,
+            "match_basis": "local aHash64+dHash64 hamming distance; lower distance is more similar"
+          },
+          {
+            "asset_id": "bafybeiazfwp5qmd5vduneeu2i3yj4okzqvqyagr4hdr5qyiracglwoikpq",
+            "display_title": "EDD_5551.JPG",
+            "creator_name": "eddjhong",
+            "certificate_link": "https://verify.numbersprotocol.io/asset-profile?nid=bafybeiazfwp5qmd5vduneeu2i3yj4okzqvqyagr4hdr5qyiracglwoikpq",
+            "media_ref": "https://dia-cdn.numbersprotocol.io/thumbnails/2024/03/13/10/32/02/3BeQx0gmXYpTsmqZ0Veg_EDD_5551.JPG.jpg",
+            "ahash_distance": 17,
+            "dhash_distance": 26,
+            "combined_distance": 43,
+            "similarity_score": 0.6641,
+            "match_basis": "local aHash64+dHash64 hamming distance; lower distance is more similar"
+          },
+          {
+            "asset_id": "bafybeiajryrwstia22issgebjjfmo72j44nhlowe4wr6zn5lmppkykrzmm",
+            "display_title": "15.jpg",
+            "creator_name": "林怡文",
+            "certificate_link": "https://verify.numbersprotocol.io/asset-profile/bafybeiajryrwstia22issgebjjfmo72j44nhlowe4wr6zn5lmppkykrzmm",
+            "media_ref": "https://dia-cdn.numbersprotocol.io/thumbnails/2025/08/31/10/51/26/6bwLVrjnw7X2F5CMZEeK_15.jpg",
+            "ahash_distance": 18,
+            "dhash_distance": 26,
+            "combined_distance": 44,
+            "similarity_score": 0.6563,
+            "match_basis": "local aHash64+dHash64 hamming distance; lower distance is more similar"
+          }
+        ],
+        "verdict_code": "registered_match",
+        "pass_threshold": true
+      },
+      "verdict": {
+        "code": "registered_original",
+        "zh": "保護庫命中：原作",
+        "en": "Registered original",
+        "tone": "match",
+        "public_claim_status": "origin_verification_only"
+      },
+      "evidence_label": "actual_index_match",
+      "zero_external_cost": true,
+      "expected_pass": true,
+      "notes": [
+        "The query fingerprint is the indexed protected original itself.",
+        "This verifies the portal can return the certificate for an already registered work."
+      ]
+    },
+    {
+      "query_id": "known-transform-bafybeigzo5r",
+      "query_type": "controlled_transform_url",
+      "input_label": "controlled-transform",
+      "accepted_inputs": [
+        "seed://ttd-mvp/reencoded-protected-thumbnail",
+        "transform:controlled_resize_reencode_fixture_001",
+        "asset:bafybeigzo5rkfshhubaazvw2xsvruskzrglb3gefyjtln3w3r4crhufmwm:transform"
+      ],
+      "display": {
+        "zh": "轉檔後原作",
+        "en": "Re-encoded original",
+        "title": "1.jpg",
+        "subtitle": "Controlled local resize to 160px width and JPEG re-encode via ffmpeg; no external source claim."
+      },
+      "query_asset_id": "bafybeigzo5rkfshhubaazvw2xsvruskzrglb3gefyjtln3w3r4crhufmwm",
+      "query_fingerprint": {
+        "ahash64": "ff3ff81000010138",
+        "dhash64": "0d0d3c5c65e9813e",
+        "fingerprint_value": "ahash:ff3ff81000010138;dhash:0d0d3c5c65e9813e"
+      },
+      "result": {
+        "query_asset_id": "bafybeigzo5rkfshhubaazvw2xsvruskzrglb3gefyjtln3w3r4crhufmwm",
+        "query_title": "Controlled resize/re-encode fixture",
+        "query_time_ms": 5.245,
+        "threshold": {
+          "exact_match_distance": 0,
+          "likely_same_or_controlled_transform_max_combined_distance": 16,
+          "distance_scale": "0 to 128 combined Hamming distance across aHash64 and dHash64; lower is more similar"
+        },
+        "top_match": {
+          "asset_id": "bafybeigzo5rkfshhubaazvw2xsvruskzrglb3gefyjtln3w3r4crhufmwm",
+          "display_title": "1.jpg",
+          "creator_name": "林怡文",
+          "certificate_link": "https://verify.numbersprotocol.io/asset-profile/bafybeigzo5rkfshhubaazvw2xsvruskzrglb3gefyjtln3w3r4crhufmwm",
+          "media_ref": "https://dia-cdn.numbersprotocol.io/thumbnails/2025/08/31/10/49/13/HISCZ8fDjdPj3HURcZt4_1.jpg",
+          "ahash_distance": 1,
+          "dhash_distance": 0,
+          "combined_distance": 1,
+          "similarity_score": 0.9922,
+          "match_basis": "local aHash64+dHash64 hamming distance; lower distance is more similar"
+        },
+        "top_matches": [
+          {
+            "asset_id": "bafybeigzo5rkfshhubaazvw2xsvruskzrglb3gefyjtln3w3r4crhufmwm",
+            "display_title": "1.jpg",
+            "creator_name": "林怡文",
+            "certificate_link": "https://verify.numbersprotocol.io/asset-profile/bafybeigzo5rkfshhubaazvw2xsvruskzrglb3gefyjtln3w3r4crhufmwm",
+            "media_ref": "https://dia-cdn.numbersprotocol.io/thumbnails/2025/08/31/10/49/13/HISCZ8fDjdPj3HURcZt4_1.jpg",
+            "ahash_distance": 1,
+            "dhash_distance": 0,
+            "combined_distance": 1,
+            "similarity_score": 0.9922,
+            "match_basis": "local aHash64+dHash64 hamming distance; lower distance is more similar"
+          },
+          {
+            "asset_id": "bafybeidyqgupdhodqnjwpndjpdbfqdzlk7xf4mgs6jyns566gjyjtepjha",
+            "display_title": "374_photo__20240113.jpg",
+            "creator_name": "余志偉yuchihwei",
+            "certificate_link": "https://verify.numbersprotocol.io/asset-profile?nid=bafybeidyqgupdhodqnjwpndjpdbfqdzlk7xf4mgs6jyns566gjyjtepjha",
+            "media_ref": "https://dia-cdn.numbersprotocol.io/thumbnails/2024/01/14/06/49/16/1LnoXvdrFT2yNrciPMA9_374_photo__20240113.jpg",
+            "ahash_distance": 16,
+            "dhash_distance": 25,
+            "combined_distance": 41,
+            "similarity_score": 0.6797,
+            "match_basis": "local aHash64+dHash64 hamming distance; lower distance is more similar"
+          },
+          {
+            "asset_id": "bafybeidzww6rc64qc7f5krivjrvvuqikv5f457nf53srjnys5cc6tp5gwa",
+            "display_title": "EDD_6862.JPG",
+            "creator_name": "eddjhong",
+            "certificate_link": "https://verify.numbersprotocol.io/asset-profile?nid=bafybeidzww6rc64qc7f5krivjrvvuqikv5f457nf53srjnys5cc6tp5gwa",
+            "media_ref": "https://dia-cdn.numbersprotocol.io/thumbnails/2024/03/13/09/54/34/xsnIsScLIiOLa01I6lu1_EDD_6862.JPG.jpg",
+            "ahash_distance": 13,
+            "dhash_distance": 29,
+            "combined_distance": 42,
+            "similarity_score": 0.6719,
+            "match_basis": "local aHash64+dHash64 hamming distance; lower distance is more similar"
+          },
+          {
+            "asset_id": "bafybeiajryrwstia22issgebjjfmo72j44nhlowe4wr6zn5lmppkykrzmm",
+            "display_title": "15.jpg",
+            "creator_name": "林怡文",
+            "certificate_link": "https://verify.numbersprotocol.io/asset-profile/bafybeiajryrwstia22issgebjjfmo72j44nhlowe4wr6zn5lmppkykrzmm",
+            "media_ref": "https://dia-cdn.numbersprotocol.io/thumbnails/2025/08/31/10/51/26/6bwLVrjnw7X2F5CMZEeK_15.jpg",
+            "ahash_distance": 17,
+            "dhash_distance": 26,
+            "combined_distance": 43,
+            "similarity_score": 0.6641,
+            "match_basis": "local aHash64+dHash64 hamming distance; lower distance is more similar"
+          },
+          {
+            "asset_id": "bafybeiazfwp5qmd5vduneeu2i3yj4okzqvqyagr4hdr5qyiracglwoikpq",
+            "display_title": "EDD_5551.JPG",
+            "creator_name": "eddjhong",
+            "certificate_link": "https://verify.numbersprotocol.io/asset-profile?nid=bafybeiazfwp5qmd5vduneeu2i3yj4okzqvqyagr4hdr5qyiracglwoikpq",
+            "media_ref": "https://dia-cdn.numbersprotocol.io/thumbnails/2024/03/13/10/32/02/3BeQx0gmXYpTsmqZ0Veg_EDD_5551.JPG.jpg",
+            "ahash_distance": 18,
+            "dhash_distance": 26,
+            "combined_distance": 44,
+            "similarity_score": 0.6563,
+            "match_basis": "local aHash64+dHash64 hamming distance; lower distance is more similar"
+          }
+        ],
+        "verdict_code": "registered_match",
+        "pass_threshold": true
+      },
+      "verdict": {
+        "code": "registered_derivative",
+        "zh": "保護庫命中：疑似同一原作",
+        "en": "Registered derivative",
+        "tone": "match",
+        "public_claim_status": "origin_verification_only"
+      },
+      "evidence_label": "actual_controlled_transform",
+      "zero_external_cost": true,
+      "expected_pass": true,
+      "notes": [
+        "The query is generated by local resize/re-encode of a registered protected image.",
+        "This validates that the local fingerprint matcher survives common copy transformations."
+      ]
+    },
+    {
+      "query_id": "control-non-original-seed-1",
+      "query_type": "controlled_non_original",
+      "input_label": "controlled-non-original",
+      "accepted_inputs": [
+        "control://ttd-mvp/non-original-9x8-gradient",
+        "control-non-original-seed-1"
+      ],
+      "display": {
+        "zh": "非原作控制樣本",
+        "en": "Non-original control",
+        "title": "9x8 grayscale control",
+        "subtitle": "Deterministic local control fingerprint; not a public source-use claim."
+      },
+      "query_asset_id": "",
+      "query_fingerprint": {
+        "ahash64": "1c73ce38e38c31c7",
+        "dhash64": "0410420821841041",
+        "fingerprint_value": "ahash:1c73ce38e38c31c7;dhash:0410420821841041"
+      },
+      "result": {
+        "query_asset_id": "control-non-original-seed-1",
+        "query_title": "Controlled non-original query",
+        "query_time_ms": 5.061,
+        "threshold": {
+          "exact_match_distance": 0,
+          "likely_same_or_controlled_transform_max_combined_distance": 16,
+          "distance_scale": "0 to 128 combined Hamming distance across aHash64 and dHash64; lower is more similar"
+        },
+        "top_match": {
+          "asset_id": "bafybeids4cijw2z253eomotlfi6iugs7tvt3pu6ntxsjcf4vgct5bzkvsi",
+          "display_title": "10_YUCHIHWEI_20240106.jpg",
+          "creator_name": "余志偉yuchihwei",
+          "certificate_link": "https://verify.numbersprotocol.io/asset-profile?nid=bafybeids4cijw2z253eomotlfi6iugs7tvt3pu6ntxsjcf4vgct5bzkvsi",
+          "media_ref": "https://dia-cdn.numbersprotocol.io/thumbnails/2024/01/08/13/06/25/4oI5lKfnkdQWZSSF8n29_010_wix_20240106.jpg",
+          "ahash_distance": 28,
+          "dhash_distance": 20,
+          "combined_distance": 48,
+          "similarity_score": 0.625,
+          "match_basis": "local aHash64+dHash64 hamming distance; lower distance is more similar"
+        },
+        "top_matches": [
+          {
+            "asset_id": "bafybeids4cijw2z253eomotlfi6iugs7tvt3pu6ntxsjcf4vgct5bzkvsi",
+            "display_title": "10_YUCHIHWEI_20240106.jpg",
+            "creator_name": "余志偉yuchihwei",
+            "certificate_link": "https://verify.numbersprotocol.io/asset-profile?nid=bafybeids4cijw2z253eomotlfi6iugs7tvt3pu6ntxsjcf4vgct5bzkvsi",
+            "media_ref": "https://dia-cdn.numbersprotocol.io/thumbnails/2024/01/08/13/06/25/4oI5lKfnkdQWZSSF8n29_010_wix_20240106.jpg",
+            "ahash_distance": 28,
+            "dhash_distance": 20,
+            "combined_distance": 48,
+            "similarity_score": 0.625,
+            "match_basis": "local aHash64+dHash64 hamming distance; lower distance is more similar"
+          },
+          {
+            "asset_id": "bafybeibjnrrfecwqtjcx46q3xpxf3bwky3chhy2wp5s7nia5j2ypexzltq",
+            "display_title": "EDD_7234.JPG",
+            "creator_name": "eddjhong",
+            "certificate_link": "https://verify.numbersprotocol.io/asset-profile?nid=bafybeibjnrrfecwqtjcx46q3xpxf3bwky3chhy2wp5s7nia5j2ypexzltq",
+            "media_ref": "https://dia-cdn.numbersprotocol.io/thumbnails/2024/03/13/09/54/38/17DePC4iEdAmfXS9cuQy_EDD_7234.JPG.jpg",
+            "ahash_distance": 32,
+            "dhash_distance": 17,
+            "combined_distance": 49,
+            "similarity_score": 0.6172,
+            "match_basis": "local aHash64+dHash64 hamming distance; lower distance is more similar"
+          },
+          {
+            "asset_id": "bafybeiagx3w75nzkdab46peprab3fppyay5qiq42qjxcylmxifg3cppomq",
+            "display_title": "06_YUCHIHWEI_20240110.jpg",
+            "creator_name": "余志偉yuchihwei",
+            "certificate_link": "https://verify.numbersprotocol.io/asset-profile?nid=bafybeiagx3w75nzkdab46peprab3fppyay5qiq42qjxcylmxifg3cppomq",
+            "media_ref": "https://dia-cdn.numbersprotocol.io/thumbnails/2024/01/11/01/55/13/jQXJUgY6Ny8kXI4fkZSf_006_photo__20240110.jpg",
+            "ahash_distance": 26,
+            "dhash_distance": 24,
+            "combined_distance": 50,
+            "similarity_score": 0.6094,
+            "match_basis": "local aHash64+dHash64 hamming distance; lower distance is more similar"
+          },
+          {
+            "asset_id": "bafybeicbawuibw7idnx3w6rvncojo2wzve4vydohodm33pw4cgiditctza",
+            "display_title": "EDD_8109.JPG",
+            "creator_name": "eddjhong",
+            "certificate_link": "https://verify.numbersprotocol.io/asset-profile?nid=bafybeicbawuibw7idnx3w6rvncojo2wzve4vydohodm33pw4cgiditctza",
+            "media_ref": "https://dia-cdn.numbersprotocol.io/thumbnails/2024/03/13/10/32/45/QYQJgiyhevG1Tds4grO2_EDD_8109.JPG.jpg",
+            "ahash_distance": 26,
+            "dhash_distance": 25,
+            "combined_distance": 51,
+            "similarity_score": 0.6016,
+            "match_basis": "local aHash64+dHash64 hamming distance; lower distance is more similar"
+          },
+          {
+            "asset_id": "bafybeigxhruoif2uco7o7nmghtokbexthgbokofcchik6qnzkzuyvmxyqu",
+            "display_title": "11_YUCHIHWEI_20240113.jpg",
+            "creator_name": "余志偉yuchihwei",
+            "certificate_link": "https://verify.numbersprotocol.io/asset-profile?nid=bafybeigxhruoif2uco7o7nmghtokbexthgbokofcchik6qnzkzuyvmxyqu",
+            "media_ref": "https://dia-cdn.numbersprotocol.io/thumbnails/2024/01/14/09/10/05/jaNGQA9pNH4WOa7vU7Nz_011_photo_20240113.jpg",
+            "ahash_distance": 33,
+            "dhash_distance": 18,
+            "combined_distance": 51,
+            "similarity_score": 0.6016,
+            "match_basis": "local aHash64+dHash64 hamming distance; lower distance is more similar"
+          }
+        ],
+        "verdict_code": "not_registered",
+        "pass_threshold": false
+      },
+      "verdict": {
+        "code": "not_registered",
+        "zh": "未命中保護庫",
+        "en": "Not registered",
+        "tone": "clear",
+        "public_claim_status": "no_origin_match_found"
+      },
+      "evidence_label": "controlled_non_original",
+      "zero_external_cost": true,
+      "expected_pass": true,
+      "notes": [
+        "The query is a deterministic non-original control, used only to verify the no-match branch.",
+        "No alert, case, or evidence report is created from this control query."
+      ]
+    }
+  ],
+  "verdicts": {
+    "registered_original": "Exact protected-original fingerprint match.",
+    "registered_derivative": "Within-threshold match to a protected original after local transform.",
+    "not_registered": "No indexed protected original within the configured threshold.",
+    "review_required": "Ambiguous result; human review is required before using the verdict."
+  },
+  "limitations": [
+    "The static portal validates precomputed local fingerprints only.",
+    "A pasted arbitrary image URL cannot be fingerprinted in the browser-only GitHub Pages runtime.",
+    "A positive origin match verifies relation to a protected original; it is not a public infringement claim.",
+    "The indexed MVP library currently covers the documented 300-row protection sample while preserving the 4,329-row PyroImage baseline target."
+  ],
+  "pass": {
+    "known_original_verified": true,
+    "controlled_transform_verified": true,
+    "known_non_original_rejected": true,
+    "all_queries_have_certificate_or_clear_no_match": true,
+    "no_paid_api_used": true,
+    "no_signed_url_query_strings": true,
+    "evidence_labels_honest": true,
+    "all": true
+  }
+}

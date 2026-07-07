@@ -1,0 +1,10 @@
+{
+  "generated_at": "2026-06-25T03:45:10.787Z",
+  "api_endpoint": "https://dia-backend.numbersprotocol.io/api/v3/assets/{asset_id}/",
+  "enrich_limit": 48,
+  "attempted": 48,
+  "enriched": 48,
+  "failed": 0,
+  "failures": [],
+  "note": "Thumbnails use long-lived signed URLs (asset_file_thumbnail, Expires ~ year 2126). No paid API used."
+}

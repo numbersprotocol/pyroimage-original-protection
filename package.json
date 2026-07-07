@@ -1,0 +1,47 @@
+{
+  "name": "pyroimage-original-protection",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "build:pages": "npm run build",
+    "lint": "eslint .",
+    "preview": "vite preview",
+    "ttd:ingest": "node scripts/ingestPyroimageSeed.js",
+    "ttd:thumbs": "node scripts/enrichDemoThumbnails.js",
+    "ttd:index": "node scripts/buildImageIndex.js",
+    "ttd:monitoring": "node scripts/buildMonitoringFixture.js",
+    "ttd:alerts": "node scripts/buildAlertFixtures.js",
+    "ttd:report": "node scripts/buildEvidenceReport.js",
+    "ttd:verify": "node scripts/buildVerificationPortal.js",
+    "ttd:dashboard": "node scripts/buildImpactDashboard.js",
+    "ttd:handback": "node scripts/buildDemoHandback.js",
+    "ttd:patrol": "node scripts/runPatrol.js",
+    "ttd:patrol:vision:dry-run": "TTD_PATROL_ADAPTER=vision TTD_VISION_DRY_RUN=1 node scripts/runPatrol.js"
+  },
+  "dependencies": {
+    "@tailwindcss/vite": "^4.3.1",
+    "lucide-react": "^1.23.0",
+    "react": "^19.2.6",
+    "react-dom": "^19.2.6"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/node": "^24.12.3",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.1",
+    "autoprefixer": "^10.5.0",
+    "eslint": "^10.3.0",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "eslint-plugin-react-refresh": "^0.5.2",
+    "globals": "^17.6.0",
+    "postcss": "^8.5.15",
+    "tailwindcss": "^4.3.1",
+    "typescript": "~6.0.2",
+    "typescript-eslint": "^8.59.2",
+    "vite": "^8.0.12"
+  }
+}

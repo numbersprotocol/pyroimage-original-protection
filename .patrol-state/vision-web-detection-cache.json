@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "generated_by": "ttd-mvp visionWebDetection.js",
+  "entries": {
+    "80b2193b96530d33f700433f47a746bc66b9413d0a4c128bb66faca934296348": {
+      "asset_id": "bafybeigzo5rkfshhubaazvw2xsvruskzrglb3gefyjtln3w3r4crhufmwm",
+      "query_image_ref": "https://dia-cdn.numbersprotocol.io/thumbnails/2025/08/31/10/49/13/HISCZ8fDjdPj3HURcZt4_1.jpg",
+      "created_at": "2026-07-06T08:39:21.009Z",
+      "expires_at": "2026-08-05T08:39:21.009Z",
+      "max_results": 20,
+      "webDetection": {
+        "webEntities": [
+          {
+            "entityId": "/m/0j2kx",
+            "score": 0.3309906,
+            "description": "Waterfall"
+          },
+          {
+            "entityId": "/m/07j7r",
+            "score": 0.3051257,
+            "description": "Tree"
+          }
+        ],
+        "visuallySimilarImages": [
+          {
+            "url": "https://www.tiktok.com/api/img/"
+          },
+          {
+            "url": "https://p19-common-sign.tiktokcdn-us.com/tos-alisg-p-0037/okRBbFBKQvFfY9AJ1qVNAOcCfmQEQJIHDX7tEg~tplv-tiktokx-origin.image"
+          },
+          {
+            "url": "https://www.piratescove.net/media/uploads/galleries/petoskey/.thumbnails/1-petoskey9.jpg/1-petoskey9-800x800.jpg"
+          },
+          {
+            "url": "https://www.tiktok.com/api/img/"
+          },
+          {
+            "url": "https://www.tiktok.com/api/img/"
+          },
+          {
+            "url": "https://i.ytimg.com/vi/zlZF_IRGuII/oar2.jpg"
+          },
+          {
+            "url": "https://lookaside.instagram.com/seo/google_widget/crawler/"
+          },
+          {
+            "url": "https://p19-common-sign.tiktokcdn-us.com/tos-alisg-p-0037/d27f1b0528ee4505895fcfa47fda0175_1717196554~tplv-tiktokx-origin.image"
+          },
+          {
+            "url": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2f/ed/6f/fa/caption.jpg"
+          },
+          {
+            "url": "https://www.tiktok.com/api/img/"
+          },
+          {
+            "url": "https://s3-media0.fl.yelpcdn.com/bphoto/8zGsJ8K8XKoAzwOqcRSBHg/348s.jpg"
+          },
+          {
+            "url": "https://assets.apartmenthomeliving.com/content/posts/21456839-affordable_living_upstate_charm_discover_greenvilles_best_neighborhoods_for_renting_apartments.jpg"
+          },
+          {
+            "url": "https://p16-common-sign.tiktokcdn-us.com/tos-useast5-p-0068-tx/61c0463666ea48e192c80f94116f3d79_1720133780~tplv-tiktokx-origin.image"
+          },
+          {
+            "url": "https://d9-wret.s3.us-west-2.amazonaws.com/assets/palladium/production/s3fs-public/styles/masonry/public/thumbnails/image/McHale_2.JPG"
+          },
+          {
+            "url": "https://explorethebruce.com/wp-content/uploads/2023/06/SaubleFalls.png"
+          },
+          {
+            "url": "https://www.strommensparebank.no/-/media/banker/strommensparebank/bilder/09-Foto-Arnt-Erik-Isaksen.JPG"
+          },
+          {
+            "url": "https://miro.medium.com/v2/resize:fit:1400/1*lqd_mT63nlHlwqjNB7tiWQ.jpeg"
+          },
+          {
+            "url": "https://lookaside.instagram.com/seo/google_widget/crawler/"
+          },
+          {
+            "url": "https://s3-media0.fl.yelpcdn.com/bphoto/ad6etRMe6gYbzsiHP_ZdvA/348s.jpg"
+          },
+          {
+            "url": "https://burkina24.com/wp-content/uploads/2013/01/burkina-banfora-0131.jpg"
+          }
+        ],
+        "bestGuessLabels": [
+          {
+            "label": "waterfall"
+          }
+        ]
+      }
+    }
+  },
+  "updated_at": "2026-07-06T08:39:21.010Z"
+}

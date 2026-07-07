@@ -1,0 +1,1425 @@
+{
+  "generated_at": "2026-06-19T06:21:55.274Z",
+  "non_image_rows": [
+    {
+      "asset_id": "bafybeicqotyv66ohhzfeivon562uacwitr7wkwgvppesnrveq5d733yk6i",
+      "cid": "bafybeicqotyv66ohhzfeivon562uacwitr7wkwgvppesnrveq5d733yk6i",
+      "mime_type": "application/pdf",
+      "source_type": "original",
+      "reason": "non_image_mime_type"
+    },
+    {
+      "asset_id": "bafybeigiruszn2hbt742cwdcuic7svfbcx37vgevpbluzkynrc7z2qto4a",
+      "cid": "bafybeigiruszn2hbt742cwdcuic7svfbcx37vgevpbluzkynrc7z2qto4a",
+      "mime_type": "video/mp4",
+      "source_type": "original",
+      "reason": "non_image_mime_type"
+    }
+  ],
+  "missing_media_rows": [],
+  "duplicate_assets": [],
+  "duplicate_cids": [],
+  "rows_with_missing_checked_fields": [
+    {
+      "asset_id": "bafybeiayhegbrwyikp4j5c64h47eipchxipr4m4m7brhmwe5q4ol477mmu",
+      "seed_index": 102,
+      "missing_fields": [
+        "certificate_link"
+      ]
+    },
+    {
+      "asset_id": "bafybeicqotyv66ohhzfeivon562uacwitr7wkwgvppesnrveq5d733yk6i",
+      "seed_index": 108,
+      "missing_fields": [
+        "snapshot_url"
+      ]
+    },
+    {
+      "asset_id": "bafybeia7wu2hnxefxjokxlbu5tczhjpv2jegpy7ovdjudiwkgugnr5qhl4",
+      "seed_index": 282,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeih5sskd37v4h6dwgqq5pskgh2i2suuvrwel5br2utr2idza2fj5ja",
+      "seed_index": 283,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeicms4pzwmh7wkqnqbpuvwwfghlxoq46mfauqfooojov2d5mwmrzuu",
+      "seed_index": 284,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeido25lrujadt4zf3hypkqqzcam7idljvrywlfjdmyjkyw3is2s2te",
+      "seed_index": 285,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeihgcu7me5msybnt7k4mvv7zpchp764sdwbwqstb4qsxr2ph5lgtzy",
+      "seed_index": 286,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeibgptx5ayqmv525fnexhnvl3tsjoodktimbws77wacgn3le2r4rh4",
+      "seed_index": 287,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeiapn36zzssazfr6hrflyufz6hsf4kynfdl6k3a7nm5efm7yf3u7gm",
+      "seed_index": 288,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeiays3seimjjkxgqaifl5ubalg6ryejprs7d4k2jzw7h73evpvjtrq",
+      "seed_index": 289,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeicrpk4kw4lyox5bt6yfnclo43wwwkhc77mtejtsjsiivsj6ekh7ey",
+      "seed_index": 290,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeibjf565tegtxkxen3iissxbrwz67u5hmlsi7idd67js2y7krumw6e",
+      "seed_index": 291,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeiczmmsqibx3j373e7iukaqwlkssdkh72626brt244cotwh2wknpb4",
+      "seed_index": 292,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeifgd6perbe26upiesb4iqvkvs6buxcvna2jxqxnnzejinjvbsmfje",
+      "seed_index": 293,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeibcfyyg7o6aea2636tdyvkafenj3e5ziw57ud7cbdgvtvsridgnyy",
+      "seed_index": 294,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeihmmb75jt7j56jxe5f7et3iyjozyidna27dr5rlkxzabz6pe4wdj4",
+      "seed_index": 295,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeicp4iyuoy4cjtv56efszgn4f25upnd6fctckb2aysm6rgohxzpl2u",
+      "seed_index": 296,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeih7ewga3gxmoccwlyibhn63a3m2telbhgtr3kx42bgy2gipklx23q",
+      "seed_index": 297,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeibbyf3b65iudy7iinvqnfxnsmwfk5qrxts3mtoubneacfc2xvymji",
+      "seed_index": 298,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeigznjcgl6ikjn4f4tuaxeo633wpo3dwobqbsh26bdtaardc3lkj5y",
+      "seed_index": 299,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeifytgiyay7kk4kclefxgya2yfqsgodbz62wwtymq4toiloe4odhfq",
+      "seed_index": 300,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeihhnv7wou34kabi3rdjzjp2y4zsinhqxikcfqkwerxilreqisapkm",
+      "seed_index": 301,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeieq6d2ai563okicn4t7lobp3v6ar5bd3nlxs2eg3cozrdlg5rtmc4",
+      "seed_index": 303,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeighrna5yvnxa6il27qssrlaoof547dbimuxhxmlevqam5537ktere",
+      "seed_index": 430,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeidqpcnxh3zafx6dev74vpjgiqfkoldh2sbjz4km6narfrlsau5ffa",
+      "seed_index": 431,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeifruygysaa72reelcpc26ymqmgo2ahzj7ouflhn5jq6btuqu5paym",
+      "seed_index": 432,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeibjol3lzrg2gs2ror446nhlyobbpqkayb7ravoikgv2ohxuvvgf6y",
+      "seed_index": 433,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeicvrptpdmv2cfhisylszx7j3eip2swh7k2keb7762a4ta64krnlkq",
+      "seed_index": 434,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeibdquiqee7nplxgry5egmg22vqqfmvhoqbgnr2klugv2shpayiyqi",
+      "seed_index": 435,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeif5xgo5wcudbvstoeneoec6sskc55n7dpo7dgwaviocjztrccfl2u",
+      "seed_index": 436,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeiapgjqw3cdwsj7svqswsq7skiuz4ww5ham74rlihrxljyyunihyxm",
+      "seed_index": 437,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeieju5vevetexzx2uiy222f664whqjrniso7w34hzlbzsdi2s7yiru",
+      "seed_index": 438,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeicabrnzhpvyurw5mfqubfwg3fqkxero3rijdjsk7isov5bxbsnhsy",
+      "seed_index": 439,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeigsi745tz5ikcisowfqnxmsrjvf5k6f5xbzcultkhf74vz47de42i",
+      "seed_index": 440,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeidun432p5l4yjylydemj7mjd6f4vhc6xnwtytuluzjxrlctthmbhq",
+      "seed_index": 441,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeick5yahc4p64yz6qolwm5iq4zejihsxohxyn5nsso745n3t4emkta",
+      "seed_index": 442,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeidw4bdeo74r47xzkljmdt4s6mmqdj3ynp2kz6u5roqoppuwp6ox3q",
+      "seed_index": 443,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeidxorl4kiuekvyw43n46t74xgpjjv6uxc5fzgvnb3bdqewyigv5ou",
+      "seed_index": 444,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeie4fxxt5ve47b5ylfcpyfuilbx7jvv52paw6lu6lz7oo2unu5vhju",
+      "seed_index": 445,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeigwfsq6yms4zebmfvzp7ko52rcofqm2oxzyrf67bekw3m5p67gzme",
+      "seed_index": 446,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeibpl7x4rkfdbiagf6goifapays4hhhsne3vfxdgefu4zy6pxxfrli",
+      "seed_index": 447,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeicawsbzt6wl3mlhwt5rdasih6kf7h2k654t5feyhbxxiuvb6pyr3m",
+      "seed_index": 448,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeihksonjv56gpcqxi6tr7oxfrzx5vc6deev5sakccostqyzlnuwpeu",
+      "seed_index": 449,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeigyjlegumbg6rckxaeqkhmqflayrgpul7bg4h7e3t2pqcopx4br5e",
+      "seed_index": 450,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeidmxrw66l5schfle6rxl7aia5geq2c2hdd4mo7hxw5hqqpufktpnm",
+      "seed_index": 451,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeiguvtoou5n472xx4t7fr5z5bmmsvgvxihxrk7yptqrwk5rvb3hmay",
+      "seed_index": 452,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeih5nzk2jjnfaqf77uljyua6cbjtvifqzq5wrrrrykuyq6czkqdtym",
+      "seed_index": 453,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeiexv4nnwbdvffhpe4soz4fbv7qy6xvqhqx5e7vntdx6yr43f6yp6y",
+      "seed_index": 454,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeihxqubkyghar47gwkjchnfvekdmpx6d75i5hyvmop2diu6vtpfmqi",
+      "seed_index": 455,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeieqdtbo6wji5mh44hwkaxstpwdsjr7brzbcx5xlvzcqtn5nhvpgqq",
+      "seed_index": 456,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeiah3lcykily5it4ciu3dekhffv7oh7ifaerebuwxksq6d6hfyrpmy",
+      "seed_index": 457,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeial2e53k6kjre6nu6js2ogin5mfurihgxlywdmhdsxks2lrnitac4",
+      "seed_index": 458,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeihjwgh2bdzngpbrpsjbbajkcpcg3uunfaeklotvtzupwdlhxaghde",
+      "seed_index": 459,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeig6jlhxir7jhbwut3pywkhdvmsx2hfvnqjfc7nwz4nzkkrdl4xvfm",
+      "seed_index": 460,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeicvear77tx4wykh72buh2v5cfmquefosjlnjejmqkcxmn4qc3qium",
+      "seed_index": 461,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeic7bax32pg3u6y6r4a5vb5xv36dzgxl7noovbf3y54jrkb3g2qv4i",
+      "seed_index": 462,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeiffeny2x65vomv4pg4dpyo4pxskoivezotzfmyk7tlbybvqw3js6q",
+      "seed_index": 463,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeibe2ri3fuzlunqbrviwncpww42cebupp2rw5tm3sshph3fkd43z2u",
+      "seed_index": 464,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeigrt6yq4xdszvnblnhjiwnnvxjds7b6dmmlbej55mq5lgygflvbeq",
+      "seed_index": 465,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeidnrbvlve3w4kq5xonojnjjszbm2wzubcbwb3glek66tz5qb5tvtu",
+      "seed_index": 466,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeiehn23s4woydy5yu5lmfitjidyasttivqapknpswonj2b6zsdwkb4",
+      "seed_index": 467,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeiaetjcou34ymuvgv7w3xpq6q2hfjqnokrlv24d7y5kxj73isnnij4",
+      "seed_index": 468,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeidtwfuikp26aqth4xlod76de6ubjkmufo6wpl7nf27iiolt7qmarm",
+      "seed_index": 470,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeifprv6yn4mbdkzbpxz7axeohu26fvuirtkmbrru3lq6upe2recev4",
+      "seed_index": 471,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeiciwouxatmipf7vmu6pexb4toub2tmitfg63qapwkeatukmjjudcy",
+      "seed_index": 472,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeigpcpwtaw34c57ivgc7moupkrkbvbwkbfjxhu4xdcldo45rhrkisy",
+      "seed_index": 473,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeiaf2zbyyrroaotejigj57zetzzpiajnhk4zornssb4fam6tcnk7ae",
+      "seed_index": 474,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeifm2v744lk43gonskpwua3nynlvpadtmxe56i3whnhmbostj6akxm",
+      "seed_index": 475,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeibwawgyguvqw2r3rlx3y7aez7wom6rolm32gmetkygezlp4kwwksq",
+      "seed_index": 476,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeia2pfxdoh6plffb2k6jxj6ywcypggpatp5nu5p2dlrs3qocaz2nie",
+      "seed_index": 477,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeic2wrq2wlsd5y2o5ruirshusyuezy7wvkk5k3c2p2jhtteptbqzte",
+      "seed_index": 478,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeigac7ljmhf67j7fgakkxfnnbpxjbrtxd6zu5pssc5cx55zpyi5sca",
+      "seed_index": 479,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeif6f4ysywzovnbu6przsi7pkfxw2ifxxoxci5ea7eozdoenz2sb7q",
+      "seed_index": 480,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeicizxg6tescsbtr22fiv3ho4uubtdkgzdi3772wbulnyrq4kghffu",
+      "seed_index": 481,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeiewfrqzlp7jn5dhfnf35xw73ncz6lukvoiewvu2eozc3gpgej5n4q",
+      "seed_index": 482,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeigsh7iuyepofiy5ujgcn2bdej5ipr54dg4gouwqnjphzufl3ew4lu",
+      "seed_index": 483,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeigbxep4etksrihx3atj6erxppogtjebdqwasyp6dhkn2m5nhf43e4",
+      "seed_index": 484,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeiehksqz2rqd6gjzfvzbs5gw5pju5ycm5rasgubbefprkbbcpnpgci",
+      "seed_index": 485,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeid4g42l5raad6dbbydnl3fcvuhvcvkxjwrgthbmaj2ehvnq7u7oqq",
+      "seed_index": 486,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeibnq4jy2wyxq6ekq6qleuqz5xakyundrdvuk6m4ywejlmswddzo4q",
+      "seed_index": 487,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeic5gtmd7rmp5r3jmametz3q3av2jvvhb7jyas67upa2g3h24wmuga",
+      "seed_index": 488,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeidgbwafcieopko6hea7r7h5wd7tbkgi5pwvsxqgwg5zhji66aphxu",
+      "seed_index": 489,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeibwl4zg3vtkx6mbjkg7nupwr2bipt7fjm5buddkih2aqobnqlviyi",
+      "seed_index": 490,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeiceo2wfht5qqgd3dxv3lkapnnd4ra2xjxwtrhnvzeeexr7ijkaw3a",
+      "seed_index": 491,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeiacyxlizbjryzo2kmklf5k46nghj4tgji6w66ugz47rauartbzd4m",
+      "seed_index": 492,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeig42fpxp2zjctish5fdomtiu3bzrhqwdfqtuqdzdzwkg7yqfpzrpy",
+      "seed_index": 493,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeif4jvevesbpbjtijukrkej3osf3exmex6hfxaht7mwpttu5qd5j64",
+      "seed_index": 494,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeigyki3kser3hgveymmai2ychjdcazojobolzyb6sjf2pm3nl3d7um",
+      "seed_index": 495,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeicknkfmnmyqkr4dh55xsacjuil5gicqdrfthcqinp2iidiedtlgg4",
+      "seed_index": 496,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeiaciek2vlspkznhxtby6p3fawghxp57zk6kdsc3pouxz4o6rw2ywa",
+      "seed_index": 579,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeiba2fz5thocky5k6d5met6xa3s52mzkl5pzmoepatso44cnekgzgy",
+      "seed_index": 580,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeibbodshstzcvwia2wtbg65wfipjjiqmfmgem7xivzckhsg74m33mq",
+      "seed_index": 581,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeiavehvhw4tcxjdjv6zl2kslbqk36v76d7xne7p5ktgjpmjjgvrjdi",
+      "seed_index": 582,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeiay6sx7scnztfeuom4ty6jpieq6u5qeglhwe5bvnows25hmj6la7u",
+      "seed_index": 583,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeigg3okker4jucwlifu73ji2amzg52z56gevmdmhj4uzuvuzf4gdhe",
+      "seed_index": 584,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeifs62ofytpdkx5pncxceyyf7qp5lk5cz4sfeopdzyikyfhy2npqim",
+      "seed_index": 585,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeidwa5r3mfq2agzhemw6q5bmj2cjtanm44lw5wroaaymrcgnpo3ykq",
+      "seed_index": 586,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeihialbtrw2rjokqp4nt763ajmyopljhtoxhprdivnhjlaqhgjodvy",
+      "seed_index": 587,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeicv5wytrwtx5n2q44tr3izhlay5i3bhpl6465crnmftzulgzvpvsm",
+      "seed_index": 588,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeiaplcaaxodz2kucgpnoa7stzfxw4dxhm72ksnvrjnuuqxwnctkz2a",
+      "seed_index": 589,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeicgzqgyxct2mw2wydnzhfkjmzah6ezlx3ewba7qexe2442oyijb7u",
+      "seed_index": 590,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeidqdrasupjmd2sgsalumpzji2dwn77o6zosug26steemqp64zfk7q",
+      "seed_index": 591,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeialh4bcvmneadbbf36va6veaubfzaufamjxu63u436hpoqxodzx3i",
+      "seed_index": 592,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeidy5ljifsfnz33aq4fwcxcce6lxompvq7uecbjs4i7pnc2ztvoa7m",
+      "seed_index": 593,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeigdnns7gdrd6bbjdo53tfbmlvlhafeitusprkmxfjllnqplkkjuqm",
+      "seed_index": 594,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeifqxivt3sofqeury27j7yotkjhf22poq2bb2ou5vcffvq66543ilq",
+      "seed_index": 595,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeif7smvam5xbfvzyrn5ktrgnoc2l5g3ybhwjlwewh6sv6omat5wdh4",
+      "seed_index": 596,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeibijphxxxtaneq36tf7nlamy7abh2dhbq7plcvnomdoz6l4sq3rqu",
+      "seed_index": 597,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeiduooh2nyw6jqevm7j2dfr6xxgsx6bf3kkclaqv2y2vvcfwinjqwm",
+      "seed_index": 598,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeial66wpe7cdtqmdqkt4divofcgp7ewvpgpkk6t2tddklwg77xpafm",
+      "seed_index": 599,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeiay67inljqy5renr42grqvetsio22uzjnzj6jl73fxk72fbs44uhq",
+      "seed_index": 600,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeifsiqzhh3fzp2vxxvcprptiz4cadlfmhaewhtp43zvqdatvgbmiwq",
+      "seed_index": 601,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeiasulbtypdactiiiuqwlkp2zpfrkt7kinv4stnpvjm6hifo74wqhi",
+      "seed_index": 602,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeidlg2axxtpjqqmyhx4fuujnzhgtyoe7htag7hp3mra2lrstc62l5u",
+      "seed_index": 603,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeicgt43zvxi6tjy3qm6cbkbe7wwnqfchlxowioteo46qkrusf6w5ra",
+      "seed_index": 628,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeibd3jyc42lgobmtejokgpugcj3xpykxapu42dpc3lzovfe47r6phi",
+      "seed_index": 629,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeihgm2ktbhjklwo3q7ua2pdkya5enadxluup3pdkjl5qegy4dh2uom",
+      "seed_index": 630,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeihsdfihljhaejdyv5n3tcajhw7dtd5za4vucu6dj3vrygo3lfe5ga",
+      "seed_index": 631,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeiggtsqu4i7ykydnj4sswzwrvezkohrldqsnovkwl2t2qfnpffc4q4",
+      "seed_index": 632,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeia2hyy75yvypj6j3mtwviheuwrhfymawb5bdayltumt2ge2bqcmuu",
+      "seed_index": 633,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeihtdr6zokdqdr643a5uqeymirxdtrbxkqnifaywehbrffmxjbtuvq",
+      "seed_index": 634,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeibmuoxscuijrkq6tt4hyoijemmlxrj4f5dlrnqetsuqw5uh5lozae",
+      "seed_index": 635,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeibq3eqfa6aei7ffxobenbv6dohca6nk3u3o6rwng4sxmxnpjjvpai",
+      "seed_index": 636,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeib3z5wbcvbqrvsi7xvf5aqley4j2lpsqdwjme3ycnei3hjj6ilvhu",
+      "seed_index": 637,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeifh4fd3dhvhzetee2rpzfdgwdbc4gjnzpr2fuvrjkunzioanvyi7u",
+      "seed_index": 638,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeiefvdim57bv33xxijezotp4elmuei5d5x2dsyfb5bzwban5t3fsui",
+      "seed_index": 639,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeiarj5ham2v5uwzajwfcf3j4ybalkiyn2w7cgckstrj4wtdfxnu5zy",
+      "seed_index": 640,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeidxkr2ibjp4crsgvhypfk3wgcuvux4hl5hbfj4xee4qelq3zqnmky",
+      "seed_index": 641,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeieiemnfmrjtfjdogkhzext5lifolbnamnpdxcrohdmocjmm5a6mpy",
+      "seed_index": 642,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeiehjtdgtbncsitzbgiee7yye2m3e2lebroxt5qy6osmgrjeuf3inu",
+      "seed_index": 643,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeiag6oav7uuuqhlrgxd5aqxlzpbwo7ewzuxofhbkueu5n7g4dfeffq",
+      "seed_index": 644,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeicjfbwpbv2ht7dlf3az4r2kmjlqnpnhurnfrfsjj7rqwjmoeqhnvy",
+      "seed_index": 645,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeibzrfx5schd34h3wyocvekulw7k6e42lncuwt7seo3rhvt7dq36ba",
+      "seed_index": 646,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeibls5wq3wbtmgojkitcc4rav5kmsnkxbrazmh6rm2fbups374x6cy",
+      "seed_index": 647,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeig3rx75cx7q4rkociy3bldfehbb6n2wvyit5b6iclaiuhz2up2v5i",
+      "seed_index": 648,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeian36qzolrhu6crs7t54khw6vu7fun2qq6ybxncrzefhujoolhiie",
+      "seed_index": 649,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeigrjuagt3ufivr3lkj53bgqta3wasbshzh5mal55ey2ap4fb5rmou",
+      "seed_index": 650,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeid4maiur2idy4y227enmgsfn6h5ahbd3i7hwockfjhrtv4c2dyohq",
+      "seed_index": 651,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeiattubk2l46kjobc4ll2f6rrz64bwc25xohsomtrlubiug3qj5bky",
+      "seed_index": 652,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeihjny7zyqnxbppbbi4c4hkmzflar22ak5etqvxrnsund7oa2bm5aq",
+      "seed_index": 653,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeib4ohjg2qdb2q2hv4exotz6mc44rviegc64sxtrdxh6fvzmv2d6t4",
+      "seed_index": 654,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeihr2qkbu7wbahoykqnrtsloifmtzwzfboan36avjgbxdpfpmrmwvu",
+      "seed_index": 655,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeifimz2azb4fywyoeiqedkc656fzkqhapsf7utpgw2ugpq3nj2ml5u",
+      "seed_index": 656,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeib4wjj2tldoltrtbjwmfohospowyfn7hmvjwogbcmp4hwuf2nkwoy",
+      "seed_index": 657,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeigalo43fnkxppm56otinfdq5vjvq47x5zs6mpwchhpy37pvue5j54",
+      "seed_index": 658,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeibxtuekwwpmdlg4bc5c4x3xnsurfpmfvgrzbmcmleo5hghtjcen6y",
+      "seed_index": 659,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeibu2kzajfipshosm6hor55vwet2ivclhtjg6ysew6ens56wpteezu",
+      "seed_index": 660,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeiesyefgmpkg2m52phebxp67qdcnmpdss4pzaa33hc422qk2n56ogi",
+      "seed_index": 661,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeigxqrc7efddlwfaz5h4h6jgz23fsujguor3xhbtlante6dnhxm2ru",
+      "seed_index": 662,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeihnck7afsasc5clkwafpiiq3tj66qlrmgwgbb5dua7qezakfbkaei",
+      "seed_index": 663,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeiaq5tla4xsdowebv4zlseqg46hqw4sggb6kbnmcu7pecm3prb7ufa",
+      "seed_index": 664,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeiaqfe56d4wyjo3n4soei7b2eau523p6snttbfsewjhtmf5lwuqcny",
+      "seed_index": 665,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeidpdhr2erzx7uuhu7cu7nojf3pkrsulijlschvlqmpzqe6mbpvczy",
+      "seed_index": 666,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeialxwonp2ylau5cyxeu5cpcpflglhap5jaxmy4iva33fdnmlxgvdm",
+      "seed_index": 667,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeidd7b6iu66b25ojzfegussszp6bt4rmn2bewxib7ewf3dmbyt6mvq",
+      "seed_index": 669,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeidoaodsgmhve2t3xvosgvaay7wb4ph7rbo2jhcw7s7cz7bcjgij5m",
+      "seed_index": 674,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeihpus7w563tma76s3tz4bsuxgxiqwk6j5majwbtaeujy7qsitp7mu",
+      "seed_index": 725,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeihy5vk3z3l4orvbf6jzaapmekb7p53qesjeq2t4yc5xhsqk52ibua",
+      "seed_index": 773,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeigrdpeyhjv6obl6to5g3w4n2ozxmweqxxcp4slaeqr7sm4edkdhbe",
+      "seed_index": 845,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeia3lfhnymw7aiico3vfsuwj6jdsnujmh2a2c6c2coc7t4yxki4wbe",
+      "seed_index": 846,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeigy37ianerzsv4eqf75ufohfbxhlpxork7tracsi25k3dxtpg5zhy",
+      "seed_index": 849,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeihnaplvmmywimznm5tfyuaqla4w6t2a2bxtix6owpf5yvcjqtjsp4",
+      "seed_index": 850,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeidjf66tpm2iqqukhroeqnzewxdev5jb4vmb7fi53gu4jnbeccwq7a",
+      "seed_index": 851,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeid5xfcdqoxdkuxkqjxxejthtq36c2bbga4ttznasx47bpxcy5r3iu",
+      "seed_index": 852,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeiftd4rwf6vhacxpzue5n6j5tq37oc7adgaeasgxysrtqyhgjpnvwm",
+      "seed_index": 853,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeihlprd2pfzwq3yddwve7v47mv5qjd5uxxnsxbq2bg4r4sox7y3osq",
+      "seed_index": 854,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeiew25pbjisopcgkhe5le5ttvpssrrvthacjpca6vejkhu7mjaa4fe",
+      "seed_index": 855,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeiadr3veox56acbxjxt6cyu7bqrbibfnmqivdw5lvkwckqql7xw3aa",
+      "seed_index": 856,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeieuzgh7jtdx2z4ncenc6tcdfixe3dh6pmbscyiuyepuxymq42gf7u",
+      "seed_index": 858,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeigzwa3tbvdec7qvcdu7eqanxatrgsdpcgvr24w2wkttybq5q4rpbu",
+      "seed_index": 859,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeih23j52ok4s42jnnu4v7tk65oamo3pjr5glckv5uhpfv22wsprfua",
+      "seed_index": 860,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeifkdfpvvonvza4utdx3vpxusfyc7nm52znx27o2wsxsdqumyf6lre",
+      "seed_index": 861,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeiear75mpm63aku3mkjtrfqast3ww5sq6yryfdj4i7zyxdm52wiqve",
+      "seed_index": 862,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeifrx4uz6qof33rnses244t72dyidywqiavxxej2wygz4jgrljfqn4",
+      "seed_index": 863,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeigraaescfxgu7vvd2dz5waml3pualyfpr5lucpujzw635o7wf2a3u",
+      "seed_index": 864,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeibut27kdkm5nok3sv7mjj2nw3d7vrrq7to63ocojlsoppkm5qaf5y",
+      "seed_index": 865,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeiev4xprmikkfxm7mkrb2hxo4dvthcjyozsijijehslbmqgcbomlbm",
+      "seed_index": 866,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeihr4zsw4lrjsi6wc75g5kges67ti62vwvsm6kn23cwqhypvud6dte",
+      "seed_index": 867,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeidh3kscodattqwzyx4bxruqojepchrgu3ycb5ti2gkdlznh3zhyl4",
+      "seed_index": 868,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeif65paavvpflrd4mw4fep4omjirskcie33fil7jarh5t7ull6zkom",
+      "seed_index": 869,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeiczuej5hepjpotiwcjjnc5c2pqmm6cinqrnvmf6wy3ofg5z7yvgle",
+      "seed_index": 870,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeiaouik44kancg55gu7ny3teypgtqhf7lyhphmhp4fw6oht77nut3q",
+      "seed_index": 871,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeifp62uvmraykd25m472h7qptwkhrvglmmbv2h54n2p5yws2kbsgfm",
+      "seed_index": 872,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeiacups2ngfbvz2iewj3uirop2jxcedna4dmusahdilmds2dpcotma",
+      "seed_index": 873,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeihnrryrdkrazm2qnqfxxl5ezondn7ho5onp4bi2aahmiims6sp4du",
+      "seed_index": 874,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeifjjy5vukefa35j53pfkws4w43tzcco2dpk4pjhutw2u2e4f4tjxq",
+      "seed_index": 1282,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeifyiea4zlwmovwztxsvx2hdje3w4jlnpx2c5xz6ysodkmukfclzu4",
+      "seed_index": 1284,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeigavpmlzia5aobdolbaxp5dv3bhw5and4onk5iis63dyesb4dfcvu",
+      "seed_index": 1285,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeiglds522amrzsxtxkj2q2q5eiahwlf4n6q6mhkf24vvewng66zc7i",
+      "seed_index": 1287,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeie52p4occnswsiwfl2x3fzftnz2dgkesulvi4wfewnarx3zpx54cq",
+      "seed_index": 1288,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeia5s7kff27hl6cday7bruoywdfe35jjfhiymgwah6ld6goo7pripy",
+      "seed_index": 1291,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeihvoo3i4zevh3aglfmgtmbarq6tr72uhpcdnibc2h4n6rtzuykvbu",
+      "seed_index": 1399,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeie2igkdeqhmesv33prbuhkvm5mtsucgzuvcde2bgeurl7kewcws7y",
+      "seed_index": 1402,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeifs2xom3bbijqsdxevgbavpik4g4k4hdly4ildrlqoj3dp5xprr4m",
+      "seed_index": 1462,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeih7y4dhig4o5wgqi5e23fwk6swfkdof6567o26wqcfhalfcmpog3e",
+      "seed_index": 1512,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeiehmlfcu2bgghxoin7q5agfdmsg3wsyfuwrzrbr5cfpvod3bbmks4",
+      "seed_index": 1513,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeice4ygwb22wrnm74f2khgladapq2hq57tqpjsgygi5n7f5lvzdpwm",
+      "seed_index": 1514,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeih4lagplvgsk6lwoy6i77me3cgzsishagqtswox2n7ev67nxuuw4e",
+      "seed_index": 1515,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeidxfrchxndst2msp2cseks3npsj57w3hdipjpkdpbf3b2jxfe3zu4",
+      "seed_index": 1516,
+      "missing_fields": [
+        "creator_name"
+      ]
+    },
+    {
+      "asset_id": "bafybeieevrvis4augssst4ypfgl37ybkz2fdek5ganv5k6vkssjsmxxtsu",
+      "seed_index": 1517,
+      "missing_fields": [
+        "creator_name"
+      ]
+    }
+  ],
+  "rows_with_missing_checked_fields_truncated": true
+}

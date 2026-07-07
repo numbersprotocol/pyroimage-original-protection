@@ -1,0 +1,50 @@
+{
+  "generated_at": "2026-07-07T07:54:29.425Z",
+  "phase": "PyroImage protection overview",
+  "actual": {
+    "route": "/pyroimage-original-protection",
+    "screen_count": 7,
+    "metric_count": 9,
+    "required_metrics_present": [
+      "protected_originals",
+      "demo_seed_rows",
+      "c2pa_signed_assets",
+      "monitored_sources",
+      "demo_monitored_sources",
+      "suspected_events",
+      "evidence_reports",
+      "partner_feedback",
+      "tool_spend_twd"
+    ],
+    "protected_originals": 4329,
+    "demo_seed_rows": 300,
+    "c2pa_signed_assets": 16,
+    "monitored_sources": 14,
+    "demo_monitored_sources": 5,
+    "suspected_events": 0,
+    "evidence_reports": 1,
+    "partner_feedback": 0,
+    "tool_spend_twd": 0,
+    "paid_api_used": false,
+    "cost_log_header_only": false
+  },
+  "pass": {
+    "route_declared": true,
+    "seven_required_screens_present": true,
+    "required_metrics_present": true,
+    "required_metric_values_present": true,
+    "every_metric_has_allowed_base_label": true,
+    "simulated_cases_not_market_validation": true,
+    "protection_context_not_client_specific": true,
+    "designated_channel_wording_present": true,
+    "no_signed_url_query_strings": true,
+    "no_prohibited_public_claims": true,
+    "paid_api_disabled_and_unused": true
+  },
+  "limitations": [
+    "The dashboard is generated from public/static MVP artifacts.",
+    "Designated-channel patrol is bounded by platform rules and human review.",
+    "Demonstration cases are not counted as real market evidence.",
+    "Paid APIs remain disabled by default."
+  ]
+}

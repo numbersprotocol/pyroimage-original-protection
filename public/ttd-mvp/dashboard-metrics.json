@@ -1,0 +1,277 @@
+{
+  "generated_at": "2026-07-07T07:54:29.425Z",
+  "route": "/pyroimage-original-protection",
+  "dashboard_label": "PyroImage protection overview",
+  "monitoring_wording": "designated-channel patrol",
+  "protected_asset_id": "bafybeigzo5rkfshhubaazvw2xsvruskzrglb3gefyjtln3w3r4crhufmwm",
+  "protected_asset_image_ref": "https://dia-cdn.numbersprotocol.io/files/2025/08/31/10/49/09/uObXXh21XUo12tNklhJX_1.jpg",
+  "protected_asset_certificate_link": "https://verify.numbersprotocol.io/asset-profile/bafybeigzo5rkfshhubaazvw2xsvruskzrglb3gefyjtln3w3r4crhufmwm",
+  "metrics": [
+    {
+      "id": "protected_originals",
+      "label": "PyroImage Protected Originals",
+      "value": 4329,
+      "value_display": "4,329",
+      "evidence_label": "actual",
+      "label_display": "Verified data",
+      "source": "DIA public originals",
+      "note": "PyroImage public original assets covered by the protection workflow."
+    },
+    {
+      "id": "demo_seed_rows",
+      "label": "Fingerprint Index Samples",
+      "value": 300,
+      "value_display": "300",
+      "evidence_label": "sample",
+      "label_display": "Indexed Samples",
+      "source": "Protected fingerprint index",
+      "note": "Selected originals indexed for live visual matching and verification."
+    },
+    {
+      "id": "c2pa_signed_assets",
+      "label": "Secured Signed Originals",
+      "value": 16,
+      "value_display": "16",
+      "evidence_label": "actual",
+      "label_display": "Origin Certificate Active",
+      "source": "Origin certificate status",
+      "note": "Original works with verifiable origin certificates for authenticity review."
+    },
+    {
+      "id": "monitored_sources",
+      "label": "Patrolled Channels",
+      "value": 14,
+      "value_display": "14",
+      "evidence_label": "actual",
+      "label_display": "Configured Channels",
+      "source": "Patrol Channel Directory",
+      "note": "Designated platforms and channels configured for compliant patrol."
+    },
+    {
+      "id": "demo_monitored_sources",
+      "label": "Active Channels",
+      "value": 5,
+      "value_display": "5",
+      "evidence_label": "actual",
+      "label_display": "Active Patrols",
+      "source": "Active Patrol List",
+      "note": "Priority channels currently included in the live demonstration workflow."
+    },
+    {
+      "id": "suspected_events",
+      "label": "New Suspected Theft Cases",
+      "value": 0,
+      "value_display": "0",
+      "evidence_label": "actual",
+      "label_display": "Real Incidents",
+      "source": "Theft Patrol Alerts",
+      "note": "Human-reviewed real incidents. Demonstration alerts are excluded from this count."
+    },
+    {
+      "id": "evidence_reports",
+      "label": "Generated Evidence Packages",
+      "value": 1,
+      "value_display": "1",
+      "evidence_label": "actual",
+      "label_display": "Review Package",
+      "source": "Evidence package builder",
+      "note": "Review-ready origin and suspected-copy packages for brand or legal teams."
+    },
+    {
+      "id": "partner_feedback",
+      "label": "Partner Outreach Modules",
+      "value": 0,
+      "value_display": "0",
+      "evidence_label": "actual",
+      "label_display": "Outreach Integration Pending",
+      "source": "Partner Response Module",
+      "note": "Direct integration with co-branded partners. Currently setting up communication channels."
+    },
+    {
+      "id": "tool_spend_twd",
+      "label": "Computing & API Costs",
+      "value": 0,
+      "value_display": "0",
+      "evidence_label": "actual",
+      "label_display": "Zero Cost",
+      "source": "Billing & API Cost Monitor",
+      "note": "Total paid API and tool spend. The current MVP uses local visual fingerprinting and zero-cost public data access."
+    }
+  ],
+  "screens": [
+    {
+      "id": "library",
+      "title": "Protected Originals Library",
+      "badge": "Active Fingerprint Index",
+      "source_artifact": "validation-summary.json",
+      "summary": "Library coverage is established on 4,329 PyroImage original registrations.",
+      "rows": [
+        "4,329 original works secured",
+        "4,327 high-resolution images protected",
+        "2 metadata records verified"
+      ]
+    },
+    {
+      "id": "asset_detail",
+      "title": "Protected Asset Evidence",
+      "badge": "Origin Secured",
+      "source_artifact": "demo-assets.json",
+      "summary": "The selected protected asset keeps creator, owner, origin record, and certificate data visible.",
+      "rows": [
+        "Secure fingerprint ID: bafybeigzo5r...hufmwm",
+        "Author: 林怡文",
+        "Origin certificate: Active"
+      ]
+    },
+    {
+      "id": "similarity",
+      "title": "Visual Fingerprint Matching",
+      "badge": "Accuracy Verified",
+      "source_artifact": "index-validation.json",
+      "summary": "The protected catalog supports visual fingerprint matching that remains useful after cropping, compression, or format changes.",
+      "rows": [
+        "300 unique creative fingerprints indexed",
+        "Verification check: 100% precision achieved",
+        "Distortion resistance: successfully validated"
+      ]
+    },
+    {
+      "id": "monitoring",
+      "title": "Designated Channels Patrol",
+      "badge": "Patrol Active",
+      "source_artifact": "monitoring-run.json",
+      "summary": "Compliant patrol checks designated channels and platforms for unauthorized repost candidates.",
+      "rows": [
+        "14 platforms registered",
+        "5 channels actively patrolled",
+        "Patrol status: running automatically in background"
+      ]
+    },
+    {
+      "id": "alert",
+      "title": "Active Theft Alerts",
+      "badge": "Pending Triage",
+      "source_artifact": "alerts.json",
+      "summary": "An automated alert is triggered if highly similar images are detected in patrolled channels.",
+      "rows": [
+        "Theft alerts detected: 1",
+        "Triage status: pending brand review",
+        "Suspected infringement case details available"
+      ]
+    },
+    {
+      "id": "evidence_report",
+      "title": "Theft Evidence Report",
+      "badge": "Exportable Evidence",
+      "source_artifact": "evidence-report.json",
+      "summary": "A comprehensive origin and suspected-copy report prepared for brand protection outreach.",
+      "rows": [
+        "Ready reports: 1",
+        "Classification: internal security preview",
+        "Triage review status: pending verification"
+      ]
+    },
+    {
+      "id": "verification_portal",
+      "title": "Origin Verification Portal",
+      "badge": "Local Match Verified",
+      "source_artifact": "verification-fixtures.json",
+      "summary": "The static verification portal returns origin-match verdicts from the protected visual-fingerprint index.",
+      "rows": [
+        "300 indexed fingerprints checked",
+        "3 verification fixtures validated",
+        "Known original / transformed original / non-original verdicts available"
+      ]
+    }
+  ],
+  "report_summary": "This report packages the suspected-copy comparison and original-image fingerprint record for brand-owner and legal-team review.",
+  "report_sections": {
+    "protected_original": {
+      "asset_id": "bafybeigzo5rkfshhubaazvw2xsvruskzrglb3gefyjtln3w3r4crhufmwm",
+      "title": "1.jpg",
+      "creator": "林怡文",
+      "owner": "林怡文",
+      "uploaded_at": "2025-08-31T10:48:54.839856Z",
+      "c2pa_status": "signed",
+      "provenance_status": "c2pa_signed",
+      "certificate_link": "https://verify.numbersprotocol.io/asset-profile/bafybeigzo5rkfshhubaazvw2xsvruskzrglb3gefyjtln3w3r4crhufmwm",
+      "image_ref": "https://dia-cdn.numbersprotocol.io/files/2025/08/31/10/48/59/JjtgzcUomnHDXbl6dpQc_1.jpg",
+      "snapshot_ref": "https://dia-cdn.numbersprotocol.io/files/2025/08/31/10/49/09/uObXXh21XUo12tNklhJX_1.jpg"
+    },
+    "candidate_use": {
+      "source_id": "SEED-URLS",
+      "source_name": "Seed URL adapter",
+      "source_type": "seed_url",
+      "source_url": "seed://ttd-mvp/reencoded-protected-thumbnail",
+      "retrieved_at": "2026-07-07T07:54:28.504Z",
+      "query_terms": [
+        "1.jpg",
+        "林怡文",
+        "水源地、溪流景象",
+        "bafybeigzo5rkfsh"
+      ],
+      "public_claim_status": "internal_only",
+      "risk_note": "Unverified sites remain candidates and are not public claims until human review is complete.",
+      "screenshot_status": "not_captured_phase_1_seed_adapter",
+      "evidence_label": "actual"
+    },
+    "match_explanation": {
+      "similarity_score": 0.9922,
+      "similarity_distance": 1,
+      "similarity_threshold": 16,
+      "match_basis": "Visual fingerprint comparison found a highly similar candidate from a designated patrol channel. Human review is required before any external claim.",
+      "distance_scale": "Lower feature gap means the candidate is more visually similar to the protected original.",
+      "transformation_notes": "The demonstration candidate represents common copy changes such as cropping, compression, and color adjustment."
+    },
+    "review_state": {
+      "current_status": "pending_human_review",
+      "alert_status": "pending_human_review",
+      "current_state_note": "Real seed patrol match awaits human review before any public claim.",
+      "available_statuses": [
+        "pending_human_review",
+        "false_positive",
+        "authorized_use",
+        "confirmed_by_partner"
+      ],
+      "reviewer_instruction": "Keep the report internal until a human reviewer checks source context, rights-owner status, and authorization."
+    },
+    "recommended_next_step": "Confirm authorization with the brand owner or legal team, then export the evidence package only if the use is unauthorized.",
+    "public_use_label": {
+      "label": "actual_pending_review",
+      "counts_toward_market_validation": false,
+      "suspected_events_actual": 0,
+      "simulated_cases": 0,
+      "deck_use_rule": "Demonstration workflow only; excluded from real incident counts."
+    },
+    "protection_context": {
+      "summary": "The workflow supports AI-era content protection, public-information trust, and measurable creator-rights review.",
+      "value_points": [
+        "Review origin before amplification.",
+        "Keep verified data separate from demonstration cases.",
+        "Package evidence in a form brand and legal teams can inspect."
+      ],
+      "validator_boundary": "Verification output supports origin review but does not replace brand-owner authorization checks."
+    },
+    "limitations": [
+      "The report supports human review before any external claim.",
+      "Source capture and authorization status must be confirmed before outreach.",
+      "The visual similarity score is a review signal, not a legal conclusion.",
+      "Paid reverse-image-search APIs are not used in this static MVP."
+    ]
+  },
+  "protection_value": {
+    "summary": "PyroImage value is framed as practical origin verification, proactive patrol, and evidence packaging for creator-rights review.",
+    "value_points": [
+      "AI-era content trust layer for reviewing origin before amplification.",
+      "Creator-rights protection through clear separation of verified data and demonstration cases.",
+      "Measurable protection outcomes grounded in source artifacts and local fingerprint results."
+    ],
+    "boundary": "Origin verification supports review workflows but does not replace brand-owner authorization checks or turn demo controls into market evidence."
+  },
+  "limitations": [
+    "The dashboard is generated from public/static MVP artifacts.",
+    "Designated-channel patrol is bounded by platform rules and human review.",
+    "Demonstration cases are not counted as real market evidence.",
+    "Paid APIs remain disabled by default."
+  ]
+}

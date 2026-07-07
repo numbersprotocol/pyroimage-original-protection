@@ -1,0 +1,260 @@
+{
+  "generated_at": "2026-07-07T07:54:29.685Z",
+  "phase": "Phase 4: Verification Portal And UI Integration Handback",
+  "demo_target": {
+    "route": "/pyroimage-original-protection",
+    "local_url": "http://127.0.0.1:4173/pyroimage-original-protection",
+    "app_directory": "pyroimage-original-protection",
+    "auth": "N/A；MVP 使用 local/static demo data，沒有登入需求。",
+    "stable_data_mode": "所有 MVP screens 讀取 static artifacts；錄影不需要 unstable live crawling。",
+    "public_artifact_urls": [
+      "/pyroimage-original-protection/ttd-mvp/dashboard-metrics.json",
+      "/pyroimage-original-protection/ttd-mvp/dashboard-validation.json",
+      "/pyroimage-original-protection/ttd-mvp/verification-fixtures.json",
+      "/pyroimage-original-protection/ttd-mvp/verification-validation.json",
+      "/pyroimage-original-protection/ttd-mvp/demo-handback.json",
+      "/pyroimage-original-protection/ttd-mvp/demo-validation.json"
+    ]
+  },
+  "local_runbook": {
+    "generate_handback_command": "npm run ttd:handback",
+    "test_command": "npm run lint",
+    "build_command": "npm run build:pages",
+    "dev_server_command": "npm run dev -- --host 127.0.0.1 --port 4173",
+    "expected_route": "/pyroimage-original-protection"
+  },
+  "qa_ready_checklist": [
+    "Desktop viewport: open /pyroimage-original-protection, confirm seven navigation screens switch without blank content.",
+    "Mobile viewport: open /pyroimage-original-protection, confirm controls remain usable and text does not overlap.",
+    "Confirm /pyroimage-original-protection/ttd-mvp/dashboard-metrics.json and /pyroimage-original-protection/ttd-mvp/demo-validation.json are readable from the same local origin.",
+    "Confirm labels distinguish actual patrol output, indexed samples, controlled verification checks, target, and TBD.",
+    "Confirm designated-channel patrol and pending-review alert wording remain visible.",
+    "Confirm verification portal returns registered-original, transformed-match, and not-registered verdicts.",
+    "Confirm no paid API is required and cost-log.csv remains header-only."
+  ],
+  "completed_phases": [
+    {
+      "phase": 1,
+      "title": "Data ingestion and validation",
+      "status": "COMPLETED",
+      "artifacts": [
+        "validation-summary.json",
+        "demo-assets.json"
+      ],
+      "summary": "4,329 actual originals and 300-row demo sample are parsed and sanitized."
+    },
+    {
+      "phase": 2,
+      "title": "Local image index and similarity smoke test",
+      "status": "COMPLETED",
+      "artifacts": [
+        "image-index.jsonl",
+        "index-validation.json",
+        "similarity-query-results.json"
+      ],
+      "summary": "300 demo rows are indexed; 10 self-match checks and one controlled transform check pass."
+    },
+    {
+      "phase": 3,
+      "title": "Automated patrol metadata",
+      "status": "COMPLETED",
+      "artifacts": [
+        "monitored-sources.json",
+        "monitoring-run.json"
+      ],
+      "summary": "Designated channels and the latest real patrol run metadata are represented without unsafe crawling."
+    },
+    {
+      "phase": 4,
+      "title": "Real alert workflow",
+      "status": "COMPLETED",
+      "artifacts": [
+        "alerts.json",
+        "cases.json",
+        "review-states.json"
+      ],
+      "summary": "Fetched-hash matches become pending-review alerts; no-match runs remain honest zero states."
+    },
+    {
+      "phase": 5,
+      "title": "Evidence report",
+      "status": "COMPLETED",
+      "artifacts": [
+        "evidence-report.json",
+        "evidence-report.md"
+      ],
+      "summary": "Actual pending-review evidence is packaged with source URL, similarity, run metadata, and limitations."
+    },
+    {
+      "phase": 6,
+      "title": "Origin verification portal",
+      "status": "COMPLETED",
+      "artifacts": [
+        "verification-fixtures.json",
+        "verification-validation.json"
+      ],
+      "summary": "Known original, transformed original, and non-original verdict paths are validated locally at zero paid API cost."
+    }
+  ],
+  "metrics_snapshot": [
+    {
+      "id": "protected_originals",
+      "value": 4329,
+      "value_display": "4,329",
+      "label_display": "Verified data",
+      "note": "PyroImage public original assets covered by the protection workflow."
+    },
+    {
+      "id": "demo_seed_rows",
+      "value": 300,
+      "value_display": "300",
+      "label_display": "Indexed Samples",
+      "note": "Selected originals indexed for live visual matching and verification."
+    },
+    {
+      "id": "c2pa_signed_assets",
+      "value": 16,
+      "value_display": "16",
+      "label_display": "Origin Certificate Active",
+      "note": "Original works with verifiable origin certificates for authenticity review."
+    },
+    {
+      "id": "monitored_sources",
+      "value": 14,
+      "value_display": "14",
+      "label_display": "Configured Channels",
+      "note": "Designated platforms and channels configured for compliant patrol."
+    },
+    {
+      "id": "demo_monitored_sources",
+      "value": 5,
+      "value_display": "5",
+      "label_display": "Active Patrols",
+      "note": "Priority channels currently included in the live demonstration workflow."
+    },
+    {
+      "id": "suspected_events",
+      "value": 0,
+      "value_display": "0",
+      "label_display": "Real Incidents",
+      "note": "Human-reviewed real incidents. Demonstration alerts are excluded from this count."
+    },
+    {
+      "id": "evidence_reports",
+      "value": 1,
+      "value_display": "1",
+      "label_display": "Review Package",
+      "note": "Review-ready origin and suspected-copy packages for brand or legal teams."
+    },
+    {
+      "id": "partner_feedback",
+      "value": 0,
+      "value_display": "0",
+      "label_display": "Outreach Integration Pending",
+      "note": "Direct integration with co-branded partners. Currently setting up communication channels."
+    },
+    {
+      "id": "tool_spend_twd",
+      "value": 0,
+      "value_display": "0",
+      "label_display": "Zero Cost",
+      "note": "Total paid API and tool spend. The current MVP uses local visual fingerprinting and zero-cost public data access."
+    }
+  ],
+  "five_minute_recording_flow": [
+    {
+      "timebox": "0:00-0:25",
+      "screen_id": "library",
+      "title": "PyroImage original library",
+      "source_artifact": "validation-summary.json",
+      "talk_track": "先建立 baseline：PyroImage public originals 有 4,329 筆 actual records，demo 不是憑空樣本。",
+      "proof_point": "4,329 originals parsed"
+    },
+    {
+      "timebox": "0:25-0:55",
+      "screen_id": "asset_detail",
+      "title": "Protected asset detail / metadata / provenance",
+      "source_artifact": "demo-assets.json",
+      "talk_track": "打開單一 protected original，展示 creator、owner、C2PA/provenance 與 certificate link。",
+      "proof_point": "protected asset bafybeigzo5rkfshhubaazvw2xsvruskzrglb3gefyjtln3w3r4crhufmwm"
+    },
+    {
+      "timebox": "0:55-1:30",
+      "screen_id": "similarity",
+      "title": "Visual fingerprint matching",
+      "source_artifact": "index-validation.json",
+      "talk_track": "說明本機 aHash+dHash 指紋比對與門檻，顯示 self-match 與受控轉檔仍能命中。",
+      "proof_point": "300 indexed rows"
+    },
+    {
+      "timebox": "1:30-2:05",
+      "screen_id": "monitoring",
+      "title": "designated-channel patrol",
+      "source_artifact": "monitoring-run.json",
+      "talk_track": "切到巡檢資料，說明最新 run 由 adapter 寫入 metadata；缺 Vision secret 時不會花費，仍能保持 dry-run/seed-safe。",
+      "proof_point": "14 configured sources"
+    },
+    {
+      "timebox": "2:05-2:40",
+      "screen_id": "alert",
+      "title": "pending-review alert",
+      "source_artifact": "alert-validation.json",
+      "talk_track": "展示警報只來自真實抓取候選影像與感知雜湊命中；仍是 internal-only，需人工確認授權與來源脈絡。",
+      "proof_point": "1 alert / real_hash_match=true"
+    },
+    {
+      "timebox": "2:40-3:20",
+      "screen_id": "evidence_report",
+      "title": "Evidence report",
+      "source_artifact": "report-validation.json",
+      "talk_track": "展示 report section：protected original、candidate use、match explanation、run metadata、review state、public-use label 與 limitations。",
+      "proof_point": "1 report / adapter seedUrls"
+    },
+    {
+      "timebox": "3:20-4:20",
+      "screen_id": "verification_portal",
+      "title": "Origin verification portal",
+      "source_artifact": "verification-validation.json",
+      "talk_track": "切到貼圖查驗，輸入 known original、controlled transform、non-original control，確認 verdict 不捏造外部結果。",
+      "proof_point": "3 queries / PASS"
+    },
+    {
+      "timebox": "4:20-5:00",
+      "screen_id": "verification_portal",
+      "title": "PM close and next work",
+      "source_artifact": "demo-handback.md",
+      "talk_track": "收斂 PM 待辦：補上 Actions Vision secret、合併 PR 後跑 ttd-patrol dispatch，並安排 production QA。",
+      "proof_point": "stable static MVP; no paid API unless budget-gated Vision is explicitly enabled"
+    }
+  ],
+  "known_limitations": [
+    "Designated-channel patrol is bounded by configured sources, adapter availability, and platform rules; it is not an unrestricted crawler.",
+    "目前 seed adapter 的 pending-review alert 只證明 real fetch/hash pipeline；外部侵權主張仍需 Vision 或授權通路與人工複審。",
+    "suspected_events 仍為 0 actual until real case exists。",
+    "partner_feedback 仍為 0 actual / outreach pending。",
+    "Origin verification supports review workflows but does not replace brand-owner authorization checks.",
+    "目前沒有預設啟用付費 API；Vision billable path 需 GH secret + 明確 billable flag + budget guard。",
+    "任何公開對外說法仍需 PM/法務/partner human review 後再定稿。"
+  ],
+  "remaining_pm_owned_work": [
+    "挑選可公開展示的 P0 visual assets，並確認是否需要補簽 C2PA / proof layer。",
+    "完成 EV-002 到 EV-005 partner outreach 或改成明確的 pipeline status。",
+    "若要宣稱外部實際案例，需補上 human-reviewed source evidence；否則維持 internal-only / pending-review 標籤。",
+    "更新簡報與 5 分鐘錄影腳本，保持 actual/sample/controlled-check/TBD 標籤。",
+    "合併後執行 PyroImage Patrol workflow_dispatch，並確認 production /pyroimage-original-protection/ 顯示最新真實巡檢與查驗輸出。"
+  ],
+  "guardrails": {
+    "required_monitoring_wording": "designated-channel patrol",
+    "required_alert_wording": "pending-review alert",
+    "no_unstable_live_crawling": true,
+    "no_paid_api_by_default": true,
+    "simulated_cases_count_toward_market_validation": false,
+    "origin_verification_is_review_support_only": true
+  },
+  "cost_guardrail": {
+    "tool_spend_twd": 0,
+    "paid_api_used": false,
+    "cost_log_header_only": false,
+    "source_note": "cost-log.csv 尚未建立；demo handback 保持付費工具支出為 0，直到 guardrail 檔案存在。"
+  }
+}
