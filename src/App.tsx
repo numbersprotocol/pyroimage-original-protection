@@ -355,12 +355,12 @@ const T = {
   brand: { "zh-TW": "原創影像主動防護", en: "Original-Image Protection" },
   brandSub: "由 Numbers 提供 · 來源巡檢",
   menu: { "zh-TW": "主選單 · MENU", en: "Menu" },
-  runPatrol: { "zh-TW": "執行巡檢", en: "Run patrol" },
+  runPatrol: { "zh-TW": "查看最近巡檢", en: "Review latest patrol" },
   coverage: { "zh-TW": "保護範圍 · COVERAGE", en: "Coverage" },
   protectedOriginals: { "zh-TW": "受保護原創影像", en: "protected originals" },
   channels: { "zh-TW": "監控通路", en: "channels" },
   back: { "zh-TW": "← 返回警報列表", en: "← Back to alerts" },
-  demo: { "zh-TW": "示範環境", en: "Demo" },
+  demo: { "zh-TW": "MVP 試營運", en: "MVP Pilot" },
   howItWorks: { "zh-TW": "導覽", en: "How it works" },
 } as const;
 
@@ -707,8 +707,8 @@ export function TtdMvpDashboard() {
         setScanning(false);
         showToast(
           locale === "zh-TW"
-            ? "巡檢完成：未發現新的真實侵權（示範環境）"
-            : "Patrol complete: no new real infringement found (demo environment)",
+            ? "已播放最近巡檢流程：未發現新的真實侵權"
+            : "Latest patrol replayed: no new real infringement found",
           "ok",
         );
       } else {
@@ -791,6 +791,19 @@ export function TtdMvpDashboard() {
   const lastRunCandidates = loadState.data.monitoring.run_scope?.candidates_attempted ?? 0;
   const lastRunAlerts = loadState.data.monitoring.run_scope?.alerts_created ?? alerts.length;
   const patrolAdapter = loadState.data.monitoring.adapter?.id || "unknown";
+  const patrolModeLabel = (() => {
+    const adapter = loadState.data.monitoring.adapter;
+    if (adapter?.id === "visionWebDetection" && adapter.paid_api_used) {
+      return locale === "zh-TW" ? "巡檢模式：Vision 真實巡檢（預算控管）" : "Mode: live Vision patrol (budget guarded)";
+    }
+    if (adapter?.id === "visionWebDetection") {
+      return locale === "zh-TW" ? "巡檢模式：Vision 試跑（不計費）" : "Mode: Vision dry run (no cost)";
+    }
+    if (adapter?.id === "seedUrls") {
+      return locale === "zh-TW" ? "巡檢模式：真實抓取種子來源（零付費）" : "Mode: real seed-source fetch (zero cost)";
+    }
+    return locale === "zh-TW" ? "巡檢模式：讀取最新巡檢產物" : "Mode: latest patrol artifact";
+  })();
   const patrolStatus = loadState.data.monitoring.status || "unknown";
 
   const activeCase = alerts.find((a) => a.id === activeCaseId) || null;
@@ -822,7 +835,11 @@ export function TtdMvpDashboard() {
           <span
             className="flex-none rounded-full border border-[#d8b76a66] bg-[#3a3527] px-2 py-0.5 text-[10px] font-semibold text-[#D8B76A]"
             style={{ fontFamily: MONO }}
-            title={locale === "zh-TW" ? "示範環境：可自由點按，所有動作皆為本地示範" : "Demo environment: click freely, every action is a local demonstration"}
+            title={
+              locale === "zh-TW"
+                ? "MVP 試營運：背景巡檢讀取真實 patrol artifact；頁面上的下架、匯出、聯絡操作仍為安全示範"
+                : "MVP pilot: background patrol reads real patrol artifacts; takedown, export, and contact actions remain safe UI demos"
+            }
           >
             {T.demo[locale].toUpperCase()}
           </span>
@@ -952,6 +969,7 @@ export function TtdMvpDashboard() {
               lastRunCandidates={lastRunCandidates}
               lastRunAlerts={lastRunAlerts}
               patrolAdapter={patrolAdapter}
+              patrolModeLabel={patrolModeLabel}
               patrolStatus={patrolStatus}
               reportCount={reportCount}
               suspectedActual={suspectedActual}
@@ -1125,8 +1143,8 @@ function OnboardingOverlay({
             <Info size={15} className="mt-0.5 flex-none" />
             <span>
               {zh
-                ? "這是示範環境。你可以自由點按每個畫面與按鈕；所有操作都只在本機示範，不會真的送出下架或改動任何資料。目前真實侵權案件為 0。"
-                : "This is a demo environment. Click freely — every action is a local demonstration and never sends a real takedown or changes any data. Real infringement cases so far: 0."}
+                ? "這是 MVP 試營運版：背景巡檢會由 GitHub Actions 產生真實巡檢產物；頁面上的下架、匯出、聯絡等操作仍為安全示範，不會真的送出或改動外部資料。目前真實侵權案件為 0。"
+                : "This is an MVP pilot: background patrol produces real patrol artifacts through GitHub Actions; takedown, export, and contact actions remain safe UI demos and never change external data. Real infringement cases so far: 0."}
             </span>
           </div>
 
@@ -1328,6 +1346,7 @@ function DashboardView(props: {
   lastRunCandidates: number;
   lastRunAlerts: number;
   patrolAdapter: string;
+  patrolModeLabel: string;
   patrolStatus: string;
   reportCount: number;
   suspectedActual: string;
@@ -1383,7 +1402,7 @@ function DashboardView(props: {
           <span className="text-[13px] text-[#1A1A1A]">{lastPatrol}</span>
           <br />
           <span className="text-[10px] text-[#1a1a1a80]">
-            {zh ? "巡檢模式：試跑示範（不計費）" : "Mode: dry-run demo (no cost)"} · {props.lastRunSourceCount} {zh ? "來源" : "sources"} · {props.lastRunAlerts} {zh ? "警報" : "alerts"}
+            {props.patrolModeLabel} · {props.lastRunSourceCount} {zh ? "來源" : "sources"} · {props.lastRunAlerts} {zh ? "警報" : "alerts"}
           </span>
         </p>
       </div>
@@ -1405,7 +1424,7 @@ function DashboardView(props: {
             onClick={props.onRunPatrol}
             className="flex items-center gap-1.5 rounded-[8px] bg-[#1A1A1A] px-3.5 py-2 text-[12px] font-semibold text-[#F4E9D5] transition-colors hover:bg-[#2c2c2c]"
           >
-            <ScanLine size={14} /> {zh ? "執行一次巡檢" : "Run a patrol"}
+            <ScanLine size={14} /> {zh ? "查看最近巡檢" : "Review latest patrol"}
           </button>
         </div>
         <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
@@ -1444,7 +1463,7 @@ function DashboardView(props: {
       <div className="mb-6 grid grid-cols-2 gap-3.5 xl:grid-cols-4">
         <KpiCard index="01" label={zh ? "待複審警報" : "Open alerts"} sub={zh ? "OPEN · 待人工確認" : "OPEN · pending review"} value={openCount.toString()} color={C.orange} dark hint={zh ? "系統發現、等你確認的疑似盜用件數" : "Suspected copies awaiting your review"} />
         <KpiCard index="02" label={zh ? "受保護原創" : "Protected"} sub="PROTECTED" value={protectedDisplay} color={C.green} hint={zh ? "已建立指紋保護的原創影像張數" : "Originals fingerprinted & protected"} />
-        <KpiCard index="03" label={zh ? "真實侵權" : "Real infringement"} sub={zh ? "已確認" : "confirmed"} value={suspectedActual} color={C.greenDeep} hint={zh ? "目前確認為真實侵權的件數（示範資料為 0）" : "Confirmed real infringement cases (0 in demo data)"} />
+        <KpiCard index="03" label={zh ? "真實侵權" : "Real infringement"} sub={zh ? "已確認" : "confirmed"} value={suspectedActual} color={C.greenDeep} hint={zh ? "目前確認為真實侵權的件數（最新巡檢產物為 0）" : "Confirmed real infringement cases (0 in the latest patrol artifact)"} />
         <KpiCard index="04" label={zh ? "已存證報告" : "Evidence reports"} sub="REPORTS" value={reportCount.toString()} color={C.ink} hint={zh ? "可交付法務的存證報告份數" : "Deliverable evidence reports generated"} />
       </div>
 
@@ -2299,10 +2318,10 @@ function ChannelsView({ locale, channels, onRunPatrol }: { locale: Locale; chann
           eyebrow={zh ? "監控通路 · PATROL CHANNELS" : "Patrol channels"}
           title={zh ? "指定通路巡檢" : "Designated-channel patrol"}
           desc={zh ? "系統在以下新聞、社群、論壇與搜尋通路持續巡檢，比對是否出現高相似影像。" : "These news, social, forum and search channels are continuously patrolled for high-similarity copies."}
-          hint={zh ? "怎麼看：每張卡是一個監控通路，顯示類型、風險與命中數；右上「立即巡檢全部通路」會跑一次示範巡檢動畫。" : "How to read: each card is a monitored channel with its type, risk, and hit count. “Patrol all now” runs a demo patrol animation."}
+          hint={zh ? "怎麼看：每張卡是一個監控通路，顯示類型、風險與命中數；右上「查看最近巡檢」會播放最新巡檢流程，不會從瀏覽器直接啟動 GitHub Actions。" : "How to read: each card is a monitored channel with its type, risk, and hit count. “Review latest patrol” replays the latest patrol flow; it does not start GitHub Actions from the browser."}
         />
         <button type="button" onClick={onRunPatrol} className="rounded-[9px] bg-[#1A1A1A] px-[18px] py-2.5 text-[12.5px] font-semibold text-[#F4E9D5]">
-          ＋ {zh ? "立即巡檢全部通路" : "Patrol all now"}
+          ＋ {zh ? "查看最近巡檢" : "Review latest patrol"}
         </button>
       </div>
       <div className="grid gap-3.5 lg:grid-cols-2">
