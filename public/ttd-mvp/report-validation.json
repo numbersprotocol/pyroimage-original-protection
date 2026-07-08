@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-07T11:14:36.934Z",
+  "generated_at": "2026-07-08T08:17:54.573Z",
   "phase": "Phase 3: Scheduler + evidence hardening",
   "expected": {
     "report_count_source": "alerts.json",
@@ -33,15 +33,15 @@
     ]
   },
   "actual": {
-    "report_count": 1,
-    "alert_count": 1,
-    "monitoring_run_id": "ttd-patrol-20260707T111435Z",
-    "adapter_id": "seedUrls",
-    "candidates_attempted": 2,
-    "alerts_created": 1,
-    "paid_api_used": false,
+    "report_count": 0,
+    "alert_count": 0,
+    "monitoring_run_id": "ttd-patrol-20260708T081748Z",
+    "adapter_id": "visionWebDetection",
+    "candidates_attempted": 8,
+    "alerts_created": 0,
+    "paid_api_used": true,
     "budget_guard_respected": true,
-    "empty_state_reason": ""
+    "empty_state_reason": "latest_patrol_created_no_alerts"
   },
   "pass": {
     "report_count_matches_alerts": true,

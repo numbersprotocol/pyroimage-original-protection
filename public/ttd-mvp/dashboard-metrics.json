@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-08T08:13:48.383Z",
+  "generated_at": "2026-07-08T08:17:54.897Z",
   "route": "/pyroimage-original-protection",
   "dashboard_label": "PyroImage protection overview",
   "monitoring_wording": "designated-channel patrol",
@@ -70,8 +70,8 @@
     {
       "id": "evidence_reports",
       "label": "Generated Evidence Packages",
-      "value": 1,
-      "value_display": "1",
+      "value": 0,
+      "value_display": "0",
       "evidence_label": "actual",
       "label_display": "Review Package",
       "source": "Evidence package builder",
@@ -93,9 +93,9 @@
       "value": 0,
       "value_display": "0",
       "evidence_label": "actual",
-      "label_display": "Zero Cost",
+      "label_display": "Budget Guarded",
       "source": "Billing & API Cost Monitor",
-      "note": "Total paid API and tool spend. Seed and dry-run patrols use local visual fingerprinting and zero-cost public data access."
+      "note": "Budget-guarded Vision patrol ran for this MVP. Free-tier usage can still keep actual spend at 0."
     }
   ],
   "screens": [
@@ -154,7 +154,7 @@
       "source_artifact": "alerts.json",
       "summary": "An automated alert is triggered if highly similar images are detected in patrolled channels.",
       "rows": [
-        "Theft alerts detected: 1",
+        "Theft alerts detected: 0",
         "Triage status: pending brand review",
         "Suspected infringement case details available"
       ]
@@ -166,7 +166,7 @@
       "source_artifact": "evidence-report.json",
       "summary": "A comprehensive origin and suspected-copy report prepared for brand protection outreach.",
       "rows": [
-        "Ready reports: 1",
+        "Ready reports: 0",
         "Classification: internal security preview",
         "Triage review status: pending verification"
       ]
@@ -186,61 +186,17 @@
   ],
   "report_summary": "This report packages the suspected-copy comparison and original-image fingerprint record for brand-owner and legal-team review.",
   "report_sections": {
-    "protected_original": {
-      "asset_id": "bafybeigzo5rkfshhubaazvw2xsvruskzrglb3gefyjtln3w3r4crhufmwm",
-      "title": "1.jpg",
-      "creator": "林怡文",
-      "owner": "林怡文",
-      "uploaded_at": "2025-08-31T10:48:54.839856Z",
-      "c2pa_status": "signed",
-      "provenance_status": "c2pa_signed",
-      "certificate_link": "https://verify.numbersprotocol.io/asset-profile/bafybeigzo5rkfshhubaazvw2xsvruskzrglb3gefyjtln3w3r4crhufmwm",
-      "image_ref": "https://dia-cdn.numbersprotocol.io/files/2025/08/31/10/48/59/JjtgzcUomnHDXbl6dpQc_1.jpg",
-      "snapshot_ref": "https://dia-cdn.numbersprotocol.io/files/2025/08/31/10/49/09/uObXXh21XUo12tNklhJX_1.jpg"
-    },
+    "protected_original": {},
     "candidate_use": {
-      "source_id": "SEED-URLS",
-      "source_name": "Seed URL adapter",
-      "source_type": "seed_url",
-      "source_url": "seed://ttd-mvp/reencoded-protected-thumbnail",
-      "retrieved_at": "2026-07-07T11:14:36.304Z",
-      "query_terms": [
-        "1.jpg",
-        "林怡文",
-        "水源地、溪流景象",
-        "bafybeigzo5rkfsh"
-      ],
-      "public_claim_status": "internal_only",
-      "risk_note": "Unverified sites remain candidates and are not public claims until human review is complete.",
-      "screenshot_status": "not_captured_phase_1_seed_adapter",
-      "evidence_label": "actual"
+      "risk_note": "Unverified sites remain candidates and are not public claims until human review is complete."
     },
     "match_explanation": {
-      "similarity_score": 0.9922,
-      "similarity_distance": 1,
-      "similarity_threshold": 16,
       "match_basis": "Visual fingerprint comparison found a highly similar candidate from a designated patrol channel. Human review is required before any external claim.",
       "distance_scale": "Lower feature gap means the candidate is more visually similar to the protected original.",
       "transformation_notes": "The demonstration candidate represents common copy changes such as cropping, compression, and color adjustment."
     },
-    "review_state": {
-      "current_status": "pending_human_review",
-      "alert_status": "pending_human_review",
-      "current_state_note": "Real seed patrol match awaits human review before any public claim.",
-      "available_statuses": [
-        "pending_human_review",
-        "false_positive",
-        "authorized_use",
-        "confirmed_by_partner"
-      ],
-      "reviewer_instruction": "Keep the report internal until a human reviewer checks source context, rights-owner status, and authorization."
-    },
     "recommended_next_step": "Confirm authorization with the brand owner or legal team, then export the evidence package only if the use is unauthorized.",
     "public_use_label": {
-      "label": "actual_pending_review",
-      "counts_toward_market_validation": false,
-      "suspected_events_actual": 0,
-      "simulated_cases": 0,
       "deck_use_rule": "Demonstration workflow only; excluded from real incident counts."
     },
     "protection_context": {
@@ -272,6 +228,6 @@
     "The dashboard is generated from public/static MVP artifacts.",
     "Designated-channel patrol is bounded by platform rules and human review.",
     "Demonstration cases are not counted as real market evidence.",
-    "Paid APIs remain disabled by default."
+    "Paid Vision calls are allowed only through the budget-guarded workflow path."
   ]
 }

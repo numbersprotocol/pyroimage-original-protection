@@ -46,7 +46,20 @@
       "estimated_incremental_cost_ntd": 0,
       "projected_monthly_cost_ntd": 0,
       "note": "Vision WEB_DETECTION cache hit; no paid API request made."
+    },
+    {
+      "timestamp": "2026-07-08T08:17:49.961Z",
+      "month": "2026-07",
+      "adapter": "visionWebDetection",
+      "type": "vision_request",
+      "asset_id": "bafybeigzo5rkfshhubaazvw2xsvruskzrglb3gefyjtln3w3r4crhufmwm",
+      "units": 1,
+      "billable_call": true,
+      "within_free_tier": true,
+      "estimated_incremental_cost_ntd": 0,
+      "projected_monthly_cost_ntd": 0,
+      "note": "Budget-guarded Vision WEB_DETECTION request completed within the monthly free tier."
     }
   ],
-  "updated_at": "2026-07-06T08:42:16.330Z"
+  "updated_at": "2026-07-08T08:17:49.961Z"
 }

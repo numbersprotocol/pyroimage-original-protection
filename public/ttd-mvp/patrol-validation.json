@@ -1,25 +1,69 @@
 {
-  "generated_at": "2026-07-07T11:14:36.760Z",
-  "run_id": "ttd-patrol-20260707T111435Z",
-  "adapter": "seedUrls",
+  "generated_at": "2026-07-08T08:17:54.430Z",
+  "run_id": "ttd-patrol-20260708T081748Z",
+  "adapter": "visionWebDetection",
   "expected_filter": "all",
   "threshold": 16,
   "validations": [
     {
-      "candidate_id": "seed-reencoded-copy-bafybeigzo5r",
-      "expected": "match",
-      "verdict": "match",
-      "protected_asset_distance": 1,
+      "candidate_id": "vision_a1bc998f6980a8cc",
+      "expected": "unknown",
+      "pass": true,
+      "warning": true,
+      "error": "non-image response content-type=text/html; charset=\"utf-8\" for https://lookaside.fbsbx.com/lookaside/crawler/instagram/pinamar.py/profile_pic.jpg"
+    },
+    {
+      "candidate_id": "vision_102fe428d92db2c2",
+      "expected": "unknown",
+      "pass": true,
+      "warning": true,
+      "error": "HTTP 403 for https://p19-common-sign.tiktokcdn-us.com/tos-alisg-p-0037/oszZSDQlhHDGAnAeIcAIComekoFTjPgEIxDzfl~tplv-tiktokx-origin.image"
+    },
+    {
+      "candidate_id": "vision_91f5aeacee941495",
+      "expected": "unknown",
+      "verdict": "no_match",
+      "protected_asset_distance": 41,
       "top_index_match_asset_id": "bafybeigzo5rkfshhubaazvw2xsvruskzrglb3gefyjtln3w3r4crhufmwm",
       "pass": true
     },
     {
-      "candidate_id": "seed-unrelated-bafybeicak5op",
-      "expected": "no_match",
+      "candidate_id": "vision_6729a038c3d81d76",
+      "expected": "unknown",
       "verdict": "no_match",
-      "protected_asset_distance": 81,
-      "top_index_match_asset_id": "bafybeicak5opr2pqhm7cweggwixyj5bok4ajprva6tlqiifrunnevlen4q",
+      "protected_asset_distance": 44,
+      "top_index_match_asset_id": "bafybeibnhnajjwgewlp646ookljxj2jjrjwv6q6whfj5q6tfrhr4yqfram",
       "pass": true
+    },
+    {
+      "candidate_id": "vision_41fbef458cbb0e03",
+      "expected": "unknown",
+      "verdict": "no_match",
+      "protected_asset_distance": 60,
+      "top_index_match_asset_id": "bafybeif6c2u5ao5glap5lr4ijneiepdbwvjzc6iu2ot4mbfsew6lmrc6zm",
+      "pass": true
+    },
+    {
+      "candidate_id": "vision_ecad7143dc3f5a5c",
+      "expected": "unknown",
+      "pass": true,
+      "warning": true,
+      "error": "non-image response content-type=text/html; charset=\"utf-8\" for https://lookaside.fbsbx.com/lookaside/crawler/media/"
+    },
+    {
+      "candidate_id": "vision_351a292cdf827f58",
+      "expected": "unknown",
+      "verdict": "no_match",
+      "protected_asset_distance": 40,
+      "top_index_match_asset_id": "bafybeicsleruqmm4rbrodvdwfthzzlnclzpkyu2udywda77tueyno3i3oy",
+      "pass": true
+    },
+    {
+      "candidate_id": "vision_dade80615133faca",
+      "expected": "unknown",
+      "pass": true,
+      "warning": true,
+      "error": "image exceeds max bytes (3545708 > 2000000) for https://upload.wikimedia.org/wikipedia/commons/2/21/La_Escalera.JPG"
     }
   ],
   "pass": {

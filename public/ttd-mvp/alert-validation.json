@@ -1,15 +1,13 @@
 {
-  "generated_at": "2026-07-07T11:14:36.760Z",
-  "run_id": "ttd-patrol-20260707T111435Z",
+  "generated_at": "2026-07-08T08:17:54.430Z",
+  "run_id": "ttd-patrol-20260708T081748Z",
   "source": "runPatrol.js",
-  "alert_count": 1,
-  "case_count": 1,
+  "alert_count": 0,
+  "case_count": 0,
   "alerts_are_real_fetched_hash_matches": true,
   "suspected_events_actual": 0,
   "simulated_cases": 0,
-  "public_claim_statuses": [
-    "internal_only"
-  ],
+  "public_claim_statuses": [],
   "pass": true,
   "limitations": [
     "Seed adapter alerts prove the pipeline and remain internal-only until an external source adapter supplies real source context."
