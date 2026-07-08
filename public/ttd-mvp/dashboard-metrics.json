@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-07T11:14:37.334Z",
+  "generated_at": "2026-07-08T08:13:48.383Z",
   "route": "/pyroimage-original-protection",
   "dashboard_label": "PyroImage protection overview",
   "monitoring_wording": "designated-channel patrol",
@@ -95,7 +95,7 @@
       "evidence_label": "actual",
       "label_display": "Zero Cost",
       "source": "Billing & API Cost Monitor",
-      "note": "Total paid API and tool spend. The current MVP uses local visual fingerprinting and zero-cost public data access."
+      "note": "Total paid API and tool spend. Seed and dry-run patrols use local visual fingerprinting and zero-cost public data access."
     }
   ],
   "screens": [

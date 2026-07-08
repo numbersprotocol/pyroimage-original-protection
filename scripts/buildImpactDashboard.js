@@ -144,6 +144,14 @@ function containsGuardrailClaim(value) {
   return CLAIM_GUARDRAILS.some((parts) => text.includes(parts.join(" ").toLowerCase()) || text.includes(parts.join("")));
 }
 
+function patrolOutputNotMarketValidation({ evidenceReport, reportSections, alertActual }) {
+  const suspectedEventsActual = Number(alertActual.suspected_events_actual || 0);
+  if ((evidenceReport.reports || []).length === 0) {
+    return evidenceReport.empty_state?.reason === "latest_patrol_created_no_alerts" && suspectedEventsActual === 0;
+  }
+  return reportSections.public_use_label?.counts_toward_market_validation === false && suspectedEventsActual === 0;
+}
+
 function main() {
   fs.mkdirSync(OUTPUT_DIR, { recursive: true });
 
@@ -164,6 +172,8 @@ function main() {
   const sourceActual = sourceValidation.actual || {};
   const alertActual = alertValidation.actual || alertValidation || {};
   const reportActual = reportValidation.actual || {};
+  const paidApiUsed = cost.paid_api_used || reportActual.paid_api_used === true || alertActual.paid_api_used === true;
+  const budgetPolicyRespected = reportActual.budget_guard_respected !== false;
   const report = evidenceReport.reports?.[0] || {};
   const reportSections = report.sections || {};
   const reportPublicUseLabel = reportSections.public_use_label?.label || "";
@@ -319,9 +329,11 @@ function main() {
       "Computing & API Costs",
       cost.tool_spend_twd,
       "actual",
-      "Zero Cost",
+      paidApiUsed ? "Budget Guarded" : "Zero Cost",
       "Billing & API Cost Monitor",
-      "Total paid API and tool spend. The current MVP uses local visual fingerprinting and zero-cost public data access.",
+      paidApiUsed
+        ? "Budget-guarded Vision patrol ran for this MVP. Free-tier usage can still keep actual spend at 0."
+        : "Total paid API and tool spend. Seed and dry-run patrols use local visual fingerprinting and zero-cost public data access.",
     ),
   ];
 
@@ -440,7 +452,9 @@ function main() {
       "The dashboard is generated from public/static MVP artifacts.",
       "Designated-channel patrol is bounded by platform rules and human review.",
       "Demonstration cases are not counted as real market evidence.",
-      "Paid APIs remain disabled by default.",
+      paidApiUsed
+        ? "Paid Vision calls are allowed only through the budget-guarded workflow path."
+        : "Paid APIs remain disabled by default.",
     ],
   };
 
@@ -462,7 +476,8 @@ function main() {
       evidence_reports: metrics.find((item) => item.id === "evidence_reports")?.value,
       partner_feedback: metrics.find((item) => item.id === "partner_feedback")?.value,
       tool_spend_twd: metrics.find((item) => item.id === "tool_spend_twd")?.value,
-      paid_api_used: cost.paid_api_used,
+      paid_api_used: paidApiUsed,
+      budget_policy_respected: budgetPolicyRespected,
       cost_log_header_only: cost.cost_log_header_only,
     },
     pass: {
@@ -480,14 +495,12 @@ function main() {
         metrics.find((item) => item.id === "partner_feedback")?.value === 0 &&
         metrics.find((item) => item.id === "tool_spend_twd")?.value === 0,
       every_metric_has_allowed_base_label: metrics.every((item) => ALLOWED_BASE_LABELS.includes(item.evidence_label)),
-      simulated_cases_not_market_validation:
-        reportSections.public_use_label?.counts_toward_market_validation === false &&
-        alertActual.suspected_events_actual === 0,
+      patrol_output_not_market_validation: patrolOutputNotMarketValidation({ evidenceReport, reportSections, alertActual }),
       protection_context_not_client_specific: dashboard.protection_value.boundary.includes("does not replace brand-owner authorization checks"),
       designated_channel_wording_present: serialized(dashboard).includes("designated-channel patrol"),
       no_signed_url_query_strings: !containsSignedQuery(validationTargets),
       no_prohibited_public_claims: !containsGuardrailClaim(validationTargets),
-      paid_api_disabled_and_unused: cost.paid_api_used === false && cost.tool_spend_twd === 0,
+      paid_api_budget_policy_respected: !paidApiUsed || budgetPolicyRespected,
     },
     limitations: dashboard.limitations,
   };
@@ -513,7 +526,7 @@ function main() {
         suspected_events: validation.actual.suspected_events,
         evidence_reports: validation.actual.evidence_reports,
         tool_spend_twd: validation.actual.tool_spend_twd,
-        paid_api_used: cost.paid_api_used,
+        paid_api_used: paidApiUsed,
       },
       null,
       2,

@@ -168,9 +168,13 @@ export function redactSignedQueryInText(value) {
         const normalized = key.toLowerCase();
         return (
           normalized === "expires" ||
+          normalized === "x-expires" ||
           normalized === "signature" ||
+          normalized === "x-signature" ||
           normalized === "key-pair-id" ||
+          normalized === "x-key-pair-id" ||
           normalized === "policy" ||
+          normalized === "x-policy" ||
           normalized.startsWith("x-amz-")
         );
       });
