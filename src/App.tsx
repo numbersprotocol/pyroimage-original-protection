@@ -376,7 +376,7 @@ const NAV: Array<{
   // Order follows the protection story: overview → register → patrol → triage → certify → tool.
   { id: "dashboard", icon: LayoutDashboard, zh: "總覽", en: "Overview", eyebrow: "OVERVIEW", descZh: "一頁看懂運作與現況", descEn: "See how it works & status" },
   { id: "vault", icon: Images, zh: "原創庫", en: "Vault", eyebrow: "STEP 01", descZh: "已簽署保護的原創影像", descEn: "Protected original images" },
-  { id: "channels", icon: Radar, zh: "監控通路", en: "Channels", eyebrow: "STEP 02", descZh: "巡檢中的新聞與社群通路", descEn: "Channels being patrolled" },
+  { id: "channels", icon: Radar, zh: "監控通路", en: "Channels", eyebrow: "STEP 02", descZh: "巡檢來源與通路狀態", descEn: "Patrol source & channel status" },
   { id: "alerts", icon: Bell, zh: "疑似盜用", en: "Alerts", eyebrow: "STEP 03", descZh: "系統發現、待你確認的案件", descEn: "Findings awaiting review" },
   { id: "reports", icon: FileText, zh: "存證報告", en: "Reports", eyebrow: "STEP 04", descZh: "可交付法務的存證報告", descEn: "Deliverable evidence reports" },
   { id: "verify", icon: ShieldCheck, zh: "原創查驗", en: "Verify", eyebrow: "TOOL", descZh: "用範例查已收錄樣本", descEn: "Check indexed sample images" },
@@ -426,7 +426,7 @@ interface ChannelVM {
   name: string;
   type: string;
   risk: string;
-  status: "patrolling" | "queued" | "scheduled";
+  status: "manual" | "queued" | "search";
   hits: number;
 }
 
@@ -454,7 +454,7 @@ function buildChannels(sources: MonitoredSource[], alerts: AlertRecord[], locale
     name: s.source_name,
     type: sourceTypeText(s.source_type, locale),
     risk: s.risk_level,
-    status: s.demo_subset ? "patrolling" : s.crawl_method === "not_automated" ? "queued" : "scheduled",
+    status: s.crawl_method === "not_automated" ? "queued" : s.crawl_method === "search_query_only" ? "search" : "manual",
     hits: hits[s.source_id] || 0,
   }));
 }
@@ -1022,7 +1022,7 @@ export function TtdMvpDashboard() {
           )}
 
           {view === "channels" && (
-            <ChannelsView locale={locale} channels={channels} onRunPatrol={runPatrol} />
+            <ChannelsView locale={locale} channels={channels} monitoring={loadState.data.monitoring} onRunPatrol={runPatrol} />
           )}
 
           {view === "reports" && (
@@ -1113,7 +1113,7 @@ function OnboardingOverlay({
             <p className="mt-1.5 text-[13px] leading-6 text-[#CEC0A3]">
               {zh
                 ? "我們替 PyroImage 的每一張原創影像建立數位指紋（影像的獨特特徵值，改圖也認得出），持續到各通路巡檢是否遭盜用，發現高度相似影像就自動存證。"
-                : "We fingerprint every PyroImage original, continuously patrol channels for copies, and package evidence the moment a high-similarity image appears."}
+                : "We fingerprint every PyroImage original, run Vision-based web patrol, and package evidence when a high-similarity image needs review."}
             </p>
             <p className="mt-2 flex items-center gap-1.5 text-[11px] text-[#7F9C7E]" style={{ fontFamily: MONO }}>
               <ShieldCheck size={12} className="flex-none" />
@@ -1237,7 +1237,7 @@ function ScanOverlay({ pct, channel, locale }: { pct: number; channel: string; l
       <div className="w-[430px] max-w-[90%] rounded-[16px] border border-[#7f9c7e66] bg-[#1A1A1A] px-10 py-9 text-center">
         <Radar size={48} className="mx-auto animate-spin text-[#7F9C7E]" style={{ animationDuration: "1.4s" }} />
         <p className="mt-4 text-base font-semibold text-[#F4E9D5]">
-          {locale === "zh-TW" ? "通路巡檢中 · PATROLLING" : "Patrolling channels"}
+          {locale === "zh-TW" ? "最近巡檢流程" : "Latest patrol replay"}
         </p>
         <p className="mt-1.5 text-xs text-[#CEC0A3]" style={{ fontFamily: MONO }}>
           {locale === "zh-TW" ? "掃描通路：" : "Scanning: "}
@@ -1387,8 +1387,8 @@ function DashboardView(props: {
           title={zh ? "原創影像主動防護" : "Original-image protection"}
           desc={
             zh
-              ? "為 PyroImage 的每一張原創影像建立數位指紋，持續到指定通路巡檢是否遭到盜用；一旦發現高度相似影像就自動發報，並產生可交付的存證報告。"
-              : "Every PyroImage original gets a digital fingerprint, then designated channels are continuously patrolled for copies. High-similarity hits are flagged automatically and packaged into a deliverable evidence report."
+              ? "為 PyroImage 的每一張原創影像建立數位指紋，以 Vision 背景巡檢尋找相似影像，並列出指定通路的導入狀態；高度相似候選需經人工複核後才會形成對外主張。"
+              : "Every PyroImage original gets a digital fingerprint. Vision-based web patrol looks for similar images while named channels show integration status; high-similarity candidates require human review before any external claim."
           }
           hint={
             zh
@@ -1547,11 +1547,24 @@ function DashboardView(props: {
 }
 
 function chDot(status: ChannelVM["status"]) {
-  return status === "patrolling" ? C.green : status === "scheduled" ? C.blue : C.stone;
+  return status === "search" ? C.blue : status === "queued" ? C.orange : C.stone;
 }
 function chLabel(status: ChannelVM["status"], locale: Locale) {
-  const zh = { patrolling: "巡檢中", scheduled: "排程中", queued: "待授權" };
-  const en = { patrolling: "Patrolling", scheduled: "Scheduled", queued: "Needs auth" };
+  const zh = { manual: "人工複核", search: "搜尋線索", queued: "待授權" };
+  const en = { manual: "Manual review", search: "Search lead", queued: "Needs auth" };
+  return (locale === "zh-TW" ? zh : en)[status];
+}
+function chNote(status: ChannelVM["status"], locale: Locale) {
+  const zh = {
+    manual: "尚未接直接爬蟲，作為人工複核與後續導入來源。",
+    search: "可作為搜尋查詢來源，尚未等同平台爬蟲。",
+    queued: "需要平台授權、API 或合規確認後才能自動化。",
+  };
+  const en = {
+    manual: "Not connected to a direct crawler yet; used for manual review and future integration.",
+    search: "Usable as a search-query lead, not the same as a platform crawler.",
+    queued: "Needs platform permission, API access, or compliance review before automation.",
+  };
   return (locale === "zh-TW" ? zh : en)[status];
 }
 
@@ -2350,22 +2363,90 @@ function VaultView({ locale, works, onOpenCert }: { locale: Locale; works: WorkV
 
 /* ---------------- channels view ---------------- */
 
-function ChannelsView({ locale, channels, onRunPatrol }: { locale: Locale; channels: ChannelVM[]; onRunPatrol: () => void }) {
+function ChannelsView({
+  locale,
+  channels,
+  monitoring,
+  onRunPatrol,
+}: {
+  locale: Locale;
+  channels: ChannelVM[];
+  monitoring: MonitoringRun;
+  onRunPatrol: () => void;
+}) {
   const zh = locale === "zh-TW";
+  const liveSources = new Set((monitoring.source_runs || []).map((run) => run.source_id).filter(Boolean));
+  const liveSourceCount = liveSources.size || (monitoring.adapter?.id === "visionWebDetection" ? 1 : 0);
+  const latestCandidates = monitoring.run_scope?.candidates_attempted ?? 0;
+  const lastRunLabel = formatDateForLocale(monitoring.completed_at || monitoring.generated_at, locale);
+  const stageCounts = channels.reduce(
+    (acc, channel) => {
+      acc[channel.status] += 1;
+      return acc;
+    },
+    { manual: 0, queued: 0, search: 0 },
+  );
   return (
     <div className="max-w-[1240px] px-6 py-7 md:px-9">
       <div className="mb-5 flex flex-wrap items-end justify-between gap-4">
         <PageHead
           dot={C.blue}
-          eyebrow={zh ? "監控通路 · PATROL CHANNELS" : "Patrol channels"}
-          title={zh ? "指定通路巡檢" : "Designated-channel patrol"}
-          desc={zh ? "系統在以下新聞、社群、論壇與搜尋通路持續巡檢，比對是否出現高相似影像。" : "These news, social, forum and search channels are continuously patrolled for high-similarity copies."}
-          hint={zh ? "怎麼看：每張卡是一個監控通路，顯示類型、風險與命中數；右上「查看最近巡檢」會播放最新巡檢流程，不會從瀏覽器直接啟動 GitHub Actions。" : "How to read: each card is a monitored channel with its type, risk, and hit count. “Review latest patrol” replays the latest patrol flow; it does not start GitHub Actions from the browser."}
+          eyebrow={zh ? "監控通路" : "Patrol channels"}
+          title={zh ? "巡檢來源與通路導入狀態" : "Patrol source and channel-integration status"}
+          desc={
+            zh
+              ? "目前已運作的自動巡檢來源是 Google Vision Web Detection；下列 14 個通路是監控範圍與導入狀態，不代表每個通路都已接上直接爬蟲。"
+              : "The live automated patrol source is Google Vision Web Detection. The 14 named channels below are monitoring scope and integration status, not proof that each has a direct crawler."
+          }
+          hint={
+            zh
+              ? "怎麼看：上方看目前真正執行的巡檢來源；下方每張卡表示指定通路的導入狀態。右上「查看最近巡檢」只播放最新巡檢流程，不會從瀏覽器直接啟動 GitHub Actions。"
+              : "How to read: the summary shows the real patrol source; each card shows the named channel's integration status. “Review latest patrol” only replays the latest patrol flow and does not start GitHub Actions from the browser."
+          }
         />
         <button type="button" onClick={onRunPatrol} className="rounded-[9px] bg-[#1A1A1A] px-[18px] py-2.5 text-[12.5px] font-semibold text-[#F4E9D5]">
           ＋ {zh ? "查看最近巡檢" : "Review latest patrol"}
         </button>
       </div>
+
+      <div className="mb-5 grid gap-3.5 lg:grid-cols-3">
+        <div className="rounded-[14px] border border-[#1a1a1a12] bg-white p-4">
+          <p className="text-[11px] font-semibold text-[#1a1a1a80]" style={{ fontFamily: MONO }}>
+            {zh ? "已運作巡檢來源" : "Live patrol source"}
+          </p>
+          <p className="mt-2 text-[22px] font-semibold" style={{ fontFamily: MONO }}>
+            Vision Web Detection
+          </p>
+          <p className="mt-1 text-[12px] leading-5 text-[#1a1a1a80]">
+            {zh ? `最新 run 來源 ${liveSourceCount} 個，候選影像 ${latestCandidates} 筆。` : `${liveSourceCount} live source(s), ${latestCandidates} candidate image(s) in the latest run.`}
+          </p>
+        </div>
+        <div className="rounded-[14px] border border-[#1a1a1a12] bg-white p-4">
+          <p className="text-[11px] font-semibold text-[#1a1a1a80]" style={{ fontFamily: MONO }}>
+            {zh ? "通路導入狀態" : "Named channels"}
+          </p>
+          <p className="mt-2 text-[22px] font-semibold" style={{ fontFamily: MONO }}>
+            {channels.length}
+          </p>
+          <p className="mt-1 text-[12px] leading-5 text-[#1a1a1a80]">
+            {zh
+              ? `搜尋線索 ${stageCounts.search}、人工複核 ${stageCounts.manual}、待授權 ${stageCounts.queued}。`
+              : `${stageCounts.search} search lead(s), ${stageCounts.manual} manual-review source(s), ${stageCounts.queued} needs auth.`}
+          </p>
+        </div>
+        <div className="rounded-[14px] border border-[#1a1a1a12] bg-white p-4">
+          <p className="text-[11px] font-semibold text-[#1a1a1a80]" style={{ fontFamily: MONO }}>
+            {zh ? "最近巡檢時間" : "Latest patrol"}
+          </p>
+          <p className="mt-2 text-[18px] font-semibold" style={{ fontFamily: MONO }}>
+            {lastRunLabel}
+          </p>
+          <p className="mt-1 text-[12px] leading-5 text-[#1a1a1a80]">
+            {zh ? "候選仍需通過本地指紋比對與人工複核後，才會形成外部主張。" : "Candidates still need local fingerprint matching and human review before any external claim."}
+          </p>
+        </div>
+      </div>
+
       <div className="grid gap-3.5 lg:grid-cols-2">
         {channels.map((c, i) => (
           <div key={c.id} className="flex items-center gap-3.5 rounded-[14px] border border-[#1a1a1a12] bg-white p-4">
@@ -2374,6 +2455,9 @@ function ChannelsView({ locale, channels, onRunPatrol }: { locale: Locale; chann
               <p className="text-[15px] font-semibold">{c.name}</p>
               <p className="mt-0.5 text-[10.5px] text-[#1a1a1a80]" style={{ fontFamily: MONO }}>
                 {c.type} · {riskText(c.risk, locale)}
+              </p>
+              <p className="mt-1 text-[11px] leading-4 text-[#1a1a1a73]">
+                {chNote(c.status, locale)}
               </p>
             </div>
             <div className="flex-none text-right">
@@ -2384,7 +2468,7 @@ function ChannelsView({ locale, channels, onRunPatrol }: { locale: Locale; chann
                 </span>
               </div>
               <p className="mt-1 text-[10px] text-[#1a1a1a80]" style={{ fontFamily: MONO }}>
-                {zh ? `命中 ${c.hits} 筆` : `${c.hits} hits`}
+                {zh ? `相關警報 ${c.hits}` : `${c.hits} related alerts`}
               </p>
             </div>
           </div>
