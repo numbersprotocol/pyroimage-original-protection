@@ -379,7 +379,7 @@ const NAV: Array<{
   { id: "channels", icon: Radar, zh: "監控通路", en: "Channels", eyebrow: "STEP 02", descZh: "巡檢中的新聞與社群通路", descEn: "Channels being patrolled" },
   { id: "alerts", icon: Bell, zh: "疑似盜用", en: "Alerts", eyebrow: "STEP 03", descZh: "系統發現、待你確認的案件", descEn: "Findings awaiting review" },
   { id: "reports", icon: FileText, zh: "存證報告", en: "Reports", eyebrow: "STEP 04", descZh: "可交付法務的存證報告", descEn: "Deliverable evidence reports" },
-  { id: "verify", icon: ShieldCheck, zh: "原創查驗", en: "Verify", eyebrow: "TOOL", descZh: "查驗已收錄的原創（示範）", descEn: "Check a registered original (demo)" },
+  { id: "verify", icon: ShieldCheck, zh: "原創查驗", en: "Verify", eyebrow: "TOOL", descZh: "用範例查已收錄樣本", descEn: "Check indexed sample images" },
 ];
 
 /* ---------------- view-model builders (from backend JSON) ---------------- */
@@ -1563,50 +1563,39 @@ function verificationToneColor(tone: VerificationQuery["verdict"]["tone"]) {
   return C.amber;
 }
 
-/* Plain-language labels so the zh-TW page never exposes raw snake_case codes. */
-function verdictCodeText(code: VerificationQuery["verdict"]["code"], locale: Locale) {
-  const zh: Record<string, string> = {
-    registered_original: "原作命中",
-    registered_derivative: "改過的原作也命中",
-    not_registered: "未收錄",
-    review_required: "需人工複審",
-  };
-  const en: Record<string, string> = {
-    registered_original: "Registered original",
-    registered_derivative: "Registered derivative",
-    not_registered: "Not registered",
-    review_required: "Review required",
-  };
-  return (locale === "zh-TW" ? zh[code] : en[code]) || code;
+function verificationExampleText(query: VerificationQuery, locale: Locale) {
+  const zh = locale === "zh-TW";
+  if (query.verdict.code === "registered_original") {
+    return zh ? "這張就是已收錄原作" : "This is an indexed original";
+  }
+  if (query.verdict.code === "registered_derivative") {
+    return zh ? "這張改過圖仍能認出原作" : "This edited image still matches an original";
+  }
+  if (query.verdict.code === "not_registered") {
+    return zh ? "這張不在目前原創庫" : "This image is not in the current index";
+  }
+  return zh ? "需要人工複核" : "Needs human review";
 }
 
-function evidenceLabelText(label: string, locale: Locale) {
-  const zh: Record<string, string> = {
-    simulated: "示範",
-    simulated_fixture: "示範",
-    sample: "樣本",
-    actual: "實測",
-    actual_index_match: "索引命中",
-    actual_controlled_transform: "受控轉檔",
-    actual_source_configuration_pending_review: "待來源複審",
-    controlled_non_original: "非原作對照",
-    actual_pending_review: "實測待複審",
-    target: "目標",
-    TBD: "待定",
-  };
-  const en: Record<string, string> = {
-    simulated: "Demo",
-    simulated_fixture: "Demo fixture",
-    sample: "Sample",
-    actual: "Actual",
-    actual_index_match: "Index match",
-    actual_controlled_transform: "Controlled transform",
-    actual_source_configuration_pending_review: "Pending source review",
-    controlled_non_original: "Non-original control",
-    actual_pending_review: "Pending review",
-  };
-  if (locale === "zh-TW") return zh[label] || label.replaceAll("_", " ");
-  return en[label] || label.replaceAll("_", " ");
+function distanceHelpText(match: VerificationTopMatch | null, threshold: number, locale: Locale) {
+  const zh = locale === "zh-TW";
+  if (!match) return zh ? "沒有找到可比對的原作" : "No comparable original found";
+  const passed = match.combined_distance <= threshold;
+  if (zh) {
+    return passed
+      ? `距離 ${match.combined_distance}，低於門檻 ${threshold}，系統判定為命中。數字越低代表越像。`
+      : `距離 ${match.combined_distance}，高於門檻 ${threshold}，系統不判定為命中。數字越低代表越像。`;
+  }
+  return passed
+    ? `Distance ${match.combined_distance}, below the ${threshold} threshold, so the system treats it as a match. Lower means more similar.`
+    : `Distance ${match.combined_distance}, above the ${threshold} threshold, so the system does not treat it as a match. Lower means more similar.`;
+}
+
+function similarityHelpText(match: VerificationTopMatch | null, locale: Locale) {
+  const zh = locale === "zh-TW";
+  if (!match) return zh ? "無相似度" : "No similarity score";
+  const pct = Math.round(match.similarity_score * 10000) / 100;
+  return zh ? `${pct}% 相似，越高越像；仍需搭配原創憑證判讀。` : `${pct}% similar. Higher means more similar; read it with the origin certificate.`;
 }
 
 function VerificationView({
@@ -1633,7 +1622,7 @@ function VerificationView({
       <div className="max-w-[1240px] px-6 py-7 md:px-9">
         <PageHead
           dot={C.green}
-          eyebrow={zh ? "原創查驗 · ORIGIN VERIFY" : "Origin verify"}
+          eyebrow={zh ? "原創查驗" : "Origin verify"}
           title={zh ? "本機查驗結果尚未建立" : "Verification data unavailable"}
         />
       </div>
@@ -1676,17 +1665,17 @@ function VerificationView({
     <div className="max-w-[1240px] px-6 py-7 md:px-9">
       <PageHead
         dot={C.green}
-        eyebrow={zh ? "原創查驗 · ORIGIN VERIFY" : "Origin verify"}
+        eyebrow={zh ? "原創查驗" : "Origin verify"}
         title={zh ? "原創影像查驗入口" : "Original-image verification"}
         desc={
           zh
-            ? "查驗一張圖是不是已收錄的原創：回傳「原作命中」「改過的原作也命中」或「未收錄」。示範版只能查驗已收錄的樣本，不會在瀏覽器端捏造結果。"
-            : "Check whether an image is a registered original: it returns “registered original”, “registered derivative”, or “not registered”. This demo only verifies samples already in the index and never fabricates a result in the browser."
+            ? "這個入口可以使用；目前 MVP 只查已建立指紋的樣本。請先點下方範例試跑，或貼上已收錄樣本的網址 / 資產 ID。"
+            : "This tool is usable today; the MVP verifies samples that already have fingerprints. Start with an example below, or paste an indexed sample URL / asset ID."
         }
         hint={
           zh
-            ? "怎麼用：示範版請直接點下方「範例查驗」試跑（左側輸入框只認得已收錄的樣本）。結果會顯示三種判定之一 —— 原作命中、改過的原作也命中、未收錄。"
-            : "How to use: in this demo, click an “example check” below to run it (the input on the left only accepts samples already in the index). You’ll get one of three verdicts — registered original, registered derivative, or not registered."
+            ? "目前不能貼任意新圖片即時建指紋；查不到時不會產生判定或警報。正式版才會支援任意圖片查驗與後續案件流程。"
+            : "It does not create a new fingerprint for any arbitrary image yet; unsupported inputs produce no verdict or alert. The full version will support arbitrary-image verification and case workflows."
         }
       />
 
@@ -1707,16 +1696,16 @@ function VerificationView({
         />
         <KpiCard
           index="V3"
-          label={zh ? "判定門檻" : "Match threshold"}
-          sub={zh ? "綜合相似距離" : "combined distance"}
+          label={zh ? "命中判定線" : "Match line"}
+          sub={zh ? "低於此數字算命中" : "lower than this means match"}
           value={verification.library.threshold.toString()}
           color={C.blue}
         />
         <KpiCard
           index="V4"
-          label={zh ? "範例查驗自檢" : "Fixture check"}
+          label={zh ? "查驗工具狀態" : "Tool status"}
           sub={zh ? "本次查驗零費用" : "zero cost"}
-          value={passAll ? "PASS" : "CHECK"}
+          value={passAll ? (zh ? "可用" : "READY") : "CHECK"}
           color={passAll ? C.greenDeep : C.orange}
           dark
         />
@@ -1724,14 +1713,14 @@ function VerificationView({
 
       <div className="mb-5 grid gap-5 xl:grid-cols-[1fr_1.35fr]">
         <section className="rounded-[14px] border border-[#1a1a1a12] bg-white p-5">
-          {/* PRIMARY action in this demo: the example checks (the input below only accepts indexed samples) */}
+          {/* Primary action in the MVP: examples are the clearest path because manual input only accepts indexed samples. */}
           <p className="mb-1 text-[12px] font-semibold" style={{ fontFamily: MONO }}>
-            {zh ? "範例查驗 · 點一下試跑" : "Example checks · click to run"}
+            {zh ? "先從這裡開始" : "Start here"}
           </p>
           <p className="mb-3 text-[11px] leading-4 text-[#1a1a1a80]">
             {zh
-              ? "示範版請從這裡開始：點任一項，右側立即顯示查驗結果。"
-              : "Start here in this demo: click any item and the verdict appears on the right."}
+              ? "點一個範例，右側會立即顯示判定結果；這是目前 MVP 最穩定的使用方式。"
+              : "Click an example and the verdict appears on the right; this is the most reliable way to use the current MVP."}
           </p>
           <div className="grid gap-2">
             {verification.queries.map((query) => {
@@ -1747,10 +1736,9 @@ function VerificationView({
                 >
                   <span className="block text-[13px] font-semibold">{zh ? query.display.zh : query.display.en}</span>
                   <span
-                    className={`mt-0.5 block truncate text-[10px] ${selected ? "text-[#CEC0A3]" : "text-[#1a1a1a73]"}`}
-                    style={{ fontFamily: MONO }}
+                    className={`mt-1 block text-[11px] leading-4 ${selected ? "text-[#CEC0A3]" : "text-[#1a1a1a73]"}`}
                   >
-                    {verdictCodeText(query.verdict.code, locale)} · {evidenceLabelText(query.evidence_label, locale)}
+                    {verificationExampleText(query, locale)}
                   </span>
                 </button>
               );
@@ -1758,8 +1746,13 @@ function VerificationView({
           </div>
 
           {/* SECONDARY: manual input, downgraded — clearly scoped to indexed samples */}
-          <p className="mb-2 mt-5 text-[10px] tracking-[0.14em] text-[#1a1a1a73]" style={{ fontFamily: MONO }}>
-            {zh ? "或手動輸入" : "Or enter manually"}
+          <p className="mb-2 mt-5 text-[12px] font-semibold">
+            {zh ? "進階：貼已收錄樣本" : "Advanced: paste an indexed sample"}
+          </p>
+          <p className="mb-3 text-[11px] leading-4 text-[#1a1a1a73]">
+            {zh
+              ? "這裡不是任意圖片搜尋；只接受已入庫、已建立指紋的樣本網址或資產 ID。"
+              : "This is not arbitrary-image search; it only accepts URLs or asset IDs already indexed with fingerprints."}
           </p>
           <form onSubmit={submitVerification} className="flex gap-2">
             <input
@@ -1780,15 +1773,15 @@ function VerificationView({
           {inputState === "unsupported" ? (
             <p className="mt-3 rounded-[9px] border border-[#e0d3ad] bg-[#FBF6EC] px-3.5 py-2.5 text-[12px] leading-5 text-[#80621c]">
               {zh
-                ? "示範版目前只認得已收錄的樣本，這個輸入還沒有指紋，因此不會產生判定，也不會建立警報。正式版可查驗任意圖片；示範請改用上方「範例查驗」。"
-                : "This demo only recognises indexed samples. This input has no fingerprint yet, so it produces no verdict and no alert. The full version can verify any image — for now, use an example check above."}
+                ? "目前沒有找到這個輸入的指紋，所以不會產生判定，也不會建立警報。請先用上方範例；正式版才會支援任意新圖片查驗。"
+                : "No fingerprint was found for this input, so it produces no verdict and no alert. Use an example above first; arbitrary new-image verification belongs to the full version."}
             </p>
           ) : (
             <p className="mt-2.5 flex items-start gap-1.5 text-[11px] leading-4 text-[#1a1a1a80]">
               <Info size={13} className="mt-px flex-none" />
               {zh
-                ? "示範版只接受已收錄的樣本網址或資產 ID。想直接看結果？用上方「範例查驗」。"
-                : "This demo only accepts URLs or asset IDs already in the index. Want a result now? Use an example check above."}
+                ? "想直接看結果，請使用上方範例。手動輸入適合已知道資產 ID 或樣本網址的使用者。"
+                : "For an immediate result, use an example above. Manual input is for users who already know the asset ID or indexed sample URL."}
             </p>
           )}
         </section>
@@ -1797,11 +1790,18 @@ function VerificationView({
           <div className="mb-4 flex flex-wrap items-start justify-between gap-4">
             <div>
               <p className="text-[12px] text-[#1a1a1a80]" style={{ fontFamily: MONO }}>
-                {activeQuery.query_id}
+                {zh ? "查驗結果" : "Verification result"}
               </p>
               <h2 className="mt-1 text-[24px] font-semibold leading-tight" style={{ fontFamily: MONO }}>
                 {zh ? activeQuery.verdict.zh : activeQuery.verdict.en}
               </h2>
+              <p className="mt-2 max-w-[520px] text-[12px] leading-5 text-[#1a1a1a80]">
+                {topMatch
+                  ? distanceHelpText(topMatch, verification.library.threshold, locale)
+                  : zh
+                  ? "目前原創庫沒有找到足以判定命中的作品。"
+                  : "The current index does not contain a strong enough match."}
+              </p>
             </div>
             <div
               className="flex h-[92px] w-[92px] flex-col items-center justify-center rounded-full border-4"
@@ -1811,7 +1811,7 @@ function VerificationView({
                 {similarityPct}%
               </span>
               <span className="mt-1 text-[9px] tracking-[0.1em] text-[#1a1a1a80]" style={{ fontFamily: MONO }}>
-                {zh ? "最相似" : "TOP MATCH"}
+                {zh ? "相似程度" : "SIMILARITY"}
               </span>
             </div>
           </div>
@@ -1826,20 +1826,38 @@ function VerificationView({
                 )}
               </p>
               <p className="mt-2 break-all rounded-[8px] bg-[#F4E9D5] px-3 py-2.5 text-[11px]" style={{ fontFamily: MONO }}>
-                {activeQuery.query_fingerprint.fingerprint_value}
+                {zh ? "已建立本機視覺指紋：" : "Local fingerprint created: "}
+                {shortFp(activeQuery.query_fingerprint.fingerprint_value)}
               </p>
               <div className="mt-3 grid gap-2 sm:grid-cols-2">
                 <CaseField
-                  label={zh ? "最接近原作" : "Top match"}
+                  label={zh ? "最接近的已收錄原作" : "Closest indexed original"}
                   value={topMatch?.display_title || (zh ? "無命中" : "No match")}
                 />
                 <CaseField
-                  label={zh ? "特徵距離" : "Distance"}
-                  value={topMatch ? `${topMatch.combined_distance} / ${verification.library.threshold}` : "N/A"}
+                  label={zh ? "判定距離" : "Decision distance"}
+                  value={
+                    topMatch
+                      ? topMatch.combined_distance <= verification.library.threshold
+                        ? zh
+                          ? "低於門檻，判定命中"
+                          : "Below threshold, match"
+                        : zh
+                        ? "高於門檻，未命中"
+                        : "Above threshold, no match"
+                      : "N/A"
+                  }
+                  note={distanceHelpText(topMatch, verification.library.threshold, locale)}
                   mono
                 />
                 <CaseField
-                  label={zh ? "對外宣稱狀態" : "Public claim"}
+                  label={zh ? "相似程度" : "Similarity"}
+                  value={topMatch ? `${Math.round(topMatch.similarity_score * 10000) / 100}%` : "N/A"}
+                  note={similarityHelpText(topMatch, locale)}
+                  mono
+                />
+                <CaseField
+                  label={zh ? "對外宣稱狀態" : "Public claim status"}
                   value={
                     activeQuery.verdict.public_claim_status === "no_origin_match_found"
                       ? zh
@@ -1850,7 +1868,6 @@ function VerificationView({
                       : "Origin verification only"
                   }
                 />
-                <CaseField label={zh ? "成本" : "Cost"} value={activeQuery.zero_external_cost ? "NT$0" : "N/A"} mono />
               </div>
               {topMatch?.certificate_link && activeQuery.result.pass_threshold && (
                 <div className="mt-3 flex flex-wrap gap-2">
@@ -1869,7 +1886,7 @@ function VerificationView({
                     rel="noreferrer"
                     className="flex items-center gap-1.5 rounded-[9px] border border-[#1a1a1a26] px-3.5 py-2 text-[12px] font-semibold"
                   >
-                    <ExternalLink size={14} /> {zh ? "開啟 verify" : "Open verify"}
+                    <ExternalLink size={14} /> {zh ? "開啟公開驗證頁" : "Open public verification"}
                   </a>
                 </div>
               )}
@@ -1879,21 +1896,30 @@ function VerificationView({
       </div>
 
       <div className="rounded-[14px] border border-[#1a1a1a12] bg-white">
+        <div className="border-b border-[#1a1a1a0f] px-5 py-4">
+          <h3 className="text-[15px] font-semibold">{zh ? "系統比對結果" : "Candidate originals compared by the system"}</h3>
+          <p className="mt-1 max-w-[880px] text-[12px] leading-5 text-[#1a1a1a80]">
+            {zh
+              ? `系統會把輸入圖和已收錄原創逐一比對。判定距離越低越像；低於 ${verification.library.threshold} 才算命中。相似程度是輔助閱讀，實際主張仍要看原創憑證與人工複核。`
+              : `The system compares the input against indexed originals. Lower decision distance means more similar; below ${verification.library.threshold} counts as a match. Similarity is for readability; claims still require the origin certificate and human review.`}
+          </p>
+        </div>
         <div
-          className="grid grid-cols-[1fr_86px_96px] gap-3 bg-[#EFE3CC] px-5 py-3 text-[10px] tracking-[0.08em] text-[#1a1a1a8c] md:grid-cols-[1fr_120px_120px_180px]"
+          className="grid grid-cols-[1fr_116px_96px] gap-3 bg-[#EFE3CC] px-5 py-3 text-[10px] tracking-[0.08em] text-[#1a1a1a8c] md:grid-cols-[1fr_160px_120px_150px]"
           style={{ fontFamily: MONO }}
         >
-          <span>{zh ? "候選原作" : "CANDIDATE ORIGINAL"}</span>
-          <span>{zh ? "距離" : "DIST"}</span>
-          <span>{zh ? "相似度" : "MATCH"}</span>
-          <span className="hidden md:block">{zh ? "憑證" : "CERTIFICATE"}</span>
+          <span>{zh ? "可能對應的原作" : "POSSIBLE ORIGINAL"}</span>
+          <span>{zh ? "判定距離" : "DISTANCE"}</span>
+          <span>{zh ? "相似程度" : "SIMILARITY"}</span>
+          <span className="hidden md:block">{zh ? "原創憑證" : "CERTIFICATE"}</span>
         </div>
         {activeQuery.result.top_matches.slice(0, 5).map((match) => {
           const isPass = match.combined_distance <= verification.library.threshold;
+          const candidateWork = worksById.get(match.asset_id);
           return (
             <div
               key={`${activeQuery.query_id}-${match.asset_id}`}
-              className="grid grid-cols-[1fr_86px_96px] gap-3 border-t border-[#1a1a1a0f] px-5 py-3.5 text-[12px] md:grid-cols-[1fr_120px_120px_180px]"
+              className="grid grid-cols-[1fr_116px_96px] gap-3 border-t border-[#1a1a1a0f] px-5 py-3.5 text-[12px] md:grid-cols-[1fr_160px_120px_150px]"
             >
               <span className="min-w-0">
                 <span className="block truncate font-semibold">{match.display_title || match.asset_id}</span>
@@ -1901,14 +1927,29 @@ function VerificationView({
                   {shortFp(match.asset_id)}
                 </span>
               </span>
-              <span className="font-semibold" style={{ fontFamily: MONO, color: isPass ? C.greenDeep : C.ink }}>
-                {match.combined_distance}
+              <span className="min-w-0">
+                <span className="block font-semibold" style={{ color: isPass ? C.greenDeep : C.ink }}>
+                  {isPass ? (zh ? "命中" : "Match") : zh ? "未命中" : "No match"}
+                </span>
+                <span className="block text-[10px] text-[#1a1a1a73]" style={{ fontFamily: MONO }}>
+                  {match.combined_distance} / {verification.library.threshold}
+                </span>
               </span>
               <span className="font-semibold" style={{ fontFamily: MONO, color: isPass ? C.greenDeep : C.ink }}>
                 {Math.round(match.similarity_score * 10000) / 100}%
               </span>
-              <span className="hidden min-w-0 truncate text-[#2E52A0] md:block" style={{ fontFamily: MONO }}>
-                {match.certificate_link ? shortFp(match.certificate_link) : "N/A"}
+              <span className="hidden min-w-0 md:block">
+                {candidateWork ? (
+                  <button
+                    type="button"
+                    onClick={() => onOpenCert(match.asset_id)}
+                    className="rounded-[8px] border border-[#1a1a1a26] px-3 py-1.5 text-[11px] font-semibold hover:bg-[#FBF6EC]"
+                  >
+                    {zh ? "看憑證" : "View"}
+                  </button>
+                ) : (
+                  <span className="text-[#1a1a1a66]">N/A</span>
+                )}
               </span>
             </div>
           );
@@ -2248,7 +2289,7 @@ function Bar({ label, pct, color }: { label: string; pct: number; color: string 
   );
 }
 
-function CaseField({ label, value, mono }: { label: string; value: string; mono?: boolean }) {
+function CaseField({ label, value, mono, note }: { label: string; value: string; mono?: boolean; note?: string }) {
   return (
     <div className="mb-3">
       <p className="text-[10px] text-[#1a1a1a73]" style={{ fontFamily: MONO }}>
@@ -2257,6 +2298,7 @@ function CaseField({ label, value, mono }: { label: string; value: string; mono?
       <p className={`mt-0.5 truncate text-[13px] ${mono ? "font-medium" : "font-semibold"}`} style={mono ? { fontFamily: MONO } : undefined}>
         {value}
       </p>
+      {note && <p className="mt-1 text-[11px] leading-4 text-[#1a1a1a73]">{note}</p>}
     </div>
   );
 }
