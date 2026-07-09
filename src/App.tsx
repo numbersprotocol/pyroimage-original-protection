@@ -20,7 +20,7 @@ import {
 import type { LucideIcon } from "lucide-react";
 
 /* ============================================================
- * Numbers · Original-Image Proactive Protection (PyroImage MVP)
+ * OriginRadar · Original-image theft detection (PyroImage MVP)
  * UI = provenance-patrol console. Backend architecture unchanged:
  * every substantive value is read from the shipped patrol JSON
  * data files. Interactive scan / case actions are clearly-labelled
@@ -584,7 +584,7 @@ function DemoTag({ locale }: { locale: Locale }) {
       className="rounded-full border border-[#d8c07a] bg-[#f8f1e2] px-2 py-0.5 text-[10px] font-semibold text-[#8a6d1f]"
       style={{ fontFamily: MONO }}
     >
-      {locale === "zh-TW" ? "示範案件" : "Demo case"}
+      {locale === "zh-TW" ? "展示案件" : "Preview case"}
     </span>
   );
 }
@@ -724,10 +724,10 @@ export function TtdMvpDashboard() {
   const caseAction = (type: "dmca" | "report" | "archive" | "contact" | "dismiss", alert: AlertVM) => {
     const now = formatClock(new Date());
     const events: Record<typeof type, TimelineItem> = {
-      dmca: { t: now, zh: "已記錄 DMCA 下架通知（示範）", en: "Logged DMCA takedown (demo)" },
-      report: { t: now, zh: "已產生區塊鏈存證報告（示範）", en: "Generated evidence report (demo)" },
-      archive: { t: now, zh: "證據快照已封存（示範）", en: "Evidence snapshot archived (demo)" },
-      contact: { t: now, zh: "已記錄聯絡通知（示範）", en: "Contact notice logged (demo)" },
+      dmca: { t: now, zh: "已在本案軌跡記錄 DMCA 下架通知", en: "Logged DMCA takedown in this case trail" },
+      report: { t: now, zh: "已在本頁建立存證報告預覽", en: "Created an evidence-report preview in this page" },
+      archive: { t: now, zh: "已在本案軌跡記錄證據封存", en: "Logged evidence archive in this case trail" },
+      contact: { t: now, zh: "已在本案軌跡記錄聯絡通知", en: "Logged contact notice in this case trail" },
       dismiss: { t: now, zh: "已標記為誤判", en: "Marked as false positive" },
     };
     setExtraEvents((prev) => ({ ...prev, [alert.id]: [...(prev[alert.id] || []), events[type]] }));
@@ -739,17 +739,17 @@ export function TtdMvpDashboard() {
           id: `R-${String(prev.length + 8).padStart(4, "0")}`,
           work: `${alert.work} ${alert.workEn}`.trim(),
           caseId: alert.id,
-          typeZh: "區塊鏈存證報告（示範）",
-          typeEn: "Evidence report (demo)",
+          typeZh: "本頁預覽存證報告",
+          typeEn: "Evidence report preview",
         },
         ...prev,
       ]);
     }
     const msg: Record<typeof type, string> = {
-      dmca: locale === "zh-TW" ? "已記錄 DMCA 下架通知（示範）" : "DMCA takedown logged (demo)",
-      report: locale === "zh-TW" ? "存證報告已生成（示範）" : "Evidence report generated (demo)",
-      archive: locale === "zh-TW" ? "證據已封存（示範）" : "Evidence archived (demo)",
-      contact: locale === "zh-TW" ? "已記錄聯絡通知（示範）" : "Contact notice logged (demo)",
+      dmca: locale === "zh-TW" ? "已在本案軌跡記錄下架通知" : "Takedown notice logged in this case trail",
+      report: locale === "zh-TW" ? "已建立本頁存證報告預覽" : "Evidence-report preview created in this page",
+      archive: locale === "zh-TW" ? "已在本案軌跡記錄封存動作" : "Archive action logged in this case trail",
+      contact: locale === "zh-TW" ? "已在本案軌跡記錄聯絡通知" : "Contact notice logged in this case trail",
       dismiss: locale === "zh-TW" ? "已標記為誤判" : "Marked as false positive",
     };
     showToast(msg[type], "ok");
@@ -977,6 +977,7 @@ export function TtdMvpDashboard() {
               reportCount={reportCount}
               suspectedActual={suspectedActual}
               alerts={alerts}
+              works={works}
               channels={channels}
               onOpenCase={(id) => {
                 setActiveCaseId(id);
@@ -1036,7 +1037,7 @@ export function TtdMvpDashboard() {
               works={works}
               alerts={alerts}
               onExport={(id) =>
-                showToast(locale === "zh-TW" ? `已匯出存證報告 ${id}（示範）` : `Exported report ${id} (demo)`, "ok")
+                showToast(locale === "zh-TW" ? `已預覽匯出存證報告 ${id}` : `Previewed evidence report export ${id}`, "ok")
               }
             />
           )}
@@ -1089,7 +1090,7 @@ function OnboardingOverlay({
   ];
   const entries: Array<{ view: View; icon: LucideIcon; label: string; note: string }> = [
     { view: "vault", icon: Images, label: zh ? "看受保護的作品" : "See protected works", note: zh ? `已簽署保護 ${protectedDisplay} 張原創` : `${protectedDisplay} protected originals` },
-    { view: "verify", icon: ShieldCheck, label: zh ? "看查驗怎麼運作" : "Try origin verify", note: zh ? "查驗已收錄的原創（示範）" : "Check a registered original (demo)" },
+    { view: "verify", icon: ShieldCheck, label: zh ? "看查驗怎麼運作" : "Try origin verify", note: zh ? "查驗已收錄的原創樣本" : "Check an indexed original sample" },
     { view: "alerts", icon: Bell, label: zh ? "看疑似盜用案件" : "Review detections", note: zh ? "系統發現、待你確認的案件" : "Findings awaiting your review" },
   ];
 
@@ -1111,12 +1112,12 @@ function OnboardingOverlay({
               <Compass size={13} /> {zh ? "歡迎使用 · WELCOME" : "Welcome"}
             </p>
             <h2 className="mt-1.5 text-[22px] font-semibold leading-tight">
-              {zh ? "原創影像主動防護" : "Original-image protection"}
+              {zh ? "原創雷達 OriginRadar" : "OriginRadar"}
             </h2>
             <p className="mt-1.5 text-[13px] leading-6 text-[#CEC0A3]">
               {zh
-                ? "我們替 PyroImage 的每一張原創影像建立數位指紋（影像的獨特特徵值，改圖也認得出），持續到各通路巡檢是否遭盜用，發現高度相似影像就自動存證。"
-                : "We fingerprint every PyroImage original, run Vision-based web patrol, and package evidence when a high-similarity image needs review."}
+                ? "我們替 PyroImage 的每一張原創建立數位指紋，再用雷達式巡檢尋找網路上的相似影像；可疑候選會進入人工複核與存證流程。"
+                : "We fingerprint every PyroImage original, run radar-like web patrol for similar images, and route suspicious candidates into review and evidence packaging."}
             </p>
             <p className="mt-2 flex items-center gap-1.5 text-[11px] text-[#7F9C7E]" style={{ fontFamily: MONO }}>
               <ShieldCheck size={12} className="flex-none" />
@@ -1354,112 +1355,137 @@ function DashboardView(props: {
   reportCount: number;
   suspectedActual: string;
   alerts: AlertVM[];
+  works: WorkVM[];
   channels: ChannelVM[];
   onOpenCase: (id: string) => void;
   onNavigate: (v: View) => void;
   onRunPatrol: () => void;
 }) {
-  const { locale, lastPatrol, openCount, protectedDisplay, reportCount, suspectedActual } = props;
+  const {
+    locale,
+    lastPatrol,
+    openCount,
+    protectedDisplay,
+    reportCount,
+    suspectedActual,
+    lastRunSourceCount,
+    lastRunCandidates,
+    lastRunAlerts,
+    patrolModeLabel,
+    patrolStatus,
+  } = props;
   const zh = locale === "zh-TW";
   const hasAlerts = props.alerts.length > 0;
   const hasOnlyDemoAlerts = hasAlerts && props.realPatrolMatches === 0;
+  const latestAlert = props.alerts[0] || null;
   const honestyText = !hasAlerts
     ? zh
       ? `目前真實侵權案件：${suspectedActual} 件。最近一次巡檢未產生警報。`
       : `Real infringement cases so far: ${suspectedActual}. The latest patrol did not produce alerts.`
     : hasOnlyDemoAlerts
     ? zh
-      ? `目前真實侵權案件：${suspectedActual} 件。以下警報為示範案件，用於展示「巡檢 → 分流 → 存證」的完整流程，不計入真實侵權統計。`
-      : `Real infringement cases so far: ${suspectedActual}. The alerts below are demonstration cases that show the full patrol -> triage -> evidence workflow and do not count as real infringement.`
+      ? `目前真實侵權案件：${suspectedActual} 件。以下警報為展示案件，用於呈現「巡檢 → 分流 → 存證」的完整流程，不計入真實侵權統計。`
+      : `Real infringement cases so far: ${suspectedActual}. The alerts below are preview cases that show the full patrol -> triage -> evidence workflow and do not count as real infringement.`
     : zh
     ? `目前真實侵權案件：${suspectedActual} 件。${props.realPatrolMatches} 筆警報來自實際抓取候選影像與影像特徵比對命中；來源授權與外部侵權主張仍需人工確認。`
     : `Real infringement cases so far: ${suspectedActual}. ${props.realPatrolMatches} alert(s) came from real fetched candidates and perceptual-hash matches; source authorization and external infringement claims still require human review.`;
   const steps: Array<{ target: View; accent: string; step: string; label: string; note: string; value: string; unit: string }> = [
     { target: "vault", accent: C.green, step: "STEP 01", label: zh ? "入庫簽署" : "Register", note: zh ? "建立數位指紋與來源憑證" : "Create fingerprint & origin proof", value: protectedDisplay, unit: zh ? "受保護" : "protected" },
-    { target: "channels", accent: C.blue, step: "STEP 02", label: zh ? "通路巡檢" : "Patrol", note: zh ? "最近一次巡檢的來源與候選影像" : "Latest run sources and candidates", value: props.lastRunCandidates.toString(), unit: zh ? "候選" : "candidates" },
+    { target: "channels", accent: C.blue, step: "STEP 02", label: zh ? "雷達巡檢" : "Patrol", note: zh ? "最近一次巡檢的來源與候選影像" : "Latest run sources and candidates", value: lastRunCandidates.toString(), unit: zh ? "候選" : "candidates" },
     { target: "alerts", accent: C.orange, step: "STEP 03", label: zh ? "疑似盜用警報" : "Triage", note: zh ? "高相似自動發報並分流複審" : "Auto-flag & route for human review", value: openCount.toString(), unit: zh ? "待複審" : "to review" },
     { target: "reports", accent: C.ink, step: "STEP 04", label: zh ? "存證交付" : "Certify", note: zh ? "產生上鏈存證報告交付法務" : "Generate on-chain evidence report", value: reportCount.toString(), unit: zh ? "份" : "reports" },
+  ];
+  const radarStats = [
+    { label: zh ? "監控原創" : "Originals watched", value: protectedDisplay, tone: C.green },
+    { label: zh ? "巡檢來源" : "Live sources", value: lastRunSourceCount.toString(), tone: C.blue },
+    { label: zh ? "候選影像" : "Candidates", value: lastRunCandidates.toString(), tone: C.stone },
+    { label: zh ? "待複審" : "To review", value: openCount.toString(), tone: C.orange },
+    { label: zh ? "真實侵權" : "Confirmed", value: suspectedActual, tone: C.greenDeep },
   ];
 
   return (
     <div className="max-w-[1240px] px-6 py-7 md:px-9">
-      <div className="mb-6 flex flex-wrap items-end justify-between gap-4">
-        <PageHead
-          dot={C.green}
-          eyebrow={zh ? "主動防護中 · ACTIVE PROTECTION" : "Active protection"}
-          title={zh ? "原創影像主動防護" : "Original-image protection"}
-          desc={
-            zh
-              ? "為 PyroImage 的每一張原創影像建立數位指紋，以 Vision 背景巡檢尋找相似影像，並列出指定通路的導入狀態；高度相似候選需經人工複核後才會形成對外主張。"
-              : "Every PyroImage original gets a digital fingerprint. Vision-based web patrol looks for similar images while named channels show integration status; high-similarity candidates require human review before any external claim."
-          }
-          hint={
-            zh
-              ? "第一次來？先看下方「保護流程」四個步驟，點任一步驟就能進入對應畫面。"
-              : "First time here? Start with the 4-step “How it works” flow below — click any step to open that screen."
-          }
-        />
-        <p className="text-[11px] text-[#1a1a1a80]" style={{ fontFamily: MONO }}>
-          {zh ? "最近巡檢時間" : "Last patrol"}
-          <br />
-          <span className="text-[13px] text-[#1A1A1A]">{lastPatrol}</span>
-          <br />
-          <span className="text-[10px] text-[#1a1a1a80]">
-            {props.patrolModeLabel} · {props.lastRunSourceCount} {zh ? "來源" : "sources"} · {props.lastRunAlerts} {zh ? "警報" : "alerts"}
-          </span>
-        </p>
-      </div>
+      <section className="mb-5 overflow-hidden rounded-[16px] bg-[#1A1A1A] text-[#F4E9D5] shadow-[0_18px_50px_rgba(26,26,26,0.16)]">
+        <div className="grid gap-0 lg:grid-cols-[1.08fr_0.92fr]">
+          <div className="relative min-h-[440px] p-5 sm:p-7">
+            <div className="absolute -right-28 -top-28 h-72 w-72 rounded-full border border-[#7f9c7e33]" />
+            <div className="absolute -right-16 top-8 h-44 w-44 rounded-full border border-[#7f9c7e55]" />
+            <div className="absolute bottom-7 right-8 hidden h-24 w-24 rounded-full border border-dashed border-[#d8b76a66] lg:block" />
+            <div className="relative z-10 flex h-full flex-col justify-between gap-7">
+              <div>
+                <p className="mb-3 flex items-center gap-2 text-[11px] tracking-[0.16em] text-[#7F9C7E]" style={{ fontFamily: MONO }}>
+                  <span className="ttd-pulse inline-block h-[8px] w-[8px] rounded-full bg-[#7F9C7E]" />
+                  {zh ? "ORIGINRADAR · 即時偵測台" : "ORIGINRADAR · LIVE RADAR"}
+                </p>
+                <h1 className="max-w-[640px] text-[32px] font-semibold leading-[1.05] sm:text-[44px]" style={{ fontFamily: MONO }}>
+                  {zh ? "盜用偵測雷達，替原創影像站崗。" : "A theft-detection radar for original images."}
+                </h1>
+                <p className="mt-4 max-w-[620px] text-[13.5px] leading-6 text-[#CEC0A3]">
+                  {zh
+                    ? "OriginRadar 先替 PyroImage 原作建立影像指紋，再用 Vision 背景巡檢尋找網路候選圖；疑似命中會被送進人工複核、存證與法務交付流程。"
+                    : "OriginRadar fingerprints PyroImage originals, uses Vision patrol to discover web candidates, and routes suspected matches into human review, evidence packaging, and legal handoff."}
+                </p>
+              </div>
+
+              <div>
+                <div className="grid gap-2.5 sm:grid-cols-5">
+                  {radarStats.map((stat) => (
+                    <div key={stat.label} className="rounded-[11px] border border-[#f4e9d51f] bg-[#f4e9d50d] px-3 py-3">
+                      <p className="text-[10.5px] leading-tight text-[#CEC0A3]">{stat.label}</p>
+                      <p className="mt-2 text-[24px] font-bold leading-none" style={{ fontFamily: MONO, color: stat.tone }}>
+                        {stat.value}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="mt-5 flex flex-wrap items-center gap-3">
+                  <button
+                    type="button"
+                    onClick={props.onRunPatrol}
+                    className="flex min-h-[46px] items-center gap-2 rounded-[10px] bg-[#7F9C7E] px-5 py-3 text-[13px] font-semibold text-[#1A1A1A] transition-colors hover:bg-[#8fab8e]"
+                  >
+                    <Radar size={17} />
+                    {zh ? "立即查看最近巡檢" : "Review latest patrol"}
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => props.onNavigate("alerts")}
+                    className="flex min-h-[46px] items-center gap-2 rounded-[10px] border border-[#f4e9d533] px-4 py-3 text-[13px] font-semibold text-[#F4E9D5] transition-colors hover:border-[#F4E9D5]"
+                  >
+                    <Bell size={16} />
+                    {zh ? "看待複審案件" : "Open detections"}
+                  </button>
+                </div>
+
+                <p className="mt-4 text-[10.5px] leading-5 text-[#cec0a3d9]" style={{ fontFamily: MONO }}>
+                  {zh ? "最近巡檢" : "Last patrol"} {lastPatrol}
+                  <span className="mx-2 text-[#7F9C7E]">/</span>
+                  {patrolModeLabel}
+                  <span className="mx-2 text-[#7F9C7E]">/</span>
+                  {zh ? "狀態" : "status"} {patrolStatus}
+                  <span className="mx-2 text-[#7F9C7E]">/</span>
+                  {lastRunAlerts} {zh ? "警報" : "alerts"}
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <DetectionSpotlight
+            locale={locale}
+            alert={latestAlert}
+            sampleWork={props.works[0] || null}
+            lastRunCandidates={lastRunCandidates}
+            onOpenCase={props.onOpenCase}
+            onNavigate={props.onNavigate}
+          />
+        </div>
+      </section>
 
       {/* honesty banner (kept near the top so the demo/real distinction is read first) */}
       <div className="mb-5 flex items-start gap-2 rounded-[10px] border border-[#cfe0cb] bg-[#eef4ea] px-4 py-3 text-xs leading-5 text-[#3f5a3e]">
         <ShieldCheck size={15} className="mt-0.5 flex-none text-[#4f6a4e]" />
         <span>{honestyText}</span>
-      </div>
-
-      {/* 4-step flow — the primary "how it works" story, leads the screen */}
-      <div className="mb-6 rounded-[14px] border border-[#1a1a1a12] bg-white p-5">
-        <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
-          <p className="text-[11px] font-semibold tracking-[0.14em] text-[#1a1a1a99]" style={{ fontFamily: MONO }}>
-            {zh ? "保護流程 · 點選任一步驟前往對應畫面 →" : "How it works · click any step to open it →"}
-          </p>
-          <button
-            type="button"
-            onClick={props.onRunPatrol}
-            className="flex items-center gap-1.5 rounded-[8px] bg-[#1A1A1A] px-3.5 py-2 text-[12px] font-semibold text-[#F4E9D5] transition-colors hover:bg-[#2c2c2c]"
-          >
-            <ScanLine size={14} /> {zh ? "查看最近巡檢" : "Review latest patrol"}
-          </button>
-        </div>
-        <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
-          {steps.map((s, i) => (
-            <div key={s.step} className="relative">
-              <button
-                type="button"
-                onClick={() => props.onNavigate(s.target)}
-                className="group h-full w-full rounded-[10px] border border-[#1a1a1a12] p-3.5 text-left transition-all hover:-translate-y-0.5 hover:shadow-[0_6px_18px_rgba(26,26,26,0.08)]"
-                style={{ borderTopColor: s.accent, borderTopWidth: 3 }}
-              >
-                <p className="text-[11px] font-semibold" style={{ fontFamily: MONO, color: s.accent }}>
-                  {s.step}
-                </p>
-                <p className="mt-1.5 text-[15px] font-semibold">{s.label}</p>
-                <p className="mt-1 text-[12px] text-[#1a1a1a8c]">{s.note}</p>
-                <p className="mt-2 text-[19px] font-bold" style={{ fontFamily: MONO, color: s.accent }}>
-                  {s.value} <span className="text-[12px] text-[#1a1a1a73]">{s.unit}</span>
-                </p>
-                <span className="mt-2 inline-flex items-center gap-1 text-[11px] font-semibold text-[#374037] opacity-60 transition-opacity group-hover:opacity-100">
-                  {zh ? "前往" : "Open"} <ArrowRight size={12} className="transition-transform group-hover:translate-x-0.5" />
-                </span>
-              </button>
-              {i < steps.length - 1 && (
-                <ArrowRight
-                  size={16}
-                  className="absolute -right-[11px] top-1/2 z-10 hidden -translate-y-1/2 text-[#1a1a1a40] xl:block"
-                />
-              )}
-            </div>
-          ))}
-        </div>
       </div>
 
       {/* KPIs — current numbers, secondary to the flow, each with a plain-language line */}
@@ -1545,6 +1571,226 @@ function DashboardView(props: {
           ))}
         </div>
       </div>
+
+      {/* 4-step flow — now secondary, for users who want to understand the operating model */}
+      <div className="mt-5 rounded-[14px] border border-[#1a1a1a12] bg-white p-5">
+        <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
+          <div>
+            <p className="text-[11px] font-semibold tracking-[0.14em] text-[#1a1a1a99]" style={{ fontFamily: MONO }}>
+              {zh ? "運作方式 · 點選任一步驟前往對應畫面" : "Operating model · click any step to open it"}
+            </p>
+            <p className="mt-1 text-[12px] text-[#1a1a1a80]">
+              {zh ? "先看上方偵測結果；需要了解流程時，再從這裡看入庫、巡檢、分流與存證。" : "Read detection status first; use this flow when you need the register, patrol, triage, and evidence model."}
+            </p>
+          </div>
+          <button
+            type="button"
+            onClick={props.onRunPatrol}
+            className="flex items-center gap-1.5 rounded-[8px] bg-[#1A1A1A] px-3.5 py-2 text-[12px] font-semibold text-[#F4E9D5] transition-colors hover:bg-[#2c2c2c]"
+          >
+            <ScanLine size={14} /> {zh ? "重播雷達巡檢" : "Replay radar patrol"}
+          </button>
+        </div>
+        <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+          {steps.map((s, i) => (
+            <div key={s.step} className="relative">
+              <button
+                type="button"
+                onClick={() => props.onNavigate(s.target)}
+                className="group h-full w-full rounded-[10px] border border-[#1a1a1a12] p-3.5 text-left transition-all hover:-translate-y-0.5 hover:shadow-[0_6px_18px_rgba(26,26,26,0.08)]"
+                style={{ borderTopColor: s.accent, borderTopWidth: 3 }}
+              >
+                <p className="text-[11px] font-semibold" style={{ fontFamily: MONO, color: s.accent }}>
+                  {s.step}
+                </p>
+                <p className="mt-1.5 text-[15px] font-semibold">{s.label}</p>
+                <p className="mt-1 text-[12px] text-[#1a1a1a8c]">{s.note}</p>
+                <p className="mt-2 text-[19px] font-bold" style={{ fontFamily: MONO, color: s.accent }}>
+                  {s.value} <span className="text-[12px] text-[#1a1a1a73]">{s.unit}</span>
+                </p>
+                <span className="mt-2 inline-flex items-center gap-1 text-[11px] font-semibold text-[#374037] opacity-60 transition-opacity group-hover:opacity-100">
+                  {zh ? "前往" : "Open"} <ArrowRight size={12} className="transition-transform group-hover:translate-x-0.5" />
+                </span>
+              </button>
+              {i < steps.length - 1 && (
+                <ArrowRight
+                  size={16}
+                  className="absolute -right-[11px] top-1/2 z-10 hidden -translate-y-1/2 text-[#1a1a1a40] xl:block"
+                />
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function DetectionSpotlight({
+  locale,
+  alert,
+  sampleWork,
+  lastRunCandidates,
+  onOpenCase,
+  onNavigate,
+}: {
+  locale: Locale;
+  alert: AlertVM | null;
+  sampleWork: WorkVM | null;
+  lastRunCandidates: number;
+  onOpenCase: (id: string) => void;
+  onNavigate: (v: View) => void;
+}) {
+  const zh = locale === "zh-TW";
+
+  if (!alert) {
+    return (
+      <div className="flex min-h-[440px] flex-col justify-between border-t border-[#f4e9d51f] bg-[#EFE3CC] p-5 text-[#1A1A1A] lg:border-l lg:border-t-0 sm:p-7">
+        <div>
+          <p className="flex items-center gap-2 text-[11px] font-semibold tracking-[0.14em] text-[#4f6a4e]" style={{ fontFamily: MONO }}>
+            <ShieldCheck size={14} /> {zh ? "最新偵測結果" : "Latest detection result"}
+          </p>
+          <h2 className="mt-3 text-[27px] font-semibold leading-tight" style={{ fontFamily: MONO }}>
+            {zh ? "最近巡檢沒有形成警報。" : "No alert was created in the latest patrol."}
+          </h2>
+          <p className="mt-3 text-[13px] leading-6 text-[#1a1a1a8c]">
+            {zh
+              ? `這次雷達巡檢檢查了 ${lastRunCandidates} 筆候選影像，未達成疑似盜用門檻。你仍可查看巡檢來源與通路導入狀態。`
+              : `The latest radar patrol inspected ${lastRunCandidates} candidate image(s) and did not cross the suspected-copy threshold. You can still inspect patrol sources and channel status.`}
+          </p>
+        </div>
+        <div className="mt-6 grid gap-3 sm:grid-cols-[1fr_auto_1fr]">
+          <div className="rounded-[13px] border border-[#1a1a1a14] bg-white p-3">
+            <p className="mb-2 text-[10px] font-semibold tracking-[0.12em] text-[#4f6a4e]" style={{ fontFamily: MONO }}>
+              {zh ? "受保護原作" : "PROTECTED ORIGINAL"}
+            </p>
+            <Thumb src={sampleWork?.thumb} grad={sampleWork?.grad || GRADS[0]} className="aspect-[4/3] w-full rounded-[9px]" />
+            <p className="mt-2 truncate text-[11px] text-[#1a1a1a80]">{sampleWork?.name || (zh ? "原作樣本" : "Original sample")}</p>
+          </div>
+
+          <div className="flex items-center justify-center">
+            <div className="flex h-[92px] w-[92px] flex-col items-center justify-center rounded-full border-4 border-[#7F9C7E] bg-[#1A1A1A]">
+              <span className="text-[18px] font-bold leading-none text-[#7F9C7E]" style={{ fontFamily: MONO }}>
+                {zh ? "無命中" : "CLEAR"}
+              </span>
+              <span className="mt-1 text-[9px] tracking-[0.1em] text-[#CEC0A3]" style={{ fontFamily: MONO }}>
+                {lastRunCandidates} {zh ? "候選" : "CAND."}
+              </span>
+            </div>
+          </div>
+
+          <div className="rounded-[13px] border border-[#7f9c7e66] bg-white p-3">
+            <p className="mb-2 text-[10px] font-semibold tracking-[0.12em] text-[#4f6a4e]" style={{ fontFamily: MONO }}>
+              {zh ? "巡檢候選" : "PATROL CANDIDATES"}
+            </p>
+            <div className="relative flex aspect-[4/3] w-full items-center justify-center overflow-hidden rounded-[9px] bg-[#1A1A1A]">
+              <div className="absolute inset-3 rounded-full border border-[#7f9c7e44]" />
+              <div className="absolute inset-8 rounded-full border border-dashed border-[#d8b76a66]" />
+              <Radar size={34} className="ttd-pulse text-[#7F9C7E]" />
+              <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(90deg,transparent,rgba(127,156,126,0.18),transparent)]" />
+            </div>
+            <p className="mt-2 truncate text-[11px] text-[#1a1a1a80]">
+              {zh ? "未達疑似盜用門檻" : "Below suspected-copy threshold"}
+            </p>
+          </div>
+        </div>
+        <button
+          type="button"
+          onClick={() => onNavigate("channels")}
+          className="mt-6 inline-flex w-fit items-center gap-2 rounded-[10px] bg-[#1A1A1A] px-4 py-3 text-[13px] font-semibold text-[#F4E9D5]"
+        >
+          <Radar size={16} /> {zh ? "查看巡檢來源" : "View patrol sources"}
+        </button>
+      </div>
+    );
+  }
+
+  const proximity = Math.max(0, Math.round((1 - alert.distance / 128) * 100));
+  const copyLabel = alert.simulated
+    ? zh
+      ? "能力預覽：展示案件"
+      : "Capability preview: preview case"
+    : zh
+    ? "巡檢命中：待複審"
+    : "Patrol match: review";
+
+  return (
+    <div className="flex min-h-[440px] flex-col justify-between border-t border-[#f4e9d51f] bg-[#EFE3CC] p-5 text-[#1A1A1A] lg:border-l lg:border-t-0 sm:p-7">
+      <div>
+        <div className="mb-4 flex items-start justify-between gap-3">
+          <div>
+            <p className="flex items-center gap-2 text-[11px] font-semibold tracking-[0.14em] text-[#ED5D29]" style={{ fontFamily: MONO }}>
+              <Bell size={14} /> {zh ? "最新偵測比對" : "Latest match"}
+            </p>
+            <h2 className="mt-2 line-clamp-2 text-[24px] font-semibold leading-tight" style={{ fontFamily: MONO }}>
+              {alert.work}
+            </h2>
+          </div>
+          <StatusPill status={alert.status} locale={locale} />
+        </div>
+
+        <div className="grid gap-3 sm:grid-cols-[1fr_auto_1fr]">
+          <div className="rounded-[13px] border border-[#1a1a1a14] bg-white p-3">
+            <p className="mb-2 text-[10px] font-semibold tracking-[0.12em] text-[#4f6a4e]" style={{ fontFamily: MONO }}>
+              {zh ? "原作 ORIGINAL" : "ORIGINAL"}
+            </p>
+            <Thumb src={alert.thumb} grad={alert.grad} className="aspect-[4/3] w-full rounded-[9px]" />
+            <p className="mt-2 truncate text-[11px] text-[#1a1a1a80]">{alert.author}</p>
+          </div>
+
+          <div className="flex items-center justify-center">
+            <div
+              className="flex h-[92px] w-[92px] flex-col items-center justify-center rounded-full border-4 bg-[#1A1A1A]"
+              style={{ borderColor: simColor(alert.sim) }}
+            >
+              <span className="text-[25px] font-bold leading-none" style={{ fontFamily: MONO, color: simColor(alert.sim) }}>
+                {alert.sim}%
+              </span>
+              <span className="mt-1 text-[9px] tracking-[0.1em] text-[#CEC0A3]" style={{ fontFamily: MONO }}>
+                {zh ? "相似" : "MATCH"}
+              </span>
+            </div>
+          </div>
+
+          <div className="rounded-[13px] border border-[#ed5d2966] bg-white p-3">
+            <p className="mb-2 text-[10px] font-semibold tracking-[0.12em] text-[#ED5D29]" style={{ fontFamily: MONO }}>
+              {zh ? "巡檢發現 FOUND" : "FOUND"}
+            </p>
+            <div className="relative">
+              <Thumb src={alert.thumb} grad={alert.grad} sepia className="aspect-[4/3] w-full rounded-[9px]" />
+              <div className="pointer-events-none absolute inset-2 rounded-[6px] border-2 border-dashed border-[#ED5D29]" />
+            </div>
+            <p className="mt-2 truncate text-[11px] text-[#1a1a1a80]">{alert.channel}</p>
+          </div>
+        </div>
+
+        <div className="mt-4 grid gap-2.5 sm:grid-cols-3">
+          <div className="rounded-[10px] bg-white px-3 py-2.5">
+            <p className="text-[10px] text-[#1a1a1a73]">{zh ? "判定距離" : "Distance"}</p>
+            <p className="mt-1 text-[18px] font-bold" style={{ fontFamily: MONO }}>{alert.distance}</p>
+          </div>
+          <div className="rounded-[10px] bg-white px-3 py-2.5">
+            <p className="text-[10px] text-[#1a1a1a73]">{zh ? "門檻" : "Threshold"}</p>
+            <p className="mt-1 text-[18px] font-bold" style={{ fontFamily: MONO }}>{alert.threshold}</p>
+          </div>
+          <div className="rounded-[10px] bg-white px-3 py-2.5">
+            <p className="text-[10px] text-[#1a1a1a73]">{zh ? "特徵接近度" : "Proximity"}</p>
+            <p className="mt-1 text-[18px] font-bold" style={{ fontFamily: MONO }}>{proximity}%</p>
+          </div>
+        </div>
+
+        <p className="mt-4 rounded-[10px] border border-[#d8b76a80] bg-[#FBF6EC] px-3.5 py-2.5 text-[12px] leading-5 text-[#715817]">
+          {copyLabel} · {zh ? "候選仍需人工確認來源脈絡與授權，才會形成對外主張。" : "A candidate still needs human source-context and authorization review before any external claim."}
+        </p>
+      </div>
+
+      <button
+        type="button"
+        onClick={() => onOpenCase(alert.id)}
+        className="mt-5 inline-flex w-fit items-center gap-2 rounded-[10px] bg-[#ED5D29] px-4 py-3 text-[13px] font-semibold text-white"
+      >
+        <ExternalLink size={15} /> {zh ? "打開比對案件" : "Open comparison case"}
+      </button>
     </div>
   );
 }
@@ -2012,8 +2258,8 @@ function AlertsView(props: {
         desc={zh ? "系統依相似度與通路風險自動分流，點擊任一筆查看證據比對與處理選項。" : "Alerts are routed by similarity and channel risk. Click any row to see the evidence comparison and actions."}
         hint={
           zh
-            ? "怎麼看：用上方標籤篩選（全部／高風險／待複審／已處理），點任一列打開案件詳情。標有「示範案件」者為展示流程用。"
-            : "How to read: filter with the chips above (all / high / open / done) and click any row to open the case. Rows tagged “Demo case” illustrate the workflow."
+            ? "怎麼看：用上方標籤篩選（全部／高風險／待複審／已處理），點任一列打開案件詳情。標有「展示案件」者為展示流程用。"
+            : "How to read: filter with the chips above (all / high / open / done) and click any row to open the case. Rows tagged “Preview case” illustrate the workflow."
         }
       />
       <div className="mb-3.5 flex flex-wrap gap-2.5">
@@ -2105,8 +2351,8 @@ function CaseView(props: {
       <HintBanner
         text={
           zh
-            ? "怎麼看：左右對照「原創 vs 巡檢發現」，中央圓圈是相似度，下方「來源軌跡」是完整證據時間線。底部行動按鈕皆為示範，只會記錄到本案軌跡。"
-            : "How to read: compare original vs detected side by side, the ring shows similarity, and the provenance trace below is the full evidence timeline. The action buttons at the bottom are demos and only log to this case."
+            ? "怎麼看：左右對照「原創 vs 巡檢發現」，中央圓圈是相似度，下方「來源軌跡」是完整證據時間線。底部行動按鈕為安全操作，只會記錄到本案軌跡。"
+            : "How to read: compare original vs detected side by side, the ring shows similarity, and the provenance trace below is the full evidence timeline. The action buttons are safe-mode actions and only log to this case."
         }
       />
 
@@ -2260,27 +2506,27 @@ function CaseView(props: {
               className="rounded-full border border-[#d8b76a66] bg-[#3a3527] px-2 py-0.5 text-[10px] font-semibold text-[#D8B76A]"
               style={{ fontFamily: MONO }}
             >
-              {zh ? "示範" : "DEMO"}
+              {zh ? "安全操作" : "SAFE MODE"}
             </span>
           </div>
           <p className="mt-0.5 text-[10px] tracking-[0.08em] text-[#CEC0A3]" style={{ fontFamily: MONO }}>
-            {zh ? "示範流程 · 僅記錄到本案軌跡，不會真的送出" : "Demo workflow · logged to this case only, nothing is actually sent"}
+            {zh ? "MVP 試營運 · 僅記錄到本案軌跡，不會真的送出外部通知" : "MVP pilot · logged to this case only; no external notice is sent"}
           </p>
         </div>
         <div className="flex flex-wrap gap-2.5">
-          <button type="button" title={zh ? "示範：僅記錄到本案時間軸，不會真的送出下架" : "Demo: only logs to this case timeline; no real takedown is sent"} onClick={() => props.onAction("dmca")} className="rounded-[9px] bg-[#ED5D29] px-4 py-2.5 text-[12.5px] font-semibold text-white">
+          <button type="button" title={zh ? "安全操作：僅記錄到本案時間軸，不會真的送出下架" : "Safe mode: only logs to this case timeline; no real takedown is sent"} onClick={() => props.onAction("dmca")} className="rounded-[9px] bg-[#ED5D29] px-4 py-2.5 text-[12.5px] font-semibold text-white">
             {zh ? "發出 DMCA 下架" : "Send DMCA"}
           </button>
-          <button type="button" title={zh ? "示範：於本案產生一筆存證報告項目" : "Demo: adds an evidence-report entry to this case"} onClick={() => props.onAction("report")} className="rounded-[9px] bg-[#7F9C7E] px-4 py-2.5 text-[12.5px] font-semibold text-[#1A1A1A]">
+          <button type="button" title={zh ? "安全操作：於本頁產生一筆存證報告預覽" : "Safe mode: adds an evidence-report preview to this page"} onClick={() => props.onAction("report")} className="rounded-[9px] bg-[#7F9C7E] px-4 py-2.5 text-[12.5px] font-semibold text-[#1A1A1A]">
             {zh ? "產生存證報告" : "Generate report"}
           </button>
-          <button type="button" title={zh ? "示範：記錄封存動作" : "Demo: logs an archive action"} onClick={() => props.onAction("archive")} className="rounded-[9px] border border-[#f4e9d54d] px-4 py-2.5 text-[12.5px] font-semibold text-[#F4E9D5]">
+          <button type="button" title={zh ? "安全操作：記錄封存動作" : "Safe mode: logs an archive action"} onClick={() => props.onAction("archive")} className="rounded-[9px] border border-[#f4e9d54d] px-4 py-2.5 text-[12.5px] font-semibold text-[#F4E9D5]">
             {zh ? "封存證據" : "Archive"}
           </button>
-          <button type="button" title={zh ? "示範：記錄聯絡通知" : "Demo: logs a contact notice"} onClick={() => props.onAction("contact")} className="rounded-[9px] border border-[#f4e9d54d] px-4 py-2.5 text-[12.5px] font-semibold text-[#F4E9D5]">
+          <button type="button" title={zh ? "安全操作：記錄聯絡通知" : "Safe mode: logs a contact notice"} onClick={() => props.onAction("contact")} className="rounded-[9px] border border-[#f4e9d54d] px-4 py-2.5 text-[12.5px] font-semibold text-[#F4E9D5]">
             {zh ? "聯絡對方" : "Contact"}
           </button>
-          <button type="button" title={zh ? "示範：將本案標記為誤判" : "Demo: marks this case as a false positive"} onClick={() => props.onAction("dismiss")} className="rounded-[9px] px-3 py-2.5 text-[12.5px] font-semibold text-[#CEC0A3]">
+          <button type="button" title={zh ? "安全操作：將本案標記為誤判" : "Safe mode: marks this case as a false positive"} onClick={() => props.onAction("dismiss")} className="rounded-[9px] px-3 py-2.5 text-[12.5px] font-semibold text-[#CEC0A3]">
             {zh ? "標記誤判" : "Dismiss"}
           </button>
         </div>
@@ -2501,7 +2747,7 @@ function ReportsView(props: {
   const zh = locale === "zh-TW";
   const primaryWork = props.alerts[0]?.work ? `${props.alerts[0].work} ${props.alerts[0].workEn}`.trim() : props.works[0]?.name || "—";
   const reportType = (label?: string) => {
-    if (label === "simulated") return zh ? "示範報告" : "Demo report";
+    if (label === "simulated") return zh ? "展示報告" : "Preview report";
     if (label === "actual_pending_review") return zh ? "真實巡檢存證（待複審）" : "Real patrol evidence (pending review)";
     return zh ? "內部存證報告" : "Internal evidence report";
   };
@@ -2523,7 +2769,7 @@ function ReportsView(props: {
         eyebrow={zh ? "存證報告 · CERTIFIED REPORTS" : "Certified reports"}
         title={zh ? "盜用存證報告" : "Evidence reports"}
         desc={zh ? "每份報告皆含電子憑證、相似度比對、來源軌跡與人工複審狀態；真實巡檢命中仍需確認來源脈絡與授權。" : "Each report bundles the certificate, similarity comparison, source trail, and review state. Real patrol matches still require human source-context and authorization review."}
-        hint={zh ? "怎麼看：每列是一份存證報告，含關聯案件、類型與可驗證存證憑證；點「匯出（示範）」不會真的產生檔案。" : "How to read: each row is an evidence report with its linked case, type, and a verifiable certificate. “PDF/Export” is a demo — no file is actually produced."}
+        hint={zh ? "怎麼看：每列是一份存證報告，含關聯案件、類型與可驗證存證憑證；點「預覽匯出」只會播放本頁操作，不會真的產生外部檔案。" : "How to read: each row is an evidence report with its linked case, type, and a verifiable certificate. “Preview export” only plays the page action and does not create an external file."}
       />
       <div className="overflow-hidden rounded-[14px] border border-[#1a1a1a12] bg-white">
         <div className="flex items-center gap-3.5 bg-[#EFE3CC] px-5 py-3 text-[10px] tracking-[0.08em] text-[#1a1a1a8c]" style={{ fontFamily: MONO }}>
@@ -2552,13 +2798,13 @@ function ReportsView(props: {
                 onClick={() => props.onExport(r.id)}
                 className="flex items-center gap-1 rounded-[7px] border border-[#1a1a1a33] px-2.5 py-1.5 text-[11px] font-semibold"
               >
-                <Download size={12} /> {zh ? "匯出（示範）" : "PDF"}
+                <Download size={12} /> {zh ? "預覽匯出" : "Preview"}
               </button>
             </span>
           </div>
         ))}
         {rows.length === 0 && (
-          <p className="px-5 py-8 text-center text-sm text-[#1a1a1a73]">{zh ? "尚無存證報告。在案件詳情點「產生存證報告」即可建立一份（示範）。" : "No reports yet. Open a case and click “Generate report” to create one (demo)."}</p>
+          <p className="px-5 py-8 text-center text-sm text-[#1a1a1a73]">{zh ? "尚無存證報告。在案件詳情點「產生存證報告」即可建立一份本頁預覽報告。" : "No reports yet. Open a case and click “Generate report” to create a page-level preview report."}</p>
         )}
       </div>
     </div>

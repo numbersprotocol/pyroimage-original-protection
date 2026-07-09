@@ -30,23 +30,23 @@ None (pure frontend, no new external deps).
 ### Sprint Contract
 - **What will be built**: brand rename to OriginRadar across App.tsx + index.html; dashboard hero reframed detection-first (status strip, scan CTA, KPI-first, latest-detection comparison surfaced); onboarding heading updated.
 - **Acceptance criteria**:
-  - [ ] All product-name surfaces show 原創雷達 / OriginRadar; tagline unchanged
-  - [ ] Dashboard leads with detection status + scan CTA + latest-detection card
-  - [ ] index.html title/meta renamed
-- **Status**: IN PROGRESS
+  - [x] All product-name surfaces show 原創雷達 / OriginRadar; tagline unchanged
+  - [x] Dashboard leads with detection status + scan CTA + latest-detection card
+  - [x] index.html title/meta renamed
+- **Status**: IN REVIEW
 
 ## Phase 2: P1 — IA reorder + KPI refine + verify positioning
 ### Sprint Contract
 - **What will be built**: nav order to detection narrative; KPI order detection-first; verify nav desc tweak.
 - **Acceptance criteria**:
-  - [ ] Nav order = 總覽 → 疑似盜用 → 原創庫 → 監控通路 → 存證報告 → 原創查驗
-  - [ ] KPI leads with detection numbers
-- **Status**: PENDING
+  - [x] Nav order = 總覽 → 疑似盜用 → 原創庫 → 監控通路 → 存證報告 → 原創查驗
+  - [x] KPI leads with detection numbers
+- **Status**: IN REVIEW
 
 ## Phase 3: P2 — Scan visual + demo-tone consolidation + brand consistency
 ### Sprint Contract
 - **What will be built**: strengthen scan CTA; consolidate demo/示範 wording to one honest line; keep fonts/colors/tagline compliant.
 - **Acceptance criteria**:
-  - [ ] Demo wording consolidated, honesty boundary intact
-  - [ ] lint + build:pages green; browser smoke pass
-- **Status**: PENDING
+  - [x] Demo wording consolidated, honesty boundary intact
+  - [x] lint + build:pages green; browser smoke pass
+- **Status**: IN REVIEW
