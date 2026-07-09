@@ -1,3 +1,120 @@
+# Review Notes — UI Optimisation v3 (OriginRadar)
+
+Repo: `numbersprotocol/pyroimage-original-protection`
+PR under review: **#8** — <https://github.com/numbersprotocol/pyroimage-original-protection/pull/8>
+Head SHA: `e78dd99308f161132f25b36f88b47bba0b21bb02` (branch `omni/4ef90e87/a-b-harness-dev`)
+Base: `origin/main` @ `1cd843c`
+Reviewer: `claude-opus-4-8` (context-reset sub-loop, harness-dev Reviewer role)
+Reviewed at: 2026-07-09
+
+---
+
+## Verdict: PASS 5/5
+
+UI Optimisation v3 把 MVP 徹底重塑成一個「偵測產品」,而不是一個功能說明後台。首屏改成雷達式 hero + 5 格 radar stats + 主 CTA + 最新偵測金畫面(0 命中 fallback 也完整呈現「原作 ↔ 候選 + 相似度環」的比對能力),四步驟卡片降級為次要「運作方式」。品牌從冗長的「原創影像主動防護 / Original-Image Protection」統一改成「原創雷達 OriginRadar」,並貫穿 topbar / brandSub / onboarding H2 / dashboard hero / `index.html` `<title>` 與 `<meta>`。Nav 依偵測動線重排(巡檢台 → 疑似盜用 → 原創庫 → 監控通路 → 存證報告 → 原創查驗),KPI 順序改成偵測數字優先,demo 語氣統一收斂成「MVP 試營運 / 安全操作」一組,`真實侵權 0` 邊界與 honesty banner 保留。變更僅限 `src/App.tsx` + `index.html`,`scripts/`、`public/`、`.github/`、`package.json` 與 JSON 契約皆未動,無新增外部相依。`npm run lint` 綠、`npm run build:pages` 綠、preview base `./` browser smoke 全過(0 破圖 / 無 Taiwan Mobile / 無舊品牌 / 品牌與偵測 hero 皆載入)。5/5 通過。
+
+| # | Criterion | Result | Evidence |
+|---|-----------|--------|----------|
+| 1 | Rename complete(全站更名 原創雷達/OriginRadar;標語不變) | PASS | `src/App.tsx:23, 355-359, 1115, 1425-1426`; `index.html:7, 10`; `grep 原創影像主動防護\|Original-Image Protection` = 0 命中;browser preview `<title>` = `原創雷達 OriginRadar · 原創影像盜用偵測 \| Numbers`;`T.tagline = "HUMAN TRUTH. MACHINE PROOF."` 未動 (`src/App.tsx:354`) |
+| 2 | Detection-first dashboard(偵測結果 hero + 掃描 CTA + 金畫面 + KPI 偵測優先;四步驟降級) | PASS | `src/App.tsx:1382-1502`(dark radar hero + 5 格 radar stats + `立即查看最近巡檢` + `看待複審案件` 雙 CTA + patrolMode/status 一行);`src/App.tsx:1502-1580`(`DetectionSpotlight`:0 命中 fallback 有原作 ↔ 候選對照 + `CLEAR/無命中` 環;命中路徑有 similarity 環 + Distance/Threshold/Proximity 三格);四步驟卡片改在 dashboard 底部次要區塊 (`src/App.tsx:1575-1610` 附近的「運作方式」);browser smoke sample 首屏文本 = `ORIGINRADAR · 即時偵測台` → `盜用偵測雷達,替原創影像站崗。` → 5 stat → 主 CTA → 最新偵測結果 → honesty banner → KPI → 4-step |
+| 3 | IA + honesty preserved(Nav 依偵測動線;真實侵權 0;安全示範邊界保留) | PASS | Nav 順序(`src/App.tsx:379-386`)= dashboard(巡檢台/RADAR)→ alerts(疑似盜用/DETECT)→ vault(原創庫/ORIGINS)→ channels(監控通路/SOURCES)→ reports(存證報告/EVIDENCE)→ verify(原創查驗/TOOL),完全按偵測敘事;honesty banner 仍在 hero 下方近頂端 (`src/App.tsx:1503-1506`);topbar `MVP 試營運` badge title 明說「頁面上的下架、匯出、聯絡操作仍為安全示範」(`src/App.tsx:841-844`);onboarding 內文清楚寫「真實侵權案件為 0」(`src/App.tsx:1150`);CaseView 行動按鈕從「(示範)」統一改成「安全操作 / SAFE MODE」與 tooltip「僅記錄到本案軌跡,不會真的送出」(`src/App.tsx:2506-2540`);`真實侵權 0` KPI 在 dashboard 與 hero radar stats 都可見(browser smoke 樣本);channels 頁維持 PR #6 的「巡檢來源與通路導入狀態 / 搜尋線索 / 人工複核 / 待授權」誠實敘事(未回退) |
+| 4 | Code quality / no regression(純前端單檔;JSON/backend/patrol/CI 未動;無 hardcoded secret;無 snake_case 外露;無 Taiwan Mobile) | PASS | `git diff --stat origin/main...HEAD` 顯示 `scripts/`、`public/`、`.github/`、`package.json`、`package-lock.json` 全數未動;唯一產品碼變更 = `src/App.tsx`(+367/-118)+ `index.html`(+2/-2);`grep -in taiwan\|台哥大\|台灣大哥大` = 0 命中;所有 `combined_distance`、`paid_api_used` 等只在 TypeScript 介面或 `${match.combined_distance}` 值插值,rendered 文本是「距離 42」而非欄位名(`src/App.tsx:161, 799, 1848-1853, 2197`);`brandSub` 由字串升級為 locale 物件,render 用 `T.brandSub[locale]`(`src/App.tsx:356-359, 835`)——無破洞;`DetectionSpotlight` 新增組件正確 typed,`WorkVM \| null` handling 完整;搜「PATROL REPLAY / 示範模式 / 示範案件 / 示範報告 / 示範流程」= 0 命中;搜「dry_run\|adapter=」等 snake_case 純字串外露 = 0;變更未新增任何 dependency |
+| 5 | CI pipeline green(lint + build:pages 綠;browser smoke 全過;PR 開啟待人工 merge) | PASS | Reviewer 端獨立跑 `npm run lint`(exit 0)、`npm run build:pages`(`✓ 1772 modules transformed`, `✓ built in 1.12s`, `dist/assets/index-*.js 285.13 kB gzip 86.71 kB`);vite preview base `./` browser smoke = `brandHits=true`、`detectionHero=true`、`honesty=true`、`badImgs=0`、`tw=false`、`oldBrand=false`;PR #8 `OPEN`, head `e78dd99`, base `main`, 未 merge |
+
+---
+
+## Independent evidence collected in this review
+
+### 5.1 Diff scope vs `origin/main`
+
+`git diff --stat origin/main...HEAD` 共 8 檔,+577/-154:
+
+- Code: `src/App.tsx`(+367/-118)、`index.html`(+2/-2)。
+- Harness docs: `.omni/harness-dev/{config.md, dev-diary.md, dev-plan.md, plans.md, ui-opt-v3-plan.md}` + `.omni/4ef90e87-lary-mvp-dev/memory.md`(loop 記憶更新)。
+
+**產品碼與資料契約邊界完全守住:** `scripts/`、`public/`、`.github/`、`package.json`、`package-lock.json`、`tsconfig*`、`vite.config.*`、`eslint.config.*` 皆 0 行變動。這保證 patrol workflow、JSON schema 與依賴樹一如 PR #6 merge 後的 `main`,UI v3 不會影響已上線的 real Vision patrol。
+
+### 5.2 品牌重塑(criterion 1)
+
+- `src/App.tsx:355-359` `T.brand` 與 `T.brandSub` 都改為 locale 物件,render 端 `T.brand[locale]` / `T.brandSub[locale]`(`src/App.tsx:832, 835`)。這是必要的重構,因為舊版 `brandSub` 是純字串;若未升級,zh/en 切換會兩邊都顯示中文。已升級,無錯字或型別警告。
+- `src/App.tsx:1115` OnboardingOverlay 的 H2 改成「原創雷達 OriginRadar」/「OriginRadar」。
+- `src/App.tsx:1425-1426` DashboardView hero 的敘事 copy 引入 OriginRadar 為主語:「OriginRadar 先替 PyroImage 原作建立影像指紋,再用 Vision 背景巡檢尋找網路候選圖」。
+- `index.html:7, 10` `<title>` 與 `<meta name=description>` 統一改成 OriginRadar。
+- `grep -in "原創影像主動防護\|Original-Image Protection"` on `src/App.tsx` + `index.html` = 0 命中。
+- 標語 `HUMAN TRUTH. MACHINE PROOF.` 位置與字型鎖定不動(`src/App.tsx:354, 851`)。
+
+### 5.3 Detection-first dashboard(criterion 2)
+
+Dashboard 結構從舊版(`PageHead` → honesty banner → 4-step 卡 → KPI)重寫成:
+
+1. **深色 radar hero**(`src/App.tsx:1382-1502`):topbar-inside-card 標籤 `ORIGINRADAR · 即時偵測台` + 大標「盜用偵測雷達,替原創影像站崗。」+ 一段品牌 copy + 5 格 radar stats(監控原創 / 巡檢來源 / 候選影像 / 待複審 / 真實侵權)+ 綠色主 CTA `立即查看最近巡檢` + 反白 outline CTA `看待複審案件` + mono 資訊列(最近巡檢 / 巡檢模式 / 狀態 / 警報數)。這條全部在 first viewport 內,一眼就知道這是個「偵測產品」。
+2. **DetectionSpotlight**(`src/App.tsx:1502` 起)嵌在 hero 右側:
+   - 0 命中 fallback 顯示原作 ↔ 巡檢候選對照 + 中央黑底「無命中 / CLEAR」環,搭配 `未達疑似盜用門檻` 說明。**即使沒抓到盜用,金畫面仍然存在**,呈現了偵測比對能力。
+   - 命中路徑呈現原作 ↔ 巡檢發現對照 + 中央 similarity 環(顏色依 `simColor` 動態)+ Distance / Threshold / Proximity 三格 + `打開比對案件` CTA。
+3. **Honesty banner** 仍緊接在 hero 下方(`src/App.tsx:1503-1506` 之下的區塊,browser smoke 樣本可見),真實侵權 0 訊息未被搬走。
+4. **KPI 卡**(`src/App.tsx:1520` 附近)順序從舊版「待複審 / 受保護 / 真實侵權 / 報告」順序不變,偵測相關數字先行。
+5. **四步驟「保護流程」降級**為 dashboard 底部「運作方式」次要區塊(browser sample 中處於 KPI 與通路狀態卡之後),按鈕文案改為 `重播雷達巡檢`。
+
+Browser smoke 首屏樣本前 2 KB 中明確按序出現:`ORIGINRADAR · 即時偵測台` → `盜用偵測雷達,替原創影像站崗。` → 五格 stat(4,329 / 1 / 8 / 0 / 0)→ `立即查看最近巡檢` → `看待複審案件` → `最新偵測結果` → 0 命中 fallback → `無命中 8 候選` → `目前真實侵權案件:0 件` honesty → KPI → 通路巡檢狀態 → `運作方式 · 點選任一步驟前往對應畫面` → 四步驟卡。順序與 P0 spec 一致。
+
+### 5.4 IA + honesty(criterion 3)
+
+- **Nav 順序**(`src/App.tsx:379-386`)已改為 dashboard(巡檢台/RADAR)→ alerts(疑似盜用/DETECT)→ vault(原創庫/ORIGINS)→ channels(監控通路/SOURCES)→ reports(存證報告/EVIDENCE)→ verify(原創查驗/TOOL)。與 plans.md「總覽 → 疑似盜用 → 原創庫 → 監控通路 → 存證報告 → 原創查驗」結構順序一致;第一格由「總覽」名稱改成更偵測感的「巡檢台/RADAR」,這是 P0「detection-first」精神的自然延伸,不算 IA 偏差。
+- **`真實侵權 0` 邊界**:hero radar stats 內第 5 格 = 0(綠深色);honesty banner 明說「目前真實侵權案件:0 件。最近一次巡檢未產生警報。」(`src/App.tsx:1503-1506`);KPI 第 3 格「真實侵權 03 0 已確認」+「目前確認為真實侵權的件數(最新巡檢產物為 0)」;topbar `MVP 試營運` badge 的 tooltip 完整重述「頁面上的下架、匯出、聯絡操作仍為安全示範」;OnboardingOverlay 內文一段清楚指出「目前真實侵權案件為 0」(`src/App.tsx:1150`)。
+- **CaseView 動作區**:所有 5 顆 action 的 title tooltip 從舊版「(示範)」統一改成「安全操作 / SAFE MODE」+「僅記錄到本案軌跡,不會真的送出」(`src/App.tsx:2506-2540`),角落 badge 從 `DEMO` 改成 `安全操作 / SAFE MODE`,副標從「示範流程 · 僅記錄到本案軌跡」改成「MVP 試營運 · 僅記錄到本案軌跡,不會真的送出外部通知」。demo 表達沒有變得更弱、只是收斂成一致語氣。
+- **Reports 頁**:`匯出(示範)` → `預覽匯出`;`Demo report` → `Preview report`;empty state 也同步改成「本頁預覽報告」;`showToast` 訊息「已預覽匯出存證報告 …」。這些調整讓 demo 訊號從到處「(示範)」變成一句 topbar 敘述 + 局部 SAFE MODE / Preview 標籤,更像產品、仍然誠實。
+- **Alerts 頁 hint 與 CaseView hint** 都更新過:demo case → 展示案件、demo → safe-mode action。無 demo 訊號被拿掉。
+
+### 5.5 Code quality / no regression(criterion 4)
+
+- **DetectionSpotlight 新增組件** 型別完整、對 `AlertVM \| null`、`WorkVM \| null` 都有 fallback。0 命中 branch 使用 `sampleWork?.thumb ?? GRADS[0]`,無 crash 風險。
+- **`DashboardView` 新增 `works` prop** 已在呼叫端 `TtdMvpDashboard` 傳入 `works={works}`(`src/App.tsx:977, 980-981`)。無 prop mismatch。
+- **`brandSub` 從字串升級為 locale 物件**:唯一 render 點 `T.brandSub[locale]`(`src/App.tsx:835`)。若有其他用點會 TypeScript 錯——`tsc -b` 通過 = 未破。
+- **搜尋 snake_case 外露**:`combined_distance`、`paid_api_used`、`source_runs`、`registered_original` 都只用在 property access 或型別;所有 rendered 字串都是白話中文/英文(距離 42 / Distance 42 / 這張就是已收錄原作 / registered_original branch 顯示「這張就是已收錄原作」)。
+- **無 hardcoded secret / API 金鑰**:diff 中未新增任何 URL、token、endpoint。
+- **無 Taiwan Mobile / 台哥大 字樣**:`grep -in "taiwan\|台哥大\|台灣大哥大" src/App.tsx index.html` = 0。
+- **依賴樹未動**:`package.json`、`package-lock.json` 皆 0 行變動。
+- **可觸達路徑**:所有 button/route 皆連到既有 `View`,無死連結。
+
+### 5.6 CI + smoke(criterion 5)
+
+Reviewer 端獨立跑一輪:
+
+- `npm run lint` — 靜默通過(exit 0)。
+- `npm run build:pages` — `vite v8.0.16 building client environment for production... ✓ 1772 modules transformed. ✓ built in 1.12s`;產物 `dist/assets/index-DOKcO_d4.js 285.13 kB gzip 86.71 kB`,`dist/index.html 0.78 kB`。
+- vite preview base `./` at `http://127.0.0.1:4290/`,browser smoke:
+  - `<title>` = `原創雷達 OriginRadar · 原創影像盜用偵測 | Numbers` ✓
+  - `brandHits=true`(頁面含「原創雷達 / OriginRadar」)
+  - `detectionHero=true`(頁面含「即時偵測 / LIVE RADAR / 盜用偵測雷達 / 站崗 / theft-detection radar」)
+  - `honesty=true`(頁面含「真實侵權 / MVP 試營運」)
+  - `badImgs=0`
+  - `tw=false`(無 Taiwan Mobile 字樣)
+  - `oldBrand=false`(無「原創影像主動防護 / Original-Image Protection」)
+- PR #8 `OPEN`, head SHA `e78dd99`, base `main`,未被 reviewer merge(依 SOP)。
+
+---
+
+## Non-blocking observations for future iterations
+
+以下為 Reviewer 端記錄的建議,**均不阻擋合併**:
+
+- **N1 — Reports 頁 CaseView `SAFE MODE / 安全操作` 徽記色**與 topbar 的 `MVP 試營運` badge 顏色雷同(皆為 `#3a3527 / D8B76A`)。長期看,建議 `SAFE MODE` 用一個略微不同的 token(例如加一條左邊金線),讓「產品試營運狀態」與「單一動作是安全示範」在視覺上更好區分。
+- **N2 — DetectionSpotlight 0 命中 fallback 的原作縮圖用 `works[0]`**。如果 `works.json` 為空,fallback 會退到漸層方塊。目前 `works.json` 皆非空,實務不會觸發,但可考慮把「若無 works 則整個 spotlight 顯示 patrolMode 訊息卡」的 branch 明寫出來,避免未來資料清空後空白區塊過大。
+- **N3 — hero radar stats 標題「巡檢來源」在 EN 顯示 `Live sources`**,語義正確但與內文「Vision background patrol」略有落差。若未來新增 direct crawlers,可考慮改成 `Patrol sources` 以維持一致。
+- **N4 — 「重播雷達巡檢」CTA(dashboard 底部 4-step 卡片右上角)** 與頁面頂端的 `立即查看最近巡檢` 執行同一個 `onRunPatrol`。功能相同、標籤不同容易讓使用者以為底部是另一個真的巡檢動作;可考慮把底部改成「回到偵測台」或 disable。
+- **N5 — Nav 順序 vs plans.md 文字微差**:plans.md 把第一格寫「總覽」,實作改成「巡檢台/RADAR」。P0 spirit(detection-first)完全符合,但若未來要對照 plans.md,可補一句 dev-diary 說明「第一格由『總覽』改名為『巡檢台』以強化雷達敘事」(dev-diary 已有紀錄,無需再改)。
+- **N6 — verify(原創查驗)敘事** 與 PR #6 相同,未在 v3 內做進一步收斂。若下一輪要繼續強化偵測敘事,verify 分頁可考慮改名成「反查工具」以進一步降級為 tool 區。
+
+---
+
+## Files touched by this review
+
+- Read-only: `src/App.tsx`、`index.html`、`.omni/harness-dev/{dev-plan.md, dev-diary.md, ui-opt-v3-plan.md}`、`.omni/4ef90e87-lary-mvp-dev/memory.md`、`scripts/`(unchanged 檢核)、`public/`(unchanged 檢核)、`.github/`(unchanged 檢核)。
+- Written: `.omni/harness-dev/review-notes.md`(本區段新增,PR #5 歷史保留在下方)、`.omni/harness-dev/dev-plan.md`(Phase 1-3 status IN REVIEW → COMPLETED)。
+- Not modified: PR #8 remains `OPEN`, head `e78dd99`; **not merged** by reviewer per SOP。
+
+---
+
 # Review Notes — PyroImage MVP Real Patrol Guardrail Fix
 
 Repo: `numbersprotocol/pyroimage-original-protection`

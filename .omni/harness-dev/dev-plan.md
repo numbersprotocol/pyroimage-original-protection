@@ -33,7 +33,7 @@ None (pure frontend, no new external deps).
   - [x] All product-name surfaces show 原創雷達 / OriginRadar; tagline unchanged
   - [x] Dashboard leads with detection status + scan CTA + latest-detection card
   - [x] index.html title/meta renamed
-- **Status**: IN REVIEW
+- **Status**: COMPLETED (Reviewer PASS 5/5 on 2026-07-09, PR #8, head `e78dd99`)
 
 ## Phase 2: P1 — IA reorder + KPI refine + verify positioning
 ### Sprint Contract
@@ -41,7 +41,7 @@ None (pure frontend, no new external deps).
 - **Acceptance criteria**:
   - [x] Nav order = 總覽 → 疑似盜用 → 原創庫 → 監控通路 → 存證報告 → 原創查驗
   - [x] KPI leads with detection numbers
-- **Status**: IN REVIEW
+- **Status**: COMPLETED (Reviewer PASS 5/5 on 2026-07-09, PR #8, head `e78dd99`)
 
 ## Phase 3: P2 — Scan visual + demo-tone consolidation + brand consistency
 ### Sprint Contract
@@ -49,4 +49,4 @@ None (pure frontend, no new external deps).
 - **Acceptance criteria**:
   - [x] Demo wording consolidated, honesty boundary intact
   - [x] lint + build:pages green; browser smoke pass
-- **Status**: IN REVIEW
+- **Status**: COMPLETED (Reviewer PASS 5/5 on 2026-07-09, PR #8, head `e78dd99`)
