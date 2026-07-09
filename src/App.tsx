@@ -352,10 +352,13 @@ function metricDisplay(metrics: DashboardMetric[], id: string, fallback: string)
 
 const T = {
   tagline: "HUMAN TRUTH. MACHINE PROOF.",
-  brand: { "zh-TW": "原創影像主動防護", en: "Original-Image Protection" },
-  brandSub: "由 Numbers 提供 · 來源巡檢",
+  brand: { "zh-TW": "原創雷達", en: "OriginRadar" },
+  brandSub: {
+    "zh-TW": "原創影像盜用偵測 · Powered by Numbers",
+    en: "Original-image theft detection · Powered by Numbers",
+  },
   menu: { "zh-TW": "主選單 · MENU", en: "Menu" },
-  runPatrol: { "zh-TW": "查看最近巡檢", en: "Review latest patrol" },
+  runPatrol: { "zh-TW": "執行巡檢", en: "Run patrol" },
   coverage: { "zh-TW": "保護範圍 · COVERAGE", en: "Coverage" },
   protectedOriginals: { "zh-TW": "受保護原創影像", en: "protected originals" },
   channels: { "zh-TW": "監控通路", en: "channels" },
@@ -373,12 +376,12 @@ const NAV: Array<{
   descZh: string;
   descEn: string;
 }> = [
-  // Order follows the protection story: overview → register → patrol → triage → certify → tool.
-  { id: "dashboard", icon: LayoutDashboard, zh: "總覽", en: "Overview", eyebrow: "OVERVIEW", descZh: "一頁看懂運作與現況", descEn: "See how it works & status" },
-  { id: "vault", icon: Images, zh: "原創庫", en: "Vault", eyebrow: "STEP 01", descZh: "已簽署保護的原創影像", descEn: "Protected original images" },
-  { id: "channels", icon: Radar, zh: "監控通路", en: "Channels", eyebrow: "STEP 02", descZh: "巡檢來源與通路狀態", descEn: "Patrol source & channel status" },
-  { id: "alerts", icon: Bell, zh: "疑似盜用", en: "Alerts", eyebrow: "STEP 03", descZh: "系統發現、待你確認的案件", descEn: "Findings awaiting review" },
-  { id: "reports", icon: FileText, zh: "存證報告", en: "Reports", eyebrow: "STEP 04", descZh: "可交付法務的存證報告", descEn: "Deliverable evidence reports" },
+  // Order follows the detection narrative: radar → detections → origins → sources → evidence → tool.
+  { id: "dashboard", icon: LayoutDashboard, zh: "巡檢台", en: "Radar", eyebrow: "RADAR", descZh: "偵測現況與最新結果", descEn: "Detection status & latest results" },
+  { id: "alerts", icon: Bell, zh: "疑似盜用", en: "Detections", eyebrow: "DETECT", descZh: "系統發現、待你確認的案件", descEn: "Findings awaiting review" },
+  { id: "vault", icon: Images, zh: "原創庫", en: "Vault", eyebrow: "ORIGINS", descZh: "已簽署保護的原創影像", descEn: "Protected original images" },
+  { id: "channels", icon: Radar, zh: "監控通路", en: "Channels", eyebrow: "SOURCES", descZh: "巡檢來源與通路狀態", descEn: "Patrol source & channel status" },
+  { id: "reports", icon: FileText, zh: "存證報告", en: "Reports", eyebrow: "EVIDENCE", descZh: "可交付法務的存證報告", descEn: "Deliverable evidence reports" },
   { id: "verify", icon: ShieldCheck, zh: "原創查驗", en: "Verify", eyebrow: "TOOL", descZh: "用範例查已收錄樣本", descEn: "Check indexed sample images" },
 ];
 
@@ -829,7 +832,7 @@ export function TtdMvpDashboard() {
               {T.brand[locale]}
             </p>
             <p className="text-[10px] tracking-[0.13em] text-[#7F9C7E]" style={{ fontFamily: MONO }}>
-              {T.brandSub}
+              {T.brandSub[locale]}
             </p>
           </div>
           <span
