@@ -12,6 +12,14 @@ const DEFAULT_MAX_CANDIDATES_PER_ASSET = 8;
 const DEFAULT_CACHE_TTL_DAYS = 30;
 const INTERNAL_HOSTS = ["dia-cdn.numbersprotocol.io", "verify.numbersprotocol.io", "numbersprotocol.io"];
 
+class VisionImageAnnotationError extends Error {
+  constructor(visionError) {
+    super(`Vision WEB_DETECTION image annotation error: ${redactSignedQueryInText(JSON.stringify(visionError))}`);
+    this.name = "VisionImageAnnotationError";
+    this.visionError = visionError;
+  }
+}
+
 function parseBooleanEnv(name, fallback = false) {
   if (process.env[name] === "1" || process.env[name] === "true") return true;
   if (process.env[name] === "0" || process.env[name] === "false") return false;
@@ -226,7 +234,7 @@ async function callVisionWebDetection({ imageUrl, maxResults, projectId }) {
   }
   const firstResponse = payload.responses?.[0] || {};
   if (firstResponse.error) {
-    throw new Error(`Vision WEB_DETECTION returned error: ${redactSignedQueryInText(JSON.stringify(firstResponse.error))}`);
+    throw new VisionImageAnnotationError(firstResponse.error);
   }
 
   return {
@@ -261,6 +269,8 @@ export function createVisionWebDetectionAdapter(options = {}) {
     dry_run_skips: 0,
     blocked_by_budget: 0,
     missing_query_image: 0,
+    api_errors: 0,
+    last_errors: [],
     candidates_returned: 0,
     budget_guard_respected: true,
     budget_within_cap: true,
@@ -328,13 +338,44 @@ export function createVisionWebDetectionAdapter(options = {}) {
       return [];
     }
 
-    const { authSource, webDetection } = await callVisionWebDetection({
-      imageUrl: queryImageUrl,
-      maxResults,
-      projectId,
-    });
     stats.api_requests += 1;
     stats.paid_api_used = true;
+
+    let authSource;
+    let webDetection;
+    try {
+      ({ authSource, webDetection } = await callVisionWebDetection({
+        imageUrl: queryImageUrl,
+        maxResults,
+        projectId,
+      }));
+    } catch (error) {
+      if (!(error instanceof VisionImageAnnotationError)) throw error;
+
+      const errorRecord = {
+        asset_id: protectedAsset.asset_id,
+        query_image_ref: redactUrl(queryImageUrl),
+        code: error.visionError?.code ?? null,
+        message: redactSignedQueryInText(error.message),
+        occurred_at: new Date().toISOString(),
+      };
+      stats.api_errors += 1;
+      stats.last_errors.push(errorRecord);
+      stats.last_errors = stats.last_errors.slice(-10);
+      budgetGuard.recordEvent({
+        type: "vision_request_failed",
+        asset_id: protectedAsset.asset_id,
+        units: 1,
+        billable_call: true,
+        within_free_tier: budgetCheck.within_free_tier,
+        estimated_incremental_cost_ntd: budgetCheck.estimated_incremental_cost_ntd,
+        projected_monthly_cost_ntd: budgetCheck.projected_monthly_cost_ntd,
+        error_code: errorRecord.code,
+        note: errorRecord.message,
+      });
+      return [];
+    }
+
     if (!stats.auth_sources.includes(authSource)) stats.auth_sources.push(authSource);
 
     budgetGuard.recordEvent({

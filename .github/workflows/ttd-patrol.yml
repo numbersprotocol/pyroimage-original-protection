@@ -21,7 +21,7 @@ on:
         default: false
         type: boolean
       protected_asset_limit:
-        description: "Maximum protected assets to query when adapter=vision"
+        description: "Maximum protected assets to query when adapter=vision or vision+channels"
         required: true
         default: "50"
         type: string
