@@ -59,7 +59,46 @@
       "estimated_incremental_cost_ntd": 0,
       "projected_monthly_cost_ntd": 0,
       "note": "Budget-guarded Vision WEB_DETECTION request completed within the monthly free tier."
+    },
+    {
+      "timestamp": "2026-07-09T03:37:50.064Z",
+      "month": "2026-07",
+      "adapter": "visionWebDetection",
+      "type": "cache_hit",
+      "asset_id": "bafybeigzo5rkfshhubaazvw2xsvruskzrglb3gefyjtln3w3r4crhufmwm",
+      "units": 0,
+      "billable_call": false,
+      "within_free_tier": false,
+      "estimated_incremental_cost_ntd": 0,
+      "projected_monthly_cost_ntd": 0,
+      "note": "Vision WEB_DETECTION cache hit; no paid API request made."
+    },
+    {
+      "timestamp": "2026-07-09T03:39:39.919Z",
+      "month": "2026-07",
+      "adapter": "visionWebDetection",
+      "type": "cache_hit",
+      "asset_id": "bafybeigzo5rkfshhubaazvw2xsvruskzrglb3gefyjtln3w3r4crhufmwm",
+      "units": 0,
+      "billable_call": false,
+      "within_free_tier": false,
+      "estimated_incremental_cost_ntd": 0,
+      "projected_monthly_cost_ntd": 0,
+      "note": "Vision WEB_DETECTION cache hit; no paid API request made."
+    },
+    {
+      "timestamp": "2026-07-09T03:44:31.762Z",
+      "month": "2026-07",
+      "adapter": "visionWebDetection",
+      "type": "cache_hit",
+      "asset_id": "bafybeigzo5rkfshhubaazvw2xsvruskzrglb3gefyjtln3w3r4crhufmwm",
+      "units": 0,
+      "billable_call": false,
+      "within_free_tier": false,
+      "estimated_incremental_cost_ntd": 0,
+      "projected_monthly_cost_ntd": 0,
+      "note": "Vision WEB_DETECTION cache hit; no paid API request made."
     }
   ],
-  "updated_at": "2026-07-08T08:17:49.961Z"
+  "updated_at": "2026-07-09T03:44:31.762Z"
 }

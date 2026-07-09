@@ -1,3 +1,37 @@
+# Review Notes — Patrol 50 + Real Channels + Wording Clarity
+
+Repo: `numbersprotocol/pyroimage-original-protection`
+PR under review: **#9** — <https://github.com/numbersprotocol/pyroimage-original-protection/pull/9>
+Head SHA at review start: `cdb9f3d25a0d7d8ae89f6c5c6c95d1b5ed67c5ec` (branch `omni/4ef90e87/patrol-50-real-channels`)
+Base: `origin/main`
+Reviewer path: Reviewer sub-loop `5c7de856-9717-4fbd-9fb8-e9531c7fc2ca` was created with `claude-opus-4-7`, but `loop_list` / `loop_get` returned `HTTP 401` and no PR #9 review output was written after polling. Per harness-dev SOP fallback, this section is a Developer self-review with explicit caveat.
+Reviewed at: 2026-07-09
+
+---
+
+## Verdict: PASS 5/5
+
+This change set is ready to merge. PR #9 supersedes PR #7 by carrying the `protected_asset_limit=50` workflow behavior forward, then adds `vision+channels` so scheduled patrols combine budget-guarded Vision Web Detection with three real public-page channel fetches. User-facing zh-TW wording no longer relies on `命中`; it now uses clearer terms such as `高度相似候選`, `同一原作`, `未找到對應原作`, `相似判定門檻`, and `疑似盜用`.
+
+| # | Criterion | Result | Evidence |
+|---|-----------|--------|----------|
+| 1 | 50-asset patrol setting | PASS | `.github/workflows/ttd-patrol.yml:11,26,75,78-80` sets workflow default adapter to `vision+channels`, dispatch/schedule `protected_asset_limit` to `50`, and scheduled runs to `vision+channels`; `/tmp/originradar-50-dry/monitoring-run.json` shows `protected_assets_considered=50` and `patrol-validation.json pass.all=true`. |
+| 2 | Three real automated channels | PASS | `scripts/lib/adapters/namedChannels.js:5,93-120,145-226` performs public HTTP page fetches and extracts image candidates; `public/ttd-mvp/monitored-sources.json` has three `automated_public_page` channels (`SRC-01`, `SRC-04`, `SRC-12`); latest artifact has channel summary `automated_channel_count=3`, `pages_fetched=3`, `page_fetch_errors=0`. |
+| 3 | Vision remains budget-guarded | PASS | `.github/workflows/ttd-patrol.yml:83-105` only enables `TTD_VISION_BILLABLE=1` when a secret exists, billable is true, and adapter is `vision` or `vision+channels`; otherwise it forces dry-run/no billable. Local condition matrix confirmed `vision+channels billable=true -> TTD_VISION_BILLABLE=1`. |
+| 4 | Wording clarity / no misleading channel text | PASS | `src/App.tsx:1817-1835` uses `自動巡檢` / `查詢線索` and explains search leads are not auto-crawled; `src/App.tsx:2190-2223` explains distance/threshold without `命中`; `rg '命中|無命中|未命中|保護庫命中|搜尋線索|可作為搜尋查詢來源|尚未等同平台爬蟲' ...` returned no output. |
+| 5 | Verification green | PASS | `npm run lint` passed; `npm run build:pages` passed (`1772 modules transformed`, `dist/assets/index-DdCFHVJq.js 286.42 kB / gzip 86.95 kB`); workflow YAML parsed; artifact validation objects pass (`patrol`, `verification`, generated reports/dashboard/handback); signed-query scan clean. |
+
+### Blocking Issues
+
+None.
+
+### Non-Blocking Suggestions
+
+1. Replace the fallback self-review with a fresh `claude-opus-4-7` review if loop permissions are restored before the next product iteration.
+2. Consider adding platform-specific adapters only after each platform's terms/API and rate limits are reviewed; the current MVP crawler intentionally limits itself to public pages without login or access-control bypass.
+
+---
+
 # Review Notes — UI Optimisation v3 (OriginRadar)
 
 Repo: `numbersprotocol/pyroimage-original-protection`

@@ -17,9 +17,10 @@ import {
   matchCandidateToProtectedAsset,
   queryIndex,
 } from "./lib/matcher.js";
-import { getCandidatesForAsset } from "./lib/sourceAdapter.js";
+import { combineAdapters, getCandidatesForAsset } from "./lib/sourceAdapter.js";
 import { createSeedUrlsAdapter } from "./lib/adapters/seedUrls.js";
 import { createVisionWebDetectionAdapter } from "./lib/adapters/visionWebDetection.js";
+import { createNamedChannelCrawlerAdapter } from "./lib/adapters/namedChannels.js";
 import { createBudgetGuard } from "./lib/budgetGuard.js";
 
 const __filename = fileURLToPath(import.meta.url);
@@ -31,6 +32,7 @@ const OUTPUT_DIR = process.env.TTD_OUTPUT_DIR || INPUT_DIR;
 const PATROL_STATE_DIR = process.env.TTD_PATROL_STATE_DIR || path.resolve(__dirname, "../.patrol-state");
 const DEMO_ASSETS = path.join(INPUT_DIR, "demo-assets.json");
 const IMAGE_INDEX = path.join(INPUT_DIR, "image-index.jsonl");
+const MONITORED_SOURCES = path.join(INPUT_DIR, "monitored-sources.json");
 const PATROL_SEEDS = process.env.TTD_PATROL_SEEDS || path.join(INPUT_DIR, "patrol-seeds.json");
 const VISION_CACHE = process.env.TTD_VISION_CACHE || path.join(PATROL_STATE_DIR, "vision-web-detection-cache.json");
 const VISION_COST_LOG = process.env.TTD_VISION_COST_LOG || path.join(PATROL_STATE_DIR, "vision-cost-log.json");
@@ -39,7 +41,7 @@ const MAX_IMAGE_BYTES = Number(process.env.TTD_PATROL_MAX_IMAGE_BYTES || 2_000_0
 const MATCH_THRESHOLD = Number(process.env.TTD_PATROL_MATCH_THRESHOLD || DEFAULT_MATCH_THRESHOLD);
 const EXPECTED_FILTER = process.env.TTD_PATROL_EXPECTED || "all";
 const PATROL_ADAPTER = process.env.TTD_PATROL_ADAPTER || "seedUrls";
-const PROTECTED_ASSET_LIMIT = Number(process.env.TTD_PATROL_PROTECTED_ASSET_LIMIT || (PATROL_ADAPTER === "vision" ? 1 : 0));
+const PROTECTED_ASSET_LIMIT = Number(process.env.TTD_PATROL_PROTECTED_ASSET_LIMIT || (PATROL_ADAPTER === "seedUrls" ? 0 : 1));
 const STRICT_MODE = process.env.TTD_PATROL_STRICT === "1" || process.env.TTD_PATROL_STRICT === "true";
 const USER_AGENT = "Numbers-TTD-MVP-patrol/1.0";
 
@@ -95,6 +97,17 @@ function selectProtectedAssetIds({ adapter, seedDocument, demoAssets, indexedEnt
 }
 
 function createPatrolAdapter({ demoAssets }) {
+  const createVision = () =>
+    createVisionWebDetectionAdapter({
+      cachePath: VISION_CACHE,
+      costLogPath: VISION_COST_LOG,
+      budgetGuard: createBudgetGuard({ costLogPath: VISION_COST_LOG }),
+    });
+  const createChannels = () =>
+    createNamedChannelCrawlerAdapter({
+      monitoredSourcesPath: MONITORED_SOURCES,
+    });
+
   if (PATROL_ADAPTER === "seedUrls") {
     return createSeedUrlsAdapter({
       seedFilePath: PATROL_SEEDS,
@@ -104,14 +117,20 @@ function createPatrolAdapter({ demoAssets }) {
   }
 
   if (PATROL_ADAPTER === "vision") {
-    return createVisionWebDetectionAdapter({
-      cachePath: VISION_CACHE,
-      costLogPath: VISION_COST_LOG,
-      budgetGuard: createBudgetGuard({ costLogPath: VISION_COST_LOG }),
+    return createVision();
+  }
+
+  if (PATROL_ADAPTER === "channels") {
+    return createChannels();
+  }
+
+  if (PATROL_ADAPTER === "vision+channels") {
+    return combineAdapters([createVision(), createChannels()], {
+      mode: "vision_web_detection_plus_public_channel_crawl",
     });
   }
 
-  throw new Error(`Unsupported TTD_PATROL_ADAPTER=${PATROL_ADAPTER}. Expected "seedUrls" or "vision".`);
+  throw new Error(`Unsupported TTD_PATROL_ADAPTER=${PATROL_ADAPTER}. Expected "seedUrls", "vision", "channels", or "vision+channels".`);
 }
 
 async function fetchImageBuffer(url) {
@@ -256,6 +275,7 @@ async function inspectCandidate({ candidate, protectedAsset, protectedIndexEntry
     const caseId = `case_patrol_${compactId(candidate.candidate_id).toLowerCase()}`;
     const alertId = `ALERT-${caseId.toUpperCase()}`;
     const isVisionCandidate = candidate.retrieved_via === "visionWebDetection";
+    const isNamedChannelCandidate = candidate.retrieved_via === "namedChannelCrawler";
     const alert = {
       alert_id: alertId,
       alert_status: "pending_human_review",
@@ -277,14 +297,24 @@ async function inspectCandidate({ candidate, protectedAsset, protectedIndexEntry
       evidence_label: "actual",
       case_id: caseId,
       candidate_item_id: candidate.candidate_id,
-      source_fixture_label: isVisionCandidate ? "vision_web_detection_real_candidate" : "seed_urls_real_fetched_candidate",
+      source_fixture_label: isVisionCandidate
+        ? "vision_web_detection_real_candidate"
+        : isNamedChannelCandidate
+        ? "named_channel_real_candidate"
+        : "seed_urls_real_fetched_candidate",
       candidate_image_ref: candidate.image_ref,
       display_copy: {
         badge: "real_patrol_match",
-        case_label: isVisionCandidate ? "Real hash match from Vision web detection" : "Real hash match from seed adapter",
+        case_label: isVisionCandidate
+          ? "Real hash match from Vision web detection"
+          : isNamedChannelCandidate
+          ? "Real hash match from public channel crawl"
+          : "Real hash match from seed adapter",
         public_use_notice:
           isVisionCandidate
             ? "This alert was created from a real Vision-discovered web candidate and a real perceptual-hash match. Human review must verify source context before any public infringement claim."
+            : isNamedChannelCandidate
+            ? "This alert was created from a real public-channel crawl candidate and a real perceptual-hash match. Human review must verify source context before any public infringement claim."
             : "This alert was created from a real fetched candidate image and a real perceptual-hash match. The seed source is a controlled patrol input, so it is not an external infringement claim.",
         reviewer_prompt:
           "Human review must verify source context and authorization before any external claim or takedown action.",
@@ -300,6 +330,8 @@ async function inspectCandidate({ candidate, protectedAsset, protectedIndexEntry
       case_id: caseId,
       case_type: isVisionCandidate
         ? "real_vision_patrol_match_pending_external_review"
+        : isNamedChannelCandidate
+        ? "real_channel_patrol_match_pending_external_review"
         : "real_seed_patrol_match_pending_external_review",
       original_asset_id: protectedAsset.asset_id,
       source_name: candidate.source_name,
@@ -316,12 +348,20 @@ async function inspectCandidate({ candidate, protectedAsset, protectedIndexEntry
       public_claim_status: "internal_only",
       actuality_label: isVisionCandidate
         ? "real_vision_fetched_hash_match_pending_external_review"
+        : isNamedChannelCandidate
+        ? "real_channel_fetched_hash_match_pending_external_review"
         : "real_fetched_hash_match_not_external_infringement_claim",
       market_validation_label: "not_market_validation",
-      report_status: isVisionCandidate ? "phase_2_vision_patrol_match" : "phase_1_seed_patrol_match",
+      report_status: isVisionCandidate
+        ? "phase_2_vision_patrol_match"
+        : isNamedChannelCandidate
+        ? "mvp_channel_patrol_match"
+        : "phase_1_seed_patrol_match",
       recommended_next_step:
         isVisionCandidate
           ? "Verify page context, authorization, and screenshot evidence before any takedown or external claim."
+          : isNamedChannelCandidate
+          ? "Verify page context, channel terms, authorization, and screenshot evidence before any takedown or external claim."
           : "Use this seed match to verify the patrol pipeline. Replace seed adapter candidates with Vision or authorized channel candidates before making external infringement claims.",
     };
 
@@ -362,6 +402,25 @@ async function inspectCandidate({ candidate, protectedAsset, protectedIndexEntry
 function containsSignedQuery(value) {
   const text = JSON.stringify(value);
   return /(?:Expires=|Signature=|Key-Pair-Id|X-Amz-|Policy=)/i.test(text);
+}
+
+function buildPatrolLimitations(adapterId) {
+  const limitations = [];
+  if (adapterId.includes("seedUrls")) {
+    limitations.push("SeedUrls candidates prove the patrol pipeline without paid reverse-image search.");
+    limitations.push("A seed match is a real fetched-image hash match, but it is not an external infringement claim.");
+  }
+  if (adapterId.includes("visionWebDetection")) {
+    limitations.push("Vision WEB_DETECTION is budget-guarded; dry-run returns zero Vision candidates unless TTD_VISION_BILLABLE=1 is explicitly set.");
+    limitations.push("Vision candidates must still pass local perceptual-hash matching and human review before any external claim.");
+  }
+  if (adapterId.includes("namedChannelCrawler")) {
+    limitations.push("Named-channel patrol fetches only configured public pages; it does not log in, bypass paywalls, bypass age gates, bypass anti-bot controls, or override robots/terms restrictions.");
+    limitations.push("Named-channel candidates must still pass local perceptual-hash matching and human source-context review before any external claim.");
+  }
+  limitations.push("Screenshot capture and external source context require human review before takedown or public infringement claims.");
+  limitations.push("Google Cloud Vision WEB_DETECTION spend is recorded in vision-cost-log.json and blocked before the 90% monthly cap whenever Vision is enabled.");
+  return limitations;
 }
 
 async function main() {
@@ -453,26 +512,15 @@ async function main() {
     completed_at: completedAt,
     status: sourceRuns.some((run) => run.status.endsWith("failed")) ? "completed_with_candidate_errors" : "completed",
     source_runs: sourceRuns,
-    limitations: [
-      adapter.id === "seedUrls"
-        ? "Phase 1 uses zero-cost seedUrls candidates to prove the patrol pipeline without paid reverse-image search."
-        : "Phase 2 Vision WEB_DETECTION adapter is budget-guarded; dry-run returns zero candidates unless TTD_VISION_BILLABLE=1 is explicitly set.",
-      adapter.id === "seedUrls"
-        ? "A seed match is a real fetched-image hash match, but it is not an external infringement claim."
-        : "Vision candidates must still pass local perceptual-hash matching and human review before any external claim.",
-      "Screenshot capture and external source context are added in later phases.",
-      adapter.id === "seedUrls"
-        ? "Google Cloud Vision WEB_DETECTION is not called in seedUrls mode; paid API spend is NT$0."
-        : "Google Cloud Vision WEB_DETECTION spend is recorded in vision-cost-log.json and blocked before the 90% monthly cap.",
-    ],
+    limitations: buildPatrolLimitations(adapter.id),
   };
   const reviewStates = alerts.map((alert) => ({
     alert_id: alert.alert_id,
     review_status: "pending_human_review",
     reviewed_by: "unassigned_human_reviewer",
     reviewed_at: null,
-    review_note: "Real seed patrol match awaits human review before any public claim.",
-    next_action: "Verify source context and authorization after Vision or authorized channel candidates are connected.",
+    review_note: "Real patrol match awaits human review before any public claim.",
+    next_action: "Verify source context, authorization, and screenshot evidence before any external claim.",
     is_current: true,
     public_claim_status: "internal_only",
   }));
@@ -513,9 +561,7 @@ async function main() {
     simulated_cases: alerts.reduce((sum, alert) => sum + (alert.dashboard_metric_effect?.simulated_cases || 0), 0),
     public_claim_statuses: [...new Set(alerts.map((alert) => alert.public_claim_status))],
     pass: validation.pass.all,
-    limitations: [
-      "Seed adapter alerts prove the pipeline and remain internal-only until an external source adapter supplies real source context.",
-    ],
+    limitations: buildPatrolLimitations(adapter.id),
   };
 
   writeJson("alerts.json", alerts);

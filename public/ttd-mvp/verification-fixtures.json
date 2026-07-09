@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-08T08:17:54.725Z",
+  "generated_at": "2026-07-09T03:44:41.048Z",
   "phase": "Phase 4: Verification portal + UI integration",
   "route": "/pyroimage-original-protection",
   "verification_mode": "static precomputed local fingerprint verification for GitHub Pages; arbitrary uploads require a future runtime fingerprint service",
@@ -40,7 +40,7 @@
       "result": {
         "query_asset_id": "bafybeigzo5rkfshhubaazvw2xsvruskzrglb3gefyjtln3w3r4crhufmwm",
         "query_title": "1.jpg",
-        "query_time_ms": 11.887,
+        "query_time_ms": 43.308,
         "threshold": {
           "exact_match_distance": 0,
           "likely_same_or_controlled_transform_max_combined_distance": 16,
@@ -125,7 +125,7 @@
       },
       "verdict": {
         "code": "registered_original",
-        "zh": "保護庫命中：原作",
+        "zh": "與已收錄原作相符",
         "en": "Registered original",
         "tone": "match",
         "public_claim_status": "origin_verification_only"
@@ -162,7 +162,7 @@
       "result": {
         "query_asset_id": "bafybeigzo5rkfshhubaazvw2xsvruskzrglb3gefyjtln3w3r4crhufmwm",
         "query_title": "Controlled resize/re-encode fixture",
-        "query_time_ms": 2.873,
+        "query_time_ms": 8.545,
         "threshold": {
           "exact_match_distance": 0,
           "likely_same_or_controlled_transform_max_combined_distance": 16,
@@ -247,7 +247,7 @@
       },
       "verdict": {
         "code": "registered_derivative",
-        "zh": "保護庫命中：疑似同一原作",
+        "zh": "疑似同一原作，需複核",
         "en": "Registered derivative",
         "tone": "match",
         "public_claim_status": "origin_verification_only"
@@ -283,7 +283,7 @@
       "result": {
         "query_asset_id": "control-non-original-seed-1",
         "query_title": "Controlled non-original query",
-        "query_time_ms": 3.652,
+        "query_time_ms": 7.41,
         "threshold": {
           "exact_match_distance": 0,
           "likely_same_or_controlled_transform_max_combined_distance": 16,
@@ -368,7 +368,7 @@
       },
       "verdict": {
         "code": "not_registered",
-        "zh": "未命中保護庫",
+        "zh": "未找到對應原作",
         "en": "Not registered",
         "tone": "clear",
         "public_claim_status": "no_origin_match_found"

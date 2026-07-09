@@ -14,6 +14,7 @@ const DEMO_ASSETS = path.join(OUTPUT_DIR, "demo-assets.json");
 const INDEX_VALIDATION = path.join(OUTPUT_DIR, "index-validation.json");
 
 const DEMO_SOURCE_IDS = ["SRC-01", "SRC-03", "SRC-07", "SRC-10", "SRC-14"];
+const AUTOMATED_CHANNEL_SOURCE_IDS = new Set(["SRC-01", "SRC-04", "SRC-12"]);
 const REQUIRED_SOURCE_FIELDS = [
   "source_id",
   "source_name",
@@ -44,7 +45,7 @@ const REQUIRED_CANDIDATE_FIELDS = [
   "review_status",
   "public_claim_status",
 ];
-const SAFE_RUN_MODES = new Set(["manual_review", "search_query_only", "simulated_fixture"]);
+const SAFE_RUN_MODES = new Set(["manual_review", "search_query_only", "automated_public_channel_crawl", "simulated_fixture"]);
 const PROHIBITED_TEXT_PATTERNS = [/all-web realtime monitoring/i, /全網即時監測/];
 
 const EVIDENCE_REQUIRED = [
@@ -62,10 +63,10 @@ const SOURCE_FIXTURES = [
     source_name: "Yahoo News Taiwan",
     source_url: "https://tw.news.yahoo.com/",
     source_type: "news_aggregator",
-    crawl_method: "manual_review",
+    crawl_method: "automated_public_page",
     frequency: "daily",
     risk_level: "medium",
-    risk_note: "Confirm robots and terms before automation; demo mode uses human-operated search and citation-safe evidence capture.",
+    risk_note: "MVP fetches the public landing page at low frequency; no login, paywall, age gate, anti-bot, robots, or terms bypass is allowed.",
     demo_inclusion: "yes",
     demo_subset: true,
     demo_slot: "D-01",
@@ -106,10 +107,10 @@ const SOURCE_FIXTURES = [
     source_name: "ETtoday News Cloud",
     source_url: "https://www.ettoday.net/",
     source_type: "news_site",
-    crawl_method: "manual_review",
+    crawl_method: "automated_public_page",
     frequency: "twice_weekly",
     risk_level: "medium",
-    risk_note: "Confirm robots and terms; avoid bulk image fetching without permission.",
+    risk_note: "MVP fetches the public landing page at low frequency; candidates still require local fingerprint comparison and human review.",
     demo_inclusion: "maybe",
     demo_subset: false,
     evidence_required: EVIDENCE_REQUIRED,
@@ -214,10 +215,10 @@ const SOURCE_FIXTURES = [
     source_name: "Taiwan FactCheck Center reports",
     source_url: "https://tfc-taiwan.org.tw/fact-check-reports-all/",
     source_type: "fact_check_db",
-    crawl_method: "manual_review",
+    crawl_method: "automated_public_page",
     frequency: "weekly",
     risk_level: "medium",
-    risk_note: "Record report URLs and citation-safe summaries; do not bulk copy report content.",
+    risk_note: "MVP fetches the public reports page at low frequency; record source URLs and citation-safe summaries only.",
     demo_inclusion: "context_only",
     demo_subset: false,
     evidence_required: EVIDENCE_REQUIRED,
@@ -293,6 +294,7 @@ function sourceUrlForRun(source, queryTerms) {
 }
 
 function runModeForSource(source) {
+  if (source.crawl_method === "automated_public_page") return "automated_public_channel_crawl";
   if (source.source_id === "SRC-03" || source.source_id === "SRC-14") return "search_query_only";
   return "manual_review";
 }
@@ -326,7 +328,7 @@ function main() {
   const monitoredSources = SOURCE_FIXTURES.map((source) => ({
     ...source,
     monitoring_label: "specified-source monitoring",
-    automation_allowed_by_default: false,
+    automation_allowed_by_default: AUTOMATED_CHANNEL_SOURCE_IDS.has(source.source_id),
     access_guardrail: "No login, paywall, age gate, anti-bot, robots.txt, or terms bypass is allowed.",
   }));
 
@@ -342,7 +344,9 @@ function main() {
       query_terms: queryTerms,
       status: "fixture_ready_for_human_review",
       notes:
-        runMode === "search_query_only"
+        runMode === "automated_public_channel_crawl"
+          ? "Configured for MVP public-page crawl; candidate images still require local fingerprint comparison and human review."
+          : runMode === "search_query_only"
           ? "Query URL prepared for human review; no automated page retrieval was executed."
           : "Manual review fixture prepared; no automated page retrieval was executed.",
       demo_order: index + 1,
@@ -384,7 +388,7 @@ function main() {
     source_runs: [...sourceRuns, simulatedRun],
     limitations: [
       "This fixture prepares named-source review workflows only.",
-      "No automated source retrieval, login, paywall, age gate, anti-bot, robots, or terms bypass was executed.",
+      "Only automated_public_page sources are eligible for MVP public-page crawl; no login, paywall, age gate, anti-bot, robots, or terms bypass is allowed.",
       "Search discovery produces candidate URLs only; every candidate remains unreviewed until human review.",
       "The controlled simulation is not market validation and is not counted as an actual suspected event.",
     ],
@@ -460,15 +464,18 @@ function main() {
       run_required_fields_present: validateRequiredFields(monitoringRun.source_runs, REQUIRED_RUN_FIELDS),
       candidate_required_fields_present: validateRequiredFields(candidateSourceItems, REQUIRED_CANDIDATE_FIELDS),
       run_modes_are_safe: monitoringRun.source_runs.every((run) => SAFE_RUN_MODES.has(run.run_mode)),
-      no_unsafe_automation: monitoredSources.every((source) => source.automation_allowed_by_default === false),
+      automated_channel_count: monitoredSources.filter((source) => source.crawl_method === "automated_public_page").length >= 3,
+      no_unsafe_automation: monitoredSources.every((source) =>
+        source.automation_allowed_by_default === (source.crawl_method === "automated_public_page"),
+      ),
       wording_uses_specified_source_monitoring: JSON.stringify({ monitoredSourcesDocument, monitoringRun }).includes("specified-source monitoring"),
       broad_web_claim_absent: !containsProhibitedText({ monitoredSourcesDocument, monitoringRun, candidateSourceItems }),
       paid_api_disabled_by_default: true,
     },
     limitations: [
-      "This phase is a local fixture and configuration layer, not an automated crawler.",
+      "This phase is a local fixture and configuration layer; actual public-page crawling runs through the namedChannelCrawler patrol adapter.",
       "Candidate source items are unreviewed or simulated; they do not assert suspected reuse.",
-      "Source automation requires future robots, terms, API, or partner authorization review.",
+      "Additional platform-specific automation still requires robots, terms, API, or partner authorization review.",
       "Paid search and reverse-image APIs remain disabled.",
     ],
   };
