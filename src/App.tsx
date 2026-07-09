@@ -1422,7 +1422,7 @@ function DashboardView(props: {
   return (
     <div className="max-w-[1240px] px-6 py-7 md:px-9">
       <section className="mb-5 overflow-hidden rounded-[16px] bg-[#1A1A1A] text-[#F4E9D5] shadow-[0_18px_50px_rgba(26,26,26,0.16)]">
-        <div className="grid gap-0 lg:grid-cols-[1.08fr_0.92fr]">
+        <div className="grid gap-0 lg:grid-cols-[1.25fr_0.75fr]">
           <div className="relative min-h-[440px] p-5 sm:p-7">
             <div className="absolute -right-28 -top-28 h-72 w-72 rounded-full border border-[#7f9c7e33]" />
             <div className="absolute -right-16 top-8 h-44 w-44 rounded-full border border-[#7f9c7e55]" />
@@ -1433,7 +1433,7 @@ function DashboardView(props: {
                   <span className="ttd-pulse inline-block h-[8px] w-[8px] rounded-full bg-[#7F9C7E]" />
                   {zh ? "ORIGINRADAR · 即時偵測台" : "ORIGINRADAR · LIVE RADAR"}
                 </p>
-                <h1 className="max-w-[640px] text-[32px] font-semibold leading-[1.05] sm:text-[44px]" style={{ fontFamily: MONO }}>
+                <h1 className="max-w-[720px] text-[30px] font-semibold leading-[1.05] sm:text-[36px]" style={{ fontFamily: MONO }}>
                   {zh ? "盜用偵測雷達，替原創影像站崗。" : "A theft-detection radar for original images."}
                 </h1>
                 <p className="mt-4 max-w-[620px] text-[13.5px] leading-6 text-[#CEC0A3]">
