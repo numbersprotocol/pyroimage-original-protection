@@ -1,34 +1,55 @@
-# Review Notes — Patrol 50 + Real Channels + Wording Clarity
+# Review Notes — Patrol 50 + Real Channels + Wording Clarity (Reviewer PASS 5/5)
 
 Repo: `numbersprotocol/pyroimage-original-protection`
 PR under review: **#9** — <https://github.com/numbersprotocol/pyroimage-original-protection/pull/9>
-Head SHA at review start: `cdb9f3d25a0d7d8ae89f6c5c6c95d1b5ed67c5ec` (branch `omni/4ef90e87/patrol-50-real-channels`)
-Base: `origin/main`
-Reviewer path: Reviewer sub-loop `5c7de856-9717-4fbd-9fb8-e9531c7fc2ca` was created with `claude-opus-4-7`, but `loop_list` / `loop_get` returned `HTTP 401` and no PR #9 review output was written after polling. Per harness-dev SOP fallback, this section is a Developer self-review with explicit caveat.
+Head SHA at review start: `cdb9f3d25a0d7d8ae89f6c5c6c95d1b5ed67c5ec` (branch `omni/4ef90e87/patrol-50-real-channels`, as specified in the Reviewer task)
+Actual final head at review time: `b25d543f382589f204c719db2690bd520c7960fc` (developer pushed follow-up fix `fix: enable budgeted vision for channel patrol` before merge)
+Base: `origin/main` @ `aaa5321`
+Squash-merged commit on `main`: `4296994` (title `[Omni] Run 50-asset patrol with real public channels`)
+Reviewer: `claude-opus-4-7` (context-reset sub-loop `5c7de856-9717-4fbd-9fb8-e9531c7fc2ca`, harness-dev Reviewer role)
 Reviewed at: 2026-07-09
+
+> This section is a proper fresh-context Reviewer review that supersedes the Developer self-review kept below for audit trail. It reviews the merged state (head `b25d543`), which is the full scope of PR #9 that landed on `main`. The developer's follow-up commit `b25d543` closed the only real risk I identified while reading `cdb9f3d` — the billable Vision gate was widened to also match `vision+channels`, which is exactly what the schedule now dispatches. Below I record the Reviewer independent verification.
 
 ---
 
 ## Verdict: PASS 5/5
 
-This change set is ready to merge. PR #9 supersedes PR #7 by carrying the `protected_asset_limit=50` workflow behavior forward, then adds `vision+channels` so scheduled patrols combine budget-guarded Vision Web Detection with three real public-page channel fetches. User-facing zh-TW wording no longer relies on `命中`; it now uses clearer terms such as `高度相似候選`, `同一原作`, `未找到對應原作`, `相似判定門檻`, and `疑似盜用`.
+PR #9 delivers the three intended changes cleanly:
+
+1. Scale patrol dispatch and schedule to 50 protected assets per run.
+2. Add real automated `namedChannelCrawler` adapter fetching three public-page channels (Yahoo News Taiwan, ETtoday News Cloud, Taiwan FactCheck Center reports) alongside the existing budget-guarded Vision adapter, exposed via a new `vision+channels` combined adapter.
+3. Replace user-facing zh-TW `命中` / `搜尋線索` wording with clearer detection / origin-verification language, and label public-page-crawled channels as `自動巡檢` in the UI.
+
+The billable Vision gate was updated to accept both `vision` and `vision+channels` so scheduled runs still trigger real budget-guarded Vision calls (fix commit `b25d543`). Backend behavior, validation objects, and product-safety guardrails (`internal_only`, human-review, no signed-query leaks, no login/paywall/anti-bot bypass) are all preserved.
 
 | # | Criterion | Result | Evidence |
 |---|-----------|--------|----------|
-| 1 | 50-asset patrol setting | PASS | `.github/workflows/ttd-patrol.yml:11,26,75,78-80` sets workflow default adapter to `vision+channels`, dispatch/schedule `protected_asset_limit` to `50`, and scheduled runs to `vision+channels`; `/tmp/originradar-50-dry/monitoring-run.json` shows `protected_assets_considered=50` and `patrol-validation.json pass.all=true`. |
-| 2 | Three real automated channels | PASS | `scripts/lib/adapters/namedChannels.js:5,93-120,145-226` performs public HTTP page fetches and extracts image candidates; `public/ttd-mvp/monitored-sources.json` has three `automated_public_page` channels (`SRC-01`, `SRC-04`, `SRC-12`); latest artifact has channel summary `automated_channel_count=3`, `pages_fetched=3`, `page_fetch_errors=0`. |
-| 3 | Vision remains budget-guarded | PASS | `.github/workflows/ttd-patrol.yml:83-105` only enables `TTD_VISION_BILLABLE=1` when a secret exists, billable is true, and adapter is `vision` or `vision+channels`; otherwise it forces dry-run/no billable. Local condition matrix confirmed `vision+channels billable=true -> TTD_VISION_BILLABLE=1`. |
-| 4 | Wording clarity / no misleading channel text | PASS | `src/App.tsx:1817-1835` uses `自動巡檢` / `查詢線索` and explains search leads are not auto-crawled; `src/App.tsx:2190-2223` explains distance/threshold without `命中`; `rg '命中|無命中|未命中|保護庫命中|搜尋線索|可作為搜尋查詢來源|尚未等同平台爬蟲' ...` returned no output. |
-| 5 | Verification green | PASS | `npm run lint` passed; `npm run build:pages` passed (`1772 modules transformed`, `dist/assets/index-DdCFHVJq.js 286.42 kB / gzip 86.95 kB`); workflow YAML parsed; artifact validation objects pass (`patrol`, `verification`, generated reports/dashboard/handback); signed-query scan clean. |
+| 1 | Workflow dispatch default & scheduled run use `protected_asset_limit=50` | PASS | `.github/workflows/ttd-patrol.yml:24-26` sets dispatch input default `"50"`, line 75 uses runtime fallback `${DISPATCH_PROTECTED_ASSET_LIMIT:-50}`, and lines 77-81 force `protected_asset_limit="50"` when `EVENT_NAME=schedule`. |
+| 2 | Scheduled run uses `vision+channels`; Vision remains budget-guarded | PASS | Workflow line 78 forces `adapter="vision+channels"` on schedule; line 100 billable gate `{ [ "$adapter" = "vision" ] \|\| [ "$adapter" = "vision+channels" ]; } && [ "$billable" = "true" ] && [ -n "$SA_JSON" ]` triggers `TTD_VISION_BILLABLE=1`. Budget guard preserved: `TTD_VISION_MONTHLY_CAP_NTD=1000` + `TTD_VISION_STOP_RATIO=0.9` set at lines 96-97; `scripts/lib/adapters/visionWebDetection.js:249-267,310-320` still routes through `createBudgetGuard` and reports `budget_within_cap` / `all_calls_allowed`. `combineAdapters` in `scripts/lib/sourceAdapter.js:19-42` aggregates each sub-adapter's `budget_guard_respected` truthfully. |
+| 3 | Named-channel adapter performs real HTTP fetches for ≥3 public channels; no login/paywall/anti-bot bypass | PASS | `scripts/lib/adapters/namedChannels.js:5` declares `DEFAULT_SOURCE_IDS=["SRC-01","SRC-04","SRC-12"]`; line 7 `USER_AGENT="Numbers-OriginRadar-MVP-channel-patrol/1.0"`; `fetchTextWithLimit` (lines 82-108) uses plain `fetch` with only `Accept` + `User-Agent` headers, a `text/html` gate, a 900 KiB body cap, and a 10 s timeout — no cookies, no auth, no CAPTCHA/anti-bot handling. `crawlSource` (lines 156-183) only reads the configured `source_url` — no follow-up crawling into internal or paywalled paths. `public/ttd-mvp/monitored-sources.json` exposes exactly three `automated_public_page` sources (`SRC-01` Yahoo News Taiwan `https://tw.news.yahoo.com/`, `SRC-04` ETtoday News Cloud `https://www.ettoday.net/`, `SRC-12` TFC Taiwan `https://tfc-taiwan.org.tw/fact-check-reports-all/`), all publicly accessible landing pages. I independently reproduced a local dry-run `TTD_PATROL_ADAPTER=vision+channels TTD_PATROL_PROTECTED_ASSET_LIMIT=1 TTD_VISION_DRY_RUN=1 TTD_VISION_BILLABLE=0 TTD_PATROL_STRICT=1 npm run ttd:patrol` and observed `automated_channel_count=3`, `pages_fetched=3`, `page_fetch_errors=0`, `images_discovered=3`, `candidates_returned=3`, `paid_api_used=false`, `budget_guard_respected=true`, `validation_pass=true`. |
+| 4 | UI shows `自動巡檢` channel status; no zh-TW `命中` / `搜尋線索` in user-facing surfaces | PASS | `src/App.tsx:432` extends `ChannelVM.status` union with `"automated"`; `src/App.tsx:460-467` maps `crawl_method === "automated_public_page"` to `"automated"`; `chDot`/`chLabel`/`chNote` (lines 1815-1836) render green dot + `自動巡檢` + explanation "已接上公開頁面巡檢；系統會抓取候選圖片並送入本地指紋比對。"; `ChannelsView` header (2670-2686) says "目前已運作的自動巡檢來源包含 Google Vision Web Detection 與 3 個公開頁面通路" and reports `stageCounts.automated`. All zh-TW `命中` occurrences removed: `rg -n '命中' src/App.tsx` returns 0 matches; `rg -n '搜尋線索' src/App.tsx public/ttd-mvp/monitored-sources.json` returns 0 matches. New wording is context-aware: `疑似盜用` on the dashboard/CaseView, `高度相似候選` on the patrol banner, `同一原作` / `未找到對應原作` / `疑似同一原作，需複核` on Verify, `相似判定門檻` for the threshold KPI, `未警報` on `DetectionSpotlight`. `scripts/buildVerificationPortal.js` verdict zh strings updated to match. Note: `demo-handback.md` / `demo-handback.json` still contain internal "命中" tokens in engineering talk-track (see N4 below); these are engineering handback, not user-facing UI, so the criterion is not violated. |
+| 5 | patrol/report/verify/dashboard/handback validations pass; lint + build pass; signed-query scan clean | PASS | Committed artifacts: `patrol-validation.json` `pass.all=true`; `report-validation.json` every field `true`; `verification-validation.json` `pass.all=true`; `dashboard-validation.json` every field `true`; `demo-validation.json` every field `true`; `source-monitoring-validation.json` every field `true` including new `automated_channel_count=true`; `alert-validation.json` `pass=true` (0 alerts, `alerts_are_real_fetched_hash_matches=true`). Independent re-runs: `npm run lint` green; `npm run build:pages` green (`1772 modules transformed`, `dist/assets/index-DdCFHVJq.js 286.42 kB / gzip 86.95 kB`); `python3 yaml.safe_load(.github/workflows/ttd-patrol.yml)` OK; workflow signed-query scan (`Expires=|Signature=|Key-Pair-Id|X-Amz-|Policy=`) over the workflow-listed patrol artifact set: CLEAN. |
+
+### Boundary Adherence
+
+- No merge command executed by this Reviewer; PR #9 was merged by the human (Sofia) before this Reviewer pass finished writing notes, as reflected by `state=MERGED` and squash-merge commit `4296994` on `main`.
+- No backend algorithm changes required: `scripts/lib/perceptualHash.js`, `scripts/lib/matcher.js`, `scripts/lib/adapters/seedUrls.js`, `scripts/lib/adapters/visionWebDetection.js`, and `scripts/lib/budgetGuard.js` are unchanged in this PR.
+- No secret or credential material added; `namedChannels.js` reads only public `source_url` values and does not touch `GCP_TTD_PATROL_SA_JSON` or any signed CDN queries.
+- Alert / case shape backwards-compatible: `runPatrol.js:277-360` extends `isVisionCandidate` branching with a symmetric `isNamedChannelCandidate` branch, preserving the `case_type`, `report_status`, `source_fixture_label`, and `actuality_label` schema and reusing `pending_human_review` + `internal_only`.
 
 ### Blocking Issues
 
-None.
+None. All 5 acceptance criteria satisfied; no correctness, security, or safety concerns that gate merge.
 
-### Non-Blocking Suggestions
+### Non-Blocking Observations (for follow-up)
 
-1. Replace the fallback self-review with a fresh `claude-opus-4-7` review if loop permissions are restored before the next product iteration.
-2. Consider adding platform-specific adapters only after each platform's terms/API and rate limits are reviewed; the current MVP crawler intentionally limits itself to public pages without login or access-control bypass.
+1. **N1 — Adapter enumeration duplication.** Both `runPatrol.js:104-133` (`createPatrolAdapter`) and `.github/workflows/ttd-patrol.yml:100` (billable gate) enumerate the accepted adapter strings by hand. A future 3rd adapter (e.g. `vision+channels+search`) will need updates in both places or Vision billable will silently regress. Consider a small helper (either a shared JS constant or a shell `case` matching `*vision*`) to keep the two in sync.
+2. **N2 — Channel MVP only fetches homepage.** `DEFAULT_MAX_CANDIDATES_PER_SOURCE=1` and `crawlSource` reads only the configured landing URL, so the discovered images are typically the site's hero logo / push banner (Yahoo default logo, ETtoday `push.jpg`, TFC front card). This is a deliberate, safe MVP posture but means real infringement matches from these three sources are unlikely until deeper crawl paths are added with explicit robots/terms review.
+3. **N3 — Homepage fetch is a hot path.** No rate-limit / retry / backoff and no per-domain concurrency guard exist; three requests per patrol run × up-to-50 protected assets could grow if `getCandidates` is ever called per asset. Right now `pageCache` (line 141) caches per source_id per process, so total is 3 requests per run — safe today, worth documenting as an invariant if that ever changes.
+4. **N4 — `demo-handback.md` / `demo-handback.json` talk-track still contain "命中".** Not user-facing UI (never rendered by `App.tsx`), so C4 is met, but the copy is out of sync with the new detection vocabulary. Consider aligning the talk-track lines when the handback script is next regenerated so demo narration and UI wording match.
+5. **N5 — `redactUrl` on channel candidates.** `namedChannels.js:113-115` calls `redactUrl(imageUrl)` for `image_ref` and `redactUrl(source.source_url)` for `source_url` / `source_page`. Since public homepages have no signed queries, the ref usually equals the raw URL; verify next iteration that `redactUrl` still strips only signed-query parameters and does not accidentally strip legitimate tracking/query params that human reviewers need for provenance.
+6. **N6 — Dispatch help text drift.** Workflow input description still says `"Maximum protected assets to query when adapter=vision"` even though the same input now also applies to `vision+channels` and (via runtime fallback) other adapters. Consider updating to `"Maximum protected assets to query when adapter=vision or vision+channels"` for accuracy.
 
 ---
 

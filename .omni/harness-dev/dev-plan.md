@@ -60,4 +60,4 @@ None (pure frontend, no new external deps).
   - [x] Named-channel adapter performs real HTTP fetches for at least three public channels without login/paywall/anti-bot bypass
   - [x] UI shows `自動巡檢` channel status and no longer exposes `命中` / `搜尋線索` wording in zh-TW
   - [x] patrol/report/verify/dashboard/handback validations pass; lint + build pass; signed-query scan clean
-- **Status**: COMPLETED (Self-review PASS 5/5 on 2026-07-09; Reviewer loop created with `claude-opus-4-7` but loop query returned `HTTP 401`)
+- **Status**: COMPLETED (Reviewer PASS 5/5 on 2026-07-09, PR #9, head `cdb9f3d` → merged head `b25d543`; PR squash-merged to `main` as commit `4296994`)
