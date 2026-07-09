@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-07-09T03:39:52.155Z",
-  "run_id": "ttd-patrol-20260709T033939Z",
+  "generated_at": "2026-07-09T03:44:40.252Z",
+  "run_id": "ttd-patrol-20260709T034431Z",
   "monitoring_label": "source-agnostic automated patrol",
   "adapter": {
     "id": "visionWebDetection+namedChannelCrawler",
@@ -45,10 +45,10 @@
               "billable_units_after_free_tier": 0,
               "estimated_cost_usd": 0,
               "estimated_cost_ntd": 0,
-              "cache_hits": 4,
+              "cache_hits": 5,
               "dry_run_skips": 0,
               "blocked_calls": 0,
-              "events_recorded": 6,
+              "events_recorded": 7,
               "stop_at_ntd": 900,
               "budget_remaining_before_stop_ntd": 900
             }
@@ -86,18 +86,18 @@
     "phase2_index_rows": 300,
     "match_threshold": 16
   },
-  "started_at": "2026-07-09T03:39:39.898Z",
-  "completed_at": "2026-07-09T03:39:52.155Z",
+  "started_at": "2026-07-09T03:44:31.731Z",
+  "completed_at": "2026-07-09T03:44:40.252Z",
   "status": "completed_with_candidate_errors",
   "source_runs": [
     {
-      "run_id": "ttd-patrol-20260709T033939Z-vision-a1bc998f6980a8cc",
+      "run_id": "ttd-patrol-20260709T034431Z-vision-a1bc998f6980a8cc",
       "source_id": "GOOGLE_VISION_WEB_DETECTION",
       "source_name": "lookaside.fbsbx.com / Vision visually similar image",
       "source_url": "https://lookaside.fbsbx.com/lookaside/crawler/instagram/pinamar.py/profile_pic.jpg",
       "run_mode": "automated_vision_web_detection_fetch",
-      "started_at": "2026-07-09T03:39:41.277Z",
-      "completed_at": "2026-07-09T03:39:41.530Z",
+      "started_at": "2026-07-09T03:44:33.354Z",
+      "completed_at": "2026-07-09T03:44:33.983Z",
       "query_terms": [
         "1.jpg",
         "林怡文",
@@ -114,13 +114,13 @@
       "notes": "non-image response content-type=text/html; charset=\"utf-8\" for https://lookaside.fbsbx.com/lookaside/crawler/instagram/pinamar.py/profile_pic.jpg"
     },
     {
-      "run_id": "ttd-patrol-20260709T033939Z-vision-f68a53a0025842a1",
+      "run_id": "ttd-patrol-20260709T034431Z-vision-f68a53a0025842a1",
       "source_id": "GOOGLE_VISION_WEB_DETECTION",
       "source_name": "p19-common-sign.tiktokcdn-us.com / Vision visually similar image",
       "source_url": "https://p19-common-sign.tiktokcdn-us.com/tos-alisg-p-0037/oszZSDQlhHDGAnAeIcAIComekoFTjPgEIxDzfl~tplv-tiktokx-origin.image",
       "run_mode": "automated_vision_web_detection_fetch",
-      "started_at": "2026-07-09T03:39:41.531Z",
-      "completed_at": "2026-07-09T03:39:41.976Z",
+      "started_at": "2026-07-09T03:44:33.984Z",
+      "completed_at": "2026-07-09T03:44:34.416Z",
       "query_terms": [
         "1.jpg",
         "林怡文",
@@ -137,13 +137,13 @@
       "notes": "HTTP 403 for https://p19-common-sign.tiktokcdn-us.com/tos-alisg-p-0037/oszZSDQlhHDGAnAeIcAIComekoFTjPgEIxDzfl~tplv-tiktokx-origin.image"
     },
     {
-      "run_id": "ttd-patrol-20260709T033939Z-vision-91f5aeacee941495",
+      "run_id": "ttd-patrol-20260709T034431Z-vision-91f5aeacee941495",
       "source_id": "GOOGLE_VISION_WEB_DETECTION",
       "source_name": "www.kxan.com / Vision visually similar image",
       "source_url": "https://www.kxan.com/wp-content/uploads/sites/40/2026/05/Blue-Hole.png",
       "run_mode": "automated_vision_web_detection_fetch",
-      "started_at": "2026-07-09T03:39:41.976Z",
-      "completed_at": "2026-07-09T03:39:43.408Z",
+      "started_at": "2026-07-09T03:44:34.416Z",
+      "completed_at": "2026-07-09T03:44:36.217Z",
       "query_terms": [
         "1.jpg",
         "林怡文",
@@ -170,13 +170,13 @@
       "threshold": 16
     },
     {
-      "run_id": "ttd-patrol-20260709T033939Z-vision-6729a038c3d81d76",
+      "run_id": "ttd-patrol-20260709T034431Z-vision-6729a038c3d81d76",
       "source_id": "GOOGLE_VISION_WEB_DETECTION",
       "source_name": "content-viajes.nationalgeographic.com.es / Vision visually similar image",
       "source_url": "https://content-viajes.nationalgeographic.com.es/medio/2026/05/22/adobestock-763446965_259009c7_260522132139_550x807.webp",
       "run_mode": "automated_vision_web_detection_fetch",
-      "started_at": "2026-07-09T03:39:43.430Z",
-      "completed_at": "2026-07-09T03:39:44.010Z",
+      "started_at": "2026-07-09T03:44:36.220Z",
+      "completed_at": "2026-07-09T03:44:36.392Z",
       "query_terms": [
         "1.jpg",
         "林怡文",
@@ -203,13 +203,13 @@
       "threshold": 16
     },
     {
-      "run_id": "ttd-patrol-20260709T033939Z-vision-41fbef458cbb0e03",
+      "run_id": "ttd-patrol-20260709T034431Z-vision-41fbef458cbb0e03",
       "source_id": "GOOGLE_VISION_WEB_DETECTION",
       "source_name": "explorethebruce.com / Vision visually similar image",
       "source_url": "https://explorethebruce.com/wp-content/uploads/2023/06/SaubleFalls.png",
       "run_mode": "automated_vision_web_detection_fetch",
-      "started_at": "2026-07-09T03:39:44.010Z",
-      "completed_at": "2026-07-09T03:39:47.223Z",
+      "started_at": "2026-07-09T03:44:36.392Z",
+      "completed_at": "2026-07-09T03:44:37.032Z",
       "query_terms": [
         "1.jpg",
         "林怡文",
@@ -236,13 +236,13 @@
       "threshold": 16
     },
     {
-      "run_id": "ttd-patrol-20260709T033939Z-vision-ecad7143dc3f5a5c",
+      "run_id": "ttd-patrol-20260709T034431Z-vision-ecad7143dc3f5a5c",
       "source_id": "GOOGLE_VISION_WEB_DETECTION",
       "source_name": "lookaside.fbsbx.com / Vision visually similar image",
       "source_url": "https://lookaside.fbsbx.com/lookaside/crawler/media/",
       "run_mode": "automated_vision_web_detection_fetch",
-      "started_at": "2026-07-09T03:39:47.263Z",
-      "completed_at": "2026-07-09T03:39:47.611Z",
+      "started_at": "2026-07-09T03:44:37.040Z",
+      "completed_at": "2026-07-09T03:44:37.299Z",
       "query_terms": [
         "1.jpg",
         "林怡文",
@@ -259,13 +259,13 @@
       "notes": "non-image response content-type=text/html; charset=\"utf-8\" for https://lookaside.fbsbx.com/lookaside/crawler/media/"
     },
     {
-      "run_id": "ttd-patrol-20260709T033939Z-vision-351a292cdf827f58",
+      "run_id": "ttd-patrol-20260709T034431Z-vision-351a292cdf827f58",
       "source_id": "GOOGLE_VISION_WEB_DETECTION",
       "source_name": "www.areavibes.com / Vision visually similar image",
       "source_url": "https://www.areavibes.com/photos/livability/round-rock-tx.jpg",
       "run_mode": "automated_vision_web_detection_fetch",
-      "started_at": "2026-07-09T03:39:47.612Z",
-      "completed_at": "2026-07-09T03:39:49.146Z",
+      "started_at": "2026-07-09T03:44:37.299Z",
+      "completed_at": "2026-07-09T03:44:38.419Z",
       "query_terms": [
         "1.jpg",
         "林怡文",
@@ -292,13 +292,13 @@
       "threshold": 16
     },
     {
-      "run_id": "ttd-patrol-20260709T033939Z-vision-dade80615133faca",
+      "run_id": "ttd-patrol-20260709T034431Z-vision-dade80615133faca",
       "source_id": "GOOGLE_VISION_WEB_DETECTION",
       "source_name": "upload.wikimedia.org / Vision visually similar image",
       "source_url": "https://upload.wikimedia.org/wikipedia/commons/2/21/La_Escalera.JPG",
       "run_mode": "automated_vision_web_detection_fetch",
-      "started_at": "2026-07-09T03:39:49.148Z",
-      "completed_at": "2026-07-09T03:39:49.808Z",
+      "started_at": "2026-07-09T03:44:38.421Z",
+      "completed_at": "2026-07-09T03:44:39.006Z",
       "query_terms": [
         "1.jpg",
         "林怡文",
@@ -315,13 +315,13 @@
       "notes": "image exceeds max bytes (3545708 > 2000000) for https://upload.wikimedia.org/wikipedia/commons/2/21/La_Escalera.JPG"
     },
     {
-      "run_id": "ttd-patrol-20260709T033939Z-channel-SRC-01-b50ef6bfdd96f081",
+      "run_id": "ttd-patrol-20260709T034431Z-channel-SRC-01-b50ef6bfdd96f081",
       "source_id": "SRC-01",
       "source_name": "Yahoo News Taiwan",
       "source_url": "https://tw.news.yahoo.com/",
       "run_mode": "automated_public_channel_crawl",
-      "started_at": "2026-07-09T03:39:49.808Z",
-      "completed_at": "2026-07-09T03:39:51.198Z",
+      "started_at": "2026-07-09T03:44:39.006Z",
+      "completed_at": "2026-07-09T03:44:39.763Z",
       "query_terms": [
         "1.jpg",
         "林怡文",
@@ -348,13 +348,13 @@
       "threshold": 16
     },
     {
-      "run_id": "ttd-patrol-20260709T033939Z-channel-SRC-04-27e60545fa370cfd",
+      "run_id": "ttd-patrol-20260709T034431Z-channel-SRC-04-27e60545fa370cfd",
       "source_id": "SRC-04",
       "source_name": "ETtoday News Cloud",
       "source_url": "https://www.ettoday.net/",
       "run_mode": "automated_public_channel_crawl",
-      "started_at": "2026-07-09T03:39:51.224Z",
-      "completed_at": "2026-07-09T03:39:51.900Z",
+      "started_at": "2026-07-09T03:44:39.767Z",
+      "completed_at": "2026-07-09T03:44:39.963Z",
       "query_terms": [
         "1.jpg",
         "林怡文",
@@ -381,13 +381,13 @@
       "threshold": 16
     },
     {
-      "run_id": "ttd-patrol-20260709T033939Z-channel-SRC-12-e1b9d8e7144fc775",
+      "run_id": "ttd-patrol-20260709T034431Z-channel-SRC-12-e1b9d8e7144fc775",
       "source_id": "SRC-12",
       "source_name": "Taiwan FactCheck Center reports",
       "source_url": "https://tfc-taiwan.org.tw/fact-check-reports-all/",
       "run_mode": "automated_public_channel_crawl",
-      "started_at": "2026-07-09T03:39:51.901Z",
-      "completed_at": "2026-07-09T03:39:52.154Z",
+      "started_at": "2026-07-09T03:44:39.964Z",
+      "completed_at": "2026-07-09T03:44:40.251Z",
       "query_terms": [
         "1.jpg",
         "林怡文",

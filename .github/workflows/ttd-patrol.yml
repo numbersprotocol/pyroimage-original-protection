@@ -97,7 +97,7 @@ jobs:
           echo "TTD_VISION_STOP_RATIO=0.9" >> "$GITHUB_ENV"
           echo "TTD_PATROL_STRICT=1" >> "$GITHUB_ENV"
 
-          if [ "$adapter" = "vision" ] && [ "$billable" = "true" ] && [ -n "${GCP_TTD_PATROL_SA_JSON:-}" ]; then
+          if { [ "$adapter" = "vision" ] || [ "$adapter" = "vision+channels" ]; } && [ "$billable" = "true" ] && [ -n "${GCP_TTD_PATROL_SA_JSON:-}" ]; then
             echo "TTD_VISION_BILLABLE=1" >> "$GITHUB_ENV"
             echo "TTD_VISION_DRY_RUN=0" >> "$GITHUB_ENV"
           else
