@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-19T08:47:02.605Z",
+  "generated_at": "2026-07-09T03:39:30.743Z",
   "monitoring_label": "specified-source monitoring",
   "source_file": ".omni/harness/monitored-source-list-v1.md",
   "source_count": 14,
@@ -17,10 +17,10 @@
       "source_name": "Yahoo News Taiwan",
       "source_url": "https://tw.news.yahoo.com/",
       "source_type": "news_aggregator",
-      "crawl_method": "manual_review",
+      "crawl_method": "automated_public_page",
       "frequency": "daily",
       "risk_level": "medium",
-      "risk_note": "Confirm robots and terms before automation; demo mode uses human-operated search and citation-safe evidence capture.",
+      "risk_note": "MVP fetches the public landing page at low frequency; no login, paywall, age gate, anti-bot, robots, or terms bypass is allowed.",
       "demo_inclusion": "yes",
       "demo_subset": true,
       "demo_slot": "D-01",
@@ -34,7 +34,7 @@
         "public_claim_status"
       ],
       "monitoring_label": "specified-source monitoring",
-      "automation_allowed_by_default": false,
+      "automation_allowed_by_default": true,
       "access_guardrail": "No login, paywall, age gate, anti-bot, robots.txt, or terms bypass is allowed."
     },
     {
@@ -93,10 +93,10 @@
       "source_name": "ETtoday News Cloud",
       "source_url": "https://www.ettoday.net/",
       "source_type": "news_site",
-      "crawl_method": "manual_review",
+      "crawl_method": "automated_public_page",
       "frequency": "twice_weekly",
       "risk_level": "medium",
-      "risk_note": "Confirm robots and terms; avoid bulk image fetching without permission.",
+      "risk_note": "MVP fetches the public landing page at low frequency; candidates still require local fingerprint comparison and human review.",
       "demo_inclusion": "maybe",
       "demo_subset": false,
       "evidence_required": [
@@ -108,7 +108,7 @@
         "public_claim_status"
       ],
       "monitoring_label": "specified-source monitoring",
-      "automation_allowed_by_default": false,
+      "automation_allowed_by_default": true,
       "access_guardrail": "No login, paywall, age gate, anti-bot, robots.txt, or terms bypass is allowed."
     },
     {
@@ -281,10 +281,10 @@
       "source_name": "Taiwan FactCheck Center reports",
       "source_url": "https://tfc-taiwan.org.tw/fact-check-reports-all/",
       "source_type": "fact_check_db",
-      "crawl_method": "manual_review",
+      "crawl_method": "automated_public_page",
       "frequency": "weekly",
       "risk_level": "medium",
-      "risk_note": "Record report URLs and citation-safe summaries; do not bulk copy report content.",
+      "risk_note": "MVP fetches the public reports page at low frequency; record source URLs and citation-safe summaries only.",
       "demo_inclusion": "context_only",
       "demo_subset": false,
       "evidence_required": [
@@ -296,7 +296,7 @@
         "public_claim_status"
       ],
       "monitoring_label": "specified-source monitoring",
-      "automation_allowed_by_default": false,
+      "automation_allowed_by_default": true,
       "access_guardrail": "No login, paywall, age gate, anti-bot, robots.txt, or terms bypass is allowed."
     },
     {

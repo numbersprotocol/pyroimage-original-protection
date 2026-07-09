@@ -1,6 +1,6 @@
 # PyroImage 原創影像主動防護 QA 與 PM Handback
 
-Generated at: 2026-07-08T08:17:55.053Z
+Generated at: 2026-07-09T03:40:00.501Z
 
 ## Demo Target
 
@@ -42,7 +42,7 @@ Generated at: 2026-07-08T08:17:55.053Z
 | suspected_events | 0 | Real Incidents | Human-reviewed real incidents. Demonstration alerts are excluded from this count. |
 | evidence_reports | 0 | Review Package | Review-ready origin and suspected-copy packages for brand or legal teams. |
 | partner_feedback | 0 | Outreach Integration Pending | Direct integration with co-branded partners. Currently setting up communication channels. |
-| tool_spend_twd | 0 | Budget Guarded | Budget-guarded Vision patrol ran for this MVP. Free-tier usage can still keep actual spend at 0. |
+| tool_spend_twd | 0 | Zero Cost | Total paid API and tool spend. Seed and dry-run patrols use local visual fingerprinting and zero-cost public data access. |
 
 ## 5-Minute Recording Flow
 
@@ -53,7 +53,7 @@ Generated at: 2026-07-08T08:17:55.053Z
 | 0:55-1:30 | Visual fingerprint matching | 說明本機 aHash+dHash 指紋比對與門檻，顯示 self-match 與受控轉檔仍能命中。 | 300 indexed rows |
 | 1:30-2:05 | designated-channel patrol | 切到巡檢資料，說明最新 run 由 adapter 寫入 metadata；缺 Vision secret 時不會花費，仍能保持 dry-run/seed-safe。 | 14 configured sources |
 | 2:05-2:40 | pending-review alert | 展示警報只來自真實抓取候選影像與感知雜湊命中；仍是 internal-only，需人工確認授權與來源脈絡。 | 0 alert / real_hash_match=true |
-| 2:40-3:20 | Evidence report | 展示 report section：protected original、candidate use、match explanation、run metadata、review state、public-use label 與 limitations。 | 0 report / adapter visionWebDetection |
+| 2:40-3:20 | Evidence report | 展示 report section：protected original、candidate use、match explanation、run metadata、review state、public-use label 與 limitations。 | 0 report / adapter visionWebDetection+namedChannelCrawler |
 | 3:20-4:20 | Origin verification portal | 切到貼圖查驗，輸入 known original、controlled transform、non-original control，確認 verdict 不捏造外部結果。 | 3 queries / PASS |
 | 4:20-5:00 | PM close and next work | 收斂 PM 待辦：補上 Actions Vision secret、合併 PR 後跑 ttd-patrol dispatch，並安排 production QA。 | stable static MVP; no paid API unless budget-gated Vision is explicitly enabled |
 

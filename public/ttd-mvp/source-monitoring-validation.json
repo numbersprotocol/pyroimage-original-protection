@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-19T08:47:02.605Z",
+  "generated_at": "2026-07-09T03:39:30.743Z",
   "monitoring_label": "specified-source monitoring",
   "expected": {
     "source_count": 14,
@@ -14,6 +14,7 @@
     "allowed_run_modes": [
       "manual_review",
       "search_query_only",
+      "automated_public_channel_crawl",
       "simulated_fixture"
     ]
   },
@@ -24,8 +25,9 @@
     "source_run_count": 6,
     "candidate_source_item_count": 6,
     "run_mode_counts": {
-      "manual_review": 3,
+      "automated_public_channel_crawl": 1,
       "search_query_only": 2,
+      "manual_review": 2,
       "simulated_fixture": 1
     },
     "protected_asset_id": "bafybeigzo5rkfshhubaazvw2xsvruskzrglb3gefyjtln3w3r4crhufmwm",
@@ -39,15 +41,16 @@
     "run_required_fields_present": true,
     "candidate_required_fields_present": true,
     "run_modes_are_safe": true,
+    "automated_channel_count": true,
     "no_unsafe_automation": true,
     "wording_uses_specified_source_monitoring": true,
     "broad_web_claim_absent": true,
     "paid_api_disabled_by_default": true
   },
   "limitations": [
-    "This phase is a local fixture and configuration layer, not an automated crawler.",
+    "This phase is a local fixture and configuration layer; actual public-page crawling runs through the namedChannelCrawler patrol adapter.",
     "Candidate source items are unreviewed or simulated; they do not assert suspected reuse.",
-    "Source automation requires future robots, terms, API, or partner authorization review.",
+    "Additional platform-specific automation still requires robots, terms, API, or partner authorization review.",
     "Paid search and reverse-image APIs remain disabled."
   ]
 }

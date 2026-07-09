@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-07-08T08:17:54.430Z",
-  "run_id": "ttd-patrol-20260708T081748Z",
-  "adapter": "visionWebDetection",
+  "generated_at": "2026-07-09T03:39:52.155Z",
+  "run_id": "ttd-patrol-20260709T033939Z",
+  "adapter": "visionWebDetection+namedChannelCrawler",
   "expected_filter": "all",
   "threshold": 16,
   "validations": [
@@ -13,7 +13,7 @@
       "error": "non-image response content-type=text/html; charset=\"utf-8\" for https://lookaside.fbsbx.com/lookaside/crawler/instagram/pinamar.py/profile_pic.jpg"
     },
     {
-      "candidate_id": "vision_102fe428d92db2c2",
+      "candidate_id": "vision_f68a53a0025842a1",
       "expected": "unknown",
       "pass": true,
       "warning": true,
@@ -23,7 +23,7 @@
       "candidate_id": "vision_91f5aeacee941495",
       "expected": "unknown",
       "verdict": "no_match",
-      "protected_asset_distance": 41,
+      "protected_asset_distance": 40,
       "top_index_match_asset_id": "bafybeigzo5rkfshhubaazvw2xsvruskzrglb3gefyjtln3w3r4crhufmwm",
       "pass": true
     },
@@ -64,6 +64,30 @@
       "pass": true,
       "warning": true,
       "error": "image exceeds max bytes (3545708 > 2000000) for https://upload.wikimedia.org/wikipedia/commons/2/21/La_Escalera.JPG"
+    },
+    {
+      "candidate_id": "channel_SRC-01_b50ef6bfdd96f081",
+      "expected": "unknown",
+      "verdict": "no_match",
+      "protected_asset_distance": 61,
+      "top_index_match_asset_id": "bafybeidumnvfbf3wglwczer3nkb2sz3so5rvcg442dt4gcpzwbr4wdnvey",
+      "pass": true
+    },
+    {
+      "candidate_id": "channel_SRC-04_27e60545fa370cfd",
+      "expected": "unknown",
+      "verdict": "no_match",
+      "protected_asset_distance": 70,
+      "top_index_match_asset_id": "bafybeicz5zxe2bzbeyyhhn2djqbvxfghohtshrebpsxhorknu2ebqko4te",
+      "pass": true
+    },
+    {
+      "candidate_id": "channel_SRC-12_e1b9d8e7144fc775",
+      "expected": "unknown",
+      "verdict": "no_match",
+      "protected_asset_distance": 52,
+      "top_index_match_asset_id": "bafybeiaqbojqsx7q2lt4b2znsyndiuolajxo72dd5nmuheevwuzjtlqy4q",
+      "pass": true
     }
   ],
   "pass": {

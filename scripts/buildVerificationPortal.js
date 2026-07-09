@@ -103,7 +103,7 @@ function buildKnownOriginalQuery(indexedEntries, assetsById, threshold) {
     result,
     verdict: {
       code: exactMatch ? "registered_original" : "review_required",
-      zh: exactMatch ? "保護庫命中：原作" : "需要人工複審",
+      zh: exactMatch ? "與已收錄原作相符" : "需要人工複審",
       en: exactMatch ? "Registered original" : "Needs review",
       tone: exactMatch ? "match" : "review",
       public_claim_status: "origin_verification_only",
@@ -158,7 +158,7 @@ function buildTransformedQuery(indexedEntries, assetsById, similarityResults, th
     result,
     verdict: {
       code: transformedMatch ? "registered_derivative" : "review_required",
-      zh: transformedMatch ? "保護庫命中：疑似同一原作" : "需要人工複審",
+      zh: transformedMatch ? "疑似同一原作，需複核" : "需要人工複審",
       en: transformedMatch ? "Registered derivative" : "Needs review",
       tone: transformedMatch ? "match" : "review",
       public_claim_status: "origin_verification_only",
@@ -218,7 +218,7 @@ function buildNonOriginalQuery(indexedEntries, assetsById, threshold) {
     result,
     verdict: {
       code: rejected ? "not_registered" : "review_required",
-      zh: rejected ? "未命中保護庫" : "需要人工複審",
+      zh: rejected ? "未找到對應原作" : "需要人工複審",
       en: rejected ? "Not registered" : "Needs review",
       tone: rejected ? "clear" : "review",
       public_claim_status: "no_origin_match_found",

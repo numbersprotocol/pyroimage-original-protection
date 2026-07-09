@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-07-08T08:17:54.430Z",
-  "run_id": "ttd-patrol-20260708T081748Z",
+  "generated_at": "2026-07-09T03:39:52.155Z",
+  "run_id": "ttd-patrol-20260709T033939Z",
   "source": "runPatrol.js",
   "alert_count": 0,
   "case_count": 0,
@@ -10,6 +10,11 @@
   "public_claim_statuses": [],
   "pass": true,
   "limitations": [
-    "Seed adapter alerts prove the pipeline and remain internal-only until an external source adapter supplies real source context."
+    "Vision WEB_DETECTION is budget-guarded; dry-run returns zero Vision candidates unless TTD_VISION_BILLABLE=1 is explicitly set.",
+    "Vision candidates must still pass local perceptual-hash matching and human review before any external claim.",
+    "Named-channel patrol fetches only configured public pages; it does not log in, bypass paywalls, bypass age gates, bypass anti-bot controls, or override robots/terms restrictions.",
+    "Named-channel candidates must still pass local perceptual-hash matching and human source-context review before any external claim.",
+    "Screenshot capture and external source context require human review before takedown or public infringement claims.",
+    "Google Cloud Vision WEB_DETECTION spend is recorded in vision-cost-log.json and blocked before the 90% monthly cap whenever Vision is enabled."
   ]
 }

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-08T08:17:55.053Z",
+  "generated_at": "2026-07-09T03:40:00.501Z",
   "phase": "Phase 4: Verification Portal And UI Integration Handback",
   "demo_target": {
     "route": "/pyroimage-original-protection",
@@ -157,8 +157,8 @@
       "id": "tool_spend_twd",
       "value": 0,
       "value_display": "0",
-      "label_display": "Budget Guarded",
-      "note": "Budget-guarded Vision patrol ran for this MVP. Free-tier usage can still keep actual spend at 0."
+      "label_display": "Zero Cost",
+      "note": "Total paid API and tool spend. Seed and dry-run patrols use local visual fingerprinting and zero-cost public data access."
     }
   ],
   "five_minute_recording_flow": [
@@ -208,7 +208,7 @@
       "title": "Evidence report",
       "source_artifact": "report-validation.json",
       "talk_track": "展示 report section：protected original、candidate use、match explanation、run metadata、review state、public-use label 與 limitations。",
-      "proof_point": "0 report / adapter visionWebDetection"
+      "proof_point": "0 report / adapter visionWebDetection+namedChannelCrawler"
     },
     {
       "timebox": "3:20-4:20",

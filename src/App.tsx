@@ -429,7 +429,7 @@ interface ChannelVM {
   name: string;
   type: string;
   risk: string;
-  status: "manual" | "queued" | "search";
+  status: "automated" | "manual" | "queued" | "search";
   hits: number;
 }
 
@@ -457,7 +457,14 @@ function buildChannels(sources: MonitoredSource[], alerts: AlertRecord[], locale
     name: s.source_name,
     type: sourceTypeText(s.source_type, locale),
     risk: s.risk_level,
-    status: s.crawl_method === "not_automated" ? "queued" : s.crawl_method === "search_query_only" ? "search" : "manual",
+    status:
+      s.crawl_method === "automated_public_page"
+        ? "automated"
+        : s.crawl_method === "not_automated"
+        ? "queued"
+        : s.crawl_method === "search_query_only"
+        ? "search"
+        : "manual",
     hits: hits[s.source_id] || 0,
   }));
 }
@@ -796,11 +803,20 @@ export function TtdMvpDashboard() {
   const patrolAdapter = loadState.data.monitoring.adapter?.id || "unknown";
   const patrolModeLabel = (() => {
     const adapter = loadState.data.monitoring.adapter;
+    if (adapter?.id?.includes("visionWebDetection") && adapter.id.includes("namedChannelCrawler") && adapter.paid_api_used) {
+      return locale === "zh-TW" ? "巡檢模式：Vision + 公開通路自動巡檢" : "Mode: Vision + public-channel auto patrol";
+    }
+    if (adapter?.id?.includes("visionWebDetection") && adapter.id.includes("namedChannelCrawler")) {
+      return locale === "zh-TW" ? "巡檢模式：Vision 試跑 + 公開通路自動巡檢" : "Mode: Vision dry run + public-channel auto patrol";
+    }
     if (adapter?.id === "visionWebDetection" && adapter.paid_api_used) {
       return locale === "zh-TW" ? "巡檢模式：Vision 真實巡檢（預算控管）" : "Mode: live Vision patrol (budget guarded)";
     }
     if (adapter?.id === "visionWebDetection") {
       return locale === "zh-TW" ? "巡檢模式：Vision 試跑（不計費）" : "Mode: Vision dry run (no cost)";
+    }
+    if (adapter?.id === "namedChannelCrawler") {
+      return locale === "zh-TW" ? "巡檢模式：公開通路自動巡檢" : "Mode: public-channel auto patrol";
     }
     if (adapter?.id === "seedUrls") {
       return locale === "zh-TW" ? "巡檢模式：真實抓取種子來源（零付費）" : "Mode: real seed-source fetch (zero cost)";
@@ -1387,7 +1403,7 @@ function DashboardView(props: {
       ? `目前真實侵權案件：${suspectedActual} 件。以下警報為展示案件，用於呈現「巡檢 → 分流 → 存證」的完整流程，不計入真實侵權統計。`
       : `Real infringement cases so far: ${suspectedActual}. The alerts below are preview cases that show the full patrol -> triage -> evidence workflow and do not count as real infringement.`
     : zh
-    ? `目前真實侵權案件：${suspectedActual} 件。${props.realPatrolMatches} 筆警報來自實際抓取候選影像與影像特徵比對命中；來源授權與外部侵權主張仍需人工確認。`
+    ? `目前真實侵權案件：${suspectedActual} 件。${props.realPatrolMatches} 筆警報來自實際抓取候選影像，並被系統判定為高度相似；來源授權與外部侵權主張仍需人工確認。`
     : `Real infringement cases so far: ${suspectedActual}. ${props.realPatrolMatches} alert(s) came from real fetched candidates and perceptual-hash matches; source authorization and external infringement claims still require human review.`;
   const steps: Array<{ target: View; accent: string; step: string; label: string; note: string; value: string; unit: string }> = [
     { target: "vault", accent: C.green, step: "STEP 01", label: zh ? "入庫簽署" : "Register", note: zh ? "建立數位指紋與來源憑證" : "Create fingerprint & origin proof", value: protectedDisplay, unit: zh ? "受保護" : "protected" },
@@ -1422,7 +1438,7 @@ function DashboardView(props: {
                 </h1>
                 <p className="mt-4 max-w-[620px] text-[13.5px] leading-6 text-[#CEC0A3]">
                   {zh
-                    ? "OriginRadar 先替 PyroImage 原作建立影像指紋，再用 Vision 背景巡檢尋找網路候選圖；疑似命中會被送進人工複核、存證與法務交付流程。"
+                    ? "OriginRadar 先替 PyroImage 原作建立影像指紋，再用 Vision 與公開通路巡檢尋找網路候選圖；高度相似候選會進入人工複核、存證與法務交付流程。"
                     : "OriginRadar fingerprints PyroImage originals, uses Vision patrol to discover web candidates, and routes suspected matches into human review, evidence packaging, and legal handoff."}
                 </p>
               </div>
@@ -1671,7 +1687,7 @@ function DetectionSpotlight({
           <div className="flex items-center justify-center">
             <div className="flex h-[92px] w-[92px] flex-col items-center justify-center rounded-full border-4 border-[#7F9C7E] bg-[#1A1A1A]">
               <span className="text-[18px] font-bold leading-none text-[#7F9C7E]" style={{ fontFamily: MONO }}>
-                {zh ? "無命中" : "CLEAR"}
+                {zh ? "未警報" : "CLEAR"}
               </span>
               <span className="mt-1 text-[9px] tracking-[0.1em] text-[#CEC0A3]" style={{ fontFamily: MONO }}>
                 {lastRunCandidates} {zh ? "候選" : "CAND."}
@@ -1711,7 +1727,7 @@ function DetectionSpotlight({
       ? "能力預覽：展示案件"
       : "Capability preview: preview case"
     : zh
-    ? "巡檢命中：待複審"
+    ? "疑似盜用：待複審"
     : "Patrol match: review";
 
   return (
@@ -1796,22 +1812,24 @@ function DetectionSpotlight({
 }
 
 function chDot(status: ChannelVM["status"]) {
-  return status === "search" ? C.blue : status === "queued" ? C.orange : C.stone;
+  return status === "automated" ? C.green : status === "search" ? C.blue : status === "queued" ? C.orange : C.stone;
 }
 function chLabel(status: ChannelVM["status"], locale: Locale) {
-  const zh = { manual: "人工複核", search: "搜尋線索", queued: "待授權" };
-  const en = { manual: "Manual review", search: "Search lead", queued: "Needs auth" };
+  const zh = { automated: "自動巡檢", manual: "人工複核", search: "查詢線索", queued: "待授權" };
+  const en = { automated: "Auto patrol", manual: "Manual review", search: "Query lead", queued: "Needs auth" };
   return (locale === "zh-TW" ? zh : en)[status];
 }
 function chNote(status: ChannelVM["status"], locale: Locale) {
   const zh = {
+    automated: "已接上公開頁面巡檢；系統會抓取候選圖片並送入本地指紋比對。",
     manual: "尚未接直接爬蟲，作為人工複核與後續導入來源。",
-    search: "可作為搜尋查詢來源，尚未等同平台爬蟲。",
+    search: "僅提供查詢入口或人工複核線索，目前不會自動爬取此平台。",
     queued: "需要平台授權、API 或合規確認後才能自動化。",
   };
   const en = {
+    automated: "Connected to public-page patrol; image candidates are fetched and sent through local fingerprint comparison.",
     manual: "Not connected to a direct crawler yet; used for manual review and future integration.",
-    search: "Usable as a search-query lead, not the same as a platform crawler.",
+    search: "Query entry or manual-review lead only; this platform is not auto-crawled yet.",
     queued: "Needs platform permission, API access, or compliance review before automation.",
   };
   return (locale === "zh-TW" ? zh : en)[status];
@@ -1845,12 +1863,20 @@ function distanceHelpText(match: VerificationTopMatch | null, threshold: number,
   const passed = match.combined_distance <= threshold;
   if (zh) {
     return passed
-      ? `距離 ${match.combined_distance}，低於門檻 ${threshold}，系統判定為命中。數字越低代表越像。`
-      : `距離 ${match.combined_distance}，高於門檻 ${threshold}，系統不判定為命中。數字越低代表越像。`;
+      ? `距離 ${match.combined_distance}，低於門檻 ${threshold}，系統判定與已收錄原作相符。數字越低代表越像。`
+      : `距離 ${match.combined_distance}，高於門檻 ${threshold}，目前未找到對應原作。數字越低代表越像。`;
   }
   return passed
     ? `Distance ${match.combined_distance}, below the ${threshold} threshold, so the system treats it as a match. Lower means more similar.`
     : `Distance ${match.combined_distance}, above the ${threshold} threshold, so the system does not treat it as a match. Lower means more similar.`;
+}
+
+function verificationVerdictText(verdict: VerificationQuery["verdict"], locale: Locale) {
+  if (locale !== "zh-TW") return verdict.en;
+  if (verdict.code === "registered_original") return "與已收錄原作相符";
+  if (verdict.code === "registered_derivative") return "疑似同一原作，需複核";
+  if (verdict.code === "not_registered") return "未找到對應原作";
+  return verdict.zh;
 }
 
 function similarityHelpText(match: VerificationTopMatch | null, locale: Locale) {
@@ -1958,8 +1984,8 @@ function VerificationView({
         />
         <KpiCard
           index="V3"
-          label={zh ? "命中判定線" : "Match line"}
-          sub={zh ? "低於此數字算命中" : "lower than this means match"}
+          label={zh ? "相似判定門檻" : "Match line"}
+          sub={zh ? "低於此數字，視為同一原作" : "lower than this means match"}
           value={verification.library.threshold.toString()}
           color={C.blue}
         />
@@ -2055,13 +2081,13 @@ function VerificationView({
                 {zh ? "查驗結果" : "Verification result"}
               </p>
               <h2 className="mt-1 text-[24px] font-semibold leading-tight" style={{ fontFamily: MONO }}>
-                {zh ? activeQuery.verdict.zh : activeQuery.verdict.en}
+                {verificationVerdictText(activeQuery.verdict, locale)}
               </h2>
               <p className="mt-2 max-w-[520px] text-[12px] leading-5 text-[#1a1a1a80]">
                 {topMatch
                   ? distanceHelpText(topMatch, verification.library.threshold, locale)
                   : zh
-                  ? "目前原創庫沒有找到足以判定命中的作品。"
+                  ? "目前原創庫沒有找到足以判定為同一原作的作品。"
                   : "The current index does not contain a strong enough match."}
               </p>
             </div>
@@ -2094,7 +2120,7 @@ function VerificationView({
               <div className="mt-3 grid gap-2 sm:grid-cols-2">
                 <CaseField
                   label={zh ? "最接近的已收錄原作" : "Closest indexed original"}
-                  value={topMatch?.display_title || (zh ? "無命中" : "No match")}
+                  value={topMatch?.display_title || (zh ? "未找到對應原作" : "No match")}
                 />
                 <CaseField
                   label={zh ? "判定距離" : "Decision distance"}
@@ -2102,10 +2128,10 @@ function VerificationView({
                     topMatch
                       ? topMatch.combined_distance <= verification.library.threshold
                         ? zh
-                          ? "低於門檻，判定命中"
+                          ? "低於門檻，判定為同一原作"
                           : "Below threshold, match"
                         : zh
-                        ? "高於門檻，未命中"
+                        ? "高於門檻，未找到對應原作"
                         : "Above threshold, no match"
                       : "N/A"
                   }
@@ -2123,7 +2149,7 @@ function VerificationView({
                   value={
                     activeQuery.verdict.public_claim_status === "no_origin_match_found"
                       ? zh
-                        ? "未建立原作命中"
+                        ? "未找到對應原作"
                         : "No origin match"
                       : zh
                       ? "僅供來源查驗"
@@ -2162,7 +2188,7 @@ function VerificationView({
           <h3 className="text-[15px] font-semibold">{zh ? "系統比對結果" : "Candidate originals compared by the system"}</h3>
           <p className="mt-1 max-w-[880px] text-[12px] leading-5 text-[#1a1a1a80]">
             {zh
-              ? `系統會把輸入圖和已收錄原創逐一比對。判定距離越低越像；低於 ${verification.library.threshold} 才算命中。相似程度是輔助閱讀，實際主張仍要看原創憑證與人工複核。`
+              ? `系統會把輸入圖和已收錄原創逐一比對。判定距離越低越像；低於 ${verification.library.threshold} 代表可能是同一原作。相似程度是輔助閱讀，實際主張仍要看原創憑證與人工複核。`
               : `The system compares the input against indexed originals. Lower decision distance means more similar; below ${verification.library.threshold} counts as a match. Similarity is for readability; claims still require the origin certificate and human review.`}
           </p>
         </div>
@@ -2191,7 +2217,7 @@ function VerificationView({
               </span>
               <span className="min-w-0">
                 <span className="block font-semibold" style={{ color: isPass ? C.greenDeep : C.ink }}>
-                  {isPass ? (zh ? "命中" : "Match") : zh ? "未命中" : "No match"}
+                  {isPass ? (zh ? "同一原作" : "Match") : zh ? "未找到對應原作" : "No match"}
                 </span>
                 <span className="block text-[10px] text-[#1a1a1a73]" style={{ fontFamily: MONO }}>
                   {match.combined_distance} / {verification.library.threshold}
@@ -2625,7 +2651,7 @@ function ChannelsView({
 }) {
   const zh = locale === "zh-TW";
   const liveSources = new Set((monitoring.source_runs || []).map((run) => run.source_id).filter(Boolean));
-  const liveSourceCount = liveSources.size || (monitoring.adapter?.id === "visionWebDetection" ? 1 : 0);
+  const liveSourceCount = liveSources.size || (monitoring.adapter?.id?.includes("visionWebDetection") ? 1 : 0);
   const latestCandidates = monitoring.run_scope?.candidates_attempted ?? 0;
   const lastRunLabel = formatDateForLocale(monitoring.completed_at || monitoring.generated_at, locale);
   const stageCounts = channels.reduce(
@@ -2633,7 +2659,7 @@ function ChannelsView({
       acc[channel.status] += 1;
       return acc;
     },
-    { manual: 0, queued: 0, search: 0 },
+    { automated: 0, manual: 0, queued: 0, search: 0 },
   );
   return (
     <div className="max-w-[1240px] px-6 py-7 md:px-9">
@@ -2644,13 +2670,13 @@ function ChannelsView({
           title={zh ? "巡檢來源與通路導入狀態" : "Patrol source and channel-integration status"}
           desc={
             zh
-              ? "目前已運作的自動巡檢來源是 Google Vision Web Detection；下列 14 個通路是監控範圍與導入狀態，不代表每個通路都已接上直接爬蟲。"
-              : "The live automated patrol source is Google Vision Web Detection. The 14 named channels below are monitoring scope and integration status, not proof that each has a direct crawler."
+              ? "目前已運作的自動巡檢來源包含 Google Vision Web Detection 與 3 個公開頁面通路；其餘通路仍是查詢線索、人工複核或待授權狀態。"
+              : "Live automated patrol now includes Google Vision Web Detection plus 3 public-page channels. Other channels remain query leads, manual review, or authorization-needed."
           }
           hint={
             zh
-              ? "怎麼看：上方看目前真正執行的巡檢來源；下方每張卡表示指定通路的導入狀態。右上「查看最近巡檢」只播放最新巡檢流程，不會從瀏覽器直接啟動 GitHub Actions。"
-              : "How to read: the summary shows the real patrol source; each card shows the named channel's integration status. “Review latest patrol” only replays the latest patrol flow and does not start GitHub Actions from the browser."
+              ? "怎麼看：上方看目前真正執行的巡檢來源；下方每張卡表示指定通路的導入狀態。自動巡檢會抓取公開頁候選圖片並送入本地指紋比對；查詢線索不等於已接平台爬蟲。"
+              : "How to read: the summary shows real patrol sources; each card shows integration status. Auto patrol fetches public-page image candidates for local fingerprint comparison; query leads are not platform crawlers."
           }
         />
         <button type="button" onClick={onRunPatrol} className="rounded-[9px] bg-[#1A1A1A] px-[18px] py-2.5 text-[12.5px] font-semibold text-[#F4E9D5]">
@@ -2661,10 +2687,10 @@ function ChannelsView({
       <div className="mb-5 grid gap-3.5 lg:grid-cols-3">
         <div className="rounded-[14px] border border-[#1a1a1a12] bg-white p-4">
           <p className="text-[11px] font-semibold text-[#1a1a1a80]" style={{ fontFamily: MONO }}>
-            {zh ? "已運作巡檢來源" : "Live patrol source"}
+            {zh ? "已運作巡檢來源" : "Live patrol sources"}
           </p>
           <p className="mt-2 text-[22px] font-semibold" style={{ fontFamily: MONO }}>
-            Vision Web Detection
+            Vision + 3 channels
           </p>
           <p className="mt-1 text-[12px] leading-5 text-[#1a1a1a80]">
             {zh ? `最新 run 來源 ${liveSourceCount} 個，候選影像 ${latestCandidates} 筆。` : `${liveSourceCount} live source(s), ${latestCandidates} candidate image(s) in the latest run.`}
@@ -2679,8 +2705,8 @@ function ChannelsView({
           </p>
           <p className="mt-1 text-[12px] leading-5 text-[#1a1a1a80]">
             {zh
-              ? `搜尋線索 ${stageCounts.search}、人工複核 ${stageCounts.manual}、待授權 ${stageCounts.queued}。`
-              : `${stageCounts.search} search lead(s), ${stageCounts.manual} manual-review source(s), ${stageCounts.queued} needs auth.`}
+              ? `自動巡檢 ${stageCounts.automated}、查詢線索 ${stageCounts.search}、人工複核 ${stageCounts.manual}、待授權 ${stageCounts.queued}。`
+              : `${stageCounts.automated} auto patrol, ${stageCounts.search} query lead(s), ${stageCounts.manual} manual-review source(s), ${stageCounts.queued} needs auth.`}
           </p>
         </div>
         <div className="rounded-[14px] border border-[#1a1a1a12] bg-white p-4">
@@ -2768,7 +2794,7 @@ function ReportsView(props: {
         dot={C.ink}
         eyebrow={zh ? "存證報告 · CERTIFIED REPORTS" : "Certified reports"}
         title={zh ? "盜用存證報告" : "Evidence reports"}
-        desc={zh ? "每份報告皆含電子憑證、相似度比對、來源軌跡與人工複審狀態；真實巡檢命中仍需確認來源脈絡與授權。" : "Each report bundles the certificate, similarity comparison, source trail, and review state. Real patrol matches still require human source-context and authorization review."}
+        desc={zh ? "每份報告皆含電子憑證、相似度比對、來源軌跡與人工複審狀態；真實巡檢候選仍需確認來源脈絡與授權。" : "Each report bundles the certificate, similarity comparison, source trail, and review state. Real patrol matches still require human source-context and authorization review."}
         hint={zh ? "怎麼看：每列是一份存證報告，含關聯案件、類型與可驗證存證憑證；點「預覽匯出」只會播放本頁操作，不會真的產生外部檔案。" : "How to read: each row is an evidence report with its linked case, type, and a verifiable certificate. “Preview export” only plays the page action and does not create an external file."}
       />
       <div className="overflow-hidden rounded-[14px] border border-[#1a1a1a12] bg-white">

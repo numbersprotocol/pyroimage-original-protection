@@ -50,3 +50,14 @@ None (pure frontend, no new external deps).
   - [x] Demo wording consolidated, honesty boundary intact
   - [x] lint + build:pages green; browser smoke pass
 - **Status**: COMPLETED (Reviewer PASS 5/5 on 2026-07-09, PR #8, head `e78dd99`)
+
+## Change Set: Patrol 50 + real channel crawl + wording clarity
+### Sprint Contract
+- **What will be built**: merge PR #7 behavior into current main, set scheduled patrol to `vision+channels` with `protected_asset_limit=50`, add at least three real public-page channel crawls, and replace user-facing `命中` wording with clearer detection/origin-verification language.
+- **Acceptance criteria**:
+  - [x] Workflow dispatch default and scheduled run use `protected_asset_limit=50`
+  - [x] Scheduled run uses `vision+channels`; Vision remains budget-guarded
+  - [x] Named-channel adapter performs real HTTP fetches for at least three public channels without login/paywall/anti-bot bypass
+  - [x] UI shows `自動巡檢` channel status and no longer exposes `命中` / `搜尋線索` wording in zh-TW
+  - [x] patrol/report/verify/dashboard/handback validations pass; lint + build pass; signed-query scan clean
+- **Status**: IN REVIEW (implemented 2026-07-09 on branch `omni/4ef90e87/patrol-50-real-channels`)
