@@ -823,7 +823,15 @@ export function TtdMvpDashboard() {
     }
     return locale === "zh-TW" ? "巡檢模式：讀取最新巡檢產物" : "Mode: latest patrol artifact";
   })();
-  const patrolStatus = loadState.data.monitoring.status || "unknown";
+  const patrolStatus = (() => {
+    const raw = loadState.data.monitoring.status || "unknown";
+    if (raw === "completed") return locale === "zh-TW" ? "已完成" : "completed";
+    if (raw === "completed_with_candidate_errors") {
+      return locale === "zh-TW" ? "已完成（部分候選圖無法存取）" : "completed, some candidates unreachable";
+    }
+    if (raw === "unknown") return locale === "zh-TW" ? "尚無巡檢紀錄" : "no patrol record yet";
+    return raw.replace(/_/g, " ");
+  })();
 
   const activeCase = alerts.find((a) => a.id === activeCaseId) || null;
   const certWork = works.find((w) => w.assetId === certAssetId) || null;
