@@ -23,13 +23,7 @@ const REQUIRED_SCREEN_IDS = [
   "verification_portal",
 ];
 const REQUIRED_PHASES = [1, 2, 3, 4, 5, 6];
-const SIGNED_QUERY_TOKEN_PARTS = [
-  ["Ex", "pires"],
-  ["Sign", "ature"],
-  ["Key", "Pair", "Id"],
-  ["X", "Amz"],
-  ["Pol", "icy"],
-];
+const SIGNED_QUERY_PATTERN = /[?&](?:x-)?(?:expires|signature|key-pair-id|policy)=|[?&]x-amz-/i;
 const CLAIM_GUARDRAILS = [
   ["confirmed", "infringement"],
   ["legal", "proof"],
@@ -102,11 +96,7 @@ function serialized(value) {
 }
 
 function containsSignedQuery(value) {
-  const text = serialized(value);
-  return SIGNED_QUERY_TOKEN_PARTS.some((parts) => {
-    const token = parts.length === 3 ? parts.join("-") : parts.join("");
-    return text.includes(`${token}=`) || text.includes(`${token}-`);
-  });
+  return SIGNED_QUERY_PATTERN.test(serialized(value));
 }
 
 function containsGuardrailClaim(value) {

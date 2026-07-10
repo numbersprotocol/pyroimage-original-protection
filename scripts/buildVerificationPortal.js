@@ -18,7 +18,7 @@ const SIMILARITY_RESULTS = path.join(INPUT_DIR, "similarity-query-results.json")
 
 const VERIFICATION_FIXTURES_FILE = "verification-fixtures.json";
 const VERIFICATION_VALIDATION_FILE = "verification-validation.json";
-const SIGNED_QUERY_PATTERN = /(?:Expires|Signature|Key-Pair-Id|Policy)=|X-Amz-/i;
+const SIGNED_QUERY_PATTERN = /[?&](?:x-)?(?:expires|signature|key-pair-id|policy)=|[?&]x-amz-/i;
 
 function readJson(filePath) {
   return JSON.parse(fs.readFileSync(filePath, "utf8"));

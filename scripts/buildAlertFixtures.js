@@ -59,7 +59,7 @@ const REQUIRED_REVIEW_STATE_FIELDS = [
   "next_action",
 ];
 
-const SIGNED_QUERY_PATTERN = /(?:Expires=|Signature=|Key-Pair-Id|X-Amz-|Policy=)/i;
+const SIGNED_QUERY_PATTERN = /[?&](?:x-)?(?:expires|signature|key-pair-id|policy)=|[?&]x-amz-/i;
 const PROHIBITED_CLAIM_PATTERNS = [
   /confirmed infringement/i,
   /confirmed unauthorized use/i,
