@@ -1106,6 +1106,7 @@ export function TtdMvpDashboard() {
               onOpenCases={openCases}
               onNavigate={go}
               onRunPatrol={runPatrol}
+              onOpenSign={() => setShowSign(true)}
             />
           )}
 
@@ -1165,6 +1166,7 @@ export function TtdMvpDashboard() {
               channelsTotal={channelsTotalDisplay}
               onOpenSign={() => setShowSign(true)}
               onNavigate={go}
+              showToast={showToast}
             />
           )}
 
@@ -1347,6 +1349,7 @@ function HomeView(props: {
   onOpenCases: (tab: CasesTab) => void;
   onNavigate: (v: View) => void;
   onRunPatrol: () => void;
+  onOpenSign: () => void;
 }) {
   const {
     locale,
@@ -1421,8 +1424,14 @@ function HomeView(props: {
     },
   ];
 
-  const steps = [
-    { n: "STEP 01", t: zh ? "入庫簽署" : "Register", d: zh ? "為作品建立數位指紋與來源憑證（改圖也認得出）。" : "Fingerprint each work and sign its origin certificate — edits are still recognized." },
+  const steps: Array<{ n: string; t: string; d: string; actionText?: string; onAction?: () => void }> = [
+    {
+      n: "STEP 01",
+      t: zh ? "入庫簽署" : "Register",
+      d: zh ? "為作品建立數位指紋與來源憑證（改圖也認得出）。" : "Fingerprint each work and sign its origin certificate — edits are still recognized.",
+      actionText: zh ? "簽署新作品 →" : "Sign a new work →",
+      onAction: props.onOpenSign,
+    },
     { n: "STEP 02", t: zh ? "雷達巡檢" : "Patrol", d: zh ? "Vision 與公開通路每日自動尋找網路上的相似影像。" : "Vision and public channels search the web for similar images daily." },
     { n: "STEP 03", t: zh ? "警報複審" : "Review", d: zh ? "高相似候選自動警報，由你人工確認是否為真實侵權。" : "High-similarity candidates raise alerts; you confirm real infringement." },
     { n: "STEP 04", t: zh ? "存證交付" : "Certify", d: zh ? "產生上鏈存證報告，交付法務或啟動授權溝通。" : "Generate an on-chain evidence report for legal handoff or licensing." },
@@ -1622,7 +1631,17 @@ function HomeView(props: {
                     {s.n}
                   </p>
                   <p className="mt-1 text-[14px] font-bold">{s.t}</p>
-                  <p className="mt-0.5 text-[12px] leading-5 text-[#5c584a]">{s.d}</p>
+                  <p className="mt-0.5 text-[12px] leading-5 text-[#5c584a]">
+                    {s.d}
+                    {s.actionText && s.onAction && (
+                      <>
+                        {" "}
+                        <button type="button" onClick={s.onAction} className="font-bold text-[#4f6a4e] hover:underline">
+                          {s.actionText}
+                        </button>
+                      </>
+                    )}
+                  </p>
                 </div>
               ))}
             </div>
@@ -3006,6 +3025,7 @@ function VaultView({
   channelsTotal,
   onOpenSign,
   onNavigate,
+  showToast,
 }: {
   locale: Locale;
   works: WorkVM[];
@@ -3015,10 +3035,12 @@ function VaultView({
   channelsTotal: string;
   onOpenSign: () => void;
   onNavigate: (v: View) => void;
+  showToast: (msg: string, kind?: "ok" | "alert") => void;
 }) {
   const zh = locale === "zh-TW";
   const [query, setQuery] = useState("");
   const [visible, setVisible] = useState(9);
+  const [chip, setChip] = useState<"all" | "indexed" | "indexing">("all");
   const q = query.trim().toLowerCase();
   const filtered = q
     ? works.filter((w) => `${w.name} ${w.en} ${w.author} ${w.owner}`.toLowerCase().includes(q))
@@ -3116,6 +3138,34 @@ function VaultView({
             ? `顯示 ${Math.min(visible, filtered.length)} / ${protectedDisplay} 張（已載入示範縮圖 ${works.length} 張）`
             : `Showing ${Math.min(visible, filtered.length)} / ${protectedDisplay} (${works.length} sample thumbnails loaded)`}
         </span>
+        <div className="flex w-full flex-wrap gap-2 sm:w-auto">
+          {(
+            [
+              { key: "all" as const, label: zh ? `全部 ${protectedDisplay}` : `All ${protectedDisplay}` },
+              { key: "indexed" as const, label: zh ? `已可查驗 ${indexedRows}` : `Verifiable ${indexedRows}` },
+              { key: "indexing" as const, label: zh ? `索引建立中 ${indexingRest.toLocaleString()}` : `Indexing ${indexingRest.toLocaleString()}` },
+            ]
+          ).map((c) => (
+            <button
+              key={c.key}
+              type="button"
+              onClick={() => {
+                setChip(c.key);
+                if (c.key !== "all") {
+                  showToast(zh ? "示範原型：正式版將依索引狀態篩選作品" : "Demo prototype: production filters works by index status");
+                }
+              }}
+              className={`rounded-full border px-3 py-1.5 text-[12px] font-semibold transition-colors ${
+                chip === c.key
+                  ? "border-[#1A1A1A] bg-[#1A1A1A] text-[#F4E9D5]"
+                  : "border-[#1a1a1a26] bg-white text-[#5c584a] hover:border-[#7F9C7E]"
+              }`}
+              style={{ fontFamily: MONO }}
+            >
+              {c.label}
+            </button>
+          ))}
+        </div>
       </div>
 
       <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
