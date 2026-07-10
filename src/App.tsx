@@ -643,6 +643,9 @@ export function TtdMvpDashboard() {
   const [onb, setOnb] = useState(readOnbState);
   const [introOpen, setIntroOpen] = useState(readIntroOpen);
 
+  // "sign a new work" modal (clearly-labelled demonstration — no backend write)
+  const [showSign, setShowSign] = useState(false);
+
   // mutable, demonstration-only overlays on top of backend data
   const [statusOverride, setStatusOverride] = useState<Record<string, string>>({});
   const [extraEvents, setExtraEvents] = useState<Record<string, TimelineItem[]>>({});
@@ -735,7 +738,7 @@ export function TtdMvpDashboard() {
 
   const data = loadState.status === "ready" ? loadState.data : null;
 
-  const works = useMemo(() => (data ? buildWorks(data.demoAssets, 9) : []), [data]);
+  const works = useMemo(() => (data ? buildWorks(data.demoAssets, 48) : []), [data]);
   const channels = useMemo(
     () => (data ? buildChannels(data.monitoredSources.monitored_sources, data.alerts, locale) : []),
     [data, locale],
@@ -1056,6 +1059,8 @@ export function TtdMvpDashboard() {
               works={works}
               onOpenCert={(id) => setCertAssetId(id)}
               onRanExample={() => markOnbStep(2)}
+              onOpenSign={() => setShowSign(true)}
+              showToast={showToast}
             />
           )}
 
@@ -1094,7 +1099,16 @@ export function TtdMvpDashboard() {
           )}
 
           {view === "vault" && (
-            <VaultView locale={locale} works={works} onOpenCert={(id) => setCertAssetId(id)} />
+            <VaultView
+              locale={locale}
+              works={works}
+              onOpenCert={(id) => setCertAssetId(id)}
+              protectedDisplay={protectedDisplay}
+              indexedRows={loadState.data.verification.library.indexed_rows}
+              channelsTotal={channelsTotalDisplay}
+              onOpenSign={() => setShowSign(true)}
+              onNavigate={go}
+            />
           )}
 
           {view === "channels" && (
@@ -1104,6 +1118,7 @@ export function TtdMvpDashboard() {
       </div>
 
       {certWork && <CertModal locale={locale} work={certWork} onClose={() => setCertAssetId(null)} />}
+      {showSign && <SignModal locale={locale} onClose={() => setShowSign(false)} showToast={showToast} />}
       {toast && <Toast msg={toast.msg} kind={toast.kind} />}
     </main>
   );
@@ -1685,12 +1700,16 @@ function VerificationView({
   works,
   onOpenCert,
   onRanExample,
+  onOpenSign,
+  showToast,
 }: {
   locale: Locale;
   verification: VerificationDocument;
   works: WorkVM[];
   onOpenCert: (id: string) => void;
   onRanExample?: () => void;
+  onOpenSign: () => void;
+  showToast: (msg: string, kind?: "ok" | "alert") => void;
 }) {
   const zh = locale === "zh-TW";
   const firstQuery = verification.queries[0] || null;
@@ -1742,6 +1761,41 @@ function VerificationView({
       setInputState("matched");
     } else {
       setInputState("unsupported");
+    }
+  };
+
+  const copySummary = () => {
+    const verdictText = verificationVerdictText(activeQuery.verdict, locale);
+    const lines = zh
+      ? [
+          "【原創雷達 查驗摘要】",
+          `判定：${verdictText}`,
+          `最接近的已收錄原作：${topMatch?.display_title || "未找到對應原作"}`,
+          `判定距離：${topMatch ? `${topMatch.combined_distance}（門檻 ${verification.library.threshold}，越低越像）` : "未進行比對"}`,
+          `相似程度：${topMatch ? `${Math.round(topMatch.similarity_score * 10000) / 100}%` : "無"}`,
+          `本機視覺指紋：${shortFp(activeQuery.query_fingerprint.fingerprint_value)}`,
+          `驗證連結：${topMatch?.certificate_link && activeQuery.result.pass_threshold ? topMatch.certificate_link : "（未找到對應原創憑證）"}`,
+          "（本摘要僅供來源查驗；實際主張仍需原創憑證與人工複核）",
+        ]
+      : [
+          "[OriginRadar verification summary]",
+          `Verdict: ${verdictText}`,
+          `Closest indexed original: ${topMatch?.display_title || "no match"}`,
+          `Decision distance: ${topMatch ? `${topMatch.combined_distance} (threshold ${verification.library.threshold}, lower = more similar)` : "not compared"}`,
+          `Similarity: ${topMatch ? `${Math.round(topMatch.similarity_score * 10000) / 100}%` : "n/a"}`,
+          `Local fingerprint: ${shortFp(activeQuery.query_fingerprint.fingerprint_value)}`,
+          `Verification link: ${topMatch?.certificate_link && activeQuery.result.pass_threshold ? topMatch.certificate_link : "(no matching origin certificate)"}`,
+          "(Origin-check summary only; claims still require the origin certificate and human review)",
+        ];
+    const text = lines.join("\n");
+    const done = () => showToast(zh ? "已複製查驗摘要，可貼進訊息或稿件備註" : "Summary copied — paste it into a message or draft note");
+    if (navigator.clipboard?.writeText) {
+      navigator.clipboard
+        .writeText(text)
+        .then(done)
+        .catch(() => showToast(zh ? "此環境無法自動複製，請手動選取" : "Clipboard unavailable here — please copy manually", "alert"));
+    } else {
+      showToast(zh ? "此環境無法自動複製，請手動選取" : "Clipboard unavailable here — please copy manually", "alert");
     }
   };
 
@@ -1797,14 +1851,60 @@ function VerificationView({
 
       <div className="mb-5 grid gap-5 xl:grid-cols-[1fr_1.35fr]">
         <section className="rounded-[14px] border border-[#1a1a1a12] bg-white p-5">
-          {/* Primary action in the MVP: examples are the clearest path because manual input only accepts indexed samples. */}
-          <p className="mb-1 text-[12px] font-semibold" style={{ fontFamily: MONO }}>
-            {zh ? "先從這裡開始" : "Start here"}
+          {/* paste-first (redesign 2026-07-10); still honestly scoped to indexed samples */}
+          <p className="mb-2 text-[11px] font-semibold tracking-[0.12em] text-[#1a1a1a8c]" style={{ fontFamily: MONO }}>
+            {zh ? "貼上圖片網址或資產 ID" : "PASTE AN IMAGE URL OR ASSET ID"}
           </p>
-          <p className="mb-3 text-[11px] leading-4 text-[#1a1a1a80]">
-            {zh
-              ? "點一個範例，右側會立即顯示判定結果；這是目前 MVP 最穩定的使用方式。"
-              : "Click an example and the verdict appears on the right; this is the most reliable way to use the current MVP."}
+          <form onSubmit={submitVerification} className="flex gap-2">
+            <input
+              value={inputValue}
+              onChange={(event) => setInputValue(event.target.value)}
+              placeholder={zh ? "https://… 或 asset:bafybei…" : "https://… or asset:bafybei…"}
+              className="min-w-0 flex-1 rounded-[9px] border border-[#1a1a1a26] bg-[#FBF6EC] px-3.5 py-2.5 text-[12px] outline-none placeholder:text-[#1a1a1a4d] focus:border-[#7F9C7E]"
+              style={{ fontFamily: MONO }}
+              aria-label={zh ? "查驗輸入" : "Verification input"}
+            />
+            <button
+              type="submit"
+              className="flex flex-none items-center gap-2 rounded-[9px] bg-[#1A1A1A] px-4 py-2.5 text-[12px] font-semibold text-[#F4E9D5]"
+            >
+              <ScanLine size={14} /> {zh ? "查驗" : "Check"}
+            </button>
+          </form>
+          {inputState === "unsupported" ? (
+            <div className="mt-3 rounded-[9px] border border-[#e0d3ad] bg-[#FBF6EC] px-3.5 py-2.5 text-[12px] leading-5 text-[#80621c]">
+              {zh
+                ? "這張圖還查不到：它尚未建立指紋索引，所以不會產生判定，也不會建立警報。查不到不代表沒有問題。"
+                : "This image can't be checked yet: it has no fingerprint index, so no verdict and no alert is produced. Not found does not mean no issue."}
+              <span className="mt-2 flex flex-wrap gap-2">
+                <button
+                  type="button"
+                  onClick={onOpenSign}
+                  className="rounded-[8px] bg-[#4c6b3c] px-3 py-1.5 text-[11px] font-semibold text-white"
+                >
+                  {zh ? "這是我的作品，簽署保護" : "This is my work — sign & protect"}
+                </button>
+                <button
+                  type="button"
+                  onClick={() => showToast(zh ? "已記下！正式版開放任意圖片查驗時會通知你（示範）" : "Noted! We'll let you know when arbitrary-image checks open (demo)")}
+                  className="rounded-[8px] border border-[#1a1a1a33] px-3 py-1.5 text-[11px] font-semibold text-[#1A1A1A]"
+                >
+                  {zh ? "正式版開放時通知我" : "Notify me at launch"}
+                </button>
+              </span>
+            </div>
+          ) : (
+            <p className="mt-2.5 flex items-start gap-1.5 text-[11px] leading-4 text-[#1a1a1a80]">
+              <Info size={13} className="mt-px flex-none" />
+              {zh
+                ? "目前 MVP 只查已建立指紋的樣本；查不到不會產生判定或警報。正式版將支援任意圖片即時查驗。"
+                : "The MVP only checks indexed samples; unsupported inputs produce no verdict or alert. Arbitrary-image checks arrive in the full version."}
+            </p>
+          )}
+
+          {/* examples: the fastest way to see a real verdict */}
+          <p className="mb-2 mt-5 text-[11px] font-semibold tracking-[0.12em] text-[#1a1a1a8c]" style={{ fontFamily: MONO }}>
+            {zh ? "或先用範例試跑" : "OR TRY A SAMPLE FIRST"}
           </p>
           <div className="grid gap-2">
             {verification.queries.map((query) => {
@@ -1828,46 +1928,6 @@ function VerificationView({
               );
             })}
           </div>
-
-          {/* SECONDARY: manual input, downgraded — clearly scoped to indexed samples */}
-          <p className="mb-2 mt-5 text-[12px] font-semibold">
-            {zh ? "進階：貼已收錄樣本" : "Advanced: paste an indexed sample"}
-          </p>
-          <p className="mb-3 text-[11px] leading-4 text-[#1a1a1a73]">
-            {zh
-              ? "這裡不是任意圖片搜尋；只接受已入庫、已建立指紋的樣本網址或資產 ID。"
-              : "This is not arbitrary-image search; it only accepts URLs or asset IDs already indexed with fingerprints."}
-          </p>
-          <form onSubmit={submitVerification} className="flex gap-2">
-            <input
-              value={inputValue}
-              onChange={(event) => setInputValue(event.target.value)}
-              placeholder={zh ? "貼上已收錄樣本的網址或資產 ID…" : "Paste an indexed sample URL or asset ID…"}
-              className="min-w-0 flex-1 rounded-[9px] border border-[#1a1a1a26] bg-[#FBF6EC] px-3.5 py-2.5 text-[12px] outline-none placeholder:text-[#1a1a1a4d] focus:border-[#7F9C7E]"
-              style={{ fontFamily: MONO }}
-              aria-label={zh ? "查驗輸入" : "Verification input"}
-            />
-            <button
-              type="submit"
-              className="flex flex-none items-center gap-2 rounded-[9px] bg-[#1A1A1A] px-4 py-2.5 text-[12px] font-semibold text-[#F4E9D5]"
-            >
-              <ScanLine size={14} /> {zh ? "查驗" : "Check"}
-            </button>
-          </form>
-          {inputState === "unsupported" ? (
-            <p className="mt-3 rounded-[9px] border border-[#e0d3ad] bg-[#FBF6EC] px-3.5 py-2.5 text-[12px] leading-5 text-[#80621c]">
-              {zh
-                ? "目前沒有找到這個輸入的指紋，所以不會產生判定，也不會建立警報。請先用上方範例；正式版才會支援任意新圖片查驗。"
-                : "No fingerprint was found for this input, so it produces no verdict and no alert. Use an example above first; arbitrary new-image verification belongs to the full version."}
-            </p>
-          ) : (
-            <p className="mt-2.5 flex items-start gap-1.5 text-[11px] leading-4 text-[#1a1a1a80]">
-              <Info size={13} className="mt-px flex-none" />
-              {zh
-                ? "想直接看結果，請使用上方範例。手動輸入適合已知道資產 ID 或樣本網址的使用者。"
-                : "For an immediate result, use an example above. Manual input is for users who already know the asset ID or indexed sample URL."}
-            </p>
-          )}
         </section>
 
         <section className="rounded-[14px] border border-[#1a1a1a12] bg-white p-5">
@@ -1953,27 +2013,67 @@ function VerificationView({
                   }
                 />
               </div>
-              {topMatch?.certificate_link && activeQuery.result.pass_threshold && (
+              {activeQuery.result.pass_threshold && topMatch ? (
                 <div className="mt-3 flex flex-wrap gap-2">
+                  <button
+                    type="button"
+                    onClick={() =>
+                      showToast(zh ? "示範原型：正式版將在此開啟授權申請，並通知權利人" : "Demo prototype: production opens the licensing request here and notifies the rights holder")
+                    }
+                    className="rounded-[9px] bg-[#4c6b3c] px-3.5 py-2 text-[12px] font-semibold text-white"
+                  >
+                    {zh ? "申請授權 / 聯繫權利人" : "Request license / contact holder"}
+                  </button>
                   {matchWork && (
                     <button
                       type="button"
                       onClick={() => onOpenCert(topMatch.asset_id)}
                       className="rounded-[9px] bg-[#7F9C7E] px-3.5 py-2 text-[12px] font-semibold text-[#1A1A1A]"
                     >
-                      {zh ? "檢視憑證" : "View certificate"}
+                      {zh ? "檢視原創憑證" : "View certificate"}
                     </button>
                   )}
-                  <a
-                    href={topMatch.certificate_link}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="flex items-center gap-1.5 rounded-[9px] border border-[#1a1a1a26] px-3.5 py-2 text-[12px] font-semibold"
+                  {topMatch.certificate_link && (
+                    <a
+                      href={topMatch.certificate_link}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="flex items-center gap-1.5 rounded-[9px] border border-[#1a1a1a26] px-3.5 py-2 text-[12px] font-semibold"
+                    >
+                      <ExternalLink size={14} /> {zh ? "開啟公開驗證頁" : "Open public verification"}
+                    </a>
+                  )}
+                </div>
+              ) : (
+                <div className="mt-3 flex flex-wrap gap-2">
+                  <button
+                    type="button"
+                    onClick={onOpenSign}
+                    className="rounded-[9px] bg-[#4c6b3c] px-3.5 py-2 text-[12px] font-semibold text-white"
                   >
-                    <ExternalLink size={14} /> {zh ? "開啟公開驗證頁" : "Open public verification"}
-                  </a>
+                    {zh ? "這是我的作品，簽署保護" : "This is my work — sign & protect"}
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => showToast(zh ? "已記下！正式版開放任意圖片查驗時會通知你（示範）" : "Noted! We'll let you know when arbitrary-image checks open (demo)")}
+                    className="rounded-[9px] border border-[#1a1a1a26] px-3.5 py-2 text-[12px] font-semibold"
+                  >
+                    {zh ? "正式版開放時通知我" : "Notify me at launch"}
+                  </button>
                 </div>
               )}
+              <div className="mt-3 flex flex-wrap items-center gap-2.5">
+                <button
+                  type="button"
+                  onClick={copySummary}
+                  className="flex items-center gap-1.5 rounded-[9px] border border-[#1a1a1a26] px-3 py-1.5 text-[11.5px] font-semibold"
+                >
+                  <FileText size={12} /> {zh ? "複製查驗摘要" : "Copy summary"}
+                </button>
+                <span className="text-[11px] text-[#1a1a1a73]">
+                  {zh ? "純文字摘要，可貼進訊息或稿件備註" : "Plain-text summary for messages or draft notes"}
+                </span>
+              </div>
             </div>
           </div>
         </section>
@@ -2834,19 +2934,138 @@ function CaseField({ label, value, mono, note }: { label: string; value: string;
 
 /* ---------------- vault view ---------------- */
 
-function VaultView({ locale, works, onOpenCert }: { locale: Locale; works: WorkVM[]; onOpenCert: (id: string) => void }) {
+function VaultView({
+  locale,
+  works,
+  onOpenCert,
+  protectedDisplay,
+  indexedRows,
+  channelsTotal,
+  onOpenSign,
+  onNavigate,
+}: {
+  locale: Locale;
+  works: WorkVM[];
+  onOpenCert: (id: string) => void;
+  protectedDisplay: string;
+  indexedRows: number;
+  channelsTotal: string;
+  onOpenSign: () => void;
+  onNavigate: (v: View) => void;
+}) {
   const zh = locale === "zh-TW";
+  const [query, setQuery] = useState("");
+  const [visible, setVisible] = useState(9);
+  const q = query.trim().toLowerCase();
+  const filtered = q
+    ? works.filter((w) => `${w.name} ${w.en} ${w.author} ${w.owner}`.toLowerCase().includes(q))
+    : works;
+  const shown = filtered.slice(0, visible);
+  const protectedNum = Number(protectedDisplay.replace(/,/g, "")) || works.length;
+  const indexingRest = Math.max(0, protectedNum - indexedRows);
+
   return (
     <div className="max-w-[1240px] px-6 py-7 md:px-9">
-      <PageHead
-        dot={C.green}
-        eyebrow={zh ? "原創庫 · PROTECTED VAULT" : "Protected vault"}
-        title={zh ? "受保護原創影像" : "Protected originals"}
-        desc={zh ? "每張影像都建立了不可逆的視覺指紋（影像的獨特特徵值，改圖也認得出）與來源憑證。點擊卡片檢視著作憑證。" : "Each image has an irreversible visual fingerprint and origin certificate. Click a card to view its certificate."}
-        hint={zh ? "怎麼看：點任一張作品卡，開啟它的原創憑證（創作者、權利人、指紋、可驗證連結）。" : "How to read: click any work card to open its origin certificate — creator, rights holder, fingerprint, and a verifiable link."}
-      />
+      <div className="flex flex-wrap items-start justify-between gap-3">
+        <div className="min-w-0 flex-1">
+          <PageHead
+            dot={C.green}
+            eyebrow={zh ? "我的原創 · VAULT" : "My originals · Vault"}
+            title={zh ? "受保護的原創影像" : "Protected originals"}
+            desc={
+              zh
+                ? "每張作品都建立了不可逆的視覺指紋（改圖也認得出）與來源憑證。點卡片可檢視著作憑證：創作者、權利人、指紋、可驗證連結。"
+                : "Each work has an irreversible visual fingerprint (edits are still recognized) and an origin certificate. Click a card for creator, rights holder, fingerprint, and a verifiable link."
+            }
+            hint={
+              zh
+                ? "怎麼看：上排是保護現況統計；下方卡片為示範縮圖樣本。點「＋簽署新作品」可看入庫流程（示範）。"
+                : "How to read: the top row shows protection stats; the cards below are sample thumbnails. “Sign a new work” shows the intake flow (demo)."
+            }
+          />
+        </div>
+        <button
+          type="button"
+          onClick={onOpenSign}
+          className="mt-1 flex-none rounded-[9px] bg-[#4c6b3c] px-4 py-2.5 text-[13px] font-semibold text-white"
+        >
+          ＋ {zh ? "簽署新作品" : "Sign a new work"}
+        </button>
+      </div>
+
+      <div className="mb-5 grid gap-3.5 sm:grid-cols-3">
+        <div className="rounded-[12px] bg-[#1A1A1A] p-5 text-[#F4E9D5]">
+          <p className="text-[10px] tracking-[0.16em] text-[#7F9C7E]" style={{ fontFamily: MONO }}>
+            {zh ? "已保護 · PROTECTED" : "PROTECTED"}
+          </p>
+          <p className="mt-1.5 text-[30px] font-bold leading-none" style={{ fontFamily: MONO, color: "#9fbb87" }}>
+            {protectedDisplay}
+          </p>
+          <p className="mt-1.5 text-[12px] text-[#CEC0A3]">{zh ? "張作品已建立指紋與來源憑證" : "works fingerprinted & certified"}</p>
+        </div>
+        <div className="rounded-[12px] border border-[#1a1a1a14] bg-white p-5">
+          <p className="text-[10px] tracking-[0.16em] text-[#8d8873]" style={{ fontFamily: MONO }}>
+            {zh ? "可查驗樣本 · INDEXED" : "INDEXED"}
+          </p>
+          <p className="mt-1.5 text-[30px] font-bold leading-none text-[#4f6a4e]" style={{ fontFamily: MONO }}>
+            {indexedRows.toLocaleString("en-US")}
+          </p>
+          <p className="mt-1.5 text-[12px] leading-5 text-[#5c584a]">
+            {zh
+              ? `已可在「查一張圖」即時查驗；其餘 ${indexingRest.toLocaleString("en-US")} 張批次建立索引中`
+              : `checkable in Verify today; the other ${indexingRest.toLocaleString("en-US")} are being indexed in batches`}
+          </p>
+        </div>
+        <div className="rounded-[12px] border border-[#1a1a1a14] bg-white p-5">
+          <p className="text-[10px] tracking-[0.16em] text-[#8d8873]" style={{ fontFamily: MONO }}>
+            {zh ? "監控通路 · SOURCES" : "SOURCES"}
+          </p>
+          <p className="mt-1.5 text-[30px] font-bold leading-none" style={{ fontFamily: MONO }}>
+            {channelsTotal}
+          </p>
+          <p className="mt-1.5 text-[12px] leading-5 text-[#5c584a]">
+            {zh ? "其中 3 個已自動巡檢，" : "3 of them auto-patrolled — "}
+            <button type="button" onClick={() => onNavigate("channels")} className="font-bold text-[#4f6a4e]">
+              {zh ? "看通路狀態 →" : "channel status →"}
+            </button>
+          </p>
+        </div>
+      </div>
+
+      <div className="mb-4 flex flex-wrap items-center gap-3">
+        <input
+          type="search"
+          value={query}
+          onChange={(e) => {
+            setQuery(e.target.value);
+            setVisible(9);
+          }}
+          placeholder={zh ? "搜尋檔名、主題或創作者…" : "Search file name, subject, or creator…"}
+          className="min-w-[220px] flex-1 rounded-[9px] border border-[#1a1a1a26] bg-white px-3.5 py-2.5 text-[13px] outline-none placeholder:text-[#1a1a1a4d] focus:border-[#7F9C7E]"
+          aria-label={zh ? "搜尋原創作品" : "Search originals"}
+        />
+        <span className="text-[12px] text-[#5c584a]" style={{ fontFamily: MONO }}>
+          {q
+            ? zh
+              ? `搜尋結果 ${filtered.length} 張（示範縮圖 ${works.length} 張）`
+              : `${filtered.length} result(s) of ${works.length} sample thumbnails`
+            : zh
+            ? `顯示 ${Math.min(visible, filtered.length)} / ${protectedDisplay} 張（已載入示範縮圖 ${works.length} 張）`
+            : `Showing ${Math.min(visible, filtered.length)} / ${protectedDisplay} (${works.length} sample thumbnails loaded)`}
+        </span>
+      </div>
+
       <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
-        {works.map((w) => (
+        <button
+          type="button"
+          onClick={onOpenSign}
+          className="flex min-h-[220px] flex-col items-center justify-center gap-1.5 rounded-[14px] border-2 border-dashed border-[#1a1a1a26] bg-[#f8f2e3] p-5 text-center text-[#5c584a] transition-colors hover:border-[#7F9C7E] hover:text-[#4f6a4e]"
+        >
+          <span className="text-[30px] leading-none">＋</span>
+          <span className="text-[14px] font-bold">{zh ? "簽署新作品" : "Sign a new work"}</span>
+          <span className="text-[12px]">{zh ? "上傳後建立指紋與來源憑證，納入巡檢" : "Upload to fingerprint, certify, and patrol"}</span>
+        </button>
+        {shown.map((w) => (
           <button
             key={w.assetId}
             type="button"
@@ -2855,7 +3074,7 @@ function VaultView({ locale, works, onOpenCert }: { locale: Locale; works: WorkV
           >
             <div className="relative">
               <Thumb src={w.thumb} grad={w.grad} className="aspect-[16/10] w-full" />
-              <span className="absolute right-2.5 top-2.5 rounded-full bg-[#7F9C7E] px-2.5 py-1 text-[9px] font-semibold text-white" style={{ fontFamily: MONO }}>
+              <span className="absolute right-2.5 top-2.5 rounded-full bg-[#1a1a1ad1] px-2.5 py-1 text-[9px] font-semibold text-[#e8dfab]" style={{ fontFamily: MONO }}>
                 {zh ? "已簽署保護" : "Protected"}
               </span>
             </div>
@@ -2872,6 +3091,85 @@ function VaultView({ locale, works, onOpenCert }: { locale: Locale; works: WorkV
             </div>
           </button>
         ))}
+      </div>
+      {filtered.length === 0 && (
+        <p className="mt-5 rounded-[10px] border border-[#1a1a1a14] bg-white px-5 py-6 text-center text-[13px] text-[#8d8873]">
+          {zh ? "沒有符合搜尋的示範樣本。全庫搜尋將在正式版提供。" : "No sample matches this search. Full-library search arrives in the production version."}
+        </p>
+      )}
+      {visible < filtered.length && (
+        <div className="mt-5 flex items-center justify-center gap-3.5 text-[13px] text-[#5c584a]">
+          <button
+            type="button"
+            onClick={() => setVisible((v) => v + 9)}
+            className="rounded-[9px] border border-[#1a1a1a33] px-4 py-2 font-semibold"
+          >
+            {zh ? "載入更多" : "Load more"}
+          </button>
+          <span>
+            {zh
+              ? `示範已載入 ${works.length} 張縮圖；全庫分頁載入將在正式版提供`
+              : `${works.length} sample thumbnails available; full-library paging arrives in production`}
+          </span>
+        </div>
+      )}
+    </div>
+  );
+}
+
+/* ---------------- sign-a-new-work modal (clearly-labelled demonstration) ---------------- */
+
+function SignModal({
+  locale,
+  onClose,
+  showToast,
+}: {
+  locale: Locale;
+  onClose: () => void;
+  showToast: (msg: string, kind?: "ok" | "alert") => void;
+}) {
+  const zh = locale === "zh-TW";
+  return (
+    <div
+      className="fixed inset-0 z-50 flex items-start justify-center overflow-y-auto bg-[#1a1a1a80] p-5"
+      onClick={(e) => {
+        if (e.target === e.currentTarget) onClose();
+      }}
+    >
+      <div className="relative my-10 w-full max-w-[620px] rounded-[14px] border border-[#1a1a1a1f] bg-[#F4E9D5] p-7 shadow-[0_20px_60px_rgba(17,17,16,0.35)]" role="dialog" aria-modal="true">
+        <button type="button" onClick={onClose} className="absolute right-3.5 top-3.5 p-1.5 text-[#5c584a]" aria-label={zh ? "關閉" : "Close"}>
+          <X size={16} />
+        </button>
+        <p className="text-[10px] tracking-[0.18em] text-[#8d8873]" style={{ fontFamily: MONO }}>
+          {zh ? "簽署新作品 · PROTECT" : "SIGN A NEW WORK · PROTECT"}
+        </p>
+        <h3 className="mt-1.5 text-[20px] font-black">{zh ? "為新作品建立保護" : "Protect a new work"}</h3>
+        <p className="mt-1 text-[13px] leading-5 text-[#5c584a]">
+          {zh
+            ? "上傳後系統會建立不可逆的視覺指紋與來源憑證，之後的每日巡檢就會涵蓋這件作品。"
+            : "After upload, the system builds an irreversible visual fingerprint and origin certificate, and daily patrols start covering the work."}
+        </p>
+        <button
+          type="button"
+          onClick={() => showToast(zh ? "示範原型：正式版將在此上傳影像並完成簽署" : "Demo prototype: production uploads and signs the image here")}
+          className="mt-4 w-full rounded-[12px] border-2 border-dashed border-[#1a1a1a26] bg-white px-5 py-9 text-center font-bold text-[#5c584a] transition-colors hover:border-[#7F9C7E] hover:text-[#4f6a4e]"
+        >
+          ⬆ {zh ? "拖曳或點擊上傳影像" : "Drag or click to upload"}
+          <span className="mt-1 block text-[12px] font-normal text-[#8d8873]">
+            {zh ? "支援 JPG / PNG / TIFF · 可批次上傳（示範）" : "JPG / PNG / TIFF · batch upload supported (demo)"}
+          </span>
+        </button>
+        <p className="mt-4 flex flex-wrap items-center gap-2 text-[11px]" style={{ fontFamily: MONO }}>
+          {(zh
+            ? ["上傳影像", "建立指紋", "簽署來源憑證", "納入巡檢"]
+            : ["upload image", "build fingerprint", "sign certificate", "join patrol"]
+          ).map((s, i, arr) => (
+            <span key={s} className="flex items-center gap-2">
+              <span className="rounded-full border border-[#1a1a1a1f] bg-[#f8f2e3] px-3 py-1 text-[#5c584a]">{s}</span>
+              {i < arr.length - 1 && <span aria-hidden>→</span>}
+            </span>
+          ))}
+        </p>
       </div>
     </div>
   );
