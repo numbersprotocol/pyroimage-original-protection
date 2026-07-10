@@ -10,6 +10,7 @@ import {
   Info,
   LayoutDashboard,
   Lightbulb,
+  Menu,
   Radar,
   ScanLine,
   ShieldCheck,
@@ -646,6 +647,9 @@ export function TtdMvpDashboard() {
   // "sign a new work" modal (clearly-labelled demonstration — no backend write)
   const [showSign, setShowSign] = useState(false);
 
+  // mobile navigation drawer (redesign 2026-07-10)
+  const [menuOpen, setMenuOpen] = useState(false);
+
   // mutable, demonstration-only overlays on top of backend data
   const [statusOverride, setStatusOverride] = useState<Record<string, string>>({});
   const [extraEvents, setExtraEvents] = useState<Record<string, TimelineItem[]>>({});
@@ -712,6 +716,7 @@ export function TtdMvpDashboard() {
   };
 
   const go = (next: View) => {
+    setMenuOpen(false);
     // "reports" is now a tab inside the merged Cases page.
     if (next === "reports") {
       setCasesTab("reports");
@@ -725,6 +730,7 @@ export function TtdMvpDashboard() {
   };
 
   const openCases = (tab: CasesTab) => {
+    setMenuOpen(false);
     setCasesTab(tab);
     setView("alerts");
     const main = document.getElementById("ttd-main");
@@ -896,6 +902,14 @@ export function TtdMvpDashboard() {
       {/* ===== Topbar ===== */}
       <header className="z-30 flex h-[60px] flex-none items-center justify-between gap-4 bg-[#1A1A1A] px-4 text-[#F4E9D5] md:px-6">
         <div className="flex min-w-0 items-center gap-3">
+          <button
+            type="button"
+            onClick={() => setMenuOpen(true)}
+            className="flex-none rounded-[8px] border border-[#ffffff26] p-2 text-[#CEC0A3] md:hidden"
+            aria-label={locale === "zh-TW" ? "開啟選單" : "Open menu"}
+          >
+            <Menu size={16} />
+          </button>
           <img
             src={NUMBERS_LOGO_SRC}
             alt="Numbers"
@@ -1008,24 +1022,67 @@ export function TtdMvpDashboard() {
             <ScanOverlay pct={scanPct} channel={scanChannel} locale={locale} />
           )}
 
-          {/* mobile nav */}
-          <div className="flex gap-2 overflow-x-auto border-b border-[#1a1a1a14] bg-[#EFE3CC] px-4 py-2 md:hidden">
-            {NAV.map((item) => {
-              const active = view === item.id || (item.id === "alerts" && view === "case");
-              return (
-                <button
-                  key={item.id}
-                  type="button"
-                  onClick={() => go(item.id)}
-                  className={`flex-none rounded-full px-3 py-1.5 text-xs font-semibold ${
-                    active ? "bg-[#1A1A1A] text-[#F4E9D5]" : "text-[#1A1A1A]"
-                  }`}
-                >
-                  {locale === "zh-TW" ? item.zh : item.en}
-                </button>
-              );
-            })}
-          </div>
+          {/* mobile nav drawer (hamburger-driven; redesign 2026-07-10) */}
+          {menuOpen && (
+            <div
+              className="fixed inset-0 z-40 bg-[#1a1a1a73] md:hidden"
+              onClick={(e) => {
+                if (e.target === e.currentTarget) setMenuOpen(false);
+              }}
+            >
+              <nav className="flex h-full w-[286px] flex-col gap-1.5 overflow-y-auto bg-[#F4E9D5] p-4 shadow-[12px_0_40px_rgba(17,17,16,0.28)]">
+                <div className="flex items-center justify-between px-2 pb-2">
+                  <p className="text-[9px] tracking-[0.18em] text-[#1a1a1a66]" style={{ fontFamily: MONO }}>
+                    {T.menu[locale]}
+                  </p>
+                  <button type="button" onClick={() => setMenuOpen(false)} className="p-1.5 text-[#5c584a]" aria-label={locale === "zh-TW" ? "關閉選單" : "Close menu"}>
+                    <X size={15} />
+                  </button>
+                </div>
+                {NAV.map((item) => {
+                  const Icon = item.icon;
+                  const active = view === item.id || (item.id === "alerts" && view === "case");
+                  return (
+                    <button
+                      key={item.id}
+                      type="button"
+                      onClick={() => go(item.id)}
+                      className={`flex items-start gap-3 rounded-[10px] px-3 py-2.5 text-left transition-colors ${
+                        active ? "bg-[#1A1A1A] text-[#F4E9D5]" : "text-[#1A1A1A] hover:bg-[#e3d4b6]"
+                      }`}
+                    >
+                      <Icon size={18} className="mt-0.5 flex-none" />
+                      <span className="min-w-0 flex-1">
+                        <span className="flex items-center gap-1.5">
+                          <span className="text-[13.5px] font-semibold">{locale === "zh-TW" ? item.zh : item.en}</span>
+                          <span className={`text-[8px] tracking-[0.1em] ${active ? "text-[#7F9C7E]" : "opacity-45"}`} style={{ fontFamily: MONO }}>
+                            {item.eyebrow}
+                          </span>
+                        </span>
+                        <span className={`mt-0.5 block text-[10.5px] leading-tight ${active ? "text-[#CEC0A3]" : "text-[#1a1a1a99]"}`}>
+                          {locale === "zh-TW" ? item.descZh : item.descEn}
+                        </span>
+                      </span>
+                      {item.id === "alerts" && openCount > 0 && (
+                        <span className="flex-none rounded-full bg-[#ED5D29] px-2 py-0.5 text-[11px] font-semibold text-white" style={{ fontFamily: MONO }}>
+                          {openCount}
+                        </span>
+                      )}
+                    </button>
+                  );
+                })}
+                <div className="mt-auto rounded-[12px] bg-[#1A1A1A] p-4 text-[#F4E9D5]">
+                  <p className="mb-2 text-[9px] tracking-[0.14em] text-[#7F9C7E]" style={{ fontFamily: MONO }}>
+                    {T.coverage[locale]}
+                  </p>
+                  <p className="text-[24px] font-bold leading-none" style={{ fontFamily: MONO }}>
+                    {protectedDisplay}
+                  </p>
+                  <p className="mt-0.5 text-[11px] text-[#CEC0A3]">{T.protectedOriginals[locale]}</p>
+                </div>
+              </nav>
+            </div>
+          )}
 
           {view === "dashboard" && (
             <HomeView
@@ -1112,7 +1169,13 @@ export function TtdMvpDashboard() {
           )}
 
           {view === "channels" && (
-            <ChannelsView locale={locale} channels={channels} monitoring={loadState.data.monitoring} onRunPatrol={runPatrol} />
+            <ChannelsView
+              locale={locale}
+              channels={channels}
+              monitoring={loadState.data.monitoring}
+              onRunPatrol={runPatrol}
+              showToast={showToast}
+            />
           )}
         </div>
       </div>
@@ -3182,13 +3245,17 @@ function ChannelsView({
   channels,
   monitoring,
   onRunPatrol,
+  showToast,
 }: {
   locale: Locale;
   channels: ChannelVM[];
   monitoring: MonitoringRun;
   onRunPatrol: () => void;
+  showToast: (msg: string, kind?: "ok" | "alert") => void;
 }) {
   const zh = locale === "zh-TW";
+  const [showSuggest, setShowSuggest] = useState(false);
+  const [suggestValue, setSuggestValue] = useState("");
   const liveSources = new Set((monitoring.source_runs || []).map((run) => run.source_id).filter(Boolean));
   const liveSourceCount = liveSources.size || (monitoring.adapter?.id?.includes("visionWebDetection") ? 1 : 0);
   const latestCandidates = monitoring.run_scope?.candidates_attempted ?? 0;
@@ -3223,80 +3290,145 @@ function ChannelsView({
         </button>
       </div>
 
-      <div className="mb-5 grid gap-3.5 lg:grid-cols-3">
-        <div className="rounded-[14px] border border-[#1a1a1a12] bg-white p-4">
-          <p className="text-[11px] font-semibold text-[#1a1a1a80]" style={{ fontFamily: MONO }}>
-            {zh ? "已運作巡檢來源" : "Live patrol sources"}
-          </p>
-          <p className="mt-2 text-[22px] font-semibold" style={{ fontFamily: MONO }}>
-            Vision + 3 channels
-          </p>
-          <p className="mt-1 text-[12px] leading-5 text-[#1a1a1a80]">
-            {zh ? `最新 run 來源 ${liveSourceCount} 個，候選影像 ${latestCandidates} 筆。` : `${liveSourceCount} live source(s), ${latestCandidates} candidate image(s) in the latest run.`}
-          </p>
-        </div>
-        <div className="rounded-[14px] border border-[#1a1a1a12] bg-white p-4">
-          <p className="text-[11px] font-semibold text-[#1a1a1a80]" style={{ fontFamily: MONO }}>
-            {zh ? "通路導入狀態" : "Named channels"}
-          </p>
-          <p className="mt-2 text-[22px] font-semibold" style={{ fontFamily: MONO }}>
-            {channels.length}
-          </p>
-          <p className="mt-1 text-[12px] leading-5 text-[#1a1a1a80]">
-            {zh
-              ? `自動巡檢 ${stageCounts.automated}、查詢線索 ${stageCounts.search}、人工複核 ${stageCounts.manual}、待授權 ${stageCounts.queued}。`
-              : `${stageCounts.automated} auto patrol, ${stageCounts.search} query lead(s), ${stageCounts.manual} manual-review source(s), ${stageCounts.queued} needs auth.`}
-          </p>
-        </div>
-        <div className="rounded-[14px] border border-[#1a1a1a12] bg-white p-4">
-          <p className="text-[11px] font-semibold text-[#1a1a1a80]" style={{ fontFamily: MONO }}>
-            {zh ? "最近巡檢時間" : "Latest patrol"}
-          </p>
-          <p className="mt-2 text-[18px] font-semibold" style={{ fontFamily: MONO }}>
-            {lastRunLabel}
-          </p>
-          <p className="mt-1 text-[12px] leading-5 text-[#1a1a1a80]">
-            {zh ? "候選仍需通過本地指紋比對與人工複核後，才會形成外部主張。" : "Candidates still need local fingerprint matching and human review before any external claim."}
-          </p>
-        </div>
+      <div className="mb-3 flex flex-wrap items-baseline justify-between gap-2">
+        <h2 className="text-[17px] font-black">
+          {zh
+            ? `${channels.length} 個通路 · 4 種導入狀態`
+            : `${channels.length} channels · 4 integration stages`}
+        </h2>
+        <span className="text-[11px] text-[#8d8873]" style={{ fontFamily: MONO }}>
+          {zh ? `最近巡檢 ${lastRunLabel} · 每日 11:17（台北時間）自動執行` : `Latest patrol ${lastRunLabel} · runs daily at 11:17 Taipei`}
+        </span>
       </div>
 
-      <div className="grid gap-3.5 lg:grid-cols-2">
-        {channels.map((c, i) => (
-          <div key={c.id} className="flex items-center gap-3.5 rounded-[14px] border border-[#1a1a1a12] bg-white p-4">
-            <div className="h-[46px] w-[46px] flex-none rounded-[9px]" style={{ background: GRADS[i % GRADS.length] }} />
-            <div className="min-w-0 flex-1">
-              <p className="text-[15px] font-semibold">{c.name}</p>
-              <p className="mt-0.5 text-[10.5px] text-[#1a1a1a80]" style={{ fontFamily: MONO }}>
-                {c.type} · {riskText(c.risk, locale)}
-              </p>
-              <p className="mt-1 text-[11px] leading-4 text-[#1a1a1a73]">
-                {chNote(c.status, locale)}
-              </p>
-            </div>
-            <div className="flex-none text-right">
-              <div className="flex items-center justify-end gap-1.5">
-                <span className="h-2 w-2 rounded-full" style={{ background: chDot(c.status) }} />
-                <span className="text-[11px] font-semibold" style={{ fontFamily: MONO, color: chDot(c.status) }}>
-                  {chLabel(c.status, locale)}
-                </span>
-              </div>
-              <p className="mt-1 text-[10px] text-[#1a1a1a80]" style={{ fontFamily: MONO }}>
-                {zh ? `相關警報 ${c.hits}` : `${c.hits} related alerts`}
-              </p>
-            </div>
+      {/* 4 integration-stage group cards (real counts) */}
+      <div className="mb-4 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+        {(
+          [
+            { key: "automated" as const, n: stageCounts.automated, t: zh ? "自動巡檢" : "Auto patrol", d: zh ? "已接公開頁巡檢，自動比對指紋" : "Public-page patrol with fingerprint matching" },
+            { key: "search" as const, n: stageCounts.search, t: zh ? "查詢線索" : "Query leads", d: zh ? "提供查詢入口與人工複核線索" : "Query entry points and review leads" },
+            { key: "manual" as const, n: stageCounts.manual, t: zh ? "人工複核" : "Manual review", d: zh ? "尚未接爬蟲，作為複核來源" : "No crawler yet; used as review sources" },
+            { key: "queued" as const, n: stageCounts.queued, t: zh ? "待授權" : "Needs auth", d: zh ? "需平台授權或 API 才能自動化" : "Needs platform permission or API access" },
+          ]
+        ).map((g) => (
+          <div key={g.key} className="rounded-[12px] border border-[#1a1a1a14] bg-white px-4 py-3.5">
+            <p className="flex items-center gap-2">
+              <span className="h-[9px] w-[9px] rounded-full" style={{ background: chDot(g.key) }} />
+              <span className="text-[22px] font-bold leading-none" style={{ fontFamily: MONO }}>
+                {g.n}
+              </span>
+            </p>
+            <p className="mt-1.5 text-[13px] font-bold">{g.t}</p>
+            <p className="mt-0.5 text-[11.5px] leading-4 text-[#5c584a]">{g.d}</p>
           </div>
         ))}
       </div>
+
+      {/* live-source honesty line */}
+      <div className="mb-4 flex items-start gap-2.5 rounded-[10px] border border-[#cfe0cb] bg-[#eef4ea] px-4 py-3 text-[12.5px] leading-5 text-[#3f5a3e]">
+        <Radar size={15} className="mt-0.5 flex-none" />
+        <span>
+          {zh
+            ? `目前真正執行的自動巡檢來源：Google Vision Web Detection + 3 個公開頁面通路（最新 run 來源 ${liveSourceCount} 個、候選影像 ${latestCandidates} 筆）。候選仍需本地指紋比對與人工複核後，才會形成外部主張。`
+            : `Live automated sources today: Google Vision Web Detection + 3 public-page channels (${liveSourceCount} source(s), ${latestCandidates} candidate image(s) in the latest run). Candidates still need local fingerprint matching and human review before any external claim.`}
+        </span>
+      </div>
+
+      {/* channel list */}
+      <div className="overflow-hidden rounded-[14px] border border-[#1a1a1a12] bg-white">
+        {channels.map((c, i) => (
+          <div key={c.id} className={`flex flex-wrap items-center gap-x-3.5 gap-y-1.5 px-5 py-3.5 ${i > 0 ? "border-t border-[#1a1a1a0f]" : ""}`}>
+            <span className="w-full min-w-0 flex-none text-[14px] font-bold sm:w-[230px]">{c.name}</span>
+            <span className="w-[110px] flex-none text-[11px] text-[#8d8873]" style={{ fontFamily: MONO }}>
+              {c.type}
+            </span>
+            <span className="min-w-[200px] flex-1 text-[12px] leading-4 text-[#5c584a]">{chNote(c.status, locale)}</span>
+            <span
+              className="flex-none rounded-full px-2.5 py-1 text-[11px] font-semibold"
+              style={{ fontFamily: MONO, color: chDot(c.status), background: `${chDot(c.status)}1f` }}
+            >
+              {chLabel(c.status, locale)}
+            </span>
+            {c.status === "queued" && (
+              <button
+                type="button"
+                onClick={() =>
+                  showToast(zh ? "示範原型：正式版將引導平台授權與 API 接入申請" : "Demo prototype: production guides the platform-authorization and API onboarding request")
+                }
+                className="flex-none text-[12px] font-bold text-[#4f6a4e]"
+              >
+                {zh ? "申請接入 →" : "Request access →"}
+              </button>
+            )}
+          </div>
+        ))}
+      </div>
+
+      {/* suggest a new channel */}
+      <button
+        type="button"
+        onClick={() => setShowSuggest(true)}
+        className="mt-4 w-full rounded-[12px] border-2 border-dashed border-[#1a1a1a26] bg-[#f8f2e3] px-5 py-4 text-center text-[#5c584a] transition-colors hover:border-[#7F9C7E] hover:text-[#4f6a4e]"
+      >
+        <span className="block text-[14px] font-bold">＋ {zh ? "建議新增監控通路" : "Suggest a new channel"}</span>
+        <span className="mt-0.5 block text-[12px]">
+          {zh ? "想監控特定網站或平台？告訴我們，我們會評估接入。" : "Want a specific site or platform patrolled? Tell us and we'll evaluate it."}
+        </span>
+      </button>
+
+      {/* suggest modal */}
+      {showSuggest && (
+        <div
+          className="fixed inset-0 z-50 flex items-start justify-center overflow-y-auto bg-[#1a1a1a80] p-5"
+          onClick={(e) => {
+            if (e.target === e.currentTarget) setShowSuggest(false);
+          }}
+        >
+          <div className="relative my-10 w-full max-w-[560px] rounded-[14px] border border-[#1a1a1a1f] bg-[#F4E9D5] p-7 shadow-[0_20px_60px_rgba(17,17,16,0.35)]" role="dialog" aria-modal="true">
+            <button type="button" onClick={() => setShowSuggest(false)} className="absolute right-3.5 top-3.5 p-1.5 text-[#5c584a]" aria-label={zh ? "關閉" : "Close"}>
+              <X size={16} />
+            </button>
+            <p className="text-[10px] tracking-[0.18em] text-[#8d8873]" style={{ fontFamily: MONO }}>
+              {zh ? "建議通路 · SUGGEST" : "SUGGEST A CHANNEL"}
+            </p>
+            <h3 className="mt-1.5 text-[20px] font-black">{zh ? "想監控哪個網站或平台？" : "Which site or platform should we patrol?"}</h3>
+            <p className="mt-1 text-[13px] leading-5 text-[#5c584a]">
+              {zh
+                ? "告訴我們你希望納入巡檢的通路，我們會評估爬蟲可行性與平台授權需求。"
+                : "Tell us which channel to include; we'll evaluate crawler feasibility and platform-authorization needs."}
+            </p>
+            <form
+              className="mt-4 flex gap-2"
+              onSubmit={(e) => {
+                e.preventDefault();
+                if (!suggestValue.trim()) {
+                  showToast(zh ? "請先填入網址" : "Please enter a URL first", "alert");
+                  return;
+                }
+                setShowSuggest(false);
+                setSuggestValue("");
+                showToast(zh ? "已收到你的通路建議（示範）—— 正式版將進入評估佇列並回報進度" : "Suggestion received (demo) — production queues it for evaluation and reports progress");
+              }}
+            >
+              <input
+                value={suggestValue}
+                onChange={(e) => setSuggestValue(e.target.value)}
+                placeholder="https://example.com"
+                className="min-w-0 flex-1 rounded-[9px] border border-[#1a1a1a26] bg-white px-3.5 py-2.5 text-[12px] outline-none placeholder:text-[#1a1a1a4d] focus:border-[#7F9C7E]"
+                style={{ fontFamily: MONO }}
+                aria-label={zh ? "通路網址" : "Channel URL"}
+              />
+              <button type="submit" className="flex-none rounded-[9px] bg-[#1A1A1A] px-4 py-2.5 text-[12px] font-semibold text-[#F4E9D5]">
+                {zh ? "送出建議" : "Submit"}
+              </button>
+            </form>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
 
-function riskText(value: string, locale: Locale) {
-  const zh: Record<string, string> = { high: "高風險", medium: "中風險", low: "低風險" };
-  const en: Record<string, string> = { high: "High risk", medium: "Medium risk", low: "Low risk" };
-  return (locale === "zh-TW" ? zh[value] : en[value]) || value;
-}
 
 /* ---------------- certificate modal ---------------- */
 
