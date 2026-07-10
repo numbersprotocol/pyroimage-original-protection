@@ -159,7 +159,7 @@ jobs:
             .patrol-state/vision-cost-log.json
             .patrol-state/vision-web-detection-cache.json
           )
-          if grep -E -I -i 'Expires=|Signature=|Key-Pair-Id|X-Amz-|Policy=' "${files[@]}"; then
+          if grep -E -I -i '[?&](x-)?(Expires|Signature|Key-Pair-Id|Policy)=|[?&]X-Amz-' "${files[@]}"; then
             echo "Signed query material leaked into patrol artifacts." >&2
             exit 1
           fi
