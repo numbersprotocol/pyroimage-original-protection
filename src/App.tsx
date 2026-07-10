@@ -3,7 +3,6 @@ import {
   ArrowLeft,
   ArrowRight,
   Bell,
-  Compass,
   Download,
   ExternalLink,
   FileText,
@@ -29,6 +28,8 @@ import type { LucideIcon } from "lucide-react";
 
 type Locale = "en" | "zh-TW";
 type View = "dashboard" | "verify" | "alerts" | "case" | "vault" | "channels" | "reports";
+type CasesTab = "open" | "confirmed" | "reports";
+type DemoCaseState = "open" | "confirmed" | "reported";
 type EvidenceLabel = "actual" | "sample" | "simulated" | "target" | "TBD";
 
 interface DashboardMetric {
@@ -304,18 +305,41 @@ function saveLocale(locale: Locale) {
   }
 }
 
-function getInitialOnboarding(): boolean {
-  // First visit → show the welcome overlay. Once dismissed, remember and skip.
+/* onboarding checklist + intro collapse state (localStorage, non-critical) */
+function readOnbState(): { hide: boolean; steps: [boolean, boolean, boolean] } {
   try {
-    return window.localStorage.getItem(ONBOARD_STORAGE_KEY) !== "done";
+    return {
+      hide: window.localStorage.getItem(`${ONBOARD_STORAGE_KEY}-hide`) === "1",
+      steps: [
+        window.localStorage.getItem(`${ONBOARD_STORAGE_KEY}-s1`) === "1",
+        window.localStorage.getItem(`${ONBOARD_STORAGE_KEY}-s2`) === "1",
+        window.localStorage.getItem(`${ONBOARD_STORAGE_KEY}-s3`) === "1",
+      ],
+    };
+  } catch {
+    return { hide: false, steps: [false, false, false] };
+  }
+}
+
+function persistOnbKey(suffix: string) {
+  try {
+    window.localStorage.setItem(`${ONBOARD_STORAGE_KEY}-${suffix}`, "1");
+  } catch {
+    /* non-critical preference persistence */
+  }
+}
+
+function readIntroOpen(): boolean {
+  try {
+    return window.localStorage.getItem(`${ONBOARD_STORAGE_KEY}-intro`) !== "0";
   } catch {
     return true;
   }
 }
 
-function saveOnboarded() {
+function persistIntroOpen(open: boolean) {
   try {
-    window.localStorage.setItem(ONBOARD_STORAGE_KEY, "done");
+    window.localStorage.setItem(`${ONBOARD_STORAGE_KEY}-intro`, open ? "1" : "0");
   } catch {
     /* non-critical preference persistence */
   }
@@ -376,13 +400,12 @@ const NAV: Array<{
   descZh: string;
   descEn: string;
 }> = [
-  // Order follows the detection narrative: radar → detections → origins → sources → evidence → tool.
-  { id: "dashboard", icon: LayoutDashboard, zh: "巡檢台", en: "Radar", eyebrow: "RADAR", descZh: "偵測現況與最新結果", descEn: "Detection status & latest results" },
-  { id: "alerts", icon: Bell, zh: "疑似盜用", en: "Detections", eyebrow: "DETECT", descZh: "系統發現、待你確認的案件", descEn: "Findings awaiting review" },
-  { id: "vault", icon: Images, zh: "原創庫", en: "Vault", eyebrow: "ORIGINS", descZh: "已簽署保護的原創影像", descEn: "Protected original images" },
-  { id: "channels", icon: Radar, zh: "監控通路", en: "Channels", eyebrow: "SOURCES", descZh: "巡檢來源與通路狀態", descEn: "Patrol source & channel status" },
-  { id: "reports", icon: FileText, zh: "存證報告", en: "Reports", eyebrow: "EVIDENCE", descZh: "可交付法務的存證報告", descEn: "Deliverable evidence reports" },
-  { id: "verify", icon: ShieldCheck, zh: "原創查驗", en: "Verify", eyebrow: "TOOL", descZh: "用範例查已收錄樣本", descEn: "Check indexed sample images" },
+  // Task-oriented IA (redesign 2026-07-10): home → verify → cases → vault → sources.
+  { id: "dashboard", icon: LayoutDashboard, zh: "總覽", en: "Home", eyebrow: "HOME", descZh: "現在安全嗎、要做什麼", descEn: "Am I safe & what to do next" },
+  { id: "verify", icon: ShieldCheck, zh: "查一張圖", en: "Verify", eyebrow: "VERIFY", descZh: "用圖前，先查來源與授權", descEn: "Check origin before using an image" },
+  { id: "alerts", icon: Bell, zh: "警報與存證", en: "Cases", eyebrow: "CASES", descZh: "疑似盜用複審、法務報告", descEn: "Review alerts & evidence reports" },
+  { id: "vault", icon: Images, zh: "我的原創", en: "Vault", eyebrow: "VAULT", descZh: "已簽署保護的原創作品", descEn: "Signed & protected originals" },
+  { id: "channels", icon: Radar, zh: "監控通路", en: "Channels", eyebrow: "SOURCES", descZh: "巡檢範圍與通路狀態", descEn: "Patrol scope & channel status" },
 ];
 
 /* ---------------- view-model builders (from backend JSON) ---------------- */
@@ -605,7 +628,6 @@ export function TtdMvpDashboard() {
 
   const [view, setView] = useState<View>("dashboard");
   const [activeCaseId, setActiveCaseId] = useState<string | null>(null);
-  const [filter, setFilter] = useState<"all" | "high" | "open" | "done">("all");
   const [certAssetId, setCertAssetId] = useState<string | null>(null);
   const [toast, setToast] = useState<{ msg: string; kind: "ok" | "alert" } | null>(null);
 
@@ -613,8 +635,13 @@ export function TtdMvpDashboard() {
   const [scanPct, setScanPct] = useState(0);
   const [scanChannel, setScanChannel] = useState("");
 
-  // first-time-visitor welcome overlay (auto-popup, dismissible, remembered)
-  const [showOnboarding, setShowOnboarding] = useState<boolean>(getInitialOnboarding);
+  // cases page: active tab + DEMO case walkthrough state (UI demonstration only, never counted)
+  const [casesTab, setCasesTab] = useState<CasesTab>("open");
+  const [demoCase, setDemoCase] = useState<DemoCaseState>("open");
+
+  // onboarding checklist (in-page, dismissible, remembered) + collapsible intro
+  const [onb, setOnb] = useState(readOnbState);
+  const [introOpen, setIntroOpen] = useState(readIntroOpen);
 
   // mutable, demonstration-only overlays on top of backend data
   const [statusOverride, setStatusOverride] = useState<Record<string, string>>({});
@@ -660,23 +687,46 @@ export function TtdMvpDashboard() {
     saveLocale(next);
   };
 
+  const markOnbStep = (n: 1 | 2 | 3) => {
+    persistOnbKey(`s${n}`);
+    setOnb((prev) => {
+      const steps: [boolean, boolean, boolean] = [...prev.steps];
+      steps[n - 1] = true;
+      return { ...prev, steps };
+    });
+  };
+
+  const hideOnb = () => {
+    persistOnbKey("hide");
+    setOnb((prev) => ({ ...prev, hide: true }));
+  };
+
+  const toggleIntro = () => {
+    setIntroOpen((prev) => {
+      persistIntroOpen(!prev);
+      return !prev;
+    });
+  };
+
   const go = (next: View) => {
-    setView(next);
+    // "reports" is now a tab inside the merged Cases page.
+    if (next === "reports") {
+      setCasesTab("reports");
+      setView("alerts");
+    } else {
+      if (next === "vault") markOnbStep(3);
+      setView(next);
+    }
     const main = document.getElementById("ttd-main");
     if (main) main.scrollTo(0, 0);
   };
 
-  const dismissOnboarding = () => {
-    setShowOnboarding(false);
-    saveOnboarded();
+  const openCases = (tab: CasesTab) => {
+    setCasesTab(tab);
+    setView("alerts");
+    const main = document.getElementById("ttd-main");
+    if (main) main.scrollTo(0, 0);
   };
-
-  const onboardingGo = (next: View) => {
-    dismissOnboarding();
-    go(next);
-  };
-
-  const reopenOnboarding = () => setShowOnboarding(true);
 
   const showToast = (msg: string, kind: "ok" | "alert" = "ok") => {
     setToast({ msg, kind });
@@ -791,7 +841,6 @@ export function TtdMvpDashboard() {
   const reportCount = reportsBackend.length + addedReports.length;
   const suspectedActual = metricDisplay(metrics, "suspected_events", "0");
   const openCount = alerts.filter((a) => a.status === "new" || a.status === "reviewing").length;
-  const highCount = alerts.filter((a) => a.risk === "high").length;
   const realPatrolMatches = alerts.filter((a) => !a.simulated).length;
   const lastPatrol = formatDateForLocale(loadState.data.monitoring.completed_at || loadState.data.monitoring.generated_at, locale);
   const lastRunSources = new Set(
@@ -800,7 +849,6 @@ export function TtdMvpDashboard() {
   const lastRunSourceCount = lastRunSources.size || Number(channelsActiveDisplay.replace(/,/g, "")) || channels.length;
   const lastRunCandidates = loadState.data.monitoring.run_scope?.candidates_attempted ?? 0;
   const lastRunAlerts = loadState.data.monitoring.run_scope?.alerts_created ?? alerts.length;
-  const patrolAdapter = loadState.data.monitoring.adapter?.id || "unknown";
   const patrolModeLabel = (() => {
     const adapter = loadState.data.monitoring.adapter;
     if (adapter?.id?.includes("visionWebDetection") && adapter.id.includes("namedChannelCrawler") && adapter.paid_api_used) {
@@ -879,15 +927,6 @@ export function TtdMvpDashboard() {
             <span className="ttd-pulse inline-block h-[7px] w-[7px] rounded-full bg-[#7F9C7E]" />
             {clock}
           </span>
-          <button
-            type="button"
-            onClick={reopenOnboarding}
-            className="flex items-center gap-1.5 rounded-[8px] border border-[#ffffff26] px-2.5 py-2 text-xs font-semibold text-[#CEC0A3] transition-colors hover:text-[#F4E9D5]"
-            title={locale === "zh-TW" ? "重新開啟導覽" : "Reopen the guide"}
-          >
-            <Compass size={14} />
-            <span className="hidden sm:inline">{T.howItWorks[locale]}</span>
-          </button>
           <LangToggle locale={locale} onChange={handleLocale} />
           <button
             type="button"
@@ -986,7 +1025,7 @@ export function TtdMvpDashboard() {
           </div>
 
           {view === "dashboard" && (
-            <DashboardView
+            <HomeView
               locale={locale}
               openCount={openCount}
               realPatrolMatches={realPatrolMatches}
@@ -995,18 +1034,16 @@ export function TtdMvpDashboard() {
               lastRunSourceCount={lastRunSourceCount}
               lastRunCandidates={lastRunCandidates}
               lastRunAlerts={lastRunAlerts}
-              patrolAdapter={patrolAdapter}
               patrolModeLabel={patrolModeLabel}
               patrolStatus={patrolStatus}
               reportCount={reportCount}
               suspectedActual={suspectedActual}
               alerts={alerts}
-              works={works}
-              channels={channels}
-              onOpenCase={(id) => {
-                setActiveCaseId(id);
-                go("case");
-              }}
+              onb={onb}
+              onHideOnb={hideOnb}
+              introOpen={introOpen}
+              onToggleIntro={toggleIntro}
+              onOpenCases={openCases}
               onNavigate={go}
               onRunPatrol={runPatrol}
             />
@@ -1018,20 +1055,31 @@ export function TtdMvpDashboard() {
               verification={loadState.data.verification}
               works={works}
               onOpenCert={(id) => setCertAssetId(id)}
+              onRanExample={() => markOnbStep(2)}
             />
           )}
 
           {view === "alerts" && (
-            <AlertsView
+            <CasesView
               locale={locale}
+              tab={casesTab}
+              setTab={setCasesTab}
               alerts={alerts}
-              filter={filter}
-              setFilter={setFilter}
-              counts={{ all: alerts.length, high: highCount, open: openCount, done: alerts.length - openCount }}
+              demoCase={demoCase}
+              setDemoCase={setDemoCase}
+              demoWork={works[0] || null}
+              backendReports={reportsBackend}
+              addedReports={addedReports}
+              works={works}
               onOpenCase={(id) => {
                 setActiveCaseId(id);
                 go("case");
               }}
+              onDemoReported={() => markOnbStep(1)}
+              showToast={showToast}
+              onExport={(id) =>
+                showToast(locale === "zh-TW" ? `已預覽匯出存證報告 ${id}` : `Previewed evidence report export ${id}`, "ok")
+              }
             />
           )}
 
@@ -1052,179 +1100,12 @@ export function TtdMvpDashboard() {
           {view === "channels" && (
             <ChannelsView locale={locale} channels={channels} monitoring={loadState.data.monitoring} onRunPatrol={runPatrol} />
           )}
-
-          {view === "reports" && (
-            <ReportsView
-              locale={locale}
-              backend={reportsBackend}
-              added={addedReports}
-              works={works}
-              alerts={alerts}
-              onExport={(id) =>
-                showToast(locale === "zh-TW" ? `已預覽匯出存證報告 ${id}` : `Previewed evidence report export ${id}`, "ok")
-              }
-            />
-          )}
         </div>
       </div>
 
       {certWork && <CertModal locale={locale} work={certWork} onClose={() => setCertAssetId(null)} />}
       {toast && <Toast msg={toast.msg} kind={toast.kind} />}
-      {showOnboarding && (
-        <OnboardingOverlay
-          locale={locale}
-          protectedDisplay={protectedDisplay}
-          channelsDisplay={channelsTotalDisplay}
-          suspectedActual={suspectedActual}
-          onClose={dismissOnboarding}
-          onGo={onboardingGo}
-        />
-      )}
     </main>
-  );
-}
-
-/* ---------------- onboarding overlay (first-time visitor) ---------------- */
-
-function OnboardingOverlay({
-  locale,
-  protectedDisplay,
-  channelsDisplay,
-  suspectedActual,
-  onClose,
-  onGo,
-}: {
-  locale: Locale;
-  protectedDisplay: string;
-  channelsDisplay: string;
-  suspectedActual: string;
-  onClose: () => void;
-  onGo: (v: View) => void;
-}) {
-  const zh = locale === "zh-TW";
-  // Condensed one-line flow — the full interactive 4-step lives on the dashboard,
-  // so the welcome card summarises rather than repeats it.
-  const flowLabels = zh
-    ? ["入庫簽署", "通路巡檢", "疑似盜用", "存證交付"]
-    : ["Register", "Patrol", "Detect", "Certify"];
-  const stats: Array<{ value: string; label: string }> = [
-    { value: protectedDisplay, label: zh ? "受保護原創" : "protected originals" },
-    { value: suspectedActual, label: zh ? "真實侵權" : "real infringement" },
-    { value: channelsDisplay, label: zh ? "監控通路" : "channels monitored" },
-  ];
-  const entries: Array<{ view: View; icon: LucideIcon; label: string; note: string }> = [
-    { view: "vault", icon: Images, label: zh ? "看受保護的作品" : "See protected works", note: zh ? `已簽署保護 ${protectedDisplay} 張原創` : `${protectedDisplay} protected originals` },
-    { view: "verify", icon: ShieldCheck, label: zh ? "看查驗怎麼運作" : "Try origin verify", note: zh ? "查驗已收錄的原創樣本" : "Check an indexed original sample" },
-    { view: "alerts", icon: Bell, label: zh ? "看疑似盜用案件" : "Review detections", note: zh ? "系統發現、待你確認的案件" : "Findings awaiting your review" },
-  ];
-
-  return (
-    <div
-      onClick={onClose}
-      className="fixed inset-0 z-[70] flex items-center justify-center bg-[#1a1a1ac2] p-4 backdrop-blur-[3px]"
-      role="dialog"
-      aria-modal="true"
-    >
-      <div
-        onClick={(e) => e.stopPropagation()}
-        className="max-h-[92vh] w-[680px] max-w-full overflow-auto rounded-[18px] border border-[#7f9c7e40] bg-[#F4E9D5]"
-      >
-        {/* header */}
-        <div className="flex items-start justify-between gap-4 bg-[#1A1A1A] px-6 py-5 text-[#F4E9D5]">
-          <div className="min-w-0">
-            <p className="flex items-center gap-2 text-[10px] tracking-[0.16em] text-[#7F9C7E]" style={{ fontFamily: MONO }}>
-              <Compass size={13} /> {zh ? "歡迎使用 · WELCOME" : "Welcome"}
-            </p>
-            <h2 className="mt-1.5 text-[22px] font-semibold leading-tight">
-              {zh ? "原創雷達 OriginRadar" : "OriginRadar"}
-            </h2>
-            <p className="mt-1.5 text-[13px] leading-6 text-[#CEC0A3]">
-              {zh
-                ? "我們替 PyroImage 的每一張原創建立數位指紋，再用雷達式巡檢尋找網路上的相似影像；可疑候選會進入人工複核與存證流程。"
-                : "We fingerprint every PyroImage original, run radar-like web patrol for similar images, and route suspicious candidates into review and evidence packaging."}
-            </p>
-            <p className="mt-2 flex items-center gap-1.5 text-[11px] text-[#7F9C7E]" style={{ fontFamily: MONO }}>
-              <ShieldCheck size={12} className="flex-none" />
-              {zh ? "由 Numbers 提供 · 存證可上鏈驗證、可交付法務" : "By Numbers · evidence is on-chain verifiable and court-ready"}
-            </p>
-          </div>
-          <button type="button" onClick={onClose} aria-label="Close" className="flex-none text-[#CEC0A3] hover:text-[#F4E9D5]">
-            <X size={20} />
-          </button>
-        </div>
-
-        <div className="px-6 py-5">
-          {/* current-status snapshot — answers "what is my situation right now" at first glance */}
-          <div className="mb-4 grid grid-cols-3 gap-2.5">
-            {stats.map((s) => (
-              <div key={s.label} className="rounded-[10px] border border-[#1a1a1a12] bg-white px-3 py-2.5 text-center">
-                <p className="text-[20px] font-bold leading-none" style={{ fontFamily: MONO }}>
-                  {s.value}
-                </p>
-                <p className="mt-1 text-[10.5px] leading-tight text-[#1a1a1a8c]">{s.label}</p>
-              </div>
-            ))}
-          </div>
-
-          {/* demo notice */}
-          <div className="mb-5 flex items-start gap-2 rounded-[10px] border border-[#d8b76a80] bg-[#f8f1e2] px-4 py-3 text-[12.5px] leading-5 text-[#7a5f19]">
-            <Info size={15} className="mt-0.5 flex-none" />
-            <span>
-              {zh
-                ? "這是 MVP 試營運版：背景巡檢會由 GitHub Actions 產生真實巡檢產物；頁面上的下架、匯出、聯絡等操作仍為安全示範，不會真的送出或改動外部資料。目前真實侵權案件為 0。"
-                : "This is an MVP pilot: background patrol produces real patrol artifacts through GitHub Actions; takedown, export, and contact actions remain safe UI demos and never change external data. Real infringement cases so far: 0."}
-            </span>
-          </div>
-
-          {/* condensed flow summary — the full interactive 4-step flow lives on the dashboard */}
-          <p className="mb-2 text-[10px] tracking-[0.16em] text-[#1a1a1a73]" style={{ fontFamily: MONO }}>
-            {zh ? "保護流程" : "How it works"}
-          </p>
-          <div className="mb-6 flex flex-wrap items-center gap-x-1.5 gap-y-2 rounded-[11px] border border-[#1a1a1a12] bg-white px-4 py-3 text-[12.5px] font-semibold">
-            {flowLabels.map((label, i) => (
-              <span key={label} className="flex items-center gap-1.5">
-                <span className="text-[10px] text-[#1a1a1a66]" style={{ fontFamily: MONO }}>{`0${i + 1}`}</span>
-                {label}
-                {i < flowLabels.length - 1 && <ArrowRight size={13} className="mx-0.5 text-[#1a1a1a40]" />}
-              </span>
-            ))}
-          </div>
-
-          {/* entry CTAs */}
-          <p className="mb-2.5 text-[10px] tracking-[0.16em] text-[#1a1a1a73]" style={{ fontFamily: MONO }}>
-            {zh ? "從這裡開始看" : "Start here"}
-          </p>
-          <div className="grid gap-2.5 sm:grid-cols-3">
-            {entries.map((e) => {
-              const Icon = e.icon;
-              return (
-                <button
-                  key={e.view}
-                  type="button"
-                  onClick={() => onGo(e.view)}
-                  className="group flex flex-col rounded-[11px] border border-[#1a1a1a1a] bg-white p-3.5 text-left transition-all hover:-translate-y-0.5 hover:border-[#7F9C7E] hover:shadow-[0_6px_18px_rgba(26,26,26,0.08)]"
-                >
-                  <Icon size={18} className="text-[#4f6a4e]" />
-                  <p className="mt-2 text-[13.5px] font-semibold">{e.label}</p>
-                  <p className="mt-0.5 text-[11px] leading-4 text-[#1a1a1a8c]">{e.note}</p>
-                  <span className="mt-2 inline-flex items-center gap-1 text-[11px] font-semibold text-[#374037]">
-                    {zh ? "前往" : "Open"} <ArrowRight size={12} className="transition-transform group-hover:translate-x-0.5" />
-                  </span>
-                </button>
-              );
-            })}
-          </div>
-
-          <button
-            type="button"
-            onClick={onClose}
-            className="mt-5 w-full rounded-[10px] bg-[#1A1A1A] py-3 text-[13px] font-semibold text-[#F4E9D5] transition-colors hover:bg-[#2c2c2c]"
-          >
-            {zh ? "開始使用（可隨時從右上角「導覽」重看）" : "Start exploring (reopen anytime from “How it works”)"}
-          </button>
-        </div>
-      </div>
-    </div>
   );
 }
 
@@ -1364,457 +1245,361 @@ function KpiCard({
   );
 }
 
-function DashboardView(props: {
+
+/* ---------------- home view (task-oriented, redesign 2026-07-10) ---------------- */
+
+function HomeView(props: {
   locale: Locale;
-  lastPatrol: string;
   openCount: number;
   realPatrolMatches: number;
+  lastPatrol: string;
   protectedDisplay: string;
   lastRunSourceCount: number;
   lastRunCandidates: number;
   lastRunAlerts: number;
-  patrolAdapter: string;
   patrolModeLabel: string;
   patrolStatus: string;
   reportCount: number;
   suspectedActual: string;
   alerts: AlertVM[];
-  works: WorkVM[];
-  channels: ChannelVM[];
-  onOpenCase: (id: string) => void;
+  onb: { hide: boolean; steps: [boolean, boolean, boolean] };
+  onHideOnb: () => void;
+  introOpen: boolean;
+  onToggleIntro: () => void;
+  onOpenCases: (tab: CasesTab) => void;
   onNavigate: (v: View) => void;
   onRunPatrol: () => void;
 }) {
   const {
     locale,
-    lastPatrol,
     openCount,
-    protectedDisplay,
-    reportCount,
-    suspectedActual,
+    lastPatrol,
     lastRunSourceCount,
     lastRunCandidates,
     lastRunAlerts,
     patrolModeLabel,
     patrolStatus,
+    reportCount,
+    suspectedActual,
+    onb,
   } = props;
   const zh = locale === "zh-TW";
-  const hasAlerts = props.alerts.length > 0;
-  const hasOnlyDemoAlerts = hasAlerts && props.realPatrolMatches === 0;
-  const latestAlert = props.alerts[0] || null;
-  const honestyText = !hasAlerts
-    ? zh
-      ? `目前真實侵權案件：${suspectedActual} 件。最近一次巡檢未產生警報。`
-      : `Real infringement cases so far: ${suspectedActual}. The latest patrol did not produce alerts.`
-    : hasOnlyDemoAlerts
-    ? zh
-      ? `目前真實侵權案件：${suspectedActual} 件。以下警報為展示案件，用於呈現「巡檢 → 分流 → 存證」的完整流程，不計入真實侵權統計。`
-      : `Real infringement cases so far: ${suspectedActual}. The alerts below are preview cases that show the full patrol -> triage -> evidence workflow and do not count as real infringement.`
-    : zh
-    ? `目前真實侵權案件：${suspectedActual} 件。${props.realPatrolMatches} 筆警報來自實際抓取候選影像，並被系統判定為高度相似；來源授權與外部侵權主張仍需人工確認。`
-    : `Real infringement cases so far: ${suspectedActual}. ${props.realPatrolMatches} alert(s) came from real fetched candidates and perceptual-hash matches; source authorization and external infringement claims still require human review.`;
-  const steps: Array<{ target: View; accent: string; step: string; label: string; note: string; value: string; unit: string }> = [
-    { target: "vault", accent: C.green, step: "STEP 01", label: zh ? "入庫簽署" : "Register", note: zh ? "建立數位指紋與來源憑證" : "Create fingerprint & origin proof", value: protectedDisplay, unit: zh ? "受保護" : "protected" },
-    { target: "channels", accent: C.blue, step: "STEP 02", label: zh ? "雷達巡檢" : "Patrol", note: zh ? "最近一次巡檢的來源與候選影像" : "Latest run sources and candidates", value: lastRunCandidates.toString(), unit: zh ? "候選" : "candidates" },
-    { target: "alerts", accent: C.orange, step: "STEP 03", label: zh ? "疑似盜用警報" : "Triage", note: zh ? "高相似自動發報並分流複審" : "Auto-flag & route for human review", value: openCount.toString(), unit: zh ? "待複審" : "to review" },
-    { target: "reports", accent: C.ink, step: "STEP 04", label: zh ? "存證交付" : "Certify", note: zh ? "產生上鏈存證報告交付法務" : "Generate on-chain evidence report", value: reportCount.toString(), unit: zh ? "份" : "reports" },
+  const suspectedNum = Number(suspectedActual.replace(/,/g, "")) || 0;
+  const allClear = suspectedNum === 0 && openCount === 0;
+  const onbDone = onb.steps.filter(Boolean).length;
+
+  const tasks: Array<{ q: string; title: string; stat?: string; unit?: string; desc: string; goText: string; onGo: () => void }> = [
+    {
+      q: zh ? "TASK 01 · 用圖前" : "TASK 01 · BEFORE USING",
+      title: zh ? "這張圖能不能用？" : "Can I use this image?",
+      desc: zh
+        ? "貼上圖片網址或用範例查驗，立即查它的來源憑證、權利人與授權脈絡，避免誤用來源不明素材。"
+        : "Paste an image URL or run a sample check to see its origin certificate, rights holder, and license context before using it.",
+      goText: zh ? "前往查驗" : "Go verify",
+      onGo: () => props.onNavigate("verify"),
+    },
+    {
+      q: zh ? "TASK 02 · 發布後" : "TASK 02 · AFTER PUBLISHING",
+      title: zh ? "我的作品有被拿去用嗎？" : "Is my work being used?",
+      stat: openCount.toString(),
+      unit: zh ? "件疑似盜用" : "suspected copies",
+      desc: zh
+        ? "系統每天自動比對監控通路上的候選影像，發現高相似使用就會在這裡向你警報。"
+        : "The system compares candidate images from monitored channels daily and alerts you on high-similarity use.",
+      goText: zh ? "查看警報" : "Open alerts",
+      onGo: () => props.onOpenCases("open"),
+    },
+    {
+      q: zh ? "TASK 03 · 需要行動時" : "TASK 03 · WHEN ACTION IS NEEDED",
+      title: zh ? "要提出主張怎麼辦？" : "How do I make a claim?",
+      stat: reportCount.toString(),
+      unit: zh ? "份存證報告" : "evidence reports",
+      desc: zh
+        ? "確認侵權後，產生含電子憑證與來源軌跡的存證報告，可交付法務或作為授權溝通依據。"
+        : "After confirming infringement, generate an evidence report with certificates and a source trail for legal or licensing use.",
+      goText: zh ? "前往存證" : "Open reports",
+      onGo: () => props.onOpenCases("reports"),
+    },
   ];
-  const radarStats = [
-    { label: zh ? "監控原創" : "Originals watched", value: protectedDisplay, tone: C.green },
-    { label: zh ? "巡檢來源" : "Live sources", value: lastRunSourceCount.toString(), tone: C.blue },
-    { label: zh ? "候選影像" : "Candidates", value: lastRunCandidates.toString(), tone: C.stone },
-    { label: zh ? "待複審" : "To review", value: openCount.toString(), tone: C.orange },
-    { label: zh ? "真實侵權" : "Confirmed", value: suspectedActual, tone: C.greenDeep },
+
+  const onbItems: Array<{ t: string; d: string; onGo: () => void; done: boolean }> = [
+    {
+      t: zh ? "走一遍示範案件" : "Walk through the demo case",
+      d: zh ? "體驗「發現 → 複審 → 確認 → 存證」完整流程" : "Experience the full detect → review → confirm → certify flow",
+      onGo: () => props.onOpenCases("open"),
+      done: onb.steps[0],
+    },
+    {
+      t: zh ? "查一張圖" : "Verify an image",
+      d: zh ? "用範例試跑，看查驗結果長什麼樣" : "Run a sample check and see what a verdict looks like",
+      onGo: () => props.onNavigate("verify"),
+      done: onb.steps[1],
+    },
+    {
+      t: zh ? "看看你的原創庫" : "Browse your vault",
+      d: zh ? "了解已受保護的作品與原創憑證" : "See protected originals and their certificates",
+      onGo: () => props.onNavigate("vault"),
+      done: onb.steps[2],
+    },
+  ];
+
+  const steps = [
+    { n: "STEP 01", t: zh ? "入庫簽署" : "Register", d: zh ? "為作品建立數位指紋與來源憑證（改圖也認得出）。" : "Fingerprint each work and sign its origin certificate — edits are still recognized." },
+    { n: "STEP 02", t: zh ? "雷達巡檢" : "Patrol", d: zh ? "Vision 與公開通路每日自動尋找網路上的相似影像。" : "Vision and public channels search the web for similar images daily." },
+    { n: "STEP 03", t: zh ? "警報複審" : "Review", d: zh ? "高相似候選自動警報，由你人工確認是否為真實侵權。" : "High-similarity candidates raise alerts; you confirm real infringement." },
+    { n: "STEP 04", t: zh ? "存證交付" : "Certify", d: zh ? "產生上鏈存證報告，交付法務或啟動授權溝通。" : "Generate an on-chain evidence report for legal handoff or licensing." },
   ];
 
   return (
-    <div className="max-w-[1240px] px-6 py-7 md:px-9">
-      <section className="mb-5 overflow-hidden rounded-[16px] bg-[#1A1A1A] text-[#F4E9D5] shadow-[0_18px_50px_rgba(26,26,26,0.16)]">
-        <div className="grid gap-0 lg:grid-cols-[1.25fr_0.75fr]">
-          <div className="relative min-h-[440px] p-5 sm:p-7">
-            <div className="absolute -right-28 -top-28 h-72 w-72 rounded-full border border-[#7f9c7e33]" />
-            <div className="absolute -right-16 top-8 h-44 w-44 rounded-full border border-[#7f9c7e55]" />
-            <div className="absolute bottom-7 right-8 hidden h-24 w-24 rounded-full border border-dashed border-[#d8b76a66] lg:block" />
-            <div className="relative z-10 flex h-full flex-col justify-between gap-7">
-              <div>
-                <p className="mb-3 flex items-center gap-2 text-[11px] tracking-[0.16em] text-[#7F9C7E]" style={{ fontFamily: MONO }}>
-                  <span className="ttd-pulse inline-block h-[8px] w-[8px] rounded-full bg-[#7F9C7E]" />
-                  {zh ? "ORIGINRADAR · 即時偵測台" : "ORIGINRADAR · LIVE RADAR"}
-                </p>
-                <h1 className="max-w-[720px] text-[30px] font-semibold leading-[1.05] sm:text-[36px]" style={{ fontFamily: MONO }}>
-                  {zh ? "盜用偵測雷達，替原創影像站崗。" : "A theft-detection radar for original images."}
-                </h1>
-                <p className="mt-4 max-w-[620px] text-[13.5px] leading-6 text-[#CEC0A3]">
-                  {zh
-                    ? "OriginRadar 先替 PyroImage 原作建立影像指紋，再用 Vision 與公開通路巡檢尋找網路候選圖；高度相似候選會進入人工複核、存證與法務交付流程。"
-                    : "OriginRadar fingerprints PyroImage originals, uses Vision patrol to discover web candidates, and routes suspected matches into human review, evidence packaging, and legal handoff."}
-                </p>
-              </div>
+    <div className="max-w-[1180px] px-6 py-7 md:px-9">
+      <p className="mb-2 flex items-center gap-2 text-[11px] tracking-[0.2em] text-[#1a1a1a73]" style={{ fontFamily: MONO }}>
+        <span className="ttd-pulse inline-block h-[8px] w-[8px] rounded-full bg-[#7F9C7E]" />
+        {zh ? "總覽 · ORIGINRADAR" : "HOME · ORIGINRADAR"}
+      </p>
+      <h1 className="text-[26px] font-black leading-tight sm:text-[32px]">
+        {zh ? "替你的原創影像站崗" : "Standing guard over your originals"}
+      </h1>
+      <p className="mt-2 max-w-[640px] text-[14.5px] leading-6 text-[#5c584a]">
+        {zh ? (
+          <>原創雷達替每張作品建立數位指紋，持續巡檢公開網路。<b>作品被使用、轉載、改作之前</b>，你就有可追溯的來源、可檢查的授權脈絡，與可行動的報告。</>
+        ) : (
+          <>OriginRadar fingerprints every work and keeps patrolling the public web — so <b>before your work is used, reposted, or adapted</b>, you already have traceable origin, checkable license context, and actionable reports.</>
+        )}
+      </p>
 
-              <div>
-                <div className="grid gap-2.5 sm:grid-cols-5">
-                  {radarStats.map((stat) => (
-                    <div key={stat.label} className="rounded-[11px] border border-[#f4e9d51f] bg-[#f4e9d50d] px-3 py-3">
-                      <p className="text-[10.5px] leading-tight text-[#CEC0A3]">{stat.label}</p>
-                      <p className="mt-2 text-[24px] font-bold leading-none" style={{ fontFamily: MONO, color: stat.tone }}>
-                        {stat.value}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-
-                <div className="mt-5 flex flex-wrap items-center gap-3">
-                  <button
-                    type="button"
-                    onClick={props.onRunPatrol}
-                    className="flex min-h-[46px] items-center gap-2 rounded-[10px] bg-[#7F9C7E] px-5 py-3 text-[13px] font-semibold text-[#1A1A1A] transition-colors hover:bg-[#8fab8e]"
-                  >
-                    <Radar size={17} />
-                    {zh ? "立即查看最近巡檢" : "Review latest patrol"}
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => props.onNavigate("alerts")}
-                    className="flex min-h-[46px] items-center gap-2 rounded-[10px] border border-[#f4e9d533] px-4 py-3 text-[13px] font-semibold text-[#F4E9D5] transition-colors hover:border-[#F4E9D5]"
-                  >
-                    <Bell size={16} />
-                    {zh ? "看待複審案件" : "Open detections"}
-                  </button>
-                </div>
-
-                <p className="mt-4 text-[10.5px] leading-5 text-[#cec0a3d9]" style={{ fontFamily: MONO }}>
-                  {zh ? "最近巡檢" : "Last patrol"} {lastPatrol}
-                  <span className="mx-2 text-[#7F9C7E]">/</span>
-                  {patrolModeLabel}
-                  <span className="mx-2 text-[#7F9C7E]">/</span>
-                  {zh ? "狀態" : "status"} {patrolStatus}
-                  <span className="mx-2 text-[#7F9C7E]">/</span>
-                  {lastRunAlerts} {zh ? "警報" : "alerts"}
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <DetectionSpotlight
-            locale={locale}
-            alert={latestAlert}
-            sampleWork={props.works[0] || null}
-            lastRunCandidates={lastRunCandidates}
-            onOpenCase={props.onOpenCase}
-            onNavigate={props.onNavigate}
-          />
-        </div>
-      </section>
-
-      {/* honesty banner (kept near the top so the demo/real distinction is read first) */}
-      <div className="mb-5 flex items-start gap-2 rounded-[10px] border border-[#cfe0cb] bg-[#eef4ea] px-4 py-3 text-xs leading-5 text-[#3f5a3e]">
-        <ShieldCheck size={15} className="mt-0.5 flex-none text-[#4f6a4e]" />
-        <span>{honestyText}</span>
-      </div>
-
-      {/* KPIs — current numbers, secondary to the flow, each with a plain-language line */}
-      <div className="mb-6 grid grid-cols-2 gap-3.5 xl:grid-cols-4">
-        <KpiCard index="01" label={zh ? "待複審警報" : "Open alerts"} sub={zh ? "OPEN · 待人工確認" : "OPEN · pending review"} value={openCount.toString()} color={C.orange} dark hint={zh ? "系統發現、等你確認的疑似盜用件數" : "Suspected copies awaiting your review"} />
-        <KpiCard index="02" label={zh ? "受保護原創" : "Protected"} sub="PROTECTED" value={protectedDisplay} color={C.green} hint={zh ? "已建立指紋保護的原創影像張數" : "Originals fingerprinted & protected"} />
-        <KpiCard index="03" label={zh ? "真實侵權" : "Real infringement"} sub={zh ? "已確認" : "confirmed"} value={suspectedActual} color={C.greenDeep} hint={zh ? "目前確認為真實侵權的件數（最新巡檢產物為 0）" : "Confirmed real infringement cases (0 in the latest patrol artifact)"} />
-        <KpiCard index="04" label={zh ? "已存證報告" : "Evidence reports"} sub="REPORTS" value={reportCount.toString()} color={C.ink} hint={zh ? "可交付法務的存證報告份數" : "Deliverable evidence reports generated"} />
-      </div>
-
-      {/* two columns */}
-      <div className="grid gap-5 xl:grid-cols-[1.55fr_1fr]">
-        <div className="overflow-hidden rounded-[14px] border border-[#1a1a1a12] bg-white">
-          <div className="flex items-center justify-between px-5 pb-3 pt-[18px]">
-            <div>
-              <p className="text-[16px] font-semibold">{zh ? "最新疑似盜用" : "Latest detections"}</p>
-              {!zh && (
-                <p className="text-[10px] tracking-[0.1em] text-[#1a1a1a73]" style={{ fontFamily: MONO }}>
-                  LATEST DETECTIONS
-                </p>
-              )}
-            </div>
-            <button type="button" onClick={() => props.onNavigate("alerts")} className="text-xs font-semibold text-[#2E52A0]">
-              {zh ? "全部 →" : "All →"}
-            </button>
-          </div>
-          {props.alerts.length === 0 && (
-            <p className="border-t border-[#1a1a1a0f] px-5 py-6 text-sm text-[#1a1a1a73]">
-              {zh ? "目前沒有疑似盜用 —— 這是好事，代表通路上尚未發現你的原創被盜用。" : "No detections right now — that’s good news: no copies of your originals have surfaced yet."}
-            </p>
-          )}
-          {props.alerts.slice(0, 5).map((a) => (
-            <button
-              key={a.id}
-              type="button"
-              onClick={() => props.onOpenCase(a.id)}
-              className="flex w-full items-center gap-3.5 border-t border-[#1a1a1a0f] px-5 py-3 text-left transition-colors hover:bg-[#FBF6EC]"
-            >
-              <Thumb src={a.thumb} grad={a.grad} sepia className="h-[46px] w-[46px] flex-none rounded-[7px]" />
-              <span className="min-w-0 flex-1">
-                <span className="block truncate text-[13.5px] font-semibold">
-                  {a.work} <span className="font-normal text-[#1a1a1a66]">／ {a.workEn}</span>
-                </span>
-                <span className="block text-[11px] text-[#1a1a1a80]" style={{ fontFamily: MONO }}>
-                  {a.channel} · {formatDateForLocale(a.detected, locale)}
-                </span>
-              </span>
-              <span className="flex-none text-right">
-                <span className="block text-[16px] font-bold" style={{ fontFamily: MONO, color: simColor(a.sim) }}>
-                  {a.sim}%
-                </span>
-                <span className="block text-[9px] text-[#1a1a1a66]" style={{ fontFamily: MONO }}>
-                  {zh ? "相似度" : "MATCH"}
-                </span>
-              </span>
-              <StatusPill status={a.status} locale={locale} />
-            </button>
-          ))}
-        </div>
-
-        <div className="overflow-hidden rounded-[14px] border border-[#1a1a1a12] bg-white">
-          <div className="px-5 pb-3 pt-[18px]">
-            <p className="text-[16px] font-semibold">{zh ? "通路巡檢狀態" : "Channel status"}</p>
-            {!zh && (
-              <p className="text-[10px] tracking-[0.1em] text-[#1a1a1a73]" style={{ fontFamily: MONO }}>
-                CHANNEL STATUS
-              </p>
-            )}
-          </div>
-          {props.channels.slice(0, 6).map((c) => (
-            <div key={c.id} className="flex items-center gap-3 border-t border-[#1a1a1a0f] px-5 py-2.5">
-              <span className="h-2 w-2 flex-none rounded-full" style={{ background: chDot(c.status) }} />
-              <span className="min-w-0 flex-1">
-                <span className="block truncate text-[13px] font-semibold">{c.name}</span>
-                <span className="block text-[10px] text-[#1a1a1a73]" style={{ fontFamily: MONO }}>
-                  {c.type}
-                </span>
-              </span>
-              <span className="flex-none text-[11px] font-semibold" style={{ fontFamily: MONO, color: chDot(c.status) }}>
-                {chLabel(c.status, locale)}
-              </span>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* 4-step flow — now secondary, for users who want to understand the operating model */}
-      <div className="mt-5 rounded-[14px] border border-[#1a1a1a12] bg-white p-5">
-        <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
-          <div>
-            <p className="text-[11px] font-semibold tracking-[0.14em] text-[#1a1a1a99]" style={{ fontFamily: MONO }}>
-              {zh ? "運作方式 · 點選任一步驟前往對應畫面" : "Operating model · click any step to open it"}
-            </p>
-            <p className="mt-1 text-[12px] text-[#1a1a1a80]">
-              {zh ? "先看上方偵測結果；需要了解流程時，再從這裡看入庫、巡檢、分流與存證。" : "Read detection status first; use this flow when you need the register, patrol, triage, and evidence model."}
-            </p>
-          </div>
-          <button
-            type="button"
-            onClick={props.onRunPatrol}
-            className="flex items-center gap-1.5 rounded-[8px] bg-[#1A1A1A] px-3.5 py-2 text-[12px] font-semibold text-[#F4E9D5] transition-colors hover:bg-[#2c2c2c]"
-          >
-            <ScanLine size={14} /> {zh ? "重播雷達巡檢" : "Replay radar patrol"}
-          </button>
-        </div>
-        <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
-          {steps.map((s, i) => (
-            <div key={s.step} className="relative">
-              <button
-                type="button"
-                onClick={() => props.onNavigate(s.target)}
-                className="group h-full w-full rounded-[10px] border border-[#1a1a1a12] p-3.5 text-left transition-all hover:-translate-y-0.5 hover:shadow-[0_6px_18px_rgba(26,26,26,0.08)]"
-                style={{ borderTopColor: s.accent, borderTopWidth: 3 }}
-              >
-                <p className="text-[11px] font-semibold" style={{ fontFamily: MONO, color: s.accent }}>
-                  {s.step}
-                </p>
-                <p className="mt-1.5 text-[15px] font-semibold">{s.label}</p>
-                <p className="mt-1 text-[12px] text-[#1a1a1a8c]">{s.note}</p>
-                <p className="mt-2 text-[19px] font-bold" style={{ fontFamily: MONO, color: s.accent }}>
-                  {s.value} <span className="text-[12px] text-[#1a1a1a73]">{s.unit}</span>
-                </p>
-                <span className="mt-2 inline-flex items-center gap-1 text-[11px] font-semibold text-[#374037] opacity-60 transition-opacity group-hover:opacity-100">
-                  {zh ? "前往" : "Open"} <ArrowRight size={12} className="transition-transform group-hover:translate-x-0.5" />
-                </span>
-              </button>
-              {i < steps.length - 1 && (
-                <ArrowRight
-                  size={16}
-                  className="absolute -right-[11px] top-1/2 z-10 hidden -translate-y-1/2 text-[#1a1a1a40] xl:block"
-                />
-              )}
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function DetectionSpotlight({
-  locale,
-  alert,
-  sampleWork,
-  lastRunCandidates,
-  onOpenCase,
-  onNavigate,
-}: {
-  locale: Locale;
-  alert: AlertVM | null;
-  sampleWork: WorkVM | null;
-  lastRunCandidates: number;
-  onOpenCase: (id: string) => void;
-  onNavigate: (v: View) => void;
-}) {
-  const zh = locale === "zh-TW";
-
-  if (!alert) {
-    return (
-      <div className="flex min-h-[440px] flex-col justify-between border-t border-[#f4e9d51f] bg-[#EFE3CC] p-5 text-[#1A1A1A] lg:border-l lg:border-t-0 sm:p-7">
-        <div>
-          <p className="flex items-center gap-2 text-[11px] font-semibold tracking-[0.14em] text-[#4f6a4e]" style={{ fontFamily: MONO }}>
-            <ShieldCheck size={14} /> {zh ? "最新偵測結果" : "Latest detection result"}
-          </p>
-          <h2 className="mt-3 text-[27px] font-semibold leading-tight" style={{ fontFamily: MONO }}>
-            {zh ? "最近巡檢沒有形成警報。" : "No alert was created in the latest patrol."}
-          </h2>
-          <p className="mt-3 text-[13px] leading-6 text-[#1a1a1a8c]">
-            {zh
-              ? `這次雷達巡檢檢查了 ${lastRunCandidates} 筆候選影像，未達成疑似盜用門檻。你仍可查看巡檢來源與通路導入狀態。`
-              : `The latest radar patrol inspected ${lastRunCandidates} candidate image(s) and did not cross the suspected-copy threshold. You can still inspect patrol sources and channel status.`}
-          </p>
-        </div>
-        <div className="mt-6 grid gap-3 sm:grid-cols-[1fr_auto_1fr]">
-          <div className="rounded-[13px] border border-[#1a1a1a14] bg-white p-3">
-            <p className="mb-2 text-[10px] font-semibold tracking-[0.12em] text-[#4f6a4e]" style={{ fontFamily: MONO }}>
-              {zh ? "受保護原作" : "PROTECTED ORIGINAL"}
-            </p>
-            <Thumb src={sampleWork?.thumb} grad={sampleWork?.grad || GRADS[0]} className="aspect-[4/3] w-full rounded-[9px]" />
-            <p className="mt-2 truncate text-[11px] text-[#1a1a1a80]">{sampleWork?.name || (zh ? "原作樣本" : "Original sample")}</p>
-          </div>
-
-          <div className="flex items-center justify-center">
-            <div className="flex h-[92px] w-[92px] flex-col items-center justify-center rounded-full border-4 border-[#7F9C7E] bg-[#1A1A1A]">
-              <span className="text-[18px] font-bold leading-none text-[#7F9C7E]" style={{ fontFamily: MONO }}>
-                {zh ? "未警報" : "CLEAR"}
-              </span>
-              <span className="mt-1 text-[9px] tracking-[0.1em] text-[#CEC0A3]" style={{ fontFamily: MONO }}>
-                {lastRunCandidates} {zh ? "候選" : "CAND."}
-              </span>
-            </div>
-          </div>
-
-          <div className="rounded-[13px] border border-[#7f9c7e66] bg-white p-3">
-            <p className="mb-2 text-[10px] font-semibold tracking-[0.12em] text-[#4f6a4e]" style={{ fontFamily: MONO }}>
-              {zh ? "巡檢候選" : "PATROL CANDIDATES"}
-            </p>
-            <div className="relative flex aspect-[4/3] w-full items-center justify-center overflow-hidden rounded-[9px] bg-[#1A1A1A]">
-              <div className="absolute inset-3 rounded-full border border-[#7f9c7e44]" />
-              <div className="absolute inset-8 rounded-full border border-dashed border-[#d8b76a66]" />
-              <Radar size={34} className="ttd-pulse text-[#7F9C7E]" />
-              <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(90deg,transparent,rgba(127,156,126,0.18),transparent)]" />
-            </div>
-            <p className="mt-2 truncate text-[11px] text-[#1a1a1a80]">
-              {zh ? "未達疑似盜用門檻" : "Below suspected-copy threshold"}
-            </p>
-          </div>
-        </div>
-        <button
-          type="button"
-          onClick={() => onNavigate("channels")}
-          className="mt-6 inline-flex w-fit items-center gap-2 rounded-[10px] bg-[#1A1A1A] px-4 py-3 text-[13px] font-semibold text-[#F4E9D5]"
+      {/* one-line answer: am I safe? (real patrol data) */}
+      <div
+        className={`mt-6 flex flex-col gap-3 rounded-[12px] border border-[#1a1a1a14] bg-white p-5 sm:flex-row sm:items-center sm:gap-5 sm:px-7 ${
+          allClear ? "border-l-[6px] border-l-[#7F9C7E]" : "border-l-[6px] border-l-[#ED5D29]"
+        }`}
+      >
+        <span
+          className={`flex h-[52px] w-[52px] flex-none items-center justify-center rounded-full ${
+            allClear ? "bg-[#eef4ea] text-[#4f6a4e]" : "bg-[#fbe9e0] text-[#c4502e]"
+          }`}
         >
-          <Radar size={16} /> {zh ? "查看巡檢來源" : "View patrol sources"}
+          {allClear ? <ShieldCheck size={26} /> : <TriangleAlert size={26} />}
+        </span>
+        <span className="min-w-0 flex-1">
+          <span className="block text-[18px] font-black sm:text-[20px]">
+            {allClear
+              ? zh
+                ? "目前一切正常，沒有發現疑似盜用"
+                : "All clear — no suspected copies found"
+              : zh
+              ? `有 ${openCount} 件疑似盜用等你複審`
+              : `${openCount} suspected cop${openCount === 1 ? "y" : "ies"} awaiting your review`}
+          </span>
+          <span className="mt-0.5 block text-[13px] text-[#5c584a]">
+            {zh
+              ? `最近一次巡檢（${lastPatrol}）檢查了 ${lastRunCandidates} 筆網路候選影像，${lastRunAlerts === 0 ? "皆未達疑似盜用門檻" : `${lastRunAlerts} 筆達門檻並已建立警報`}。`
+              : `The latest patrol (${lastPatrol}) checked ${lastRunCandidates} web candidates; ${lastRunAlerts === 0 ? "none crossed the suspected-copy threshold" : `${lastRunAlerts} crossed the threshold and raised alerts`}.`}
+          </span>
+        </span>
+        <span className="flex-none text-left sm:text-right">
+          <span className="block text-[10px] tracking-[0.15em] text-[#8d8873]" style={{ fontFamily: MONO }}>
+            {zh ? "確認侵權 / 待複審" : "CONFIRMED / TO REVIEW"}
+          </span>
+          <span className="mt-1 block text-[14px] font-bold" style={{ fontFamily: MONO }}>
+            {suspectedActual}{zh ? " 件" : ""} / {openCount}{zh ? " 件" : ""}
+          </span>
+        </span>
+      </div>
+
+      {/* onboarding checklist (dismissible, remembered) */}
+      {!onb.hide && (
+        <div className="mt-4 rounded-[12px] border border-[#1a1a1a14] bg-white px-5 py-4">
+          {onbDone === 3 ? (
+            <div className="flex flex-wrap items-center gap-2.5">
+              <span className="font-black text-[#4f6a4e]">✓ {zh ? "三步驟都完成了！" : "All three steps done!"}</span>
+              <span className="text-[13px] text-[#5c584a]">
+                {zh ? "原創雷達已經在替你站崗。" : "OriginRadar is standing guard for you."}
+              </span>
+              <button type="button" onClick={props.onHideOnb} className="ml-auto px-1.5 text-[#8d8873]" aria-label={zh ? "不再顯示" : "Dismiss"}>
+                <X size={15} />
+              </button>
+            </div>
+          ) : (
+            <>
+              <div className="flex items-center gap-2.5">
+                <b className="text-[15px]">{zh ? "三步驟上手原創雷達" : "Get started in three steps"}</b>
+                <span className="text-[11px] text-[#8d8873]" style={{ fontFamily: MONO }}>
+                  {onbDone} / 3
+                </span>
+                <button type="button" onClick={props.onHideOnb} className="ml-auto px-1.5 text-[#8d8873]" aria-label={zh ? "不再顯示" : "Dismiss"}>
+                  <X size={15} />
+                </button>
+              </div>
+              {onbItems.map((it, i) => (
+                <button
+                  key={it.t}
+                  type="button"
+                  onClick={it.onGo}
+                  className="group mt-2 flex w-full items-center gap-3 border-t border-[#f4ede0] pt-2.5 text-left"
+                >
+                  <span
+                    className={`flex h-[26px] w-[26px] flex-none items-center justify-center rounded-full border text-[12px] ${
+                      it.done ? "border-[#7F9C7E] bg-[#eef4ea] text-[#4f6a4e]" : "border-[#1a1a1a26] text-[#5c584a]"
+                    }`}
+                    style={{ fontFamily: MONO }}
+                  >
+                    {it.done ? "✓" : i + 1}
+                  </span>
+                  <span className="min-w-0 flex-1">
+                    <b className={`block text-[13.5px] ${it.done ? "text-[#8d8873] line-through" : "group-hover:text-[#4f6a4e]"}`}>{it.t}</b>
+                    <span className="block text-[12px] text-[#5c584a]">{it.d}</span>
+                  </span>
+                  <ArrowRight size={14} className="flex-none text-[#4f6a4e]" />
+                </button>
+              ))}
+            </>
+          )}
+        </div>
+      )}
+
+      {/* three tasks */}
+      <div className="mt-5 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+        {tasks.map((t) => (
+          <button
+            key={t.q}
+            type="button"
+            onClick={t.onGo}
+            className="flex h-full flex-col gap-2.5 rounded-[12px] border border-[#1a1a1a14] bg-white p-5 text-left transition-all hover:-translate-y-0.5 hover:shadow-[0_6px_22px_rgba(60,50,20,0.10)]"
+          >
+            <span className="text-[10px] tracking-[0.18em] text-[#8d8873]" style={{ fontFamily: MONO }}>
+              {t.q}
+            </span>
+            <span className="text-[17px] font-black leading-snug">{t.title}</span>
+            {t.stat !== undefined && (
+              <span className="text-[32px] font-bold leading-none text-[#4f6a4e]" style={{ fontFamily: MONO }}>
+                {t.stat} <span className="text-[13px] font-normal text-[#8d8873]">{t.unit}</span>
+              </span>
+            )}
+            <span className="flex-1 text-[12.5px] leading-5 text-[#5c584a]">{t.desc}</span>
+            <span className="flex items-center gap-1.5 text-[13px] font-bold text-[#4f6a4e]">
+              {t.goText} <ArrowRight size={13} />
+            </span>
+          </button>
+        ))}
+      </div>
+
+      {/* honesty note: demo/real boundary, kept from the pilot convention */}
+      <div className="mt-4 flex items-start gap-2 rounded-[10px] border border-[#cfe0cb] bg-[#eef4ea] px-4 py-3 text-xs leading-5 text-[#3f5a3e]">
+        <ShieldCheck size={15} className="mt-0.5 flex-none text-[#4f6a4e]" />
+        <span>
+          {zh
+            ? `目前真實侵權案件：${suspectedActual} 件。警報頁的示範案件僅供體驗流程，不列入統計。`
+            : `Real infringement cases so far: ${suspectedActual}. The demo case on the Cases page is for walkthrough only and is never counted.`}
+        </span>
+      </div>
+
+      {/* intro: collapsible for returning users */}
+      <div className="mt-7 flex items-baseline justify-between">
+        <h2 className="text-[18px] font-black">
+          {zh ? "認識原創雷達" : "Meet OriginRadar"}{" "}
+          <span className="text-[12px] font-normal text-[#8d8873]">{zh ? "· 給第一次使用的你" : "· for first-time users"}</span>
+        </h2>
+        <button type="button" onClick={props.onToggleIntro} className="text-[13px] font-bold text-[#4f6a4e]">
+          {props.introOpen ? (zh ? "收合 ▴" : "Collapse ▴") : (zh ? "展開 ▾" : "Expand ▾")}
         </button>
       </div>
-    );
-  }
-
-  const proximity = Math.max(0, Math.round((1 - alert.distance / 128) * 100));
-  const copyLabel = alert.simulated
-    ? zh
-      ? "能力預覽：展示案件"
-      : "Capability preview: preview case"
-    : zh
-    ? "疑似盜用：待複審"
-    : "Patrol match: review";
-
-  return (
-    <div className="flex min-h-[440px] flex-col justify-between border-t border-[#f4e9d51f] bg-[#EFE3CC] p-5 text-[#1A1A1A] lg:border-l lg:border-t-0 sm:p-7">
-      <div>
-        <div className="mb-4 flex items-start justify-between gap-3">
-          <div>
-            <p className="flex items-center gap-2 text-[11px] font-semibold tracking-[0.14em] text-[#ED5D29]" style={{ fontFamily: MONO }}>
-              <Bell size={14} /> {zh ? "最新偵測比對" : "Latest match"}
-            </p>
-            <h2 className="mt-2 line-clamp-2 text-[24px] font-semibold leading-tight" style={{ fontFamily: MONO }}>
-              {alert.work}
-            </h2>
-          </div>
-          <StatusPill status={alert.status} locale={locale} />
-        </div>
-
-        <div className="grid gap-3 sm:grid-cols-[1fr_auto_1fr]">
-          <div className="rounded-[13px] border border-[#1a1a1a14] bg-white p-3">
-            <p className="mb-2 text-[10px] font-semibold tracking-[0.12em] text-[#4f6a4e]" style={{ fontFamily: MONO }}>
-              {zh ? "原作 ORIGINAL" : "ORIGINAL"}
-            </p>
-            <Thumb src={alert.thumb} grad={alert.grad} className="aspect-[4/3] w-full rounded-[9px]" />
-            <p className="mt-2 truncate text-[11px] text-[#1a1a1a80]">{alert.author}</p>
-          </div>
-
-          <div className="flex items-center justify-center">
-            <div
-              className="flex h-[92px] w-[92px] flex-col items-center justify-center rounded-full border-4 bg-[#1A1A1A]"
-              style={{ borderColor: simColor(alert.sim) }}
-            >
-              <span className="text-[25px] font-bold leading-none" style={{ fontFamily: MONO, color: simColor(alert.sim) }}>
-                {alert.sim}%
+      {props.introOpen && (
+        <>
+          <div className="mt-3 grid gap-4 sm:grid-cols-2">
+            <div className="flex items-start gap-3.5 rounded-[12px] border border-dashed border-[#1a1a1a1f] bg-[#f8f2e3] px-5 py-4">
+              <span className="mt-0.5 flex-none rounded-[6px] bg-[#1A1A1A] px-2 py-1 text-[10px] tracking-[0.1em] text-[#e8dfab]" style={{ fontFamily: MONO }}>
+                {zh ? "給媒體編輯" : "FOR EDITORS"}
               </span>
-              <span className="mt-1 text-[9px] tracking-[0.1em] text-[#CEC0A3]" style={{ fontFamily: MONO }}>
-                {zh ? "相似" : "MATCH"}
+              <p className="text-[13px] leading-5 text-[#5c584a]">
+                <b className="text-[#1A1A1A]">{zh ? "不踩雷。" : "No landmines."}</b>{" "}
+                {zh
+                  ? "發稿前先查一張圖的來源與授權脈絡，省下人工查核時間，避免誤用來源不明素材。"
+                  : "Check an image's origin and license context before publishing — less manual vetting, no untraceable assets."}
+              </p>
+            </div>
+            <div className="flex items-start gap-3.5 rounded-[12px] border border-dashed border-[#1a1a1a1f] bg-[#f8f2e3] px-5 py-4">
+              <span className="mt-0.5 flex-none rounded-[6px] bg-[#1A1A1A] px-2 py-1 text-[10px] tracking-[0.1em] text-[#e8dfab]" style={{ fontFamily: MONO }}>
+                {zh ? "給創作者" : "FOR CREATORS"}
               </span>
+              <p className="text-[13px] leading-5 text-[#5c584a]">
+                <b className="text-[#1A1A1A]">{zh ? "不被悄悄拿走價值。" : "No silent value loss."}</b>{" "}
+                {zh
+                  ? "作品照常曝光，但每一次被使用都留有紀錄，成為後續授權與溝通的依據。"
+                  : "Your work stays public, but every use leaves a record — the basis for licensing and follow-up."}
+              </p>
             </div>
           </div>
 
-          <div className="rounded-[13px] border border-[#ed5d2966] bg-white p-3">
-            <p className="mb-2 text-[10px] font-semibold tracking-[0.12em] text-[#ED5D29]" style={{ fontFamily: MONO }}>
-              {zh ? "巡檢發現 FOUND" : "FOUND"}
-            </p>
-            <div className="relative">
-              <Thumb src={alert.thumb} grad={alert.grad} sepia className="aspect-[4/3] w-full rounded-[9px]" />
-              <div className="pointer-events-none absolute inset-2 rounded-[6px] border-2 border-dashed border-[#ED5D29]" />
+          <div className="mt-4 rounded-[12px] border border-[#1a1a1a14] bg-white px-6 py-5">
+            <div className="mb-3.5 flex items-baseline gap-3">
+              <h3 className="text-[15px] font-black">{zh ? "運作方式" : "How it works"}</h3>
+              <span className="text-[10px] tracking-[0.18em] text-[#8d8873]" style={{ fontFamily: MONO }}>
+                HOW IT WORKS
+              </span>
             </div>
-            <p className="mt-2 truncate text-[11px] text-[#1a1a1a80]">{alert.channel}</p>
+            <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4 xl:gap-0">
+              {steps.map((s, i) => (
+                <div key={s.n} className={`xl:px-4 ${i > 0 ? "xl:border-l xl:border-[#1a1a1a12]" : "xl:pl-0"}`}>
+                  <p className="text-[10px] font-bold tracking-[0.14em] text-[#4f6a4e]" style={{ fontFamily: MONO }}>
+                    {s.n}
+                  </p>
+                  <p className="mt-1 text-[14px] font-bold">{s.t}</p>
+                  <p className="mt-0.5 text-[12px] leading-5 text-[#5c584a]">{s.d}</p>
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
+        </>
+      )}
 
-        <div className="mt-4 grid gap-2.5 sm:grid-cols-3">
-          <div className="rounded-[10px] bg-white px-3 py-2.5">
-            <p className="text-[10px] text-[#1a1a1a73]">{zh ? "判定距離" : "Distance"}</p>
-            <p className="mt-1 text-[18px] font-bold" style={{ fontFamily: MONO }}>{alert.distance}</p>
-          </div>
-          <div className="rounded-[10px] bg-white px-3 py-2.5">
-            <p className="text-[10px] text-[#1a1a1a73]">{zh ? "門檻" : "Threshold"}</p>
-            <p className="mt-1 text-[18px] font-bold" style={{ fontFamily: MONO }}>{alert.threshold}</p>
-          </div>
-          <div className="rounded-[10px] bg-white px-3 py-2.5">
-            <p className="text-[10px] text-[#1a1a1a73]">{zh ? "特徵接近度" : "Proximity"}</p>
-            <p className="mt-1 text-[18px] font-bold" style={{ fontFamily: MONO }}>{proximity}%</p>
-          </div>
+      {/* patrol record: proof the radar keeps running (latest real run only — history accrues) */}
+      <div className="mt-7 flex flex-wrap items-baseline justify-between gap-2">
+        <h2 className="text-[18px] font-black">
+          {zh ? "巡檢紀錄" : "Patrol record"}{" "}
+          <span className="text-[12px] font-normal text-[#8d8873]">{zh ? "· 持續站崗中" : "· continuously on guard"}</span>
+        </h2>
+        <button type="button" onClick={() => props.onNavigate("channels")} className="text-[13px] font-bold text-[#4f6a4e]">
+          {zh ? "查看監控通路 →" : "View channels →"}
+        </button>
+      </div>
+      <div className="mt-3 overflow-hidden rounded-[12px] border border-[#1a1a1a14] bg-white">
+        <div className="flex items-center gap-3.5 bg-[#EFE3CC] px-5 py-3 text-[10px] tracking-[0.08em] text-[#1a1a1a8c]" style={{ fontFamily: MONO }}>
+          <span className="w-[190px] flex-none">{zh ? "巡檢時間" : "TIME"}</span>
+          <span className="flex-1">{zh ? "來源" : "SOURCES"}</span>
+          <span className="w-[120px] flex-none">{zh ? "候選影像" : "CANDIDATES"}</span>
+          <span className="w-[76px] flex-none">{zh ? "形成警報" : "ALERTS"}</span>
+          <span className="w-[190px] flex-none">{zh ? "狀態" : "STATUS"}</span>
         </div>
-
-        <p className="mt-4 rounded-[10px] border border-[#d8b76a80] bg-[#FBF6EC] px-3.5 py-2.5 text-[12px] leading-5 text-[#715817]">
-          {copyLabel} · {zh ? "候選仍需人工確認來源脈絡與授權，才會形成對外主張。" : "A candidate still needs human source-context and authorization review before any external claim."}
+        <div className="flex flex-wrap items-center gap-3.5 border-t border-[#1a1a1a0f] px-5 py-3.5 text-[13px]">
+          <span className="w-[190px] flex-none font-bold" style={{ fontFamily: MONO }}>
+            {lastPatrol}{" "}
+            <span className="text-[10px] font-normal text-[#4f6a4e]">{zh ? "最新" : "latest"}</span>
+          </span>
+          <span className="min-w-[140px] flex-1">{patrolModeLabel.replace(/^(巡檢模式：|Mode: )/, "")}</span>
+          <span className="w-[120px] flex-none" style={{ fontFamily: MONO }}>
+            {lastRunCandidates}{zh ? " 筆" : ""}{" "}
+            <span className="text-[11px] text-[#8d8873]">{zh ? `· ${lastRunSourceCount} 個來源` : `· ${lastRunSourceCount} sources`}</span>
+          </span>
+          <span className="w-[76px] flex-none font-bold text-[#4f6a4e]" style={{ fontFamily: MONO }}>
+            {lastRunAlerts}{zh ? " 件" : ""}
+          </span>
+          <span className="w-[190px] flex-none">
+            <span className="rounded-full bg-[#eef4ea] px-2.5 py-1 text-[11px] font-semibold text-[#4f6a4e]">{patrolStatus}</span>
+          </span>
+        </div>
+        <p className="border-t border-[#1a1a1a0f] bg-[#f8f2e3] px-5 py-2.5 text-[12px] text-[#5c584a]">
+          {zh
+            ? "本頁顯示最新一次巡檢的真實產物；歷史紀錄會隨每日巡檢持續累積。"
+            : "This shows the latest real patrol artifact; history accrues with each daily run."}
         </p>
       </div>
-
-      <button
-        type="button"
-        onClick={() => onOpenCase(alert.id)}
-        className="mt-5 inline-flex w-fit items-center gap-2 rounded-[10px] bg-[#ED5D29] px-4 py-3 text-[13px] font-semibold text-white"
-      >
-        <ExternalLink size={15} /> {zh ? "打開比對案件" : "Open comparison case"}
-      </button>
+      <div className="mt-3.5 flex items-start gap-2.5 rounded-[10px] border border-[#1a1a1a14] bg-[#f8f2e3] px-4 py-3 text-[13px] leading-5 text-[#5c584a]">
+        <span aria-hidden>⏱</span>
+        <span>
+          <b className="text-[#1A1A1A]">{zh ? "下次自動巡檢：每日 11:17（台北時間）" : "Next automatic patrol: daily at 11:17 (Taipei time)"}</b>
+          {zh ? "，由 GitHub Actions 排程執行；發現疑似盜用會直接列進警報頁待你複審。" : ", scheduled via GitHub Actions. Suspected copies are queued on the Cases page for your review."}
+        </span>
+      </div>
     </div>
   );
 }
@@ -1899,11 +1684,13 @@ function VerificationView({
   verification,
   works,
   onOpenCert,
+  onRanExample,
 }: {
   locale: Locale;
   verification: VerificationDocument;
   works: WorkVM[];
   onOpenCert: (id: string) => void;
+  onRanExample?: () => void;
 }) {
   const zh = locale === "zh-TW";
   const firstQuery = verification.queries[0] || null;
@@ -1937,6 +1724,7 @@ function VerificationView({
     setActiveQueryId(query.query_id);
     setInputValue(query.accepted_inputs[0] || "");
     setInputState("matched");
+    onRanExample?.();
   };
 
   const submitVerification = (event: FormEvent<HTMLFormElement>) => {
@@ -2255,109 +2043,554 @@ function VerificationView({
   );
 }
 
-/* ---------------- alerts view ---------------- */
+/* ---------------- cases view (alerts + evidence reports, merged; redesign 2026-07-10) ---------------- */
 
-function AlertsView(props: {
+function CasesView(props: {
   locale: Locale;
+  tab: CasesTab;
+  setTab: (t: CasesTab) => void;
   alerts: AlertVM[];
-  filter: "all" | "high" | "open" | "done";
-  setFilter: (f: "all" | "high" | "open" | "done") => void;
-  counts: { all: number; high: number; open: number; done: number };
+  demoCase: DemoCaseState;
+  setDemoCase: (s: DemoCaseState) => void;
+  demoWork: WorkVM | null;
+  backendReports: EvidenceReportDocument["reports"];
+  addedReports: Array<{ id: string; work: string; caseId: string; typeZh: string; typeEn: string }>;
+  works: WorkVM[];
   onOpenCase: (id: string) => void;
+  onDemoReported: () => void;
+  showToast: (msg: string, kind?: "ok" | "alert") => void;
+  onExport: (id: string) => void;
 }) {
-  const { locale, alerts, filter, setFilter, counts } = props;
+  const { locale, tab, setTab, alerts, demoCase, setDemoCase, demoWork } = props;
   const zh = locale === "zh-TW";
-  const match = (a: AlertVM) =>
-    filter === "all"
-      ? true
-      : filter === "high"
-      ? a.risk === "high"
-      : filter === "open"
-      ? a.status === "new" || a.status === "reviewing"
-      : a.status === "resolved" || a.status === "action" || a.status === "dismissed";
-  const filtered = alerts.filter(match);
-  const chips: Array<{ key: typeof filter; label: string; n: number }> = [
-    { key: "all", label: zh ? "全部 ALL" : "All", n: counts.all },
-    { key: "high", label: zh ? "高風險 HIGH" : "High", n: counts.high },
-    { key: "open", label: zh ? "待複審 OPEN" : "Open", n: counts.open },
-    { key: "done", label: zh ? "已處理 DONE" : "Done", n: counts.done },
+  const [demoModal, setDemoModal] = useState<"case" | "report" | null>(null);
+
+  const openAlerts = alerts.filter((a) => a.status === "new" || a.status === "reviewing");
+  const confirmedAlerts = alerts.filter((a) => a.status === "action" || a.status === "resolved" || a.status === "dismissed");
+  const reportType = (label?: string) => {
+    if (label === "simulated") return zh ? "展示報告" : "Preview report";
+    if (label === "actual_pending_review") return zh ? "真實巡檢存證（待複審）" : "Real patrol evidence (pending review)";
+    return zh ? "內部存證報告" : "Internal evidence report";
+  };
+  const primaryWork = alerts[0]?.work ? `${alerts[0].work} ${alerts[0].workEn}`.trim() : props.works[0]?.name || "—";
+  const reportRows = [
+    ...props.addedReports.map((r) => ({ id: r.id, work: r.work, caseId: r.caseId, type: zh ? r.typeZh : r.typeEn })),
+    ...props.backendReports.map((r) => ({
+      id: r.report_id.replace("REPORT-", "R-").slice(0, 12),
+      work: r.sections?.protected_original?.title || primaryWork,
+      caseId: r.case_id || r.alert_id || alerts[0]?.id || "—",
+      type: reportType(r.sections?.public_use_label?.label),
+    })),
   ];
+
+  const tabs: Array<{ key: CasesTab; label: string; n: number }> = [
+    { key: "open", label: zh ? "待複審" : "To review", n: openAlerts.length },
+    { key: "confirmed", label: zh ? "已確認侵權" : "Confirmed", n: confirmedAlerts.length },
+    { key: "reports", label: zh ? "存證報告" : "Reports", n: reportRows.length },
+  ];
+
+  // demo walkthrough row placement per tab (never counted in the tab numbers above)
+  const demoRowKey: "open" | "confirmed" | "reported" | "report" | null =
+    tab === "open" && demoCase === "open"
+      ? "open"
+      : tab === "confirmed" && demoCase === "confirmed"
+      ? "confirmed"
+      : tab === "confirmed" && demoCase === "reported"
+      ? "reported"
+      : tab === "reports" && demoCase === "reported"
+      ? "report"
+      : null;
+
+  const realRows = tab === "open" ? openAlerts : tab === "confirmed" ? confirmedAlerts : [];
+  const tabEmpty = tab === "reports" ? reportRows.length === 0 && !demoRowKey : realRows.length === 0 && !demoRowKey;
+
+  const emptyCopy =
+    tab === "open"
+      ? {
+          icon: "✓",
+          b: zh ? "目前沒有待複審的警報 —— 這是好事。" : "No alerts to review — that's good news.",
+          d: zh ? "代表監控通路上尚未發現你的原創被盜用。" : "No copies of your originals have surfaced on monitored channels.",
+        }
+      : tab === "confirmed"
+      ? {
+          icon: "✓",
+          b: zh ? "尚無確認侵權的案件。" : "No confirmed infringement yet.",
+          d: zh ? "待複審警報經你確認後，會列在這裡並可產生存證報告。" : "Alerts you confirm land here, ready for evidence reports.",
+        }
+      : {
+          icon: "📄",
+          b: zh ? "尚無存證報告。" : "No evidence reports yet.",
+          d: zh
+            ? "在已確認侵權的案件中點「產生存證報告」，即可建立含電子憑證與來源軌跡的報告。"
+            : "Open a confirmed case and click “Generate report” to create one with certificates and a source trail.",
+        };
+
+  const demoStateLabel = demoCase === "open" ? (zh ? "待複審" : "To review") : demoCase === "confirmed" ? (zh ? "已確認侵權" : "Confirmed") : zh ? "已完成存證" : "Certified";
+
+  const confirmDemo = () => {
+    setDemoCase("confirmed");
+    setDemoModal(null);
+    setTab("confirmed");
+    props.showToast(
+      zh ? "DEMO：已確認侵權，案件移至「已確認侵權」—— 下一步：產生存證報告" : "DEMO: confirmed — case moved to Confirmed. Next: generate the evidence report",
+    );
+  };
+  const reportDemo = () => {
+    setDemoCase("reported");
+    setDemoModal(null);
+    setTab("reports");
+    props.onDemoReported();
+    props.showToast(zh ? "DEMO：存證報告 RPT-DEMO-001 已產生，點擊該列可預覽" : "DEMO: evidence report RPT-DEMO-001 generated — click the row to preview");
+  };
+  const resetDemo = () => {
+    setDemoCase("open");
+    setTab("open");
+    setDemoModal(null);
+    props.showToast(zh ? "DEMO 已重設回「待複審」" : "DEMO reset to “To review”");
+  };
+
+  const demoNote =
+    demoRowKey === "open"
+      ? zh
+        ? "☝ 這是一件示範案件（DEMO），不列入統計 —— 你可以實際走完「複審 → 確認侵權 → 產生存證報告」整條流程。點擊該列開始。"
+        : "☝ This is a DEMO case (never counted). Walk the full review → confirm → certify flow — click the row to start."
+      : demoRowKey === "confirmed"
+      ? zh
+        ? "☝ DEMO：已確認侵權。點擊該列即可產生存證報告，完成最後一步。"
+        : "☝ DEMO: infringement confirmed. Click the row to generate the evidence report and finish."
+      : demoRowKey === "reported"
+      ? zh
+        ? "☝ DEMO：此案件已完成存證。切到「存證報告」分頁可預覽報告內容。"
+        : "☝ DEMO: this case is certified. Switch to the Reports tab to preview the report."
+      : demoRowKey === "report"
+      ? zh
+        ? "☝ DEMO：點擊該列可預覽報告內容 —— 正式版可下載 PDF 並交付法務。"
+        : "☝ DEMO: click the row to preview the report — the production version exports a legal-ready PDF."
+      : "";
 
   return (
     <div className="max-w-[1240px] px-6 py-7 md:px-9">
       <PageHead
         dot={C.orange}
-        eyebrow={zh ? "疑似盜用 · DETECTION QUEUE" : "Detection queue"}
-        title={zh ? "盜用警報分流" : "Alert triage"}
-        desc={zh ? "系統依相似度與通路風險自動分流，點擊任一筆查看證據比對與處理選項。" : "Alerts are routed by similarity and channel risk. Click any row to see the evidence comparison and actions."}
+        eyebrow={zh ? "警報與存證 · CASES" : "Cases & evidence"}
+        title={zh ? "疑似盜用警報與存證報告" : "Alerts & evidence reports"}
+        desc={
+          zh
+            ? "巡檢發現的高相似使用會進到這裡：先由你複審確認，確認侵權後即可產生存證報告交付法務，或作為授權溝通的依據。"
+            : "High-similarity uses land here: review and confirm them, then generate evidence reports for legal handoff or licensing talks."
+        }
         hint={
           zh
-            ? "怎麼看：用上方標籤篩選（全部／高風險／待複審／已處理），點任一列打開案件詳情。標有「展示案件」者為展示流程用。"
-            : "How to read: filter with the chips above (all / high / open / done) and click any row to open the case. Rows tagged “Preview case” illustrate the workflow."
+            ? "怎麼看：三個分頁對應處理階段（待複審 → 已確認侵權 → 存證報告）。標「DEMO」的示範案件僅供體驗流程，不列入統計。"
+            : "How to read: the three tabs follow the workflow (review → confirmed → reports). Rows tagged DEMO are walkthrough-only and never counted."
         }
       />
+
       <div className="mb-3.5 flex flex-wrap gap-2.5">
-        {chips.map((ch) => (
+        {tabs.map((t) => (
           <button
-            key={ch.key}
+            key={t.key}
             type="button"
-            onClick={() => setFilter(ch.key)}
-            className={`rounded-full border px-3.5 py-2 text-xs font-semibold ${
-              filter === ch.key ? "border-[#1A1A1A] bg-[#1A1A1A] text-[#F4E9D5]" : "border-[#1a1a1a33] text-[#1A1A1A]"
+            onClick={() => setTab(t.key)}
+            className={`rounded-full border px-4 py-2 text-[13px] font-semibold ${
+              tab === t.key ? "border-[#1A1A1A] bg-[#1A1A1A] text-[#F4E9D5]" : "border-[#1a1a1a33] text-[#1A1A1A]"
             }`}
           >
-            {ch.label} <span className="opacity-55">{ch.n}</span>
+            {t.label} <span className="opacity-55" style={{ fontFamily: MONO }}>{t.n}</span>
           </button>
         ))}
       </div>
+
       <div className="overflow-hidden rounded-[14px] border border-[#1a1a1a12] bg-white">
         <div
           className="flex items-center gap-3.5 bg-[#EFE3CC] px-5 py-3 text-[10px] tracking-[0.08em] text-[#1a1a1a8c]"
           style={{ fontFamily: MONO }}
         >
-          <span className="w-[60px] flex-none">{zh ? "證據" : "EVIDENCE"}</span>
-          <span className="flex-1">{zh ? "原創影像 / 發現位置" : "ORIGINAL / FOUND AT"}</span>
-          <span className="w-[120px] flex-none">{zh ? "相似度" : "MATCH"}</span>
-          <span className="w-[88px] flex-none">{zh ? "狀態" : "STATUS"}</span>
+          {tab === "reports" ? (
+            <>
+              <span className="w-[110px] flex-none">{zh ? "報告編號" : "REPORT"}</span>
+              <span className="flex-1">{zh ? "報告內容" : "CONTENTS"}</span>
+              <span className="w-[88px] flex-none">{zh ? "狀態" : "STATUS"}</span>
+            </>
+          ) : (
+            <>
+              <span className="w-[60px] flex-none">{zh ? "證據" : "EVIDENCE"}</span>
+              <span className="flex-1">{zh ? "原創影像 / 發現位置" : "ORIGINAL / FOUND AT"}</span>
+              <span className="w-[120px] flex-none">{zh ? "相似度" : "MATCH"}</span>
+              <span className="w-[110px] flex-none">{zh ? "狀態" : "STATUS"}</span>
+            </>
+          )}
         </div>
-        {filtered.map((a) => (
-          <button
-            key={a.id}
-            type="button"
-            onClick={() => props.onOpenCase(a.id)}
-            className="flex w-full items-center gap-3.5 border-t border-[#1a1a1a0f] px-5 py-3.5 text-left transition-colors hover:bg-[#FBF6EC]"
-          >
-            <Thumb src={a.thumb} grad={a.grad} sepia className="h-[42px] w-[42px] flex-none rounded-[6px]" />
-            <span className="min-w-0 flex-1">
-              <span className="flex items-center gap-2">
-                <span className="truncate text-[14px] font-semibold">
-                  {a.work} <span className="font-normal text-[#1a1a1a66]">／ {a.workEn}</span>
+
+        {/* real rows */}
+        {tab !== "reports" &&
+          realRows.map((a) => (
+            <button
+              key={a.id}
+              type="button"
+              onClick={() => props.onOpenCase(a.id)}
+              className="flex w-full items-center gap-3.5 border-t border-[#1a1a1a0f] px-5 py-3.5 text-left transition-colors hover:bg-[#FBF6EC]"
+            >
+              <Thumb src={a.thumb} grad={a.grad} sepia className="h-[42px] w-[42px] flex-none rounded-[6px]" />
+              <span className="min-w-0 flex-1">
+                <span className="flex items-center gap-2">
+                  <span className="truncate text-[14px] font-semibold">
+                    {a.work} <span className="font-normal text-[#1a1a1a66]">／ {a.workEn}</span>
+                  </span>
+                  {a.simulated && <DemoTag locale={locale} />}
                 </span>
-                {a.simulated && <DemoTag locale={locale} />}
+                <span className="block truncate text-[11.5px] text-[#1a1a1a8c]" style={{ fontFamily: MONO }}>
+                  {a.channel} · {a.id}
+                </span>
               </span>
-              <span className="block truncate text-[11.5px] text-[#1a1a1a8c]" style={{ fontFamily: MONO }}>
-                {a.channel} · {a.id}
-              </span>
-            </span>
-            <span className="w-[120px] flex-none">
-              <span className="flex items-center gap-2">
+              <span className="w-[120px] flex-none">
                 <span className="text-[15px] font-bold" style={{ fontFamily: MONO, color: simColor(a.sim) }}>
                   {a.sim}%
                 </span>
+                <span className="mt-1.5 block h-[5px] overflow-hidden rounded-full bg-[#1a1a1a14]">
+                  <span className="block h-full rounded-full" style={{ width: `${a.sim}%`, background: simColor(a.sim) }} />
+                </span>
               </span>
-              <span className="mt-1.5 block h-[5px] overflow-hidden rounded-full bg-[#1a1a1a14]">
-                <span className="block h-full rounded-full" style={{ width: `${a.sim}%`, background: simColor(a.sim) }} />
+              <span className="w-[110px] flex-none">
+                <StatusPill status={a.status} locale={locale} />
+              </span>
+            </button>
+          ))}
+
+        {/* real report rows */}
+        {tab === "reports" &&
+          reportRows.map((r) => (
+            <div key={r.id} className="flex items-center gap-3.5 border-t border-[#1a1a1a0f] px-5 py-4">
+              <span className="w-[110px] flex-none text-[13px] font-bold" style={{ fontFamily: MONO }}>
+                {r.id}
+              </span>
+              <span className="min-w-0 flex-1">
+                <span className="block truncate text-[13.5px] font-semibold">{r.work}</span>
+                <span className="block truncate text-[11px] text-[#1a1a1a80]" style={{ fontFamily: MONO }}>
+                  {r.caseId} · {r.type}
+                </span>
+              </span>
+              <span className="w-[88px] flex-none">
+                <button
+                  type="button"
+                  onClick={() => props.onExport(r.id)}
+                  className="flex items-center gap-1 rounded-[7px] border border-[#1a1a1a33] px-2.5 py-1.5 text-[11px] font-semibold"
+                >
+                  <Download size={12} /> {zh ? "預覽匯出" : "Preview"}
+                </button>
+              </span>
+            </div>
+          ))}
+
+        {/* demo walkthrough row */}
+        {demoRowKey && demoRowKey !== "report" && (
+          <button
+            type="button"
+            onClick={() => setDemoModal("case")}
+            className="flex w-full items-center gap-3.5 border-t border-[#1a1a1a0f] px-5 py-3.5 text-left transition-colors hover:bg-[#FBF6EC]"
+          >
+            <Thumb src={demoWork?.thumb} grad={demoWork?.grad || "linear-gradient(135deg,#7fa06b,#33492e)"} sepia className="h-[42px] w-[42px] flex-none rounded-[6px]" />
+            <span className="min-w-0 flex-1">
+              <span className="flex items-center gap-2">
+                <span className="truncate text-[14px] font-semibold">
+                  {demoWork?.name || "1.jpg"} → Yahoo News Taiwan {zh ? "文章頁" : "article page"}
+                </span>
+                <DemoTag locale={locale} />
+              </span>
+              <span className="block truncate text-[11.5px] text-[#1a1a1a8c]" style={{ fontFamily: MONO }}>
+                {zh
+                  ? demoRowKey === "open"
+                    ? "發現於 2026/7/8 · 自動巡檢"
+                    : demoRowKey === "confirmed"
+                    ? "2026/7/8 發現 · 已人工複審確認"
+                    : "2026/7/8 發現 · 已確認 · 已產生存證報告"
+                  : demoRowKey === "open"
+                  ? "Found 2026/7/8 · auto patrol"
+                  : demoRowKey === "confirmed"
+                  ? "Found 2026/7/8 · confirmed by human review"
+                  : "Found 2026/7/8 · confirmed · report generated"}
+              </span>
+            </span>
+            <span className="w-[120px] flex-none">
+              <span className="text-[15px] font-bold" style={{ fontFamily: MONO, color: simColor(98) }}>
+                98%
+              </span>
+              <span className="block text-[10px] text-[#1a1a1a66]" style={{ fontFamily: MONO }}>
+                {zh ? "距離 3 · 門檻 16" : "distance 3 · threshold 16"}
+              </span>
+            </span>
+            <span className="w-[110px] flex-none text-[11px] font-semibold">
+              <span
+                className={`rounded-full px-2.5 py-1 ${
+                  demoRowKey === "open" ? "bg-[#fbe9e0] text-[#c4502e]" : demoRowKey === "confirmed" ? "bg-[#fbe9e0] text-[#c4502e]" : "bg-[#eef4ea] text-[#4f6a4e]"
+                }`}
+              >
+                {demoStateLabel}
+              </span>
+            </span>
+          </button>
+        )}
+        {demoRowKey === "report" && (
+          <button
+            type="button"
+            onClick={() => setDemoModal("report")}
+            className="flex w-full items-center gap-3.5 border-t border-[#1a1a1a0f] px-5 py-4 text-left transition-colors hover:bg-[#FBF6EC]"
+          >
+            <span className="w-[110px] flex-none text-[13px] font-bold" style={{ fontFamily: MONO }}>
+              RPT-DEMO-001
+            </span>
+            <span className="min-w-0 flex-1">
+              <span className="flex items-center gap-2">
+                <span className="truncate text-[13.5px] font-semibold">
+                  {zh ? "侵權存證報告：" : "Evidence report: "}
+                  {demoWork?.name || "1.jpg"} × Yahoo News Taiwan
+                </span>
+                <DemoTag locale={locale} />
+              </span>
+              <span className="block truncate text-[11px] text-[#1a1a1a80]" style={{ fontFamily: MONO }}>
+                {zh ? "含電子憑證、相似度比對、來源軌跡、複審紀錄" : "certificates · similarity comparison · source trail · review record"}
               </span>
             </span>
             <span className="w-[88px] flex-none">
-              <StatusPill status={a.status} locale={locale} />
+              <span className="rounded-full bg-[#eef4ea] px-2.5 py-1 text-[11px] font-semibold text-[#4f6a4e]">{zh ? "可預覽" : "Preview"}</span>
             </span>
           </button>
-        ))}
-        {filtered.length === 0 && (
-          <p className="px-5 py-8 text-center text-sm text-[#1a1a1a73]">{zh ? "沒有符合條件的警報。" : "No matching alerts."}</p>
+        )}
+
+        {/* demo note */}
+        {demoRowKey && (
+          <p className="border-t border-[#1a1a1a0f] bg-[#f8f2e3] px-5 py-3 text-[12.5px] leading-5 text-[#5c584a]">
+            {demoNote}
+            {demoCase !== "open" && (
+              <button type="button" onClick={resetDemo} className="ml-2 font-bold text-[#4f6a4e]">
+                {zh ? "重設示範 →" : "Reset demo →"}
+              </button>
+            )}
+          </p>
+        )}
+
+        {/* empty state */}
+        {tabEmpty && (
+          <div className="border-t border-[#1a1a1a0f] px-6 py-12 text-center text-[#8d8873]">
+            <p className="text-[32px]">{emptyCopy.icon}</p>
+            <p className="mt-1 text-[14px] font-bold text-[#5c584a]">{emptyCopy.b}</p>
+            <p className="mt-1 text-[13px]">{emptyCopy.d}</p>
+            <p className="mt-4 flex flex-wrap items-center justify-center gap-2 text-[11px]" style={{ fontFamily: MONO }}>
+              {(zh
+                ? ["巡檢發現高相似", "你複審確認", "確認侵權", "產生存證報告"]
+                : ["patrol finds a match", "you review it", "confirm infringement", "generate the report"]
+              ).map((s, i, arr) => (
+                <span key={s} className="flex items-center gap-2">
+                  <span className="rounded-full border border-[#1a1a1a1f] bg-[#f8f2e3] px-3 py-1 text-[#5c584a]">{s}</span>
+                  {i < arr.length - 1 && <span aria-hidden>→</span>}
+                </span>
+              ))}
+            </p>
+          </div>
         )}
       </div>
+
+      <div className="mt-5 flex items-start gap-2.5 rounded-[10px] border border-[#1a1a1a14] bg-[#f8f2e3] px-4 py-3 text-[13px] leading-5 text-[#5c584a]">
+        <FileText size={15} className="mt-0.5 flex-none" />
+        <span>
+          <b className="text-[#1A1A1A]">{zh ? "存證報告內容：" : "Report contents: "}</b>
+          {zh
+            ? "每份皆含電子憑證、相似度比對、來源軌跡與人工複審狀態，上鏈可驗證，可直接交付法務。"
+            : "each report bundles certificates, the similarity comparison, the source trail, and the review state — on-chain verifiable and legal-ready."}
+        </span>
+      </div>
+      <div className="mt-2.5 flex items-start gap-2.5 rounded-[10px] border border-[#1a1a1a14] bg-[#f8f2e3] px-4 py-3 text-[13px] leading-5 text-[#5c584a]">
+        <Bell size={15} className="mt-0.5 flex-none" />
+        <span>
+          {zh ? "發現新警報時的通知管道（Email / LINE）為正式版功能。" : "Alert notifications (Email / LINE) are a production-version feature."}
+          <button
+            type="button"
+            onClick={() => props.showToast(zh ? "示範原型：正式版將在此設定 Email / LINE 通知管道" : "Demo prototype: notification channels will be configured here in production")}
+            className="ml-2 font-bold text-[#4f6a4e]"
+          >
+            {zh ? "設定通知 →" : "Set up →"}
+          </button>
+        </span>
+      </div>
+
+      {/* demo case modal */}
+      {demoModal === "case" && (
+        <div
+          className="fixed inset-0 z-50 flex items-start justify-center overflow-y-auto bg-[#1a1a1a80] p-5"
+          onClick={(e) => {
+            if (e.target === e.currentTarget) setDemoModal(null);
+          }}
+        >
+          <div className="relative my-8 w-full max-w-[640px] rounded-[14px] border border-[#1a1a1a1f] bg-[#F4E9D5] p-7 shadow-[0_20px_60px_rgba(17,17,16,0.35)]" role="dialog" aria-modal="true">
+            <button type="button" onClick={() => setDemoModal(null)} className="absolute right-3.5 top-3.5 p-1.5 text-[#5c584a]" aria-label={zh ? "關閉" : "Close"}>
+              <X size={16} />
+            </button>
+            <p className="text-[10px] tracking-[0.18em] text-[#c4502e]" style={{ fontFamily: MONO }}>
+              {zh ? `示範案件 · DEMO · ${demoStateLabel}` : `DEMO CASE · ${demoStateLabel.toUpperCase()}`}
+            </p>
+            <h3 className="mt-1.5 text-[20px] font-black">
+              {zh ? "Yahoo News Taiwan 發現高相似使用" : "High-similarity use found on Yahoo News Taiwan"}
+            </h3>
+            <p className="mt-1 text-[13px] text-[#5c584a]">
+              {zh
+                ? "2026/7/8 自動巡檢發現 · 相似度 98%（距離 3，低於門檻 16）· 高風險通路"
+                : "Found by auto patrol on 2026/7/8 · 98% similarity (distance 3, below threshold 16) · high-risk channel"}
+            </p>
+            <div className="mt-4 grid gap-3.5 sm:grid-cols-2">
+              <div>
+                <p className="mb-1.5 text-[10px] tracking-[0.14em] text-[#8d8873]" style={{ fontFamily: MONO }}>
+                  {zh ? `你的原作 · ${demoWork?.name || "1.jpg"}` : `YOUR ORIGINAL · ${demoWork?.name || "1.jpg"}`}
+                </p>
+                <Thumb src={demoWork?.thumb} grad={demoWork?.grad || "linear-gradient(135deg,#7fa06b,#33492e)"} className="h-[150px] w-full rounded-[10px]" />
+              </div>
+              <div>
+                <p className="mb-1.5 text-[10px] tracking-[0.14em] text-[#8d8873]" style={{ fontFamily: MONO }}>
+                  {zh ? "發現位置 · tw.news.yahoo.com/…" : "FOUND AT · tw.news.yahoo.com/…"}
+                </p>
+                <Thumb src={demoWork?.thumb} grad={demoWork?.grad || "linear-gradient(135deg,#7fa06b,#33492e)"} sepia className="h-[150px] w-full rounded-[10px]" />
+              </div>
+            </div>
+            <div className="mt-4 grid gap-3 sm:grid-cols-2">
+              <div>
+                <p className="text-[10px] tracking-[0.14em] text-[#8d8873]" style={{ fontFamily: MONO }}>
+                  {zh ? "發現通路" : "CHANNEL"}
+                </p>
+                <p className="mt-0.5 text-[14px] font-bold">
+                  Yahoo News Taiwan <span className="block text-[12px] font-normal text-[#5c584a]">{zh ? "新聞匯流 · 自動巡檢" : "news aggregator · auto patrol"}</span>
+                </p>
+              </div>
+              <div>
+                <p className="text-[10px] tracking-[0.14em] text-[#8d8873]" style={{ fontFamily: MONO }}>
+                  {zh ? "複審重點" : "REVIEW FOCUS"}
+                </p>
+                <p className="mt-0.5 text-[14px] font-bold">
+                  {zh ? "來源脈絡與授權" : "Source context & license"}
+                  <span className="block text-[12px] font-normal text-[#5c584a]">
+                    {zh ? "確認對方是否取得授權或屬合理使用" : "check whether the use is licensed or fair use"}
+                  </span>
+                </p>
+              </div>
+            </div>
+            <div className="mt-5 flex flex-wrap gap-2.5">
+              {demoCase === "open" ? (
+                <>
+                  <button type="button" onClick={confirmDemo} className="rounded-[9px] bg-[#4c6b3c] px-5 py-2.5 text-[13px] font-bold text-white">
+                    {zh ? "確認侵權" : "Confirm infringement"}
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => props.showToast(zh ? "DEMO：正式版將標記誤判並優化比對" : "DEMO: production will mark false positives to tune matching")}
+                    className="rounded-[9px] border border-[#1a1a1a33] px-4 py-2.5 text-[13px] font-bold"
+                  >
+                    {zh ? "標記誤判" : "Mark false positive"}
+                  </button>
+                </>
+              ) : demoCase === "confirmed" ? (
+                <>
+                  <button type="button" onClick={reportDemo} className="rounded-[9px] bg-[#4c6b3c] px-5 py-2.5 text-[13px] font-bold text-white">
+                    {zh ? "產生存證報告" : "Generate evidence report"}
+                  </button>
+                  <button type="button" onClick={resetDemo} className="rounded-[9px] border border-[#1a1a1a33] px-4 py-2.5 text-[13px] font-bold">
+                    {zh ? "重設示範" : "Reset demo"}
+                  </button>
+                </>
+              ) : (
+                <>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setDemoModal(null);
+                      setTab("reports");
+                    }}
+                    className="rounded-[9px] bg-[#4c6b3c] px-5 py-2.5 text-[13px] font-bold text-white"
+                  >
+                    {zh ? "前往存證報告" : "Open reports"}
+                  </button>
+                  <button type="button" onClick={resetDemo} className="rounded-[9px] border border-[#1a1a1a33] px-4 py-2.5 text-[13px] font-bold">
+                    {zh ? "重設示範" : "Reset demo"}
+                  </button>
+                </>
+              )}
+            </div>
+            <p className="mt-3.5 text-[12px] text-[#8d8873]">
+              {zh
+                ? "此為示範案件，僅供體驗流程，不列入統計、不會產生真實報告。"
+                : "This demo case is for walkthrough only — never counted and never produces a real report."}
+            </p>
+          </div>
+        </div>
+      )}
+
+      {/* demo report modal */}
+      {demoModal === "report" && (
+        <div
+          className="fixed inset-0 z-50 flex items-start justify-center overflow-y-auto bg-[#1a1a1a80] p-5"
+          onClick={(e) => {
+            if (e.target === e.currentTarget) setDemoModal(null);
+          }}
+        >
+          <div className="relative my-8 w-full max-w-[640px] rounded-[14px] border border-[#1a1a1a1f] bg-[#F4E9D5] p-7 shadow-[0_20px_60px_rgba(17,17,16,0.35)]" role="dialog" aria-modal="true">
+            <button type="button" onClick={() => setDemoModal(null)} className="absolute right-3.5 top-3.5 p-1.5 text-[#5c584a]" aria-label={zh ? "關閉" : "Close"}>
+              <X size={16} />
+            </button>
+            <p className="text-[10px] tracking-[0.18em] text-[#8d8873]" style={{ fontFamily: MONO }}>
+              {zh ? "存證報告 · RPT-DEMO-001 · DEMO" : "EVIDENCE REPORT · RPT-DEMO-001 · DEMO"}
+            </p>
+            <h3 className="mt-1.5 text-[20px] font-black">{zh ? "侵權存證報告" : "Infringement evidence report"}</h3>
+            <p className="mt-1 text-[13px] text-[#5c584a]">
+              {zh
+                ? `關聯案件：${demoWork?.name || "1.jpg"} × Yahoo News Taiwan 文章頁 · 2026/7/8 發現、人工複審確認侵權`
+                : `Linked case: ${demoWork?.name || "1.jpg"} × Yahoo News Taiwan article · found 2026/7/8, confirmed by human review`}
+            </p>
+            <div className="mt-4 grid gap-3 sm:grid-cols-2">
+              {(zh
+                ? [
+                    ["電子憑證", "已附上", "原作簽署憑證 + 發現當下網頁快照"],
+                    ["相似度比對", "98%", "距離 3，低於門檻 16，判定同一原作"],
+                    ["來源軌跡", "已記錄", "發現網址、時間戳、巡檢來源"],
+                    ["人工複審", "已確認", "複審人與確認時間已入紀錄"],
+                    ["上鏈紀錄", "Numbers 主網", "報告雜湊已上鏈，可公開驗證"],
+                  ]
+                : [
+                    ["CERTIFICATES", "Attached", "origin certificate + page snapshot at discovery"],
+                    ["SIMILARITY", "98%", "distance 3, below threshold 16 — same original"],
+                    ["SOURCE TRAIL", "Recorded", "URL, timestamp, and patrol source"],
+                    ["HUMAN REVIEW", "Confirmed", "reviewer and confirmation time on record"],
+                    ["ON-CHAIN RECORD", "Numbers Mainnet", "report hash anchored, publicly verifiable"],
+                  ]
+              ).map(([k, v, d]) => (
+                <div key={k}>
+                  <p className="text-[10px] tracking-[0.14em] text-[#8d8873]" style={{ fontFamily: MONO }}>
+                    {k}
+                  </p>
+                  <p className="mt-0.5 text-[14px] font-bold">
+                    {v} <span className="block text-[12px] font-normal text-[#5c584a]">{d}</span>
+                  </p>
+                </div>
+              ))}
+            </div>
+            <div className="mt-5 flex flex-wrap gap-2.5">
+              <button
+                type="button"
+                onClick={() => props.showToast(zh ? "DEMO：正式版將下載可交付法務的 PDF 報告" : "DEMO: production exports a legal-ready PDF report")}
+                className="rounded-[9px] bg-[#4c6b3c] px-5 py-2.5 text-[13px] font-bold text-white"
+              >
+                {zh ? "下載 PDF 報告" : "Download PDF"}
+              </button>
+              <button
+                type="button"
+                onClick={() => props.showToast(zh ? "已複製驗證連結（示範）" : "Verification link copied (demo)")}
+                className="rounded-[9px] border border-[#1a1a1a33] px-4 py-2.5 text-[13px] font-bold"
+              >
+                {zh ? "複製驗證連結" : "Copy verify link"}
+              </button>
+            </div>
+            <p className="mt-3.5 text-[12px] text-[#8d8873]">
+              {zh ? "DEMO 報告僅供預覽，不具法律效力、不列入統計。" : "The DEMO report is preview-only — no legal effect, never counted."}
+            </p>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
@@ -2765,84 +2998,6 @@ function riskText(value: string, locale: Locale) {
   const zh: Record<string, string> = { high: "高風險", medium: "中風險", low: "低風險" };
   const en: Record<string, string> = { high: "High risk", medium: "Medium risk", low: "Low risk" };
   return (locale === "zh-TW" ? zh[value] : en[value]) || value;
-}
-
-/* ---------------- reports view ---------------- */
-
-function ReportsView(props: {
-  locale: Locale;
-  backend: EvidenceReportDocument["reports"];
-  added: Array<{ id: string; work: string; caseId: string; typeZh: string; typeEn: string }>;
-  works: WorkVM[];
-  alerts: AlertVM[];
-  onExport: (id: string) => void;
-}) {
-  const { locale } = props;
-  const zh = locale === "zh-TW";
-  const primaryWork = props.alerts[0]?.work ? `${props.alerts[0].work} ${props.alerts[0].workEn}`.trim() : props.works[0]?.name || "—";
-  const reportType = (label?: string) => {
-    if (label === "simulated") return zh ? "展示報告" : "Preview report";
-    if (label === "actual_pending_review") return zh ? "真實巡檢存證（待複審）" : "Real patrol evidence (pending review)";
-    return zh ? "內部存證報告" : "Internal evidence report";
-  };
-  const rows = [
-    ...props.added.map((r) => ({ id: r.id, work: r.work, caseId: r.caseId, type: zh ? r.typeZh : r.typeEn, hash: shortFp(r.id) })),
-    ...props.backend.map((r) => ({
-      id: r.report_id.replace("REPORT-", "R-").slice(0, 12),
-      work: r.sections?.protected_original?.title || primaryWork,
-      caseId: r.case_id || r.alert_id || props.alerts[0]?.id || "—",
-      type: reportType(r.sections?.public_use_label?.label),
-      hash: shortFp(r.sections?.protected_original?.certificate_link || r.report_id),
-    })),
-  ];
-
-  return (
-    <div className="max-w-[1240px] px-6 py-7 md:px-9">
-      <PageHead
-        dot={C.ink}
-        eyebrow={zh ? "存證報告 · CERTIFIED REPORTS" : "Certified reports"}
-        title={zh ? "盜用存證報告" : "Evidence reports"}
-        desc={zh ? "每份報告皆含電子憑證、相似度比對、來源軌跡與人工複審狀態；真實巡檢候選仍需確認來源脈絡與授權。" : "Each report bundles the certificate, similarity comparison, source trail, and review state. Real patrol matches still require human source-context and authorization review."}
-        hint={zh ? "怎麼看：每列是一份存證報告，含關聯案件、類型與可驗證存證憑證；點「預覽匯出」只會播放本頁操作，不會真的產生外部檔案。" : "How to read: each row is an evidence report with its linked case, type, and a verifiable certificate. “Preview export” only plays the page action and does not create an external file."}
-      />
-      <div className="overflow-hidden rounded-[14px] border border-[#1a1a1a12] bg-white">
-        <div className="flex items-center gap-3.5 bg-[#EFE3CC] px-5 py-3 text-[10px] tracking-[0.08em] text-[#1a1a1a8c]" style={{ fontFamily: MONO }}>
-          <span className="w-[88px] flex-none">{zh ? "報告編號" : "REPORT"}</span>
-          <span className="flex-1">{zh ? "關聯案件 / 類型" : "CASE / TYPE"}</span>
-          <span className="w-[150px] flex-none">{zh ? "存證憑證" : "CERTIFICATE"}</span>
-          <span className="w-[66px] flex-none">{zh ? "操作" : "EXPORT"}</span>
-        </div>
-        {rows.map((r) => (
-          <div key={r.id} className="flex items-center gap-3.5 border-t border-[#1a1a1a0f] px-5 py-4">
-            <span className="w-[88px] flex-none text-[13px] font-bold" style={{ fontFamily: MONO }}>
-              {r.id}
-            </span>
-            <span className="min-w-0 flex-1">
-              <span className="block truncate text-[13.5px] font-semibold">{r.work}</span>
-              <span className="block truncate text-[11px] text-[#1a1a1a80]" style={{ fontFamily: MONO }}>
-                {r.caseId} · {r.type}
-              </span>
-            </span>
-            <span className="flex w-[150px] flex-none items-center gap-1 truncate text-[11px] font-semibold text-[#4f6a4e]">
-              <ShieldCheck size={13} className="flex-none" /> {zh ? "可驗證" : "Verifiable"}
-            </span>
-            <span className="w-[66px] flex-none">
-              <button
-                type="button"
-                onClick={() => props.onExport(r.id)}
-                className="flex items-center gap-1 rounded-[7px] border border-[#1a1a1a33] px-2.5 py-1.5 text-[11px] font-semibold"
-              >
-                <Download size={12} /> {zh ? "預覽匯出" : "Preview"}
-              </button>
-            </span>
-          </div>
-        ))}
-        {rows.length === 0 && (
-          <p className="px-5 py-8 text-center text-sm text-[#1a1a1a73]">{zh ? "尚無存證報告。在案件詳情點「產生存證報告」即可建立一份本頁預覽報告。" : "No reports yet. Open a case and click “Generate report” to create a page-level preview report."}</p>
-        )}
-      </div>
-    </div>
-  );
 }
 
 /* ---------------- certificate modal ---------------- */
