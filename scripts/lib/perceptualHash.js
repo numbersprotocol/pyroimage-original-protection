@@ -159,28 +159,39 @@ export function redactUrl(value) {
   }
 }
 
+const SIGNED_QUERY_PATTERN = /(?:^|[?&])(?:x-)?(?:expires|signature|key-pair-id|policy)=|(?:^|[?&])x-amz-/i;
+
+function decodeUriComponentSafe(value) {
+  try {
+    return decodeURIComponent(value);
+  } catch {
+    return value;
+  }
+}
+
+export function containsSignedQueryMaterial(value) {
+  if (typeof value !== "string" || value.length === 0) return false;
+
+  let current = value;
+  for (let index = 0; index < 3; index += 1) {
+    if (SIGNED_QUERY_PATTERN.test(current)) return true;
+
+    const decoded = decodeUriComponentSafe(current);
+    if (decoded === current) break;
+    current = decoded;
+  }
+
+  return false;
+}
+
 export function redactSignedQueryInText(value) {
   if (typeof value !== "string") return "";
-  return value.replace(/https?:\/\/[^\s"')<>]+/g, (match) => {
+  return value.replace(/https?:\/\/[^\s"'<>]+/g, (match) => {
     try {
       const parsed = new URL(match);
-      const hasSignedQuery = [...parsed.searchParams.keys()].some((key) => {
-        const normalized = key.toLowerCase();
-        return (
-          normalized === "expires" ||
-          normalized === "x-expires" ||
-          normalized === "signature" ||
-          normalized === "x-signature" ||
-          normalized === "key-pair-id" ||
-          normalized === "x-key-pair-id" ||
-          normalized === "policy" ||
-          normalized === "x-policy" ||
-          normalized.startsWith("x-amz-")
-        );
-      });
-      return hasSignedQuery ? redactUrl(match) : match;
+      return containsSignedQueryMaterial(parsed.search) ? redactUrl(match) : match;
     } catch {
-      return match;
+      return containsSignedQueryMaterial(match) ? redactUrl(match) : match;
     }
   });
 }

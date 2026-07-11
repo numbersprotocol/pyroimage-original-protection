@@ -81,14 +81,12 @@ function assetImageUrl(asset) {
 }
 
 function sanitizeUrlFields(value) {
+  if (typeof value === "string") return redactSignedQueryInText(value);
   if (Array.isArray(value)) return value.map(sanitizeUrlFields);
   if (!value || typeof value !== "object") return value;
 
   return Object.fromEntries(
     Object.entries(value).map(([key, nested]) => {
-      if (typeof nested === "string" && key.toLowerCase().includes("url")) {
-        return [key, redactSignedQueryInText(nested)];
-      }
       return [key, sanitizeUrlFields(nested)];
     }),
   );

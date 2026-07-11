@@ -3,6 +3,7 @@ import os from "node:os";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import {
+  containsSignedQueryMaterial,
   fingerprintBuffer,
   inferImageExtension,
   redactSignedQueryInText,
@@ -401,7 +402,7 @@ async function inspectCandidate({ candidate, protectedAsset, protectedIndexEntry
 
 function containsSignedQuery(value) {
   const text = JSON.stringify(value);
-  return /(?:Expires=|Signature=|Key-Pair-Id|X-Amz-|Policy=)/i.test(text);
+  return containsSignedQueryMaterial(text);
 }
 
 function buildPatrolLimitations(adapterId) {
