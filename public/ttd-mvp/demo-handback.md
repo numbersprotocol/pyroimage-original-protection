@@ -1,6 +1,6 @@
 # PyroImage 原創影像主動防護 QA 與 PM Handback
 
-Generated at: 2026-07-10T06:27:37.107Z
+Generated at: 2026-07-13T04:38:18.807Z
 
 ## Demo Target
 
@@ -42,7 +42,7 @@ Generated at: 2026-07-10T06:27:37.107Z
 | suspected_events | 0 | Real Incidents | Human-reviewed real incidents. Demonstration alerts are excluded from this count. |
 | evidence_reports | 0 | Review Package | Review-ready origin and suspected-copy packages for brand or legal teams. |
 | partner_feedback | 0 | Outreach Integration Pending | Direct integration with co-branded partners. Currently setting up communication channels. |
-| tool_spend_twd | 0 | Zero Cost | Total paid API and tool spend. Seed and dry-run patrols use local visual fingerprinting and zero-cost public data access. |
+| tool_spend_twd | 0 | Budget Guarded | Budget-guarded Vision patrol ran for this MVP. Free-tier usage can still keep actual spend at 0. |
 
 ## 5-Minute Recording Flow
 
