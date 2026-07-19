@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-07-18T04:24:31.678Z",
-  "run_id": "ttd-patrol-20260718T041738Z",
+  "generated_at": "2026-07-19T04:34:52.966Z",
+  "run_id": "ttd-patrol-20260719T042643Z",
   "adapter": "visionWebDetection+namedChannelCrawler",
   "expected_filter": "all",
   "threshold": 16,
@@ -462,7 +462,7 @@
       "expected": "unknown",
       "pass": true,
       "warning": true,
-      "error": "non-image response content-type=text/html; charset=\"utf-8\" for https://lookaside.instagram.com/seo/google_widget/crawler/"
+      "error": "HTTP 404 for https://lookaside.instagram.com/seo/google_widget/crawler/"
     },
     {
       "candidate_id": "vision_9a27b272ac671897",
@@ -601,7 +601,7 @@
       "expected": "unknown",
       "pass": true,
       "warning": true,
-      "error": "non-image response content-type=text/html; charset=\"utf-8\" for https://lookaside.instagram.com/seo/google_widget/crawler/"
+      "error": "HTTP 500 for https://lookaside.instagram.com/seo/google_widget/crawler/"
     },
     {
       "candidate_id": "vision_31e7be0f81a7a53b",
@@ -979,10 +979,9 @@
     {
       "candidate_id": "vision_9b1cad59d0f4d421",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 76,
-      "top_index_match_asset_id": "bafybeihw4ofxozmzdidkw2z6upjchf6egqgrlsm3jlxqnhc5x4fnhe52oi",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "HTTP 500 for https://images.cnrs.fr/system/files/styles/media_teaser/private/media/images/2018/10/CNRS_20180102_0039_59842.jpg"
     },
     {
       "candidate_id": "vision_d011a41be78ca5ee",
@@ -1678,10 +1677,9 @@
     {
       "candidate_id": "vision_6bd2d05a901e0612",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 70,
-      "top_index_match_asset_id": "bafybeid6rk2nfwk6x2vqwztjidxhpi4jvur2cahukuj7jnocqlunk32fjm",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "fetch failed"
     },
     {
       "candidate_id": "vision_cd01908c9e7f0908",
@@ -1718,10 +1716,9 @@
     {
       "candidate_id": "vision_ad14cd118257dbfa",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 56,
-      "top_index_match_asset_id": "bafybeibcodninby5bq7nvnv4stvcyzliztfi7dtpvglqgrgdcx5nol5tgq",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "fetch failed"
     },
     {
       "candidate_id": "vision_51e273149bdc5b6f",
@@ -1861,7 +1858,7 @@
       "expected": "unknown",
       "pass": true,
       "warning": true,
-      "error": "HTTP 429 for https://lookaside.instagram.com/seo/google_widget/crawler/"
+      "error": "non-image response content-type=text/html; charset=\"utf-8\" for https://lookaside.instagram.com/seo/google_widget/crawler/"
     },
     {
       "candidate_id": "channel_SRC-01_e8b7278683008209",
@@ -1947,7 +1944,7 @@
       "expected": "unknown",
       "pass": true,
       "warning": true,
-      "error": "image exceeds max bytes (3525178 > 2000000) for https://www.sues.edu.cn/_upload/article/images/a9/9d/8349850c464bb90ca5a718e04ad3/2526ef2a-f6f7-4463-91a5-f8f4ef6ae6d1.png"
+      "error": "fetch failed"
     },
     {
       "candidate_id": "channel_SRC-01_da8d539913dad74e",
@@ -2171,10 +2168,9 @@
     {
       "candidate_id": "vision_bd70810adb2754fb",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 63,
-      "top_index_match_asset_id": "bafybeignxpwriuhvsdvj3dwk4sc6v54fxzpgawz7hsiqwzsnh7av3h3svu",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "HTTP 429 for https://www.yomiuri.co.jp/media/2026/07/20260709-GYTNI00038-T.jpg"
     },
     {
       "candidate_id": "vision_300b1013d9c9b399",
@@ -2187,10 +2183,9 @@
     {
       "candidate_id": "vision_713e4ab9906f43d7",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 67,
-      "top_index_match_asset_id": "bafybeieyoip2pbwojtwvietkcmft3te22m3wlia2drksdpyttnhahodzzu",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "fetch failed"
     },
     {
       "candidate_id": "vision_0a45ced94fbcb0fc",
@@ -2353,10 +2348,9 @@
     {
       "candidate_id": "vision_78ff3d1db93924ff",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 67,
-      "top_index_match_asset_id": "bafybeidensjwe2lqxrzpikjbhkf2kqhslkdhbhoelwsfm5c2mds3naruai",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "HTTP 429 for https://www.yomiuri.co.jp/media/2026/01/20260107-GYT8I00121-T.jpg"
     },
     {
       "candidate_id": "vision_48d4e2b16f4b5311",
@@ -2708,7 +2702,7 @@
       "expected": "unknown",
       "pass": true,
       "warning": true,
-      "error": "terminated"
+      "error": "image exceeds max bytes (2260651 > 2000000) for https://land-in-bewegung.rlp.de/fileadmin/_processed_/2/e/csm__CH54132_d19807757d.jpg"
     },
     {
       "candidate_id": "vision_f1afc01b0ce2f428",
@@ -2847,10 +2841,9 @@
     {
       "candidate_id": "vision_39220f26153ce6fb",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 56,
-      "top_index_match_asset_id": "bafybeibcodninby5bq7nvnv4stvcyzliztfi7dtpvglqgrgdcx5nol5tgq",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "fetch failed"
     },
     {
       "candidate_id": "vision_b0fd919049a619dd",
@@ -3123,18 +3116,16 @@
     {
       "candidate_id": "vision_06d579b17159e439",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 57,
-      "top_index_match_asset_id": "bafybeihgxp7ubha2doy7ja4lzdjl4fdaexbotxr46vogge23mzi2esk2ee",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "fetch failed"
     },
     {
       "candidate_id": "vision_2644781d8c464bbf",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 68,
-      "top_index_match_asset_id": "bafybeidrdmmcq3dds6e3zvdv2l62ieuwz3s6eghqownz3m5q53434ocsle",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "fetch failed"
     },
     {
       "candidate_id": "vision_dd9c283f9bc7e600",
@@ -3154,10 +3145,9 @@
     {
       "candidate_id": "vision_4a067e4704c944f4",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 56,
-      "top_index_match_asset_id": "bafybeiejtpwtun4b6i3fl27cnifsttigpbxcmw5vx6ahfup76yfnejo654",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "fetch failed"
     },
     {
       "candidate_id": "channel_SRC-01_4e42a4cd0aa9dac0",
@@ -3371,10 +3361,9 @@
     {
       "candidate_id": "vision_bf5a263326dd6a86",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 68,
-      "top_index_match_asset_id": "bafybeigeokmn7mar2pibdsxl64zssshf67m5czzhnmc3lqls5hoko5v23i",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "HTTP 429 for https://www.yomiuri.co.jp/media/2026/07/20260712-GYTNI00066-T.jpg"
     },
     {
       "candidate_id": "vision_cdb967c26335f8bc",
@@ -3905,10 +3894,9 @@
     {
       "candidate_id": "vision_167c72133c3c0b4e",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 64,
-      "top_index_match_asset_id": "bafybeiazfwp5qmd5vduneeu2i3yj4okzqvqyagr4hdr5qyiracglwoikpq",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "fetch failed"
     },
     {
       "candidate_id": "vision_9537485dd69d0110",
@@ -4047,10 +4035,9 @@
     {
       "candidate_id": "vision_6a8873b4d69d4afe",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 72,
-      "top_index_match_asset_id": "bafybeiez55oacwsjx7aw7c2z4rksaodewedfvzhimvpfdsqjepid4uwq3q",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "fetch failed"
     },
     {
       "candidate_id": "vision_5c561d72d343fdd9",
