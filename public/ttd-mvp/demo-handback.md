@@ -1,6 +1,6 @@
 # PyroImage 原創影像主動防護 QA 與 PM Handback
 
-Generated at: 2026-07-21T04:32:36.308Z
+Generated at: 2026-07-22T04:33:15.568Z
 
 ## Demo Target
 

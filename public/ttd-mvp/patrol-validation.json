@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-07-21T04:32:35.590Z",
-  "run_id": "ttd-patrol-20260721T042509Z",
+  "generated_at": "2026-07-22T04:33:14.844Z",
+  "run_id": "ttd-patrol-20260722T042600Z",
   "adapter": "visionWebDetection+namedChannelCrawler",
   "expected_filter": "all",
   "threshold": 16,
@@ -397,10 +397,9 @@
     {
       "candidate_id": "vision_1ac9ca274a09ace5",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 65,
-      "top_index_match_asset_id": "bafybeifbnxd4wmh2bozake7tvbfkfza56wepcgbsqpq4ocjxi2voajbkwa",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "HTTP 415 for https://pixnio.com/free-images/2025/02/24/2025-02-24-07-20-16-576x434.jpg"
     },
     {
       "candidate_id": "channel_SRC-01_96fb39d1d30cc0fb",
@@ -1890,10 +1889,9 @@
     {
       "candidate_id": "vision_d951bb28f31d598f",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 78,
-      "top_index_match_asset_id": "bafybeia4z2yzudi3qmofonlqcxbyjhp4ybrr3f5ds6iathpmp6gdr5ot2a",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "HTTP 415 for https://amee.org/wp-content/uploads/2026/03/Delegates-smiling-for-the-camera.webp"
     },
     {
       "candidate_id": "vision_ebac3217286200d6",
@@ -2109,10 +2107,9 @@
     {
       "candidate_id": "vision_4f4fe68dd5c319a4",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 65,
-      "top_index_match_asset_id": "bafybeigkzajfnj4zzj2226iksqbry3hft6qne75chsea6knmlfvi2gxypm",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "fetch failed"
     },
     {
       "candidate_id": "vision_eae42997228a5060",
@@ -2353,10 +2350,9 @@
     {
       "candidate_id": "vision_78ff3d1db93924ff",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 67,
-      "top_index_match_asset_id": "bafybeidensjwe2lqxrzpikjbhkf2kqhslkdhbhoelwsfm5c2mds3naruai",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "HTTP 429 for https://www.yomiuri.co.jp/media/2026/01/20260107-GYT8I00121-T.jpg"
     },
     {
       "candidate_id": "vision_48d4e2b16f4b5311",
@@ -2708,15 +2704,14 @@
       "expected": "unknown",
       "pass": true,
       "warning": true,
-      "error": "image exceeds max bytes (2260651 > 2000000) for https://land-in-bewegung.rlp.de/fileadmin/_processed_/2/e/csm__CH54132_d19807757d.jpg"
+      "error": "terminated"
     },
     {
       "candidate_id": "vision_f1afc01b0ce2f428",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 58,
-      "top_index_match_asset_id": "bafybeie5ymr7euxsocvxwfsawo23ymh4p75676cgvpellui4kavwquqoma",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "fetch failed"
     },
     {
       "candidate_id": "vision_6aec8325eeb87a52",
@@ -3022,10 +3017,9 @@
     {
       "candidate_id": "vision_e84371a0cfebf951",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 78,
-      "top_index_match_asset_id": "bafybeia4z2yzudi3qmofonlqcxbyjhp4ybrr3f5ds6iathpmp6gdr5ot2a",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "HTTP 415 for https://amee.org/wp-content/uploads/2026/03/Delegates-smiling-for-the-camera.webp"
     },
     {
       "candidate_id": "vision_5b2842d3f1841eeb",
@@ -3111,7 +3105,7 @@
       "expected": "unknown",
       "pass": true,
       "warning": true,
-      "error": "HTTP 404 for https://www.gdszx.gov.cn/img/0/25/25825/42827.png"
+      "error": "fetch failed"
     },
     {
       "candidate_id": "vision_7789d6918ec79011",
@@ -3225,10 +3219,9 @@
     {
       "candidate_id": "vision_1add5b7020bacb1b",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 64,
-      "top_index_match_asset_id": "bafybeigkzajfnj4zzj2226iksqbry3hft6qne75chsea6knmlfvi2gxypm",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "fetch failed"
     },
     {
       "candidate_id": "vision_e02758075858e46d",
@@ -3359,9 +3352,10 @@
     {
       "candidate_id": "vision_daba58be9c747bd6",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "HTTP 403 for https://cw-image-resizer.cwg.tw/resize/uri/https%3A%2F%2Fcdn-cw-hub.cw.com.tw%2Ftechtaiwan%2Fslides%2F202607%2F6a509e15-594212473478406.jpg/"
+      "verdict": "no_match",
+      "protected_asset_distance": 65,
+      "top_index_match_asset_id": "bafybeiaqbojqsx7q2lt4b2znsyndiuolajxo72dd5nmuheevwuzjtlqy4q",
+      "pass": true
     },
     {
       "candidate_id": "vision_2a25b9756412baed",
@@ -3389,10 +3383,9 @@
     {
       "candidate_id": "vision_2ea1521e79b45b90",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 59,
-      "top_index_match_asset_id": "bafybeigid3lughsmtvhgayymp4vk5be3dect4iympm2w5je7e7rg6chxa4",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "fetch failed"
     },
     {
       "candidate_id": "vision_f820786ce5d7e919",
@@ -3413,10 +3406,9 @@
     {
       "candidate_id": "vision_d080abc0d58d7843",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 65,
-      "top_index_match_asset_id": "bafybeibnhnajjwgewlp646ookljxj2jjrjwv6q6whfj5q6tfrhr4yqfram",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "fetch failed"
     },
     {
       "candidate_id": "channel_SRC-01_64630ca82c5da2db",
@@ -3908,9 +3900,10 @@
     {
       "candidate_id": "vision_167c72133c3c0b4e",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "fetch failed"
+      "verdict": "no_match",
+      "protected_asset_distance": 64,
+      "top_index_match_asset_id": "bafybeiazfwp5qmd5vduneeu2i3yj4okzqvqyagr4hdr5qyiracglwoikpq",
+      "pass": true
     },
     {
       "candidate_id": "vision_9537485dd69d0110",
@@ -4057,10 +4050,9 @@
     {
       "candidate_id": "vision_5c561d72d343fdd9",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 71,
-      "top_index_match_asset_id": "bafybeie42hect4yp5n4fghvrv5dwfdys33t7ldrnzvuu73zl7mg366yraq",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "fetch failed"
     },
     {
       "candidate_id": "vision_ac6afa2f91302571",
