@@ -18,6 +18,7 @@
     "ttd:verify": "node scripts/buildVerificationPortal.js",
     "ttd:dashboard": "node scripts/buildImpactDashboard.js",
     "ttd:handback": "node scripts/buildDemoHandback.js",
+    "ttd:freshness": "node scripts/buildPatrolFreshness.js",
     "ttd:patrol": "node scripts/runPatrol.js",
     "ttd:patrol:vision:dry-run": "TTD_PATROL_ADAPTER=vision TTD_VISION_DRY_RUN=1 node scripts/runPatrol.js"
   },

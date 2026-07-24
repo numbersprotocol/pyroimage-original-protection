@@ -33,7 +33,9 @@ jobs:
         run: npm ci
 
       - name: Build project
-        run: npm run build:pages
+        run: |
+          npm run build:pages
+          TTD_FRESHNESS_WRITE_PUBLIC=0 npm run ttd:freshness
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v5
