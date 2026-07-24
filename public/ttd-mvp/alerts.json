@@ -1,1 +1,42 @@
-[]
+[
+  {
+    "alert_id": "ALERT-CASE_PATROL_SEED-REENCODED-COPY-BAFYBEIGZO5R",
+    "alert_status": "pending_human_review",
+    "protected_asset_id": "bafybeigzo5rkfshhubaazvw2xsvruskzrglb3gefyjtln3w3r4crhufmwm",
+    "source_id": "SEED-URLS",
+    "source_name": "Seed URL adapter",
+    "source_url": "seed://ttd-mvp/reencoded-protected-thumbnail",
+    "retrieved_at": "2026-07-24T13:23:20.102Z",
+    "query_terms": [
+      "1.jpg",
+      "林怡文",
+      "水源地、溪流景象",
+      "bafybeigzo5rkfsh"
+    ],
+    "match_basis": "real fetched candidate image compared to protected asset via local aHash64+dHash64 hamming distance",
+    "similarity_score": 0.9922,
+    "similarity_distance": 1,
+    "similarity_threshold": 16,
+    "distance_scale": "0 to 128 combined Hamming distance across aHash64 and dHash64; lower is more similar",
+    "transformation_notes": "Fetched candidate image was re-encoded locally to 160px JPEG via ffmpeg before fingerprinting.",
+    "review_status": "pending_human_review",
+    "public_claim_status": "internal_only",
+    "evidence_label": "actual",
+    "case_id": "case_patrol_seed-reencoded-copy-bafybeigzo5r",
+    "candidate_item_id": "seed-reencoded-copy-bafybeigzo5r",
+    "source_fixture_label": "seed_urls_real_fetched_candidate",
+    "candidate_image_ref": "https://dia-cdn.numbersprotocol.io/thumbnails/2025/08/31/10/49/13/HISCZ8fDjdPj3HURcZt4_1.jpg",
+    "display_copy": {
+      "badge": "real_patrol_match",
+      "case_label": "Real hash match from seed adapter",
+      "public_use_notice": "This alert was created from a real fetched candidate image and a real perceptual-hash match. The seed source is a controlled patrol input, so it is not an external infringement claim.",
+      "reviewer_prompt": "Human review must verify source context and authorization before any external claim or takedown action."
+    },
+    "dashboard_metric_effect": {
+      "suspected_events_actual": 0,
+      "real_patrol_matches": 1,
+      "simulated_cases": 0,
+      "counts_toward_market_validation": false
+    }
+  }
+]

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-23T04:32:08.233Z",
+  "generated_at": "2026-07-24T13:23:21.829Z",
   "phase": "Phase 4: Verification Portal And UI Integration Handback",
   "actual": {
     "route": "/pyroimage-original-protection",
@@ -20,7 +20,7 @@
       "mobile 390x844"
     ],
     "suspected_events": 0,
-    "evidence_reports": 0,
+    "evidence_reports": 1,
     "tool_spend_twd": 0,
     "paid_api_used": false,
     "cost_log_header_only": false,

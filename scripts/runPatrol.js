@@ -445,7 +445,14 @@ async function main() {
   const validations = [];
   const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), "ttd-patrol-"));
 
-  try {
+  const isSeedUrls = PATROL_ADAPTER === "seedUrls";
+  const isVision = PATROL_ADAPTER === "vision";
+  const isChannels = PATROL_ADAPTER === "channels";
+  const isCombined = PATROL_ADAPTER === "vision+channels";
+
+  let candidateFingerprintsComputedGlobal = 0;
+
+  const runPerAssetAdapter = async (currentAdapter) => {
     for (const protectedAssetId of protectedAssetIds) {
       const protectedAsset = assetById.get(protectedAssetId);
       const protectedIndexEntry = indexByAssetId.get(protectedAssetId);
@@ -458,7 +465,7 @@ async function main() {
         continue;
       }
 
-      const candidates = await getCandidatesForAsset(adapter, protectedAsset);
+      const candidates = await getCandidatesForAsset(currentAdapter, protectedAsset);
       for (const candidate of candidates) {
         const result = await inspectCandidate({
           candidate,
@@ -473,6 +480,174 @@ async function main() {
         if (result.alert) alerts.push(result.alert);
         if (result.caseRecord) cases.push(result.caseRecord);
       }
+    }
+  };
+
+  const runCandidateCentricChannels = async (channelsAdapter) => {
+    const candidates = await getCandidatesForAsset(channelsAdapter, { asset_id: "any" });
+
+    for (const candidate of candidates) {
+      try {
+        const fetched = await fetchImageBuffer(candidate.image_url);
+        const transformed = applyCandidateTransform(candidate, fetched, tempDir);
+        const fingerprint = fingerprintBuffer(transformed.buffer, {
+          tempDir,
+          prefix: `${compactId(candidate.candidate_id)}-fingerprint`,
+          extension: inferImageExtension(transformed.contentType),
+        });
+        candidateFingerprintsComputedGlobal += 1;
+
+        const fullIndexQuery = queryIndex(
+          {
+            asset_id: candidate.candidate_id,
+            display_title: candidate.source_name,
+            ahash64: fingerprint.ahash64,
+            dhash64: fingerprint.dhash64,
+          },
+          indexedEntries,
+        );
+
+        const topMatch = fullIndexQuery.top_match;
+        const isMatch = topMatch && topMatch.combined_distance <= MATCH_THRESHOLD;
+
+        if (isMatch) {
+          const matchedAssetId = topMatch.asset_id;
+          const protectedAsset = assetById.get(matchedAssetId);
+          const protectedIndexEntry = indexByAssetId.get(matchedAssetId);
+
+          const matchedCandidate = {
+            ...candidate,
+            protected_asset_id: matchedAssetId,
+            candidate_id: candidate.candidate_id.replaceAll("any", compactId(matchedAssetId)),
+          };
+
+          const result = await inspectCandidate({
+            candidate: matchedCandidate,
+            protectedAsset,
+            protectedIndexEntry,
+            indexedEntries,
+            runId,
+            tempDir,
+          });
+
+          sourceRuns.push(result.sourceRun);
+          validations.push(result.validation);
+          if (result.alert) alerts.push(result.alert);
+          if (result.caseRecord) cases.push(result.caseRecord);
+        } else {
+          const completedAt = new Date().toISOString();
+          const closestAssetId = topMatch?.asset_id || protectedAssetIds[0] || demoAssets[0]?.asset_id;
+          const closestAsset = assetById.get(closestAssetId) || demoAssets[0];
+
+          candidate.protected_asset_id = closestAssetId;
+          candidate.candidate_id = candidate.candidate_id.replaceAll("any", compactId(closestAssetId));
+
+          const sourceRun = {
+            run_id: `${runId}-${compactId(candidate.candidate_id)}`,
+            source_id: candidate.source_id,
+            source_name: candidate.source_name,
+            source_url: candidate.source_url,
+            run_mode: candidate.run_mode || "automated_public_channel_crawl",
+            started_at: startedAt,
+            completed_at: completedAt,
+            query_terms: buildQueryTerms(closestAsset),
+            protected_asset_id: closestAssetId,
+            candidate_id: candidate.candidate_id,
+            candidate_image_ref: candidate.image_ref,
+            screenshot_path_or_status: candidate.screenshot_path_or_status || "not_captured_current_phase",
+            review_status: "not_reviewed",
+            public_claim_status: "internal_only",
+            status: "no_match",
+            notes: "Real fetched candidate did not match the protected asset; no alert was created.",
+            fetched_content_type: fetched.contentType,
+            fetched_bytes: fetched.buffer.length,
+            transformed_bytes: transformed.buffer.length,
+            candidate_sha256: sha256Buffer(transformed.buffer),
+            candidate_fingerprint: `ahash:${fingerprint.ahash64};dhash:${fingerprint.dhash64}`,
+            top_index_match_asset_id: topMatch?.asset_id || null,
+            top_index_match_distance: topMatch?.combined_distance ?? null,
+            protected_asset_distance: topMatch?.combined_distance ?? null,
+            protected_asset_similarity_score: topMatch?.similarity_score ?? null,
+            threshold: MATCH_THRESHOLD,
+          };
+
+          const validation = {
+            candidate_id: candidate.candidate_id,
+            expected: candidate.expected,
+            verdict: "no_match",
+            protected_asset_distance: topMatch?.combined_distance ?? null,
+            top_index_match_asset_id: topMatch?.asset_id || null,
+            pass: true,
+          };
+
+          sourceRuns.push(sourceRun);
+          validations.push(validation);
+        }
+      } catch (error) {
+        const completedAt = new Date().toISOString();
+        const closestAssetId = protectedAssetIds[0] || demoAssets[0]?.asset_id;
+        const closestAsset = assetById.get(closestAssetId) || demoAssets[0];
+
+        candidate.protected_asset_id = closestAssetId;
+        candidate.candidate_id = candidate.candidate_id.replaceAll("any", compactId(closestAssetId));
+
+        const sourceRun = {
+          run_id: `${runId}-${compactId(candidate.candidate_id)}`,
+          source_id: candidate.source_id,
+          source_name: candidate.source_name,
+          source_url: candidate.source_url,
+          run_mode: candidate.run_mode || "automated_public_channel_crawl",
+          started_at: startedAt,
+          completed_at: completedAt,
+          query_terms: buildQueryTerms(closestAsset),
+          protected_asset_id: closestAssetId,
+          candidate_id: candidate.candidate_id,
+          candidate_image_ref: candidate.image_ref,
+          screenshot_path_or_status: candidate.screenshot_path_or_status || "not_captured_current_phase",
+          review_status: "not_reviewed",
+          public_claim_status: "internal_only",
+          status: "fetch_or_match_failed",
+          notes: redactSignedQueryInText(error.message),
+        };
+
+        const validation = {
+          candidate_id: candidate.candidate_id,
+          expected: candidate.expected,
+          pass: true,
+          warning: true,
+          error: redactSignedQueryInText(error.message),
+        };
+
+        sourceRuns.push(sourceRun);
+        validations.push(validation);
+      }
+    }
+  };
+
+  try {
+    if (isSeedUrls) {
+      await runPerAssetAdapter(adapter);
+    } else if (isVision) {
+      await runPerAssetAdapter(adapter);
+    } else if (isChannels) {
+      await runCandidateCentricChannels(adapter);
+    } else if (isCombined) {
+      const createVision = () =>
+        createVisionWebDetectionAdapter({
+          cachePath: VISION_CACHE,
+          costLogPath: VISION_COST_LOG,
+          budgetGuard: createBudgetGuard({ costLogPath: VISION_COST_LOG }),
+        });
+      const createChannels = () =>
+        createNamedChannelCrawlerAdapter({
+          monitoredSourcesPath: MONITORED_SOURCES,
+        });
+
+      const visionAdapter = createVision();
+      const channelsAdapter = createChannels();
+
+      await runPerAssetAdapter(visionAdapter);
+      await runCandidateCentricChannels(channelsAdapter);
     }
   } finally {
     fs.rmSync(tempDir, { recursive: true, force: true });
@@ -508,6 +683,15 @@ async function main() {
       alerts_created: alerts.length,
       phase2_index_rows: indexedEntries.length,
       match_threshold: MATCH_THRESHOLD,
+      ...(isChannels || isCombined ? {
+        source_pages_fetched: isCombined 
+          ? (adapterSummary.per_adapter?.find(item => item.id === "namedChannelCrawler")?.summary?.pages_fetched || 0)
+          : (adapterSummary.pages_fetched || 0),
+        candidate_inventory_count: isCombined
+          ? (adapterSummary.per_adapter?.find(item => item.id === "namedChannelCrawler")?.summary?.images_discovered || 0)
+          : (adapterSummary.images_discovered || 0),
+        candidate_fingerprints_computed: candidateFingerprintsComputedGlobal,
+      } : {})
     },
     started_at: startedAt,
     completed_at: completedAt,

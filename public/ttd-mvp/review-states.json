@@ -1,1 +1,12 @@
-[]
+[
+  {
+    "alert_id": "ALERT-CASE_PATROL_SEED-REENCODED-COPY-BAFYBEIGZO5R",
+    "review_status": "pending_human_review",
+    "reviewed_by": "unassigned_human_reviewer",
+    "reviewed_at": null,
+    "review_note": "Real patrol match awaits human review before any public claim.",
+    "next_action": "Verify source context, authorization, and screenshot evidence before any external claim.",
+    "is_current": true,
+    "public_claim_status": "internal_only"
+  }
+]

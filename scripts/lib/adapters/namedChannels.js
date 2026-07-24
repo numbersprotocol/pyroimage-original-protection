@@ -120,9 +120,10 @@ async function fetchTextWithLimit(url, { timeoutMs, maxBytes }) {
 }
 
 function buildPageCandidate({ source, protectedAsset, imageUrl, index, page }) {
+  const assetId = protectedAsset?.asset_id || null;
   return {
-    candidate_id: `channel_${source.source_id}_${compactText(`${protectedAsset.asset_id}|${imageUrl}|${index}`)}`,
-    protected_asset_id: protectedAsset.asset_id,
+    candidate_id: `channel_${source.source_id}_${compactText(`${assetId || "no_asset"}|${imageUrl}|${index}`)}`,
+    protected_asset_id: assetId,
     image_url: imageUrl,
     image_ref: redactUrl(imageUrl),
     source_id: source.source_id,
