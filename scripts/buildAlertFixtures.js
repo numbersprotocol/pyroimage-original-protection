@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { assertArtifact } from "../src/contracts/artifactContracts.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -341,6 +342,9 @@ function main() {
     writeJson("alert-validation.json", validation);
     throw new Error(`Phase 4 alert validation failed: ${JSON.stringify(validation.pass)}`);
   }
+
+  assertArtifact("alerts", alerts);
+  assertArtifact("cases", cases);
 
   writeJson("alerts.json", alerts);
   writeJson("cases.json", cases);

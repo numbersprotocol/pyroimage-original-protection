@@ -3,6 +3,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { DEFAULT_MATCH_THRESHOLD, loadIndexedEntries, queryIndex } from "./lib/matcher.js";
 import { hashPixels, redactSignedQueryInText } from "./lib/perceptualHash.js";
+import { assertArtifact } from "../src/contracts/artifactContracts.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -328,6 +329,8 @@ function main() {
 
   const cleanedFixtures = JSON.parse(redactSignedQueryInText(JSON.stringify(fixtures)));
   const cleanedValidation = JSON.parse(redactSignedQueryInText(JSON.stringify(validation)));
+
+  assertArtifact("verificationFixtures", cleanedFixtures);
 
   writeJson(VERIFICATION_FIXTURES_FILE, cleanedFixtures);
   writeJson(VERIFICATION_VALIDATION_FILE, cleanedValidation);

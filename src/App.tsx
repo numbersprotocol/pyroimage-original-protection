@@ -18,6 +18,28 @@ import {
   X,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
+import { useOriginRadarData } from "./data/useOriginRadarData";
+import type {
+  EvidenceReportDocument,
+  Locale,
+  MonitoringRun,
+  VerificationDocument,
+  VerificationQuery,
+  VerificationTopMatch,
+} from "./data/originRadarTypes";
+import {
+  GRADS,
+  buildAlerts,
+  buildChannels,
+  buildWorks,
+  formatDateForLocale,
+  metricDisplay,
+  shortFp,
+  type AlertVM,
+  type ChannelVM,
+  type TimelineItem,
+  type WorkVM,
+} from "./domain/originRadarViewModels";
 
 /* ============================================================
  * OriginRadar · Original-image theft detection (PyroImage MVP)
@@ -27,231 +49,9 @@ import type { LucideIcon } from "lucide-react";
  * workflow demonstrations (local state only — no backend writes).
  * ============================================================ */
 
-type Locale = "en" | "zh-TW";
 type View = "dashboard" | "verify" | "alerts" | "case" | "vault" | "channels" | "reports";
 type CasesTab = "open" | "confirmed" | "reports";
 type DemoCaseState = "open" | "confirmed" | "reported";
-type EvidenceLabel = "actual" | "sample" | "simulated" | "target" | "TBD";
-
-interface DashboardMetric {
-  id: string;
-  label: string;
-  value: number | string;
-  value_display: string;
-  evidence_label: EvidenceLabel;
-  label_display?: string;
-  source?: string;
-  note?: string;
-}
-
-interface TtdDashboardMetrics {
-  generated_at: string;
-  metrics: DashboardMetric[];
-}
-
-interface DemoAsset {
-  asset_id: string;
-  cid?: string;
-  display_title?: string;
-  headline?: string;
-  caption?: string;
-  creator_name?: string;
-  rights_holder_owner_name?: string;
-  uploaded_at?: string;
-  c2pa_status?: string;
-  provenance_status?: string;
-  certificate_link?: string;
-  media_refs?: {
-    thumbnail_url?: string;
-    original_url_ref?: string;
-    snapshot_url_ref?: string;
-  };
-  labels?: {
-    visual_review_status?: string;
-    visual_demo_eligible?: boolean;
-  };
-}
-
-interface MonitoredSource {
-  source_id: string;
-  source_name: string;
-  source_type: string;
-  crawl_method: string;
-  risk_level: string;
-  demo_subset?: boolean;
-}
-
-interface AlertRecord {
-  alert_id: string;
-  alert_status: string;
-  protected_asset_id: string;
-  source_id: string;
-  source_name?: string;
-  source_url: string;
-  retrieved_at?: string;
-  match_basis?: string;
-  similarity_score: number;
-  similarity_distance: number;
-  similarity_threshold: number;
-  distance_scale?: string;
-  transformation_notes?: string;
-  review_status: string;
-  evidence_label: string;
-  public_claim_status: string;
-  case_id?: string;
-  display_copy?: {
-    badge?: string;
-    case_label?: string;
-    public_use_notice?: string;
-    reviewer_prompt?: string;
-  };
-  dashboard_metric_effect?: {
-    suspected_events_actual?: number;
-    simulated_cases?: number;
-    counts_toward_market_validation?: boolean;
-  };
-}
-
-interface EvidenceReportDocument {
-  generated_at?: string;
-  report_count: number;
-  reports: Array<{
-    report_id: string;
-    alert_id?: string;
-    case_id?: string;
-    report_label: string;
-    summary: string;
-    sections?: {
-      protected_original?: {
-        title?: string;
-        creator?: string;
-        certificate_link?: string;
-      };
-      public_use_label?: {
-        label?: string;
-      };
-    };
-  }>;
-}
-
-interface VerificationDocument {
-  generated_at?: string;
-  verification_mode?: string;
-  library: {
-    indexed_rows: number;
-    protected_originals_baseline?: number | null;
-    full_image_rows_target?: number | null;
-    scope_label?: string;
-    match_basis?: string;
-    threshold: number;
-    distance_scale?: string;
-    paid_api_used?: boolean;
-  };
-  queries: VerificationQuery[];
-  pass?: Record<string, boolean>;
-  limitations?: string[];
-}
-
-interface VerificationTopMatch {
-  asset_id: string;
-  display_title?: string;
-  creator_name?: string;
-  certificate_link?: string;
-  media_ref?: string;
-  ahash_distance?: number;
-  dhash_distance?: number;
-  combined_distance: number;
-  similarity_score: number;
-  match_basis?: string;
-}
-
-interface VerificationQuery {
-  query_id: string;
-  query_type: string;
-  accepted_inputs: string[];
-  display: {
-    zh: string;
-    en: string;
-    title: string;
-    subtitle?: string;
-  };
-  query_asset_id?: string;
-  query_fingerprint: {
-    ahash64: string;
-    dhash64: string;
-    fingerprint_value: string;
-  };
-  result: {
-    top_match: VerificationTopMatch | null;
-    top_matches: VerificationTopMatch[];
-    pass_threshold: boolean;
-  };
-  verdict: {
-    code: "registered_original" | "registered_derivative" | "not_registered" | "review_required";
-    zh: string;
-    en: string;
-    tone: "match" | "clear" | "review";
-    public_claim_status: string;
-  };
-  evidence_label: string;
-  zero_external_cost: boolean;
-  expected_pass: boolean;
-  notes?: string[];
-}
-
-interface MonitoringRun {
-  generated_at?: string;
-  completed_at?: string;
-  run_id?: string;
-  monitoring_label?: string;
-  status?: string;
-  adapter?: {
-    id?: string;
-    mode?: string;
-    paid_api_used?: boolean;
-    billable_enabled?: boolean;
-    dry_run?: boolean;
-    budget_guard_respected?: boolean;
-  };
-  run_scope?: {
-    protected_assets_considered?: number;
-    alerts_created?: number;
-    candidates_attempted?: number;
-    candidates_matched?: number;
-  };
-  source_runs?: Array<{
-    source_id?: string;
-    source_name?: string;
-    status?: string;
-  }>;
-}
-
-interface TtdMvpData {
-  dashboard: TtdDashboardMetrics;
-  demoAssets: DemoAsset[];
-  monitoredSources: { monitored_sources: MonitoredSource[] };
-  monitoring: MonitoringRun;
-  alerts: AlertRecord[];
-  evidenceReport: EvidenceReportDocument;
-  verification: VerificationDocument;
-}
-
-type LoadState =
-  | { status: "loading" }
-  | { status: "error"; message: string }
-  | { status: "ready"; data: TtdMvpData };
-
-const DATA_BASE = `${import.meta.env.BASE_URL}ttd-mvp/`;
-
-const DATA_PATHS = {
-  dashboard: `${DATA_BASE}dashboard-metrics.json`,
-  demoAssets: `${DATA_BASE}demo-assets.json`,
-  monitoredSources: `${DATA_BASE}monitored-sources.json`,
-  monitoring: `${DATA_BASE}monitoring-run.json`,
-  alerts: `${DATA_BASE}alerts.json`,
-  evidenceReport: `${DATA_BASE}evidence-report.json`,
-  verification: `${DATA_BASE}verification-fixtures.json`,
-} as const;
 
 const NUMBERS_LOGO_SRC = `${import.meta.env.BASE_URL}numbers-logo-horizontal-black.png`;
 const MONO = "var(--text-mono-font-family)";
@@ -270,16 +70,6 @@ const C = {
   stone: "#CEC0A3",
   amber: "#9a7a1e",
 };
-
-/* placeholder gradients used when a thumbnail is unavailable */
-const GRADS = [
-  "linear-gradient(180deg,#C1E1DC 0%,#8aab89 45%,#6f8a6e 70%,#9a8d6e 100%)",
-  "linear-gradient(180deg,#F4E9D5 0%,#D8B76A 40%,#a89a78 75%,#8f8266 100%)",
-  "linear-gradient(180deg,#C1E1DC 0%,#7F9C7E 45%,#5f7a5e 78%,#4a604a 100%)",
-  "linear-gradient(180deg,#F9C6C0 0%,#CEC0A3 40%,#8aab89 75%,#6f8a6e 100%)",
-];
-
-/* ---------------- data-layer helpers (unchanged contract) ---------------- */
 
 function formatClock(date: Date) {
   const pad = (value: number) => String(value).padStart(2, "0");
@@ -346,33 +136,6 @@ function persistIntroOpen(open: boolean) {
   }
 }
 
-async function fetchJson<T>(url: string): Promise<T> {
-  const response = await fetch(url, { cache: "no-store" });
-  if (!response.ok) throw new Error(`${url} returned ${response.status}`);
-  return (await response.json()) as T;
-}
-
-function shortFp(value?: string) {
-  if (!value) return "N/A";
-  if (value.length <= 22) return value;
-  return `${value.slice(0, 14)}…${value.slice(-6)}`;
-}
-
-function formatDateForLocale(value: string | undefined, locale: Locale) {
-  if (!value) return "N/A";
-  const date = new Date(value);
-  if (Number.isNaN(date.getTime())) return value;
-  return date.toLocaleString(locale, { timeZone: "Asia/Taipei" });
-}
-
-function getMetric(metrics: DashboardMetric[], id: string) {
-  return metrics.find((metric) => metric.id === id);
-}
-
-function metricDisplay(metrics: DashboardMetric[], id: string, fallback: string) {
-  return getMetric(metrics, id)?.value_display ?? fallback;
-}
-
 /* ---------------- bilingual micro-dictionary ---------------- */
 
 const T = {
@@ -408,164 +171,6 @@ const NAV: Array<{
   { id: "vault", icon: Images, zh: "我的原創", en: "Vault", eyebrow: "VAULT", descZh: "已簽署保護的原創作品", descEn: "Signed & protected originals" },
   { id: "channels", icon: Radar, zh: "監控通路", en: "Channels", eyebrow: "SOURCES", descZh: "巡檢範圍與通路狀態", descEn: "Patrol scope & channel status" },
 ];
-
-/* ---------------- view-model builders (from backend JSON) ---------------- */
-
-interface WorkVM {
-  assetId: string;
-  name: string;
-  en: string;
-  author: string;
-  owner: string;
-  fp: string;
-  sealed?: string;
-  thumb: string;
-  grad: string;
-  certificate?: string;
-  c2pa?: string;
-  provenance?: string;
-  reviewStatus?: string;
-}
-
-function buildWorks(assets: DemoAsset[], limit: number): WorkVM[] {
-  return assets
-    .filter((a) => a.media_refs?.thumbnail_url)
-    .slice(0, limit)
-    .map((a, i) => ({
-      assetId: a.asset_id,
-      name: a.display_title || a.headline || "—",
-      en: a.caption || "",
-      author: a.creator_name || "—",
-      owner: a.rights_holder_owner_name || a.creator_name || "—",
-      fp: shortFp(a.cid || a.asset_id),
-      sealed: a.uploaded_at,
-      thumb: a.media_refs?.thumbnail_url || "",
-      grad: GRADS[i % GRADS.length],
-      certificate: a.certificate_link,
-      c2pa: a.c2pa_status,
-      provenance: a.provenance_status,
-      reviewStatus: a.labels?.visual_review_status,
-    }));
-}
-
-interface ChannelVM {
-  id: string;
-  name: string;
-  type: string;
-  risk: string;
-  status: "automated" | "manual" | "queued" | "search";
-  hits: number;
-}
-
-function sourceTypeText(value: string, locale: Locale) {
-  const zh: Record<string, string> = {
-    news_aggregator: "新聞匯流",
-    news_site: "新聞網站",
-    search_discovery: "搜尋探索",
-    public_forum: "公開論壇",
-    public_social_page: "社群公開頁",
-    fact_check_db: "事實查核",
-    repost_candidate_pool: "轉貼候選池",
-  };
-  if (locale === "zh-TW") return zh[value] || value.replaceAll("_", " ");
-  return value.replaceAll("_", " ");
-}
-
-function buildChannels(sources: MonitoredSource[], alerts: AlertRecord[], locale: Locale): ChannelVM[] {
-  const hits: Record<string, number> = {};
-  alerts.forEach((a) => {
-    hits[a.source_id] = (hits[a.source_id] || 0) + 1;
-  });
-  return sources.map((s) => ({
-    id: s.source_id,
-    name: s.source_name,
-    type: sourceTypeText(s.source_type, locale),
-    risk: s.risk_level,
-    status:
-      s.crawl_method === "automated_public_page"
-        ? "automated"
-        : s.crawl_method === "not_automated"
-        ? "queued"
-        : s.crawl_method === "search_query_only"
-        ? "search"
-        : "manual",
-    hits: hits[s.source_id] || 0,
-  }));
-}
-
-interface TimelineItem {
-  t?: string;
-  zh: string;
-  en: string;
-}
-
-interface AlertVM {
-  id: string;
-  assetId: string;
-  work: string;
-  workEn: string;
-  author: string;
-  fp: string;
-  channel: string;
-  sourceUrl: string;
-  sim: number;
-  risk: "high" | "med" | "low";
-  status: string;
-  simulated: boolean;
-  caseLabel: string;
-  detected?: string;
-  thumb: string;
-  grad: string;
-  distance: number;
-  threshold: number;
-  notice: string;
-  reviewerPrompt: string;
-  transformation: string;
-  certificate?: string;
-  baseTimeline: TimelineItem[];
-}
-
-function buildAlert(
-  a: AlertRecord,
-  assetById: Map<string, DemoAsset>,
-  sourceById: Map<string, MonitoredSource>,
-  index: number,
-): AlertVM {
-  const asset = assetById.get(a.protected_asset_id);
-  const src = sourceById.get(a.source_id);
-  const sim = Math.round(a.similarity_score * 10000) / 100;
-  const status = a.review_status === "pending_human_review" ? "reviewing" : a.alert_status || "reviewing";
-  return {
-    id: a.alert_id,
-    assetId: a.protected_asset_id,
-    work: asset?.display_title || asset?.headline || a.protected_asset_id,
-    workEn: asset?.caption || "",
-    author: asset?.creator_name || "—",
-    fp: shortFp(asset?.cid || a.protected_asset_id),
-    channel: a.source_name || src?.source_name || a.source_id,
-    sourceUrl: a.source_url,
-    sim,
-    risk: sim >= 90 ? "high" : sim >= 80 ? "med" : "low",
-    status,
-    simulated: a.evidence_label === "simulated",
-    caseLabel: a.display_copy?.case_label || "",
-    detected: a.retrieved_at,
-    thumb: asset?.media_refs?.thumbnail_url || "",
-    grad: GRADS[index % GRADS.length],
-    distance: a.similarity_distance,
-    threshold: a.similarity_threshold,
-    notice: a.display_copy?.public_use_notice || "",
-    reviewerPrompt: a.display_copy?.reviewer_prompt || "",
-    transformation: a.transformation_notes || "",
-    certificate: asset?.certificate_link,
-    baseTimeline: [
-      { t: asset?.uploaded_at, zh: "原創影像簽署封存", en: "Original sealed" },
-      { t: asset?.uploaded_at, zh: "數位指紋寫入指紋庫", en: "Fingerprint indexed" },
-      { t: a.retrieved_at, zh: "通路巡檢偵測到高相似影像", en: "Patrol detected high-similarity image" },
-      { t: a.retrieved_at, zh: "證據快照待人工複審", en: "Evidence snapshot pending human review" },
-    ],
-  };
-}
 
 /* ---------------- presentational atoms ---------------- */
 
@@ -623,7 +228,7 @@ function DemoTag({ locale }: { locale: Locale }) {
 /* ---------------- main component ---------------- */
 
 export function TtdMvpDashboard() {
-  const [loadState, setLoadState] = useState<LoadState>({ status: "loading" });
+  const loadState = useOriginRadarData();
   const [locale, setLocale] = useState<Locale>(getInitialLocale);
   const [clock, setClock] = useState<string>(() => formatClock(new Date()));
 
@@ -660,33 +265,6 @@ export function TtdMvpDashboard() {
   useEffect(() => {
     const timer = setInterval(() => setClock(formatClock(new Date())), 1000);
     return () => clearInterval(timer);
-  }, []);
-
-  useEffect(() => {
-    let alive = true;
-    Promise.all([
-      fetchJson<TtdDashboardMetrics>(DATA_PATHS.dashboard),
-      fetchJson<DemoAsset[]>(DATA_PATHS.demoAssets),
-      fetchJson<{ monitored_sources: MonitoredSource[] }>(DATA_PATHS.monitoredSources),
-      fetchJson<MonitoringRun>(DATA_PATHS.monitoring),
-      fetchJson<AlertRecord[]>(DATA_PATHS.alerts),
-      fetchJson<EvidenceReportDocument>(DATA_PATHS.evidenceReport),
-      fetchJson<VerificationDocument>(DATA_PATHS.verification),
-    ])
-      .then(([dashboard, demoAssets, monitoredSources, monitoring, alerts, evidenceReport, verification]) => {
-        if (!alive) return;
-        setLoadState({
-          status: "ready",
-          data: { dashboard, demoAssets, monitoredSources, monitoring, alerts, evidenceReport, verification },
-        });
-      })
-      .catch((error: Error) => {
-        if (!alive) return;
-        setLoadState({ status: "error", message: error.message });
-      });
-    return () => {
-      alive = false;
-    };
   }, []);
 
   const handleLocale = (next: Locale) => {
@@ -749,15 +327,7 @@ export function TtdMvpDashboard() {
     () => (data ? buildChannels(data.monitoredSources.monitored_sources, data.alerts, locale) : []),
     [data, locale],
   );
-  const alerts = useMemo(() => {
-    if (!data) return [] as AlertVM[];
-    const assetById = new Map(data.demoAssets.map((a) => [a.asset_id, a]));
-    const sourceById = new Map(data.monitoredSources.monitored_sources.map((s) => [s.source_id, s]));
-    return data.alerts.map((a, i) => {
-      const vm = buildAlert(a, assetById, sourceById, i);
-      return { ...vm, status: statusOverride[vm.id] || vm.status };
-    });
-  }, [data, statusOverride]);
+  const alerts = useMemo(() => (data ? buildAlerts(data, statusOverride) : []), [data, statusOverride]);
 
   const runPatrol = () => {
     if (scanning || channels.length === 0) return;
@@ -828,15 +398,29 @@ export function TtdMvpDashboard() {
       </main>
     );
   }
-  if (loadState.status === "error") {
+  if (loadState.status === "network-error" || loadState.status === "contract-error") {
+    const isContractError = loadState.status === "contract-error";
     return (
       <main className="flex min-h-screen items-center justify-center bg-[#F4E9D5] px-6">
         <div className="max-w-lg rounded-[12px] border border-[#ED5D29] bg-white p-6">
           <TriangleAlert className="mb-3 text-[#ED5D29]" size={24} />
           <h1 className="text-lg font-semibold text-[#1A1A1A]">
-            {locale === "zh-TW" ? "資料載入失敗" : "Failed to load data"}
+            {isContractError
+              ? locale === "zh-TW"
+                ? "資料契約驗證失敗"
+                : "Data contract validation failed"
+              : locale === "zh-TW"
+                ? "資料載入失敗"
+                : "Failed to load data"}
           </h1>
           <p className="mt-2 text-sm text-[#6b5f4f]">{loadState.message}</p>
+          {isContractError ? (
+            <ul className="mt-3 space-y-1 text-xs text-[#6b5f4f]">
+              {loadState.errors.slice(0, 4).map((error) => (
+                <li key={error}>{error}</li>
+              ))}
+            </ul>
+          ) : null}
         </div>
       </main>
     );

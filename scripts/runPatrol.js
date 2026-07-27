@@ -23,6 +23,7 @@ import { createSeedUrlsAdapter } from "./lib/adapters/seedUrls.js";
 import { createVisionWebDetectionAdapter } from "./lib/adapters/visionWebDetection.js";
 import { createNamedChannelCrawlerAdapter } from "./lib/adapters/namedChannels.js";
 import { createBudgetGuard } from "./lib/budgetGuard.js";
+import { assertArtifact } from "../src/contracts/artifactContracts.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -751,6 +752,11 @@ async function main() {
     pass: validation.pass.all,
     limitations: buildPatrolLimitations(adapter.id),
   };
+
+  assertArtifact("alerts", alerts);
+  assertArtifact("cases", cases);
+  assertArtifact("monitoringRun", monitoringRun);
+  assertArtifact("patrolValidation", validation);
 
   writeJson("alerts.json", alerts);
   writeJson("cases.json", cases);
