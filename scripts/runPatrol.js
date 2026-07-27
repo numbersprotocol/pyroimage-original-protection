@@ -431,7 +431,7 @@ async function main() {
   const indexedEntries = loadIndexedEntries(IMAGE_INDEX);
   const indexByAssetId = buildIndexByAssetId(indexedEntries);
   const assetById = new Map(demoAssets.map((asset) => [asset.asset_id, asset]));
-  const adapter = createPatrolAdapter({ demoAssets });
+  let adapter = createPatrolAdapter({ demoAssets });
   const seedDoc = adapter.seedDocument || { seeds: [] };
   const protectedAssetIds = selectProtectedAssetIds({
     adapter,
@@ -645,6 +645,9 @@ async function main() {
 
       const visionAdapter = createVision();
       const channelsAdapter = createChannels();
+      adapter = combineAdapters([visionAdapter, channelsAdapter], {
+        mode: "vision_web_detection_plus_public_channel_crawl",
+      });
 
       await runPerAssetAdapter(visionAdapter);
       await runCandidateCentricChannels(channelsAdapter);
@@ -684,7 +687,7 @@ async function main() {
       phase2_index_rows: indexedEntries.length,
       match_threshold: MATCH_THRESHOLD,
       ...(isChannels || isCombined ? {
-        source_pages_fetched: isCombined 
+        source_pages_fetched: isCombined
           ? (adapterSummary.per_adapter?.find(item => item.id === "namedChannelCrawler")?.summary?.pages_fetched || 0)
           : (adapterSummary.pages_fetched || 0),
         candidate_inventory_count: isCombined
