@@ -28,6 +28,8 @@ on:
 
 permissions:
   contents: write
+  pages: write
+  id-token: write
 
 concurrency:
   group: ttd-patrol-${{ github.ref }}
@@ -58,6 +60,9 @@ jobs:
 
       - name: Install TTD dependencies
         run: npm ci
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
 
       - name: Configure patrol runtime
         env:
@@ -112,6 +117,7 @@ jobs:
           npm run ttd:dashboard
           npm run ttd:handback
           npm run build:pages
+          npm run ttd:freshness
 
       - name: Validate patrol artifacts
         run: |
@@ -123,6 +129,7 @@ jobs:
           const verification = JSON.parse(fs.readFileSync("public/ttd-mvp/verification-validation.json", "utf8"));
           const dashboard = JSON.parse(fs.readFileSync("public/ttd-mvp/dashboard-validation.json", "utf8"));
           const handback = JSON.parse(fs.readFileSync("public/ttd-mvp/demo-validation.json", "utf8"));
+          const freshness = JSON.parse(fs.readFileSync("public/ttd-mvp/deploy-freshness.json", "utf8"));
           if (patrol.pass?.all !== true) {
             throw new Error(`patrol-validation failed: ${JSON.stringify(patrol.pass)}`);
           }
@@ -137,6 +144,9 @@ jobs:
           }
           if (!Object.values(handback.pass || {}).every(Boolean)) {
             throw new Error(`demo-validation failed: ${JSON.stringify(handback.pass)}`);
+          }
+          if (freshness.parity?.all !== true) {
+            throw new Error(`deploy-freshness parity failed: ${JSON.stringify(freshness.parity)}`);
           }
           NODE
 
@@ -156,6 +166,7 @@ jobs:
             public/ttd-mvp/demo-handback.json
             public/ttd-mvp/demo-handback.md
             public/ttd-mvp/demo-validation.json
+            public/ttd-mvp/deploy-freshness.json
             .patrol-state/vision-cost-log.json
             .patrol-state/vision-web-detection-cache.json
           )
@@ -187,6 +198,7 @@ jobs:
             public/ttd-mvp/demo-handback.json \
             public/ttd-mvp/demo-handback.md \
             public/ttd-mvp/demo-validation.json \
+            public/ttd-mvp/deploy-freshness.json \
             .patrol-state/vision-cost-log.json \
             .patrol-state/vision-web-detection-cache.json
 
@@ -197,3 +209,22 @@ jobs:
 
           git commit -m "chore: update TTD patrol artifacts"
           git push
+
+      - name: Upload Pages artifact
+        if: github.ref == 'refs/heads/main'
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: ./dist
+          include-hidden-files: true
+
+  deploy:
+    if: github.ref == 'refs/heads/main'
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: patrol
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5

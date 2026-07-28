@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { assertArtifact } from "../src/contracts/artifactContracts.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -338,6 +339,7 @@ function main() {
     return {
       run_id: `${runId}-${source.source_id}`,
       source_id: source.source_id,
+      source_name: source.source_name,
       run_mode: runMode,
       started_at: generatedAt,
       completed_at: generatedAt,
@@ -360,6 +362,7 @@ function main() {
   const simulatedRun = {
     run_id: `${runId}-SRC-14-SIM`,
     source_id: "SRC-14",
+    source_name: "Instagram public repost candidate pool",
     run_mode: "simulated_fixture",
     started_at: generatedAt,
     completed_at: generatedAt,
@@ -377,7 +380,25 @@ function main() {
     generated_at: generatedAt,
     run_id: runId,
     monitoring_label: "specified-source monitoring",
+    adapter: {
+      id: "specifiedSourceFixture",
+      mode: "specified_source_monitoring_fixture",
+      expected_filter: "all",
+      paid_api_used: false,
+      billable_enabled: false,
+      dry_run: false,
+      budget_guard_respected: true,
+      details: {
+        source_count: monitoredSources.length,
+        demo_source_count: demoSources.length,
+        automated_channel_count: monitoredSources.filter((source) => source.crawl_method === "automated_public_page").length,
+      },
+    },
     run_scope: {
+      protected_assets_considered: 1,
+      candidates_attempted: demoSources.length + 1,
+      candidates_matched: 0,
+      alerts_created: 0,
       candidate_sources: monitoredSources.length,
       demo_sources: demoSources.length,
       demo_source_ids: DEMO_SOURCE_IDS,
@@ -385,6 +406,7 @@ function main() {
       protected_asset_title: protectedAsset.display_title,
       phase2_index_rows: indexValidation.coverage?.indexed_rows ?? null,
     },
+    status: "completed",
     source_runs: [...sourceRuns, simulatedRun],
     limitations: [
       "This fixture prepares named-source review workflows only.",
@@ -479,6 +501,9 @@ function main() {
       "Paid search and reverse-image APIs remain disabled.",
     ],
   };
+
+  assertArtifact("monitoredSources", monitoredSourcesDocument);
+  assertArtifact("monitoringRun", monitoringRun);
 
   writeJson("monitored-sources.json", monitoredSourcesDocument);
   writeJson("monitoring-run.json", monitoringRun);

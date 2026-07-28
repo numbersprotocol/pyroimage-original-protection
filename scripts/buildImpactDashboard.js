@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { assertArtifact } from "../src/contracts/artifactContracts.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -496,6 +497,8 @@ function main() {
   };
 
   const allPass = Object.values(validation.pass).every(Boolean);
+
+  assertArtifact("dashboardMetrics", dashboard);
 
   writeJson(DASHBOARD_FILE, dashboard);
   writeJson(DASHBOARD_VALIDATION_FILE, validation);
