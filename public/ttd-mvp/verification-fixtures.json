@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-24T13:23:21.214Z",
+  "generated_at": "2026-07-28T04:31:35.695Z",
   "phase": "Phase 4: Verification portal + UI integration",
   "route": "/pyroimage-original-protection",
   "verification_mode": "static precomputed local fingerprint verification for GitHub Pages; arbitrary uploads require a future runtime fingerprint service",
@@ -40,7 +40,7 @@
       "result": {
         "query_asset_id": "bafybeigzo5rkfshhubaazvw2xsvruskzrglb3gefyjtln3w3r4crhufmwm",
         "query_title": "1.jpg",
-        "query_time_ms": 37.86,
+        "query_time_ms": 13.117,
         "threshold": {
           "exact_match_distance": 0,
           "likely_same_or_controlled_transform_max_combined_distance": 16,
@@ -162,7 +162,7 @@
       "result": {
         "query_asset_id": "bafybeigzo5rkfshhubaazvw2xsvruskzrglb3gefyjtln3w3r4crhufmwm",
         "query_title": "Controlled resize/re-encode fixture",
-        "query_time_ms": 5.584,
+        "query_time_ms": 3.282,
         "threshold": {
           "exact_match_distance": 0,
           "likely_same_or_controlled_transform_max_combined_distance": 16,
@@ -283,7 +283,7 @@
       "result": {
         "query_asset_id": "control-non-original-seed-1",
         "query_title": "Controlled non-original query",
-        "query_time_ms": 6.193,
+        "query_time_ms": 3.547,
         "threshold": {
           "exact_match_distance": 0,
           "likely_same_or_controlled_transform_max_combined_distance": 16,

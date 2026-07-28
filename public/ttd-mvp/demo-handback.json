@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-24T13:23:21.829Z",
+  "generated_at": "2026-07-28T04:31:36.074Z",
   "phase": "Phase 4: Verification Portal And UI Integration Handback",
   "demo_target": {
     "route": "/pyroimage-original-protection",
@@ -141,8 +141,8 @@
     },
     {
       "id": "evidence_reports",
-      "value": 1,
-      "value_display": "1",
+      "value": 0,
+      "value_display": "0",
       "label_display": "Review Package",
       "note": "Review-ready origin and suspected-copy packages for brand or legal teams."
     },
@@ -157,8 +157,8 @@
       "id": "tool_spend_twd",
       "value": 0,
       "value_display": "0",
-      "label_display": "Zero Cost",
-      "note": "Total paid API and tool spend. Seed and dry-run patrols use local visual fingerprinting and zero-cost public data access."
+      "label_display": "Budget Guarded",
+      "note": "Budget-guarded Vision patrol ran for this MVP. Free-tier usage can still keep actual spend at 0."
     }
   ],
   "five_minute_recording_flow": [
@@ -200,7 +200,7 @@
       "title": "pending-review alert",
       "source_artifact": "alert-validation.json",
       "talk_track": "展示警報只來自真實抓取候選影像與感知雜湊命中；仍是 internal-only，需人工確認授權與來源脈絡。",
-      "proof_point": "1 alert / real_hash_match=true"
+      "proof_point": "0 alert / real_hash_match=true"
     },
     {
       "timebox": "2:40-3:20",
@@ -208,7 +208,7 @@
       "title": "Evidence report",
       "source_artifact": "report-validation.json",
       "talk_track": "展示 report section：protected original、candidate use、match explanation、run metadata、review state、public-use label 與 limitations。",
-      "proof_point": "1 report / adapter seedUrls"
+      "proof_point": "0 report / adapter visionWebDetection+namedChannelCrawler"
     },
     {
       "timebox": "3:20-4:20",
