@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-07-28T04:31:35.338Z",
-  "run_id": "ttd-patrol-20260728T042327Z",
+  "generated_at": "2026-07-29T04:31:32.437Z",
+  "run_id": "ttd-patrol-20260729T042430Z",
   "adapter": "visionWebDetection+namedChannelCrawler",
   "expected_filter": "all",
   "threshold": 16,
@@ -66,30 +66,6 @@
       "error": "image exceeds max bytes (3545708 > 2000000) for https://upload.wikimedia.org/wikipedia/commons/2/21/La_Escalera.JPG"
     },
     {
-      "candidate_id": "channel_SRC-01_b50ef6bfdd96f081",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 61,
-      "top_index_match_asset_id": "bafybeidumnvfbf3wglwczer3nkb2sz3so5rvcg442dt4gcpzwbr4wdnvey",
-      "pass": true
-    },
-    {
-      "candidate_id": "channel_SRC-04_27e60545fa370cfd",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 70,
-      "top_index_match_asset_id": "bafybeicz5zxe2bzbeyyhhn2djqbvxfghohtshrebpsxhorknu2ebqko4te",
-      "pass": true
-    },
-    {
-      "candidate_id": "channel_SRC-12_e1b9d8e7144fc775",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 52,
-      "top_index_match_asset_id": "bafybeiaqbojqsx7q2lt4b2znsyndiuolajxo72dd5nmuheevwuzjtlqy4q",
-      "pass": true
-    },
-    {
       "candidate_id": "vision_23ddf85c7e30f3cb",
       "expected": "unknown",
       "pass": true,
@@ -141,30 +117,6 @@
       "verdict": "no_match",
       "protected_asset_distance": 61,
       "top_index_match_asset_id": "bafybeibjnrrfecwqtjcx46q3xpxf3bwky3chhy2wp5s7nia5j2ypexzltq",
-      "pass": true
-    },
-    {
-      "candidate_id": "channel_SRC-01_4e76bdcb8986a471",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 74,
-      "top_index_match_asset_id": "bafybeidumnvfbf3wglwczer3nkb2sz3so5rvcg442dt4gcpzwbr4wdnvey",
-      "pass": true
-    },
-    {
-      "candidate_id": "channel_SRC-04_f0bb85176635b9e8",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 59,
-      "top_index_match_asset_id": "bafybeicz5zxe2bzbeyyhhn2djqbvxfghohtshrebpsxhorknu2ebqko4te",
-      "pass": true
-    },
-    {
-      "candidate_id": "channel_SRC-12_3a715266ac005afd",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 53,
-      "top_index_match_asset_id": "bafybeiaqbojqsx7q2lt4b2znsyndiuolajxo72dd5nmuheevwuzjtlqy4q",
       "pass": true
     },
     {
@@ -227,30 +179,6 @@
       "verdict": "no_match",
       "protected_asset_distance": 64,
       "top_index_match_asset_id": "bafybeigysegu6rgtfoxf37lb5w7dhdzwcqzbdzzstpoyrn2tmmfa4gtcxu",
-      "pass": true
-    },
-    {
-      "candidate_id": "channel_SRC-01_111ff92e766823d8",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 67,
-      "top_index_match_asset_id": "bafybeidumnvfbf3wglwczer3nkb2sz3so5rvcg442dt4gcpzwbr4wdnvey",
-      "pass": true
-    },
-    {
-      "candidate_id": "channel_SRC-04_395a103fa8aaeb1d",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 56,
-      "top_index_match_asset_id": "bafybeicz5zxe2bzbeyyhhn2djqbvxfghohtshrebpsxhorknu2ebqko4te",
-      "pass": true
-    },
-    {
-      "candidate_id": "channel_SRC-12_adbff8baceb67a60",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 62,
-      "top_index_match_asset_id": "bafybeiaqbojqsx7q2lt4b2znsyndiuolajxo72dd5nmuheevwuzjtlqy4q",
       "pass": true
     },
     {
@@ -317,30 +245,6 @@
       "pass": true
     },
     {
-      "candidate_id": "channel_SRC-01_c2d4e25cb7745a61",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 69,
-      "top_index_match_asset_id": "bafybeidumnvfbf3wglwczer3nkb2sz3so5rvcg442dt4gcpzwbr4wdnvey",
-      "pass": true
-    },
-    {
-      "candidate_id": "channel_SRC-04_73efad2f9cec55b1",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 66,
-      "top_index_match_asset_id": "bafybeicz5zxe2bzbeyyhhn2djqbvxfghohtshrebpsxhorknu2ebqko4te",
-      "pass": true
-    },
-    {
-      "candidate_id": "channel_SRC-12_13c71fff77d5b567",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 76,
-      "top_index_match_asset_id": "bafybeiaqbojqsx7q2lt4b2znsyndiuolajxo72dd5nmuheevwuzjtlqy4q",
-      "pass": true
-    },
-    {
       "candidate_id": "vision_76aae06afb0d70c3",
       "expected": "unknown",
       "verdict": "no_match",
@@ -403,30 +307,6 @@
       "pass": true
     },
     {
-      "candidate_id": "channel_SRC-01_96fb39d1d30cc0fb",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 76,
-      "top_index_match_asset_id": "bafybeidumnvfbf3wglwczer3nkb2sz3so5rvcg442dt4gcpzwbr4wdnvey",
-      "pass": true
-    },
-    {
-      "candidate_id": "channel_SRC-04_34e6c8c4d2746ece",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 57,
-      "top_index_match_asset_id": "bafybeicz5zxe2bzbeyyhhn2djqbvxfghohtshrebpsxhorknu2ebqko4te",
-      "pass": true
-    },
-    {
-      "candidate_id": "channel_SRC-12_f36473bb63982d0a",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 67,
-      "top_index_match_asset_id": "bafybeiaqbojqsx7q2lt4b2znsyndiuolajxo72dd5nmuheevwuzjtlqy4q",
-      "pass": true
-    },
-    {
       "candidate_id": "vision_3bc203316a4fb479",
       "expected": "unknown",
       "verdict": "no_match",
@@ -444,16 +324,18 @@
     {
       "candidate_id": "vision_ed279ad66e6ca76d",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "fetch failed"
+      "verdict": "no_match",
+      "protected_asset_distance": 63,
+      "top_index_match_asset_id": "bafybeibawe3ft3rcehwr4cstqblztp2lrt6txkxzc6msp75k56bdcjgonu",
+      "pass": true
     },
     {
       "candidate_id": "vision_e8fc87034e3b01ab",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "fetch failed"
+      "verdict": "no_match",
+      "protected_asset_distance": 58,
+      "top_index_match_asset_id": "bafybeie2e5wv2shxb57ik4szek6y6usxrexqzg7dsxoayobzky4bozu45i",
+      "pass": true
     },
     {
       "candidate_id": "vision_0bdc5baf7d408137",
@@ -484,30 +366,6 @@
       "verdict": "no_match",
       "protected_asset_distance": 66,
       "top_index_match_asset_id": "bafybeiezccszs3trq27fzcd4lkjqkar5taehtbsdpkjyjmxjdlmm2juyby",
-      "pass": true
-    },
-    {
-      "candidate_id": "channel_SRC-01_da012b6a00b0a3e5",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 66,
-      "top_index_match_asset_id": "bafybeidumnvfbf3wglwczer3nkb2sz3so5rvcg442dt4gcpzwbr4wdnvey",
-      "pass": true
-    },
-    {
-      "candidate_id": "channel_SRC-04_1977ec33280555fc",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 63,
-      "top_index_match_asset_id": "bafybeicz5zxe2bzbeyyhhn2djqbvxfghohtshrebpsxhorknu2ebqko4te",
-      "pass": true
-    },
-    {
-      "candidate_id": "channel_SRC-12_839c87cec3e06589",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 67,
-      "top_index_match_asset_id": "bafybeiaqbojqsx7q2lt4b2znsyndiuolajxo72dd5nmuheevwuzjtlqy4q",
       "pass": true
     },
     {
@@ -568,30 +426,6 @@
       "verdict": "no_match",
       "protected_asset_distance": 72,
       "top_index_match_asset_id": "bafybeiable3ldt5idu3wlrvg5yklj2gj5dspfil6bikcjznb5wlgqfqnwq",
-      "pass": true
-    },
-    {
-      "candidate_id": "channel_SRC-01_d13a2b3aa2313d6e",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 66,
-      "top_index_match_asset_id": "bafybeidumnvfbf3wglwczer3nkb2sz3so5rvcg442dt4gcpzwbr4wdnvey",
-      "pass": true
-    },
-    {
-      "candidate_id": "channel_SRC-04_03f76fd42ef3c3f2",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 63,
-      "top_index_match_asset_id": "bafybeicz5zxe2bzbeyyhhn2djqbvxfghohtshrebpsxhorknu2ebqko4te",
-      "pass": true
-    },
-    {
-      "candidate_id": "channel_SRC-12_84978aea6cdffe0a",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 69,
-      "top_index_match_asset_id": "bafybeiaqbojqsx7q2lt4b2znsyndiuolajxo72dd5nmuheevwuzjtlqy4q",
       "pass": true
     },
     {
@@ -657,30 +491,6 @@
       "pass": true
     },
     {
-      "candidate_id": "channel_SRC-01_e5ea0004d26542fd",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 56,
-      "top_index_match_asset_id": "bafybeidumnvfbf3wglwczer3nkb2sz3so5rvcg442dt4gcpzwbr4wdnvey",
-      "pass": true
-    },
-    {
-      "candidate_id": "channel_SRC-04_c0a5ca4bdb7ef322",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 63,
-      "top_index_match_asset_id": "bafybeicz5zxe2bzbeyyhhn2djqbvxfghohtshrebpsxhorknu2ebqko4te",
-      "pass": true
-    },
-    {
-      "candidate_id": "channel_SRC-12_07f894cd0d625aff",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 71,
-      "top_index_match_asset_id": "bafybeiaqbojqsx7q2lt4b2znsyndiuolajxo72dd5nmuheevwuzjtlqy4q",
-      "pass": true
-    },
-    {
       "candidate_id": "vision_15496da5f4b3b6b8",
       "expected": "unknown",
       "pass": true,
@@ -740,30 +550,6 @@
       "pass": true,
       "warning": true,
       "error": "HTTP 403 for https://p16-common-sign.tiktokcdn-us.com/tos-alisg-avt-0068/d81bdd8be7e3d1b1af18654684944514~tplv-tiktokx-cropcenter:720:720.jpeg"
-    },
-    {
-      "candidate_id": "channel_SRC-01_78f0ce2821afe02f",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 79,
-      "top_index_match_asset_id": "bafybeidumnvfbf3wglwczer3nkb2sz3so5rvcg442dt4gcpzwbr4wdnvey",
-      "pass": true
-    },
-    {
-      "candidate_id": "channel_SRC-04_8ffcd1f640d88ba2",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 56,
-      "top_index_match_asset_id": "bafybeicz5zxe2bzbeyyhhn2djqbvxfghohtshrebpsxhorknu2ebqko4te",
-      "pass": true
-    },
-    {
-      "candidate_id": "channel_SRC-12_5e090eda55a12b0b",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 48,
-      "top_index_match_asset_id": "bafybeiaqbojqsx7q2lt4b2znsyndiuolajxo72dd5nmuheevwuzjtlqy4q",
-      "pass": true
     },
     {
       "candidate_id": "vision_c809f6df507b1bc5",
@@ -830,30 +616,6 @@
       "pass": true
     },
     {
-      "candidate_id": "channel_SRC-01_9864c485972302ce",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 59,
-      "top_index_match_asset_id": "bafybeidumnvfbf3wglwczer3nkb2sz3so5rvcg442dt4gcpzwbr4wdnvey",
-      "pass": true
-    },
-    {
-      "candidate_id": "channel_SRC-04_f94a8e9fd8f7c235",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 56,
-      "top_index_match_asset_id": "bafybeicz5zxe2bzbeyyhhn2djqbvxfghohtshrebpsxhorknu2ebqko4te",
-      "pass": true
-    },
-    {
-      "candidate_id": "channel_SRC-12_2486577c7893fddf",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 64,
-      "top_index_match_asset_id": "bafybeiaqbojqsx7q2lt4b2znsyndiuolajxo72dd5nmuheevwuzjtlqy4q",
-      "pass": true
-    },
-    {
       "candidate_id": "vision_0f707beeaf4a7bde",
       "expected": "unknown",
       "pass": true,
@@ -910,30 +672,6 @@
       "verdict": "no_match",
       "protected_asset_distance": 68,
       "top_index_match_asset_id": "bafybeicvjkslnqleux7hzzjsqz3phglu2j7rjs4u2oimc5e7ynwj53azd4",
-      "pass": true
-    },
-    {
-      "candidate_id": "channel_SRC-01_c740c5219759cda0",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 37,
-      "top_index_match_asset_id": "bafybeidumnvfbf3wglwczer3nkb2sz3so5rvcg442dt4gcpzwbr4wdnvey",
-      "pass": true
-    },
-    {
-      "candidate_id": "channel_SRC-04_2fbf5e525cfe7fa7",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 70,
-      "top_index_match_asset_id": "bafybeicz5zxe2bzbeyyhhn2djqbvxfghohtshrebpsxhorknu2ebqko4te",
-      "pass": true
-    },
-    {
-      "candidate_id": "channel_SRC-12_0b67234d9a37d432",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 74,
-      "top_index_match_asset_id": "bafybeiaqbojqsx7q2lt4b2znsyndiuolajxo72dd5nmuheevwuzjtlqy4q",
       "pass": true
     },
     {
@@ -996,30 +734,6 @@
       "verdict": "no_match",
       "protected_asset_distance": 64,
       "top_index_match_asset_id": "bafybeiahnpr54ja3e5mczarea2gbloldlpfe6gwsykvbwbxrzvgdkvfkxa",
-      "pass": true
-    },
-    {
-      "candidate_id": "channel_SRC-01_8345bc7ef14a5c7a",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 51,
-      "top_index_match_asset_id": "bafybeidumnvfbf3wglwczer3nkb2sz3so5rvcg442dt4gcpzwbr4wdnvey",
-      "pass": true
-    },
-    {
-      "candidate_id": "channel_SRC-04_a71d96756718abec",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 82,
-      "top_index_match_asset_id": "bafybeicz5zxe2bzbeyyhhn2djqbvxfghohtshrebpsxhorknu2ebqko4te",
-      "pass": true
-    },
-    {
-      "candidate_id": "channel_SRC-12_0e38e5be161ffd84",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 72,
-      "top_index_match_asset_id": "bafybeiaqbojqsx7q2lt4b2znsyndiuolajxo72dd5nmuheevwuzjtlqy4q",
       "pass": true
     },
     {
@@ -1086,30 +800,6 @@
       "pass": true
     },
     {
-      "candidate_id": "channel_SRC-01_7da9589e44dbe56c",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 84,
-      "top_index_match_asset_id": "bafybeidumnvfbf3wglwczer3nkb2sz3so5rvcg442dt4gcpzwbr4wdnvey",
-      "pass": true
-    },
-    {
-      "candidate_id": "channel_SRC-04_38b924c1b528b936",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 43,
-      "top_index_match_asset_id": "bafybeicz5zxe2bzbeyyhhn2djqbvxfghohtshrebpsxhorknu2ebqko4te",
-      "pass": true
-    },
-    {
-      "candidate_id": "channel_SRC-12_11fee3f43fd841cd",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 57,
-      "top_index_match_asset_id": "bafybeiaqbojqsx7q2lt4b2znsyndiuolajxo72dd5nmuheevwuzjtlqy4q",
-      "pass": true
-    },
-    {
       "candidate_id": "vision_c63356ed11ce1703",
       "expected": "unknown",
       "verdict": "no_match",
@@ -1143,10 +833,9 @@
     {
       "candidate_id": "vision_d56a2bcc4a357b75",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 63,
-      "top_index_match_asset_id": "bafybeifbbs6yxvsxxvivp5xgfbxqlvv5jvt6wz2hgoxysinnat3xg3a7om",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "fetch failed"
     },
     {
       "candidate_id": "vision_65c74d9875798dff",
@@ -1170,30 +859,6 @@
       "verdict": "no_match",
       "protected_asset_distance": 67,
       "top_index_match_asset_id": "bafybeiamcxpxxpas7sizx7pxbvg4hg4fh7mytmrenjq6n6uyx6z4ysolhq",
-      "pass": true
-    },
-    {
-      "candidate_id": "channel_SRC-01_611b8b14c43689f9",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 75,
-      "top_index_match_asset_id": "bafybeidumnvfbf3wglwczer3nkb2sz3so5rvcg442dt4gcpzwbr4wdnvey",
-      "pass": true
-    },
-    {
-      "candidate_id": "channel_SRC-04_732505fabdd30e4a",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 64,
-      "top_index_match_asset_id": "bafybeicz5zxe2bzbeyyhhn2djqbvxfghohtshrebpsxhorknu2ebqko4te",
-      "pass": true
-    },
-    {
-      "candidate_id": "channel_SRC-12_5accdc55bd4bde72",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 58,
-      "top_index_match_asset_id": "bafybeiaqbojqsx7q2lt4b2znsyndiuolajxo72dd5nmuheevwuzjtlqy4q",
       "pass": true
     },
     {
@@ -1259,30 +924,6 @@
       "pass": true
     },
     {
-      "candidate_id": "channel_SRC-01_2d2083dae91dcd0d",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 49,
-      "top_index_match_asset_id": "bafybeidumnvfbf3wglwczer3nkb2sz3so5rvcg442dt4gcpzwbr4wdnvey",
-      "pass": true
-    },
-    {
-      "candidate_id": "channel_SRC-04_b5fc5b3bd77edb37",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 68,
-      "top_index_match_asset_id": "bafybeicz5zxe2bzbeyyhhn2djqbvxfghohtshrebpsxhorknu2ebqko4te",
-      "pass": true
-    },
-    {
-      "candidate_id": "channel_SRC-12_1aa129d90fdbf913",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 62,
-      "top_index_match_asset_id": "bafybeiaqbojqsx7q2lt4b2znsyndiuolajxo72dd5nmuheevwuzjtlqy4q",
-      "pass": true
-    },
-    {
       "candidate_id": "vision_f7dea1b80f2814d9",
       "expected": "unknown",
       "verdict": "no_match",
@@ -1345,30 +986,6 @@
       "pass": true
     },
     {
-      "candidate_id": "channel_SRC-01_a16ae8bd6c363ef2",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 85,
-      "top_index_match_asset_id": "bafybeidumnvfbf3wglwczer3nkb2sz3so5rvcg442dt4gcpzwbr4wdnvey",
-      "pass": true
-    },
-    {
-      "candidate_id": "channel_SRC-04_4fe448482dfd70f7",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 58,
-      "top_index_match_asset_id": "bafybeicz5zxe2bzbeyyhhn2djqbvxfghohtshrebpsxhorknu2ebqko4te",
-      "pass": true
-    },
-    {
-      "candidate_id": "channel_SRC-12_ebfc11d0c45bb369",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 62,
-      "top_index_match_asset_id": "bafybeiaqbojqsx7q2lt4b2znsyndiuolajxo72dd5nmuheevwuzjtlqy4q",
-      "pass": true
-    },
-    {
       "candidate_id": "vision_ba43278cda01319b",
       "expected": "unknown",
       "verdict": "no_match",
@@ -1427,30 +1044,6 @@
       "verdict": "no_match",
       "protected_asset_distance": 65,
       "top_index_match_asset_id": "bafybeibvhwgotqekte3bckrrgg43fqrjvucaii735bxrpnzr3udjd3bp74",
-      "pass": true
-    },
-    {
-      "candidate_id": "channel_SRC-01_a70cde8642b0d59c",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 76,
-      "top_index_match_asset_id": "bafybeidumnvfbf3wglwczer3nkb2sz3so5rvcg442dt4gcpzwbr4wdnvey",
-      "pass": true
-    },
-    {
-      "candidate_id": "channel_SRC-04_0f6e1c387c852783",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 69,
-      "top_index_match_asset_id": "bafybeicz5zxe2bzbeyyhhn2djqbvxfghohtshrebpsxhorknu2ebqko4te",
-      "pass": true
-    },
-    {
-      "candidate_id": "channel_SRC-12_f08cdb79746dd381",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 49,
-      "top_index_match_asset_id": "bafybeiaqbojqsx7q2lt4b2znsyndiuolajxo72dd5nmuheevwuzjtlqy4q",
       "pass": true
     },
     {
@@ -1516,30 +1109,6 @@
       "pass": true
     },
     {
-      "candidate_id": "channel_SRC-01_9eb9634a86f37bed",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 40,
-      "top_index_match_asset_id": "bafybeidumnvfbf3wglwczer3nkb2sz3so5rvcg442dt4gcpzwbr4wdnvey",
-      "pass": true
-    },
-    {
-      "candidate_id": "channel_SRC-04_6243900727ee751b",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 83,
-      "top_index_match_asset_id": "bafybeicz5zxe2bzbeyyhhn2djqbvxfghohtshrebpsxhorknu2ebqko4te",
-      "pass": true
-    },
-    {
-      "candidate_id": "channel_SRC-12_baab2f3ccedddf5f",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 71,
-      "top_index_match_asset_id": "bafybeiaqbojqsx7q2lt4b2znsyndiuolajxo72dd5nmuheevwuzjtlqy4q",
-      "pass": true
-    },
-    {
       "candidate_id": "vision_28044c5911c09286",
       "expected": "unknown",
       "pass": true,
@@ -1599,30 +1168,6 @@
       "verdict": "no_match",
       "protected_asset_distance": 52,
       "top_index_match_asset_id": "bafybeih7cdvnywgcrujilvupepauy5mwjtleayfbf7enjsylw4qonyehfy",
-      "pass": true
-    },
-    {
-      "candidate_id": "channel_SRC-01_e069e1145133ff39",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 40,
-      "top_index_match_asset_id": "bafybeidumnvfbf3wglwczer3nkb2sz3so5rvcg442dt4gcpzwbr4wdnvey",
-      "pass": true
-    },
-    {
-      "candidate_id": "channel_SRC-04_d94a7a5c2a3a6991",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 83,
-      "top_index_match_asset_id": "bafybeicz5zxe2bzbeyyhhn2djqbvxfghohtshrebpsxhorknu2ebqko4te",
-      "pass": true
-    },
-    {
-      "candidate_id": "channel_SRC-12_4d54f4e4d7083028",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 71,
-      "top_index_match_asset_id": "bafybeiaqbojqsx7q2lt4b2znsyndiuolajxo72dd5nmuheevwuzjtlqy4q",
       "pass": true
     },
     {
@@ -1689,30 +1234,6 @@
       "pass": true
     },
     {
-      "candidate_id": "channel_SRC-01_37efd4ccc11d5f07",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 61,
-      "top_index_match_asset_id": "bafybeidumnvfbf3wglwczer3nkb2sz3so5rvcg442dt4gcpzwbr4wdnvey",
-      "pass": true
-    },
-    {
-      "candidate_id": "channel_SRC-04_75a57b9fcea6c090",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 68,
-      "top_index_match_asset_id": "bafybeicz5zxe2bzbeyyhhn2djqbvxfghohtshrebpsxhorknu2ebqko4te",
-      "pass": true
-    },
-    {
-      "candidate_id": "channel_SRC-12_4e1c7b38b684bf5a",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 62,
-      "top_index_match_asset_id": "bafybeiaqbojqsx7q2lt4b2znsyndiuolajxo72dd5nmuheevwuzjtlqy4q",
-      "pass": true
-    },
-    {
       "candidate_id": "vision_ad14cd118257dbfa",
       "expected": "unknown",
       "pass": true,
@@ -1771,30 +1292,6 @@
       "verdict": "no_match",
       "protected_asset_distance": 70,
       "top_index_match_asset_id": "bafybeighkqelneh4z2vg33xwo4ejiketvgy5vn46aai3auulqmwlwut3em",
-      "pass": true
-    },
-    {
-      "candidate_id": "channel_SRC-01_283aabea81ed700a",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 53,
-      "top_index_match_asset_id": "bafybeidumnvfbf3wglwczer3nkb2sz3so5rvcg442dt4gcpzwbr4wdnvey",
-      "pass": true
-    },
-    {
-      "candidate_id": "channel_SRC-04_f6bce717ef787222",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 74,
-      "top_index_match_asset_id": "bafybeicz5zxe2bzbeyyhhn2djqbvxfghohtshrebpsxhorknu2ebqko4te",
-      "pass": true
-    },
-    {
-      "candidate_id": "channel_SRC-12_952399182fc499d0",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 74,
-      "top_index_match_asset_id": "bafybeiaqbojqsx7q2lt4b2znsyndiuolajxo72dd5nmuheevwuzjtlqy4q",
       "pass": true
     },
     {
@@ -1859,30 +1356,6 @@
       "error": "non-image response content-type=text/html; charset=\"utf-8\" for https://lookaside.instagram.com/seo/google_widget/crawler/"
     },
     {
-      "candidate_id": "channel_SRC-01_e8b7278683008209",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 51,
-      "top_index_match_asset_id": "bafybeidumnvfbf3wglwczer3nkb2sz3so5rvcg442dt4gcpzwbr4wdnvey",
-      "pass": true
-    },
-    {
-      "candidate_id": "channel_SRC-04_cd280b9b3276bdd7",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 56,
-      "top_index_match_asset_id": "bafybeicz5zxe2bzbeyyhhn2djqbvxfghohtshrebpsxhorknu2ebqko4te",
-      "pass": true
-    },
-    {
-      "candidate_id": "channel_SRC-12_b8a79d4d22cce387",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 70,
-      "top_index_match_asset_id": "bafybeiaqbojqsx7q2lt4b2znsyndiuolajxo72dd5nmuheevwuzjtlqy4q",
-      "pass": true
-    },
-    {
       "candidate_id": "vision_d951bb28f31d598f",
       "expected": "unknown",
       "verdict": "no_match",
@@ -1944,30 +1417,6 @@
       "error": "fetch failed"
     },
     {
-      "candidate_id": "channel_SRC-01_da8d539913dad74e",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 59,
-      "top_index_match_asset_id": "bafybeidumnvfbf3wglwczer3nkb2sz3so5rvcg442dt4gcpzwbr4wdnvey",
-      "pass": true
-    },
-    {
-      "candidate_id": "channel_SRC-04_e658d77a43a39e72",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 60,
-      "top_index_match_asset_id": "bafybeicz5zxe2bzbeyyhhn2djqbvxfghohtshrebpsxhorknu2ebqko4te",
-      "pass": true
-    },
-    {
-      "candidate_id": "channel_SRC-12_ba4a66d92eb45f13",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 66,
-      "top_index_match_asset_id": "bafybeiaqbojqsx7q2lt4b2znsyndiuolajxo72dd5nmuheevwuzjtlqy4q",
-      "pass": true
-    },
-    {
       "candidate_id": "vision_a719e2611ee44a8b",
       "expected": "unknown",
       "pass": true,
@@ -1985,10 +1434,9 @@
     {
       "candidate_id": "vision_aa68dd0c5bd06145",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 55,
-      "top_index_match_asset_id": "bafybeib4ynfd3f4cfz6ulxgqacff2oifmukbv2fxu5uekw5y7yqgvs4jpm",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "This operation was aborted"
     },
     {
       "candidate_id": "vision_acce8cfab07963ef",
@@ -2028,30 +1476,6 @@
       "verdict": "no_match",
       "protected_asset_distance": 58,
       "top_index_match_asset_id": "bafybeiefeh4eucvlksnaacoadn67mgvecgw7jekegtjmvfenoxugfybe3e",
-      "pass": true
-    },
-    {
-      "candidate_id": "channel_SRC-01_4fa87f70b35ea841",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 60,
-      "top_index_match_asset_id": "bafybeidumnvfbf3wglwczer3nkb2sz3so5rvcg442dt4gcpzwbr4wdnvey",
-      "pass": true
-    },
-    {
-      "candidate_id": "channel_SRC-04_041244c1013132e7",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 53,
-      "top_index_match_asset_id": "bafybeicz5zxe2bzbeyyhhn2djqbvxfghohtshrebpsxhorknu2ebqko4te",
-      "pass": true
-    },
-    {
-      "candidate_id": "channel_SRC-12_b157f924970e0c4c",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 75,
-      "top_index_match_asset_id": "bafybeiaqbojqsx7q2lt4b2znsyndiuolajxo72dd5nmuheevwuzjtlqy4q",
       "pass": true
     },
     {
@@ -2116,30 +1540,6 @@
       "pass": true
     },
     {
-      "candidate_id": "channel_SRC-01_7e1819c8c37d1a76",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 52,
-      "top_index_match_asset_id": "bafybeidumnvfbf3wglwczer3nkb2sz3so5rvcg442dt4gcpzwbr4wdnvey",
-      "pass": true
-    },
-    {
-      "candidate_id": "channel_SRC-04_a607a801bd66cd2b",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 77,
-      "top_index_match_asset_id": "bafybeicz5zxe2bzbeyyhhn2djqbvxfghohtshrebpsxhorknu2ebqko4te",
-      "pass": true
-    },
-    {
-      "candidate_id": "channel_SRC-12_2688c258792c467e",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 81,
-      "top_index_match_asset_id": "bafybeiaqbojqsx7q2lt4b2znsyndiuolajxo72dd5nmuheevwuzjtlqy4q",
-      "pass": true
-    },
-    {
       "candidate_id": "vision_1e672211789853f9",
       "expected": "unknown",
       "verdict": "no_match",
@@ -2198,30 +1598,6 @@
       "pass": true,
       "warning": true,
       "error": "fetch failed"
-    },
-    {
-      "candidate_id": "channel_SRC-01_cb73c6e22b6aff08",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 68,
-      "top_index_match_asset_id": "bafybeidumnvfbf3wglwczer3nkb2sz3so5rvcg442dt4gcpzwbr4wdnvey",
-      "pass": true
-    },
-    {
-      "candidate_id": "channel_SRC-04_e1de77f14ca1762e",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 65,
-      "top_index_match_asset_id": "bafybeicz5zxe2bzbeyyhhn2djqbvxfghohtshrebpsxhorknu2ebqko4te",
-      "pass": true
-    },
-    {
-      "candidate_id": "channel_SRC-12_62dd583969552a6d",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 67,
-      "top_index_match_asset_id": "bafybeiaqbojqsx7q2lt4b2znsyndiuolajxo72dd5nmuheevwuzjtlqy4q",
-      "pass": true
     },
     {
       "candidate_id": "vision_952ebedc2a74763e",
@@ -2288,30 +1664,6 @@
       "pass": true
     },
     {
-      "candidate_id": "channel_SRC-01_7ac42aa91eddcb10",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 48,
-      "top_index_match_asset_id": "bafybeidumnvfbf3wglwczer3nkb2sz3so5rvcg442dt4gcpzwbr4wdnvey",
-      "pass": true
-    },
-    {
-      "candidate_id": "channel_SRC-04_a646310d84ba8548",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 73,
-      "top_index_match_asset_id": "bafybeicz5zxe2bzbeyyhhn2djqbvxfghohtshrebpsxhorknu2ebqko4te",
-      "pass": true
-    },
-    {
-      "candidate_id": "channel_SRC-12_c79a22560b551e0b",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 71,
-      "top_index_match_asset_id": "bafybeiaqbojqsx7q2lt4b2znsyndiuolajxo72dd5nmuheevwuzjtlqy4q",
-      "pass": true
-    },
-    {
       "candidate_id": "vision_a3581cbc1f6c925a",
       "expected": "unknown",
       "verdict": "no_match",
@@ -2353,10 +1705,9 @@
     {
       "candidate_id": "vision_48d4e2b16f4b5311",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 54,
-      "top_index_match_asset_id": "bafybeiefeh4eucvlksnaacoadn67mgvecgw7jekegtjmvfenoxugfybe3e",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "fetch failed"
     },
     {
       "candidate_id": "vision_84ee8a077a60bc03",
@@ -2372,30 +1723,6 @@
       "verdict": "no_match",
       "protected_asset_distance": 63,
       "top_index_match_asset_id": "bafybeig6itpwombitzsnyehlzb3f6nbhnl5d4xq7eljcquapwwwgpnah6i",
-      "pass": true
-    },
-    {
-      "candidate_id": "channel_SRC-01_d8226cdbe6cc28a7",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 52,
-      "top_index_match_asset_id": "bafybeidumnvfbf3wglwczer3nkb2sz3so5rvcg442dt4gcpzwbr4wdnvey",
-      "pass": true
-    },
-    {
-      "candidate_id": "channel_SRC-04_64175286a5c0df84",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 67,
-      "top_index_match_asset_id": "bafybeicz5zxe2bzbeyyhhn2djqbvxfghohtshrebpsxhorknu2ebqko4te",
-      "pass": true
-    },
-    {
-      "candidate_id": "channel_SRC-12_2a5b493b80fd0604",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 75,
-      "top_index_match_asset_id": "bafybeiaqbojqsx7q2lt4b2znsyndiuolajxo72dd5nmuheevwuzjtlqy4q",
       "pass": true
     },
     {
@@ -2462,30 +1789,6 @@
       "pass": true
     },
     {
-      "candidate_id": "channel_SRC-01_9448c18d7e2098fc",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 54,
-      "top_index_match_asset_id": "bafybeidumnvfbf3wglwczer3nkb2sz3so5rvcg442dt4gcpzwbr4wdnvey",
-      "pass": true
-    },
-    {
-      "candidate_id": "channel_SRC-04_b6f709cf3f92ee10",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 85,
-      "top_index_match_asset_id": "bafybeicz5zxe2bzbeyyhhn2djqbvxfghohtshrebpsxhorknu2ebqko4te",
-      "pass": true
-    },
-    {
-      "candidate_id": "channel_SRC-12_10bffc412793c9de",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 65,
-      "top_index_match_asset_id": "bafybeiaqbojqsx7q2lt4b2znsyndiuolajxo72dd5nmuheevwuzjtlqy4q",
-      "pass": true
-    },
-    {
       "candidate_id": "vision_565776d2c1a0f27d",
       "expected": "unknown",
       "verdict": "no_match",
@@ -2544,30 +1847,6 @@
       "pass": true,
       "warning": true,
       "error": "non-image response content-type=application/x-msdownload; =;charset=UTF-8 for https://www.inha.ac.kr/bbs/kr/64/35390/download.do"
-    },
-    {
-      "candidate_id": "channel_SRC-01_a7e12e607f4c38fd",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 69,
-      "top_index_match_asset_id": "bafybeidumnvfbf3wglwczer3nkb2sz3so5rvcg442dt4gcpzwbr4wdnvey",
-      "pass": true
-    },
-    {
-      "candidate_id": "channel_SRC-04_1f50ea364c2d92db",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 66,
-      "top_index_match_asset_id": "bafybeicz5zxe2bzbeyyhhn2djqbvxfghohtshrebpsxhorknu2ebqko4te",
-      "pass": true
-    },
-    {
-      "candidate_id": "channel_SRC-12_8a106ebbe6137f21",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 52,
-      "top_index_match_asset_id": "bafybeiaqbojqsx7q2lt4b2znsyndiuolajxo72dd5nmuheevwuzjtlqy4q",
-      "pass": true
     },
     {
       "candidate_id": "vision_9d36ab8c1ad1f725",
@@ -2634,30 +1913,6 @@
       "pass": true
     },
     {
-      "candidate_id": "channel_SRC-01_1f97ad8445d5ccf1",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 58,
-      "top_index_match_asset_id": "bafybeidumnvfbf3wglwczer3nkb2sz3so5rvcg442dt4gcpzwbr4wdnvey",
-      "pass": true
-    },
-    {
-      "candidate_id": "channel_SRC-04_217c16a5eed96810",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 69,
-      "top_index_match_asset_id": "bafybeicz5zxe2bzbeyyhhn2djqbvxfghohtshrebpsxhorknu2ebqko4te",
-      "pass": true
-    },
-    {
-      "candidate_id": "channel_SRC-12_1efa3e2a54421fbe",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 73,
-      "top_index_match_asset_id": "bafybeiaqbojqsx7q2lt4b2znsyndiuolajxo72dd5nmuheevwuzjtlqy4q",
-      "pass": true
-    },
-    {
       "candidate_id": "vision_9015083d2fff8c37",
       "expected": "unknown",
       "pass": true,
@@ -2715,30 +1970,6 @@
       "verdict": "no_match",
       "protected_asset_distance": 50,
       "top_index_match_asset_id": "bafybeibvhwgotqekte3bckrrgg43fqrjvucaii735bxrpnzr3udjd3bp74",
-      "pass": true
-    },
-    {
-      "candidate_id": "channel_SRC-01_608b59b341ff1caa",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 40,
-      "top_index_match_asset_id": "bafybeidumnvfbf3wglwczer3nkb2sz3so5rvcg442dt4gcpzwbr4wdnvey",
-      "pass": true
-    },
-    {
-      "candidate_id": "channel_SRC-04_1616c740a1b221cc",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 83,
-      "top_index_match_asset_id": "bafybeicz5zxe2bzbeyyhhn2djqbvxfghohtshrebpsxhorknu2ebqko4te",
-      "pass": true
-    },
-    {
-      "candidate_id": "channel_SRC-12_8b86271e0f398623",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 71,
-      "top_index_match_asset_id": "bafybeiaqbojqsx7q2lt4b2znsyndiuolajxo72dd5nmuheevwuzjtlqy4q",
       "pass": true
     },
     {
@@ -2804,30 +2035,6 @@
       "pass": true
     },
     {
-      "candidate_id": "channel_SRC-01_56360e5c77ef9081",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 52,
-      "top_index_match_asset_id": "bafybeidumnvfbf3wglwczer3nkb2sz3so5rvcg442dt4gcpzwbr4wdnvey",
-      "pass": true
-    },
-    {
-      "candidate_id": "channel_SRC-04_847273c7ba57fa07",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 57,
-      "top_index_match_asset_id": "bafybeicz5zxe2bzbeyyhhn2djqbvxfghohtshrebpsxhorknu2ebqko4te",
-      "pass": true
-    },
-    {
-      "candidate_id": "channel_SRC-12_4c6ed6f7f54ef517",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 69,
-      "top_index_match_asset_id": "bafybeiaqbojqsx7q2lt4b2znsyndiuolajxo72dd5nmuheevwuzjtlqy4q",
-      "pass": true
-    },
-    {
       "candidate_id": "vision_5f1baf222558dce1",
       "expected": "unknown",
       "verdict": "no_match",
@@ -2887,30 +2094,6 @@
       "pass": true,
       "warning": true,
       "error": "HTTP 403 for https://p16-common-sign.tiktokcdn-us.com/tos-alisg-p-0037/ogviWCAHItIuPSBa6f52ZIIV0VFCJBm47QiwAA~tplv-photomode-zoomcover:720:720.jpeg"
-    },
-    {
-      "candidate_id": "channel_SRC-01_4445b0c1c3a66ef0",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 53,
-      "top_index_match_asset_id": "bafybeidumnvfbf3wglwczer3nkb2sz3so5rvcg442dt4gcpzwbr4wdnvey",
-      "pass": true
-    },
-    {
-      "candidate_id": "channel_SRC-04_727efe25369000c3",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 74,
-      "top_index_match_asset_id": "bafybeicz5zxe2bzbeyyhhn2djqbvxfghohtshrebpsxhorknu2ebqko4te",
-      "pass": true
-    },
-    {
-      "candidate_id": "channel_SRC-12_20a00dfb9195a73c",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 74,
-      "top_index_match_asset_id": "bafybeiaqbojqsx7q2lt4b2znsyndiuolajxo72dd5nmuheevwuzjtlqy4q",
-      "pass": true
     },
     {
       "candidate_id": "vision_dc9d3a4e9772819a",
@@ -2977,30 +2160,6 @@
       "pass": true
     },
     {
-      "candidate_id": "channel_SRC-01_923ac28adf15620d",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 60,
-      "top_index_match_asset_id": "bafybeidumnvfbf3wglwczer3nkb2sz3so5rvcg442dt4gcpzwbr4wdnvey",
-      "pass": true
-    },
-    {
-      "candidate_id": "channel_SRC-04_de4c80441de0238a",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 63,
-      "top_index_match_asset_id": "bafybeicz5zxe2bzbeyyhhn2djqbvxfghohtshrebpsxhorknu2ebqko4te",
-      "pass": true
-    },
-    {
-      "candidate_id": "channel_SRC-12_f1ad198f510efda5",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 63,
-      "top_index_match_asset_id": "bafybeiaqbojqsx7q2lt4b2znsyndiuolajxo72dd5nmuheevwuzjtlqy4q",
-      "pass": true
-    },
-    {
       "candidate_id": "vision_6dcf137e03e74372",
       "expected": "unknown",
       "verdict": "no_match",
@@ -3062,30 +2221,6 @@
       "pass": true
     },
     {
-      "candidate_id": "channel_SRC-01_d5e9c32831510ff8",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 59,
-      "top_index_match_asset_id": "bafybeidumnvfbf3wglwczer3nkb2sz3so5rvcg442dt4gcpzwbr4wdnvey",
-      "pass": true
-    },
-    {
-      "candidate_id": "channel_SRC-04_ac6582b0211f1c67",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 60,
-      "top_index_match_asset_id": "bafybeicz5zxe2bzbeyyhhn2djqbvxfghohtshrebpsxhorknu2ebqko4te",
-      "pass": true
-    },
-    {
-      "candidate_id": "channel_SRC-12_3ee949971f14e29c",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 66,
-      "top_index_match_asset_id": "bafybeiaqbojqsx7q2lt4b2znsyndiuolajxo72dd5nmuheevwuzjtlqy4q",
-      "pass": true
-    },
-    {
       "candidate_id": "vision_64e606d32f0bea4b",
       "expected": "unknown",
       "verdict": "no_match",
@@ -3139,32 +2274,9 @@
     {
       "candidate_id": "vision_4a067e4704c944f4",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "fetch failed"
-    },
-    {
-      "candidate_id": "channel_SRC-01_4e42a4cd0aa9dac0",
-      "expected": "unknown",
       "verdict": "no_match",
       "protected_asset_distance": 56,
-      "top_index_match_asset_id": "bafybeidumnvfbf3wglwczer3nkb2sz3so5rvcg442dt4gcpzwbr4wdnvey",
-      "pass": true
-    },
-    {
-      "candidate_id": "channel_SRC-04_464e819c8c34c055",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 57,
-      "top_index_match_asset_id": "bafybeicz5zxe2bzbeyyhhn2djqbvxfghohtshrebpsxhorknu2ebqko4te",
-      "pass": true
-    },
-    {
-      "candidate_id": "channel_SRC-12_39c76801682717e7",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 71,
-      "top_index_match_asset_id": "bafybeiaqbojqsx7q2lt4b2znsyndiuolajxo72dd5nmuheevwuzjtlqy4q",
+      "top_index_match_asset_id": "bafybeiejtpwtun4b6i3fl27cnifsttigpbxcmw5vx6ahfup76yfnejo654",
       "pass": true
     },
     {
@@ -3229,30 +2341,6 @@
       "pass": true
     },
     {
-      "candidate_id": "channel_SRC-01_102212816293f255",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 51,
-      "top_index_match_asset_id": "bafybeidumnvfbf3wglwczer3nkb2sz3so5rvcg442dt4gcpzwbr4wdnvey",
-      "pass": true
-    },
-    {
-      "candidate_id": "channel_SRC-04_efeb8cd8bf82879b",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 76,
-      "top_index_match_asset_id": "bafybeicz5zxe2bzbeyyhhn2djqbvxfghohtshrebpsxhorknu2ebqko4te",
-      "pass": true
-    },
-    {
-      "candidate_id": "channel_SRC-12_a67261bfd4d34e0e",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 82,
-      "top_index_match_asset_id": "bafybeiaqbojqsx7q2lt4b2znsyndiuolajxo72dd5nmuheevwuzjtlqy4q",
-      "pass": true
-    },
-    {
       "candidate_id": "vision_6c661971557bfdb5",
       "expected": "unknown",
       "verdict": "no_match",
@@ -3311,30 +2399,6 @@
       "verdict": "no_match",
       "protected_asset_distance": 45,
       "top_index_match_asset_id": "bafybeicak5opr2pqhm7cweggwixyj5bok4ajprva6tlqiifrunnevlen4q",
-      "pass": true
-    },
-    {
-      "candidate_id": "channel_SRC-01_99b953f0c4750c01",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 68,
-      "top_index_match_asset_id": "bafybeidumnvfbf3wglwczer3nkb2sz3so5rvcg442dt4gcpzwbr4wdnvey",
-      "pass": true
-    },
-    {
-      "candidate_id": "channel_SRC-04_420e94d1d047e913",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 65,
-      "top_index_match_asset_id": "bafybeicz5zxe2bzbeyyhhn2djqbvxfghohtshrebpsxhorknu2ebqko4te",
-      "pass": true
-    },
-    {
-      "candidate_id": "channel_SRC-12_305e4cbc0e394848",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 67,
-      "top_index_match_asset_id": "bafybeiaqbojqsx7q2lt4b2znsyndiuolajxo72dd5nmuheevwuzjtlqy4q",
       "pass": true
     },
     {
@@ -3399,30 +2463,6 @@
       "pass": true
     },
     {
-      "candidate_id": "channel_SRC-01_64630ca82c5da2db",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 48,
-      "top_index_match_asset_id": "bafybeidumnvfbf3wglwczer3nkb2sz3so5rvcg442dt4gcpzwbr4wdnvey",
-      "pass": true
-    },
-    {
-      "candidate_id": "channel_SRC-04_3ab17ab2c6d55579",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 73,
-      "top_index_match_asset_id": "bafybeicz5zxe2bzbeyyhhn2djqbvxfghohtshrebpsxhorknu2ebqko4te",
-      "pass": true
-    },
-    {
-      "candidate_id": "channel_SRC-12_46cc6e95b3df36c5",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 71,
-      "top_index_match_asset_id": "bafybeiaqbojqsx7q2lt4b2znsyndiuolajxo72dd5nmuheevwuzjtlqy4q",
-      "pass": true
-    },
-    {
       "candidate_id": "vision_56d035e3e13410f0",
       "expected": "unknown",
       "pass": true,
@@ -3482,30 +2522,6 @@
       "pass": true,
       "warning": true,
       "error": "image exceeds max bytes (4060758 > 2000000) for https://www.unsw.edu.au/content/dam/images/engineering/general/headshots/2025-07-arc-laureate-fellowships/ARC-Laureates-3.png/jcr:content/renditions/cq5dam.web.1920.1920.png"
-    },
-    {
-      "candidate_id": "channel_SRC-01_e0c151cb79b67114",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 52,
-      "top_index_match_asset_id": "bafybeidumnvfbf3wglwczer3nkb2sz3so5rvcg442dt4gcpzwbr4wdnvey",
-      "pass": true
-    },
-    {
-      "candidate_id": "channel_SRC-04_1499ea69d9b62cd2",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 67,
-      "top_index_match_asset_id": "bafybeicz5zxe2bzbeyyhhn2djqbvxfghohtshrebpsxhorknu2ebqko4te",
-      "pass": true
-    },
-    {
-      "candidate_id": "channel_SRC-12_bd9be28a2a40f850",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 75,
-      "top_index_match_asset_id": "bafybeiaqbojqsx7q2lt4b2znsyndiuolajxo72dd5nmuheevwuzjtlqy4q",
-      "pass": true
     },
     {
       "candidate_id": "vision_bb4ae9b233ac1c44",
@@ -3568,30 +2584,6 @@
       "verdict": "no_match",
       "protected_asset_distance": 51,
       "top_index_match_asset_id": "bafybeidumnvfbf3wglwczer3nkb2sz3so5rvcg442dt4gcpzwbr4wdnvey",
-      "pass": true
-    },
-    {
-      "candidate_id": "channel_SRC-01_58557c215f640f62",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 54,
-      "top_index_match_asset_id": "bafybeidumnvfbf3wglwczer3nkb2sz3so5rvcg442dt4gcpzwbr4wdnvey",
-      "pass": true
-    },
-    {
-      "candidate_id": "channel_SRC-04_15fa10d6f1aa982f",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 81,
-      "top_index_match_asset_id": "bafybeicz5zxe2bzbeyyhhn2djqbvxfghohtshrebpsxhorknu2ebqko4te",
-      "pass": true
-    },
-    {
-      "candidate_id": "channel_SRC-12_c859a087f4cd8747",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 69,
-      "top_index_match_asset_id": "bafybeiaqbojqsx7q2lt4b2znsyndiuolajxo72dd5nmuheevwuzjtlqy4q",
       "pass": true
     },
     {
@@ -3658,30 +2650,6 @@
       "error": "fetch failed"
     },
     {
-      "candidate_id": "channel_SRC-01_9ef594b1fed93058",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 47,
-      "top_index_match_asset_id": "bafybeidumnvfbf3wglwczer3nkb2sz3so5rvcg442dt4gcpzwbr4wdnvey",
-      "pass": true
-    },
-    {
-      "candidate_id": "channel_SRC-04_bfa7dc14af976344",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 64,
-      "top_index_match_asset_id": "bafybeicz5zxe2bzbeyyhhn2djqbvxfghohtshrebpsxhorknu2ebqko4te",
-      "pass": true
-    },
-    {
-      "candidate_id": "channel_SRC-12_f9d5f1228952a4b7",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 66,
-      "top_index_match_asset_id": "bafybeiaqbojqsx7q2lt4b2znsyndiuolajxo72dd5nmuheevwuzjtlqy4q",
-      "pass": true
-    },
-    {
       "candidate_id": "vision_19ad937036a73e9c",
       "expected": "unknown",
       "pass": true,
@@ -3742,30 +2710,6 @@
       "verdict": "no_match",
       "protected_asset_distance": 72,
       "top_index_match_asset_id": "bafybeiehrp4hwrix3rm57xhg2n4eng34q7wlv547swm4texbca47gxzisy",
-      "pass": true
-    },
-    {
-      "candidate_id": "channel_SRC-01_de4181910ff20240",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 54,
-      "top_index_match_asset_id": "bafybeidumnvfbf3wglwczer3nkb2sz3so5rvcg442dt4gcpzwbr4wdnvey",
-      "pass": true
-    },
-    {
-      "candidate_id": "channel_SRC-04_f68108494556c465",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 85,
-      "top_index_match_asset_id": "bafybeicz5zxe2bzbeyyhhn2djqbvxfghohtshrebpsxhorknu2ebqko4te",
-      "pass": true
-    },
-    {
-      "candidate_id": "channel_SRC-12_4d512316860fb907",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 65,
-      "top_index_match_asset_id": "bafybeiaqbojqsx7q2lt4b2znsyndiuolajxo72dd5nmuheevwuzjtlqy4q",
       "pass": true
     },
     {
@@ -3831,30 +2775,6 @@
       "error": "fetch failed"
     },
     {
-      "candidate_id": "channel_SRC-01_9db199964476d550",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 56,
-      "top_index_match_asset_id": "bafybeidumnvfbf3wglwczer3nkb2sz3so5rvcg442dt4gcpzwbr4wdnvey",
-      "pass": true
-    },
-    {
-      "candidate_id": "channel_SRC-04_798efd0ef4508eb7",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 79,
-      "top_index_match_asset_id": "bafybeicz5zxe2bzbeyyhhn2djqbvxfghohtshrebpsxhorknu2ebqko4te",
-      "pass": true
-    },
-    {
-      "candidate_id": "channel_SRC-12_cb20e519be9632f0",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 63,
-      "top_index_match_asset_id": "bafybeiaqbojqsx7q2lt4b2znsyndiuolajxo72dd5nmuheevwuzjtlqy4q",
-      "pass": true
-    },
-    {
       "candidate_id": "vision_780a9c33b53c0bb4",
       "expected": "unknown",
       "verdict": "no_match",
@@ -3912,30 +2832,6 @@
       "verdict": "no_match",
       "protected_asset_distance": 59,
       "top_index_match_asset_id": "bafybeigwx5vsuh426v5bavtw6gvkpkxqqyeazautizo5yqytungoxi4qou",
-      "pass": true
-    },
-    {
-      "candidate_id": "channel_SRC-01_3ada285a6b94c6b0",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 69,
-      "top_index_match_asset_id": "bafybeidumnvfbf3wglwczer3nkb2sz3so5rvcg442dt4gcpzwbr4wdnvey",
-      "pass": true
-    },
-    {
-      "candidate_id": "channel_SRC-04_d154e21079f55f50",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 66,
-      "top_index_match_asset_id": "bafybeicz5zxe2bzbeyyhhn2djqbvxfghohtshrebpsxhorknu2ebqko4te",
-      "pass": true
-    },
-    {
-      "candidate_id": "channel_SRC-12_ea31b9b4be97e164",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 52,
-      "top_index_match_asset_id": "bafybeiaqbojqsx7q2lt4b2znsyndiuolajxo72dd5nmuheevwuzjtlqy4q",
       "pass": true
     },
     {
@@ -4002,35 +2898,12 @@
       "error": "non-image response content-type=text/html; charset=\"utf-8\" for https://lookaside.instagram.com/seo/google_widget/crawler/"
     },
     {
-      "candidate_id": "channel_SRC-01_4ff7f0aec36ef61b",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 58,
-      "top_index_match_asset_id": "bafybeidumnvfbf3wglwczer3nkb2sz3so5rvcg442dt4gcpzwbr4wdnvey",
-      "pass": true
-    },
-    {
-      "candidate_id": "channel_SRC-04_4bd1507bc0acc245",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 69,
-      "top_index_match_asset_id": "bafybeicz5zxe2bzbeyyhhn2djqbvxfghohtshrebpsxhorknu2ebqko4te",
-      "pass": true
-    },
-    {
-      "candidate_id": "channel_SRC-12_5f6f771b97b889dc",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 73,
-      "top_index_match_asset_id": "bafybeiaqbojqsx7q2lt4b2znsyndiuolajxo72dd5nmuheevwuzjtlqy4q",
-      "pass": true
-    },
-    {
       "candidate_id": "vision_6a8873b4d69d4afe",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "HTTP 403 for https://www.4us.com.au/wp-content/uploads/2018/04/NAIDOC-March-2013-Community-entering-the-cricket-grounds-601x669.jpg"
+      "verdict": "no_match",
+      "protected_asset_distance": 72,
+      "top_index_match_asset_id": "bafybeiez55oacwsjx7aw7c2z4rksaodewedfvzhimvpfdsqjepid4uwq3q",
+      "pass": true
     },
     {
       "candidate_id": "vision_5c561d72d343fdd9",
@@ -4088,74 +2961,26 @@
       "pass": true
     },
     {
-      "candidate_id": "channel_SRC-01_c92da3ba311f5cf4",
+      "candidate_id": "channel_SRC-01_a5f9ec820882cfe3",
       "expected": "unknown",
       "verdict": "no_match",
-      "protected_asset_distance": 76,
+      "protected_asset_distance": 37,
       "top_index_match_asset_id": "bafybeidumnvfbf3wglwczer3nkb2sz3so5rvcg442dt4gcpzwbr4wdnvey",
       "pass": true
     },
     {
-      "candidate_id": "channel_SRC-04_ebdebb25cc736176",
+      "candidate_id": "channel_SRC-04_ff95742b345298a4",
       "expected": "unknown",
       "verdict": "no_match",
-      "protected_asset_distance": 65,
+      "protected_asset_distance": 43,
       "top_index_match_asset_id": "bafybeicz5zxe2bzbeyyhhn2djqbvxfghohtshrebpsxhorknu2ebqko4te",
       "pass": true
     },
     {
-      "candidate_id": "channel_SRC-12_f0261a5f02e103b9",
+      "candidate_id": "channel_SRC-12_79c31ff42dc3a5ba",
       "expected": "unknown",
       "verdict": "no_match",
-      "protected_asset_distance": 71,
-      "top_index_match_asset_id": "bafybeiaqbojqsx7q2lt4b2znsyndiuolajxo72dd5nmuheevwuzjtlqy4q",
-      "pass": true
-    },
-    {
-      "candidate_id": "channel_SRC-01_3a0d92dbddc02baf",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 59,
-      "top_index_match_asset_id": "bafybeidumnvfbf3wglwczer3nkb2sz3so5rvcg442dt4gcpzwbr4wdnvey",
-      "pass": true
-    },
-    {
-      "candidate_id": "channel_SRC-04_98bd80960c7a0ac8",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 54,
-      "top_index_match_asset_id": "bafybeicz5zxe2bzbeyyhhn2djqbvxfghohtshrebpsxhorknu2ebqko4te",
-      "pass": true
-    },
-    {
-      "candidate_id": "channel_SRC-12_6eb2c3f9dbd4848a",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 64,
-      "top_index_match_asset_id": "bafybeiaqbojqsx7q2lt4b2znsyndiuolajxo72dd5nmuheevwuzjtlqy4q",
-      "pass": true
-    },
-    {
-      "candidate_id": "channel_SRC-01_eab65886b1b38aa6",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 60,
-      "top_index_match_asset_id": "bafybeidumnvfbf3wglwczer3nkb2sz3so5rvcg442dt4gcpzwbr4wdnvey",
-      "pass": true
-    },
-    {
-      "candidate_id": "channel_SRC-04_919b4cba5cb456fd",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 67,
-      "top_index_match_asset_id": "bafybeicz5zxe2bzbeyyhhn2djqbvxfghohtshrebpsxhorknu2ebqko4te",
-      "pass": true
-    },
-    {
-      "candidate_id": "channel_SRC-12_0a393a5510225992",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 61,
+      "protected_asset_distance": 45,
       "top_index_match_asset_id": "bafybeiaqbojqsx7q2lt4b2znsyndiuolajxo72dd5nmuheevwuzjtlqy4q",
       "pass": true
     }
