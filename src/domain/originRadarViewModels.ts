@@ -178,8 +178,8 @@ function buildAlert(
     baseTimeline: [
       { t: asset?.uploaded_at, zh: "原創影像簽署封存", en: "Original sealed" },
       { t: asset?.uploaded_at, zh: "數位指紋寫入指紋庫", en: "Fingerprint indexed" },
-      { t: alert.retrieved_at, zh: "通路巡檢偵測到高相似影像", en: "Patrol detected high-similarity image" },
-      { t: alert.retrieved_at, zh: "證據快照待人工複審", en: "Evidence snapshot pending human review" },
+      { t: alert.retrieved_at, zh: "保險層發現高相似使用線索", en: "Insurance layer surfaced a high-similarity use lead" },
+      { t: alert.retrieved_at, zh: "來源快照待人工複審", en: "Source snapshot pending human review" },
     ],
   };
 }
