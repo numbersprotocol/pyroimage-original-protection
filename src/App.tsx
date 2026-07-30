@@ -49,7 +49,7 @@ import {
  * workflow demonstrations (local state only — no backend writes).
  * ============================================================ */
 
-type View = "dashboard" | "verify" | "alerts" | "case" | "vault" | "channels" | "reports";
+type View = "ecosystem" | "dashboard" | "verify" | "alerts" | "case" | "vault" | "channels" | "reports";
 type CasesTab = "open" | "confirmed" | "reports";
 type DemoCaseState = "open" | "confirmed" | "reported";
 
@@ -164,8 +164,9 @@ const NAV: Array<{
   descZh: string;
   descEn: string;
 }> = [
-  // Task-oriented IA (redesign 2026-07-10): home → verify → cases → vault → sources.
-  { id: "dashboard", icon: LayoutDashboard, zh: "總覽", en: "Home", eyebrow: "HOME", descZh: "現在安全嗎、要做什麼", descEn: "Am I safe & what to do next" },
+  // Task-oriented IA: ecosystem front → backend console → verify → cases → vault → sources.
+  { id: "ecosystem", icon: ShieldCheck, zh: "生態系前台", en: "Ecosystem", eyebrow: "FRONT", descZh: "原創流向媒體，價值回創作者", descEn: "Originals to media, value to creators" },
+  { id: "dashboard", icon: LayoutDashboard, zh: "後台總覽", en: "Console", eyebrow: "BACK", descZh: "巡檢狀態與後台任務", descEn: "Patrol status & backend tasks" },
   { id: "verify", icon: ShieldCheck, zh: "查一張圖", en: "Verify", eyebrow: "VERIFY", descZh: "用圖前，先查來源與授權", descEn: "Check origin before using an image" },
   { id: "alerts", icon: Bell, zh: "警報與存證", en: "Cases", eyebrow: "CASES", descZh: "疑似盜用複審、法務報告", descEn: "Review alerts & evidence reports" },
   { id: "vault", icon: Images, zh: "我的原創", en: "Vault", eyebrow: "VAULT", descZh: "已簽署保護的原創作品", descEn: "Signed & protected originals" },
@@ -232,7 +233,7 @@ export function TtdMvpDashboard() {
   const [locale, setLocale] = useState<Locale>(getInitialLocale);
   const [clock, setClock] = useState<string>(() => formatClock(new Date()));
 
-  const [view, setView] = useState<View>("dashboard");
+  const [view, setView] = useState<View>("ecosystem");
   const [activeCaseId, setActiveCaseId] = useState<string | null>(null);
   const [certAssetId, setCertAssetId] = useState<string | null>(null);
   const [toast, setToast] = useState<{ msg: string; kind: "ok" | "alert" } | null>(null);
@@ -668,6 +669,21 @@ export function TtdMvpDashboard() {
             </div>
           )}
 
+          {view === "ecosystem" && (
+            <EcosystemFrontView
+              locale={locale}
+              works={works}
+              protectedDisplay={protectedDisplay}
+              indexedRows={loadState.data.verification.library.indexed_rows}
+              lastRunCandidates={lastRunCandidates}
+              lastRunAlerts={lastRunAlerts}
+              lastPatrol={lastPatrol}
+              onNavigate={go}
+              onOpenCert={(id) => setCertAssetId(id)}
+              showToast={showToast}
+            />
+          )}
+
           {view === "dashboard" && (
             <HomeView
               locale={locale}
@@ -905,6 +921,355 @@ function KpiCard({
         </p>
         {hint && <p className={`mt-1.5 text-[11px] leading-4 ${dark ? "text-[#CEC0A3]" : "text-[#1a1a1a8c]"}`}>{hint}</p>}
       </div>
+    </div>
+  );
+}
+
+/* ---------------- ecosystem front view (Phase 1, first screen) ---------------- */
+
+function EcosystemFrontView({
+  locale,
+  works,
+  protectedDisplay,
+  indexedRows,
+  lastRunCandidates,
+  lastRunAlerts,
+  lastPatrol,
+  onNavigate,
+  onOpenCert,
+  showToast,
+}: {
+  locale: Locale;
+  works: WorkVM[];
+  protectedDisplay: string;
+  indexedRows: number;
+  lastRunCandidates: number;
+  lastRunAlerts: number;
+  lastPatrol: string;
+  onNavigate: (v: View) => void;
+  onOpenCert: (id: string) => void;
+  showToast: (msg: string, kind?: "ok" | "alert") => void;
+}) {
+  const zh = locale === "zh-TW";
+  const protectedNum = Number(protectedDisplay.replace(/,/g, "")) || works.length;
+  const indexingCount = Math.max(0, protectedNum - indexedRows);
+  const waterWorks = works.filter((work) => /水源地|溪流|水資源|water|stream/i.test(`${work.name} ${work.en}`));
+  const topicWorks = (waterWorks.length >= 3 ? waterWorks : works).slice(0, 3);
+  const featuredWorks = (topicWorks.length >= 2 ? topicWorks : works).slice(0, 2);
+
+  const flow = [
+    {
+      n: "01",
+      zh: "原創登錄",
+      en: "Register originals",
+      dZh: "創作者上架作品",
+      dEn: "Creators list their work",
+    },
+    {
+      n: "02",
+      zh: "憑證與指紋",
+      en: "Certificate + fingerprint",
+      dZh: "來源可驗證",
+      dEn: "Origin is verifiable",
+    },
+    {
+      n: "03",
+      zh: "推播給媒體",
+      en: "Push to media",
+      dZh: "進編輯台，不等搜尋",
+      dEn: "Into desks, not search boxes",
+    },
+    {
+      n: "04",
+      zh: "價值回創作者",
+      en: "Value returns",
+      dZh: "授權金流透明",
+      dEn: "Licensing stays traceable",
+    },
+  ];
+
+  const partners = [
+    {
+      name: "PyroImage 伙影",
+      status: zh ? "首發素材夥伴" : "Launch asset partner",
+      stat: protectedDisplay,
+      unit: zh ? "張原創影像" : "original images",
+      desc: zh
+        ? "以真實 PyroImage 原創庫作為第一批可展示素材，已建立來源憑證與巡檢基礎。"
+        : "The first showcase pool uses real PyroImage originals with origin certificates and patrol coverage.",
+      live: true,
+    },
+    {
+      name: zh ? "新聞編輯台 Pilot" : "News desk pilot",
+      status: zh ? "規劃中" : "Planned",
+      stat: "0",
+      unit: zh ? "未宣稱已合作" : "no partnership claimed",
+      desc: zh
+        ? "用於面審示範的角色位，正式接入前不宣稱合作媒體或授權交易。"
+        : "A role placeholder for the demo; no media partnership or license transaction is claimed before onboarding.",
+      live: false,
+    },
+    {
+      name: zh ? "國際媒體需求" : "Global media demand",
+      status: zh ? "下一階段" : "Next stage",
+      stat: "TBD",
+      unit: zh ? "台灣到全球" : "Taiwan to global",
+      desc: zh
+        ? "先讓台灣媒體用到可信素材，再把台灣原創推向關心台灣的全球編輯台。"
+        : "Start with Taiwan desks, then push verified Taiwan originals to global editors who care about Taiwan.",
+      live: false,
+    },
+  ];
+
+  const requestLicense = (work: WorkVM, license: string) => {
+    showToast(
+      zh
+        ? `示範：已送出「${work.name}」${license}申請預覽，正式版會通知權利人`
+        : `Demo: ${license} request preview sent for “${work.name}”; production notifies the rights holder`,
+    );
+  };
+
+  return (
+    <div className="max-w-[1240px] px-5 py-6 md:px-8">
+      {/* Hero + ecosystem map */}
+      <section className="grid gap-5 lg:grid-cols-[0.78fr_1.22fr] lg:items-stretch">
+        <div className="flex min-h-[420px] flex-col justify-between rounded-[16px] bg-[#1A1A1A] p-6 text-[#F4E9D5] sm:p-8">
+          <div>
+            <p className="flex items-center gap-2 text-[11px] tracking-[0.2em] text-[#8FB49A]" style={{ fontFamily: MONO }}>
+              <span className="ttd-pulse inline-block h-[8px] w-[8px] rounded-full bg-[#8FB49A]" />
+              {zh ? "生態系前台 · ORIGIN VALUE" : "ECOSYSTEM FRONT · ORIGIN VALUE"}
+            </p>
+            <h1 className="mt-5 text-[34px] font-black leading-[1.05] sm:text-[44px]">
+              {zh ? "讓原創流向媒體，讓價值流回創作者。" : "Originals flow to media. Value flows back to creators."}
+            </h1>
+            <p className="mt-4 max-w-[520px] text-[15px] leading-6 text-[#CEC0A3]">
+              {zh
+                ? "原創雷達不是把巡檢當主角，而是把巡檢放在生態系外圈：素材主動進編輯台，授權回到創作者，雷達負責提醒與保險。"
+                : "OriginRadar makes patrol the outer insurance layer: verified assets reach editors, licensing returns to creators, and the radar handles reminders."}
+            </p>
+          </div>
+          <div className="mt-8 grid gap-3 sm:grid-cols-3">
+            {[
+              { k: zh ? "已登錄原創" : "Originals", v: protectedDisplay },
+              { k: zh ? "可即時查驗" : "Indexed", v: indexedRows.toLocaleString("en-US") },
+              { k: zh ? "最近警報" : "Latest alerts", v: String(lastRunAlerts) },
+            ].map((item) => (
+              <div key={item.k} className="rounded-[12px] border border-[#f4e9d526] bg-[#f4e9d50d] px-4 py-3">
+                <p className="text-[24px] font-bold leading-none text-[#8FB49A]" style={{ fontFamily: MONO }}>
+                  {item.v}
+                </p>
+                <p className="mt-1.5 text-[11px] text-[#CEC0A3]">{item.k}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="rounded-[16px] border border-[#1a1a1a14] bg-white p-5 sm:p-6">
+          <div className="mb-4 flex flex-wrap items-end justify-between gap-3">
+            <div>
+              <p className="text-[10px] tracking-[0.18em] text-[#7F9C7E]" style={{ fontFamily: MONO }}>
+                {zh ? "健康生態系循環" : "HEALTHY ECOSYSTEM LOOP"}
+              </p>
+              <h2 className="mt-1 text-[22px] font-black">{zh ? "經紀人 + 素材雷達 + 保險層" : "Agent + asset radar + insurance layer"}</h2>
+            </div>
+            <button
+              type="button"
+              onClick={() => onNavigate("dashboard")}
+              className="rounded-[9px] bg-[#1A1A1A] px-4 py-2 text-[12px] font-semibold text-[#F4E9D5]"
+            >
+              {zh ? "進入後台 →" : "Open console →"}
+            </button>
+          </div>
+
+          <div className="grid gap-3 md:grid-cols-4">
+            {flow.map((step, index) => (
+              <div key={step.n} className="relative rounded-[14px] border border-[#1a1a1a12] bg-[#FBF6EC] p-4">
+                <span
+                  className={`flex h-10 w-10 items-center justify-center rounded-full text-[13px] font-black ${
+                    index === 2 ? "bg-[#7F9C7E] text-[#1A1A1A]" : "bg-[#1A1A1A] text-[#F4E9D5]"
+                  }`}
+                  style={{ fontFamily: MONO }}
+                >
+                  {step.n}
+                </span>
+                <p className="mt-4 text-[15px] font-black leading-tight">{zh ? step.zh : step.en}</p>
+                <p className="mt-1 text-[12px] leading-4 text-[#5c584a]">{zh ? step.dZh : step.dEn}</p>
+                {index < flow.length - 1 && (
+                  <ArrowRight className="absolute -right-4 top-1/2 z-10 hidden -translate-y-1/2 text-[#7F9C7E] md:block" size={22} />
+                )}
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-4 grid gap-3 sm:grid-cols-[1fr_1fr]">
+            <div className="rounded-[12px] bg-[#eef4ea] px-4 py-3 text-[#3f5a3e]">
+              <p className="text-[12px] font-bold">{zh ? "媒體是節點，全民是受益者" : "Media are nodes; everyone benefits"}</p>
+              <p className="mt-1 text-[11.5px] leading-4">
+                {zh ? "編輯台拿到可信、可授權的原創素材，讀者看到的是有來源的影像。" : "Editors receive verifiable, licensable assets; readers see images with origin context."}
+              </p>
+            </div>
+            <div className="rounded-[12px] bg-[#1A1A1A] px-4 py-3 text-[#F4E9D5]">
+              <p className="text-[12px] font-bold text-[#8FB49A]">{zh ? "雷達巡檢 = 保險層" : "Patrol = insurance layer"}</p>
+              <p className="mt-1 text-[11.5px] leading-4 text-[#CEC0A3]">
+                {zh ? `最近 ${lastPatrol} 檢查 ${lastRunCandidates} 筆候選，沒有命中就誠實顯示零。` : `Latest run ${lastPatrol}: ${lastRunCandidates} candidates checked; zero means zero.`}
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* media wall */}
+      <section className="mt-6">
+        <div className="mb-3 flex flex-wrap items-end justify-between gap-2">
+          <h2 className="text-[20px] font-black">{zh ? "合作媒體牆" : "Media wall"}</h2>
+          <p className="text-[12px] text-[#5c584a]">{zh ? "只標示已驗證事實；規劃中不等於已合作。" : "Only verified facts are marked live; planned does not mean partnered."}</p>
+        </div>
+        <div className="grid gap-4 lg:grid-cols-3">
+          {partners.map((partner) => (
+            <div key={partner.name} className={`rounded-[14px] border p-5 ${partner.live ? "border-[#7F9C7E] bg-white" : "border-dashed border-[#1a1a1a26] bg-[#f8f2e3]"}`}>
+              <div className="flex items-start justify-between gap-3">
+                <div>
+                  <p className="text-[16px] font-black">{partner.name}</p>
+                  <p className="mt-1 text-[11px] text-[#5c584a]">{partner.status}</p>
+                </div>
+                <span
+                  className={`rounded-full px-2.5 py-1 text-[10px] font-semibold ${
+                    partner.live ? "bg-[#eef4ea] text-[#4f6a4e]" : "bg-[#ece2cf] text-[#7d756a]"
+                  }`}
+                  style={{ fontFamily: MONO }}
+                >
+                  {partner.live ? (zh ? "已上線" : "LIVE") : (zh ? "規劃中" : "PLANNED")}
+                </span>
+              </div>
+              <p className="mt-4 text-[32px] font-bold leading-none" style={{ fontFamily: MONO, color: partner.live ? C.greenDeep : C.ink }}>
+                {partner.stat}
+              </p>
+              <p className="mt-1 text-[11px] tracking-[0.08em] text-[#8d8873]" style={{ fontFamily: MONO }}>
+                {partner.unit}
+              </p>
+              <p className="mt-3 text-[12.5px] leading-5 text-[#5c584a]">{partner.desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* licensable library */}
+      <section className="mt-6 grid gap-5 xl:grid-cols-[0.88fr_1.12fr]">
+        <div className="rounded-[14px] border border-[#1a1a1a14] bg-white p-5">
+          <p className="text-[10px] tracking-[0.18em] text-[#7F9C7E]" style={{ fontFamily: MONO }}>
+            {zh ? "可授權素材庫" : "LICENSABLE ORIGINALS"}
+          </p>
+          <h2 className="mt-1 text-[21px] font-black">{zh ? "從真實 PyroImage 原創庫挑主視覺" : "Showcase real PyroImage originals"}</h2>
+          <p className="mt-2 text-[13px] leading-5 text-[#5c584a]">
+            {zh
+              ? `目前 MVP 已有 ${protectedDisplay} 張原創基準，其中 ${indexedRows.toLocaleString("en-US")} 張可即時查驗，其餘 ${indexingCount.toLocaleString("en-US")} 張批次索引中。授權標籤為面審示範，不代表已成交。`
+              : `The MVP baseline has ${protectedDisplay} originals; ${indexedRows.toLocaleString("en-US")} are verifiable now and ${indexingCount.toLocaleString("en-US")} are being indexed. License tags are demo labels, not completed transactions.`}
+          </p>
+          <button
+            type="button"
+            onClick={() => onNavigate("vault")}
+            className="mt-4 rounded-[9px] bg-[#4f6a4e] px-4 py-2.5 text-[12px] font-semibold text-white"
+          >
+            {zh ? "打開原創庫後台 →" : "Open vault console →"}
+          </button>
+        </div>
+
+        <div className="grid gap-4 md:grid-cols-2">
+          {featuredWorks.map((work, index) => {
+            const license = index === 0 ? (zh ? "非獨家授權（示範）" : "Non-exclusive license (demo)") : (zh ? "獨家授權洽談（示範）" : "Exclusive option (demo)");
+            return (
+              <article key={work.assetId} className="overflow-hidden rounded-[14px] border border-[#1a1a1a12] bg-white">
+                <div className="relative">
+                  <Thumb src={work.thumb} grad={work.grad} className="aspect-[16/10] w-full" />
+                  <div className="absolute left-3 top-3 flex flex-wrap gap-2">
+                    <span className="rounded-full bg-[#1A1A1Ad9] px-2.5 py-1 text-[10px] font-semibold text-[#F4E9D5]" style={{ fontFamily: MONO }}>
+                      {zh ? "原創憑證" : "Origin cert"}
+                    </span>
+                    <span className="rounded-full bg-[#7F9C7Ee8] px-2.5 py-1 text-[10px] font-semibold text-[#1A1A1A]">
+                      {license}
+                    </span>
+                  </div>
+                </div>
+                <div className="p-4">
+                  <p className="text-[15px] font-black">{work.en || work.name}</p>
+                  <p className="mt-1 text-[11px] text-[#5c584a]" style={{ fontFamily: MONO }}>
+                    {zh ? "創作者 / 權利人：" : "Creator / holder: "}
+                    {work.author}
+                  </p>
+                  <div className="mt-3 flex flex-wrap gap-2">
+                    <button
+                      type="button"
+                      onClick={() => onOpenCert(work.assetId)}
+                      className="rounded-[8px] border border-[#1a1a1a26] px-3 py-1.5 text-[11.5px] font-semibold hover:bg-[#FBF6EC]"
+                    >
+                      {zh ? "看憑證" : "View certificate"}
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => requestLicense(work, index === 0 ? (zh ? "非獨家授權" : "non-exclusive license") : (zh ? "獨家授權" : "exclusive license"))}
+                      className="rounded-[8px] bg-[#1A1A1A] px-3 py-1.5 text-[11.5px] font-semibold text-[#F4E9D5]"
+                    >
+                      {zh ? "取得授權（示範）" : "Request license (demo)"}
+                    </button>
+                  </div>
+                </div>
+              </article>
+            );
+          })}
+        </div>
+      </section>
+
+      {/* topic push demo */}
+      <section className="mt-6 rounded-[16px] border border-[#1a1a1a14] bg-white p-5 sm:p-6">
+        <div className="mb-4 flex flex-wrap items-end justify-between gap-3">
+          <div>
+            <p className="text-[10px] tracking-[0.18em] text-[#ED5D29]" style={{ fontFamily: MONO }}>
+              {zh ? "議題推播示範 · DEMO" : "TOPIC PUSH DEMO"}
+            </p>
+            <h2 className="mt-1 text-[22px] font-black">{zh ? "編輯台議題：水資源與環境現場" : "Editor topic: water resources and field environment"}</h2>
+            <p className="mt-1 text-[13px] text-[#5c584a]">
+              {zh ? "主動推播，不是被動搜尋。下列卡片皆來自現有真實縮圖；授權動作為示範。" : "Push, not passive search. These cards use existing real thumbnails; licensing actions are demos."}
+            </p>
+          </div>
+          <button
+            type="button"
+            onClick={() => showToast(zh ? "示範：已把 3 張已驗證素材推進編輯台候選清單" : "Demo: 3 verified assets pushed into the editor shortlist")}
+            className="rounded-[9px] bg-[#ED5D29] px-4 py-2.5 text-[12px] font-semibold text-white"
+          >
+            {zh ? "推播 3 張素材（示範）" : "Push 3 assets (demo)"}
+          </button>
+        </div>
+
+        <div className="grid gap-4 md:grid-cols-3">
+          {topicWorks.map((work) => (
+            <article key={work.assetId} className="overflow-hidden rounded-[13px] border border-[#1a1a1a12] bg-[#FBF6EC]">
+              <Thumb src={work.thumb} grad={work.grad} className="aspect-[16/10] w-full" />
+              <div className="p-4">
+                <p className="text-[14px] font-black">{work.en || work.name}</p>
+                <p className="mt-1 text-[11px] text-[#5c584a]">
+                  {zh ? "已驗證原創 · 可進稿件候選" : "Verified original · ready for editor shortlist"}
+                </p>
+                <div className="mt-3 flex items-center justify-between gap-2">
+                  <button
+                    type="button"
+                    onClick={() => onOpenCert(work.assetId)}
+                    className="text-[11.5px] font-bold text-[#4f6a4e]"
+                  >
+                    {zh ? "憑證 →" : "Cert →"}
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => requestLicense(work, zh ? "一鍵授權" : "one-click license")}
+                    className="rounded-[8px] bg-[#1A1A1A] px-3 py-1.5 text-[11.5px] font-semibold text-[#F4E9D5]"
+                  >
+                    {zh ? "一鍵取得授權（示範）" : "One-click license (demo)"}
+                  </button>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
     </div>
   );
 }
