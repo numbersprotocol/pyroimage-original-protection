@@ -42,7 +42,7 @@ import {
 } from "./domain/originRadarViewModels";
 
 /* ============================================================
- * OriginRadar · Original-image theft detection (PyroImage MVP)
+ * OriginRadar · Original-value ecosystem (PyroImage MVP)
  * UI = provenance-patrol console. Backend architecture unchanged:
  * every substantive value is read from the shipped patrol JSON
  * data files. Interactive scan / case actions are clearly-labelled
@@ -142,15 +142,15 @@ const T = {
   tagline: "HUMAN TRUTH. MACHINE PROOF.",
   brand: { "zh-TW": "原創雷達", en: "OriginRadar" },
   brandSub: {
-    "zh-TW": "原創影像盜用偵測 · Powered by Numbers",
-    en: "Original-image theft detection · Powered by Numbers",
+    "zh-TW": "原創價值生態系 · Powered by Numbers",
+    en: "Original-value ecosystem · Powered by Numbers",
   },
   menu: { "zh-TW": "主選單 · MENU", en: "Menu" },
-  runPatrol: { "zh-TW": "執行巡檢", en: "Run patrol" },
+  runPatrol: { "zh-TW": "查看保險層", en: "Review insurance layer" },
   coverage: { "zh-TW": "保護範圍 · COVERAGE", en: "Coverage" },
   protectedOriginals: { "zh-TW": "受保護原創影像", en: "protected originals" },
-  channels: { "zh-TW": "監控通路", en: "channels" },
-  back: { "zh-TW": "← 返回警報列表", en: "← Back to alerts" },
+  channels: { "zh-TW": "保險層來源", en: "insurance sources" },
+  back: { "zh-TW": "← 返回提醒列表", en: "← Back to reminders" },
   demo: { "zh-TW": "MVP 試營運", en: "MVP Pilot" },
   howItWorks: { "zh-TW": "導覽", en: "How it works" },
 } as const;
@@ -166,11 +166,11 @@ const NAV: Array<{
 }> = [
   // Task-oriented IA: ecosystem front → backend console → verify → cases → vault → sources.
   { id: "ecosystem", icon: ShieldCheck, zh: "生態系前台", en: "Ecosystem", eyebrow: "FRONT", descZh: "原創流向媒體，價值回創作者", descEn: "Originals to media, value to creators" },
-  { id: "dashboard", icon: LayoutDashboard, zh: "後台總覽", en: "Console", eyebrow: "BACK", descZh: "巡檢狀態與後台任務", descEn: "Patrol status & backend tasks" },
+  { id: "dashboard", icon: LayoutDashboard, zh: "後台總覽", en: "Console", eyebrow: "BACK", descZh: "媒體自查與創作者提醒", descEn: "Editor checks & creator reminders" },
   { id: "verify", icon: ShieldCheck, zh: "查一張圖", en: "Verify", eyebrow: "VERIFY", descZh: "用圖前，先查來源與授權", descEn: "Check origin before using an image" },
-  { id: "alerts", icon: Bell, zh: "警報與存證", en: "Cases", eyebrow: "CASES", descZh: "疑似盜用複審、法務報告", descEn: "Review alerts & evidence reports" },
+  { id: "alerts", icon: Bell, zh: "提醒與存證", en: "Reminders", eyebrow: "CASES", descZh: "高相似提醒、授權溝通報告", descEn: "Similarity reminders & licensing reports" },
   { id: "vault", icon: Images, zh: "我的原創", en: "Vault", eyebrow: "VAULT", descZh: "已簽署保護的原創作品", descEn: "Signed & protected originals" },
-  { id: "channels", icon: Radar, zh: "監控通路", en: "Channels", eyebrow: "SOURCES", descZh: "巡檢範圍與通路狀態", descEn: "Patrol scope & channel status" },
+  { id: "channels", icon: Radar, zh: "保險來源", en: "Sources", eyebrow: "SOURCES", descZh: "保險層來源與導入狀態", descEn: "Insurance-layer source status" },
 ];
 
 /* ---------------- presentational atoms ---------------- */
@@ -347,8 +347,8 @@ export function TtdMvpDashboard() {
         setScanning(false);
         showToast(
           locale === "zh-TW"
-            ? "已播放最近巡檢流程：未發現新的真實侵權"
-            : "Latest patrol replayed: no new real infringement found",
+            ? "已播放最近保險層紀錄：沒有新的提醒需要處理"
+            : "Latest insurance-layer run replayed: no new reminders need action",
           "ok",
         );
       } else {
@@ -361,7 +361,7 @@ export function TtdMvpDashboard() {
   const caseAction = (type: "dmca" | "report" | "archive" | "contact" | "dismiss", alert: AlertVM) => {
     const now = formatClock(new Date());
     const events: Record<typeof type, TimelineItem> = {
-      dmca: { t: now, zh: "已在本案軌跡記錄 DMCA 下架通知", en: "Logged DMCA takedown in this case trail" },
+      dmca: { t: now, zh: "已在本案軌跡記錄友善提醒通知", en: "Logged a friendly reminder in this case trail" },
       report: { t: now, zh: "已在本頁建立存證報告預覽", en: "Created an evidence-report preview in this page" },
       archive: { t: now, zh: "已在本案軌跡記錄證據封存", en: "Logged evidence archive in this case trail" },
       contact: { t: now, zh: "已在本案軌跡記錄聯絡通知", en: "Logged contact notice in this case trail" },
@@ -383,7 +383,7 @@ export function TtdMvpDashboard() {
       ]);
     }
     const msg: Record<typeof type, string> = {
-      dmca: locale === "zh-TW" ? "已在本案軌跡記錄下架通知" : "Takedown notice logged in this case trail",
+      dmca: locale === "zh-TW" ? "已在本案軌跡記錄友善提醒" : "Friendly reminder logged in this case trail",
       report: locale === "zh-TW" ? "已建立本頁存證報告預覽" : "Evidence-report preview created in this page",
       archive: locale === "zh-TW" ? "已在本案軌跡記錄封存動作" : "Archive action logged in this case trail",
       contact: locale === "zh-TW" ? "已在本案軌跡記錄聯絡通知" : "Contact notice logged in this case trail",
@@ -446,24 +446,24 @@ export function TtdMvpDashboard() {
   const patrolModeLabel = (() => {
     const adapter = loadState.data.monitoring.adapter;
     if (adapter?.id?.includes("visionWebDetection") && adapter.id.includes("namedChannelCrawler") && adapter.paid_api_used) {
-      return locale === "zh-TW" ? "巡檢模式：Vision + 公開通路自動巡檢" : "Mode: Vision + public-channel auto patrol";
+      return locale === "zh-TW" ? "保險層：Vision + 公開通路自動巡檢" : "Insurance layer: Vision + public-channel patrol";
     }
     if (adapter?.id?.includes("visionWebDetection") && adapter.id.includes("namedChannelCrawler")) {
-      return locale === "zh-TW" ? "巡檢模式：Vision 試跑 + 公開通路自動巡檢" : "Mode: Vision dry run + public-channel auto patrol";
+      return locale === "zh-TW" ? "保險層：Vision 試跑 + 公開通路自動巡檢" : "Insurance layer: Vision dry run + public-channel patrol";
     }
     if (adapter?.id === "visionWebDetection" && adapter.paid_api_used) {
-      return locale === "zh-TW" ? "巡檢模式：Vision 真實巡檢（預算控管）" : "Mode: live Vision patrol (budget guarded)";
+      return locale === "zh-TW" ? "保險層：Vision 真實巡檢（預算控管）" : "Insurance layer: live Vision patrol (budget guarded)";
     }
     if (adapter?.id === "visionWebDetection") {
-      return locale === "zh-TW" ? "巡檢模式：Vision 試跑（不計費）" : "Mode: Vision dry run (no cost)";
+      return locale === "zh-TW" ? "保險層：Vision 試跑（不計費）" : "Insurance layer: Vision dry run (no cost)";
     }
     if (adapter?.id === "namedChannelCrawler") {
-      return locale === "zh-TW" ? "巡檢模式：公開通路自動巡檢" : "Mode: public-channel auto patrol";
+      return locale === "zh-TW" ? "保險層：公開通路自動巡檢" : "Insurance layer: public-channel patrol";
     }
     if (adapter?.id === "seedUrls") {
-      return locale === "zh-TW" ? "巡檢模式：真實抓取種子來源（零付費）" : "Mode: real seed-source fetch (zero cost)";
+      return locale === "zh-TW" ? "保險層：真實抓取種子來源（零付費）" : "Insurance layer: real seed-source fetch (zero cost)";
     }
-    return locale === "zh-TW" ? "巡檢模式：讀取最新巡檢產物" : "Mode: latest patrol artifact";
+    return locale === "zh-TW" ? "保險層：讀取最新巡檢產物" : "Insurance layer: latest patrol artifact";
   })();
   const patrolStatus = (() => {
     const raw = loadState.data.monitoring.status || "unknown";
@@ -471,7 +471,7 @@ export function TtdMvpDashboard() {
     if (raw === "completed_with_candidate_errors") {
       return locale === "zh-TW" ? "已完成（部分候選圖無法存取）" : "completed, some candidates unreachable";
     }
-    if (raw === "unknown") return locale === "zh-TW" ? "尚無巡檢紀錄" : "no patrol record yet";
+    if (raw === "unknown") return locale === "zh-TW" ? "尚無保險層紀錄" : "no insurance-layer record yet";
     return raw.replace(/_/g, " ");
   })();
 
@@ -514,8 +514,8 @@ export function TtdMvpDashboard() {
             style={{ fontFamily: MONO }}
             title={
               locale === "zh-TW"
-                ? "MVP 試營運：背景巡檢讀取真實 patrol artifact；頁面上的下架、匯出、聯絡操作仍為安全示範"
-                : "MVP pilot: background patrol reads real patrol artifacts; takedown, export, and contact actions remain safe UI demos"
+                ? "MVP 試營運：保險層讀取真實巡檢產物；頁面上的提醒、匯出、聯絡操作仍為安全示範"
+                : "MVP pilot: the insurance layer reads real patrol artifacts; reminder, export, and contact actions remain safe UI demos"
             }
           >
             {T.demo[locale].toUpperCase()}
@@ -826,10 +826,10 @@ function ScanOverlay({ pct, channel, locale }: { pct: number; channel: string; l
       <div className="w-[430px] max-w-[90%] rounded-[16px] border border-[#7f9c7e66] bg-[#1A1A1A] px-10 py-9 text-center">
         <Radar size={48} className="mx-auto animate-spin text-[#7F9C7E]" style={{ animationDuration: "1.4s" }} />
         <p className="mt-4 text-base font-semibold text-[#F4E9D5]">
-          {locale === "zh-TW" ? "最近巡檢流程" : "Latest patrol replay"}
+          {locale === "zh-TW" ? "最近保險層流程" : "Latest insurance-layer replay"}
         </p>
         <p className="mt-1.5 text-xs text-[#CEC0A3]" style={{ fontFamily: MONO }}>
-          {locale === "zh-TW" ? "掃描通路：" : "Scanning: "}
+          {locale === "zh-TW" ? "檢查來源：" : "Checking: "}
           {channel}
         </p>
         <div className="mt-4 h-1.5 overflow-hidden rounded-full bg-[#f4e9d526]">
@@ -1021,6 +1021,29 @@ function EcosystemFrontView({
     },
   ];
 
+  const backendRoles = [
+    {
+      label: zh ? "媒體編輯" : "Media editor",
+      title: zh ? "這張圖會不會不小心盜用？" : "Could this image accidentally misuse someone else's work?",
+      desc: zh
+        ? "發稿前先查來源、權利人與授權脈絡，把不確定的圖擋在發布前。"
+        : "Before publishing, check origin, rights holder, and license context so uncertain images stop before release.",
+      action: zh ? "媒體自查 →" : "Editor self-check →",
+      view: "verify" as View,
+      accent: C.greenDeep,
+    },
+    {
+      label: zh ? "創作者 / 權利人" : "Creator / rights holder",
+      title: zh ? "被使用時，誰會提醒我？" : "Who reminds me when my work is used?",
+      desc: zh
+        ? "保險層每天巡檢指定來源；發現高相似使用時，先提醒複審，再回到授權溝通。"
+        : "The insurance layer checks specified sources daily; high-similarity use becomes a reminder for review, then licensing outreach.",
+      action: zh ? "看提醒後台 →" : "Open reminders →",
+      view: "alerts" as View,
+      accent: C.orange,
+    },
+  ];
+
   const requestLicense = (work: WorkVM, license: string) => {
     showToast(
       zh
@@ -1052,7 +1075,7 @@ function EcosystemFrontView({
             {[
               { k: zh ? "已登錄原創" : "Originals", v: protectedDisplay },
               { k: zh ? "可即時查驗" : "Indexed", v: indexedRows.toLocaleString("en-US") },
-              { k: zh ? "最近警報" : "Latest alerts", v: String(lastRunAlerts) },
+              { k: zh ? "待處理提醒" : "Latest reminders", v: String(lastRunAlerts) },
             ].map((item) => (
               <div key={item.k} className="rounded-[12px] border border-[#f4e9d526] bg-[#f4e9d50d] px-4 py-3">
                 <p className="text-[24px] font-bold leading-none text-[#8FB49A]" style={{ fontFamily: MONO }}>
@@ -1115,6 +1138,44 @@ function EcosystemFrontView({
               </p>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* backend role entrances */}
+      <section className="mt-6 rounded-[16px] border border-[#1a1a1a14] bg-white p-5 sm:p-6">
+        <div className="mb-4 flex flex-wrap items-end justify-between gap-3">
+          <div>
+            <p className="text-[10px] tracking-[0.18em] text-[#7F9C7E]" style={{ fontFamily: MONO }}>
+              {zh ? "後台入口 · TWO ROLES" : "CONSOLE ENTRANCES · TWO ROLES"}
+            </p>
+            <h2 className="mt-1 text-[22px] font-black">{zh ? "同一個保險層，服務兩種使用者" : "One insurance layer, two user jobs"}</h2>
+          </div>
+          <button
+            type="button"
+            onClick={() => onNavigate("dashboard")}
+            className="rounded-[9px] border border-[#1a1a1a26] px-4 py-2 text-[12px] font-semibold hover:bg-[#FBF6EC]"
+          >
+            {zh ? "看完整後台 →" : "Full console →"}
+          </button>
+        </div>
+        <div className="grid gap-4 md:grid-cols-2">
+          {backendRoles.map((role) => (
+            <button
+              key={role.label}
+              type="button"
+              onClick={() => onNavigate(role.view)}
+              className="group flex min-h-[164px] flex-col items-start justify-between rounded-[14px] border border-[#1a1a1a12] bg-[#FBF6EC] p-5 text-left transition-all hover:-translate-y-0.5 hover:border-[#7F9C7E] hover:shadow-[0_8px_26px_rgba(60,50,20,0.10)]"
+            >
+              <span className="rounded-full px-2.5 py-1 text-[10px] font-bold text-white" style={{ background: role.accent, fontFamily: MONO }}>
+                {role.label}
+              </span>
+              <span className="mt-4 block text-[22px] font-black leading-tight">{role.title}</span>
+              <span className="mt-2 block flex-1 text-[13px] leading-5 text-[#5c584a]">{role.desc}</span>
+              <span className="mt-4 flex items-center gap-1.5 text-[13px] font-black text-[#4f6a4e]">
+                {role.action} <ArrowRight size={14} />
+              </span>
+            </button>
+          ))}
         </div>
       </section>
 
@@ -1320,42 +1381,42 @@ function HomeView(props: {
 
   const tasks: Array<{ q: string; title: string; stat?: string; unit?: string; desc: string; goText: string; onGo: () => void }> = [
     {
-      q: zh ? "TASK 01 · 用圖前" : "TASK 01 · BEFORE USING",
-      title: zh ? "這張圖能不能用？" : "Can I use this image?",
+      q: zh ? "媒體入口 · 用圖前" : "MEDIA · BEFORE USING",
+      title: zh ? "這張圖會不會不小心盜用？" : "Could this image accidentally misuse someone's work?",
       desc: zh
-        ? "貼上圖片網址或用範例查驗，立即查它的來源憑證、權利人與授權脈絡，避免誤用來源不明素材。"
-        : "Paste an image URL or run a sample check to see its origin certificate, rights holder, and license context before using it.",
-      goText: zh ? "前往查驗" : "Go verify",
+        ? "貼上圖片網址或用範例查驗，先確認來源憑證、權利人與授權脈絡，再決定是否採用。"
+        : "Paste an image URL or run a sample check to confirm origin certificate, rights holder, and license context before using it.",
+      goText: zh ? "媒體自查" : "Editor self-check",
       onGo: () => props.onNavigate("verify"),
     },
     {
-      q: zh ? "TASK 02 · 發布後" : "TASK 02 · AFTER PUBLISHING",
-      title: zh ? "我的作品有被拿去用嗎？" : "Is my work being used?",
+      q: zh ? "創作者入口 · 發布後" : "CREATOR · AFTER PUBLISHING",
+      title: zh ? "被使用時，誰會提醒我？" : "Who reminds me when my work is used?",
       stat: openCount.toString(),
-      unit: zh ? "件疑似盜用" : "suspected copies",
+      unit: zh ? "則待複審提醒" : "reminders to review",
       desc: zh
-        ? "系統每天自動比對監控通路上的候選影像，發現高相似使用就會在這裡向你警報。"
-        : "The system compares candidate images from monitored channels daily and alerts you on high-similarity use.",
-      goText: zh ? "查看警報" : "Open alerts",
+        ? "保險層每天比對指定來源；發現高相似使用時，先提醒你複審，再回到正版授權溝通。"
+        : "The insurance layer compares specified sources daily; high-similarity use becomes a reminder, then licensing outreach.",
+      goText: zh ? "查看提醒" : "Open reminders",
       onGo: () => props.onOpenCases("open"),
     },
     {
-      q: zh ? "TASK 03 · 需要行動時" : "TASK 03 · WHEN ACTION IS NEEDED",
-      title: zh ? "要提出主張怎麼辦？" : "How do I make a claim?",
+      q: zh ? "溝通入口 · 需要處理時" : "OUTREACH · WHEN ACTION IS NEEDED",
+      title: zh ? "如何讓使用回到正版授權？" : "How do we bring use back to licensed originals?",
       stat: reportCount.toString(),
       unit: zh ? "份存證報告" : "evidence reports",
       desc: zh
-        ? "確認侵權後，產生含電子憑證與來源軌跡的存證報告，可交付法務或作為授權溝通依據。"
-        : "After confirming infringement, generate an evidence report with certificates and a source trail for legal or licensing use.",
-      goText: zh ? "前往存證" : "Open reports",
+        ? "確認需要處理後，產生含電子憑證與來源軌跡的報告，作為善意提醒、授權溝通或法務交付依據。"
+        : "After review, generate a report with certificates and source trail for a friendly reminder, licensing conversation, or legal handoff.",
+      goText: zh ? "看存證報告" : "Open reports",
       onGo: () => props.onOpenCases("reports"),
     },
   ];
 
   const onbItems: Array<{ t: string; d: string; onGo: () => void; done: boolean }> = [
     {
-      t: zh ? "走一遍示範案件" : "Walk through the demo case",
-      d: zh ? "體驗「發現 → 複審 → 確認 → 存證」完整流程" : "Experience the full detect → review → confirm → certify flow",
+      t: zh ? "走一遍提醒示範" : "Walk through a reminder demo",
+      d: zh ? "體驗「發現 → 複審 → 確認需處理 → 存證」流程" : "Experience detect → review → confirm action → certify",
       onGo: () => props.onOpenCases("open"),
       done: onb.steps[0],
     },
@@ -1381,9 +1442,9 @@ function HomeView(props: {
       actionText: zh ? "簽署新作品 →" : "Sign a new work →",
       onAction: props.onOpenSign,
     },
-    { n: "STEP 02", t: zh ? "雷達巡檢" : "Patrol", d: zh ? "Vision 與公開通路每日自動尋找網路上的相似影像。" : "Vision and public channels search the web for similar images daily." },
-    { n: "STEP 03", t: zh ? "警報複審" : "Review", d: zh ? "高相似候選自動警報，由你人工確認是否為真實侵權。" : "High-similarity candidates raise alerts; you confirm real infringement." },
-    { n: "STEP 04", t: zh ? "存證交付" : "Certify", d: zh ? "產生上鏈存證報告，交付法務或啟動授權溝通。" : "Generate an on-chain evidence report for legal handoff or licensing." },
+    { n: "STEP 02", t: zh ? "保險層巡檢" : "Insurance patrol", d: zh ? "Vision 與公開通路每日尋找高相似使用，作為提醒線索。" : "Vision and public channels look for high-similarity use as reminder leads." },
+    { n: "STEP 03", t: zh ? "提醒複審" : "Reminder review", d: zh ? "高相似候選先進入提醒，由你確認是否需要溝通。" : "High-similarity candidates become reminders; you decide whether outreach is needed." },
+    { n: "STEP 04", t: zh ? "授權溝通" : "Licensing outreach", d: zh ? "產生可驗證報告，作為善意提醒、授權或法務溝通依據。" : "Generate a verifiable report for reminders, licensing, or legal handoff." },
   ];
 
   return (
@@ -1393,13 +1454,13 @@ function HomeView(props: {
         {zh ? "總覽 · ORIGINRADAR" : "HOME · ORIGINRADAR"}
       </p>
       <h1 className="text-[26px] font-black leading-tight sm:text-[32px]">
-        {zh ? "替你的原創影像站崗" : "Standing guard over your originals"}
+        {zh ? "媒體自查與創作者提醒後台" : "Console for editor checks and creator reminders"}
       </h1>
       <p className="mt-2 max-w-[640px] text-[14.5px] leading-6 text-[#5c584a]">
         {zh ? (
-          <>原創雷達替每張作品建立數位指紋，持續巡檢公開網路。<b>作品被使用、轉載、改作之前</b>，你就有可追溯的來源、可檢查的授權脈絡，與可行動的報告。</>
+          <>這裡是生態系的後台保險層：媒體在用圖前先自查來源；創作者在作品被使用時收到提醒，讓溝通回到正版授權。</>
         ) : (
-          <>OriginRadar fingerprints every work and keeps patrolling the public web — so <b>before your work is used, reposted, or adapted</b>, you already have traceable origin, checkable license context, and actionable reports.</>
+          <>This is the ecosystem's backend insurance layer: editors check origin before using images; creators receive reminders when their work is used, so outreach returns to licensed originals.</>
         )}
       </p>
 
@@ -1420,21 +1481,21 @@ function HomeView(props: {
           <span className="block text-[18px] font-black sm:text-[20px]">
             {allClear
               ? zh
-                ? "目前一切正常，沒有發現疑似盜用"
-                : "All clear — no suspected copies found"
+                ? "保險層目前沒有待處理提醒"
+                : "Insurance layer is clear — no reminders need action"
               : zh
-              ? `有 ${openCount} 件疑似盜用等你複審`
-              : `${openCount} suspected cop${openCount === 1 ? "y" : "ies"} awaiting your review`}
+              ? `有 ${openCount} 則提醒等你複審`
+              : `${openCount} reminder${openCount === 1 ? "" : "s"} awaiting your review`}
           </span>
           <span className="mt-0.5 block text-[13px] text-[#5c584a]">
             {zh
-              ? `最近一次巡檢（${lastPatrol}）檢查了 ${lastRunCandidates} 筆網路候選影像，${lastRunAlerts === 0 ? "皆未達疑似盜用門檻" : `${lastRunAlerts} 筆達門檻並已建立警報`}。`
-              : `The latest patrol (${lastPatrol}) checked ${lastRunCandidates} web candidates; ${lastRunAlerts === 0 ? "none crossed the suspected-copy threshold" : `${lastRunAlerts} crossed the threshold and raised alerts`}.`}
+              ? `最近一次保險層巡檢（${lastPatrol}）檢查了 ${lastRunCandidates} 筆網路候選影像，${lastRunAlerts === 0 ? "都不需要提醒處理" : `${lastRunAlerts} 筆已列入提醒複審`}。`
+              : `The latest insurance-layer run (${lastPatrol}) checked ${lastRunCandidates} web candidates; ${lastRunAlerts === 0 ? "none needed a reminder" : `${lastRunAlerts} became review reminders`}.`}
           </span>
         </span>
         <span className="flex-none text-left sm:text-right">
           <span className="block text-[10px] tracking-[0.15em] text-[#8d8873]" style={{ fontFamily: MONO }}>
-            {zh ? "確認侵權 / 待複審" : "CONFIRMED / TO REVIEW"}
+            {zh ? "確認需處理 / 待提醒" : "ACTION NEEDED / REMINDERS"}
           </span>
           <span className="mt-1 block text-[14px] font-bold" style={{ fontFamily: MONO }}>
             {suspectedActual}{zh ? " 件" : ""} / {openCount}{zh ? " 件" : ""}
@@ -1524,8 +1585,8 @@ function HomeView(props: {
         <ShieldCheck size={15} className="mt-0.5 flex-none text-[#4f6a4e]" />
         <span>
           {zh
-            ? `目前真實侵權案件：${suspectedActual} 件。警報頁的示範案件僅供體驗流程，不列入統計。`
-            : `Real infringement cases so far: ${suspectedActual}. The demo case on the Cases page is for walkthrough only and is never counted.`}
+            ? `目前確認需處理的真實案件：${suspectedActual} 件。提醒頁的示範案件僅供體驗流程，不列入統計。`
+            : `Real cases needing action so far: ${suspectedActual}. The demo case on the Reminders page is for walkthrough only and is never counted.`}
         </span>
       </div>
 
@@ -1549,8 +1610,8 @@ function HomeView(props: {
               <p className="text-[13px] leading-5 text-[#5c584a]">
                 <b className="text-[#1A1A1A]">{zh ? "不踩雷。" : "No landmines."}</b>{" "}
                 {zh
-                  ? "發稿前先查一張圖的來源與授權脈絡，省下人工查核時間，避免誤用來源不明素材。"
-                  : "Check an image's origin and license context before publishing — less manual vetting, no untraceable assets."}
+                  ? "發稿前先查一張圖的來源與授權脈絡，省下人工查核時間，避免不小心使用來源不明素材。"
+                  : "Check an image's origin and license context before publishing — less manual vetting, fewer untraceable assets."}
               </p>
             </div>
             <div className="flex items-start gap-3.5 rounded-[12px] border border-dashed border-[#1a1a1a1f] bg-[#f8f2e3] px-5 py-4">
@@ -1560,8 +1621,8 @@ function HomeView(props: {
               <p className="text-[13px] leading-5 text-[#5c584a]">
                 <b className="text-[#1A1A1A]">{zh ? "不被悄悄拿走價值。" : "No silent value loss."}</b>{" "}
                 {zh
-                  ? "作品照常曝光，但每一次被使用都留有紀錄，成為後續授權與溝通的依據。"
-                  : "Your work stays public, but every use leaves a record — the basis for licensing and follow-up."}
+                  ? "作品照常曝光；當保險層發現高相似使用，就先提醒你複審，成為後續授權與溝通的依據。"
+                  : "Your work stays public; when the insurance layer finds high-similarity use, it reminds you to review and provides the basis for licensing follow-up."}
               </p>
             </div>
           </div>
@@ -1598,22 +1659,22 @@ function HomeView(props: {
         </>
       )}
 
-      {/* patrol record: proof the radar keeps running (latest real run only — history accrues) */}
+      {/* insurance-layer record: proof the radar keeps running (latest real run only — history accrues) */}
       <div className="mt-7 flex flex-wrap items-baseline justify-between gap-2">
         <h2 className="text-[18px] font-black">
-          {zh ? "巡檢紀錄" : "Patrol record"}{" "}
-          <span className="text-[12px] font-normal text-[#8d8873]">{zh ? "· 持續站崗中" : "· continuously on guard"}</span>
+          {zh ? "保險層紀錄" : "Insurance-layer record"}{" "}
+          <span className="text-[12px] font-normal text-[#8d8873]">{zh ? "· 持續提醒中" : "· continuously watching"}</span>
         </h2>
         <button type="button" onClick={() => props.onNavigate("channels")} className="text-[13px] font-bold text-[#4f6a4e]">
-          {zh ? "查看監控通路 →" : "View channels →"}
+          {zh ? "查看保險來源 →" : "View sources →"}
         </button>
       </div>
       <div className="mt-3 overflow-hidden rounded-[12px] border border-[#1a1a1a14] bg-white">
         <div className="flex items-center gap-3.5 bg-[#EFE3CC] px-5 py-3 text-[10px] tracking-[0.08em] text-[#1a1a1a8c]" style={{ fontFamily: MONO }}>
-          <span className="w-[190px] flex-none">{zh ? "巡檢時間" : "TIME"}</span>
+          <span className="w-[190px] flex-none">{zh ? "檢查時間" : "TIME"}</span>
           <span className="flex-1">{zh ? "來源" : "SOURCES"}</span>
           <span className="w-[120px] flex-none">{zh ? "候選影像" : "CANDIDATES"}</span>
-          <span className="w-[76px] flex-none">{zh ? "形成警報" : "ALERTS"}</span>
+          <span className="w-[76px] flex-none">{zh ? "形成提醒" : "REMINDERS"}</span>
           <span className="w-[190px] flex-none">{zh ? "狀態" : "STATUS"}</span>
         </div>
         <div className="flex flex-wrap items-center gap-3.5 border-t border-[#1a1a1a0f] px-5 py-3.5 text-[13px]">
@@ -1621,7 +1682,7 @@ function HomeView(props: {
             {lastPatrol}{" "}
             <span className="text-[10px] font-normal text-[#4f6a4e]">{zh ? "最新" : "latest"}</span>
           </span>
-          <span className="min-w-[140px] flex-1">{patrolModeLabel.replace(/^(巡檢模式：|Mode: )/, "")}</span>
+          <span className="min-w-[140px] flex-1">{patrolModeLabel.replace(/^(巡檢模式：|保險層：|Mode: |Insurance layer: )/, "")}</span>
           <span className="w-[120px] flex-none" style={{ fontFamily: MONO }}>
             {lastRunCandidates}{zh ? " 筆" : ""}{" "}
             <span className="text-[11px] text-[#8d8873]">{zh ? `· ${lastRunSourceCount} 個來源` : `· ${lastRunSourceCount} sources`}</span>
@@ -1635,15 +1696,15 @@ function HomeView(props: {
         </div>
         <p className="border-t border-[#1a1a1a0f] bg-[#f8f2e3] px-5 py-2.5 text-[12px] text-[#5c584a]">
           {zh
-            ? "本頁顯示最新一次巡檢的真實產物；歷史紀錄會隨每日巡檢持續累積。"
-            : "This shows the latest real patrol artifact; history accrues with each daily run."}
+            ? "本頁顯示最新一次保險層巡檢的真實產物；歷史紀錄會隨每日檢查持續累積。"
+            : "This shows the latest real insurance-layer artifact; history accrues with each daily run."}
         </p>
       </div>
       <div className="mt-3.5 flex items-start gap-2.5 rounded-[10px] border border-[#1a1a1a14] bg-[#f8f2e3] px-4 py-3 text-[13px] leading-5 text-[#5c584a]">
         <span aria-hidden>⏱</span>
         <span>
-          <b className="text-[#1A1A1A]">{zh ? "下次自動巡檢：每日 11:17（台北時間）" : "Next automatic patrol: daily at 11:17 (Taipei time)"}</b>
-          {zh ? "，由 GitHub Actions 排程執行；發現疑似盜用會直接列進警報頁待你複審。" : ", scheduled via GitHub Actions. Suspected copies are queued on the Cases page for your review."}
+          <b className="text-[#1A1A1A]">{zh ? "下次保險層檢查：每日 11:17（台北時間）" : "Next insurance-layer check: daily at 11:17 (Taipei time)"}</b>
+          {zh ? "，由 GitHub Actions 排程執行；發現高相似候選會列進提醒頁待你複審。" : ", scheduled via GitHub Actions. High-similarity candidates are queued on the Reminders page for your review."}
         </span>
       </div>
     </div>
@@ -1654,19 +1715,19 @@ function chDot(status: ChannelVM["status"]) {
   return status === "automated" ? C.green : status === "search" ? C.blue : status === "queued" ? C.orange : C.stone;
 }
 function chLabel(status: ChannelVM["status"], locale: Locale) {
-  const zh = { automated: "自動巡檢", manual: "人工複核", search: "查詢線索", queued: "待授權" };
-  const en = { automated: "Auto patrol", manual: "Manual review", search: "Query lead", queued: "Needs auth" };
+  const zh = { automated: "保險巡檢", manual: "人工複核", search: "查詢線索", queued: "待授權" };
+  const en = { automated: "Insurance patrol", manual: "Manual review", search: "Query lead", queued: "Needs auth" };
   return (locale === "zh-TW" ? zh : en)[status];
 }
 function chNote(status: ChannelVM["status"], locale: Locale) {
   const zh = {
-    automated: "已接上公開頁面巡檢；系統會抓取候選圖片並送入本地指紋比對。",
+    automated: "已接上公開頁面保險層；系統會抓取候選圖片並送入本地指紋比對。",
     manual: "尚未接直接爬蟲，作為人工複核與後續導入來源。",
     search: "僅提供查詢入口或人工複核線索，目前不會自動爬取此平台。",
     queued: "需要平台授權、API 或合規確認後才能自動化。",
   };
   const en = {
-    automated: "Connected to public-page patrol; image candidates are fetched and sent through local fingerprint comparison.",
+    automated: "Connected to the public-page insurance layer; image candidates are fetched and sent through local fingerprint comparison.",
     manual: "Not connected to a direct crawler yet; used for manual review and future integration.",
     search: "Query entry or manual-review lead only; this platform is not auto-crawled yet.",
     queued: "Needs platform permission, API access, or compliance review before automation.",
@@ -1843,8 +1904,8 @@ function VerificationView({
         }
         hint={
           zh
-            ? "目前不能貼任意新圖片即時建指紋；查不到時不會產生判定或警報。正式版才會支援任意圖片查驗與後續案件流程。"
-            : "It does not create a new fingerprint for any arbitrary image yet; unsupported inputs produce no verdict or alert. The full version will support arbitrary-image verification and case workflows."
+            ? "目前不能貼任意新圖片即時建指紋；查不到時不會產生判定、提醒或案件。正式版才會支援任意圖片查驗與後續溝通流程。"
+            : "It does not create a new fingerprint for any arbitrary image yet; unsupported inputs produce no verdict, reminder, or case. The full version will support arbitrary-image verification and follow-up workflows."
         }
       />
 
@@ -1905,8 +1966,8 @@ function VerificationView({
           {inputState === "unsupported" ? (
             <div className="mt-3 rounded-[9px] border border-[#e0d3ad] bg-[#FBF6EC] px-3.5 py-2.5 text-[12px] leading-5 text-[#80621c]">
               {zh
-                ? "這張圖還查不到：它尚未建立指紋索引，所以不會產生判定，也不會建立警報。查不到不代表沒有問題。"
-                : "This image can't be checked yet: it has no fingerprint index, so no verdict and no alert is produced. Not found does not mean no issue."}
+                ? "這張圖還查不到：它尚未建立指紋索引，所以不會產生判定，也不會建立提醒。查不到不代表沒有問題。"
+                : "This image can't be checked yet: it has no fingerprint index, so no verdict and no reminder is produced. Not found does not mean no issue."}
               <span className="mt-2 flex flex-wrap gap-2">
                 <button
                   type="button"
@@ -1928,8 +1989,8 @@ function VerificationView({
             <p className="mt-2.5 flex items-start gap-1.5 text-[11px] leading-4 text-[#1a1a1a80]">
               <Info size={13} className="mt-px flex-none" />
               {zh
-                ? "目前 MVP 只查已建立指紋的樣本；查不到不會產生判定或警報。正式版將支援任意圖片即時查驗。"
-                : "The MVP only checks indexed samples; unsupported inputs produce no verdict or alert. Arbitrary-image checks arrive in the full version."}
+                ? "目前 MVP 只查已建立指紋的樣本；查不到不會產生判定或提醒。正式版將支援任意圖片即時查驗。"
+                : "The MVP only checks indexed samples; unsupported inputs produce no verdict or reminder. Arbitrary-image checks arrive in the full version."}
             </p>
           )}
 
@@ -2200,7 +2261,7 @@ function CasesView(props: {
   const confirmedAlerts = alerts.filter((a) => a.status === "action" || a.status === "resolved" || a.status === "dismissed");
   const reportType = (label?: string) => {
     if (label === "simulated") return zh ? "展示報告" : "Preview report";
-    if (label === "actual_pending_review") return zh ? "真實巡檢存證（待複審）" : "Real patrol evidence (pending review)";
+    if (label === "actual_pending_review") return zh ? "真實保險層存證（待複審）" : "Real insurance-layer evidence (pending review)";
     return zh ? "內部存證報告" : "Internal evidence report";
   };
   const primaryWork = alerts[0]?.work ? `${alerts[0].work} ${alerts[0].workEn}`.trim() : props.works[0]?.name || "—";
@@ -2215,8 +2276,8 @@ function CasesView(props: {
   ];
 
   const tabs: Array<{ key: CasesTab; label: string; n: number }> = [
-    { key: "open", label: zh ? "待複審" : "To review", n: openAlerts.length },
-    { key: "confirmed", label: zh ? "已確認侵權" : "Confirmed", n: confirmedAlerts.length },
+    { key: "open", label: zh ? "待複審提醒" : "Reminders", n: openAlerts.length },
+    { key: "confirmed", label: zh ? "已確認需處理" : "Action needed", n: confirmedAlerts.length },
     { key: "reports", label: zh ? "存證報告" : "Reports", n: reportRows.length },
   ];
 
@@ -2239,31 +2300,31 @@ function CasesView(props: {
     tab === "open"
       ? {
           icon: "✓",
-          b: zh ? "目前沒有待複審的警報 —— 這是好事。" : "No alerts to review — that's good news.",
-          d: zh ? "代表監控通路上尚未發現你的原創被盜用。" : "No copies of your originals have surfaced on monitored channels.",
+          b: zh ? "目前沒有待複審提醒 —— 這是好事。" : "No reminders to review — that's good news.",
+          d: zh ? "代表保險層尚未發現需要你處理的高相似使用。" : "The insurance layer has not found high-similarity use that needs your action.",
         }
       : tab === "confirmed"
       ? {
           icon: "✓",
-          b: zh ? "尚無確認侵權的案件。" : "No confirmed infringement yet.",
-          d: zh ? "待複審警報經你確認後，會列在這裡並可產生存證報告。" : "Alerts you confirm land here, ready for evidence reports.",
+          b: zh ? "尚無確認需處理的案件。" : "No cases needing action yet.",
+          d: zh ? "待複審提醒經你確認後，會列在這裡並可產生存證報告。" : "Reminders you confirm land here, ready for evidence reports.",
         }
       : {
           icon: "📄",
           b: zh ? "尚無存證報告。" : "No evidence reports yet.",
           d: zh
-            ? "在已確認侵權的案件中點「產生存證報告」，即可建立含電子憑證與來源軌跡的報告。"
+            ? "在已確認需處理的案件中點「產生存證報告」，即可建立含電子憑證與來源軌跡的報告。"
             : "Open a confirmed case and click “Generate report” to create one with certificates and a source trail.",
         };
 
-  const demoStateLabel = demoCase === "open" ? (zh ? "待複審" : "To review") : demoCase === "confirmed" ? (zh ? "已確認侵權" : "Confirmed") : zh ? "已完成存證" : "Certified";
+  const demoStateLabel = demoCase === "open" ? (zh ? "待複審提醒" : "Reminder") : demoCase === "confirmed" ? (zh ? "已確認需處理" : "Action needed") : zh ? "已完成存證" : "Certified";
 
   const confirmDemo = () => {
     setDemoCase("confirmed");
     setDemoModal(null);
     setTab("confirmed");
     props.showToast(
-      zh ? "DEMO：已確認侵權，案件移至「已確認侵權」—— 下一步：產生存證報告" : "DEMO: confirmed — case moved to Confirmed. Next: generate the evidence report",
+      zh ? "DEMO：已確認需要處理，案件移至「已確認需處理」—— 下一步：產生存證報告" : "DEMO: action needed — case moved to Action needed. Next: generate the evidence report",
     );
   };
   const reportDemo = () => {
@@ -2283,12 +2344,12 @@ function CasesView(props: {
   const demoNote =
     demoRowKey === "open"
       ? zh
-        ? "☝ 這是一件示範案件（DEMO），不列入統計 —— 你可以實際走完「複審 → 確認侵權 → 產生存證報告」整條流程。點擊該列開始。"
-        : "☝ This is a DEMO case (never counted). Walk the full review → confirm → certify flow — click the row to start."
+        ? "☝ 這是一則示範提醒（DEMO），不列入統計 —— 你可以實際走完「複審 → 確認需處理 → 產生存證報告」流程。點擊該列開始。"
+        : "☝ This is a DEMO reminder (never counted). Walk the full review → confirm action → certify flow — click the row to start."
       : demoRowKey === "confirmed"
       ? zh
-        ? "☝ DEMO：已確認侵權。點擊該列即可產生存證報告，完成最後一步。"
-        : "☝ DEMO: infringement confirmed. Click the row to generate the evidence report and finish."
+        ? "☝ DEMO：已確認需要處理。點擊該列即可產生存證報告，完成最後一步。"
+        : "☝ DEMO: action needed. Click the row to generate the evidence report and finish."
       : demoRowKey === "reported"
       ? zh
         ? "☝ DEMO：此案件已完成存證。切到「存證報告」分頁可預覽報告內容。"
@@ -2303,17 +2364,17 @@ function CasesView(props: {
     <div className="max-w-[1240px] px-6 py-7 md:px-9">
       <PageHead
         dot={C.orange}
-        eyebrow={zh ? "警報與存證 · CASES" : "Cases & evidence"}
-        title={zh ? "疑似盜用警報與存證報告" : "Alerts & evidence reports"}
+        eyebrow={zh ? "提醒與存證 · CASES" : "Reminders & evidence"}
+        title={zh ? "保險層提醒與存證報告" : "Insurance-layer reminders & evidence reports"}
         desc={
           zh
-            ? "巡檢發現的高相似使用會進到這裡：先由你複審確認，確認侵權後即可產生存證報告交付法務，或作為授權溝通的依據。"
-            : "High-similarity uses land here: review and confirm them, then generate evidence reports for legal handoff or licensing talks."
+            ? "保險層發現的高相似使用會進到這裡：先由你複審確認，確認需要處理後即可產生存證報告，作為善意提醒、授權溝通或法務交付依據。"
+            : "High-similarity uses land here as reminders: review them first, then generate evidence reports for friendly outreach, licensing talks, or legal handoff."
         }
         hint={
           zh
-            ? "怎麼看：三個分頁對應處理階段（待複審 → 已確認侵權 → 存證報告）。標「DEMO」的示範案件僅供體驗流程，不列入統計。"
-            : "How to read: the three tabs follow the workflow (review → confirmed → reports). Rows tagged DEMO are walkthrough-only and never counted."
+            ? "怎麼看：三個分頁對應處理階段（待複審提醒 → 已確認需處理 → 存證報告）。標「DEMO」的示範提醒僅供體驗流程，不列入統計。"
+            : "How to read: the three tabs follow the workflow (reminder review → action needed → reports). Rows tagged DEMO are walkthrough-only and never counted."
         }
       />
 
@@ -2429,14 +2490,14 @@ function CasesView(props: {
                 <DemoTag locale={locale} />
               </span>
               <span className="block truncate text-[11.5px] text-[#1a1a1a8c]" style={{ fontFamily: MONO }}>
-                {zh
+                  {zh
                   ? demoRowKey === "open"
-                    ? "發現於 2026/7/8 · 自動巡檢"
+                    ? "發現於 2026/7/8 · 保險層巡檢"
                     : demoRowKey === "confirmed"
                     ? "2026/7/8 發現 · 已人工複審確認"
                     : "2026/7/8 發現 · 已確認 · 已產生存證報告"
                   : demoRowKey === "open"
-                  ? "Found 2026/7/8 · auto patrol"
+                  ? "Found 2026/7/8 · insurance-layer patrol"
                   : demoRowKey === "confirmed"
                   ? "Found 2026/7/8 · confirmed by human review"
                   : "Found 2026/7/8 · confirmed · report generated"}
@@ -2473,7 +2534,7 @@ function CasesView(props: {
             <span className="min-w-0 flex-1">
               <span className="flex items-center gap-2">
                 <span className="truncate text-[13.5px] font-semibold">
-                  {zh ? "侵權存證報告：" : "Evidence report: "}
+                  {zh ? "授權溝通存證報告：" : "Licensing evidence report: "}
                   {demoWork?.name || "1.jpg"} × Yahoo News Taiwan
                 </span>
                 <DemoTag locale={locale} />
@@ -2508,8 +2569,8 @@ function CasesView(props: {
             <p className="mt-1 text-[13px]">{emptyCopy.d}</p>
             <p className="mt-4 flex flex-wrap items-center justify-center gap-2 text-[11px]" style={{ fontFamily: MONO }}>
               {(zh
-                ? ["巡檢發現高相似", "你複審確認", "確認侵權", "產生存證報告"]
-                : ["patrol finds a match", "you review it", "confirm infringement", "generate the report"]
+                ? ["保險層發現高相似", "你複審確認", "確認需處理", "產生存證報告"]
+                : ["insurance layer finds a lead", "you review it", "confirm action", "generate the report"]
               ).map((s, i, arr) => (
                 <span key={s} className="flex items-center gap-2">
                   <span className="rounded-full border border-[#1a1a1a1f] bg-[#f8f2e3] px-3 py-1 text-[#5c584a]">{s}</span>
@@ -2526,17 +2587,17 @@ function CasesView(props: {
         <span>
           <b className="text-[#1A1A1A]">{zh ? "存證報告內容：" : "Report contents: "}</b>
           {zh
-            ? "每份皆含電子憑證、相似度比對、來源軌跡與人工複審狀態，上鏈可驗證，可直接交付法務。"
-            : "each report bundles certificates, the similarity comparison, the source trail, and the review state — on-chain verifiable and legal-ready."}
+            ? "每份皆含電子憑證、相似度比對、來源軌跡與人工複審狀態，上鏈可驗證，可用於善意提醒、授權溝通或法務交付。"
+            : "each report bundles certificates, the similarity comparison, the source trail, and the review state — on-chain verifiable for reminders, licensing talks, or legal handoff."}
         </span>
       </div>
       <div className="mt-2.5 flex items-start gap-2.5 rounded-[10px] border border-[#1a1a1a14] bg-[#f8f2e3] px-4 py-3 text-[13px] leading-5 text-[#5c584a]">
         <Bell size={15} className="mt-0.5 flex-none" />
         <span>
-          {zh ? "發現新警報時的通知管道（Email / LINE）為正式版功能。" : "Alert notifications (Email / LINE) are a production-version feature."}
+          {zh ? "發現新提醒時的通知管道（Email / LINE）為正式版功能。" : "Reminder notifications (Email / LINE) are a production-version feature."}
           <button
             type="button"
-            onClick={() => props.showToast(zh ? "示範原型：正式版將在此設定 Email / LINE 通知管道" : "Demo prototype: notification channels will be configured here in production")}
+            onClick={() => props.showToast(zh ? "示範原型：正式版將在此設定 Email / LINE 提醒管道" : "Demo prototype: reminder channels will be configured here in production")}
             className="ml-2 font-bold text-[#4f6a4e]"
           >
             {zh ? "設定通知 →" : "Set up →"}
@@ -2557,15 +2618,15 @@ function CasesView(props: {
               <X size={16} />
             </button>
             <p className="text-[10px] tracking-[0.18em] text-[#c4502e]" style={{ fontFamily: MONO }}>
-              {zh ? `示範案件 · DEMO · ${demoStateLabel}` : `DEMO CASE · ${demoStateLabel.toUpperCase()}`}
+              {zh ? `示範提醒 · DEMO · ${demoStateLabel}` : `DEMO REMINDER · ${demoStateLabel.toUpperCase()}`}
             </p>
             <h3 className="mt-1.5 text-[20px] font-black">
-              {zh ? "Yahoo News Taiwan 發現高相似使用" : "High-similarity use found on Yahoo News Taiwan"}
+              {zh ? "Yahoo News Taiwan 出現高相似使用" : "High-similarity use surfaced on Yahoo News Taiwan"}
             </h3>
             <p className="mt-1 text-[13px] text-[#5c584a]">
               {zh
-                ? "2026/7/8 自動巡檢發現 · 相似度 98%（距離 3，低於門檻 16）· 高風險通路"
-                : "Found by auto patrol on 2026/7/8 · 98% similarity (distance 3, below threshold 16) · high-risk channel"}
+                ? "2026/7/8 保險層發現 · 相似度 98%（距離 3，低於門檻 16）· 需要複審授權脈絡"
+                : "Found by the insurance layer on 2026/7/8 · 98% similarity (distance 3, below threshold 16) · license context needs review"}
             </p>
             <div className="mt-4 grid gap-3.5 sm:grid-cols-2">
               <div>
@@ -2587,7 +2648,7 @@ function CasesView(props: {
                   {zh ? "發現通路" : "CHANNEL"}
                 </p>
                 <p className="mt-0.5 text-[14px] font-bold">
-                  Yahoo News Taiwan <span className="block text-[12px] font-normal text-[#5c584a]">{zh ? "新聞匯流 · 自動巡檢" : "news aggregator · auto patrol"}</span>
+                  Yahoo News Taiwan <span className="block text-[12px] font-normal text-[#5c584a]">{zh ? "新聞匯流 · 保險層來源" : "news aggregator · insurance-layer source"}</span>
                 </p>
               </div>
               <div>
@@ -2606,7 +2667,7 @@ function CasesView(props: {
               {demoCase === "open" ? (
                 <>
                   <button type="button" onClick={confirmDemo} className="rounded-[9px] bg-[#4c6b3c] px-5 py-2.5 text-[13px] font-bold text-white">
-                    {zh ? "確認侵權" : "Confirm infringement"}
+                    {zh ? "確認需提醒" : "Confirm action needed"}
                   </button>
                   <button
                     type="button"
@@ -2645,8 +2706,8 @@ function CasesView(props: {
             </div>
             <p className="mt-3.5 text-[12px] text-[#8d8873]">
               {zh
-                ? "此為示範案件，僅供體驗流程，不列入統計、不會產生真實報告。"
-                : "This demo case is for walkthrough only — never counted and never produces a real report."}
+                ? "此為示範提醒，僅供體驗流程，不列入統計、不會產生真實報告。"
+                : "This demo reminder is for walkthrough only — never counted and never produces a real report."}
             </p>
           </div>
         </div>
@@ -2667,26 +2728,26 @@ function CasesView(props: {
             <p className="text-[10px] tracking-[0.18em] text-[#8d8873]" style={{ fontFamily: MONO }}>
               {zh ? "存證報告 · RPT-DEMO-001 · DEMO" : "EVIDENCE REPORT · RPT-DEMO-001 · DEMO"}
             </p>
-            <h3 className="mt-1.5 text-[20px] font-black">{zh ? "侵權存證報告" : "Infringement evidence report"}</h3>
+            <h3 className="mt-1.5 text-[20px] font-black">{zh ? "授權溝通存證報告" : "Licensing-outreach evidence report"}</h3>
             <p className="mt-1 text-[13px] text-[#5c584a]">
               {zh
-                ? `關聯案件：${demoWork?.name || "1.jpg"} × Yahoo News Taiwan 文章頁 · 2026/7/8 發現、人工複審確認侵權`
-                : `Linked case: ${demoWork?.name || "1.jpg"} × Yahoo News Taiwan article · found 2026/7/8, confirmed by human review`}
+                ? `關聯案件：${demoWork?.name || "1.jpg"} × Yahoo News Taiwan 文章頁 · 2026/7/8 發現、人工複審確認需要處理`
+                : `Linked case: ${demoWork?.name || "1.jpg"} × Yahoo News Taiwan article · found 2026/7/8, human review confirmed action is needed`}
             </p>
             <div className="mt-4 grid gap-3 sm:grid-cols-2">
               {(zh
                 ? [
                     ["電子憑證", "已附上", "原作簽署憑證 + 發現當下網頁快照"],
                     ["相似度比對", "98%", "距離 3，低於門檻 16，判定同一原作"],
-                    ["來源軌跡", "已記錄", "發現網址、時間戳、巡檢來源"],
-                    ["人工複審", "已確認", "複審人與確認時間已入紀錄"],
+                    ["來源軌跡", "已記錄", "發現網址、時間戳、保險層來源"],
+                    ["人工複審", "已確認需處理", "複審人與確認時間已入紀錄"],
                     ["上鏈紀錄", "Numbers 主網", "報告雜湊已上鏈，可公開驗證"],
                   ]
                 : [
                     ["CERTIFICATES", "Attached", "origin certificate + page snapshot at discovery"],
                     ["SIMILARITY", "98%", "distance 3, below threshold 16 — same original"],
-                    ["SOURCE TRAIL", "Recorded", "URL, timestamp, and patrol source"],
-                    ["HUMAN REVIEW", "Confirmed", "reviewer and confirmation time on record"],
+                    ["SOURCE TRAIL", "Recorded", "URL, timestamp, and insurance-layer source"],
+                    ["HUMAN REVIEW", "Action needed", "reviewer and confirmation time on record"],
                     ["ON-CHAIN RECORD", "Numbers Mainnet", "report hash anchored, publicly verifiable"],
                   ]
               ).map(([k, v, d]) => (
@@ -2749,8 +2810,8 @@ function CaseView(props: {
       <HintBanner
         text={
           zh
-            ? "怎麼看：左右對照「原創 vs 巡檢發現」，中央圓圈是相似度，下方「來源軌跡」是完整證據時間線。底部行動按鈕為安全操作，只會記錄到本案軌跡。"
-            : "How to read: compare original vs detected side by side, the ring shows similarity, and the provenance trace below is the full evidence timeline. The action buttons are safe-mode actions and only log to this case."
+            ? "怎麼看：左右對照「原創 vs 保險層發現」，中央圓圈是相似度，下方「來源軌跡」是完整證據時間線。底部行動按鈕為安全操作，只會記錄到本案軌跡。"
+            : "How to read: compare original vs insurance-layer finding side by side, the ring shows similarity, and the provenance trace below is the full evidence timeline. The action buttons are safe-mode actions and only log to this case."
         }
       />
 
@@ -2803,7 +2864,7 @@ function CaseView(props: {
         <div className="rounded-[14px] border border-[#ed5d2966] bg-white p-3.5">
           <div className="mb-2.5 flex items-center justify-between">
             <p className="text-[12px] font-semibold text-[#ED5D29]" style={{ fontFamily: MONO }}>
-              ● {zh ? "巡檢發現 · DETECTED COPY" : "Detected copy"}
+              ● {zh ? "保險層發現 · REMINDER LEAD" : "Insurance-layer lead"}
             </p>
             <p className="text-[10px] text-[#1a1a1a66]" style={{ fontFamily: MONO }}>
               {formatDateForLocale(vm.detected, locale)}
@@ -2899,7 +2960,7 @@ function CaseView(props: {
       <div className="flex flex-wrap items-center justify-between gap-4 rounded-[14px] bg-[#1A1A1A] p-5">
         <div>
           <div className="flex items-center gap-2">
-            <p className="text-[14px] font-semibold text-[#F4E9D5]">{zh ? "採取行動" : "Take action"}</p>
+            <p className="text-[14px] font-semibold text-[#F4E9D5]">{zh ? "提醒與溝通" : "Reminder & outreach"}</p>
             <span
               className="rounded-full border border-[#d8b76a66] bg-[#3a3527] px-2 py-0.5 text-[10px] font-semibold text-[#D8B76A]"
               style={{ fontFamily: MONO }}
@@ -2912,8 +2973,8 @@ function CaseView(props: {
           </p>
         </div>
         <div className="flex flex-wrap gap-2.5">
-          <button type="button" title={zh ? "安全操作：僅記錄到本案時間軸，不會真的送出下架" : "Safe mode: only logs to this case timeline; no real takedown is sent"} onClick={() => props.onAction("dmca")} className="rounded-[9px] bg-[#ED5D29] px-4 py-2.5 text-[12.5px] font-semibold text-white">
-            {zh ? "發出 DMCA 下架" : "Send DMCA"}
+          <button type="button" title={zh ? "安全操作：僅記錄到本案時間軸，不會真的送出外部提醒" : "Safe mode: only logs to this case timeline; no real external reminder is sent"} onClick={() => props.onAction("dmca")} className="rounded-[9px] bg-[#ED5D29] px-4 py-2.5 text-[12.5px] font-semibold text-white">
+            {zh ? "發出友善提醒" : "Send friendly reminder"}
           </button>
           <button type="button" title={zh ? "安全操作：於本頁產生一筆存證報告預覽" : "Safe mode: adds an evidence-report preview to this page"} onClick={() => props.onAction("report")} className="rounded-[9px] bg-[#7F9C7E] px-4 py-2.5 text-[12.5px] font-semibold text-[#1A1A1A]">
             {zh ? "產生存證報告" : "Generate report"}
@@ -3058,7 +3119,7 @@ function VaultView({
             {channelsTotal}
           </p>
           <p className="mt-1.5 text-[12px] leading-5 text-[#5c584a]">
-            {zh ? "其中 3 個已自動巡檢，" : "3 of them auto-patrolled — "}
+            {zh ? "其中 3 個已接保險層自動檢查，" : "3 of them are checked by the insurance layer — "}
             <button type="button" onClick={() => onNavigate("channels")} className="font-bold text-[#4f6a4e]">
               {zh ? "看通路狀態 →" : "channel status →"}
             </button>
@@ -3125,7 +3186,7 @@ function VaultView({
         >
           <span className="text-[30px] leading-none">＋</span>
           <span className="text-[14px] font-bold">{zh ? "簽署新作品" : "Sign a new work"}</span>
-          <span className="text-[12px]">{zh ? "上傳後建立指紋與來源憑證，納入巡檢" : "Upload to fingerprint, certify, and patrol"}</span>
+          <span className="text-[12px]">{zh ? "上傳後建立指紋與來源憑證，納入保險層" : "Upload to fingerprint, certify, and join the insurance layer"}</span>
         </button>
         {shown.map((w) => (
           <button
@@ -3208,8 +3269,8 @@ function SignModal({
         <h3 className="mt-1.5 text-[20px] font-black">{zh ? "為新作品建立保護" : "Protect a new work"}</h3>
         <p className="mt-1 text-[13px] leading-5 text-[#5c584a]">
           {zh
-            ? "上傳後系統會建立不可逆的視覺指紋與來源憑證，之後的每日巡檢就會涵蓋這件作品。"
-            : "After upload, the system builds an irreversible visual fingerprint and origin certificate, and daily patrols start covering the work."}
+            ? "上傳後系統會建立不可逆的視覺指紋與來源憑證，之後的每日保險層檢查就會涵蓋這件作品。"
+            : "After upload, the system builds an irreversible visual fingerprint and origin certificate, and daily insurance-layer checks start covering the work."}
         </p>
         <button
           type="button"
@@ -3223,8 +3284,8 @@ function SignModal({
         </button>
         <p className="mt-4 flex flex-wrap items-center gap-2 text-[11px]" style={{ fontFamily: MONO }}>
           {(zh
-            ? ["上傳影像", "建立指紋", "簽署來源憑證", "納入巡檢"]
-            : ["upload image", "build fingerprint", "sign certificate", "join patrol"]
+            ? ["上傳影像", "建立指紋", "簽署來源憑證", "納入保險層"]
+            : ["upload image", "build fingerprint", "sign certificate", "join insurance layer"]
           ).map((s, i, arr) => (
             <span key={s} className="flex items-center gap-2">
               <span className="rounded-full border border-[#1a1a1a1f] bg-[#f8f2e3] px-3 py-1 text-[#5c584a]">{s}</span>
@@ -3271,21 +3332,21 @@ function ChannelsView({
       <div className="mb-5 flex flex-wrap items-end justify-between gap-4">
         <PageHead
           dot={C.blue}
-          eyebrow={zh ? "監控通路" : "Patrol channels"}
-          title={zh ? "巡檢來源與通路導入狀態" : "Patrol source and channel-integration status"}
+          eyebrow={zh ? "保險來源" : "Insurance sources"}
+          title={zh ? "保險層來源與通路導入狀態" : "Insurance-layer source and channel-integration status"}
           desc={
             zh
-              ? "目前已運作的自動巡檢來源包含 Google Vision Web Detection 與 3 個公開頁面通路；其餘通路仍是查詢線索、人工複核或待授權狀態。"
-              : "Live automated patrol now includes Google Vision Web Detection plus 3 public-page channels. Other channels remain query leads, manual review, or authorization-needed."
+              ? "目前已運作的保險層來源包含 Google Vision Web Detection 與 3 個公開頁面通路；其餘通路仍是查詢線索、人工複核或待授權狀態。"
+              : "The live insurance layer now includes Google Vision Web Detection plus 3 public-page channels. Other channels remain query leads, manual review, or authorization-needed."
           }
           hint={
             zh
-              ? "怎麼看：上方看目前真正執行的巡檢來源；下方每張卡表示指定通路的導入狀態。自動巡檢會抓取公開頁候選圖片並送入本地指紋比對；查詢線索不等於已接平台爬蟲。"
-              : "How to read: the summary shows real patrol sources; each card shows integration status. Auto patrol fetches public-page image candidates for local fingerprint comparison; query leads are not platform crawlers."
+              ? "怎麼看：上方看目前真正執行的保險層來源；下方每張卡表示指定通路的導入狀態。保險層會抓取公開頁候選圖片並送入本地指紋比對；查詢線索不等於已接平台爬蟲。"
+              : "How to read: the summary shows real insurance-layer sources; each card shows integration status. The insurance layer fetches public-page image candidates for local fingerprint comparison; query leads are not platform crawlers."
           }
         />
         <button type="button" onClick={onRunPatrol} className="rounded-[9px] bg-[#1A1A1A] px-[18px] py-2.5 text-[12.5px] font-semibold text-[#F4E9D5]">
-          ＋ {zh ? "查看最近巡檢" : "Review latest patrol"}
+          ＋ {zh ? "查看最近保險層紀錄" : "Review latest insurance-layer run"}
         </button>
       </div>
 
@@ -3296,7 +3357,7 @@ function ChannelsView({
             : `${channels.length} channels · 4 integration stages`}
         </h2>
         <span className="text-[11px] text-[#8d8873]" style={{ fontFamily: MONO }}>
-          {zh ? `最近巡檢 ${lastRunLabel} · 每日 11:17（台北時間）自動執行` : `Latest patrol ${lastRunLabel} · runs daily at 11:17 Taipei`}
+          {zh ? `最近保險層檢查 ${lastRunLabel} · 每日 11:17（台北時間）自動執行` : `Latest insurance-layer check ${lastRunLabel} · runs daily at 11:17 Taipei`}
         </span>
       </div>
 
@@ -3304,7 +3365,7 @@ function ChannelsView({
       <div className="mb-4 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
         {(
           [
-            { key: "automated" as const, n: stageCounts.automated, t: zh ? "自動巡檢" : "Auto patrol", d: zh ? "已接公開頁巡檢，自動比對指紋" : "Public-page patrol with fingerprint matching" },
+            { key: "automated" as const, n: stageCounts.automated, t: zh ? "保險巡檢" : "Insurance patrol", d: zh ? "已接公開頁保險層，自動比對指紋" : "Public-page insurance layer with fingerprint matching" },
             { key: "search" as const, n: stageCounts.search, t: zh ? "查詢線索" : "Query leads", d: zh ? "提供查詢入口與人工複核線索" : "Query entry points and review leads" },
             { key: "manual" as const, n: stageCounts.manual, t: zh ? "人工複核" : "Manual review", d: zh ? "尚未接爬蟲，作為複核來源" : "No crawler yet; used as review sources" },
             { key: "queued" as const, n: stageCounts.queued, t: zh ? "待授權" : "Needs auth", d: zh ? "需平台授權或 API 才能自動化" : "Needs platform permission or API access" },
@@ -3328,8 +3389,8 @@ function ChannelsView({
         <Radar size={15} className="mt-0.5 flex-none" />
         <span>
           {zh
-            ? `目前真正執行的自動巡檢來源：Google Vision Web Detection + 3 個公開頁面通路（最新 run 來源 ${liveSourceCount} 個、候選影像 ${latestCandidates} 筆）。候選仍需本地指紋比對與人工複核後，才會形成外部主張。`
-            : `Live automated sources today: Google Vision Web Detection + 3 public-page channels (${liveSourceCount} source(s), ${latestCandidates} candidate image(s) in the latest run). Candidates still need local fingerprint matching and human review before any external claim.`}
+            ? `目前真正執行的保險層來源：Google Vision Web Detection + 3 個公開頁面通路（最新 run 來源 ${liveSourceCount} 個、候選影像 ${latestCandidates} 筆）。候選仍需本地指紋比對與人工複核後，才會形成外部主張。`
+            : `Live insurance-layer sources today: Google Vision Web Detection + 3 public-page channels (${liveSourceCount} source(s), ${latestCandidates} candidate image(s) in the latest run). Candidates still need local fingerprint matching and human review before any external claim.`}
         </span>
       </div>
 
@@ -3369,9 +3430,9 @@ function ChannelsView({
         onClick={() => setShowSuggest(true)}
         className="mt-4 w-full rounded-[12px] border-2 border-dashed border-[#1a1a1a26] bg-[#f8f2e3] px-5 py-4 text-center text-[#5c584a] transition-colors hover:border-[#7F9C7E] hover:text-[#4f6a4e]"
       >
-        <span className="block text-[14px] font-bold">＋ {zh ? "建議新增監控通路" : "Suggest a new channel"}</span>
+        <span className="block text-[14px] font-bold">＋ {zh ? "建議新增保險來源" : "Suggest a new source"}</span>
         <span className="mt-0.5 block text-[12px]">
-          {zh ? "想監控特定網站或平台？告訴我們，我們會評估接入。" : "Want a specific site or platform patrolled? Tell us and we'll evaluate it."}
+          {zh ? "想把特定網站或平台納入保險層？告訴我們，我們會評估接入。" : "Want a specific site or platform covered by the insurance layer? Tell us and we'll evaluate it."}
         </span>
       </button>
 
@@ -3388,13 +3449,13 @@ function ChannelsView({
               <X size={16} />
             </button>
             <p className="text-[10px] tracking-[0.18em] text-[#8d8873]" style={{ fontFamily: MONO }}>
-              {zh ? "建議通路 · SUGGEST" : "SUGGEST A CHANNEL"}
+              {zh ? "建議來源 · SUGGEST" : "SUGGEST A SOURCE"}
             </p>
-            <h3 className="mt-1.5 text-[20px] font-black">{zh ? "想監控哪個網站或平台？" : "Which site or platform should we patrol?"}</h3>
+            <h3 className="mt-1.5 text-[20px] font-black">{zh ? "想把哪個網站或平台納入保險層？" : "Which site or platform should the insurance layer cover?"}</h3>
             <p className="mt-1 text-[13px] leading-5 text-[#5c584a]">
               {zh
-                ? "告訴我們你希望納入巡檢的通路，我們會評估爬蟲可行性與平台授權需求。"
-                : "Tell us which channel to include; we'll evaluate crawler feasibility and platform-authorization needs."}
+                ? "告訴我們你希望納入保險層的來源，我們會評估爬蟲可行性與平台授權需求。"
+                : "Tell us which source to include; we'll evaluate crawler feasibility and platform-authorization needs."}
             </p>
             <form
               className="mt-4 flex gap-2"
