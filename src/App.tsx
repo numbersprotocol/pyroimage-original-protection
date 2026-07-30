@@ -43,7 +43,7 @@ import {
 
 /* ============================================================
  * OriginRadar · Original-value ecosystem (PyroImage MVP)
- * UI = provenance-patrol console. Backend architecture unchanged:
+ * UI = ecosystem front plus insurance-layer console. Backend architecture unchanged:
  * every substantive value is read from the shipped patrol JSON
  * data files. Interactive scan / case actions are clearly-labelled
  * workflow demonstrations (local state only — no backend writes).
@@ -147,8 +147,8 @@ const T = {
   },
   menu: { "zh-TW": "主選單 · MENU", en: "Menu" },
   runPatrol: { "zh-TW": "查看保險層", en: "Review insurance layer" },
-  coverage: { "zh-TW": "保護範圍 · COVERAGE", en: "Coverage" },
-  protectedOriginals: { "zh-TW": "受保護原創影像", en: "protected originals" },
+  coverage: { "zh-TW": "登錄範圍 · COVERAGE", en: "Coverage" },
+  protectedOriginals: { "zh-TW": "已登錄原創影像", en: "registered originals" },
   channels: { "zh-TW": "保險層來源", en: "insurance sources" },
   back: { "zh-TW": "← 返回提醒列表", en: "← Back to reminders" },
   demo: { "zh-TW": "MVP 試營運", en: "MVP Pilot" },
@@ -167,9 +167,9 @@ const NAV: Array<{
   // Task-oriented IA: ecosystem front → backend console → verify → cases → vault → sources.
   { id: "ecosystem", icon: ShieldCheck, zh: "生態系前台", en: "Ecosystem", eyebrow: "FRONT", descZh: "原創流向媒體，價值回創作者", descEn: "Originals to media, value to creators" },
   { id: "dashboard", icon: LayoutDashboard, zh: "後台總覽", en: "Console", eyebrow: "BACK", descZh: "媒體自查與創作者提醒", descEn: "Editor checks & creator reminders" },
-  { id: "verify", icon: ShieldCheck, zh: "查一張圖", en: "Verify", eyebrow: "VERIFY", descZh: "用圖前，先查來源與授權", descEn: "Check origin before using an image" },
+  { id: "verify", icon: ShieldCheck, zh: "查一張圖", en: "Verify", eyebrow: "VERIFY", descZh: "用圖前，先查來源與授權", descEn: "Check origin before publishing" },
   { id: "alerts", icon: Bell, zh: "提醒與存證", en: "Reminders", eyebrow: "CASES", descZh: "高相似提醒、授權溝通報告", descEn: "Similarity reminders & licensing reports" },
-  { id: "vault", icon: Images, zh: "我的原創", en: "Vault", eyebrow: "VAULT", descZh: "已簽署保護的原創作品", descEn: "Signed & protected originals" },
+  { id: "vault", icon: Images, zh: "我的原創", en: "Vault", eyebrow: "VAULT", descZh: "已簽署憑證的原創作品", descEn: "Signed & certified originals" },
   { id: "channels", icon: Radar, zh: "保險來源", en: "Sources", eyebrow: "SOURCES", descZh: "保險層來源與導入狀態", descEn: "Insurance-layer source status" },
 ];
 
@@ -446,24 +446,24 @@ export function TtdMvpDashboard() {
   const patrolModeLabel = (() => {
     const adapter = loadState.data.monitoring.adapter;
     if (adapter?.id?.includes("visionWebDetection") && adapter.id.includes("namedChannelCrawler") && adapter.paid_api_used) {
-      return locale === "zh-TW" ? "保險層：Vision + 公開通路自動巡檢" : "Insurance layer: Vision + public-channel patrol";
+      return locale === "zh-TW" ? "保險層：Vision + 公開通路自動檢查" : "Insurance layer: Vision + public-channel check";
     }
     if (adapter?.id?.includes("visionWebDetection") && adapter.id.includes("namedChannelCrawler")) {
-      return locale === "zh-TW" ? "保險層：Vision 試跑 + 公開通路自動巡檢" : "Insurance layer: Vision dry run + public-channel patrol";
+      return locale === "zh-TW" ? "保險層：Vision 試跑 + 公開通路自動檢查" : "Insurance layer: Vision dry run + public-channel check";
     }
     if (adapter?.id === "visionWebDetection" && adapter.paid_api_used) {
-      return locale === "zh-TW" ? "保險層：Vision 真實巡檢（預算控管）" : "Insurance layer: live Vision patrol (budget guarded)";
+      return locale === "zh-TW" ? "保險層：Vision 真實檢查（預算控管）" : "Insurance layer: live Vision check (budget guarded)";
     }
     if (adapter?.id === "visionWebDetection") {
       return locale === "zh-TW" ? "保險層：Vision 試跑（不計費）" : "Insurance layer: Vision dry run (no cost)";
     }
     if (adapter?.id === "namedChannelCrawler") {
-      return locale === "zh-TW" ? "保險層：公開通路自動巡檢" : "Insurance layer: public-channel patrol";
+      return locale === "zh-TW" ? "保險層：公開通路自動檢查" : "Insurance layer: public-channel check";
     }
     if (adapter?.id === "seedUrls") {
       return locale === "zh-TW" ? "保險層：真實抓取種子來源（零付費）" : "Insurance layer: real seed-source fetch (zero cost)";
     }
-    return locale === "zh-TW" ? "保險層：讀取最新巡檢產物" : "Insurance layer: latest patrol artifact";
+    return locale === "zh-TW" ? "保險層：讀取最新檢查產物" : "Insurance layer: latest check artifact";
   })();
   const patrolStatus = (() => {
     const raw = loadState.data.monitoring.status || "unknown";
@@ -514,8 +514,8 @@ export function TtdMvpDashboard() {
             style={{ fontFamily: MONO }}
             title={
               locale === "zh-TW"
-                ? "MVP 試營運：保險層讀取真實巡檢產物；頁面上的提醒、匯出、聯絡操作仍為安全示範"
-                : "MVP pilot: the insurance layer reads real patrol artifacts; reminder, export, and contact actions remain safe UI demos"
+                ? "MVP 試營運：保險層讀取真實檢查產物；頁面上的提醒、匯出、聯絡操作仍為安全示範"
+                : "MVP pilot: the insurance layer reads real check artifacts; reminder, export, and contact actions remain safe UI demos"
             }
           >
             {T.demo[locale].toUpperCase()}
@@ -995,8 +995,8 @@ function EcosystemFrontView({
       stat: protectedDisplay,
       unit: zh ? "張原創影像" : "original images",
       desc: zh
-        ? "以真實 PyroImage 原創庫作為第一批可展示素材，已建立來源憑證與巡檢基礎。"
-        : "The first showcase pool uses real PyroImage originals with origin certificates and patrol coverage.",
+        ? "以真實 PyroImage 原創庫作為第一批可展示素材，已建立來源憑證與保險層基礎。"
+        : "The first showcase pool uses real PyroImage originals with origin certificates and insurance-layer coverage.",
       live: true,
     },
     {
@@ -1024,7 +1024,7 @@ function EcosystemFrontView({
   const backendRoles = [
     {
       label: zh ? "媒體編輯" : "Media editor",
-      title: zh ? "這張圖會不會不小心盜用？" : "Could this image accidentally misuse someone else's work?",
+      title: zh ? "這張圖會不會用到別人的原創？" : "Could this image use someone else's original?",
       desc: zh
         ? "發稿前先查來源、權利人與授權脈絡，把不確定的圖擋在發布前。"
         : "Before publishing, check origin, rights holder, and license context so uncertain images stop before release.",
@@ -1036,7 +1036,7 @@ function EcosystemFrontView({
       label: zh ? "創作者 / 權利人" : "Creator / rights holder",
       title: zh ? "被使用時，誰會提醒我？" : "Who reminds me when my work is used?",
       desc: zh
-        ? "保險層每天巡檢指定來源；發現高相似使用時，先提醒複審，再回到授權溝通。"
+        ? "保險層每天檢查指定來源；發現高相似使用時，先提醒複審，再回到授權溝通。"
         : "The insurance layer checks specified sources daily; high-similarity use becomes a reminder for review, then licensing outreach.",
       action: zh ? "看提醒後台 →" : "Open reminders →",
       view: "alerts" as View,
@@ -1067,8 +1067,8 @@ function EcosystemFrontView({
             </h1>
             <p className="mt-4 max-w-[520px] text-[15px] leading-6 text-[#CEC0A3]">
               {zh
-                ? "原創雷達不是把巡檢當主角，而是把巡檢放在生態系外圈：素材主動進編輯台，授權回到創作者，雷達負責提醒與保險。"
-                : "OriginRadar makes patrol the outer insurance layer: verified assets reach editors, licensing returns to creators, and the radar handles reminders."}
+                ? "原創雷達不是把查找線索當主角，而是把保險層放在生態系外圈：素材主動進編輯台，授權回到創作者，雷達負責提醒與保險。"
+                : "OriginRadar puts the insurance layer on the outside of the ecosystem: verified assets reach editors, licensing returns to creators, and the radar handles reminders."}
             </p>
           </div>
           <div className="mt-8 grid gap-3 sm:grid-cols-3">
@@ -1132,7 +1132,7 @@ function EcosystemFrontView({
               </p>
             </div>
             <div className="rounded-[12px] bg-[#1A1A1A] px-4 py-3 text-[#F4E9D5]">
-              <p className="text-[12px] font-bold text-[#8FB49A]">{zh ? "雷達巡檢 = 保險層" : "Patrol = insurance layer"}</p>
+              <p className="text-[12px] font-bold text-[#8FB49A]">{zh ? "雷達提醒 = 保險層" : "Radar reminders = insurance layer"}</p>
               <p className="mt-1 text-[11.5px] leading-4 text-[#CEC0A3]">
                 {zh ? `最近 ${lastPatrol} 檢查 ${lastRunCandidates} 筆候選，沒有命中就誠實顯示零。` : `Latest run ${lastPatrol}: ${lastRunCandidates} candidates checked; zero means zero.`}
               </p>
@@ -1382,7 +1382,7 @@ function HomeView(props: {
   const tasks: Array<{ q: string; title: string; stat?: string; unit?: string; desc: string; goText: string; onGo: () => void }> = [
     {
       q: zh ? "媒體入口 · 用圖前" : "MEDIA · BEFORE USING",
-      title: zh ? "這張圖會不會不小心盜用？" : "Could this image accidentally misuse someone's work?",
+      title: zh ? "這張圖會不會用到別人的原創？" : "Could this image use someone else's original?",
       desc: zh
         ? "貼上圖片網址或用範例查驗，先確認來源憑證、權利人與授權脈絡，再決定是否採用。"
         : "Paste an image URL or run a sample check to confirm origin certificate, rights holder, and license context before using it.",
@@ -1395,7 +1395,7 @@ function HomeView(props: {
       stat: openCount.toString(),
       unit: zh ? "則待複審提醒" : "reminders to review",
       desc: zh
-        ? "保險層每天比對指定來源；發現高相似使用時，先提醒你複審，再回到正版授權溝通。"
+        ? "保險層每天檢查指定來源；發現高相似使用時，先提醒你複審，再回到正版授權溝通。"
         : "The insurance layer compares specified sources daily; high-similarity use becomes a reminder, then licensing outreach.",
       goText: zh ? "查看提醒" : "Open reminders",
       onGo: () => props.onOpenCases("open"),
@@ -1416,7 +1416,7 @@ function HomeView(props: {
   const onbItems: Array<{ t: string; d: string; onGo: () => void; done: boolean }> = [
     {
       t: zh ? "走一遍提醒示範" : "Walk through a reminder demo",
-      d: zh ? "體驗「發現 → 複審 → 確認需處理 → 存證」流程" : "Experience detect → review → confirm action → certify",
+      d: zh ? "體驗「發現線索 → 複審 → 確認需處理 → 存證」流程" : "Experience lead surfaced → review → confirm action → certify",
       onGo: () => props.onOpenCases("open"),
       done: onb.steps[0],
     },
@@ -1428,7 +1428,7 @@ function HomeView(props: {
     },
     {
       t: zh ? "看看你的原創庫" : "Browse your vault",
-      d: zh ? "了解已受保護的作品與原創憑證" : "See protected originals and their certificates",
+      d: zh ? "了解已簽署憑證的作品與原創憑證" : "See signed originals and their certificates",
       onGo: () => props.onNavigate("vault"),
       done: onb.steps[2],
     },
@@ -1442,7 +1442,7 @@ function HomeView(props: {
       actionText: zh ? "簽署新作品 →" : "Sign a new work →",
       onAction: props.onOpenSign,
     },
-    { n: "STEP 02", t: zh ? "保險層巡檢" : "Insurance patrol", d: zh ? "Vision 與公開通路每日尋找高相似使用，作為提醒線索。" : "Vision and public channels look for high-similarity use as reminder leads." },
+    { n: "STEP 02", t: zh ? "保險層檢查" : "Insurance layer", d: zh ? "Vision 與公開通路每日整理高相似使用線索。" : "Vision and public channels surface high-similarity use leads each day." },
     { n: "STEP 03", t: zh ? "提醒複審" : "Reminder review", d: zh ? "高相似候選先進入提醒，由你確認是否需要溝通。" : "High-similarity candidates become reminders; you decide whether outreach is needed." },
     { n: "STEP 04", t: zh ? "授權溝通" : "Licensing outreach", d: zh ? "產生可驗證報告，作為善意提醒、授權或法務溝通依據。" : "Generate a verifiable report for reminders, licensing, or legal handoff." },
   ];
@@ -1489,7 +1489,7 @@ function HomeView(props: {
           </span>
           <span className="mt-0.5 block text-[13px] text-[#5c584a]">
             {zh
-              ? `最近一次保險層巡檢（${lastPatrol}）檢查了 ${lastRunCandidates} 筆網路候選影像，${lastRunAlerts === 0 ? "都不需要提醒處理" : `${lastRunAlerts} 筆已列入提醒複審`}。`
+              ? `最近一次保險層檢查（${lastPatrol}）整理了 ${lastRunCandidates} 筆網路候選影像，${lastRunAlerts === 0 ? "都不需要提醒處理" : `${lastRunAlerts} 筆已列入提醒複審`}。`
               : `The latest insurance-layer run (${lastPatrol}) checked ${lastRunCandidates} web candidates; ${lastRunAlerts === 0 ? "none needed a reminder" : `${lastRunAlerts} became review reminders`}.`}
           </span>
         </span>
@@ -1510,7 +1510,7 @@ function HomeView(props: {
             <div className="flex flex-wrap items-center gap-2.5">
               <span className="font-black text-[#4f6a4e]">✓ {zh ? "三步驟都完成了！" : "All three steps done!"}</span>
               <span className="text-[13px] text-[#5c584a]">
-                {zh ? "原創雷達已經在替你站崗。" : "OriginRadar is standing guard for you."}
+                {zh ? "原創雷達已經把提醒與授權流程準備好。" : "OriginRadar has the reminder and licensing flow ready."}
               </span>
               <button type="button" onClick={props.onHideOnb} className="ml-auto px-1.5 text-[#8d8873]" aria-label={zh ? "不再顯示" : "Dismiss"}>
                 <X size={15} />
@@ -1608,7 +1608,7 @@ function HomeView(props: {
                 {zh ? "給媒體編輯" : "FOR EDITORS"}
               </span>
               <p className="text-[13px] leading-5 text-[#5c584a]">
-                <b className="text-[#1A1A1A]">{zh ? "不踩雷。" : "No landmines."}</b>{" "}
+                <b className="text-[#1A1A1A]">{zh ? "用得安心。" : "Use with confidence."}</b>{" "}
                 {zh
                   ? "發稿前先查一張圖的來源與授權脈絡，省下人工查核時間，避免不小心使用來源不明素材。"
                   : "Check an image's origin and license context before publishing — less manual vetting, fewer untraceable assets."}
@@ -1682,7 +1682,7 @@ function HomeView(props: {
             {lastPatrol}{" "}
             <span className="text-[10px] font-normal text-[#4f6a4e]">{zh ? "最新" : "latest"}</span>
           </span>
-          <span className="min-w-[140px] flex-1">{patrolModeLabel.replace(/^(巡檢模式：|保險層：|Mode: |Insurance layer: )/, "")}</span>
+          <span className="min-w-[140px] flex-1">{patrolModeLabel.replace(/^(保險層：|Insurance layer: )/, "")}</span>
           <span className="w-[120px] flex-none" style={{ fontFamily: MONO }}>
             {lastRunCandidates}{zh ? " 筆" : ""}{" "}
             <span className="text-[11px] text-[#8d8873]">{zh ? `· ${lastRunSourceCount} 個來源` : `· ${lastRunSourceCount} sources`}</span>
@@ -1696,7 +1696,7 @@ function HomeView(props: {
         </div>
         <p className="border-t border-[#1a1a1a0f] bg-[#f8f2e3] px-5 py-2.5 text-[12px] text-[#5c584a]">
           {zh
-            ? "本頁顯示最新一次保險層巡檢的真實產物；歷史紀錄會隨每日檢查持續累積。"
+            ? "本頁顯示最新一次保險層檢查的真實產物；歷史紀錄會隨每日檢查持續累積。"
             : "This shows the latest real insurance-layer artifact; history accrues with each daily run."}
         </p>
       </div>
@@ -1715,8 +1715,8 @@ function chDot(status: ChannelVM["status"]) {
   return status === "automated" ? C.green : status === "search" ? C.blue : status === "queued" ? C.orange : C.stone;
 }
 function chLabel(status: ChannelVM["status"], locale: Locale) {
-  const zh = { automated: "保險巡檢", manual: "人工複核", search: "查詢線索", queued: "待授權" };
-  const en = { automated: "Insurance patrol", manual: "Manual review", search: "Query lead", queued: "Needs auth" };
+  const zh = { automated: "自動保險層", manual: "人工複核", search: "查詢線索", queued: "待授權" };
+  const en = { automated: "Automated insurance layer", manual: "Manual review", search: "Query lead", queued: "Needs auth" };
   return (locale === "zh-TW" ? zh : en)[status];
 }
 function chNote(status: ChannelVM["status"], locale: Locale) {
@@ -1896,7 +1896,7 @@ function VerificationView({
       <PageHead
         dot={C.green}
         eyebrow={zh ? "原創查驗" : "Origin verify"}
-        title={zh ? "原創影像查驗入口" : "Original-image verification"}
+        title={zh ? "原創素材來源查驗" : "Image-origin check"}
         desc={
           zh
             ? "這個入口可以使用；目前 MVP 只查已建立指紋的樣本。請先點下方範例試跑，或貼上已收錄樣本的網址 / 資產 ID。"
@@ -1919,7 +1919,7 @@ function VerificationView({
         />
         <KpiCard
           index="V2"
-          label={zh ? "受保護原作總數" : "Protected originals"}
+          label={zh ? "原創基準總數" : "Original baseline"}
           sub={zh ? "PyroImage 原作" : "PyroImage originals"}
           value={(verification.library.protected_originals_baseline || 0).toLocaleString("en-US")}
           color={C.ink}
@@ -1974,7 +1974,7 @@ function VerificationView({
                   onClick={onOpenSign}
                   className="rounded-[8px] bg-[#4c6b3c] px-3 py-1.5 text-[11px] font-semibold text-white"
                 >
-                  {zh ? "這是我的作品，簽署保護" : "This is my work — sign & protect"}
+                  {zh ? "這是我的作品，簽署憑證" : "This is my work — sign & certify"}
                 </button>
                 <button
                   type="button"
@@ -2143,7 +2143,7 @@ function VerificationView({
                     onClick={onOpenSign}
                     className="rounded-[9px] bg-[#4c6b3c] px-3.5 py-2 text-[12px] font-semibold text-white"
                   >
-                    {zh ? "這是我的作品，簽署保護" : "This is my work — sign & protect"}
+                    {zh ? "這是我的作品，簽署憑證" : "This is my work — sign & certify"}
                   </button>
                   <button
                     type="button"
@@ -2492,15 +2492,15 @@ function CasesView(props: {
               <span className="block truncate text-[11.5px] text-[#1a1a1a8c]" style={{ fontFamily: MONO }}>
                   {zh
                   ? demoRowKey === "open"
-                    ? "發現於 2026/7/8 · 保險層巡檢"
+                    ? "發現於 2026/7/8 · 保險層檢查"
                     : demoRowKey === "confirmed"
-                    ? "2026/7/8 發現 · 已人工複審確認"
-                    : "2026/7/8 發現 · 已確認 · 已產生存證報告"
+                    ? "2026/7/8 發現 · 已人工複審 · 需處理"
+                    : "2026/7/8 發現 · 已複審 · 已產生存證報告"
                   : demoRowKey === "open"
-                  ? "Found 2026/7/8 · insurance-layer patrol"
+                  ? "Found 2026/7/8 · insurance-layer check"
                   : demoRowKey === "confirmed"
-                  ? "Found 2026/7/8 · confirmed by human review"
-                  : "Found 2026/7/8 · confirmed · report generated"}
+                  ? "Found 2026/7/8 · reviewed · action needed"
+                  : "Found 2026/7/8 · reviewed · report generated"}
               </span>
             </span>
             <span className="w-[120px] flex-none">
@@ -2732,7 +2732,7 @@ function CasesView(props: {
             <p className="mt-1 text-[13px] text-[#5c584a]">
               {zh
                 ? `關聯案件：${demoWork?.name || "1.jpg"} × Yahoo News Taiwan 文章頁 · 2026/7/8 發現、人工複審確認需要處理`
-                : `Linked case: ${demoWork?.name || "1.jpg"} × Yahoo News Taiwan article · found 2026/7/8, human review confirmed action is needed`}
+                : `Linked case: ${demoWork?.name || "1.jpg"} × Yahoo News Taiwan article · found 2026/7/8, human review marked action needed`}
             </p>
             <div className="mt-4 grid gap-3 sm:grid-cols-2">
               {(zh
@@ -2895,7 +2895,7 @@ function CaseView(props: {
         </div>
         <div className="rounded-[14px] border border-[#1a1a1a12] bg-white p-[18px]">
           <p className="mb-3.5 text-[12px] font-semibold" style={{ fontFamily: MONO }}>
-            {zh ? "竄改偵測 · TAMPERING" : "Tampering"}
+            {zh ? "改作比對 · EDITS" : "Edited-image handling"}
           </p>
           <div className="flex flex-wrap gap-2">
             {(zh ? ["受控縮放", "重新編碼"] : ["Controlled resize", "Re-encode"]).map((tag) => (
@@ -3066,7 +3066,7 @@ function VaultView({
           <PageHead
             dot={C.green}
             eyebrow={zh ? "我的原創 · VAULT" : "My originals · Vault"}
-            title={zh ? "受保護的原創影像" : "Protected originals"}
+            title={zh ? "已簽署憑證的原創影像" : "Signed & certified originals"}
             desc={
               zh
                 ? "每張作品都建立了不可逆的視覺指紋（改圖也認得出）與來源憑證。點卡片可檢視著作憑證：創作者、權利人、指紋、可驗證連結。"
@@ -3074,8 +3074,8 @@ function VaultView({
             }
             hint={
               zh
-                ? "怎麼看：上排是保護現況統計；下方卡片為示範縮圖樣本。點「＋簽署新作品」可看入庫流程（示範）。"
-                : "How to read: the top row shows protection stats; the cards below are sample thumbnails. “Sign a new work” shows the intake flow (demo)."
+                ? "怎麼看：上排是登錄與查驗現況；下方卡片為示範縮圖樣本。點「＋簽署新作品」可看入庫流程（示範）。"
+                : "How to read: the top row shows registration stats; the cards below are sample thumbnails. “Sign a new work” shows the intake flow (demo)."
             }
           />
         </div>
@@ -3091,7 +3091,7 @@ function VaultView({
       <div className="mb-5 grid gap-3.5 sm:grid-cols-3">
         <div className="rounded-[12px] bg-[#1A1A1A] p-5 text-[#F4E9D5]">
           <p className="text-[10px] tracking-[0.16em] text-[#7F9C7E]" style={{ fontFamily: MONO }}>
-            {zh ? "已保護 · PROTECTED" : "PROTECTED"}
+            {zh ? "已登錄 · REGISTERED" : "REGISTERED"}
           </p>
           <p className="mt-1.5 text-[30px] font-bold leading-none" style={{ fontFamily: MONO, color: "#9fbb87" }}>
             {protectedDisplay}
@@ -3198,7 +3198,7 @@ function VaultView({
             <div className="relative">
               <Thumb src={w.thumb} grad={w.grad} className="aspect-[16/10] w-full" />
               <span className="absolute right-2.5 top-2.5 rounded-full bg-[#1a1a1ad1] px-2.5 py-1 text-[9px] font-semibold text-[#e8dfab]" style={{ fontFamily: MONO }}>
-                {zh ? "已簽署保護" : "Protected"}
+                {zh ? "已簽署憑證" : "Certified"}
               </span>
             </div>
             <div className="p-4">
@@ -3264,9 +3264,9 @@ function SignModal({
           <X size={16} />
         </button>
         <p className="text-[10px] tracking-[0.18em] text-[#8d8873]" style={{ fontFamily: MONO }}>
-          {zh ? "簽署新作品 · PROTECT" : "SIGN A NEW WORK · PROTECT"}
+          {zh ? "簽署新作品 · CERTIFY" : "SIGN A NEW WORK · CERTIFY"}
         </p>
-        <h3 className="mt-1.5 text-[20px] font-black">{zh ? "為新作品建立保護" : "Protect a new work"}</h3>
+        <h3 className="mt-1.5 text-[20px] font-black">{zh ? "為新作品建立憑證" : "Certify a new work"}</h3>
         <p className="mt-1 text-[13px] leading-5 text-[#5c584a]">
           {zh
             ? "上傳後系統會建立不可逆的視覺指紋與來源憑證，之後的每日保險層檢查就會涵蓋這件作品。"
@@ -3365,7 +3365,7 @@ function ChannelsView({
       <div className="mb-4 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
         {(
           [
-            { key: "automated" as const, n: stageCounts.automated, t: zh ? "保險巡檢" : "Insurance patrol", d: zh ? "已接公開頁保險層，自動比對指紋" : "Public-page insurance layer with fingerprint matching" },
+            { key: "automated" as const, n: stageCounts.automated, t: zh ? "自動保險層" : "Automated insurance layer", d: zh ? "已接公開頁保險層，自動比對指紋" : "Public-page insurance layer with fingerprint matching" },
             { key: "search" as const, n: stageCounts.search, t: zh ? "查詢線索" : "Query leads", d: zh ? "提供查詢入口與人工複核線索" : "Query entry points and review leads" },
             { key: "manual" as const, n: stageCounts.manual, t: zh ? "人工複核" : "Manual review", d: zh ? "尚未接爬蟲，作為複核來源" : "No crawler yet; used as review sources" },
             { key: "queued" as const, n: stageCounts.queued, t: zh ? "待授權" : "Needs auth", d: zh ? "需平台授權或 API 才能自動化" : "Needs platform permission or API access" },
@@ -3500,7 +3500,7 @@ function CertModal({ locale, work, onClose }: { locale: Locale; work: WorkVM; on
         <div className="relative">
           <Thumb src={work.thumb} grad={work.grad} className="aspect-[16/9] w-full" />
           <span className="absolute right-3.5 top-3.5 rounded-full bg-[#7F9C7E] px-3 py-1 text-[9px] font-semibold text-white" style={{ fontFamily: MONO }}>
-            {zh ? "已簽署保護" : "Protected"}
+            {zh ? "已簽署憑證" : "Certified"}
           </span>
         </div>
         <div className="p-6">
@@ -3520,7 +3520,7 @@ function CertModal({ locale, work, onClose }: { locale: Locale; work: WorkVM; on
           <div className="my-4 h-px bg-[#1a1a1a1a]" />
           <CertRow label={zh ? "著作創作者" : "Creator"} value={work.author} />
           <CertRow label={zh ? "合法權利人" : "Rights holder"} value={work.owner} />
-          <CertRow label={zh ? "指紋保護時間" : "Sealed at"} value={formatDateForLocale(work.sealed, locale)} mono />
+          <CertRow label={zh ? "指紋建立時間" : "Fingerprint created"} value={formatDateForLocale(work.sealed, locale)} mono />
           <CertRow label={zh ? "原創憑證狀態" : "Origin certificate"} value={work.c2pa === "signed" ? (zh ? "憑證完整 · VERIFIED" : "Verified") : work.c2pa || "—"} accent />
           <div className="mt-3">
             <p className="mb-1 text-[12px] text-[#1a1a1a80]">{zh ? "著作指紋 FINGERPRINT" : "Fingerprint"}</p>
