@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-07-30T04:27:54.816Z",
-  "run_id": "ttd-patrol-20260730T042103Z",
+  "generated_at": "2026-07-31T04:34:02.919Z",
+  "run_id": "ttd-patrol-20260731T042719Z",
   "adapter": "visionWebDetection+namedChannelCrawler",
   "expected_filter": "all",
   "threshold": 16,
@@ -53,10 +53,9 @@
     {
       "candidate_id": "vision_351a292cdf827f58",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 40,
-      "top_index_match_asset_id": "bafybeicsleruqmm4rbrodvdwfthzzlnclzpkyu2udywda77tueyno3i3oy",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "HTTP 500 for https://www.areavibes.com/photos/livability/round-rock-tx.jpg"
     },
     {
       "candidate_id": "vision_dade80615133faca",
@@ -184,10 +183,9 @@
     {
       "candidate_id": "vision_a2802429cfd7b21b",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 63,
-      "top_index_match_asset_id": "bafybeihposk7k6rxcjqsaxoh7rinebxkgw4xj25euptnuryg56aa32ltje",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "HTTP 403 for https://cdn.iz.ru/sites/default/files/styles/1065xh/public/photo_item-2026-07/RIA_8971992.HR_.jpg"
     },
     {
       "candidate_id": "vision_6a97e71bc29b748e",
@@ -424,7 +422,7 @@
       "candidate_id": "vision_32aba394b116f164",
       "expected": "unknown",
       "verdict": "no_match",
-      "protected_asset_distance": 72,
+      "protected_asset_distance": 70,
       "top_index_match_asset_id": "bafybeiable3ldt5idu3wlrvg5yklj2gj5dspfil6bikcjznb5wlgqfqnwq",
       "pass": true
     },
@@ -825,10 +823,9 @@
     {
       "candidate_id": "vision_ac5952ca2354ebab",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 68,
-      "top_index_match_asset_id": "bafybeih2e5ztq74vn3g52ojbtkdddm3ddz4kyqd5f47dxbehnx76h3jagq",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "fetch failed"
     },
     {
       "candidate_id": "vision_d56a2bcc4a357b75",
@@ -841,10 +838,9 @@
     {
       "candidate_id": "vision_65c74d9875798dff",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 68,
-      "top_index_match_asset_id": "bafybeihposk7k6rxcjqsaxoh7rinebxkgw4xj25euptnuryg56aa32ltje",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "HTTP 429 for http://www.foreignersintaiwan.com/uploads/5/4/3/2/54326073/mudanoldst-5_orig.jpg"
     },
     {
       "candidate_id": "vision_15476ee983ae4f32",
@@ -1419,7 +1415,7 @@
       "expected": "unknown",
       "pass": true,
       "warning": true,
-      "error": "image exceeds max bytes (3525178 > 2000000) for https://www.sues.edu.cn/_upload/article/images/a9/9d/8349850c464bb90ca5a718e04ad3/2526ef2a-f6f7-4463-91a5-f8f4ef6ae6d1.png"
+      "error": "fetch failed"
     },
     {
       "candidate_id": "vision_a719e2611ee44a8b",
@@ -1587,10 +1583,9 @@
     {
       "candidate_id": "vision_713e4ab9906f43d7",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 67,
-      "top_index_match_asset_id": "bafybeieyoip2pbwojtwvietkcmft3te22m3wlia2drksdpyttnhahodzzu",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "fetch failed"
     },
     {
       "candidate_id": "vision_0a45ced94fbcb0fc",
@@ -1705,10 +1700,9 @@
     {
       "candidate_id": "vision_78ff3d1db93924ff",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 67,
-      "top_index_match_asset_id": "bafybeidensjwe2lqxrzpikjbhkf2kqhslkdhbhoelwsfm5c2mds3naruai",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "HTTP 429 for https://www.yomiuri.co.jp/media/2026/01/20260107-GYT8I00121-T.jpg"
     },
     {
       "candidate_id": "vision_48d4e2b16f4b5311",
@@ -2056,10 +2050,9 @@
     {
       "candidate_id": "vision_39220f26153ce6fb",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 56,
-      "top_index_match_asset_id": "bafybeibcodninby5bq7nvnv4stvcyzliztfi7dtpvglqgrgdcx5nol5tgq",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "fetch failed"
     },
     {
       "candidate_id": "vision_b0fd919049a619dd",
@@ -2260,18 +2253,16 @@
     {
       "candidate_id": "vision_06d579b17159e439",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 57,
-      "top_index_match_asset_id": "bafybeihgxp7ubha2doy7ja4lzdjl4fdaexbotxr46vogge23mzi2esk2ee",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "fetch failed"
     },
     {
       "candidate_id": "vision_2644781d8c464bbf",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 68,
-      "top_index_match_asset_id": "bafybeidrdmmcq3dds6e3zvdv2l62ieuwz3s6eghqownz3m5q53434ocsle",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "fetch failed"
     },
     {
       "candidate_id": "vision_dd9c283f9bc7e600",
@@ -2392,10 +2383,9 @@
     {
       "candidate_id": "vision_1d1bcbfc63bf4f86",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 67,
-      "top_index_match_asset_id": "bafybeieyoip2pbwojtwvietkcmft3te22m3wlia2drksdpyttnhahodzzu",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "fetch failed"
     },
     {
       "candidate_id": "vision_3f52a954287021fa",
@@ -2828,9 +2818,10 @@
     {
       "candidate_id": "vision_167c72133c3c0b4e",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "fetch failed"
+      "verdict": "no_match",
+      "protected_asset_distance": 64,
+      "top_index_match_asset_id": "bafybeiazfwp5qmd5vduneeu2i3yj4okzqvqyagr4hdr5qyiracglwoikpq",
+      "pass": true
     },
     {
       "candidate_id": "vision_9537485dd69d0110",
@@ -2929,9 +2920,10 @@
     {
       "candidate_id": "vision_5c561d72d343fdd9",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "fetch failed"
+      "verdict": "no_match",
+      "protected_asset_distance": 71,
+      "top_index_match_asset_id": "bafybeie42hect4yp5n4fghvrv5dwfdys33t7ldrnzvuu73zl7mg366yraq",
+      "pass": true
     },
     {
       "candidate_id": "vision_ac6afa2f91302571",
