@@ -22,6 +22,7 @@ import { useOriginRadarData } from "./data/useOriginRadarData";
 import type {
   EvidenceReportDocument,
   Locale,
+  MonitoredSource,
   MonitoringRun,
   VerificationDocument,
   VerificationQuery,
@@ -187,14 +188,44 @@ function simColor(v: number) {
   return v >= 90 ? C.orange : v >= 80 ? C.amber : C.greenDeep;
 }
 
-function Thumb({ src, grad, className, sepia }: { src?: string; grad: string; className?: string; sepia?: boolean }) {
+function formatArtifactCount(value: number | undefined, fallback: number) {
+  return (Number.isFinite(value) ? Number(value) : fallback).toLocaleString("en-US");
+}
+
+function buildAutomatedSourceNames(sources: MonitoredSource[], monitoring: MonitoringRun, locale: Locale) {
+  const names = sources.filter((source) => source.crawl_method === "automated_public_page").map((source) => source.source_name);
+  const hasVisionWebDetection =
+    Boolean(monitoring.adapter?.id?.includes("visionWebDetection")) ||
+    (monitoring.source_runs || []).some((run) => run.source_id === "GOOGLE_VISION_WEB_DETECTION");
+  if (hasVisionWebDetection) {
+    names.push(locale === "zh-TW" ? "Google Vision 網路偵測" : "Google Vision Web Detection");
+  }
+  return Array.from(new Set(names));
+}
+
+function Thumb({
+  src,
+  grad,
+  className,
+  sepia,
+  loading = "lazy",
+}: {
+  src?: string;
+  grad: string;
+  className?: string;
+  sepia?: boolean;
+  loading?: "eager" | "lazy";
+}) {
+  const [failed, setFailed] = useState(false);
+  const showImage = Boolean(src) && !failed;
   return (
-    <div className={`relative overflow-hidden ${className || ""}`} style={src ? undefined : { background: grad }}>
-      {src ? (
+    <div className={`relative overflow-hidden ${className || ""}`} style={showImage ? undefined : { background: grad }}>
+      {showImage ? (
         <img
           src={src}
           alt=""
-          loading="lazy"
+          loading={loading}
+          onError={() => setFailed(true)}
           className={`h-full w-full object-cover ${sepia ? "contrast-125 sepia grayscale-[35%]" : ""}`}
         />
       ) : null}
@@ -443,6 +474,9 @@ export function TtdMvpDashboard() {
   const lastRunSourceCount = lastRunSources.size || Number(channelsActiveDisplay.replace(/,/g, "")) || channels.length;
   const lastRunCandidates = loadState.data.monitoring.run_scope?.candidates_attempted ?? 0;
   const lastRunAlerts = loadState.data.monitoring.run_scope?.alerts_created ?? alerts.length;
+  const monitoredSourcesDoc = loadState.data.monitoredSources;
+  const sourceCountDisplay = formatArtifactCount(monitoredSourcesDoc.source_count, monitoredSourcesDoc.monitored_sources.length);
+  const automatedSourceNames = buildAutomatedSourceNames(monitoredSourcesDoc.monitored_sources, loadState.data.monitoring, locale);
   const patrolModeLabel = (() => {
     const adapter = loadState.data.monitoring.adapter;
     if (adapter?.id?.includes("visionWebDetection") && adapter.id.includes("namedChannelCrawler") && adapter.paid_api_used) {
@@ -675,6 +709,8 @@ export function TtdMvpDashboard() {
               works={works}
               protectedDisplay={protectedDisplay}
               indexedRows={loadState.data.verification.library.indexed_rows}
+              sourceCountDisplay={sourceCountDisplay}
+              automatedSourceNames={automatedSourceNames}
               lastRunCandidates={lastRunCandidates}
               lastRunAlerts={lastRunAlerts}
               lastPatrol={lastPatrol}
@@ -932,6 +968,8 @@ function EcosystemFrontView({
   works,
   protectedDisplay,
   indexedRows,
+  sourceCountDisplay,
+  automatedSourceNames,
   lastRunCandidates,
   lastRunAlerts,
   lastPatrol,
@@ -943,6 +981,8 @@ function EcosystemFrontView({
   works: WorkVM[];
   protectedDisplay: string;
   indexedRows: number;
+  sourceCountDisplay: string;
+  automatedSourceNames: string[];
   lastRunCandidates: number;
   lastRunAlerts: number;
   lastPatrol: string;
@@ -953,9 +993,51 @@ function EcosystemFrontView({
   const zh = locale === "zh-TW";
   const protectedNum = Number(protectedDisplay.replace(/,/g, "")) || works.length;
   const indexingCount = Math.max(0, protectedNum - indexedRows);
-  const waterWorks = works.filter((work) => /水源地|溪流|水資源|water|stream/i.test(`${work.name} ${work.en}`));
-  const topicWorks = (waterWorks.length >= 3 ? waterWorks : works).slice(0, 3);
-  const featuredWorks = (topicWorks.length >= 2 ? topicWorks : works).slice(0, 2);
+  const topicSearchText = (work: WorkVM) => `${work.name} ${work.en} ${work.author}`;
+  const topicDefinitions = [
+    {
+      id: "water",
+      zhLabel: "水資源現場",
+      enLabel: "Water resources",
+      zhTitle: "水資源與環境現場",
+      enTitle: "Water resources and field environment",
+      zhDesc: "溪流、水源地與環境現場素材，適合環境、氣候與地方治理議題。",
+      enDesc: "Streams, watershed, and field-environment images for environment, climate, and local-governance desks.",
+      matcher: /水源地|溪流|水資源|water|stream/i,
+    },
+    {
+      id: "civic",
+      zhLabel: "選舉公共現場",
+      enLabel: "Civic reporting",
+      zhTitle: "選舉與公共現場",
+      enTitle: "Election and civic field reporting",
+      zhDesc: "候選人、造勢、開票與投票現場素材，適合即時新聞與公共事務編輯台。",
+      enDesc: "Candidate, rally, vote-counting, and polling-place imagery for civic and breaking-news desks.",
+      matcher: /候選人|造勢|開票|投開票|競選|賴清德|柯文哲|侯友宜|吳欣盈|蕭美琴|趙少康/i,
+    },
+    {
+      id: "local",
+      zhLabel: "地方生活現場",
+      enLabel: "Local life",
+      zhTitle: "廟口、掃街與地方生活",
+      enTitle: "Temple, street, and local-life scenes",
+      zhDesc: "廟口、參香、掃街與街區互動素材，適合地方文化與社會現場報導。",
+      enDesc: "Temple visits, street walks, and neighborhood interaction images for local culture and society coverage.",
+      matcher: /慈祐宮|武聖廟|奠濟宮|廟口|參香|掃街|夜市|支持者/i,
+    },
+  ];
+  const topicTabs = topicDefinitions
+    .map((topic) => ({
+      ...topic,
+      works: works.filter((work) => topic.matcher.test(topicSearchText(work))).slice(0, 3),
+    }))
+    .filter((topic) => topic.works.length >= 3);
+  const [activeTopicId, setActiveTopicId] = useState(topicTabs[0]?.id || "water");
+  const activeTopic = topicTabs.find((topic) => topic.id === activeTopicId) || topicTabs[0];
+  const topicWorks = activeTopic?.works || works.slice(0, 3);
+  const primaryTopicWorks = topicTabs[0]?.works || works.slice(0, 3);
+  const featuredWorks = (primaryTopicWorks.length >= 2 ? primaryTopicWorks : works).slice(0, 2);
+  const demoLicenseWork = topicWorks[0] || featuredWorks[0] || works[0];
 
   const flow = [
     {
@@ -1028,6 +1110,9 @@ function EcosystemFrontView({
       desc: zh
         ? "發稿前先查來源、權利人與授權脈絡，把不確定的圖擋在發布前。"
         : "Before publishing, check origin, rights holder, and license context so uncertain images stop before release.",
+      bullets: zh
+        ? ["議題發生時，即時收到正版素材", "獨家 / 非獨家授權選項", "自查影像來源，避免誤用"]
+        : ["Receive verified assets when a topic breaks", "Choose exclusive or non-exclusive licensing", "Check image origin before accidental misuse"],
       action: zh ? "媒體自查 →" : "Editor self-check →",
       view: "verify" as View,
       accent: C.greenDeep,
@@ -1038,9 +1123,58 @@ function EcosystemFrontView({
       desc: zh
         ? "保險層每天檢查指定來源；發現高相似使用時，先提醒複審，再回到授權溝通。"
         : "The insurance layer checks specified sources daily; high-similarity use becomes a reminder for review, then licensing outreach.",
+      bullets: zh
+        ? ["登錄一次，被更多媒體看見", "授權收入透明回到自己", "被未授權使用時，有人替你提醒"]
+        : ["Register once and become visible to more media", "Keep licensing revenue traceable back to you", "Get reminded when unauthorized use needs review"],
       action: zh ? "看提醒後台 →" : "Open reminders →",
       view: "alerts" as View,
       accent: C.orange,
+    },
+  ];
+
+  const insuranceStats = [
+    {
+      label: zh ? "已登錄原創" : "Registered originals",
+      value: protectedDisplay,
+      sub: zh ? "DIA public originals" : "DIA public originals",
+    },
+    {
+      label: zh ? "來源分級" : "Source tiers",
+      value: sourceCountDisplay,
+      sub: zh ? "monitored-sources.json" : "monitored-sources.json",
+    },
+    {
+      label: zh ? "最近候選" : "Latest candidates",
+      value: lastRunCandidates.toLocaleString("en-US"),
+      sub: zh ? `${lastPatrol} 保險層檢查` : `${lastPatrol} insurance-layer run`,
+    },
+    {
+      label: zh ? "真實警報" : "Actual alerts",
+      value: lastRunAlerts.toLocaleString("en-US"),
+      sub: zh ? "沒有命中就誠實顯示 0" : "Zero means zero",
+    },
+  ];
+
+  const expansionPath = [
+    zh ? "台灣媒體與創作者" : "Taiwan media + creators",
+    zh ? "關心台灣的全球媒體" : "Global desks covering Taiwan",
+    zh ? "各地創作者加入" : "Creators join from more regions",
+  ];
+
+  const roadmap = [
+    {
+      label: zh ? "已真實運作" : "Running now",
+      items: zh
+        ? ["原創登錄", "來源憑證與指紋", "保險層每日巡檢"]
+        : ["Original registration", "Origin certificates + fingerprints", "Daily insurance-layer checks"],
+      tone: "current",
+    },
+    {
+      label: zh ? "下一階段（補助後）" : "Next stage after funding",
+      items: zh
+        ? ["素材推播", "授權金流", "任意圖片查驗"]
+        : ["Asset push", "Licensing payments", "Arbitrary-image verification"],
+      tone: "next",
     },
   ];
 
@@ -1070,6 +1204,14 @@ function EcosystemFrontView({
                 ? "原創雷達不是把查找線索當主角，而是把保險層放在生態系外圈：素材主動進編輯台，授權回到創作者，雷達負責提醒與保險。"
                 : "OriginRadar puts the insurance layer on the outside of the ecosystem: verified assets reach editors, licensing returns to creators, and the radar handles reminders."}
             </p>
+            <div className="mt-5 max-w-[520px] border-l-2 border-[#8FB49A] pl-4">
+              <p className="text-[19px] font-black leading-snug text-[#F4E9D5]">
+                {zh ? "我們主張的，是原創的價值。" : "Our claim is the value of originals."}
+              </p>
+              <p className="mt-1 text-[12px] leading-5 text-[#CEC0A3]">
+                {zh ? "不是查假圖工具，也不是防詐工具。" : "Not a fake image checker, and not a fraud-prevention product."}
+              </p>
+            </div>
           </div>
           <div className="mt-8 grid gap-3 sm:grid-cols-3">
             {[
@@ -1124,18 +1266,44 @@ function EcosystemFrontView({
             ))}
           </div>
 
-          <div className="mt-4 grid gap-3 sm:grid-cols-[1fr_1fr]">
-            <div className="rounded-[12px] bg-[#eef4ea] px-4 py-3 text-[#3f5a3e]">
-              <p className="text-[12px] font-bold">{zh ? "媒體是節點，全民是受益者" : "Media are nodes; everyone benefits"}</p>
-              <p className="mt-1 text-[11.5px] leading-4">
-                {zh ? "編輯台拿到可信、可授權的原創素材，讀者看到的是有來源的影像。" : "Editors receive verifiable, licensable assets; readers see images with origin context."}
+          <div className="mt-4 rounded-[14px] bg-[#1A1A1A] p-4 text-[#F4E9D5]">
+            <div className="flex flex-wrap items-start justify-between gap-3">
+              <div>
+                <p className="text-[10px] tracking-[0.18em] text-[#8FB49A]" style={{ fontFamily: MONO }}>
+                  {zh ? "保險層證據 · LIVE ARTIFACTS" : "INSURANCE-LAYER EVIDENCE · LIVE ARTIFACTS"}
+                </p>
+                <h3 className="mt-1 text-[16px] font-black">{zh ? "雷達提醒 = 保險層" : "Radar reminders = insurance layer"}</h3>
+              </div>
+              <p className="max-w-[460px] text-[11.5px] leading-4 text-[#CEC0A3]">
+                {zh
+                  ? `最近 ${lastPatrol} 的檢查結果直接讀自提交的 patrol artifacts；沒有命中就誠實顯示零。`
+                  : `The latest ${lastPatrol} run is read from committed patrol artifacts; zero means zero.`}
               </p>
             </div>
-            <div className="rounded-[12px] bg-[#1A1A1A] px-4 py-3 text-[#F4E9D5]">
-              <p className="text-[12px] font-bold text-[#8FB49A]">{zh ? "雷達提醒 = 保險層" : "Radar reminders = insurance layer"}</p>
-              <p className="mt-1 text-[11.5px] leading-4 text-[#CEC0A3]">
-                {zh ? `最近 ${lastPatrol} 檢查 ${lastRunCandidates} 筆候選，沒有命中就誠實顯示零。` : `Latest run ${lastPatrol}: ${lastRunCandidates} candidates checked; zero means zero.`}
+
+            <div className="mt-4 grid gap-x-4 gap-y-3 sm:grid-cols-2 lg:grid-cols-4">
+              {insuranceStats.map((item) => (
+                <div key={item.label} className="border-t border-[#f4e9d526] pt-3">
+                  <p className="text-[26px] font-bold leading-none text-[#8FB49A]" style={{ fontFamily: MONO }}>
+                    {item.value}
+                  </p>
+                  <p className="mt-1 text-[11px] font-semibold">{item.label}</p>
+                  <p className="mt-1 text-[10.5px] leading-4 text-[#CEC0A3]">{item.sub}</p>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-4 border-t border-[#f4e9d526] pt-3">
+              <p className="text-[10px] tracking-[0.16em] text-[#8FB49A]" style={{ fontFamily: MONO }}>
+                {zh ? "具名自動來源" : "NAMED AUTOMATED SOURCES"}
               </p>
+              <div className="mt-2 flex flex-wrap gap-2">
+                {automatedSourceNames.map((name) => (
+                  <span key={name} className="max-w-full rounded-full border border-[#f4e9d526] px-2.5 py-1 text-[11px] leading-4 text-[#F4E9D5]">
+                    {name}
+                  </span>
+                ))}
+              </div>
             </div>
           </div>
         </div>
@@ -1164,18 +1332,39 @@ function EcosystemFrontView({
               key={role.label}
               type="button"
               onClick={() => onNavigate(role.view)}
-              className="group flex min-h-[164px] flex-col items-start justify-between rounded-[14px] border border-[#1a1a1a12] bg-[#FBF6EC] p-5 text-left transition-all hover:-translate-y-0.5 hover:border-[#7F9C7E] hover:shadow-[0_8px_26px_rgba(60,50,20,0.10)]"
+              className="group flex min-h-[248px] flex-col items-start justify-between rounded-[14px] border border-[#1a1a1a12] bg-[#FBF6EC] p-5 text-left transition-all hover:-translate-y-0.5 hover:border-[#7F9C7E] hover:shadow-[0_8px_26px_rgba(60,50,20,0.10)]"
             >
               <span className="rounded-full px-2.5 py-1 text-[10px] font-bold text-white" style={{ background: role.accent, fontFamily: MONO }}>
                 {role.label}
               </span>
               <span className="mt-4 block text-[22px] font-black leading-tight">{role.title}</span>
               <span className="mt-2 block flex-1 text-[13px] leading-5 text-[#5c584a]">{role.desc}</span>
+              <span className="mt-4 block w-full space-y-2">
+                {role.bullets.map((bullet) => (
+                  <span key={bullet} className="flex items-start gap-2 text-[12.5px] leading-5 text-[#2f2c25]">
+                    <span className="mt-2 h-1.5 w-1.5 flex-none rounded-full" style={{ background: role.accent }} />
+                    <span>{bullet}</span>
+                  </span>
+                ))}
+              </span>
               <span className="mt-4 flex items-center gap-1.5 text-[13px] font-black text-[#4f6a4e]">
                 {role.action} <ArrowRight size={14} />
               </span>
             </button>
           ))}
+        </div>
+        <div className="mt-4 rounded-[13px] bg-[#eef4ea] p-4 text-[#3f5a3e]">
+          <p className="text-[10px] tracking-[0.16em]" style={{ fontFamily: MONO }}>
+            {zh ? "台灣 → 全球" : "TAIWAN → GLOBAL"}
+          </p>
+          <div className="mt-3 grid gap-2 md:grid-cols-[1fr_auto_1fr_auto_1fr] md:items-center">
+            {expansionPath.map((item, index) => (
+              <div key={item} className="contents">
+                <p className="rounded-[10px] bg-white px-3 py-2 text-[12.5px] font-bold leading-5 text-[#3f5a3e]">{item}</p>
+                {index < expansionPath.length - 1 && <ArrowRight className="hidden text-[#7F9C7E] md:block" size={18} />}
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -1287,24 +1476,55 @@ function EcosystemFrontView({
             <p className="text-[10px] tracking-[0.18em] text-[#ED5D29]" style={{ fontFamily: MONO }}>
               {zh ? "議題推播示範 · DEMO" : "TOPIC PUSH DEMO"}
             </p>
-            <h2 className="mt-1 text-[22px] font-black">{zh ? "編輯台議題：水資源與環境現場" : "Editor topic: water resources and field environment"}</h2>
+            <h2 className="mt-1 text-[22px] font-black">
+              {zh ? `編輯台議題：${activeTopic?.zhTitle || "精選原創素材"}` : `Editor topic: ${activeTopic?.enTitle || "selected originals"}`}
+            </h2>
             <p className="mt-1 text-[13px] text-[#5c584a]">
-              {zh ? "主動推播，不是被動搜尋。下列卡片皆來自現有真實縮圖；授權動作為示範。" : "Push, not passive search. These cards use existing real thumbnails; licensing actions are demos."}
+              {zh
+                ? activeTopic?.zhDesc || "主動推播，不是被動搜尋。下列卡片皆來自現有真實縮圖；授權動作為示範。"
+                : activeTopic?.enDesc || "Push, not passive search. These cards use existing real thumbnails; licensing actions are demos."}
             </p>
           </div>
           <button
             type="button"
-            onClick={() => showToast(zh ? "示範：已把 3 張已驗證素材推進編輯台候選清單" : "Demo: 3 verified assets pushed into the editor shortlist")}
+            onClick={() =>
+              showToast(
+                zh
+                  ? `示範：已把「${activeTopic?.zhLabel || "精選素材"}」${topicWorks.length} 張已驗證素材推進編輯台候選清單`
+                  : `Demo: ${topicWorks.length} verified ${activeTopic?.enLabel || "selected"} assets pushed into the editor shortlist`,
+              )
+            }
             className="rounded-[9px] bg-[#ED5D29] px-4 py-2.5 text-[12px] font-semibold text-white"
           >
-            {zh ? "推播 3 張素材（示範）" : "Push 3 assets (demo)"}
+            {zh ? `推播 ${topicWorks.length} 張素材（示範）` : `Push ${topicWorks.length} assets (demo)`}
           </button>
+        </div>
+
+        <div className="mb-4 flex flex-wrap gap-2">
+          {topicTabs.map((topic) => {
+            const active = topic.id === activeTopic?.id;
+            return (
+              <button
+                key={topic.id}
+                type="button"
+                onClick={() => setActiveTopicId(topic.id)}
+                className={`min-h-[38px] rounded-full border px-3 py-1.5 text-[12px] font-bold transition ${
+                  active ? "border-[#ED5D29] bg-[#ED5D29] text-white" : "border-[#1a1a1a1f] bg-[#FBF6EC] text-[#4a4539] hover:border-[#ED5D29]"
+                }`}
+              >
+                {zh ? topic.zhLabel : topic.enLabel}
+                <span className={`ml-1.5 text-[10px] ${active ? "text-white/80" : "text-[#8d8873]"}`} style={{ fontFamily: MONO }}>
+                  {topic.works.length}
+                </span>
+              </button>
+            );
+          })}
         </div>
 
         <div className="grid gap-4 md:grid-cols-3">
           {topicWorks.map((work) => (
             <article key={work.assetId} className="overflow-hidden rounded-[13px] border border-[#1a1a1a12] bg-[#FBF6EC]">
-              <Thumb src={work.thumb} grad={work.grad} className="aspect-[16/10] w-full" />
+              <Thumb src={work.thumb} grad={work.grad} className="aspect-[16/10] w-full" loading="eager" />
               <div className="p-4">
                 <p className="text-[14px] font-black">{work.en || work.name}</p>
                 <p className="mt-1 text-[11px] text-[#5c584a]">
@@ -1328,6 +1548,98 @@ function EcosystemFrontView({
                 </div>
               </div>
             </article>
+          ))}
+        </div>
+
+        {demoLicenseWork && (
+          <div className="mt-4 rounded-[14px] border border-[#ed5d2940] bg-[#fff7ec] p-4">
+            <div className="flex flex-wrap items-start justify-between gap-3">
+              <div>
+                <p className="text-[10px] tracking-[0.18em] text-[#B7552B]" style={{ fontFamily: MONO }}>
+                  {zh ? "授權紀錄（示範）· DEMO FLOW" : "LICENSE RECORD (DEMO) · DEMO FLOW"}
+                </p>
+                <h3 className="mt-1 text-[18px] font-black">{zh ? "一筆授權如何透明回到創作者" : "How one license can flow back to the creator"}</h3>
+                <p className="mt-1 text-[12.5px] leading-5 text-[#5c584a]">
+                  {zh
+                    ? `示範素材：${demoLicenseWork.en || demoLicenseWork.name}。以下金額與比例僅為 DEMO，不代表真實成交、付款或分潤。`
+                    : `Demo asset: ${demoLicenseWork.en || demoLicenseWork.name}. Amounts and ratios below are DEMO only, not a real sale, payment, or revenue split.`}
+                </p>
+              </div>
+              <span className="rounded-full bg-[#1A1A1A] px-2.5 py-1 text-[10px] font-bold text-[#F4E9D5]" style={{ fontFamily: MONO }}>
+                DEMO
+              </span>
+            </div>
+            <div className="mt-4 grid gap-3 md:grid-cols-[1fr_auto_1fr_auto_1fr] md:items-stretch">
+              {[
+                {
+                  title: zh ? "媒體" : "Media desk",
+                  value: zh ? "NT$1,200（DEMO）" : "NT$1,200 (DEMO)",
+                  note: zh ? "示範授權預算" : "Demo license budget",
+                },
+                {
+                  title: zh ? "平台服務費" : "Platform fee",
+                  value: zh ? "20% / NT$240（DEMO）" : "20% / NT$240 (DEMO)",
+                  note: zh ? "示範比例，不代表實際合約" : "Demo ratio, not a real contract",
+                },
+                {
+                  title: zh ? "創作者分潤" : "Creator share",
+                  value: zh ? "80% / NT$960（DEMO）" : "80% / NT$960 (DEMO)",
+                  note: zh ? `${demoLicenseWork.author} · 示範入帳` : `${demoLicenseWork.author} · demo payout`,
+                },
+              ].map((step, index) => (
+                <div key={step.title} className="contents">
+                  <div className="rounded-[12px] bg-white p-3">
+                    <p className="text-[11px] font-bold text-[#5c584a]">{step.title}</p>
+                    <p className="mt-1 text-[18px] font-black text-[#1A1A1A]" style={{ fontFamily: MONO }}>
+                      {step.value}
+                    </p>
+                    <p className="mt-1 text-[11px] leading-4 text-[#7d756a]">{step.note}</p>
+                  </div>
+                  {index < 2 && <ArrowRight className="hidden self-center text-[#ED5D29] md:block" size={18} />}
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+      </section>
+
+      {/* honest roadmap boundary */}
+      <section className="mt-6 rounded-[16px] bg-[#1A1A1A] p-5 text-[#F4E9D5] sm:p-6">
+        <div className="mb-4 flex flex-wrap items-end justify-between gap-3">
+          <div>
+            <p className="text-[10px] tracking-[0.18em] text-[#8FB49A]" style={{ fontFamily: MONO }}>
+              {zh ? "現況 / 下一階段 · HONEST ROADMAP" : "NOW / NEXT · HONEST ROADMAP"}
+            </p>
+            <h2 className="mt-1 text-[22px] font-black">{zh ? "哪些已經在跑，哪些等補助補上" : "What runs now, what funding adds next"}</h2>
+          </div>
+          <p className="max-w-[460px] text-[12px] leading-5 text-[#CEC0A3]">
+            {zh
+              ? "前台 demo 只把已存在的能力說成現況；推播、授權金流與任意圖片查驗會明確放在下一階段。"
+              : "The demo marks existing capabilities as current; asset push, payment flow, and arbitrary-image verification stay in the next-stage lane."}
+          </p>
+        </div>
+        <div className="grid gap-4 md:grid-cols-2">
+          {roadmap.map((lane) => (
+            <div key={lane.label} className="border-t border-[#f4e9d526] pt-4">
+              <p
+                className="text-[13px] font-black"
+                style={{ color: lane.tone === "current" ? "#8FB49A" : "#D8B76A" }}
+              >
+                {lane.label}
+              </p>
+              <div className="mt-3 flex flex-wrap gap-2">
+                {lane.items.map((item) => (
+                  <span
+                    key={item}
+                    className={`rounded-full px-3 py-1.5 text-[12px] font-semibold ${
+                      lane.tone === "current" ? "bg-[#eef4ea] text-[#3f5a3e]" : "bg-[#3a3527] text-[#F4E9D5]"
+                    }`}
+                  >
+                    {item}
+                  </span>
+                ))}
+              </div>
+            </div>
           ))}
         </div>
       </section>
@@ -1827,6 +2139,7 @@ function VerificationView({
   const queryWork = activeQuery.query_asset_id ? worksById.get(activeQuery.query_asset_id) : undefined;
   const matchWork = topMatch ? worksById.get(topMatch.asset_id) : undefined;
   const previewWork = queryWork || matchWork;
+  const isUnsupportedInput = inputState === "unsupported";
   const verdictColor = verificationToneColor(activeQuery.verdict.tone);
   const similarityPct = topMatch ? Math.max(0, Math.round(topMatch.similarity_score * 10000) / 100) : 0;
   const passAll = verification.pass?.all === true;
@@ -2000,7 +2313,7 @@ function VerificationView({
           </p>
           <div className="grid gap-2">
             {verification.queries.map((query) => {
-              const selected = query.query_id === activeQuery.query_id;
+              const selected = !isUnsupportedInput && query.query_id === activeQuery.query_id;
               return (
                 <button
                   key={query.query_id}
@@ -2022,215 +2335,235 @@ function VerificationView({
           </div>
         </section>
 
-        <section className="rounded-[14px] border border-[#1a1a1a12] bg-white p-5">
-          <div className="mb-4 flex flex-wrap items-start justify-between gap-4">
-            <div>
-              <p className="text-[12px] text-[#1a1a1a80]" style={{ fontFamily: MONO }}>
-                {zh ? "查驗結果" : "Verification result"}
+        {isUnsupportedInput ? (
+          <section className="rounded-[14px] border border-[#1a1a1a12] bg-white p-5">
+            <div className="flex h-full min-h-[260px] flex-col justify-center rounded-[12px] border border-dashed border-[#d8c89f] bg-[#FBF6EC] px-5 py-8 text-center">
+              <p className="text-[11px] font-semibold tracking-[0.14em] text-[#80621c]" style={{ fontFamily: MONO }}>
+                {zh ? "尚未比對" : "NOT COMPARED"}
               </p>
-              <h2 className="mt-1 text-[24px] font-semibold leading-tight" style={{ fontFamily: MONO }}>
-                {verificationVerdictText(activeQuery.verdict, locale)}
+              <h2 className="mt-2 text-[22px] font-semibold leading-tight text-[#1A1A1A]">
+                {zh ? "沒有產生判定" : "No verdict created"}
               </h2>
-              <p className="mt-2 max-w-[520px] text-[12px] leading-5 text-[#1a1a1a80]">
-                {topMatch
-                  ? distanceHelpText(topMatch, verification.library.threshold, locale)
-                  : zh
-                  ? "目前原創庫沒有找到足以判定為同一原作的作品。"
-                  : "The current index does not contain a strong enough match."}
+              <p className="mx-auto mt-3 max-w-[460px] text-[13px] leading-6 text-[#5c584a]">
+                {zh
+                  ? "這個輸入尚未建立本機指紋索引，因此本輪不顯示相似度、距離、原創憑證或候選原作，也不會建立提醒或案件。"
+                  : "This input has no local fingerprint index, so this run does not show similarity, distance, certificate, or candidate originals, and it creates no reminder or case."}
               </p>
             </div>
-            <div
-              className="flex h-[92px] w-[92px] flex-col items-center justify-center rounded-full border-4"
-              style={{ borderColor: verdictColor }}
-            >
-              <span className="text-[25px] font-bold leading-none" style={{ fontFamily: MONO, color: verdictColor }}>
-                {similarityPct}%
-              </span>
-              <span className="mt-1 text-[9px] tracking-[0.1em] text-[#1a1a1a80]" style={{ fontFamily: MONO }}>
-                {zh ? "相似程度" : "SIMILARITY"}
-              </span>
-            </div>
-          </div>
-
-          <div className="grid gap-4 md:grid-cols-[190px_1fr]">
-            <Thumb src={previewWork?.thumb} grad={previewWork?.grad || GRADS[0]} className="aspect-[16/11] w-full rounded-[10px]" />
-            <div className="min-w-0">
-              <p className="text-[15px] font-semibold">
-                {activeQuery.display.title}
-                {activeQuery.display.subtitle && (
-                  <span className="text-[13px] font-normal text-[#1a1a1a66]"> ／ {activeQuery.display.subtitle}</span>
-                )}
-              </p>
-              <p className="mt-2 break-all rounded-[8px] bg-[#F4E9D5] px-3 py-2.5 text-[11px]" style={{ fontFamily: MONO }}>
-                {zh ? "已建立本機視覺指紋：" : "Local fingerprint created: "}
-                {shortFp(activeQuery.query_fingerprint.fingerprint_value)}
-              </p>
-              <div className="mt-3 grid gap-2 sm:grid-cols-2">
-                <CaseField
-                  label={zh ? "最接近的已收錄原作" : "Closest indexed original"}
-                  value={topMatch?.display_title || (zh ? "未找到對應原作" : "No match")}
-                />
-                <CaseField
-                  label={zh ? "判定距離" : "Decision distance"}
-                  value={
-                    topMatch
-                      ? topMatch.combined_distance <= verification.library.threshold
-                        ? zh
-                          ? "低於門檻，判定為同一原作"
-                          : "Below threshold, match"
-                        : zh
-                        ? "高於門檻，未找到對應原作"
-                        : "Above threshold, no match"
-                      : "N/A"
-                  }
-                  note={distanceHelpText(topMatch, verification.library.threshold, locale)}
-                  mono
-                />
-                <CaseField
-                  label={zh ? "相似程度" : "Similarity"}
-                  value={topMatch ? `${Math.round(topMatch.similarity_score * 10000) / 100}%` : "N/A"}
-                  note={similarityHelpText(topMatch, locale)}
-                  mono
-                />
-                <CaseField
-                  label={zh ? "對外宣稱狀態" : "Public claim status"}
-                  value={
-                    activeQuery.verdict.public_claim_status === "no_origin_match_found"
-                      ? zh
-                        ? "未找到對應原作"
-                        : "No origin match"
-                      : zh
-                      ? "僅供來源查驗"
-                      : "Origin verification only"
-                  }
-                />
+          </section>
+        ) : (
+          <section className="rounded-[14px] border border-[#1a1a1a12] bg-white p-5">
+            <div className="mb-4 flex flex-wrap items-start justify-between gap-4">
+              <div>
+                <p className="text-[12px] text-[#1a1a1a80]" style={{ fontFamily: MONO }}>
+                  {zh ? "查驗結果" : "Verification result"}
+                </p>
+                <h2 className="mt-1 text-[24px] font-semibold leading-tight" style={{ fontFamily: MONO }}>
+                  {verificationVerdictText(activeQuery.verdict, locale)}
+                </h2>
+                <p className="mt-2 max-w-[520px] text-[12px] leading-5 text-[#1a1a1a80]">
+                  {topMatch
+                    ? distanceHelpText(topMatch, verification.library.threshold, locale)
+                    : zh
+                    ? "目前原創庫沒有找到足以判定為同一原作的作品。"
+                    : "The current index does not contain a strong enough match."}
+                </p>
               </div>
-              {activeQuery.result.pass_threshold && topMatch ? (
-                <div className="mt-3 flex flex-wrap gap-2">
-                  <button
-                    type="button"
-                    onClick={() =>
-                      showToast(zh ? "示範原型：正式版將在此開啟授權申請，並通知權利人" : "Demo prototype: production opens the licensing request here and notifies the rights holder")
+              <div
+                className="flex h-[92px] w-[92px] flex-col items-center justify-center rounded-full border-4"
+                style={{ borderColor: verdictColor }}
+              >
+                <span className="text-[25px] font-bold leading-none" style={{ fontFamily: MONO, color: verdictColor }}>
+                  {similarityPct}%
+                </span>
+                <span className="mt-1 text-[9px] tracking-[0.1em] text-[#1a1a1a80]" style={{ fontFamily: MONO }}>
+                  {zh ? "相似程度" : "SIMILARITY"}
+                </span>
+              </div>
+            </div>
+
+            <div className="grid gap-4 md:grid-cols-[190px_1fr]">
+              <Thumb src={previewWork?.thumb} grad={previewWork?.grad || GRADS[0]} className="aspect-[16/11] w-full rounded-[10px]" />
+              <div className="min-w-0">
+                <p className="text-[15px] font-semibold">
+                  {activeQuery.display.title}
+                  {activeQuery.display.subtitle && (
+                    <span className="text-[13px] font-normal text-[#1a1a1a66]"> ／ {activeQuery.display.subtitle}</span>
+                  )}
+                </p>
+                <p className="mt-2 break-all rounded-[8px] bg-[#F4E9D5] px-3 py-2.5 text-[11px]" style={{ fontFamily: MONO }}>
+                  {zh ? "已建立本機視覺指紋：" : "Local fingerprint created: "}
+                  {shortFp(activeQuery.query_fingerprint.fingerprint_value)}
+                </p>
+                <div className="mt-3 grid gap-2 sm:grid-cols-2">
+                  <CaseField
+                    label={zh ? "最接近的已收錄原作" : "Closest indexed original"}
+                    value={topMatch?.display_title || (zh ? "未找到對應原作" : "No match")}
+                  />
+                  <CaseField
+                    label={zh ? "判定距離" : "Decision distance"}
+                    value={
+                      topMatch
+                        ? topMatch.combined_distance <= verification.library.threshold
+                          ? zh
+                            ? "低於門檻，判定為同一原作"
+                            : "Below threshold, match"
+                          : zh
+                          ? "高於門檻，未找到對應原作"
+                          : "Above threshold, no match"
+                        : "N/A"
                     }
-                    className="rounded-[9px] bg-[#4c6b3c] px-3.5 py-2 text-[12px] font-semibold text-white"
-                  >
-                    {zh ? "申請授權 / 聯繫權利人" : "Request license / contact holder"}
-                  </button>
-                  {matchWork && (
+                    note={distanceHelpText(topMatch, verification.library.threshold, locale)}
+                    mono
+                  />
+                  <CaseField
+                    label={zh ? "相似程度" : "Similarity"}
+                    value={topMatch ? `${Math.round(topMatch.similarity_score * 10000) / 100}%` : "N/A"}
+                    note={similarityHelpText(topMatch, locale)}
+                    mono
+                  />
+                  <CaseField
+                    label={zh ? "對外宣稱狀態" : "Public claim status"}
+                    value={
+                      activeQuery.verdict.public_claim_status === "no_origin_match_found"
+                        ? zh
+                          ? "未找到對應原作"
+                          : "No origin match"
+                        : zh
+                        ? "僅供來源查驗"
+                        : "Origin verification only"
+                    }
+                  />
+                </div>
+                {activeQuery.result.pass_threshold && topMatch ? (
+                  <div className="mt-3 flex flex-wrap gap-2">
                     <button
                       type="button"
-                      onClick={() => onOpenCert(topMatch.asset_id)}
-                      className="rounded-[9px] bg-[#7F9C7E] px-3.5 py-2 text-[12px] font-semibold text-[#1A1A1A]"
+                      onClick={() =>
+                        showToast(zh ? "示範原型：正式版將在此開啟授權申請，並通知權利人" : "Demo prototype: production opens the licensing request here and notifies the rights holder")
+                      }
+                      className="rounded-[9px] bg-[#4c6b3c] px-3.5 py-2 text-[12px] font-semibold text-white"
                     >
-                      {zh ? "檢視原創憑證" : "View certificate"}
+                      {zh ? "申請授權 / 聯繫權利人" : "Request license / contact holder"}
                     </button>
-                  )}
-                  {topMatch.certificate_link && (
-                    <a
-                      href={topMatch.certificate_link}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="flex items-center gap-1.5 rounded-[9px] border border-[#1a1a1a26] px-3.5 py-2 text-[12px] font-semibold"
+                    {matchWork && (
+                      <button
+                        type="button"
+                        onClick={() => onOpenCert(topMatch.asset_id)}
+                        className="rounded-[9px] bg-[#7F9C7E] px-3.5 py-2 text-[12px] font-semibold text-[#1A1A1A]"
+                      >
+                        {zh ? "檢視原創憑證" : "View certificate"}
+                      </button>
+                    )}
+                    {topMatch.certificate_link && (
+                      <a
+                        href={topMatch.certificate_link}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="flex items-center gap-1.5 rounded-[9px] border border-[#1a1a1a26] px-3.5 py-2 text-[12px] font-semibold"
+                      >
+                        <ExternalLink size={14} /> {zh ? "開啟公開驗證頁" : "Open public verification"}
+                      </a>
+                    )}
+                  </div>
+                ) : (
+                  <div className="mt-3 flex flex-wrap gap-2">
+                    <button
+                      type="button"
+                      onClick={onOpenSign}
+                      className="rounded-[9px] bg-[#4c6b3c] px-3.5 py-2 text-[12px] font-semibold text-white"
                     >
-                      <ExternalLink size={14} /> {zh ? "開啟公開驗證頁" : "Open public verification"}
-                    </a>
-                  )}
-                </div>
-              ) : (
-                <div className="mt-3 flex flex-wrap gap-2">
+                      {zh ? "這是我的作品，簽署憑證" : "This is my work — sign & certify"}
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => showToast(zh ? "已記下！正式版開放任意圖片查驗時會通知你（示範）" : "Noted! We'll let you know when arbitrary-image checks open (demo)")}
+                      className="rounded-[9px] border border-[#1a1a1a26] px-3.5 py-2 text-[12px] font-semibold"
+                    >
+                      {zh ? "正式版開放時通知我" : "Notify me at launch"}
+                    </button>
+                  </div>
+                )}
+                <div className="mt-3 flex flex-wrap items-center gap-2.5">
                   <button
                     type="button"
-                    onClick={onOpenSign}
-                    className="rounded-[9px] bg-[#4c6b3c] px-3.5 py-2 text-[12px] font-semibold text-white"
+                    onClick={copySummary}
+                    className="flex items-center gap-1.5 rounded-[9px] border border-[#1a1a1a26] px-3 py-1.5 text-[11.5px] font-semibold"
                   >
-                    {zh ? "這是我的作品，簽署憑證" : "This is my work — sign & certify"}
+                    <FileText size={12} /> {zh ? "複製查驗摘要" : "Copy summary"}
                   </button>
-                  <button
-                    type="button"
-                    onClick={() => showToast(zh ? "已記下！正式版開放任意圖片查驗時會通知你（示範）" : "Noted! We'll let you know when arbitrary-image checks open (demo)")}
-                    className="rounded-[9px] border border-[#1a1a1a26] px-3.5 py-2 text-[12px] font-semibold"
-                  >
-                    {zh ? "正式版開放時通知我" : "Notify me at launch"}
-                  </button>
+                  <span className="text-[11px] text-[#1a1a1a73]">
+                    {zh ? "純文字摘要，可貼進訊息或稿件備註" : "Plain-text summary for messages or draft notes"}
+                  </span>
                 </div>
-              )}
-              <div className="mt-3 flex flex-wrap items-center gap-2.5">
-                <button
-                  type="button"
-                  onClick={copySummary}
-                  className="flex items-center gap-1.5 rounded-[9px] border border-[#1a1a1a26] px-3 py-1.5 text-[11.5px] font-semibold"
-                >
-                  <FileText size={12} /> {zh ? "複製查驗摘要" : "Copy summary"}
-                </button>
-                <span className="text-[11px] text-[#1a1a1a73]">
-                  {zh ? "純文字摘要，可貼進訊息或稿件備註" : "Plain-text summary for messages or draft notes"}
-                </span>
               </div>
             </div>
-          </div>
-        </section>
+          </section>
+        )}
       </div>
 
-      <div className="rounded-[14px] border border-[#1a1a1a12] bg-white">
-        <div className="border-b border-[#1a1a1a0f] px-5 py-4">
-          <h3 className="text-[15px] font-semibold">{zh ? "系統比對結果" : "Candidate originals compared by the system"}</h3>
-          <p className="mt-1 max-w-[880px] text-[12px] leading-5 text-[#1a1a1a80]">
-            {zh
-              ? `系統會把輸入圖和已收錄原創逐一比對。判定距離越低越像；低於 ${verification.library.threshold} 代表可能是同一原作。相似程度是輔助閱讀，實際主張仍要看原創憑證與人工複核。`
-              : `The system compares the input against indexed originals. Lower decision distance means more similar; below ${verification.library.threshold} counts as a match. Similarity is for readability; claims still require the origin certificate and human review.`}
-          </p>
+      {!isUnsupportedInput && (
+        <div className="rounded-[14px] border border-[#1a1a1a12] bg-white">
+          <div className="border-b border-[#1a1a1a0f] px-5 py-4">
+            <h3 className="text-[15px] font-semibold">{zh ? "系統比對結果" : "Candidate originals compared by the system"}</h3>
+            <p className="mt-1 max-w-[880px] text-[12px] leading-5 text-[#1a1a1a80]">
+              {zh
+                ? `系統會把輸入圖和已收錄原創逐一比對。判定距離越低越像；低於 ${verification.library.threshold} 代表可能是同一原作。相似程度是輔助閱讀，實際主張仍要看原創憑證與人工複核。`
+                : `The system compares the input against indexed originals. Lower decision distance means more similar; below ${verification.library.threshold} counts as a match. Similarity is for readability; claims still require the origin certificate and human review.`}
+            </p>
+          </div>
+          <div
+            className="grid grid-cols-[1fr_116px_96px] gap-3 bg-[#EFE3CC] px-5 py-3 text-[10px] tracking-[0.08em] text-[#1a1a1a8c] md:grid-cols-[1fr_160px_120px_150px]"
+            style={{ fontFamily: MONO }}
+          >
+            <span>{zh ? "可能對應的原作" : "POSSIBLE ORIGINAL"}</span>
+            <span>{zh ? "判定距離" : "DISTANCE"}</span>
+            <span>{zh ? "相似程度" : "SIMILARITY"}</span>
+            <span className="hidden md:block">{zh ? "原創憑證" : "CERTIFICATE"}</span>
+          </div>
+          {activeQuery.result.top_matches.slice(0, 5).map((match) => {
+            const isPass = match.combined_distance <= verification.library.threshold;
+            const candidateWork = worksById.get(match.asset_id);
+            return (
+              <div
+                key={`${activeQuery.query_id}-${match.asset_id}`}
+                className="grid grid-cols-[1fr_116px_96px] gap-3 border-t border-[#1a1a1a0f] px-5 py-3.5 text-[12px] md:grid-cols-[1fr_160px_120px_150px]"
+              >
+                <span className="min-w-0">
+                  <span className="block truncate font-semibold">{match.display_title || match.asset_id}</span>
+                  <span className="block truncate text-[10px] text-[#1a1a1a73]" style={{ fontFamily: MONO }}>
+                    {shortFp(match.asset_id)}
+                  </span>
+                </span>
+                <span className="min-w-0">
+                  <span className="block font-semibold" style={{ color: isPass ? C.greenDeep : C.ink }}>
+                    {isPass ? (zh ? "同一原作" : "Match") : zh ? "未找到對應原作" : "No match"}
+                  </span>
+                  <span className="block text-[10px] text-[#1a1a1a73]" style={{ fontFamily: MONO }}>
+                    {match.combined_distance} / {verification.library.threshold}
+                  </span>
+                </span>
+                <span className="font-semibold" style={{ fontFamily: MONO, color: isPass ? C.greenDeep : C.ink }}>
+                  {Math.round(match.similarity_score * 10000) / 100}%
+                </span>
+                <span className="hidden min-w-0 md:block">
+                  {candidateWork ? (
+                    <button
+                      type="button"
+                      onClick={() => onOpenCert(match.asset_id)}
+                      className="rounded-[8px] border border-[#1a1a1a26] px-3 py-1.5 text-[11px] font-semibold hover:bg-[#FBF6EC]"
+                    >
+                      {zh ? "看憑證" : "View"}
+                    </button>
+                  ) : (
+                    <span className="text-[#1a1a1a66]">N/A</span>
+                  )}
+                </span>
+              </div>
+            );
+          })}
         </div>
-        <div
-          className="grid grid-cols-[1fr_116px_96px] gap-3 bg-[#EFE3CC] px-5 py-3 text-[10px] tracking-[0.08em] text-[#1a1a1a8c] md:grid-cols-[1fr_160px_120px_150px]"
-          style={{ fontFamily: MONO }}
-        >
-          <span>{zh ? "可能對應的原作" : "POSSIBLE ORIGINAL"}</span>
-          <span>{zh ? "判定距離" : "DISTANCE"}</span>
-          <span>{zh ? "相似程度" : "SIMILARITY"}</span>
-          <span className="hidden md:block">{zh ? "原創憑證" : "CERTIFICATE"}</span>
-        </div>
-        {activeQuery.result.top_matches.slice(0, 5).map((match) => {
-          const isPass = match.combined_distance <= verification.library.threshold;
-          const candidateWork = worksById.get(match.asset_id);
-          return (
-            <div
-              key={`${activeQuery.query_id}-${match.asset_id}`}
-              className="grid grid-cols-[1fr_116px_96px] gap-3 border-t border-[#1a1a1a0f] px-5 py-3.5 text-[12px] md:grid-cols-[1fr_160px_120px_150px]"
-            >
-              <span className="min-w-0">
-                <span className="block truncate font-semibold">{match.display_title || match.asset_id}</span>
-                <span className="block truncate text-[10px] text-[#1a1a1a73]" style={{ fontFamily: MONO }}>
-                  {shortFp(match.asset_id)}
-                </span>
-              </span>
-              <span className="min-w-0">
-                <span className="block font-semibold" style={{ color: isPass ? C.greenDeep : C.ink }}>
-                  {isPass ? (zh ? "同一原作" : "Match") : zh ? "未找到對應原作" : "No match"}
-                </span>
-                <span className="block text-[10px] text-[#1a1a1a73]" style={{ fontFamily: MONO }}>
-                  {match.combined_distance} / {verification.library.threshold}
-                </span>
-              </span>
-              <span className="font-semibold" style={{ fontFamily: MONO, color: isPass ? C.greenDeep : C.ink }}>
-                {Math.round(match.similarity_score * 10000) / 100}%
-              </span>
-              <span className="hidden min-w-0 md:block">
-                {candidateWork ? (
-                  <button
-                    type="button"
-                    onClick={() => onOpenCert(match.asset_id)}
-                    className="rounded-[8px] border border-[#1a1a1a26] px-3 py-1.5 text-[11px] font-semibold hover:bg-[#FBF6EC]"
-                  >
-                    {zh ? "看憑證" : "View"}
-                  </button>
-                ) : (
-                  <span className="text-[#1a1a1a66]">N/A</span>
-                )}
-              </span>
-            </div>
-          );
-        })}
-      </div>
+      )}
     </div>
   );
 }
