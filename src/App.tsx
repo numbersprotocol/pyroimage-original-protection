@@ -1204,6 +1204,14 @@ function EcosystemFrontView({
                 ? "原創雷達不是把查找線索當主角，而是把保險層放在生態系外圈：素材主動進編輯台，授權回到創作者，雷達負責提醒與保險。"
                 : "OriginRadar puts the insurance layer on the outside of the ecosystem: verified assets reach editors, licensing returns to creators, and the radar handles reminders."}
             </p>
+            <div className="mt-5 max-w-[520px] border-l-2 border-[#8FB49A] pl-4">
+              <p className="text-[19px] font-black leading-snug text-[#F4E9D5]">
+                {zh ? "我們主張的，是原創的價值。" : "Our claim is the value of originals."}
+              </p>
+              <p className="mt-1 text-[12px] leading-5 text-[#CEC0A3]">
+                {zh ? "不是查假圖工具，也不是防詐工具。" : "Not a fake image checker, and not a fraud-prevention product."}
+              </p>
+            </div>
           </div>
           <div className="mt-8 grid gap-3 sm:grid-cols-3">
             {[
