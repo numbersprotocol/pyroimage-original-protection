@@ -203,14 +203,29 @@ function buildAutomatedSourceNames(sources: MonitoredSource[], monitoring: Monit
   return Array.from(new Set(names));
 }
 
-function Thumb({ src, grad, className, sepia }: { src?: string; grad: string; className?: string; sepia?: boolean }) {
+function Thumb({
+  src,
+  grad,
+  className,
+  sepia,
+  loading = "lazy",
+}: {
+  src?: string;
+  grad: string;
+  className?: string;
+  sepia?: boolean;
+  loading?: "eager" | "lazy";
+}) {
+  const [failed, setFailed] = useState(false);
+  const showImage = Boolean(src) && !failed;
   return (
-    <div className={`relative overflow-hidden ${className || ""}`} style={src ? undefined : { background: grad }}>
-      {src ? (
+    <div className={`relative overflow-hidden ${className || ""}`} style={showImage ? undefined : { background: grad }}>
+      {showImage ? (
         <img
           src={src}
           alt=""
-          loading="lazy"
+          loading={loading}
+          onError={() => setFailed(true)}
           className={`h-full w-full object-cover ${sepia ? "contrast-125 sepia grayscale-[35%]" : ""}`}
         />
       ) : null}
@@ -978,9 +993,51 @@ function EcosystemFrontView({
   const zh = locale === "zh-TW";
   const protectedNum = Number(protectedDisplay.replace(/,/g, "")) || works.length;
   const indexingCount = Math.max(0, protectedNum - indexedRows);
-  const waterWorks = works.filter((work) => /水源地|溪流|水資源|water|stream/i.test(`${work.name} ${work.en}`));
-  const topicWorks = (waterWorks.length >= 3 ? waterWorks : works).slice(0, 3);
-  const featuredWorks = (topicWorks.length >= 2 ? topicWorks : works).slice(0, 2);
+  const topicSearchText = (work: WorkVM) => `${work.name} ${work.en} ${work.author}`;
+  const topicDefinitions = [
+    {
+      id: "water",
+      zhLabel: "水資源現場",
+      enLabel: "Water resources",
+      zhTitle: "水資源與環境現場",
+      enTitle: "Water resources and field environment",
+      zhDesc: "溪流、水源地與環境現場素材，適合環境、氣候與地方治理議題。",
+      enDesc: "Streams, watershed, and field-environment images for environment, climate, and local-governance desks.",
+      matcher: /水源地|溪流|水資源|water|stream/i,
+    },
+    {
+      id: "civic",
+      zhLabel: "選舉公共現場",
+      enLabel: "Civic reporting",
+      zhTitle: "選舉與公共現場",
+      enTitle: "Election and civic field reporting",
+      zhDesc: "候選人、造勢、開票與投票現場素材，適合即時新聞與公共事務編輯台。",
+      enDesc: "Candidate, rally, vote-counting, and polling-place imagery for civic and breaking-news desks.",
+      matcher: /候選人|造勢|開票|投開票|競選|賴清德|柯文哲|侯友宜|吳欣盈|蕭美琴|趙少康/i,
+    },
+    {
+      id: "local",
+      zhLabel: "地方生活現場",
+      enLabel: "Local life",
+      zhTitle: "廟口、掃街與地方生活",
+      enTitle: "Temple, street, and local-life scenes",
+      zhDesc: "廟口、參香、掃街與街區互動素材，適合地方文化與社會現場報導。",
+      enDesc: "Temple visits, street walks, and neighborhood interaction images for local culture and society coverage.",
+      matcher: /慈祐宮|武聖廟|奠濟宮|廟口|參香|掃街|夜市|支持者/i,
+    },
+  ];
+  const topicTabs = topicDefinitions
+    .map((topic) => ({
+      ...topic,
+      works: works.filter((work) => topic.matcher.test(topicSearchText(work))).slice(0, 3),
+    }))
+    .filter((topic) => topic.works.length >= 3);
+  const [activeTopicId, setActiveTopicId] = useState(topicTabs[0]?.id || "water");
+  const activeTopic = topicTabs.find((topic) => topic.id === activeTopicId) || topicTabs[0];
+  const topicWorks = activeTopic?.works || works.slice(0, 3);
+  const primaryTopicWorks = topicTabs[0]?.works || works.slice(0, 3);
+  const featuredWorks = (primaryTopicWorks.length >= 2 ? primaryTopicWorks : works).slice(0, 2);
+  const demoLicenseWork = topicWorks[0] || featuredWorks[0] || works[0];
 
   const flow = [
     {
@@ -1411,24 +1468,55 @@ function EcosystemFrontView({
             <p className="text-[10px] tracking-[0.18em] text-[#ED5D29]" style={{ fontFamily: MONO }}>
               {zh ? "議題推播示範 · DEMO" : "TOPIC PUSH DEMO"}
             </p>
-            <h2 className="mt-1 text-[22px] font-black">{zh ? "編輯台議題：水資源與環境現場" : "Editor topic: water resources and field environment"}</h2>
+            <h2 className="mt-1 text-[22px] font-black">
+              {zh ? `編輯台議題：${activeTopic?.zhTitle || "精選原創素材"}` : `Editor topic: ${activeTopic?.enTitle || "selected originals"}`}
+            </h2>
             <p className="mt-1 text-[13px] text-[#5c584a]">
-              {zh ? "主動推播，不是被動搜尋。下列卡片皆來自現有真實縮圖；授權動作為示範。" : "Push, not passive search. These cards use existing real thumbnails; licensing actions are demos."}
+              {zh
+                ? activeTopic?.zhDesc || "主動推播，不是被動搜尋。下列卡片皆來自現有真實縮圖；授權動作為示範。"
+                : activeTopic?.enDesc || "Push, not passive search. These cards use existing real thumbnails; licensing actions are demos."}
             </p>
           </div>
           <button
             type="button"
-            onClick={() => showToast(zh ? "示範：已把 3 張已驗證素材推進編輯台候選清單" : "Demo: 3 verified assets pushed into the editor shortlist")}
+            onClick={() =>
+              showToast(
+                zh
+                  ? `示範：已把「${activeTopic?.zhLabel || "精選素材"}」${topicWorks.length} 張已驗證素材推進編輯台候選清單`
+                  : `Demo: ${topicWorks.length} verified ${activeTopic?.enLabel || "selected"} assets pushed into the editor shortlist`,
+              )
+            }
             className="rounded-[9px] bg-[#ED5D29] px-4 py-2.5 text-[12px] font-semibold text-white"
           >
-            {zh ? "推播 3 張素材（示範）" : "Push 3 assets (demo)"}
+            {zh ? `推播 ${topicWorks.length} 張素材（示範）` : `Push ${topicWorks.length} assets (demo)`}
           </button>
+        </div>
+
+        <div className="mb-4 flex flex-wrap gap-2">
+          {topicTabs.map((topic) => {
+            const active = topic.id === activeTopic?.id;
+            return (
+              <button
+                key={topic.id}
+                type="button"
+                onClick={() => setActiveTopicId(topic.id)}
+                className={`min-h-[38px] rounded-full border px-3 py-1.5 text-[12px] font-bold transition ${
+                  active ? "border-[#ED5D29] bg-[#ED5D29] text-white" : "border-[#1a1a1a1f] bg-[#FBF6EC] text-[#4a4539] hover:border-[#ED5D29]"
+                }`}
+              >
+                {zh ? topic.zhLabel : topic.enLabel}
+                <span className={`ml-1.5 text-[10px] ${active ? "text-white/80" : "text-[#8d8873]"}`} style={{ fontFamily: MONO }}>
+                  {topic.works.length}
+                </span>
+              </button>
+            );
+          })}
         </div>
 
         <div className="grid gap-4 md:grid-cols-3">
           {topicWorks.map((work) => (
             <article key={work.assetId} className="overflow-hidden rounded-[13px] border border-[#1a1a1a12] bg-[#FBF6EC]">
-              <Thumb src={work.thumb} grad={work.grad} className="aspect-[16/10] w-full" />
+              <Thumb src={work.thumb} grad={work.grad} className="aspect-[16/10] w-full" loading="eager" />
               <div className="p-4">
                 <p className="text-[14px] font-black">{work.en || work.name}</p>
                 <p className="mt-1 text-[11px] text-[#5c584a]">
@@ -1454,6 +1542,57 @@ function EcosystemFrontView({
             </article>
           ))}
         </div>
+
+        {demoLicenseWork && (
+          <div className="mt-4 rounded-[14px] border border-[#ed5d2940] bg-[#fff7ec] p-4">
+            <div className="flex flex-wrap items-start justify-between gap-3">
+              <div>
+                <p className="text-[10px] tracking-[0.18em] text-[#B7552B]" style={{ fontFamily: MONO }}>
+                  {zh ? "授權紀錄（示範）· DEMO FLOW" : "LICENSE RECORD (DEMO) · DEMO FLOW"}
+                </p>
+                <h3 className="mt-1 text-[18px] font-black">{zh ? "一筆授權如何透明回到創作者" : "How one license can flow back to the creator"}</h3>
+                <p className="mt-1 text-[12.5px] leading-5 text-[#5c584a]">
+                  {zh
+                    ? `示範素材：${demoLicenseWork.en || demoLicenseWork.name}。以下金額與比例僅為 DEMO，不代表真實成交、付款或分潤。`
+                    : `Demo asset: ${demoLicenseWork.en || demoLicenseWork.name}. Amounts and ratios below are DEMO only, not a real sale, payment, or revenue split.`}
+                </p>
+              </div>
+              <span className="rounded-full bg-[#1A1A1A] px-2.5 py-1 text-[10px] font-bold text-[#F4E9D5]" style={{ fontFamily: MONO }}>
+                DEMO
+              </span>
+            </div>
+            <div className="mt-4 grid gap-3 md:grid-cols-[1fr_auto_1fr_auto_1fr] md:items-stretch">
+              {[
+                {
+                  title: zh ? "媒體" : "Media desk",
+                  value: zh ? "NT$1,200（DEMO）" : "NT$1,200 (DEMO)",
+                  note: zh ? "示範授權預算" : "Demo license budget",
+                },
+                {
+                  title: zh ? "平台服務費" : "Platform fee",
+                  value: zh ? "20% / NT$240（DEMO）" : "20% / NT$240 (DEMO)",
+                  note: zh ? "示範比例，不代表實際合約" : "Demo ratio, not a real contract",
+                },
+                {
+                  title: zh ? "創作者分潤" : "Creator share",
+                  value: zh ? "80% / NT$960（DEMO）" : "80% / NT$960 (DEMO)",
+                  note: zh ? `${demoLicenseWork.author} · 示範入帳` : `${demoLicenseWork.author} · demo payout`,
+                },
+              ].map((step, index) => (
+                <div key={step.title} className="contents">
+                  <div className="rounded-[12px] bg-white p-3">
+                    <p className="text-[11px] font-bold text-[#5c584a]">{step.title}</p>
+                    <p className="mt-1 text-[18px] font-black text-[#1A1A1A]" style={{ fontFamily: MONO }}>
+                      {step.value}
+                    </p>
+                    <p className="mt-1 text-[11px] leading-4 text-[#7d756a]">{step.note}</p>
+                  </div>
+                  {index < 2 && <ArrowRight className="hidden self-center text-[#ED5D29] md:block" size={18} />}
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
       </section>
 
       {/* honest roadmap boundary */}
