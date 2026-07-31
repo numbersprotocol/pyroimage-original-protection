@@ -50,6 +50,13 @@ export interface MonitoredSource {
   demo_subset?: boolean;
 }
 
+export interface MonitoredSourcesDocument {
+  source_count?: number;
+  demo_source_count?: number;
+  demo_source_ids?: string[];
+  monitored_sources: MonitoredSource[];
+}
+
 export interface AlertRecord {
   alert_id: string;
   alert_status: string;
@@ -198,7 +205,7 @@ export interface MonitoringRun {
 export interface TtdMvpData {
   dashboard: TtdDashboardMetrics;
   demoAssets: DemoAsset[];
-  monitoredSources: { monitored_sources: MonitoredSource[] };
+  monitoredSources: MonitoredSourcesDocument;
   monitoring: MonitoringRun;
   alerts: AlertRecord[];
   evidenceReport: EvidenceReportDocument;

@@ -5,7 +5,7 @@ import type {
   DemoAsset,
   EvidenceReportDocument,
   LoadState,
-  MonitoredSource,
+  MonitoredSourcesDocument,
   MonitoringRun,
   TtdDashboardMetrics,
   TtdMvpData,
@@ -34,7 +34,7 @@ async function loadOriginRadarData(): Promise<TtdMvpData> {
   const [dashboard, demoAssets, monitoredSources, monitoring, alerts, evidenceReport, verification] = await Promise.all([
     fetchJson<TtdDashboardMetrics>(DATA_PATHS.dashboard),
     fetchJson<DemoAsset[]>(DATA_PATHS.demoAssets),
-    fetchJson<{ monitored_sources: MonitoredSource[] }>(DATA_PATHS.monitoredSources),
+    fetchJson<MonitoredSourcesDocument>(DATA_PATHS.monitoredSources),
     fetchJson<MonitoringRun>(DATA_PATHS.monitoring),
     fetchJson<AlertRecord[]>(DATA_PATHS.alerts),
     fetchJson<EvidenceReportDocument>(DATA_PATHS.evidenceReport),

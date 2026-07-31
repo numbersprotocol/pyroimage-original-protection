@@ -22,6 +22,7 @@ import { useOriginRadarData } from "./data/useOriginRadarData";
 import type {
   EvidenceReportDocument,
   Locale,
+  MonitoredSource,
   MonitoringRun,
   VerificationDocument,
   VerificationQuery,
@@ -185,6 +186,21 @@ const STATUS_META: Record<string, { zh: string; en: string; c: string; bg: strin
 
 function simColor(v: number) {
   return v >= 90 ? C.orange : v >= 80 ? C.amber : C.greenDeep;
+}
+
+function formatArtifactCount(value: number | undefined, fallback: number) {
+  return (Number.isFinite(value) ? Number(value) : fallback).toLocaleString("en-US");
+}
+
+function buildAutomatedSourceNames(sources: MonitoredSource[], monitoring: MonitoringRun, locale: Locale) {
+  const names = sources.filter((source) => source.crawl_method === "automated_public_page").map((source) => source.source_name);
+  const hasVisionWebDetection =
+    Boolean(monitoring.adapter?.id?.includes("visionWebDetection")) ||
+    (monitoring.source_runs || []).some((run) => run.source_id === "GOOGLE_VISION_WEB_DETECTION");
+  if (hasVisionWebDetection) {
+    names.push(locale === "zh-TW" ? "Google Vision 網路偵測" : "Google Vision Web Detection");
+  }
+  return Array.from(new Set(names));
 }
 
 function Thumb({ src, grad, className, sepia }: { src?: string; grad: string; className?: string; sepia?: boolean }) {
@@ -443,6 +459,9 @@ export function TtdMvpDashboard() {
   const lastRunSourceCount = lastRunSources.size || Number(channelsActiveDisplay.replace(/,/g, "")) || channels.length;
   const lastRunCandidates = loadState.data.monitoring.run_scope?.candidates_attempted ?? 0;
   const lastRunAlerts = loadState.data.monitoring.run_scope?.alerts_created ?? alerts.length;
+  const monitoredSourcesDoc = loadState.data.monitoredSources;
+  const sourceCountDisplay = formatArtifactCount(monitoredSourcesDoc.source_count, monitoredSourcesDoc.monitored_sources.length);
+  const automatedSourceNames = buildAutomatedSourceNames(monitoredSourcesDoc.monitored_sources, loadState.data.monitoring, locale);
   const patrolModeLabel = (() => {
     const adapter = loadState.data.monitoring.adapter;
     if (adapter?.id?.includes("visionWebDetection") && adapter.id.includes("namedChannelCrawler") && adapter.paid_api_used) {
@@ -675,6 +694,8 @@ export function TtdMvpDashboard() {
               works={works}
               protectedDisplay={protectedDisplay}
               indexedRows={loadState.data.verification.library.indexed_rows}
+              sourceCountDisplay={sourceCountDisplay}
+              automatedSourceNames={automatedSourceNames}
               lastRunCandidates={lastRunCandidates}
               lastRunAlerts={lastRunAlerts}
               lastPatrol={lastPatrol}
@@ -932,6 +953,8 @@ function EcosystemFrontView({
   works,
   protectedDisplay,
   indexedRows,
+  sourceCountDisplay,
+  automatedSourceNames,
   lastRunCandidates,
   lastRunAlerts,
   lastPatrol,
@@ -943,6 +966,8 @@ function EcosystemFrontView({
   works: WorkVM[];
   protectedDisplay: string;
   indexedRows: number;
+  sourceCountDisplay: string;
+  automatedSourceNames: string[];
   lastRunCandidates: number;
   lastRunAlerts: number;
   lastPatrol: string;
@@ -1028,6 +1053,9 @@ function EcosystemFrontView({
       desc: zh
         ? "發稿前先查來源、權利人與授權脈絡，把不確定的圖擋在發布前。"
         : "Before publishing, check origin, rights holder, and license context so uncertain images stop before release.",
+      bullets: zh
+        ? ["議題發生時，即時收到正版素材", "獨家 / 非獨家授權選項", "自查影像來源，避免誤用"]
+        : ["Receive verified assets when a topic breaks", "Choose exclusive or non-exclusive licensing", "Check image origin before accidental misuse"],
       action: zh ? "媒體自查 →" : "Editor self-check →",
       view: "verify" as View,
       accent: C.greenDeep,
@@ -1038,9 +1066,58 @@ function EcosystemFrontView({
       desc: zh
         ? "保險層每天檢查指定來源；發現高相似使用時，先提醒複審，再回到授權溝通。"
         : "The insurance layer checks specified sources daily; high-similarity use becomes a reminder for review, then licensing outreach.",
+      bullets: zh
+        ? ["登錄一次，被更多媒體看見", "授權收入透明回到自己", "被未授權使用時，有人替你提醒"]
+        : ["Register once and become visible to more media", "Keep licensing revenue traceable back to you", "Get reminded when unauthorized use needs review"],
       action: zh ? "看提醒後台 →" : "Open reminders →",
       view: "alerts" as View,
       accent: C.orange,
+    },
+  ];
+
+  const insuranceStats = [
+    {
+      label: zh ? "已登錄原創" : "Registered originals",
+      value: protectedDisplay,
+      sub: zh ? "DIA public originals" : "DIA public originals",
+    },
+    {
+      label: zh ? "來源分級" : "Source tiers",
+      value: sourceCountDisplay,
+      sub: zh ? "monitored-sources.json" : "monitored-sources.json",
+    },
+    {
+      label: zh ? "最近候選" : "Latest candidates",
+      value: lastRunCandidates.toLocaleString("en-US"),
+      sub: zh ? `${lastPatrol} 保險層檢查` : `${lastPatrol} insurance-layer run`,
+    },
+    {
+      label: zh ? "真實警報" : "Actual alerts",
+      value: lastRunAlerts.toLocaleString("en-US"),
+      sub: zh ? "沒有命中就誠實顯示 0" : "Zero means zero",
+    },
+  ];
+
+  const expansionPath = [
+    zh ? "台灣媒體與創作者" : "Taiwan media + creators",
+    zh ? "關心台灣的全球媒體" : "Global desks covering Taiwan",
+    zh ? "各地創作者加入" : "Creators join from more regions",
+  ];
+
+  const roadmap = [
+    {
+      label: zh ? "已真實運作" : "Running now",
+      items: zh
+        ? ["原創登錄", "來源憑證與指紋", "保險層每日巡檢"]
+        : ["Original registration", "Origin certificates + fingerprints", "Daily insurance-layer checks"],
+      tone: "current",
+    },
+    {
+      label: zh ? "下一階段（補助後）" : "Next stage after funding",
+      items: zh
+        ? ["素材推播", "授權金流", "任意圖片查驗"]
+        : ["Asset push", "Licensing payments", "Arbitrary-image verification"],
+      tone: "next",
     },
   ];
 
@@ -1124,18 +1201,44 @@ function EcosystemFrontView({
             ))}
           </div>
 
-          <div className="mt-4 grid gap-3 sm:grid-cols-[1fr_1fr]">
-            <div className="rounded-[12px] bg-[#eef4ea] px-4 py-3 text-[#3f5a3e]">
-              <p className="text-[12px] font-bold">{zh ? "媒體是節點，全民是受益者" : "Media are nodes; everyone benefits"}</p>
-              <p className="mt-1 text-[11.5px] leading-4">
-                {zh ? "編輯台拿到可信、可授權的原創素材，讀者看到的是有來源的影像。" : "Editors receive verifiable, licensable assets; readers see images with origin context."}
+          <div className="mt-4 rounded-[14px] bg-[#1A1A1A] p-4 text-[#F4E9D5]">
+            <div className="flex flex-wrap items-start justify-between gap-3">
+              <div>
+                <p className="text-[10px] tracking-[0.18em] text-[#8FB49A]" style={{ fontFamily: MONO }}>
+                  {zh ? "保險層證據 · LIVE ARTIFACTS" : "INSURANCE-LAYER EVIDENCE · LIVE ARTIFACTS"}
+                </p>
+                <h3 className="mt-1 text-[16px] font-black">{zh ? "雷達提醒 = 保險層" : "Radar reminders = insurance layer"}</h3>
+              </div>
+              <p className="max-w-[460px] text-[11.5px] leading-4 text-[#CEC0A3]">
+                {zh
+                  ? `最近 ${lastPatrol} 的檢查結果直接讀自提交的 patrol artifacts；沒有命中就誠實顯示零。`
+                  : `The latest ${lastPatrol} run is read from committed patrol artifacts; zero means zero.`}
               </p>
             </div>
-            <div className="rounded-[12px] bg-[#1A1A1A] px-4 py-3 text-[#F4E9D5]">
-              <p className="text-[12px] font-bold text-[#8FB49A]">{zh ? "雷達提醒 = 保險層" : "Radar reminders = insurance layer"}</p>
-              <p className="mt-1 text-[11.5px] leading-4 text-[#CEC0A3]">
-                {zh ? `最近 ${lastPatrol} 檢查 ${lastRunCandidates} 筆候選，沒有命中就誠實顯示零。` : `Latest run ${lastPatrol}: ${lastRunCandidates} candidates checked; zero means zero.`}
+
+            <div className="mt-4 grid gap-x-4 gap-y-3 sm:grid-cols-2 lg:grid-cols-4">
+              {insuranceStats.map((item) => (
+                <div key={item.label} className="border-t border-[#f4e9d526] pt-3">
+                  <p className="text-[26px] font-bold leading-none text-[#8FB49A]" style={{ fontFamily: MONO }}>
+                    {item.value}
+                  </p>
+                  <p className="mt-1 text-[11px] font-semibold">{item.label}</p>
+                  <p className="mt-1 text-[10.5px] leading-4 text-[#CEC0A3]">{item.sub}</p>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-4 border-t border-[#f4e9d526] pt-3">
+              <p className="text-[10px] tracking-[0.16em] text-[#8FB49A]" style={{ fontFamily: MONO }}>
+                {zh ? "具名自動來源" : "NAMED AUTOMATED SOURCES"}
               </p>
+              <div className="mt-2 flex flex-wrap gap-2">
+                {automatedSourceNames.map((name) => (
+                  <span key={name} className="max-w-full rounded-full border border-[#f4e9d526] px-2.5 py-1 text-[11px] leading-4 text-[#F4E9D5]">
+                    {name}
+                  </span>
+                ))}
+              </div>
             </div>
           </div>
         </div>
@@ -1164,18 +1267,39 @@ function EcosystemFrontView({
               key={role.label}
               type="button"
               onClick={() => onNavigate(role.view)}
-              className="group flex min-h-[164px] flex-col items-start justify-between rounded-[14px] border border-[#1a1a1a12] bg-[#FBF6EC] p-5 text-left transition-all hover:-translate-y-0.5 hover:border-[#7F9C7E] hover:shadow-[0_8px_26px_rgba(60,50,20,0.10)]"
+              className="group flex min-h-[248px] flex-col items-start justify-between rounded-[14px] border border-[#1a1a1a12] bg-[#FBF6EC] p-5 text-left transition-all hover:-translate-y-0.5 hover:border-[#7F9C7E] hover:shadow-[0_8px_26px_rgba(60,50,20,0.10)]"
             >
               <span className="rounded-full px-2.5 py-1 text-[10px] font-bold text-white" style={{ background: role.accent, fontFamily: MONO }}>
                 {role.label}
               </span>
               <span className="mt-4 block text-[22px] font-black leading-tight">{role.title}</span>
               <span className="mt-2 block flex-1 text-[13px] leading-5 text-[#5c584a]">{role.desc}</span>
+              <span className="mt-4 block w-full space-y-2">
+                {role.bullets.map((bullet) => (
+                  <span key={bullet} className="flex items-start gap-2 text-[12.5px] leading-5 text-[#2f2c25]">
+                    <span className="mt-2 h-1.5 w-1.5 flex-none rounded-full" style={{ background: role.accent }} />
+                    <span>{bullet}</span>
+                  </span>
+                ))}
+              </span>
               <span className="mt-4 flex items-center gap-1.5 text-[13px] font-black text-[#4f6a4e]">
                 {role.action} <ArrowRight size={14} />
               </span>
             </button>
           ))}
+        </div>
+        <div className="mt-4 rounded-[13px] bg-[#eef4ea] p-4 text-[#3f5a3e]">
+          <p className="text-[10px] tracking-[0.16em]" style={{ fontFamily: MONO }}>
+            {zh ? "台灣 → 全球" : "TAIWAN → GLOBAL"}
+          </p>
+          <div className="mt-3 grid gap-2 md:grid-cols-[1fr_auto_1fr_auto_1fr] md:items-center">
+            {expansionPath.map((item, index) => (
+              <div key={item} className="contents">
+                <p className="rounded-[10px] bg-white px-3 py-2 text-[12.5px] font-bold leading-5 text-[#3f5a3e]">{item}</p>
+                {index < expansionPath.length - 1 && <ArrowRight className="hidden text-[#7F9C7E] md:block" size={18} />}
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -1328,6 +1452,47 @@ function EcosystemFrontView({
                 </div>
               </div>
             </article>
+          ))}
+        </div>
+      </section>
+
+      {/* honest roadmap boundary */}
+      <section className="mt-6 rounded-[16px] bg-[#1A1A1A] p-5 text-[#F4E9D5] sm:p-6">
+        <div className="mb-4 flex flex-wrap items-end justify-between gap-3">
+          <div>
+            <p className="text-[10px] tracking-[0.18em] text-[#8FB49A]" style={{ fontFamily: MONO }}>
+              {zh ? "現況 / 下一階段 · HONEST ROADMAP" : "NOW / NEXT · HONEST ROADMAP"}
+            </p>
+            <h2 className="mt-1 text-[22px] font-black">{zh ? "哪些已經在跑，哪些等補助補上" : "What runs now, what funding adds next"}</h2>
+          </div>
+          <p className="max-w-[460px] text-[12px] leading-5 text-[#CEC0A3]">
+            {zh
+              ? "前台 demo 只把已存在的能力說成現況；推播、授權金流與任意圖片查驗會明確放在下一階段。"
+              : "The demo marks existing capabilities as current; asset push, payment flow, and arbitrary-image verification stay in the next-stage lane."}
+          </p>
+        </div>
+        <div className="grid gap-4 md:grid-cols-2">
+          {roadmap.map((lane) => (
+            <div key={lane.label} className="border-t border-[#f4e9d526] pt-4">
+              <p
+                className="text-[13px] font-black"
+                style={{ color: lane.tone === "current" ? "#8FB49A" : "#D8B76A" }}
+              >
+                {lane.label}
+              </p>
+              <div className="mt-3 flex flex-wrap gap-2">
+                {lane.items.map((item) => (
+                  <span
+                    key={item}
+                    className={`rounded-full px-3 py-1.5 text-[12px] font-semibold ${
+                      lane.tone === "current" ? "bg-[#eef4ea] text-[#3f5a3e]" : "bg-[#3a3527] text-[#F4E9D5]"
+                    }`}
+                  >
+                    {item}
+                  </span>
+                ))}
+              </div>
+            </div>
           ))}
         </div>
       </section>
