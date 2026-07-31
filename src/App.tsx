@@ -152,7 +152,7 @@ const T = {
   protectedOriginals: { "zh-TW": "已登錄原創影像", en: "registered originals" },
   channels: { "zh-TW": "保險層來源", en: "insurance sources" },
   back: { "zh-TW": "← 返回提醒列表", en: "← Back to reminders" },
-  demo: { "zh-TW": "MVP 試營運", en: "MVP Pilot" },
+  demo: { "zh-TW": "展示版", en: "Preview" },
   howItWorks: { "zh-TW": "導覽", en: "How it works" },
 } as const;
 
@@ -480,24 +480,24 @@ export function TtdMvpDashboard() {
   const patrolModeLabel = (() => {
     const adapter = loadState.data.monitoring.adapter;
     if (adapter?.id?.includes("visionWebDetection") && adapter.id.includes("namedChannelCrawler") && adapter.paid_api_used) {
-      return locale === "zh-TW" ? "保險層：Vision + 公開通路自動檢查" : "Insurance layer: Vision + public-channel check";
+      return locale === "zh-TW" ? "保險層：Google Vision + 公開通路檢查" : "Insurance layer: Google Vision + public-channel check";
     }
     if (adapter?.id?.includes("visionWebDetection") && adapter.id.includes("namedChannelCrawler")) {
-      return locale === "zh-TW" ? "保險層：Vision 試跑 + 公開通路自動檢查" : "Insurance layer: Vision dry run + public-channel check";
+      return locale === "zh-TW" ? "保險層：Google Vision + 公開通路檢查（預覽模式）" : "Insurance layer: Google Vision + public-channel check (preview mode)";
     }
     if (adapter?.id === "visionWebDetection" && adapter.paid_api_used) {
-      return locale === "zh-TW" ? "保險層：Vision 真實檢查（預算控管）" : "Insurance layer: live Vision check (budget guarded)";
+      return locale === "zh-TW" ? "保險層：Google Vision 檢查" : "Insurance layer: Google Vision check";
     }
     if (adapter?.id === "visionWebDetection") {
-      return locale === "zh-TW" ? "保險層：Vision 試跑（不計費）" : "Insurance layer: Vision dry run (no cost)";
+      return locale === "zh-TW" ? "保險層：Google Vision 檢查（預覽模式）" : "Insurance layer: Google Vision check (preview mode)";
     }
     if (adapter?.id === "namedChannelCrawler") {
       return locale === "zh-TW" ? "保險層：公開通路自動檢查" : "Insurance layer: public-channel check";
     }
     if (adapter?.id === "seedUrls") {
-      return locale === "zh-TW" ? "保險層：真實抓取種子來源（零付費）" : "Insurance layer: real seed-source fetch (zero cost)";
+      return locale === "zh-TW" ? "保險層：指定來源檢查" : "Insurance layer: specified-source check";
     }
-    return locale === "zh-TW" ? "保險層：讀取最新檢查產物" : "Insurance layer: latest check artifact";
+    return locale === "zh-TW" ? "保險層：最新檢查結果" : "Insurance layer: latest check result";
   })();
   const patrolStatus = (() => {
     const raw = loadState.data.monitoring.status || "unknown";
@@ -548,8 +548,8 @@ export function TtdMvpDashboard() {
             style={{ fontFamily: MONO }}
             title={
               locale === "zh-TW"
-                ? "MVP 試營運：保險層讀取真實檢查產物；頁面上的提醒、匯出、聯絡操作仍為安全示範"
-                : "MVP pilot: the insurance layer reads real check artifacts; reminder, export, and contact actions remain safe UI demos"
+                ? "展示版：每日自動檢查使用真實資料；提醒、匯出與聯絡動作為示範操作"
+                : "Preview: daily automated checks use real data; reminder, export, and contact actions are demo-only"
             }
           >
             {T.demo[locale].toUpperCase()}
@@ -1084,17 +1084,17 @@ function EcosystemFrontView({
     {
       name: zh ? "新聞編輯台 Pilot" : "News desk pilot",
       status: zh ? "規劃中" : "Planned",
-      stat: "0",
-      unit: zh ? "未宣稱已合作" : "no partnership claimed",
+      stat: "—",
+      unit: zh ? "待媒體接入" : "pending onboarding",
       desc: zh
-        ? "用於面審示範的角色位，正式接入前不宣稱合作媒體或授權交易。"
-        : "A role placeholder for the demo; no media partnership or license transaction is claimed before onboarding.",
+        ? "此區代表媒體端接入流程；合作與授權交易會在實際接入後才標示。"
+        : "This lane represents the media-side onboarding flow; partnerships and license transactions are shown only after they exist.",
       live: false,
     },
     {
       name: zh ? "國際媒體需求" : "Global media demand",
-      status: zh ? "下一階段" : "Next stage",
-      stat: "TBD",
+      status: zh ? "規劃中" : "Planned",
+      stat: "—",
       unit: zh ? "台灣到全球" : "Taiwan to global",
       desc: zh
         ? "先讓台灣媒體用到可信素材，再把台灣原創推向關心台灣的全球編輯台。"
@@ -1136,12 +1136,12 @@ function EcosystemFrontView({
     {
       label: zh ? "已登錄原創" : "Registered originals",
       value: protectedDisplay,
-      sub: zh ? "DIA public originals" : "DIA public originals",
+      sub: zh ? "已建立公開憑證" : "With public certificates",
     },
     {
       label: zh ? "來源分級" : "Source tiers",
       value: sourceCountDisplay,
-      sub: zh ? "monitored-sources.json" : "monitored-sources.json",
+      sub: zh ? "指定監測來源" : "Monitored source list",
     },
     {
       label: zh ? "最近候選" : "Latest candidates",
@@ -1151,7 +1151,7 @@ function EcosystemFrontView({
     {
       label: zh ? "真實警報" : "Actual alerts",
       value: lastRunAlerts.toLocaleString("en-US"),
-      sub: zh ? "沒有命中就誠實顯示 0" : "Zero means zero",
+      sub: zh ? "需處理時才列入提醒" : "Only actionable uses become reminders",
     },
   ];
 
@@ -1170,7 +1170,7 @@ function EcosystemFrontView({
       tone: "current",
     },
     {
-      label: zh ? "下一階段（補助後）" : "Next stage after funding",
+      label: zh ? "下一階段" : "Next stage",
       items: zh
         ? ["素材推播", "授權金流", "任意圖片查驗"]
         : ["Asset push", "Licensing payments", "Arbitrary-image verification"],
@@ -1181,8 +1181,8 @@ function EcosystemFrontView({
   const requestLicense = (work: WorkVM, license: string) => {
     showToast(
       zh
-        ? `示範：已送出「${work.name}」${license}申請預覽，正式版會通知權利人`
-        : `Demo: ${license} request preview sent for “${work.name}”; production notifies the rights holder`,
+        ? `示範：已送出「${work.name}」${license}申請預覽；下一階段會通知權利人`
+        : `Demo: ${license} request preview sent for “${work.name}”; rights-holder notification comes next`,
     );
   };
 
@@ -1270,14 +1270,14 @@ function EcosystemFrontView({
             <div className="flex flex-wrap items-start justify-between gap-3">
               <div>
                 <p className="text-[10px] tracking-[0.18em] text-[#8FB49A]" style={{ fontFamily: MONO }}>
-                  {zh ? "保險層證據 · LIVE ARTIFACTS" : "INSURANCE-LAYER EVIDENCE · LIVE ARTIFACTS"}
+                  {zh ? "保險層證據 · 最新檢查" : "INSURANCE-LAYER EVIDENCE · LATEST CHECK"}
                 </p>
                 <h3 className="mt-1 text-[16px] font-black">{zh ? "雷達提醒 = 保險層" : "Radar reminders = insurance layer"}</h3>
               </div>
               <p className="max-w-[460px] text-[11.5px] leading-4 text-[#CEC0A3]">
                 {zh
-                  ? `最近 ${lastPatrol} 的檢查結果直接讀自提交的 patrol artifacts；沒有命中就誠實顯示零。`
-                  : `The latest ${lastPatrol} run is read from committed patrol artifacts; zero means zero.`}
+                  ? `最近 ${lastPatrol} 的自動檢查結果已更新；候選影像會先比對指紋，需要處理時才形成提醒。`
+                  : `The latest ${lastPatrol} automated check is updated; candidates are fingerprint-matched first, and only actionable uses become reminders.`}
               </p>
             </div>
 
@@ -1372,7 +1372,7 @@ function EcosystemFrontView({
       <section className="mt-6">
         <div className="mb-3 flex flex-wrap items-end justify-between gap-2">
           <h2 className="text-[20px] font-black">{zh ? "合作媒體牆" : "Media wall"}</h2>
-          <p className="text-[12px] text-[#5c584a]">{zh ? "只標示已驗證事實；規劃中不等於已合作。" : "Only verified facts are marked live; planned does not mean partnered."}</p>
+          <p className="text-[12px] text-[#5c584a]">{zh ? "規劃中項目尚未對外接入。" : "Planned items are not externally onboarded yet."}</p>
         </div>
         <div className="grid gap-4 lg:grid-cols-3">
           {partners.map((partner) => (
@@ -1412,8 +1412,8 @@ function EcosystemFrontView({
           <h2 className="mt-1 text-[21px] font-black">{zh ? "從真實 PyroImage 原創庫挑主視覺" : "Showcase real PyroImage originals"}</h2>
           <p className="mt-2 text-[13px] leading-5 text-[#5c584a]">
             {zh
-              ? `目前 MVP 已有 ${protectedDisplay} 張原創基準，其中 ${indexedRows.toLocaleString("en-US")} 張可即時查驗，其餘 ${indexingCount.toLocaleString("en-US")} 張批次索引中。授權標籤為面審示範，不代表已成交。`
-              : `The MVP baseline has ${protectedDisplay} originals; ${indexedRows.toLocaleString("en-US")} are verifiable now and ${indexingCount.toLocaleString("en-US")} are being indexed. License tags are demo labels, not completed transactions.`}
+              ? `目前已有 ${protectedDisplay} 張原創基準，其中 ${indexedRows.toLocaleString("en-US")} 張可即時查驗，其餘 ${indexingCount.toLocaleString("en-US")} 張批次索引中。授權標籤為示範操作，不代表已成交。`
+              : `The current baseline has ${protectedDisplay} originals; ${indexedRows.toLocaleString("en-US")} are verifiable now and ${indexingCount.toLocaleString("en-US")} are being indexed. License tags are demo actions, not completed transactions.`}
           </p>
           <button
             type="button"
@@ -1481,8 +1481,8 @@ function EcosystemFrontView({
             </h2>
             <p className="mt-1 text-[13px] text-[#5c584a]">
               {zh
-                ? activeTopic?.zhDesc || "主動推播，不是被動搜尋。下列卡片皆來自現有真實縮圖；授權動作為示範。"
-                : activeTopic?.enDesc || "Push, not passive search. These cards use existing real thumbnails; licensing actions are demos."}
+                ? activeTopic?.zhDesc || "主動推播，不是被動搜尋。下列卡片皆來自已登錄素材；授權動作為示範。"
+                : activeTopic?.enDesc || "Push, not passive search. These cards use registered assets; licensing actions are demos."}
             </p>
           </div>
           <button
@@ -1603,19 +1603,19 @@ function EcosystemFrontView({
         )}
       </section>
 
-      {/* honest roadmap boundary */}
+      {/* product status boundary */}
       <section className="mt-6 rounded-[16px] bg-[#1A1A1A] p-5 text-[#F4E9D5] sm:p-6">
         <div className="mb-4 flex flex-wrap items-end justify-between gap-3">
           <div>
             <p className="text-[10px] tracking-[0.18em] text-[#8FB49A]" style={{ fontFamily: MONO }}>
-              {zh ? "現況 / 下一階段 · HONEST ROADMAP" : "NOW / NEXT · HONEST ROADMAP"}
+              {zh ? "產品狀態 · NOW / NEXT" : "PRODUCT STATUS · NOW / NEXT"}
             </p>
-            <h2 className="mt-1 text-[22px] font-black">{zh ? "哪些已經在跑，哪些等補助補上" : "What runs now, what funding adds next"}</h2>
+            <h2 className="mt-1 text-[22px] font-black">{zh ? "目前可用與即將推出" : "Available now and coming next"}</h2>
           </div>
           <p className="max-w-[460px] text-[12px] leading-5 text-[#CEC0A3]">
             {zh
-              ? "前台 demo 只把已存在的能力說成現況；推播、授權金流與任意圖片查驗會明確放在下一階段。"
-              : "The demo marks existing capabilities as current; asset push, payment flow, and arbitrary-image verification stay in the next-stage lane."}
+              ? "已上線能力可直接體驗；尚未開放的功能會以下一階段標示。"
+              : "Live capabilities can be tried directly; features not yet open are marked as next stage."}
           </p>
         </div>
         <div className="grid gap-4 md:grid-cols-2">
@@ -1734,7 +1734,7 @@ function HomeView(props: {
     },
     {
       t: zh ? "查一張圖" : "Verify an image",
-      d: zh ? "用範例試跑，看查驗結果長什麼樣" : "Run a sample check and see what a verdict looks like",
+      d: zh ? "用範例看查驗結果長什麼樣" : "Run a sample check and see what a verdict looks like",
       onGo: () => props.onNavigate("verify"),
       done: onb.steps[1],
     },
@@ -2008,8 +2008,8 @@ function HomeView(props: {
         </div>
         <p className="border-t border-[#1a1a1a0f] bg-[#f8f2e3] px-5 py-2.5 text-[12px] text-[#5c584a]">
           {zh
-            ? "本頁顯示最新一次保險層檢查的真實產物；歷史紀錄會隨每日檢查持續累積。"
-            : "This shows the latest real insurance-layer artifact; history accrues with each daily run."}
+            ? "本頁顯示最新一次保險層自動檢查結果；歷史紀錄會隨每日檢查持續累積。"
+            : "This shows the latest automated insurance-layer result; history accrues with each daily run."}
         </p>
       </div>
       <div className="mt-3.5 flex items-start gap-2.5 rounded-[10px] border border-[#1a1a1a14] bg-[#f8f2e3] px-4 py-3 text-[13px] leading-5 text-[#5c584a]">
@@ -2034,14 +2034,14 @@ function chLabel(status: ChannelVM["status"], locale: Locale) {
 function chNote(status: ChannelVM["status"], locale: Locale) {
   const zh = {
     automated: "已接上公開頁面保險層；系統會抓取候選圖片並送入本地指紋比對。",
-    manual: "尚未接直接爬蟲，作為人工複核與後續導入來源。",
-    search: "僅提供查詢入口或人工複核線索，目前不會自動爬取此平台。",
+    manual: "尚未直接自動接入，作為人工複核與後續導入來源。",
+    search: "僅提供查詢入口或人工複核線索，目前不會自動擷取此平台內容。",
     queued: "需要平台授權、API 或合規確認後才能自動化。",
   };
   const en = {
     automated: "Connected to the public-page insurance layer; image candidates are fetched and sent through local fingerprint comparison.",
-    manual: "Not connected to a direct crawler yet; used for manual review and future integration.",
-    search: "Query entry or manual-review lead only; this platform is not auto-crawled yet.",
+    manual: "Not directly automated yet; used for manual review and future integration.",
+    search: "Query entry or manual-review lead only; this platform is not automatically captured yet.",
     queued: "Needs platform permission, API access, or compliance review before automation.",
   };
   return (locale === "zh-TW" ? zh : en)[status];
@@ -2212,13 +2212,13 @@ function VerificationView({
         title={zh ? "原創素材來源查驗" : "Image-origin check"}
         desc={
           zh
-            ? "這個入口可以使用；目前 MVP 只查已建立指紋的樣本。請先點下方範例試跑，或貼上已收錄樣本的網址 / 資產 ID。"
-            : "This tool is usable today; the MVP verifies samples that already have fingerprints. Start with an example below, or paste an indexed sample URL / asset ID."
+            ? "這個入口可以使用；目前只查已建立指紋的樣本。請先點下方範例，或貼上已收錄樣本的網址 / 資產 ID。"
+            : "This tool is usable today; it verifies samples that already have fingerprints. Start with an example below, or paste an indexed sample URL / asset ID."
         }
         hint={
           zh
-            ? "目前不能貼任意新圖片即時建指紋；查不到時不會產生判定、提醒或案件。正式版才會支援任意圖片查驗與後續溝通流程。"
-            : "It does not create a new fingerprint for any arbitrary image yet; unsupported inputs produce no verdict, reminder, or case. The full version will support arbitrary-image verification and follow-up workflows."
+            ? "目前不能貼任意新圖片即時建指紋；查不到時不會產生判定、提醒或案件。下一階段才會支援任意圖片查驗與後續溝通流程。"
+            : "It does not create a new fingerprint for any arbitrary image yet; unsupported inputs produce no verdict, reminder, or case. The next stage will support arbitrary-image verification and follow-up workflows."
         }
       />
 
@@ -2247,7 +2247,7 @@ function VerificationView({
         <KpiCard
           index="V4"
           label={zh ? "查驗工具狀態" : "Tool status"}
-          sub={zh ? "本次查驗零費用" : "zero cost"}
+          sub={zh ? "本機查驗" : "local check"}
           value={passAll ? (zh ? "可用" : "READY") : "CHECK"}
           color={passAll ? C.greenDeep : C.orange}
           dark
@@ -2291,10 +2291,10 @@ function VerificationView({
                 </button>
                 <button
                   type="button"
-                  onClick={() => showToast(zh ? "已記下！正式版開放任意圖片查驗時會通知你（示範）" : "Noted! We'll let you know when arbitrary-image checks open (demo)")}
+                  onClick={() => showToast(zh ? "已記下！任意圖片查驗開放時會通知你（示範）" : "Noted! We'll let you know when arbitrary-image checks open (demo)")}
                   className="rounded-[8px] border border-[#1a1a1a33] px-3 py-1.5 text-[11px] font-semibold text-[#1A1A1A]"
                 >
-                  {zh ? "正式版開放時通知我" : "Notify me at launch"}
+                  {zh ? "開放時通知我" : "Notify me when available"}
                 </button>
               </span>
             </div>
@@ -2302,14 +2302,14 @@ function VerificationView({
             <p className="mt-2.5 flex items-start gap-1.5 text-[11px] leading-4 text-[#1a1a1a80]">
               <Info size={13} className="mt-px flex-none" />
               {zh
-                ? "目前 MVP 只查已建立指紋的樣本；查不到不會產生判定或提醒。正式版將支援任意圖片即時查驗。"
-                : "The MVP only checks indexed samples; unsupported inputs produce no verdict or reminder. Arbitrary-image checks arrive in the full version."}
+                ? "目前只查已建立指紋的樣本；查不到不會產生判定或提醒。下一階段將支援任意圖片即時查驗。"
+                : "Only indexed samples can be checked now; unsupported inputs produce no verdict or reminder. Arbitrary-image checks arrive in the next stage."}
             </p>
           )}
 
           {/* examples: the fastest way to see a real verdict */}
           <p className="mb-2 mt-5 text-[11px] font-semibold tracking-[0.12em] text-[#1a1a1a8c]" style={{ fontFamily: MONO }}>
-            {zh ? "或先用範例試跑" : "OR TRY A SAMPLE FIRST"}
+            {zh ? "或先看範例" : "OR TRY A SAMPLE FIRST"}
           </p>
           <div className="grid gap-2">
             {verification.queries.map((query) => {
@@ -2440,7 +2440,7 @@ function VerificationView({
                     <button
                       type="button"
                       onClick={() =>
-                        showToast(zh ? "示範原型：正式版將在此開啟授權申請，並通知權利人" : "Demo prototype: production opens the licensing request here and notifies the rights holder")
+                        showToast(zh ? "示範操作：下一階段會在這裡送出授權申請並通知權利人" : "Demo action: the next stage sends the license request here and notifies the rights holder")
                       }
                       className="rounded-[9px] bg-[#4c6b3c] px-3.5 py-2 text-[12px] font-semibold text-white"
                     >
@@ -2477,10 +2477,10 @@ function VerificationView({
                     </button>
                     <button
                       type="button"
-                      onClick={() => showToast(zh ? "已記下！正式版開放任意圖片查驗時會通知你（示範）" : "Noted! We'll let you know when arbitrary-image checks open (demo)")}
+                      onClick={() => showToast(zh ? "已記下！任意圖片查驗開放時會通知你（示範）" : "Noted! We'll let you know when arbitrary-image checks open (demo)")}
                       className="rounded-[9px] border border-[#1a1a1a26] px-3.5 py-2 text-[12px] font-semibold"
                     >
-                      {zh ? "正式版開放時通知我" : "Notify me at launch"}
+                      {zh ? "開放時通知我" : "Notify me when available"}
                     </button>
                   </div>
                 )}
@@ -2595,7 +2595,7 @@ function CasesView(props: {
   const reportType = (label?: string) => {
     if (label === "simulated") return zh ? "展示報告" : "Preview report";
     if (label === "actual_pending_review") return zh ? "真實保險層存證（待複審）" : "Real insurance-layer evidence (pending review)";
-    return zh ? "內部存證報告" : "Internal evidence report";
+    return zh ? "存證報告草稿" : "Evidence report draft";
   };
   const primaryWork = alerts[0]?.work ? `${alerts[0].work} ${alerts[0].workEn}`.trim() : props.works[0]?.name || "—";
   const reportRows = [
@@ -2689,8 +2689,8 @@ function CasesView(props: {
         : "☝ DEMO: this case is certified. Switch to the Reports tab to preview the report."
       : demoRowKey === "report"
       ? zh
-        ? "☝ DEMO：點擊該列可預覽報告內容 —— 正式版可下載 PDF 並交付法務。"
-        : "☝ DEMO: click the row to preview the report — the production version exports a legal-ready PDF."
+        ? "☝ DEMO：點擊該列可預覽報告內容 —— 下一階段可下載 PDF 並交付法務。"
+        : "☝ DEMO: click the row to preview the report — PDF export comes in the next stage."
       : "";
 
   return (
@@ -2927,10 +2927,10 @@ function CasesView(props: {
       <div className="mt-2.5 flex items-start gap-2.5 rounded-[10px] border border-[#1a1a1a14] bg-[#f8f2e3] px-4 py-3 text-[13px] leading-5 text-[#5c584a]">
         <Bell size={15} className="mt-0.5 flex-none" />
         <span>
-          {zh ? "發現新提醒時的通知管道（Email / LINE）為正式版功能。" : "Reminder notifications (Email / LINE) are a production-version feature."}
+          {zh ? "發現新提醒時的通知管道（Email / LINE）為下一階段功能。" : "Reminder notifications (Email / LINE) are a next-stage feature."}
           <button
             type="button"
-            onClick={() => props.showToast(zh ? "示範原型：正式版將在此設定 Email / LINE 提醒管道" : "Demo prototype: reminder channels will be configured here in production")}
+            onClick={() => props.showToast(zh ? "示範操作：下一階段會在此設定 Email / LINE 提醒管道" : "Demo action: reminder channels will be configured here in the next stage")}
             className="ml-2 font-bold text-[#4f6a4e]"
           >
             {zh ? "設定通知 →" : "Set up →"}
@@ -3004,7 +3004,7 @@ function CasesView(props: {
                   </button>
                   <button
                     type="button"
-                    onClick={() => props.showToast(zh ? "DEMO：正式版將標記誤判並優化比對" : "DEMO: production will mark false positives to tune matching")}
+                    onClick={() => props.showToast(zh ? "DEMO：此操作只會更新畫面；誤判回報會在下一階段提供" : "DEMO: this only updates the screen; false-positive reporting comes next")}
                     className="rounded-[9px] border border-[#1a1a1a33] px-4 py-2.5 text-[13px] font-bold"
                   >
                     {zh ? "標記誤判" : "Mark false positive"}
@@ -3097,7 +3097,7 @@ function CasesView(props: {
             <div className="mt-5 flex flex-wrap gap-2.5">
               <button
                 type="button"
-                onClick={() => props.showToast(zh ? "DEMO：正式版將下載可交付法務的 PDF 報告" : "DEMO: production exports a legal-ready PDF report")}
+                onClick={() => props.showToast(zh ? "DEMO：此處預覽報告；可交付法務的 PDF 下載會在下一階段提供" : "DEMO: this previews the report; legal-ready PDF export comes next")}
                 className="rounded-[9px] bg-[#4c6b3c] px-5 py-2.5 text-[13px] font-bold text-white"
               >
                 {zh ? "下載 PDF 報告" : "Download PDF"}
@@ -3250,7 +3250,7 @@ function CaseView(props: {
           <CaseField label={zh ? "通路 CHANNEL" : "Channel"} value={vm.channel} />
           <CaseField label={zh ? "內容位置 URL" : "Location"} value={vm.sourceUrl} mono />
           <CaseField label={zh ? "擷取時間 CAPTURED" : "Captured"} value={formatDateForLocale(vm.detected, locale)} mono />
-          <CaseField label={zh ? "對外宣稱狀態" : "Public claim"} value={zh ? "僅供內部使用" : "Internal only"} />
+          <CaseField label={zh ? "對外狀態" : "External status"} value={zh ? "尚未對外主張" : "No external claim yet"} />
         </div>
       </div>
 
@@ -3302,7 +3302,7 @@ function CaseView(props: {
             </span>
           </div>
           <p className="mt-0.5 text-[10px] tracking-[0.08em] text-[#CEC0A3]" style={{ fontFamily: MONO }}>
-            {zh ? "MVP 試營運 · 僅記錄到本案軌跡，不會真的送出外部通知" : "MVP pilot · logged to this case only; no external notice is sent"}
+            {zh ? "展示版 · 僅記錄到本案軌跡，不會真的送出外部通知" : "Preview · logged to this case only; no external notice is sent"}
           </p>
         </div>
         <div className="flex flex-wrap gap-2.5">
@@ -3495,7 +3495,7 @@ function VaultView({
               onClick={() => {
                 setChip(c.key);
                 if (c.key !== "all") {
-                  showToast(zh ? "示範原型：正式版將依索引狀態篩選作品" : "Demo prototype: production filters works by index status");
+                  showToast(zh ? "示範操作：下一階段會依索引狀態篩選完整原創庫" : "Demo action: next-stage filtering applies to the full original library");
                 }
               }}
               className={`rounded-full border px-3 py-1.5 text-[12px] font-semibold transition-colors ${
@@ -3550,7 +3550,7 @@ function VaultView({
       </div>
       {filtered.length === 0 && (
         <p className="mt-5 rounded-[10px] border border-[#1a1a1a14] bg-white px-5 py-6 text-center text-[13px] text-[#8d8873]">
-          {zh ? "沒有符合搜尋的示範樣本。全庫搜尋將在正式版提供。" : "No sample matches this search. Full-library search arrives in the production version."}
+          {zh ? "沒有符合搜尋的示範樣本。全庫搜尋將在下一階段提供。" : "No sample matches this search. Full-library search arrives in the next stage."}
         </p>
       )}
       {visible < filtered.length && (
@@ -3564,7 +3564,7 @@ function VaultView({
           </button>
           <span>
             {zh
-              ? `示範已載入 ${works.length} 張縮圖；全庫分頁載入將在正式版提供`
+              ? `示範已載入 ${works.length} 張縮圖；全庫分頁載入將在下一階段提供`
               : `${works.length} sample thumbnails available; full-library paging arrives in production`}
           </span>
         </div>
@@ -3607,7 +3607,7 @@ function SignModal({
         </p>
         <button
           type="button"
-          onClick={() => showToast(zh ? "示範原型：正式版將在此上傳影像並完成簽署" : "Demo prototype: production uploads and signs the image here")}
+          onClick={() => showToast(zh ? "示範操作：下一階段會在此上傳影像並完成簽署" : "Demo action: next-stage upload and signing happens here")}
           className="mt-4 w-full rounded-[12px] border-2 border-dashed border-[#1a1a1a26] bg-white px-5 py-9 text-center font-bold text-[#5c584a] transition-colors hover:border-[#7F9C7E] hover:text-[#4f6a4e]"
         >
           ⬆ {zh ? "拖曳或點擊上傳影像" : "Drag or click to upload"}
@@ -3674,8 +3674,8 @@ function ChannelsView({
           }
           hint={
             zh
-              ? "怎麼看：上方看目前真正執行的保險層來源；下方每張卡表示指定通路的導入狀態。保險層會抓取公開頁候選圖片並送入本地指紋比對；查詢線索不等於已接平台爬蟲。"
-              : "How to read: the summary shows real insurance-layer sources; each card shows integration status. The insurance layer fetches public-page image candidates for local fingerprint comparison; query leads are not platform crawlers."
+              ? "怎麼看：上方看目前真正執行的保險層來源；下方每張卡表示指定通路的導入狀態。保險層會擷取公開頁候選圖片並送入本地指紋比對；查詢線索表示可協助人工確認，尚未代表平台已自動接入。"
+              : "How to read: the summary shows real insurance-layer sources; each card shows integration status. The insurance layer captures public-page image candidates for local fingerprint comparison; query leads can support manual review but do not mean the platform is automated."
           }
         />
         <button type="button" onClick={onRunPatrol} className="rounded-[9px] bg-[#1A1A1A] px-[18px] py-2.5 text-[12.5px] font-semibold text-[#F4E9D5]">
@@ -3700,7 +3700,7 @@ function ChannelsView({
           [
             { key: "automated" as const, n: stageCounts.automated, t: zh ? "自動保險層" : "Automated insurance layer", d: zh ? "已接公開頁保險層，自動比對指紋" : "Public-page insurance layer with fingerprint matching" },
             { key: "search" as const, n: stageCounts.search, t: zh ? "查詢線索" : "Query leads", d: zh ? "提供查詢入口與人工複核線索" : "Query entry points and review leads" },
-            { key: "manual" as const, n: stageCounts.manual, t: zh ? "人工複核" : "Manual review", d: zh ? "尚未接爬蟲，作為複核來源" : "No crawler yet; used as review sources" },
+            { key: "manual" as const, n: stageCounts.manual, t: zh ? "人工複核" : "Manual review", d: zh ? "尚未自動接入，作為複核來源" : "Not automated yet; used as review sources" },
             { key: "queued" as const, n: stageCounts.queued, t: zh ? "待授權" : "Needs auth", d: zh ? "需平台授權或 API 才能自動化" : "Needs platform permission or API access" },
           ]
         ).map((g) => (
@@ -3746,7 +3746,7 @@ function ChannelsView({
               <button
                 type="button"
                 onClick={() =>
-                  showToast(zh ? "示範原型：正式版將引導平台授權與 API 接入申請" : "Demo prototype: production guides the platform-authorization and API onboarding request")
+                  showToast(zh ? "示範操作：下一階段會引導平台授權與 API 接入申請" : "Demo action: next-stage onboarding guides platform authorization and API access")
                 }
                 className="flex-none text-[12px] font-bold text-[#4f6a4e]"
               >
@@ -3787,8 +3787,8 @@ function ChannelsView({
             <h3 className="mt-1.5 text-[20px] font-black">{zh ? "想把哪個網站或平台納入保險層？" : "Which site or platform should the insurance layer cover?"}</h3>
             <p className="mt-1 text-[13px] leading-5 text-[#5c584a]">
               {zh
-                ? "告訴我們你希望納入保險層的來源，我們會評估爬蟲可行性與平台授權需求。"
-                : "Tell us which source to include; we'll evaluate crawler feasibility and platform-authorization needs."}
+                ? "告訴我們你希望納入保險層的來源，我們會評估技術接入與平台授權需求。"
+                : "Tell us which source to include; we'll evaluate technical integration and platform-authorization needs."}
             </p>
             <form
               className="mt-4 flex gap-2"
@@ -3800,7 +3800,7 @@ function ChannelsView({
                 }
                 setShowSuggest(false);
                 setSuggestValue("");
-                showToast(zh ? "已收到你的通路建議（示範）—— 正式版將進入評估佇列並回報進度" : "Suggestion received (demo) — production queues it for evaluation and reports progress");
+                showToast(zh ? "已收到你的通路建議（示範）—— 下一階段會進入評估佇列並回報進度" : "Suggestion received (demo) — next-stage workflow queues it for evaluation and reports progress");
               }}
             >
               <input
