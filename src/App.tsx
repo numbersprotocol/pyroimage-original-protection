@@ -1163,14 +1163,14 @@ function EcosystemFrontView({
 
   const roadmap = [
     {
-      label: zh ? "已真實運作" : "Running now",
+      label: zh ? "已上線" : "Available now",
       items: zh
         ? ["原創登錄", "來源憑證與指紋", "保險層每日巡檢"]
         : ["Original registration", "Origin certificates + fingerprints", "Daily insurance-layer checks"],
       tone: "current",
     },
     {
-      label: zh ? "下一階段" : "Next stage",
+      label: zh ? "即將推出" : "Coming next",
       items: zh
         ? ["素材推播", "授權金流", "任意圖片查驗"]
         : ["Asset push", "Licensing payments", "Arbitrary-image verification"],
@@ -1201,8 +1201,8 @@ function EcosystemFrontView({
             </h1>
             <p className="mt-4 max-w-[520px] text-[15px] leading-6 text-[#CEC0A3]">
               {zh
-                ? "原創雷達不是把查找線索當主角，而是把保險層放在生態系外圈：素材主動進編輯台，授權回到創作者，雷達負責提醒與保險。"
-                : "OriginRadar puts the insurance layer on the outside of the ecosystem: verified assets reach editors, licensing returns to creators, and the radar handles reminders."}
+                ? "作品登錄後即取得原創憑證，媒體能安心取用可信素材；每日自動檢查替你留意作品的使用情況，授權與提醒直接回到創作者。"
+                : "Register a work to get its origin certificate, let media pick up trusted assets with confidence, and daily automated checks watch how your work is used — licensing and reminders flow back to the creator."}
             </p>
             <div className="mt-5 max-w-[520px] border-l-2 border-[#8FB49A] pl-4">
               <p className="text-[19px] font-black leading-snug text-[#F4E9D5]">
@@ -1372,7 +1372,6 @@ function EcosystemFrontView({
       <section className="mt-6">
         <div className="mb-3 flex flex-wrap items-end justify-between gap-2">
           <h2 className="text-[20px] font-black">{zh ? "合作媒體牆" : "Media wall"}</h2>
-          <p className="text-[12px] text-[#5c584a]">{zh ? "規劃中項目尚未對外接入。" : "Planned items are not externally onboarded yet."}</p>
         </div>
         <div className="grid gap-4 lg:grid-cols-3">
           {partners.map((partner) => (
@@ -1614,8 +1613,8 @@ function EcosystemFrontView({
           </div>
           <p className="max-w-[460px] text-[12px] leading-5 text-[#CEC0A3]">
             {zh
-              ? "已上線能力可直接體驗；尚未開放的功能會以下一階段標示。"
-              : "Live capabilities can be tried directly; features not yet open are marked as next stage."}
+              ? "已上線功能可直接體驗；其餘功能整理在「即將推出」。"
+              : "Live features can be tried directly; the rest are listed under coming next."}
           </p>
         </div>
         <div className="grid gap-4 md:grid-cols-2">
@@ -2423,7 +2422,7 @@ function VerificationView({
                     mono
                   />
                   <CaseField
-                    label={zh ? "對外宣稱狀態" : "Public claim status"}
+                    label={zh ? "對外狀態" : "External status"}
                     value={
                       activeQuery.verdict.public_claim_status === "no_origin_match_found"
                         ? zh
