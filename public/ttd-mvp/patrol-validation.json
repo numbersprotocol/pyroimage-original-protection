@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-07-31T04:34:02.919Z",
-  "run_id": "ttd-patrol-20260731T042719Z",
+  "generated_at": "2026-08-01T04:32:26.232Z",
+  "run_id": "ttd-patrol-20260801T042622Z",
   "adapter": "visionWebDetection+namedChannelCrawler",
   "expected_filter": "all",
   "threshold": 16,
@@ -23,7 +23,7 @@
       "candidate_id": "vision_91f5aeacee941495",
       "expected": "unknown",
       "verdict": "no_match",
-      "protected_asset_distance": 40,
+      "protected_asset_distance": 41,
       "top_index_match_asset_id": "bafybeigzo5rkfshhubaazvw2xsvruskzrglb3gefyjtln3w3r4crhufmwm",
       "pass": true
     },
@@ -53,9 +53,10 @@
     {
       "candidate_id": "vision_351a292cdf827f58",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "HTTP 500 for https://www.areavibes.com/photos/livability/round-rock-tx.jpg"
+      "verdict": "no_match",
+      "protected_asset_distance": 40,
+      "top_index_match_asset_id": "bafybeicsleruqmm4rbrodvdwfthzzlnclzpkyu2udywda77tueyno3i3oy",
+      "pass": true
     },
     {
       "candidate_id": "vision_dade80615133faca",
@@ -183,9 +184,10 @@
     {
       "candidate_id": "vision_a2802429cfd7b21b",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "HTTP 403 for https://cdn.iz.ru/sites/default/files/styles/1065xh/public/photo_item-2026-07/RIA_8971992.HR_.jpg"
+      "verdict": "no_match",
+      "protected_asset_distance": 63,
+      "top_index_match_asset_id": "bafybeihposk7k6rxcjqsaxoh7rinebxkgw4xj25euptnuryg56aa32ltje",
+      "pass": true
     },
     {
       "candidate_id": "vision_6a97e71bc29b748e",
@@ -422,7 +424,7 @@
       "candidate_id": "vision_32aba394b116f164",
       "expected": "unknown",
       "verdict": "no_match",
-      "protected_asset_distance": 70,
+      "protected_asset_distance": 72,
       "top_index_match_asset_id": "bafybeiable3ldt5idu3wlrvg5yklj2gj5dspfil6bikcjznb5wlgqfqnwq",
       "pass": true
     },
@@ -823,9 +825,10 @@
     {
       "candidate_id": "vision_ac5952ca2354ebab",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "fetch failed"
+      "verdict": "no_match",
+      "protected_asset_distance": 68,
+      "top_index_match_asset_id": "bafybeih2e5ztq74vn3g52ojbtkdddm3ddz4kyqd5f47dxbehnx76h3jagq",
+      "pass": true
     },
     {
       "candidate_id": "vision_d56a2bcc4a357b75",
@@ -838,9 +841,10 @@
     {
       "candidate_id": "vision_65c74d9875798dff",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "HTTP 429 for http://www.foreignersintaiwan.com/uploads/5/4/3/2/54326073/mudanoldst-5_orig.jpg"
+      "verdict": "no_match",
+      "protected_asset_distance": 68,
+      "top_index_match_asset_id": "bafybeihposk7k6rxcjqsaxoh7rinebxkgw4xj25euptnuryg56aa32ltje",
+      "pass": true
     },
     {
       "candidate_id": "vision_15476ee983ae4f32",
@@ -1218,10 +1222,9 @@
     {
       "candidate_id": "vision_6bd2d05a901e0612",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 70,
-      "top_index_match_asset_id": "bafybeid6rk2nfwk6x2vqwztjidxhpi4jvur2cahukuj7jnocqlunk32fjm",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "fetch failed"
     },
     {
       "candidate_id": "vision_cd01908c9e7f0908",
@@ -1234,10 +1237,9 @@
     {
       "candidate_id": "vision_ad14cd118257dbfa",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 56,
-      "top_index_match_asset_id": "bafybeibcodninby5bq7nvnv4stvcyzliztfi7dtpvglqgrgdcx5nol5tgq",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "fetch failed"
     },
     {
       "candidate_id": "vision_51e273149bdc5b6f",
@@ -1700,17 +1702,17 @@
     {
       "candidate_id": "vision_78ff3d1db93924ff",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "HTTP 429 for https://www.yomiuri.co.jp/media/2026/01/20260107-GYT8I00121-T.jpg"
+      "verdict": "no_match",
+      "protected_asset_distance": 67,
+      "top_index_match_asset_id": "bafybeidensjwe2lqxrzpikjbhkf2kqhslkdhbhoelwsfm5c2mds3naruai",
+      "pass": true
     },
     {
       "candidate_id": "vision_48d4e2b16f4b5311",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 54,
-      "top_index_match_asset_id": "bafybeiefeh4eucvlksnaacoadn67mgvecgw7jekegtjmvfenoxugfybe3e",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "fetch failed"
     },
     {
       "candidate_id": "vision_84ee8a077a60bc03",
@@ -1817,10 +1819,9 @@
     {
       "candidate_id": "vision_4e807f8b287da726",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 64,
-      "top_index_match_asset_id": "bafybeiazfwp5qmd5vduneeu2i3yj4okzqvqyagr4hdr5qyiracglwoikpq",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "fetch failed"
     },
     {
       "candidate_id": "vision_638e370ae8130551",
@@ -1959,7 +1960,7 @@
       "expected": "unknown",
       "pass": true,
       "warning": true,
-      "error": "image exceeds max bytes (2260651 > 2000000) for https://land-in-bewegung.rlp.de/fileadmin/_processed_/2/e/csm__CH54132_d19807757d.jpg"
+      "error": "terminated"
     },
     {
       "candidate_id": "vision_f1afc01b0ce2f428",
@@ -2267,10 +2268,9 @@
     {
       "candidate_id": "vision_dd9c283f9bc7e600",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 62,
-      "top_index_match_asset_id": "bafybeiahtu6vpnwebqvvltxkyoyq2pnn6mhoqnkcgeeii3jvgrufhvtq7q",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "fetch failed"
     },
     {
       "candidate_id": "vision_4fb660b6daf75582",
@@ -2655,10 +2655,9 @@
     {
       "candidate_id": "vision_c7f7282b3ed71149",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 58,
-      "top_index_match_asset_id": "bafybeiadwyxr6sdzgse4i373lqzhuo27wtmihibrzqisppyxju4cbkbqf4",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "fetch failed"
     },
     {
       "candidate_id": "vision_19ad937036a73e9c",
@@ -2920,10 +2919,9 @@
     {
       "candidate_id": "vision_5c561d72d343fdd9",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 71,
-      "top_index_match_asset_id": "bafybeie42hect4yp5n4fghvrv5dwfdys33t7ldrnzvuu73zl7mg366yraq",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "fetch failed"
     },
     {
       "candidate_id": "vision_ac6afa2f91302571",
