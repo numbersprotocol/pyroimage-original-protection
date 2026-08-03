@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-08-02T04:39:56.640Z",
+  "generated_at": "2026-08-03T04:34:48.534Z",
   "report_count": 0,
   "source": "runPatrol.js artifacts",
-  "monitoring_run_id": "ttd-patrol-20260802T043216Z",
+  "monitoring_run_id": "ttd-patrol-20260803T042829Z",
   "empty_state": {
     "reason": "latest_patrol_created_no_alerts",
-    "run_id": "ttd-patrol-20260802T043216Z",
+    "run_id": "ttd-patrol-20260803T042829Z",
     "adapter_id": "visionWebDetection+namedChannelCrawler",
-    "completed_at": "2026-08-02T04:39:56.476Z"
+    "completed_at": "2026-08-03T04:34:48.360Z"
   },
   "reports": []
 }
