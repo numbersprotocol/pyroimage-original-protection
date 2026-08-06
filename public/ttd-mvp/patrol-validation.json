@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-08-05T05:15:10.147Z",
-  "run_id": "ttd-patrol-20260805T050900Z",
+  "generated_at": "2026-08-06T04:32:23.184Z",
+  "run_id": "ttd-patrol-20260806T042518Z",
   "adapter": "visionWebDetection+namedChannelCrawler",
   "expected_filter": "all",
   "threshold": 16,
@@ -1587,10 +1587,9 @@
     {
       "candidate_id": "vision_713e4ab9906f43d7",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 67,
-      "top_index_match_asset_id": "bafybeieyoip2pbwojtwvietkcmft3te22m3wlia2drksdpyttnhahodzzu",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "fetch failed"
     },
     {
       "candidate_id": "vision_0a45ced94fbcb0fc",
@@ -1969,10 +1968,9 @@
     {
       "candidate_id": "vision_f1afc01b0ce2f428",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 58,
-      "top_index_match_asset_id": "bafybeie5ymr7euxsocvxwfsawo23ymh4p75676cgvpellui4kavwquqoma",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "fetch failed"
     },
     {
       "candidate_id": "vision_6aec8325eeb87a52",
@@ -2056,10 +2054,9 @@
     {
       "candidate_id": "vision_39220f26153ce6fb",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 56,
-      "top_index_match_asset_id": "bafybeibcodninby5bq7nvnv4stvcyzliztfi7dtpvglqgrgdcx5nol5tgq",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "fetch failed"
     },
     {
       "candidate_id": "vision_b0fd919049a619dd",
@@ -2260,18 +2257,16 @@
     {
       "candidate_id": "vision_06d579b17159e439",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 57,
-      "top_index_match_asset_id": "bafybeihgxp7ubha2doy7ja4lzdjl4fdaexbotxr46vogge23mzi2esk2ee",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "fetch failed"
     },
     {
       "candidate_id": "vision_2644781d8c464bbf",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 68,
-      "top_index_match_asset_id": "bafybeidrdmmcq3dds6e3zvdv2l62ieuwz3s6eghqownz3m5q53434ocsle",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "fetch failed"
     },
     {
       "candidate_id": "vision_dd9c283f9bc7e600",
@@ -2393,10 +2388,9 @@
     {
       "candidate_id": "vision_1d1bcbfc63bf4f86",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 67,
-      "top_index_match_asset_id": "bafybeieyoip2pbwojtwvietkcmft3te22m3wlia2drksdpyttnhahodzzu",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "fetch failed"
     },
     {
       "candidate_id": "vision_3f52a954287021fa",
@@ -2922,10 +2916,9 @@
     {
       "candidate_id": "vision_6a8873b4d69d4afe",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 72,
-      "top_index_match_asset_id": "bafybeiez55oacwsjx7aw7c2z4rksaodewedfvzhimvpfdsqjepid4uwq3q",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "fetch failed"
     },
     {
       "candidate_id": "vision_5c561d72d343fdd9",
@@ -2938,10 +2931,9 @@
     {
       "candidate_id": "vision_ac6afa2f91302571",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 83,
-      "top_index_match_asset_id": "bafybeiaqbojqsx7q2lt4b2znsyndiuolajxo72dd5nmuheevwuzjtlqy4q",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "fetch failed"
     },
     {
       "candidate_id": "vision_fefc9e6043157bba",
