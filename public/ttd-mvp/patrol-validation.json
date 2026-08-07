@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-08-06T04:32:23.184Z",
-  "run_id": "ttd-patrol-20260806T042518Z",
+  "generated_at": "2026-08-07T04:19:39.444Z",
+  "run_id": "ttd-patrol-20260807T041229Z",
   "adapter": "visionWebDetection+namedChannelCrawler",
   "expected_filter": "all",
   "threshold": 16,
@@ -1533,10 +1533,9 @@
     {
       "candidate_id": "vision_4f4fe68dd5c319a4",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 65,
-      "top_index_match_asset_id": "bafybeigkzajfnj4zzj2226iksqbry3hft6qne75chsea6knmlfvi2gxypm",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "fetch failed"
     },
     {
       "candidate_id": "vision_eae42997228a5060",
@@ -1968,9 +1967,10 @@
     {
       "candidate_id": "vision_f1afc01b0ce2f428",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "fetch failed"
+      "verdict": "no_match",
+      "protected_asset_distance": 58,
+      "top_index_match_asset_id": "bafybeie5ymr7euxsocvxwfsawo23ymh4p75676cgvpellui4kavwquqoma",
+      "pass": true
     },
     {
       "candidate_id": "vision_6aec8325eeb87a52",
@@ -2054,9 +2054,10 @@
     {
       "candidate_id": "vision_39220f26153ce6fb",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "fetch failed"
+      "verdict": "no_match",
+      "protected_asset_distance": 56,
+      "top_index_match_asset_id": "bafybeibcodninby5bq7nvnv4stvcyzliztfi7dtpvglqgrgdcx5nol5tgq",
+      "pass": true
     },
     {
       "candidate_id": "vision_b0fd919049a619dd",
@@ -2264,9 +2265,10 @@
     {
       "candidate_id": "vision_2644781d8c464bbf",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "fetch failed"
+      "verdict": "no_match",
+      "protected_asset_distance": 68,
+      "top_index_match_asset_id": "bafybeidrdmmcq3dds6e3zvdv2l62ieuwz3s6eghqownz3m5q53434ocsle",
+      "pass": true
     },
     {
       "candidate_id": "vision_dd9c283f9bc7e600",
@@ -2333,10 +2335,9 @@
     {
       "candidate_id": "vision_1add5b7020bacb1b",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 64,
-      "top_index_match_asset_id": "bafybeigkzajfnj4zzj2226iksqbry3hft6qne75chsea6knmlfvi2gxypm",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "fetch failed"
     },
     {
       "candidate_id": "vision_e02758075858e46d",
@@ -2418,9 +2419,10 @@
     {
       "candidate_id": "vision_daba58be9c747bd6",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "HTTP 403 for https://cw-image-resizer.cwg.tw/resize/uri/https%3A%2F%2Fcdn-cw-hub.cw.com.tw%2Ftechtaiwan%2Fslides%2F202607%2F6a509e15-594212473478406.jpg/"
+      "verdict": "no_match",
+      "protected_asset_distance": 65,
+      "top_index_match_asset_id": "bafybeiaqbojqsx7q2lt4b2znsyndiuolajxo72dd5nmuheevwuzjtlqy4q",
+      "pass": true
     },
     {
       "candidate_id": "vision_2a25b9756412baed",
@@ -2480,9 +2482,10 @@
     {
       "candidate_id": "vision_56d035e3e13410f0",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "HTTP 403 for https://cw-image-resizer.cwg.tw/resize/uri/https%3A%2F%2Fcdn-cw-hub.cw.com.tw%2Ftechtaiwan%2Fslides%2F202607%2F6a509e15-594212473478406.jpg/"
+      "verdict": "no_match",
+      "protected_asset_distance": 65,
+      "top_index_match_asset_id": "bafybeiaqbojqsx7q2lt4b2znsyndiuolajxo72dd5nmuheevwuzjtlqy4q",
+      "pass": true
     },
     {
       "candidate_id": "vision_5f5a44d9032ce34c",
@@ -2823,9 +2826,10 @@
     {
       "candidate_id": "vision_167c72133c3c0b4e",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "fetch failed"
+      "verdict": "no_match",
+      "protected_asset_distance": 64,
+      "top_index_match_asset_id": "bafybeiazfwp5qmd5vduneeu2i3yj4okzqvqyagr4hdr5qyiracglwoikpq",
+      "pass": true
     },
     {
       "candidate_id": "vision_9537485dd69d0110",
@@ -2916,9 +2920,10 @@
     {
       "candidate_id": "vision_6a8873b4d69d4afe",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "fetch failed"
+      "verdict": "no_match",
+      "protected_asset_distance": 72,
+      "top_index_match_asset_id": "bafybeiez55oacwsjx7aw7c2z4rksaodewedfvzhimvpfdsqjepid4uwq3q",
+      "pass": true
     },
     {
       "candidate_id": "vision_5c561d72d343fdd9",
@@ -2931,9 +2936,10 @@
     {
       "candidate_id": "vision_ac6afa2f91302571",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "fetch failed"
+      "verdict": "no_match",
+      "protected_asset_distance": 83,
+      "top_index_match_asset_id": "bafybeiaqbojqsx7q2lt4b2znsyndiuolajxo72dd5nmuheevwuzjtlqy4q",
+      "pass": true
     },
     {
       "candidate_id": "vision_fefc9e6043157bba",

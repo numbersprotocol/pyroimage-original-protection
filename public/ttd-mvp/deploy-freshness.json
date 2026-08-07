@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-08-06T04:32:28.438Z",
+  "generated_at": "2026-08-07T04:19:44.783Z",
   "artifact": "originradar-pages-freshness",
   "patrol": {
-    "run_id": "ttd-patrol-20260806T042518Z",
-    "generated_at": "2026-08-06T04:32:23.184Z",
+    "run_id": "ttd-patrol-20260807T041229Z",
+    "generated_at": "2026-08-07T04:19:39.444Z",
     "status": "completed_with_candidate_errors",
     "adapter_id": "visionWebDetection+namedChannelCrawler",
     "adapter_mode": "vision_web_detection_plus_public_channel_crawl",
@@ -18,7 +18,7 @@
     "validation_pass": true
   },
   "source": {
-    "sha": "41edb4d0719cf2c06cf68c7ed16ac126b9d1e5fd",
+    "sha": "18dfdd089d08fd0781936de576cf74852f9eb214",
     "ref": "refs/heads/main",
     "ref_name": "main",
     "event_name": "schedule",
@@ -30,16 +30,16 @@
     "enabled": true,
     "expected_environment": "github-pages",
     "page_url": "https://upgraded-adventure-r2go1ky.pages.github.io/",
-    "workflow_run_id": "31071137907",
+    "workflow_run_id": "31146639464",
     "workflow_run_attempt": "1",
-    "workflow_run_url": "https://github.com/numbersprotocol/pyroimage-original-protection/actions/runs/31071137907",
+    "workflow_run_url": "https://github.com/numbersprotocol/pyroimage-original-protection/actions/runs/31146639464",
     "note": "The Pages artifact is uploaded from the same dist directory validated by this file."
   },
   "parity": {
     "public_monitoring_run_path": "public/ttd-mvp/monitoring-run.json",
     "dist_monitoring_run_path": "dist/ttd-mvp/monitoring-run.json",
-    "public_monitoring_run_sha256": "3035ff71ce57768b588f6cb556c85b45ac9113f6e0f7276bfb350684dbde8a31",
-    "dist_monitoring_run_sha256": "3035ff71ce57768b588f6cb556c85b45ac9113f6e0f7276bfb350684dbde8a31",
+    "public_monitoring_run_sha256": "9c902975b7b1b0be3b1b1623d590c5dfbaca0ea9d5197d0a3b2dabb8957e531c",
+    "dist_monitoring_run_sha256": "9c902975b7b1b0be3b1b1623d590c5dfbaca0ea9d5197d0a3b2dabb8957e531c",
     "monitoring_run_hash_match": true,
     "monitoring_run_id_match": true,
     "monitoring_generated_at_match": true,
