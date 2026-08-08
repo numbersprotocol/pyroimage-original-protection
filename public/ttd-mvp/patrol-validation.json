@@ -1,54 +1,47 @@
 {
-  "generated_at": "2026-08-07T04:19:39.444Z",
-  "run_id": "ttd-patrol-20260807T041229Z",
+  "generated_at": "2026-08-08T03:54:45.734Z",
+  "run_id": "ttd-patrol-20260808T034716Z",
   "adapter": "visionWebDetection+namedChannelCrawler",
   "expected_filter": "all",
   "threshold": 16,
   "validations": [
     {
-      "candidate_id": "vision_a1bc998f6980a8cc",
+      "candidate_id": "vision_baf4826f23734f95",
       "expected": "unknown",
       "pass": true,
       "warning": true,
-      "error": "non-image response content-type=text/html; charset=\"utf-8\" for https://lookaside.fbsbx.com/lookaside/crawler/instagram/pinamar.py/profile_pic.jpg"
+      "error": "HTTP 403 for https://p16-common-sign.tiktokcdn-us.com/tos-maliva-p-0068/osTGImi67JkBnGGwgDBAIYOyI40o7ABC0Hihfo~tplv-tiktokx-origin.image"
     },
     {
-      "candidate_id": "vision_f68a53a0025842a1",
+      "candidate_id": "vision_7401620dbf5314f1",
+      "expected": "unknown",
+      "verdict": "no_match",
+      "protected_asset_distance": 53,
+      "top_index_match_asset_id": "bafybeiejlqrch63rcxikajlpdvwk5qjw2gfk4ebrmxitaewv5xdyqu2lve",
+      "pass": true
+    },
+    {
+      "candidate_id": "vision_facf924e65c96afd",
       "expected": "unknown",
       "pass": true,
       "warning": true,
-      "error": "HTTP 403 for https://p19-common-sign.tiktokcdn-us.com/tos-alisg-p-0037/oszZSDQlhHDGAnAeIcAIComekoFTjPgEIxDzfl~tplv-tiktokx-origin.image"
+      "error": "HTTP 403 for https://www.tiktok.com/api/img/"
     },
     {
-      "candidate_id": "vision_91f5aeacee941495",
+      "candidate_id": "vision_fafc44dffc2b3e4c",
       "expected": "unknown",
       "verdict": "no_match",
-      "protected_asset_distance": 40,
-      "top_index_match_asset_id": "bafybeigzo5rkfshhubaazvw2xsvruskzrglb3gefyjtln3w3r4crhufmwm",
+      "protected_asset_distance": 69,
+      "top_index_match_asset_id": "bafybeihtbhoorer2askau5vi55mmgcfqk7s5drdxkwrkehrvvkr3y64aju",
       "pass": true
     },
     {
-      "candidate_id": "vision_6729a038c3d81d76",
+      "candidate_id": "vision_a57f52cf5df36a3f",
       "expected": "unknown",
       "verdict": "no_match",
-      "protected_asset_distance": 44,
-      "top_index_match_asset_id": "bafybeibnhnajjwgewlp646ookljxj2jjrjwv6q6whfj5q6tfrhr4yqfram",
+      "protected_asset_distance": 69,
+      "top_index_match_asset_id": "bafybeidf4lmgsw7e6xfren7lprlvp66ci6ogm3d5dr2kstikjlilobognq",
       "pass": true
-    },
-    {
-      "candidate_id": "vision_41fbef458cbb0e03",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 60,
-      "top_index_match_asset_id": "bafybeif6c2u5ao5glap5lr4ijneiepdbwvjzc6iu2ot4mbfsew6lmrc6zm",
-      "pass": true
-    },
-    {
-      "candidate_id": "vision_ecad7143dc3f5a5c",
-      "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "non-image response content-type=text/html; charset=\"utf-8\" for https://lookaside.fbsbx.com/lookaside/crawler/media/"
     },
     {
       "candidate_id": "vision_351a292cdf827f58",
@@ -59,11 +52,20 @@
       "pass": true
     },
     {
-      "candidate_id": "vision_dade80615133faca",
+      "candidate_id": "vision_41ce465b35598190",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "image exceeds max bytes (3545708 > 2000000) for https://upload.wikimedia.org/wikipedia/commons/2/21/La_Escalera.JPG"
+      "verdict": "no_match",
+      "protected_asset_distance": 66,
+      "top_index_match_asset_id": "bafybeidr3smftol2hxelez7kneqna4x652fj4644cnrzusfatvqsskarii",
+      "pass": true
+    },
+    {
+      "candidate_id": "vision_9ca32fa68b887da2",
+      "expected": "unknown",
+      "verdict": "no_match",
+      "protected_asset_distance": 59,
+      "top_index_match_asset_id": "bafybeie4kelfqph3anq4pszs4o65xsnldwv2q3pxjw4zizm3t3ksoxsxce",
+      "pass": true
     },
     {
       "candidate_id": "vision_23ddf85c7e30f3cb",
@@ -1533,9 +1535,10 @@
     {
       "candidate_id": "vision_4f4fe68dd5c319a4",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "fetch failed"
+      "verdict": "no_match",
+      "protected_asset_distance": 65,
+      "top_index_match_asset_id": "bafybeigkzajfnj4zzj2226iksqbry3hft6qne75chsea6knmlfvi2gxypm",
+      "pass": true
     },
     {
       "candidate_id": "vision_eae42997228a5060",
@@ -1703,10 +1706,9 @@
     {
       "candidate_id": "vision_78ff3d1db93924ff",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 67,
-      "top_index_match_asset_id": "bafybeidensjwe2lqxrzpikjbhkf2kqhslkdhbhoelwsfm5c2mds3naruai",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "HTTP 429 for https://www.yomiuri.co.jp/media/2026/01/20260107-GYT8I00121-T.jpg"
     },
     {
       "candidate_id": "vision_48d4e2b16f4b5311",
@@ -1821,9 +1823,10 @@
     {
       "candidate_id": "vision_4e807f8b287da726",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "fetch failed"
+      "verdict": "no_match",
+      "protected_asset_distance": 64,
+      "top_index_match_asset_id": "bafybeiazfwp5qmd5vduneeu2i3yj4okzqvqyagr4hdr5qyiracglwoikpq",
+      "pass": true
     },
     {
       "candidate_id": "vision_638e370ae8130551",
@@ -1967,10 +1970,9 @@
     {
       "candidate_id": "vision_f1afc01b0ce2f428",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 58,
-      "top_index_match_asset_id": "bafybeie5ymr7euxsocvxwfsawo23ymh4p75676cgvpellui4kavwquqoma",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "fetch failed"
     },
     {
       "candidate_id": "vision_6aec8325eeb87a52",
@@ -2319,10 +2321,9 @@
     {
       "candidate_id": "vision_c3bd8ae8009c62cb",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 67,
-      "top_index_match_asset_id": "bafybeihfbluktlmzxnhu366g6nhhywszfybjrmgyctcmqxjq5azzc4eosi",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "fetch failed"
     },
     {
       "candidate_id": "vision_ac67fffb3d955622",
@@ -2335,9 +2336,10 @@
     {
       "candidate_id": "vision_1add5b7020bacb1b",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "fetch failed"
+      "verdict": "no_match",
+      "protected_asset_distance": 64,
+      "top_index_match_asset_id": "bafybeigkzajfnj4zzj2226iksqbry3hft6qne75chsea6knmlfvi2gxypm",
+      "pass": true
     },
     {
       "candidate_id": "vision_e02758075858e46d",
@@ -2419,10 +2421,9 @@
     {
       "candidate_id": "vision_daba58be9c747bd6",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 65,
-      "top_index_match_asset_id": "bafybeiaqbojqsx7q2lt4b2znsyndiuolajxo72dd5nmuheevwuzjtlqy4q",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "HTTP 403 for https://cw-image-resizer.cwg.tw/resize/uri/https%3A%2F%2Fcdn-cw-hub.cw.com.tw%2Ftechtaiwan%2Fslides%2F202607%2F6a509e15-594212473478406.jpg/"
     },
     {
       "candidate_id": "vision_2a25b9756412baed",
@@ -2482,10 +2483,9 @@
     {
       "candidate_id": "vision_56d035e3e13410f0",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 65,
-      "top_index_match_asset_id": "bafybeiaqbojqsx7q2lt4b2znsyndiuolajxo72dd5nmuheevwuzjtlqy4q",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "HTTP 403 for https://cw-image-resizer.cwg.tw/resize/uri/https%3A%2F%2Fcdn-cw-hub.cw.com.tw%2Ftechtaiwan%2Fslides%2F202607%2F6a509e15-594212473478406.jpg/"
     },
     {
       "candidate_id": "vision_5f5a44d9032ce34c",
@@ -2594,7 +2594,7 @@
       "expected": "unknown",
       "pass": true,
       "warning": true,
-      "error": "image exceeds max bytes (12230495 > 2000000) for https://ipc.fmprc.gov.cn/hdjc/202003/W020210530403986202081.jpg"
+      "error": "This operation was aborted"
     },
     {
       "candidate_id": "vision_e313e452b976126f",
