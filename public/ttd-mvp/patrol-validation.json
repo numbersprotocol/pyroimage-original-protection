@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-08-09T03:59:47.744Z",
-  "run_id": "ttd-patrol-20260809T035214Z",
+  "generated_at": "2026-08-10T04:03:48.546Z",
+  "run_id": "ttd-patrol-20260810T035734Z",
   "adapter": "visionWebDetection+namedChannelCrawler",
   "expected_filter": "all",
   "threshold": 16,
@@ -1972,9 +1972,10 @@
     {
       "candidate_id": "vision_f1afc01b0ce2f428",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "fetch failed"
+      "verdict": "no_match",
+      "protected_asset_distance": 58,
+      "top_index_match_asset_id": "bafybeie5ymr7euxsocvxwfsawo23ymh4p75676cgvpellui4kavwquqoma",
+      "pass": true
     },
     {
       "candidate_id": "vision_6aec8325eeb87a52",
@@ -2933,10 +2934,9 @@
     {
       "candidate_id": "vision_5c561d72d343fdd9",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 71,
-      "top_index_match_asset_id": "bafybeie42hect4yp5n4fghvrv5dwfdys33t7ldrnzvuu73zl7mg366yraq",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "fetch failed"
     },
     {
       "candidate_id": "vision_ac6afa2f91302571",
@@ -2992,6 +2992,14 @@
       "verdict": "no_match",
       "protected_asset_distance": 37,
       "top_index_match_asset_id": "bafybeidumnvfbf3wglwczer3nkb2sz3so5rvcg442dt4gcpzwbr4wdnvey",
+      "pass": true
+    },
+    {
+      "candidate_id": "channel_SRC-04_ff95742b345298a4",
+      "expected": "unknown",
+      "verdict": "no_match",
+      "protected_asset_distance": 43,
+      "top_index_match_asset_id": "bafybeicz5zxe2bzbeyyhhn2djqbvxfghohtshrebpsxhorknu2ebqko4te",
       "pass": true
     },
     {
