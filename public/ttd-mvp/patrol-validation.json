@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-08-10T04:03:48.546Z",
-  "run_id": "ttd-patrol-20260810T035734Z",
+  "generated_at": "2026-08-11T04:01:38.451Z",
+  "run_id": "ttd-patrol-20260811T035346Z",
   "adapter": "visionWebDetection+namedChannelCrawler",
   "expected_filter": "all",
   "threshold": 16,
@@ -303,10 +303,9 @@
     {
       "candidate_id": "vision_1ac9ca274a09ace5",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 65,
-      "top_index_match_asset_id": "bafybeifbnxd4wmh2bozake7tvbfkfza56wepcgbsqpq4ocjxi2voajbkwa",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "non-image response content-type=text/html for https://pixnio.com/free-images/2025/02/24/2025-02-24-07-20-16-576x434.jpg"
     },
     {
       "candidate_id": "vision_3bc203316a4fb479",
@@ -349,10 +348,9 @@
     {
       "candidate_id": "vision_9a27b272ac671897",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 57,
-      "top_index_match_asset_id": "bafybeif6qsnf23vvziqmhtbcls6pw4cwpxstb64u6c7jbsst76xb76trwm",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "fetch failed"
     },
     {
       "candidate_id": "vision_9c5861b2e58dcfca",
@@ -1014,7 +1012,7 @@
       "candidate_id": "vision_140b52e3b813d8ee",
       "expected": "unknown",
       "verdict": "no_match",
-      "protected_asset_distance": 76,
+      "protected_asset_distance": 77,
       "top_index_match_asset_id": "bafybeia4z2yzudi3qmofonlqcxbyjhp4ybrr3f5ds6iathpmp6gdr5ot2a",
       "pass": true
     },
@@ -1364,10 +1362,9 @@
     {
       "candidate_id": "vision_d951bb28f31d598f",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 78,
-      "top_index_match_asset_id": "bafybeia4z2yzudi3qmofonlqcxbyjhp4ybrr3f5ds6iathpmp6gdr5ot2a",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "non-image response content-type=text/html for https://amee.org/wp-content/uploads/2026/03/Delegates-smiling-for-the-camera.webp"
     },
     {
       "candidate_id": "vision_ebac3217286200d6",
@@ -1403,10 +1400,9 @@
     {
       "candidate_id": "vision_722bb826d83d726c",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 55,
-      "top_index_match_asset_id": "bafybeifc7tejyupzzvod7dmilw5ev2ewl4ku2bkjxe6djxy2ha4gnnfrqu",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "fetch failed"
     },
     {
       "candidate_id": "vision_de1e297d48107e2a",
@@ -1421,7 +1417,7 @@
       "expected": "unknown",
       "pass": true,
       "warning": true,
-      "error": "image exceeds max bytes (3525178 > 2000000) for https://www.sues.edu.cn/_upload/article/images/a9/9d/8349850c464bb90ca5a718e04ad3/2526ef2a-f6f7-4463-91a5-f8f4ef6ae6d1.png"
+      "error": "fetch failed"
     },
     {
       "candidate_id": "vision_a719e2611ee44a8b",
@@ -1519,10 +1515,9 @@
     {
       "candidate_id": "vision_77a7f80acb1924bd",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 66,
-      "top_index_match_asset_id": "bafybeihfbluktlmzxnhu366g6nhhywszfybjrmgyctcmqxjq5azzc4eosi",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "fetch failed"
     },
     {
       "candidate_id": "vision_aaa756799ca86c51",
@@ -1535,10 +1530,9 @@
     {
       "candidate_id": "vision_4f4fe68dd5c319a4",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 65,
-      "top_index_match_asset_id": "bafybeigkzajfnj4zzj2226iksqbry3hft6qne75chsea6knmlfvi2gxypm",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "fetch failed"
     },
     {
       "candidate_id": "vision_eae42997228a5060",
@@ -1911,10 +1905,9 @@
     {
       "candidate_id": "vision_0c49bfdad7512c95",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 69,
-      "top_index_match_asset_id": "bafybeib3ibt3igv4pii5okmdig64rjzrwaeumzr4ysjxils4tc7m2yy3oi",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "non-image response content-type=text/html for https://eastasiaforum.org/wp-content/uploads/2023/05/2022-12-03T102405Z_2043265456_RC28YX9I1YCT_RTRMADP_3_MALAYSIA-POLITICS-scaled.jpg"
     },
     {
       "candidate_id": "vision_7391fcbcc78b4bb0",
@@ -2185,10 +2178,9 @@
     {
       "candidate_id": "vision_e84371a0cfebf951",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 78,
-      "top_index_match_asset_id": "bafybeia4z2yzudi3qmofonlqcxbyjhp4ybrr3f5ds6iathpmp6gdr5ot2a",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "non-image response content-type=text/html for https://amee.org/wp-content/uploads/2026/03/Delegates-smiling-for-the-camera.webp"
     },
     {
       "candidate_id": "vision_5b2842d3f1841eeb",
@@ -2201,18 +2193,16 @@
     {
       "candidate_id": "vision_695fec61fd8a8ef3",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 55,
-      "top_index_match_asset_id": "bafybeifc7tejyupzzvod7dmilw5ev2ewl4ku2bkjxe6djxy2ha4gnnfrqu",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "fetch failed"
     },
     {
       "candidate_id": "vision_310b6aba3a686f1e",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 67,
-      "top_index_match_asset_id": "bafybeihfbluktlmzxnhu366g6nhhywszfybjrmgyctcmqxjq5azzc4eosi",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "fetch failed"
     },
     {
       "candidate_id": "vision_5b415589a26cef12",
@@ -2263,10 +2253,9 @@
     {
       "candidate_id": "vision_06d579b17159e439",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 57,
-      "top_index_match_asset_id": "bafybeihgxp7ubha2doy7ja4lzdjl4fdaexbotxr46vogge23mzi2esk2ee",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "fetch failed"
     },
     {
       "candidate_id": "vision_2644781d8c464bbf",
@@ -2325,10 +2314,9 @@
     {
       "candidate_id": "vision_c3bd8ae8009c62cb",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 67,
-      "top_index_match_asset_id": "bafybeihfbluktlmzxnhu366g6nhhywszfybjrmgyctcmqxjq5azzc4eosi",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "fetch failed"
     },
     {
       "candidate_id": "vision_ac67fffb3d955622",
@@ -2341,10 +2329,9 @@
     {
       "candidate_id": "vision_1add5b7020bacb1b",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 64,
-      "top_index_match_asset_id": "bafybeigkzajfnj4zzj2226iksqbry3hft6qne75chsea6knmlfvi2gxypm",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "fetch failed"
     },
     {
       "candidate_id": "vision_e02758075858e46d",
@@ -2473,10 +2460,9 @@
     {
       "candidate_id": "vision_6365d24db65eef55",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 62,
-      "top_index_match_asset_id": "bafybeihfbluktlmzxnhu366g6nhhywszfybjrmgyctcmqxjq5azzc4eosi",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "fetch failed"
     },
     {
       "candidate_id": "vision_d080abc0d58d7843",
@@ -2934,9 +2920,10 @@
     {
       "candidate_id": "vision_5c561d72d343fdd9",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "fetch failed"
+      "verdict": "no_match",
+      "protected_asset_distance": 71,
+      "top_index_match_asset_id": "bafybeie42hect4yp5n4fghvrv5dwfdys33t7ldrnzvuu73zl7mg366yraq",
+      "pass": true
     },
     {
       "candidate_id": "vision_ac6afa2f91302571",
