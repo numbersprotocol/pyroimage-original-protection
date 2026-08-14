@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-08-13T04:06:48.886Z",
-  "run_id": "ttd-patrol-20260813T040004Z",
+  "generated_at": "2026-08-14T04:05:39.317Z",
+  "run_id": "ttd-patrol-20260814T035937Z",
   "adapter": "visionWebDetection+namedChannelCrawler",
   "expected_filter": "all",
   "threshold": 16,
@@ -165,7 +165,7 @@
       "expected": "unknown",
       "pass": true,
       "warning": true,
-      "error": "fetch failed"
+      "error": "HTTP 403 for http://buddhazine.com/wp-content/uploads/2020/06/situs-setapan-21.jpg"
     },
     {
       "candidate_id": "vision_9a5927ef555a0563",
@@ -363,7 +363,7 @@
       "pass": true
     },
     {
-      "candidate_id": "vision_1d1d85ea3793cb54",
+      "candidate_id": "vision_8d4861dff74f828a",
       "expected": "unknown",
       "pass": true,
       "warning": true,
@@ -531,7 +531,7 @@
       "pass": true
     },
     {
-      "candidate_id": "vision_fa4c836ff151bf11",
+      "candidate_id": "vision_33577a15e6a7d5cb",
       "expected": "unknown",
       "pass": true,
       "warning": true,
@@ -625,7 +625,7 @@
       "error": "non-image response content-type=text/html; charset=\"utf-8\" for https://lookaside.instagram.com/seo/google_widget/crawler/"
     },
     {
-      "candidate_id": "vision_3ebe12e3ce6aaa33",
+      "candidate_id": "vision_743e470dfac4fd41",
       "expected": "unknown",
       "pass": true,
       "warning": true,
@@ -748,10 +748,9 @@
     {
       "candidate_id": "vision_01dfad50308834c5",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 71,
-      "top_index_match_asset_id": "bafybeici4ywe43tyi6ugugt3jcfss4no3pqtxkfkcn5ky4dtrf2b4tvmli",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "fetch failed"
     },
     {
       "candidate_id": "vision_cd2c7cb4e4e3e04c",
@@ -841,10 +840,9 @@
     {
       "candidate_id": "vision_48346377a811f970",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 56,
-      "top_index_match_asset_id": "bafybeiexghclletfobvoegyq4atbtz4fseayvj3zpxawu4shuax6mf57xy",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "non-image response content-type=text/html for https://www.raaltd.co.uk/wp-content/uploads/2017/11/Boverton.jpg"
     },
     {
       "candidate_id": "vision_f53ec59cb8dc0d1b",
@@ -1010,7 +1008,7 @@
       "pass": true
     },
     {
-      "candidate_id": "vision_8a7e1ce3685ef280",
+      "candidate_id": "vision_f7dd0a2a1aa9515f",
       "expected": "unknown",
       "pass": true,
       "warning": true,
@@ -1293,7 +1291,7 @@
       "expected": "unknown",
       "pass": true,
       "warning": true,
-      "error": "fetch failed"
+      "error": "HTTP 403 for https://www.theparisianguide.com/wp-content/uploads/2024/03/Les-Pavillons-de-Bercy-%E2%80%93-Museum-of-Fairground-Arts-11.jpg"
     },
     {
       "candidate_id": "vision_ccbfddc49dc32585",
@@ -1321,10 +1319,9 @@
     {
       "candidate_id": "vision_d98c50fd50423d44",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 60,
-      "top_index_match_asset_id": "bafybeihbkmyxux36ho7mjuu7t2k3wrgjio6ywbi5cml65bqlhdafgw7rjq",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "fetch failed"
     },
     {
       "candidate_id": "vision_5ac38f2e743991bf",
@@ -1415,9 +1412,10 @@
     {
       "candidate_id": "vision_a725d7e76024af23",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "fetch failed"
+      "verdict": "no_match",
+      "protected_asset_distance": 54,
+      "top_index_match_asset_id": "bafybeiejg6qhyxxcfrbsovhisvjrnnmn2gxp4mz3q3fkhbjr65babjtnju",
+      "pass": true
     },
     {
       "candidate_id": "vision_907f9ab90409e3dd",
@@ -1663,10 +1661,9 @@
     {
       "candidate_id": "vision_537f7bc2179df18d",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 78,
-      "top_index_match_asset_id": "bafybeibfjbnygzuhjsdbpinhyqbrkisdgcakkp75veusuwmqtfe4s4byzu",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "non-image response content-type=text/html for https://commisceo-global.com/wp-content/uploads/2016/01/young-chinese-family.jpg"
     },
     {
       "candidate_id": "vision_6eb9deca3e593d72",
@@ -2015,12 +2012,11 @@
       "pass": true
     },
     {
-      "candidate_id": "vision_ddf03017c8d13a8f",
+      "candidate_id": "vision_c8d6c539ad1a0838",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 75,
-      "top_index_match_asset_id": "bafybeidopuglspu5lqijrbu3kcaz5ejdwouocj76lhchx6wwno3rafaity",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "HTTP 403 for https://p19-common-sign.tiktokcdn-us.com/tos-alisg-p-0037/owFCjiGBwNCA4rZifW1IABA1EmzxhOInYi3N9q~tplv-tiktokx-origin.image"
     },
     {
       "candidate_id": "vision_2db9bf7ad4915a39",
@@ -2041,10 +2037,9 @@
     {
       "candidate_id": "vision_702ab441bdeb72dd",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 56,
-      "top_index_match_asset_id": "bafybeibcodninby5bq7nvnv4stvcyzliztfi7dtpvglqgrgdcx5nol5tgq",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "fetch failed"
     },
     {
       "candidate_id": "vision_23e52788fabce6a0",
@@ -2602,12 +2597,11 @@
       "pass": true
     },
     {
-      "candidate_id": "vision_37de964fef4b1233",
+      "candidate_id": "vision_5fec69e354d0e3c4",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 46,
-      "top_index_match_asset_id": "bafybeidg2jf2q4jiv2axy7z364dqxl2viwktlkldj2ug6wkwxyh3pesjzm",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "HTTP 403 for https://p16-common-sign.tiktokcdn-us.com/tos-alisg-p-0037/1f4316b66f84486d92f713cd5b244fa6_1686304923~tplv-tiktokx-origin.image"
     },
     {
       "candidate_id": "vision_0f8aa88171a9f736",
@@ -2758,10 +2752,9 @@
     {
       "candidate_id": "vision_c179f88354bf9088",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 55,
-      "top_index_match_asset_id": "bafybeighkqelneh4z2vg33xwo4ejiketvgy5vn46aai3auulqmwlwut3em",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "fetch failed"
     },
     {
       "candidate_id": "vision_46b1f99c85648f33",
