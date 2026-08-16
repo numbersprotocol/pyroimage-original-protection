@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-08-15T03:35:30.076Z",
-  "run_id": "ttd-patrol-20260815T033011Z",
+  "generated_at": "2026-08-16T03:38:29.712Z",
+  "run_id": "ttd-patrol-20260816T033352Z",
   "adapter": "visionWebDetection+namedChannelCrawler",
   "expected_filter": "all",
   "threshold": 16,
@@ -843,7 +843,7 @@
       "expected": "unknown",
       "pass": true,
       "warning": true,
-      "error": "fetch failed"
+      "error": "non-image response content-type=text/html for https://www.raaltd.co.uk/wp-content/uploads/2017/11/Boverton.jpg"
     },
     {
       "candidate_id": "vision_f53ec59cb8dc0d1b",

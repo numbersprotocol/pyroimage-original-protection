@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-15T03:35:30.242Z",
+  "generated_at": "2026-08-16T03:38:29.880Z",
   "phase": "Phase 3: Scheduler + evidence hardening",
   "expected": {
     "report_count_source": "alerts.json",
@@ -35,7 +35,7 @@
   "actual": {
     "report_count": 0,
     "alert_count": 0,
-    "monitoring_run_id": "ttd-patrol-20260815T033011Z",
+    "monitoring_run_id": "ttd-patrol-20260816T033352Z",
     "adapter_id": "visionWebDetection+namedChannelCrawler",
     "candidates_attempted": 382,
     "alerts_created": 0,
