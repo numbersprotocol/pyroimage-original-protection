@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-08-16T03:38:29.712Z",
-  "run_id": "ttd-patrol-20260816T033352Z",
+  "generated_at": "2026-08-17T03:40:31.836Z",
+  "run_id": "ttd-patrol-20260817T033432Z",
   "adapter": "visionWebDetection+namedChannelCrawler",
   "expected_filter": "all",
   "threshold": 16,
@@ -748,10 +748,9 @@
     {
       "candidate_id": "vision_01dfad50308834c5",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 71,
-      "top_index_match_asset_id": "bafybeici4ywe43tyi6ugugt3jcfss4no3pqtxkfkcn5ky4dtrf2b4tvmli",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "fetch failed"
     },
     {
       "candidate_id": "vision_cd2c7cb4e4e3e04c",
@@ -841,9 +840,10 @@
     {
       "candidate_id": "vision_48346377a811f970",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "non-image response content-type=text/html for https://www.raaltd.co.uk/wp-content/uploads/2017/11/Boverton.jpg"
+      "verdict": "no_match",
+      "protected_asset_distance": 56,
+      "top_index_match_asset_id": "bafybeiexghclletfobvoegyq4atbtz4fseayvj3zpxawu4shuax6mf57xy",
+      "pass": true
     },
     {
       "candidate_id": "vision_f53ec59cb8dc0d1b",
@@ -1347,7 +1347,7 @@
       "expected": "unknown",
       "pass": true,
       "warning": true,
-      "error": "HTTP 403 for https://media.licdn.com/dms/image/v2/D5622AQHSfYA81Y0Rvw/feedshare-shrink_800/B56Z_iGoUFHcAg-/0/1786204817626"
+      "error": "HTTP 404 for https://media.licdn.com/dms/image/v2/D5622AQHSfYA81Y0Rvw/feedshare-shrink_800/B56Z_iGoUFHcAg-/0/1786204817626"
     },
     {
       "candidate_id": "vision_f59552b16589d357",
@@ -1407,9 +1407,10 @@
     {
       "candidate_id": "vision_5e7ed6a9e0339bc3",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "fetch failed"
+      "verdict": "no_match",
+      "protected_asset_distance": 51,
+      "top_index_match_asset_id": "bafybeihgxp7ubha2doy7ja4lzdjl4fdaexbotxr46vogge23mzi2esk2ee",
+      "pass": true
     },
     {
       "candidate_id": "vision_a725d7e76024af23",
@@ -1485,10 +1486,9 @@
     {
       "candidate_id": "vision_1eef8edf63850b44",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 58,
-      "top_index_match_asset_id": "bafybeietusgcilffprjkkfk2ebcbbl5jbiicgyjjagtz4a4jirzspq5pya",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "HTTP 404 for https://cdn.news.skbroadband.com/news/thumbnail/custom/20260812/234297_240201_5323_1786002805_500.jpg"
     },
     {
       "candidate_id": "vision_cfe4b7c1c2a21aba",
@@ -1540,10 +1540,9 @@
     {
       "candidate_id": "vision_8df1c1d51ae5fae5",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 58,
-      "top_index_match_asset_id": "bafybeietusgcilffprjkkfk2ebcbbl5jbiicgyjjagtz4a4jirzspq5pya",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "HTTP 404 for https://cdn.news.skbroadband.com/news/thumbnail/custom/20260812/234297_240201_5323_1786002805_500.jpg"
     },
     {
       "candidate_id": "vision_0db990f276727a87",
@@ -1619,7 +1618,7 @@
       "expected": "unknown",
       "pass": true,
       "warning": true,
-      "error": "HTTP 403 for https://media.licdn.com/dms/image/v2/D5622AQHSfYA81Y0Rvw/feedshare-shrink_800/B56Z_iGoUFHcAg-/0/1786204817626"
+      "error": "HTTP 404 for https://media.licdn.com/dms/image/v2/D5622AQHSfYA81Y0Rvw/feedshare-shrink_800/B56Z_iGoUFHcAg-/0/1786204817626"
     },
     {
       "candidate_id": "vision_93b8ca0c3dbc541e",
@@ -1663,9 +1662,10 @@
     {
       "candidate_id": "vision_537f7bc2179df18d",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "non-image response content-type=text/html for https://commisceo-global.com/wp-content/uploads/2016/01/young-chinese-family.jpg"
+      "verdict": "no_match",
+      "protected_asset_distance": 78,
+      "top_index_match_asset_id": "bafybeibfjbnygzuhjsdbpinhyqbrkisdgcakkp75veusuwmqtfe4s4byzu",
+      "pass": true
     },
     {
       "candidate_id": "vision_6eb9deca3e593d72",
@@ -2303,10 +2303,9 @@
     {
       "candidate_id": "vision_29ee6d1856a2889d",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 59,
-      "top_index_match_asset_id": "bafybeietusgcilffprjkkfk2ebcbbl5jbiicgyjjagtz4a4jirzspq5pya",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "HTTP 404 for https://cdn.news.skbroadband.com/news/thumbnail/custom/20260812/234297_240201_5323_1786002805_500.jpg"
     },
     {
       "candidate_id": "vision_de30eaa9eb1243f4",
@@ -2350,10 +2349,9 @@
     {
       "candidate_id": "vision_b135349e0fa92f90",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 58,
-      "top_index_match_asset_id": "bafybeietusgcilffprjkkfk2ebcbbl5jbiicgyjjagtz4a4jirzspq5pya",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "HTTP 404 for https://cdn.news.skbroadband.com/news/thumbnail/custom/20260812/234297_240201_5323_1786002805_500.jpg"
     },
     {
       "candidate_id": "vision_bc5b88b05e341c43",
@@ -2437,7 +2435,7 @@
       "expected": "unknown",
       "pass": true,
       "warning": true,
-      "error": "HTTP 403 for https://media.licdn.com/dms/image/v2/D5622AQHSfYA81Y0Rvw/feedshare-shrink_800/B56Z_iGoUFHcAg-/0/1786204817626"
+      "error": "HTTP 404 for https://media.licdn.com/dms/image/v2/D5622AQHSfYA81Y0Rvw/feedshare-shrink_800/B56Z_iGoUFHcAg-/0/1786204817626"
     },
     {
       "candidate_id": "vision_f81664f3b8cb89ab",
@@ -2611,10 +2609,9 @@
     {
       "candidate_id": "vision_0f8aa88171a9f736",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 58,
-      "top_index_match_asset_id": "bafybeiadwyxr6sdzgse4i373lqzhuo27wtmihibrzqisppyxju4cbkbqf4",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "fetch failed"
     },
     {
       "candidate_id": "vision_ad4f4ef70af6fc61",
@@ -2958,14 +2955,6 @@
       "verdict": "no_match",
       "protected_asset_distance": 37,
       "top_index_match_asset_id": "bafybeidumnvfbf3wglwczer3nkb2sz3so5rvcg442dt4gcpzwbr4wdnvey",
-      "pass": true
-    },
-    {
-      "candidate_id": "channel_SRC-04_ff95742b345298a4",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 43,
-      "top_index_match_asset_id": "bafybeicz5zxe2bzbeyyhhn2djqbvxfghohtshrebpsxhorknu2ebqko4te",
       "pass": true
     },
     {
