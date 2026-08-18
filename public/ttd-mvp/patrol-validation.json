@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-08-17T03:40:31.836Z",
-  "run_id": "ttd-patrol-20260817T033432Z",
+  "generated_at": "2026-08-18T03:36:54.129Z",
+  "run_id": "ttd-patrol-20260818T033141Z",
   "adapter": "visionWebDetection+namedChannelCrawler",
   "expected_filter": "all",
   "threshold": 16,
@@ -748,9 +748,10 @@
     {
       "candidate_id": "vision_01dfad50308834c5",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "fetch failed"
+      "verdict": "no_match",
+      "protected_asset_distance": 71,
+      "top_index_match_asset_id": "bafybeici4ywe43tyi6ugugt3jcfss4no3pqtxkfkcn5ky4dtrf2b4tvmli",
+      "pass": true
     },
     {
       "candidate_id": "vision_cd2c7cb4e4e3e04c",
@@ -840,10 +841,9 @@
     {
       "candidate_id": "vision_48346377a811f970",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 56,
-      "top_index_match_asset_id": "bafybeiexghclletfobvoegyq4atbtz4fseayvj3zpxawu4shuax6mf57xy",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "fetch failed"
     },
     {
       "candidate_id": "vision_f53ec59cb8dc0d1b",
@@ -1321,10 +1321,9 @@
     {
       "candidate_id": "vision_d98c50fd50423d44",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 60,
-      "top_index_match_asset_id": "bafybeihbkmyxux36ho7mjuu7t2k3wrgjio6ywbi5cml65bqlhdafgw7rjq",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "fetch failed"
     },
     {
       "candidate_id": "vision_5ac38f2e743991bf",
@@ -1407,10 +1406,9 @@
     {
       "candidate_id": "vision_5e7ed6a9e0339bc3",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 51,
-      "top_index_match_asset_id": "bafybeihgxp7ubha2doy7ja4lzdjl4fdaexbotxr46vogge23mzi2esk2ee",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "fetch failed"
     },
     {
       "candidate_id": "vision_a725d7e76024af23",
@@ -1517,10 +1515,9 @@
     {
       "candidate_id": "vision_4f4fe68dd5c319a4",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 65,
-      "top_index_match_asset_id": "bafybeigkzajfnj4zzj2226iksqbry3hft6qne75chsea6knmlfvi2gxypm",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "fetch failed"
     },
     {
       "candidate_id": "vision_e655c4835a7570e9",
@@ -1662,10 +1659,9 @@
     {
       "candidate_id": "vision_537f7bc2179df18d",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 78,
-      "top_index_match_asset_id": "bafybeibfjbnygzuhjsdbpinhyqbrkisdgcakkp75veusuwmqtfe4s4byzu",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "non-image response content-type=text/html for https://commisceo-global.com/wp-content/uploads/2016/01/young-chinese-family.jpg"
     },
     {
       "candidate_id": "vision_6eb9deca3e593d72",
@@ -1694,10 +1690,9 @@
     {
       "candidate_id": "vision_ab6d31c4091148ed",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 74,
-      "top_index_match_asset_id": "bafybeifwi6pafsosfheozl2rtz7muzx4wg5r4bny7yvg4tn3koxrlxfxey",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "fetch failed"
     },
     {
       "candidate_id": "vision_644a035ca87cceae",
@@ -2040,10 +2035,9 @@
     {
       "candidate_id": "vision_702ab441bdeb72dd",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 56,
-      "top_index_match_asset_id": "bafybeibcodninby5bq7nvnv4stvcyzliztfi7dtpvglqgrgdcx5nol5tgq",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "fetch failed"
     },
     {
       "candidate_id": "vision_23e52788fabce6a0",
@@ -2112,10 +2106,9 @@
     {
       "candidate_id": "vision_54fc5659babdbaf3",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 52,
-      "top_index_match_asset_id": "bafybeifcdrqfpax5lhpasvvnndlglkspihh4wrr5hiu5bm5mdidjwih6uq",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "HTTP 403 for https://vanderbiltpoliticalreview.com/wp-content/uploads/2021/04/macau-photo-agency-gzXGOKmk-1I-unsplash-900x600.jpg"
     },
     {
       "candidate_id": "vision_f480fadb58483a21",
@@ -2325,10 +2318,9 @@
     {
       "candidate_id": "vision_937aac779f378b21",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 64,
-      "top_index_match_asset_id": "bafybeigkzajfnj4zzj2226iksqbry3hft6qne75chsea6knmlfvi2gxypm",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "fetch failed"
     },
     {
       "candidate_id": "vision_241f2fa11e64adff",
@@ -2594,10 +2586,9 @@
     {
       "candidate_id": "vision_e5627242498a6ad8",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 64,
-      "top_index_match_asset_id": "bafybeigsocpheuovdv46km2ch5ppjcnb6xntx56shxldevnerqlyzj2vpm",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "HTTP 403 for https://www.globalpeople.com.cn/NMediaFile/WIRELESS_2_305913/2026/0811/WIRELESS178641733252029TF1URH2X.jpg"
     },
     {
       "candidate_id": "vision_5fec69e354d0e3c4",
@@ -2896,10 +2887,9 @@
     {
       "candidate_id": "vision_4fdd158327548e41",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 72,
-      "top_index_match_asset_id": "bafybeiez55oacwsjx7aw7c2z4rksaodewedfvzhimvpfdsqjepid4uwq3q",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "fetch failed"
     },
     {
       "candidate_id": "vision_341a65815f6b4d63",
@@ -2955,6 +2945,14 @@
       "verdict": "no_match",
       "protected_asset_distance": 37,
       "top_index_match_asset_id": "bafybeidumnvfbf3wglwczer3nkb2sz3so5rvcg442dt4gcpzwbr4wdnvey",
+      "pass": true
+    },
+    {
+      "candidate_id": "channel_SRC-04_ff95742b345298a4",
+      "expected": "unknown",
+      "verdict": "no_match",
+      "protected_asset_distance": 43,
+      "top_index_match_asset_id": "bafybeicz5zxe2bzbeyyhhn2djqbvxfghohtshrebpsxhorknu2ebqko4te",
       "pass": true
     },
     {
