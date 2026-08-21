@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-08-20T03:38:39.659Z",
-  "run_id": "ttd-patrol-20260820T033305Z",
+  "generated_at": "2026-08-21T03:41:06.577Z",
+  "run_id": "ttd-patrol-20260821T033533Z",
   "adapter": "visionWebDetection+namedChannelCrawler",
   "expected_filter": "all",
   "threshold": 16,
@@ -456,10 +456,9 @@
     {
       "candidate_id": "vision_e9d90366d339689c",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 57,
-      "top_index_match_asset_id": "bafybeihjjlgne6f2574laafuvkdjave4ucnargazx2gg4s3wqix3iipsxy",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "fetch failed"
     },
     {
       "candidate_id": "vision_76ee08e7917d604a",
@@ -1437,10 +1436,9 @@
     {
       "candidate_id": "vision_b1b0c6aad526a5d3",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 59,
-      "top_index_match_asset_id": "bafybeibgp5xuj5fqipcacsmws7rgckpj2ntpg3kbkwamcnj3mcrql56ja4",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "fetch failed"
     },
     {
       "candidate_id": "vision_4afbed17dc421dbf",
@@ -2919,9 +2917,10 @@
     {
       "candidate_id": "vision_7952f11293962a63",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "This operation was aborted"
+      "verdict": "no_match",
+      "protected_asset_distance": 70,
+      "top_index_match_asset_id": "bafybeidumnvfbf3wglwczer3nkb2sz3so5rvcg442dt4gcpzwbr4wdnvey",
+      "pass": true
     },
     {
       "candidate_id": "vision_ae7ada47f0b449c6",
