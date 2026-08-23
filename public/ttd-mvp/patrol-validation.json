@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-08-22T03:35:45.603Z",
-  "run_id": "ttd-patrol-20260822T033037Z",
+  "generated_at": "2026-08-23T03:41:45.812Z",
+  "run_id": "ttd-patrol-20260823T033543Z",
   "adapter": "visionWebDetection+namedChannelCrawler",
   "expected_filter": "all",
   "threshold": 16,
@@ -1414,10 +1414,9 @@
     {
       "candidate_id": "vision_a725d7e76024af23",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 54,
-      "top_index_match_asset_id": "bafybeiejg6qhyxxcfrbsovhisvjrnnmn2gxp4mz3q3fkhbjr65babjtnju",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "fetch failed"
     },
     {
       "candidate_id": "vision_907f9ab90409e3dd",
@@ -1517,10 +1516,9 @@
     {
       "candidate_id": "vision_4f4fe68dd5c319a4",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 65,
-      "top_index_match_asset_id": "bafybeigkzajfnj4zzj2226iksqbry3hft6qne75chsea6knmlfvi2gxypm",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "fetch failed"
     },
     {
       "candidate_id": "vision_e655c4835a7570e9",
@@ -1694,10 +1692,9 @@
     {
       "candidate_id": "vision_ab6d31c4091148ed",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 74,
-      "top_index_match_asset_id": "bafybeifwi6pafsosfheozl2rtz7muzx4wg5r4bny7yvg4tn3koxrlxfxey",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "fetch failed"
     },
     {
       "candidate_id": "vision_644a035ca87cceae",
@@ -2325,10 +2322,9 @@
     {
       "candidate_id": "vision_937aac779f378b21",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 64,
-      "top_index_match_asset_id": "bafybeigkzajfnj4zzj2226iksqbry3hft6qne75chsea6knmlfvi2gxypm",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "fetch failed"
     },
     {
       "candidate_id": "vision_241f2fa11e64adff",
@@ -2955,14 +2951,6 @@
       "verdict": "no_match",
       "protected_asset_distance": 37,
       "top_index_match_asset_id": "bafybeidumnvfbf3wglwczer3nkb2sz3so5rvcg442dt4gcpzwbr4wdnvey",
-      "pass": true
-    },
-    {
-      "candidate_id": "channel_SRC-04_ff95742b345298a4",
-      "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 43,
-      "top_index_match_asset_id": "bafybeicz5zxe2bzbeyyhhn2djqbvxfghohtshrebpsxhorknu2ebqko4te",
       "pass": true
     },
     {
