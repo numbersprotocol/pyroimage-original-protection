@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-08-23T03:41:45.812Z",
-  "run_id": "ttd-patrol-20260823T033543Z",
+  "generated_at": "2026-08-24T03:42:19.526Z",
+  "run_id": "ttd-patrol-20260824T033659Z",
   "adapter": "visionWebDetection+namedChannelCrawler",
   "expected_filter": "all",
   "threshold": 16,
@@ -841,10 +841,9 @@
     {
       "candidate_id": "vision_48346377a811f970",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 56,
-      "top_index_match_asset_id": "bafybeiexghclletfobvoegyq4atbtz4fseayvj3zpxawu4shuax6mf57xy",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "non-image response content-type=text/html for https://www.raaltd.co.uk/wp-content/uploads/2017/11/Boverton.jpg"
     },
     {
       "candidate_id": "vision_f53ec59cb8dc0d1b",
@@ -1406,17 +1405,17 @@
     {
       "candidate_id": "vision_5e7ed6a9e0339bc3",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 51,
-      "top_index_match_asset_id": "bafybeihgxp7ubha2doy7ja4lzdjl4fdaexbotxr46vogge23mzi2esk2ee",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "fetch failed"
     },
     {
       "candidate_id": "vision_a725d7e76024af23",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "fetch failed"
+      "verdict": "no_match",
+      "protected_asset_distance": 54,
+      "top_index_match_asset_id": "bafybeiejg6qhyxxcfrbsovhisvjrnnmn2gxp4mz3q3fkhbjr65babjtnju",
+      "pass": true
     },
     {
       "candidate_id": "vision_907f9ab90409e3dd",
@@ -1516,9 +1515,10 @@
     {
       "candidate_id": "vision_4f4fe68dd5c319a4",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "fetch failed"
+      "verdict": "no_match",
+      "protected_asset_distance": 65,
+      "top_index_match_asset_id": "bafybeigkzajfnj4zzj2226iksqbry3hft6qne75chsea6knmlfvi2gxypm",
+      "pass": true
     },
     {
       "candidate_id": "vision_e655c4835a7570e9",
@@ -1660,10 +1660,9 @@
     {
       "candidate_id": "vision_537f7bc2179df18d",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 78,
-      "top_index_match_asset_id": "bafybeibfjbnygzuhjsdbpinhyqbrkisdgcakkp75veusuwmqtfe4s4byzu",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "non-image response content-type=text/html for https://commisceo-global.com/wp-content/uploads/2016/01/young-chinese-family.jpg"
     },
     {
       "candidate_id": "vision_6eb9deca3e593d72",
@@ -1692,9 +1691,10 @@
     {
       "candidate_id": "vision_ab6d31c4091148ed",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "fetch failed"
+      "verdict": "no_match",
+      "protected_asset_distance": 74,
+      "top_index_match_asset_id": "bafybeifwi6pafsosfheozl2rtz7muzx4wg5r4bny7yvg4tn3koxrlxfxey",
+      "pass": true
     },
     {
       "candidate_id": "vision_644a035ca87cceae",
@@ -2322,9 +2322,10 @@
     {
       "candidate_id": "vision_937aac779f378b21",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "fetch failed"
+      "verdict": "no_match",
+      "protected_asset_distance": 64,
+      "top_index_match_asset_id": "bafybeigkzajfnj4zzj2226iksqbry3hft6qne75chsea6knmlfvi2gxypm",
+      "pass": true
     },
     {
       "candidate_id": "vision_241f2fa11e64adff",
@@ -2932,10 +2933,9 @@
     {
       "candidate_id": "vision_813cf7216ab84728",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 82,
-      "top_index_match_asset_id": "bafybeiagx3w75nzkdab46peprab3fppyay5qiq42qjxcylmxifg3cppomq",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "fetch failed"
     },
     {
       "candidate_id": "vision_d79be19019000436",
@@ -2951,6 +2951,14 @@
       "verdict": "no_match",
       "protected_asset_distance": 37,
       "top_index_match_asset_id": "bafybeidumnvfbf3wglwczer3nkb2sz3so5rvcg442dt4gcpzwbr4wdnvey",
+      "pass": true
+    },
+    {
+      "candidate_id": "channel_SRC-04_ff95742b345298a4",
+      "expected": "unknown",
+      "verdict": "no_match",
+      "protected_asset_distance": 43,
+      "top_index_match_asset_id": "bafybeicz5zxe2bzbeyyhhn2djqbvxfghohtshrebpsxhorknu2ebqko4te",
       "pass": true
     },
     {
