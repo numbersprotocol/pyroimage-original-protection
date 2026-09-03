@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-09-02T03:38:07.196Z",
-  "run_id": "ttd-patrol-20260902T033224Z",
+  "generated_at": "2026-09-03T04:52:10.699Z",
+  "run_id": "ttd-patrol-20260903T044701Z",
   "adapter": "visionWebDetection+namedChannelCrawler",
   "expected_filter": "all",
   "threshold": 16,
@@ -310,9 +310,10 @@
     {
       "candidate_id": "vision_1ac9ca274a09ace5",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "non-image response content-type=text/html for https://pixnio.com/free-images/2025/02/24/2025-02-24-07-20-16-576x434.jpg"
+      "verdict": "no_match",
+      "protected_asset_distance": 65,
+      "top_index_match_asset_id": "bafybeifbnxd4wmh2bozake7tvbfkfza56wepcgbsqpq4ocjxi2voajbkwa",
+      "pass": true
     },
     {
       "candidate_id": "vision_3bc203316a4fb479",
@@ -325,9 +326,10 @@
     {
       "candidate_id": "vision_6722d5693affbdb2",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "non-image response content-type=text/html for https://discovermalaysia-unesco.com/wp-content/uploads/2024/12/Eco-Park-05.jpg"
+      "verdict": "no_match",
+      "protected_asset_distance": 57,
+      "top_index_match_asset_id": "bafybeihg5jp35fdlwleg3tmeywqg7s2pfjbsljsovtxoyxtnka2troibgm",
+      "pass": true
     },
     {
       "candidate_id": "vision_ed279ad66e6ca76d",
@@ -594,9 +596,10 @@
     {
       "candidate_id": "vision_9ad521d5fb9ec655",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "fetch failed"
+      "verdict": "no_match",
+      "protected_asset_distance": 50,
+      "top_index_match_asset_id": "bafybeied6dmubxhqpfim23iom3ludgmrqmz7esdrrkiqaqhj2t45svbwiu",
+      "pass": true
     },
     {
       "candidate_id": "vision_782b02808daccfaa",
@@ -768,9 +771,10 @@
     {
       "candidate_id": "vision_aa98ec0afd5228fb",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "non-image response content-type=text/html for https://otherplacestw.com/wp-content/uploads/2024/10/DSCF4290.jpg"
+      "verdict": "no_match",
+      "protected_asset_distance": 58,
+      "top_index_match_asset_id": "bafybeidjw5bzc75ljhsjrmgp4cilgrrsane5utdz7fddhts4gdaq4n3nta",
+      "pass": true
     },
     {
       "candidate_id": "vision_1278c94dfeba609d",
@@ -1315,10 +1319,9 @@
     {
       "candidate_id": "vision_d98c50fd50423d44",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 60,
-      "top_index_match_asset_id": "bafybeihbkmyxux36ho7mjuu7t2k3wrgjio6ywbi5cml65bqlhdafgw7rjq",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "fetch failed"
     },
     {
       "candidate_id": "vision_5ac38f2e743991bf",
@@ -1331,9 +1334,10 @@
     {
       "candidate_id": "vision_d951bb28f31d598f",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "non-image response content-type=text/html for https://amee.org/wp-content/uploads/2026/03/Delegates-smiling-for-the-camera.webp"
+      "verdict": "no_match",
+      "protected_asset_distance": 78,
+      "top_index_match_asset_id": "bafybeia4z2yzudi3qmofonlqcxbyjhp4ybrr3f5ds6iathpmp6gdr5ot2a",
+      "pass": true
     },
     {
       "candidate_id": "vision_5cf2c4f8e25ce145",
@@ -1408,10 +1412,9 @@
     {
       "candidate_id": "vision_a725d7e76024af23",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 54,
-      "top_index_match_asset_id": "bafybeiejg6qhyxxcfrbsovhisvjrnnmn2gxp4mz3q3fkhbjr65babjtnju",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "fetch failed"
     },
     {
       "candidate_id": "vision_907f9ab90409e3dd",
@@ -1510,9 +1513,10 @@
     {
       "candidate_id": "vision_4f4fe68dd5c319a4",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "fetch failed"
+      "verdict": "no_match",
+      "protected_asset_distance": 65,
+      "top_index_match_asset_id": "bafybeigkzajfnj4zzj2226iksqbry3hft6qne75chsea6knmlfvi2gxypm",
+      "pass": true
     },
     {
       "candidate_id": "vision_e655c4835a7570e9",
@@ -1547,9 +1551,10 @@
     {
       "candidate_id": "vision_be63daee4c01e015",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "non-image response content-type=text/html for https://amee.org/wp-content/uploads/2026/03/Delegates-smiling-for-the-camera.webp"
+      "verdict": "no_match",
+      "protected_asset_distance": 83,
+      "top_index_match_asset_id": "bafybeia4z2yzudi3qmofonlqcxbyjhp4ybrr3f5ds6iathpmp6gdr5ot2a",
+      "pass": true
     },
     {
       "candidate_id": "vision_f872f8d355f2fd9c",
@@ -1685,9 +1690,10 @@
     {
       "candidate_id": "vision_ab6d31c4091148ed",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "fetch failed"
+      "verdict": "no_match",
+      "protected_asset_distance": 74,
+      "top_index_match_asset_id": "bafybeifwi6pafsosfheozl2rtz7muzx4wg5r4bny7yvg4tn3koxrlxfxey",
+      "pass": true
     },
     {
       "candidate_id": "vision_644a035ca87cceae",
@@ -1867,9 +1873,10 @@
     {
       "candidate_id": "vision_111ac5551f589e9c",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "non-image response content-type=text/html for https://eastasiaforum.org/wp-content/uploads/2023/05/2022-12-03T102405Z_2043265456_RC28YX9I1YCT_RTRMADP_3_MALAYSIA-POLITICS-scaled.jpg"
+      "verdict": "no_match",
+      "protected_asset_distance": 69,
+      "top_index_match_asset_id": "bafybeib3ibt3igv4pii5okmdig64rjzrwaeumzr4ysjxils4tc7m2yy3oi",
+      "pass": true
     },
     {
       "candidate_id": "vision_12bcdbc5827aec61",
@@ -1882,9 +1889,10 @@
     {
       "candidate_id": "vision_1fef6f3a6e5855f3",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "HTTP 523 for https://szentkoronaradio.com/wp-content/uploads/2026/03/kina-etnikai-torveny.jpg"
+      "verdict": "no_match",
+      "protected_asset_distance": 55,
+      "top_index_match_asset_id": "bafybeiefeh4eucvlksnaacoadn67mgvecgw7jekegtjmvfenoxugfybe3e",
+      "pass": true
     },
     {
       "candidate_id": "vision_e29169776f5a3dba",
@@ -2148,9 +2156,10 @@
     {
       "candidate_id": "vision_e84371a0cfebf951",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "non-image response content-type=text/html for https://amee.org/wp-content/uploads/2026/03/Delegates-smiling-for-the-camera.webp"
+      "verdict": "no_match",
+      "protected_asset_distance": 78,
+      "top_index_match_asset_id": "bafybeia4z2yzudi3qmofonlqcxbyjhp4ybrr3f5ds6iathpmp6gdr5ot2a",
+      "pass": true
     },
     {
       "candidate_id": "vision_d676f96762e43726",
@@ -2312,9 +2321,10 @@
     {
       "candidate_id": "vision_937aac779f378b21",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "fetch failed"
+      "verdict": "no_match",
+      "protected_asset_distance": 64,
+      "top_index_match_asset_id": "bafybeigkzajfnj4zzj2226iksqbry3hft6qne75chsea6knmlfvi2gxypm",
+      "pass": true
     },
     {
       "candidate_id": "vision_241f2fa11e64adff",
@@ -2349,9 +2359,10 @@
     {
       "candidate_id": "vision_d8ccaf7d7583ffd1",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "non-image response content-type=text/html for https://amee.org/wp-content/uploads/2026/03/Delegates-smiling-for-the-camera.webp"
+      "verdict": "no_match",
+      "protected_asset_distance": 83,
+      "top_index_match_asset_id": "bafybeia4z2yzudi3qmofonlqcxbyjhp4ybrr3f5ds6iathpmp6gdr5ot2a",
+      "pass": true
     },
     {
       "candidate_id": "vision_38cde5d52c1bd8dc",
@@ -2866,9 +2877,10 @@
     {
       "candidate_id": "vision_c2630262fa959bb6",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "HTTP 523 for https://szentkoronaradio.com/wp-content/uploads/2026/03/kina-etnikai-torveny.jpg"
+      "verdict": "no_match",
+      "protected_asset_distance": 55,
+      "top_index_match_asset_id": "bafybeiefeh4eucvlksnaacoadn67mgvecgw7jekegtjmvfenoxugfybe3e",
+      "pass": true
     },
     {
       "candidate_id": "vision_57810aaae8d5319d",
@@ -2912,9 +2924,10 @@
     {
       "candidate_id": "vision_ae7ada47f0b449c6",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "HTTP 404 for https://www.yayasansimedarby.com/sites/default/files/styles/wide/public/2025-04/OurWorkSection4PinkPhoto4%401x.png.webp"
+      "verdict": "no_match",
+      "protected_asset_distance": 74,
+      "top_index_match_asset_id": "bafybeiamcxpxxpas7sizx7pxbvg4hg4fh7mytmrenjq6n6uyx6z4ysolhq",
+      "pass": true
     },
     {
       "candidate_id": "vision_813cf7216ab84728",
