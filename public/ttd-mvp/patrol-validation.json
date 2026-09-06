@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-09-05T03:36:09.481Z",
-  "run_id": "ttd-patrol-20260905T032946Z",
+  "generated_at": "2026-09-06T03:36:12.217Z",
+  "run_id": "ttd-patrol-20260906T033100Z",
   "adapter": "visionWebDetection+namedChannelCrawler",
   "expected_filter": "all",
   "threshold": 16,
@@ -1512,9 +1512,10 @@
     {
       "candidate_id": "vision_4f4fe68dd5c319a4",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "fetch failed"
+      "verdict": "no_match",
+      "protected_asset_distance": 65,
+      "top_index_match_asset_id": "bafybeigkzajfnj4zzj2226iksqbry3hft6qne75chsea6knmlfvi2gxypm",
+      "pass": true
     },
     {
       "candidate_id": "vision_e655c4835a7570e9",
@@ -1688,9 +1689,10 @@
     {
       "candidate_id": "vision_ab6d31c4091148ed",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "fetch failed"
+      "verdict": "no_match",
+      "protected_asset_distance": 74,
+      "top_index_match_asset_id": "bafybeifwi6pafsosfheozl2rtz7muzx4wg5r4bny7yvg4tn3koxrlxfxey",
+      "pass": true
     },
     {
       "candidate_id": "vision_644a035ca87cceae",
@@ -2033,10 +2035,9 @@
     {
       "candidate_id": "vision_702ab441bdeb72dd",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 56,
-      "top_index_match_asset_id": "bafybeibcodninby5bq7nvnv4stvcyzliztfi7dtpvglqgrgdcx5nol5tgq",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "fetch failed"
     },
     {
       "candidate_id": "vision_23e52788fabce6a0",
@@ -2318,9 +2319,10 @@
     {
       "candidate_id": "vision_937aac779f378b21",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "fetch failed"
+      "verdict": "no_match",
+      "protected_asset_distance": 64,
+      "top_index_match_asset_id": "bafybeigkzajfnj4zzj2226iksqbry3hft6qne75chsea6knmlfvi2gxypm",
+      "pass": true
     },
     {
       "candidate_id": "vision_241f2fa11e64adff",
