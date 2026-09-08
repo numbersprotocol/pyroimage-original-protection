@@ -1,19 +1,12 @@
 {
-  "generated_at": "2026-09-07T03:39:49.819Z",
-  "run_id": "ttd-patrol-20260907T033346Z",
+  "generated_at": "2026-09-08T03:36:35.472Z",
+  "run_id": "ttd-patrol-20260908T033110Z",
   "adapter": "visionWebDetection+namedChannelCrawler",
   "expected_filter": "all",
   "threshold": 16,
   "validations": [
     {
-      "candidate_id": "vision_1f84a7cc1bbb706b",
-      "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "HTTP 403 for https://p16-common-sign.tiktokcdn-us.com/tos-maliva-p-0068/osTGImi67JkBnGGwgDBAIYOyI40o7ABC0Hihfo~tplv-tiktokx-origin.image"
-    },
-    {
-      "candidate_id": "vision_7401620dbf5314f1",
+      "candidate_id": "vision_2c09f53ba2dcd40e",
       "expected": "unknown",
       "verdict": "no_match",
       "protected_asset_distance": 53,
@@ -21,30 +14,30 @@
       "pass": true
     },
     {
-      "candidate_id": "vision_facf924e65c96afd",
+      "candidate_id": "vision_e877099f08a46649",
       "expected": "unknown",
       "pass": true,
       "warning": true,
       "error": "HTTP 403 for https://www.tiktok.com/api/img/"
     },
     {
-      "candidate_id": "vision_fafc44dffc2b3e4c",
+      "candidate_id": "vision_f24fc794cf159cac",
       "expected": "unknown",
       "verdict": "no_match",
-      "protected_asset_distance": 69,
-      "top_index_match_asset_id": "bafybeihtbhoorer2askau5vi55mmgcfqk7s5drdxkwrkehrvvkr3y64aju",
+      "protected_asset_distance": 70,
+      "top_index_match_asset_id": "bafybeihceo3haj7wyxdksqq23wxyahrlrbleqolcm3skvcblg4q5ny6tg4",
       "pass": true
     },
     {
-      "candidate_id": "vision_a57f52cf5df36a3f",
+      "candidate_id": "vision_bb733b252dc7fc97",
       "expected": "unknown",
       "verdict": "no_match",
-      "protected_asset_distance": 69,
-      "top_index_match_asset_id": "bafybeidf4lmgsw7e6xfren7lprlvp66ci6ogm3d5dr2kstikjlilobognq",
+      "protected_asset_distance": 41,
+      "top_index_match_asset_id": "bafybeigzo5rkfshhubaazvw2xsvruskzrglb3gefyjtln3w3r4crhufmwm",
       "pass": true
     },
     {
-      "candidate_id": "vision_351a292cdf827f58",
+      "candidate_id": "vision_88788754ec1d9749",
       "expected": "unknown",
       "verdict": "no_match",
       "protected_asset_distance": 40,
@@ -52,19 +45,25 @@
       "pass": true
     },
     {
-      "candidate_id": "vision_41ce465b35598190",
+      "candidate_id": "vision_7ccf054e3561a23e",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 66,
-      "top_index_match_asset_id": "bafybeidr3smftol2hxelez7kneqna4x652fj4644cnrzusfatvqsskarii",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "image exceeds max bytes (3088270 > 2000000) for https://image.foresttrip.go.kr/bb/202303/714e303d-8593-4397-9640-0760059104fd.JPG"
     },
     {
-      "candidate_id": "vision_9ca32fa68b887da2",
+      "candidate_id": "vision_dd7102dd8ba864e1",
+      "expected": "unknown",
+      "pass": true,
+      "warning": true,
+      "error": "non-image response content-type=text/html; charset=\"utf-8\" for https://lookaside.fbsbx.com/lookaside/crawler/media/"
+    },
+    {
+      "candidate_id": "vision_da71847e6b7c1b06",
       "expected": "unknown",
       "verdict": "no_match",
-      "protected_asset_distance": 59,
-      "top_index_match_asset_id": "bafybeie4kelfqph3anq4pszs4o65xsnldwv2q3pxjw4zizm3t3ksoxsxce",
+      "protected_asset_distance": 58,
+      "top_index_match_asset_id": "bafybeih2nlt6dlxe4lmd6gbggtc2ohlsmrifht6rxjyqspq4zcc537hek4",
       "pass": true
     },
     {
@@ -1404,16 +1403,18 @@
     {
       "candidate_id": "vision_5e7ed6a9e0339bc3",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "fetch failed"
+      "verdict": "no_match",
+      "protected_asset_distance": 51,
+      "top_index_match_asset_id": "bafybeihgxp7ubha2doy7ja4lzdjl4fdaexbotxr46vogge23mzi2esk2ee",
+      "pass": true
     },
     {
       "candidate_id": "vision_a725d7e76024af23",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "fetch failed"
+      "verdict": "no_match",
+      "protected_asset_distance": 54,
+      "top_index_match_asset_id": "bafybeiejg6qhyxxcfrbsovhisvjrnnmn2gxp4mz3q3fkhbjr65babjtnju",
+      "pass": true
     },
     {
       "candidate_id": "vision_907f9ab90409e3dd",
@@ -2603,9 +2604,10 @@
     {
       "candidate_id": "vision_0f8aa88171a9f736",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "fetch failed"
+      "verdict": "no_match",
+      "protected_asset_distance": 58,
+      "top_index_match_asset_id": "bafybeiadwyxr6sdzgse4i373lqzhuo27wtmihibrzqisppyxju4cbkbqf4",
+      "pass": true
     },
     {
       "candidate_id": "vision_ad4f4ef70af6fc61",

@@ -93,52 +93,52 @@
     "8fd1751c651238543e07d8d07f7d44ad8237a160a1a47afba205dfa5639e51f5": {
       "asset_id": "bafybeigzo5rkfshhubaazvw2xsvruskzrglb3gefyjtln3w3r4crhufmwm",
       "query_image_ref": "https://dia-cdn.numbersprotocol.io/thumbnails/2025/08/31/10/49/13/HISCZ8fDjdPj3HURcZt4_1.jpg",
-      "created_at": "2026-08-08T03:47:17.935Z",
-      "expires_at": "2026-09-07T03:47:17.935Z",
+      "created_at": "2026-09-08T03:31:12.687Z",
+      "expires_at": "2026-10-08T03:31:12.687Z",
       "max_results": 10,
       "webDetection": {
         "webEntities": [
           {
             "entityId": "/m/0j2kx",
-            "score": 0.36869842,
+            "score": 0.33003336,
             "description": "Waterfall"
           },
           {
             "entityId": "/m/07j7r",
-            "score": 0.30866244,
+            "score": 0.30448267,
             "description": "Tree"
           }
         ],
         "visuallySimilarImages": [
           {
-            "url": "https://p16-common-sign.tiktokcdn-us.com/tos-maliva-p-0068/osTGImi67JkBnGGwgDBAIYOyI40o7ABC0Hihfo~tplv-tiktokx-origin.image"
-          },
-          {
             "url": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0f/1a/fa/5a/prehistoric-garden.jpg?w=500&h=500&s=1"
           },
           {
-            "url": "https://www.tiktok.com/api/img/?itemId=7666894139300138270&location=0&aid=1988"
+            "url": "https://www.tiktok.com/api/img/?itemId=7665194390008220935&location=0&aid=1988"
           },
           {
-            "url": "https://burkina24.com/wp-content/uploads/2013/01/burkina-banfora-0131.jpg"
+            "url": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/17/c5/dd/b3/the-falls-cascade-over.jpg?w=900&h=-1&s=1"
           },
           {
-            "url": "https://www.tiktok.com/api/img/?itemId=7640896695462645013&location=3&aid=1988&index=8"
-          },
-          {
-            "url": "https://i.ytimg.com/vi/zlZF_IRGuII/oar2.jpg?sqp=-oaymwEYCJUDENAFSFqQAgHyq4qpAwcIARUAAIhC&rs=AOn4CLAjvGL5vzbAIkCJ8NqS5IKdkAsjHg&usqp=CCk"
+            "url": "https://s3-media0.fl.yelpcdn.com/bphoto/8zGsJ8K8XKoAzwOqcRSBHg/348s.jpg"
           },
           {
             "url": "https://www.areavibes.com/photos/livability/round-rock-tx.jpg"
           },
           {
-            "url": "https://www.tiktok.com/api/img/?itemId=7636760729273519390&location=0&aid=1988"
+            "url": "https://image.foresttrip.go.kr/bb/202303/714e303d-8593-4397-9640-0760059104fd.JPG"
           },
           {
-            "url": "https://www.cathaypacific.com/content/dam/focal-point/cx/inspiration/2026/08/easy-hong-kong-hikes-brides-pool-nature-trail-10.renditionimage.900.900.jpg"
+            "url": "https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=1377207834548261"
           },
           {
-            "url": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1b/90/87/4d/img-20200715-145459-largejpg.jpg?w=500&h=-1&s=1"
+            "url": "https://www.africamuseum.be/sites/default/files/media/research/img/discover_460.jpg"
+          },
+          {
+            "url": "https://www.thespacereview.com/archive/4801c.jpg"
+          },
+          {
+            "url": "https://upload.wikimedia.org/wikipedia/commons/6/63/Cascades_de_Karfiguela_%2812567794645%29.jpg?utm_source=ha.wikipedia.org&utm_campaign=index&utm_content=original"
           }
         ],
         "bestGuessLabels": [
@@ -3006,5 +3006,5 @@
       }
     }
   },
-  "updated_at": "2026-08-13T04:06:30.421Z"
+  "updated_at": "2026-09-08T03:31:12.688Z"
 }
