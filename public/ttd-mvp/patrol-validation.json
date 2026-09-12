@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-09-11T03:37:16.134Z",
-  "run_id": "ttd-patrol-20260911T033125Z",
+  "generated_at": "2026-09-12T03:35:35.189Z",
+  "run_id": "ttd-patrol-20260912T033020Z",
   "adapter": "visionWebDetection+namedChannelCrawler",
   "expected_filter": "all",
   "threshold": 16,
@@ -434,7 +434,7 @@
       "candidate_id": "vision_b400ff1e532bd165",
       "expected": "unknown",
       "verdict": "no_match",
-      "protected_asset_distance": 85,
+      "protected_asset_distance": 86,
       "top_index_match_asset_id": "bafybeigrd4ueuajjbxluq6hg4izh24fvvgt7yozkgz34hvgnfesvtyuxdm",
       "pass": true
     },
@@ -793,10 +793,9 @@
     {
       "candidate_id": "vision_917f9ddfb7af6173",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 68,
-      "top_index_match_asset_id": "bafybeih2e5ztq74vn3g52ojbtkdddm3ddz4kyqd5f47dxbehnx76h3jagq",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "This operation was aborted"
     },
     {
       "candidate_id": "vision_75c59e2650173f5f",
@@ -1233,8 +1232,8 @@
       "candidate_id": "vision_0e9ceb8b49572e01",
       "expected": "unknown",
       "verdict": "no_match",
-      "protected_asset_distance": 71,
-      "top_index_match_asset_id": "bafybeida6dh4uu4eh42wpeqphqudejzn77hjhktha2swpy272w7xkon5qa",
+      "protected_asset_distance": 73,
+      "top_index_match_asset_id": "bafybeig5irc53opbyljtf35jky6u6cvlaedroafbjxuicmavrtskqz7fx4",
       "pass": true
     },
     {
@@ -1411,10 +1410,9 @@
     {
       "candidate_id": "vision_a725d7e76024af23",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 54,
-      "top_index_match_asset_id": "bafybeiejg6qhyxxcfrbsovhisvjrnnmn2gxp4mz3q3fkhbjr65babjtnju",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "fetch failed"
     },
     {
       "candidate_id": "vision_907f9ab90409e3dd",
@@ -1474,10 +1472,9 @@
     {
       "candidate_id": "vision_4fd0399e75e3749f",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 67,
-      "top_index_match_asset_id": "bafybeifdujlcmbak5zc2finjacdt3ikrofceqkifmfooi6st6yuq6xlwma",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "HTTP 410 for https://english.ey.gov.tw/File/FD23CB7A2B24FFD1"
     },
     {
       "candidate_id": "vision_1eef8edf63850b44",
@@ -2036,9 +2033,10 @@
     {
       "candidate_id": "vision_702ab441bdeb72dd",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "fetch failed"
+      "verdict": "no_match",
+      "protected_asset_distance": 56,
+      "top_index_match_asset_id": "bafybeibcodninby5bq7nvnv4stvcyzliztfi7dtpvglqgrgdcx5nol5tgq",
+      "pass": true
     },
     {
       "candidate_id": "vision_23e52788fabce6a0",
@@ -2290,10 +2288,9 @@
     {
       "candidate_id": "vision_2c914758025d1f50",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 68,
-      "top_index_match_asset_id": "bafybeifdujlcmbak5zc2finjacdt3ikrofceqkifmfooi6st6yuq6xlwma",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "HTTP 410 for https://english.ey.gov.tw/File/FD23CB7A2B24FFD1"
     },
     {
       "candidate_id": "vision_29ee6d1856a2889d",
