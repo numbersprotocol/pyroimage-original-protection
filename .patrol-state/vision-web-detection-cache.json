@@ -151,29 +151,39 @@
     "0a9864465b495a144afb9c05b5a164e9b00eed2464f6d21f9f4bb31b117080e7": {
       "asset_id": "bafybeiasixb43gfbhad4byuhzyqawcdoiazxt5drlkez3dbkhdicyq5vfu",
       "query_image_ref": "https://dia-cdn.numbersprotocol.io/thumbnails/2025/08/31/10/49/13/DJELmyjQrS6RGEXOJ9Jh_2.jpg",
-      "created_at": "2026-08-13T04:00:08.838Z",
-      "expires_at": "2026-09-12T04:00:08.838Z",
+      "created_at": "2026-09-13T03:31:56.652Z",
+      "expires_at": "2026-10-13T03:31:56.652Z",
       "max_results": 10,
       "webDetection": {
         "webEntities": [
           {
             "entityId": "/m/05mk1s",
-            "score": 0.37469867,
+            "score": 0.3662783,
             "description": "Riparian forest"
           },
           {
-            "entityId": "/m/07j7r",
-            "score": 0.33952022,
-            "description": "Tree"
+            "entityId": "/m/0bl0l",
+            "score": 0.3483,
+            "description": "Garden"
           },
           {
             "entityId": "/m/0j2hg",
-            "score": 0.30668706,
+            "score": 0.33695582,
             "description": "Botanical garden"
           },
           {
+            "entityId": "/m/01f4td",
+            "score": 0.33644247,
+            "description": "Rural area"
+          },
+          {
+            "entityId": "/m/07j7r",
+            "score": 0.33522037,
+            "description": "Tree"
+          },
+          {
             "entityId": "/m/02zr8",
-            "score": 0.2904,
+            "score": 0.289,
             "description": "Forest"
           }
         ],
@@ -185,28 +195,28 @@
             "url": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2d/81/2a/1d/caption.jpg?w=500&h=500&s=1"
           },
           {
-            "url": "https://media.licdn.com/dms/image/v2/D5622AQFwPSbZdCSXTQ/feedshare-shrink_800/B56Z.8U1nzGcAc-/0/1785571007883?e=2147483647&v=beta&t=DrRoUX7GvkcUBQ-32RoXNqF2WTa-YplvtUVGddVQVJg"
+            "url": "https://lookaside.instagram.com/seo/google_widget/crawler/?media_id=3458182285281057074"
           },
           {
-            "url": "https://www.travel.taipei/image/567152/?r=1751943843485"
+            "url": "https://www.travel.taipei/content/images/articles/567152/1024x768_articles-image-swphboboyuq2ucrlgyqyxg.png"
           },
           {
-            "url": "https://www.tiktok.com/api/img/?itemId=7534492963422932255&location=3&aid=1988&index=5"
+            "url": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/34/38/b1/23/caption.jpg?w=1200&h=1200&s=1"
+          },
+          {
+            "url": "https://i.redd.it/hi913wwqwtjh1.jpeg"
+          },
+          {
+            "url": "x-raw-image:///60430c5ff75458eee113317a2f93c8bbafe1e73e95bdfc2fdd8afe48bb8f2f1e"
+          },
+          {
+            "url": "https://lookaside.instagram.com/seo/google_widget/crawler/?media_id=3713630633563271412"
           },
           {
             "url": "https://images.squarespace-cdn.com/content/v1/634c82beee2d4b58a714852b/be23cb03-e256-4b0d-a6ca-67b3122abec5/Botanical+Trail+9+%282%29.jpg"
           },
           {
-            "url": "https://www.javerianacali.edu.co/sites/default/files/2026-02/20231011_160222_0.jpg"
-          },
-          {
-            "url": "https://gig.cas.cn/pic/yuansuofengmao/202403/P020090729808533324147.jpg"
-          },
-          {
-            "url": "https://romantichakka.com/assets/images/article/5camphor_trail/3-12-1.jpg"
-          },
-          {
-            "url": "https://www.tiktok.com/api/img/?itemId=7523208186858409234&location=3&aid=1988&index=1"
+            "url": "https://cdn2.ettoday.net/images/8874/d8874389.jpg"
           }
         ],
         "bestGuessLabels": [
@@ -219,52 +229,52 @@
     "6f9e1ca320f4199822d5026ab09b0713c6c5c43fd1eae512360795378e6c161f": {
       "asset_id": "bafybeib4ynfd3f4cfz6ulxgqacff2oifmukbv2fxu5uekw5y7yqgvs4jpm",
       "query_image_ref": "https://dia-cdn.numbersprotocol.io/thumbnails/2025/08/31/10/50/37/RxUp5BGCH9FaZBnvgIt4_3.jpg",
-      "created_at": "2026-08-13T04:00:18.578Z",
-      "expires_at": "2026-09-12T04:00:18.578Z",
+      "created_at": "2026-09-13T03:32:05.750Z",
+      "expires_at": "2026-10-13T03:32:05.750Z",
       "max_results": 10,
       "webDetection": {
         "webEntities": [
           {
             "entityId": "/m/07j7r",
-            "score": 0.31597286,
+            "score": 0.31186542,
             "description": "Tree"
           },
           {
             "entityId": "/m/01czv3",
-            "score": 0.29619232,
+            "score": 0.29571882,
             "description": "Fortification"
           }
         ],
         "visuallySimilarImages": [
           {
-            "url": "https://lookaside.instagram.com/seo/google_widget/crawler/?media_id=3950393786848869582"
+            "url": "https://lookaside.instagram.com/seo/google_widget/crawler/?media_id=3970735777583285599"
           },
           {
-            "url": "https://lookaside.instagram.com/seo/google_widget/crawler/?media_id=3824001300065505850"
+            "url": "https://2114141.fs1.hubspotusercontent-na1.net/hubfs/2114141/Kabah-El-Arco-Ruta-Puuc-by-Andrea-Mier-y-Teran.jpg"
           },
           {
-            "url": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2f/b0/70/ef/caption.jpg?w=1000&h=1000&s=1"
+            "url": "https://media.licdn.com/dms/image/v2/D4E22AQHk3f26jx5YXg/feedshare-shrink_800/B4EZ4xMo4JJEAg-/0/1778941860892?e=2147483647&v=beta&t=ITlLLmkXMlsSVC7IjtcINWluyVQcsRT8QBZFefo7SUQ"
           },
           {
-            "url": "https://dam.mediacorp.sg/image/upload/s--lk51YAmT--/fl_relative,g_south_east,l_mediacorp:cna:watermark:2021-08:cna,w_0.1/f_auto,q_auto/c_fill,g_center,h_598,w_747/v1/mediacorp/cna/image/2023/06/28/fdz_1330.jpg?itok=up2Rg_lS"
+            "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Kabah_%272010_-_17.jpg/500px-Kabah_%272010_-_17.jpg?utm_source=hy.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
           },
           {
-            "url": "https://www.datocms-assets.com/160047/1758312989-saint-pierre_martinique.png?ar64=MTox&fit=crop&q=85&w=800"
+            "url": "https://itospa.com/lsc/upfile/spot/0005/4002/54002_4_l.jpg"
           },
           {
-            "url": "http://buddhazine.com/wp-content/uploads/2020/06/situs-setapan-21.jpg"
+            "url": "https://assets.st-note.com/production/uploads/images/270652483/rectangle_large_type_2_fe90a3dae87bb280e58151a3a9bc1a4b.jpeg?width=297&dpr=2&frame=1"
           },
           {
-            "url": "https://lookaside.fbsbx.com/lookaside/crawler/instagram/C-g9RfTy42c/0/image.jpg"
+            "url": "https://lookaside.instagram.com/seo/google_widget/crawler/?media_id=3971565477054421533"
           },
           {
-            "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Kabah_%272010_-_17.jpg/500px-Kabah_%272010_-_17.jpg"
+            "url": "https://escapadas.mexicodesconocido.com.mx/wp-content/uploads/2025/01/zona-arqueologica-kabah-450x338.webp"
           },
           {
-            "url": "https://lookaside.fbsbx.com/lookaside/crawler/threads/DXhTyJwG4y_/1/image.jpg"
+            "url": "https://lookaside.instagram.com/seo/google_widget/crawler/?media_id=3963785954552376977"
           },
           {
-            "url": "https://media.snl.no/media/27452/standard_compressed_Colombia-lost_city.jpg"
+            "url": "https://www.mexicodesconocido.com.mx/wp-content/uploads/2026/08/16.jpeg"
           }
         ],
         "bestGuessLabels": [
@@ -277,67 +287,67 @@
     "43bfcd73b7f9465b53f106effd70915610927fea27e4dc70f08460fda1f4bf00": {
       "asset_id": "bafybeiduu5knot2tmuqj6au6ttyaa2zu3tqwmvvketsunx4tr7zniz7rui",
       "query_image_ref": "https://dia-cdn.numbersprotocol.io/thumbnails/2025/08/31/10/50/41/fltci3RumNTpUprHcEmQ_8.jpg",
-      "created_at": "2026-08-13T04:00:23.332Z",
-      "expires_at": "2026-09-12T04:00:23.332Z",
+      "created_at": "2026-09-13T03:32:15.324Z",
+      "expires_at": "2026-10-13T03:32:15.324Z",
       "max_results": 10,
       "webDetection": {
         "webEntities": [
           {
             "entityId": "/m/042g2h",
-            "score": 0.4126254,
+            "score": 0.41187066,
             "description": "Old-growth forest"
           },
           {
             "entityId": "/m/05mk1s",
-            "score": 0.35031757,
+            "score": 0.35355225,
             "description": "Riparian forest"
           },
           {
             "entityId": "/m/02zr8",
-            "score": 0.3482,
+            "score": 0.3521,
             "description": "Forest"
           },
           {
             "entityId": "/m/07j7r",
-            "score": 0.33371824,
+            "score": 0.32954225,
             "description": "Tree"
           },
           {
             "entityId": "/m/01y3fy",
-            "score": 0.31985784,
+            "score": 0.3209156,
             "description": "Jungle"
           }
         ],
         "visuallySimilarImages": [
           {
-            "url": "https://vmu.lt/wp-content/uploads/2021/12/DSC_3181-768x512.jpg"
+            "url": "https://i0.wp.com/newspack-coloradosun.s3.amazonaws.com/wp-content/uploads/2026/05/Mines-microplastic-research-AJC-17-800x1200.jpg?resize=800%2C1200&ssl=1"
           },
           {
-            "url": "https://www.ey.com/content/dam/ey-unified-site/ey-com/no-no/events/2026/04/ey-person-som-bruker-en-baerbar-pc-mens-de-sitter-pa-en-stor-trestamme-i-skogen.jpg"
+            "url": "https://www.greenpeace.org.au/static/planet4-australiapacific-stateless/2026/02/f86442a1-image.jpeg"
           },
           {
-            "url": "https://media0.faz.net/image/w1200h900/ca42602b471b/w3024h2268x573y378/202508/43601.0.1208883288/4360101208883288.webp"
+            "url": "https://lookaside.instagram.com/seo/google_widget/crawler/?media_id=3953561758611936866"
+          },
+          {
+            "url": "x-raw-image:///a79f6489c70a552556d85bd372745171221074253c1b7953ae53bcdcf08ec13b"
+          },
+          {
+            "url": "x-raw-image:///c01645b38c5d5e8bdb4ab9cafe2d035a529751b544ec91da9c514720a1428b6b"
           },
           {
             "url": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/30/da/65/11/caption.jpg?w=1200&h=1200&s=1"
           },
           {
-            "url": "https://media.licdn.com/dms/image/v2/D4E22AQHhFL97_Cvgpw/feedshare-shrink_800/B4EZ3Z4_MgKsAc-/0/1777477088883?e=2147483647&v=beta&t=rdCmbFG-ery6y840040Bx2LHenwuFZISpSWibqlCSeI"
+            "url": "https://media.licdn.com/dms/image/v2/D4E22AQHILS6QzJVl3Q/feedshare-shrink_800/feedshare-shrink_800/0/1709896773754?e=2147483647&v=beta&t=k34K9iBm45widX2D2yBD9IN2eju2g33BMScTOBmGYKY"
+          },
+          {
+            "url": "https://emergencemagazine.org/app/uploads/2024/05/Comp-1.jpg"
+          },
+          {
+            "url": "https://assets.foleon.com/eu-central-1/de-uploads-7e3kk3/41395/2000_climate_action_and_leadership_coyote_creek_field_trip_20000.aeebf0d751eb.jpg?ext=webp"
           },
           {
             "url": "https://images.squarespace-cdn.com/content/v1/60b71ffb55cbef7fb394aac3/ba59aec0-8af1-4a11-af86-f8f915a7b356/_DSF5536-1+copy+2.jpg?format=1000w"
-          },
-          {
-            "url": "https://lookaside.instagram.com/seo/google_widget/crawler/?media_id=3857115123694190087"
-          },
-          {
-            "url": "https://i.ytimg.com/vi/j8fL79ovaJU/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLAji617MEy42PBb4E1L21MTZ1Pujg"
-          },
-          {
-            "url": "https://i.natgeofe.com/n/d853b74a-ffc1-4ec5-abf5-6f251272c9e3/jaguar-trafficking-south-north-america-threats-1.jpg"
-          },
-          {
-            "url": "https://www.db.com/contentAsset/image/4498ddd2-80b5-4a09-899a-dd4b1c539557/fileAsset/filter/Resize,Jpeg/resize_w/1280/f6f7bb59-799a-49d9-8c52-840c2b34892d.jpg"
           }
         ],
         "bestGuessLabels": [
@@ -350,31 +360,26 @@
     "de4f40c0474e1bc3f020b003665d0a3a03f7d00ed981e385d47821a4becd2baa": {
       "asset_id": "bafybeiczqijzi45y64alei2k3oifz3oygoykds4fguv7fmhy3ks3pybjdy",
       "query_image_ref": "https://dia-cdn.numbersprotocol.io/thumbnails/2025/08/31/10/51/02/AdPQsbDuBfssyWmVLd31_12.jpg",
-      "created_at": "2026-08-13T04:00:30.815Z",
-      "expires_at": "2026-09-12T04:00:30.815Z",
+      "created_at": "2026-09-13T03:32:21.802Z",
+      "expires_at": "2026-10-13T03:32:21.802Z",
       "max_results": 10,
       "webDetection": {
         "webEntities": [
           {
             "entityId": "/m/07j7r",
-            "score": 0.30490422,
+            "score": 0.30086997,
             "description": "Tree"
-          },
-          {
-            "entityId": "/m/01hsr7",
-            "score": 0.29984757,
-            "description": "Ditch"
           }
         ],
         "visuallySimilarImages": [
           {
-            "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Terminus_de_bus_%C3%A0_Bacongo.jpg/1280px-Terminus_de_bus_%C3%A0_Bacongo.jpg?utm_source=fr.wikipedia.org&utm_campaign=index&utm_content=thumbnail"
-          },
-          {
-            "url": "https://newtaipei.travel/content/images/tours/61132/1024x768_tours-image-qsinpwa290y2ofz4ozckcg.jpg"
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e2/Terminus_de_bus_%C3%A0_Bacongo.jpg/1280px-Terminus_de_bus_%C3%A0_Bacongo.jpg?utm_source=fr.wikipedia.org&utm_campaign=index&utm_content=thumbnail"
           },
           {
             "url": "https://newtaipei.travel/content/images/tours/68501/1024x768_tours-image-vfxt6d5szegd_tksjogzpg.jpg"
+          },
+          {
+            "url": "https://newtaipei.travel/content/images/tours/61132/1024x768_tours-image-qsinpwa290y2ofz4ozckcg.jpg"
           },
           {
             "url": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2b/ef/0f/6b/caption.jpg?w=1200&h=1200&s=1"
@@ -383,19 +388,19 @@
             "url": "https://legacy.ricoeursociety.org/wp-content/uploads/2025/03/Soochow.jpg"
           },
           {
-            "url": "https://especiales.diariolibre.com/riosenagonia/img/rios/perfil/moca/image3.jpg"
+            "url": "https://isl.fr/app/uploads/2022/03/19F-117_villerest_bge_aval.jpg"
           },
           {
-            "url": "https://isl.fr/app/uploads/2022/03/19F-117_villerest_bge_aval.jpg"
+            "url": "https://especiales.diariolibre.com/riosenagonia/img/rios/perfil/moca/image3.jpg"
           },
           {
             "url": "https://pixnio.com/free-images/2025/02/24/2025-02-24-07-20-16-576x434.jpg"
           },
           {
-            "url": "https://www.idom.com/wp-content/uploads/2023/09/portada-CYT-1.png"
+            "url": "https://th-i.thgim.com/public/incoming/2mnv6z/article71155411.ece/alternates/FREE_1200/28dctbrm_Naattu%20Kaalvai%20Nayara.jpg"
           },
           {
-            "url": "https://static.republika.co.id/uploads/images/headline_slide/079456600-1784159621-830-556.jpg"
+            "url": "https://www.idom.com/wp-content/uploads/2023/09/portada-CYT-1.png"
           }
         ],
         "bestGuessLabels": [
@@ -408,52 +413,57 @@
     "51d07d99bc974f8813bba1b6981efbd637643ab0b080738480dc8d0a67bcb940": {
       "asset_id": "bafybeidrz32gj4pjokxpq7ntazvybq4zcma5bl34sugt2cjhffe74ixxeq",
       "query_image_ref": "https://dia-cdn.numbersprotocol.io/thumbnails/2025/08/31/10/50/56/5KzFuP3CYzdKibzY2ViB_7.jpg",
-      "created_at": "2026-08-13T04:00:35.341Z",
-      "expires_at": "2026-09-12T04:00:35.341Z",
+      "created_at": "2026-09-13T03:32:27.939Z",
+      "expires_at": "2026-10-13T03:32:27.939Z",
       "max_results": 10,
       "webDetection": {
         "webEntities": [
           {
             "entityId": "/m/0ncj8",
-            "score": 0.5388,
+            "score": 0.5292,
             "description": "Boulder"
           },
           {
+            "entityId": "/m/0bl0l",
+            "score": 0.3819785,
+            "description": "Garden"
+          },
+          {
             "entityId": "/m/07j7r",
-            "score": 0.34489945,
+            "score": 0.34039524,
             "description": "Tree"
           }
         ],
         "visuallySimilarImages": [
           {
-            "url": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/32/7c/64/61/caption.jpg?w=1100&h=1100&s=1"
+            "url": "https://www.tiktok.com/api/img/?itemId=7653801084305034504&location=3&aid=1988&index=7"
           },
           {
-            "url": "https://discovermalaysia-unesco.com/wp-content/uploads/2024/12/Eco-Park-05.jpg"
+            "url": "https://p19-common-sign.tiktokcdn-us.com/tos-maliva-p-0068/oMjClLCtE8heeMVeNNNcAwSrqxIIQa2dGkJ1Ig~tplv-tiktokx-origin.image"
           },
           {
-            "url": "https://ipv.pt/wp-content/uploads/2022/06/viseu_fontelo-1-400x516.jpg"
+            "url": "https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=1493115812844452"
           },
           {
-            "url": "https://lookaside.instagram.com/seo/google_widget/crawler/?media_id=3952923383494919647"
+            "url": "https://popeyemagazine.jp/wp-content/uploads/2024/10/mukaijunkichi-annex_021_1080x1080-750x750.jpg"
           },
           {
-            "url": "https://www.japan-guide.com/thumb/XYZeXYZe5402_375.jpg"
+            "url": "https://p19-common-sign.tiktokcdn-us.com/tos-alisg-p-0037/ow3AAjQVIAdEyi5BsYpEnAaiIkaprWIQ0cPMB~tplv-tiktokx-origin.image"
           },
           {
-            "url": "https://tabiiro.brimgs.com/lpimg/leisure/208658/main/img1.jpg"
+            "url": "https://www.prodarom.com/wp-content/uploads/2025/06/Jardin-PPAM-2-585x585.jpg"
           },
           {
-            "url": "https://p16-common-sign.tiktokcdn-us.com/tos-alisg-p-0037/osAQY1RAaWWiCAiIEaINBwAohLwP6ewChVIIEB~tplv-tiktokx-origin.image"
+            "url": "https://ipv.pt/wp-content/uploads/2022/06/viseu_fontelo-1.jpg"
           },
           {
-            "url": "https://mediahub.seoul.go.kr/uploads/mediahub/2026/07/UXDZjZfNnPjUAZrUGCFmWNIlTTwbVeOP.jpg"
+            "url": "https://www.tiktok.com/api/img/?itemId=7683691590900092178&location=3&aid=1988&index=4"
           },
           {
-            "url": "https://hikosan-slopecar.net/wp-content/uploads/2024/08/20220727_105949-1-scaled.jpg"
+            "url": "https://www.rekishikaido.gr.jp/cms/wp-content/uploads/2024/05/e3a708c4b261b0f12b7f1e71d6e2ea91-1000x750.jpg"
           },
           {
-            "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Interkultureller_Garten_Rosenduft_001_2016.jpg/1280px-Interkultureller_Garten_Rosenduft_001_2016.jpg"
+            "url": "http://jsme.umin.ac.jp/eng/images/pht_history03.JPG"
           }
         ],
         "bestGuessLabels": [
@@ -466,8 +476,8 @@
     "7b41a4d5172fa1312b0a7dcdcf6a28803dbf58427773d5a2fda8b4fdda02e2b3": {
       "asset_id": "bafybeihw4ofxozmzdidkw2z6upjchf6egqgrlsm3jlxqnhc5x4fnhe52oi",
       "query_image_ref": "https://dia-cdn.numbersprotocol.io/thumbnails/2025/08/31/10/50/57/6UjD9nTwwwbt2ohbsc1l_16.jpg",
-      "created_at": "2026-08-13T04:00:44.470Z",
-      "expires_at": "2026-09-12T04:00:44.470Z",
+      "created_at": "2026-09-13T03:32:39.463Z",
+      "expires_at": "2026-10-13T03:32:39.463Z",
       "max_results": 10,
       "webDetection": {
         "webEntities": [
@@ -478,40 +488,40 @@
           },
           {
             "entityId": "/m/083vt",
-            "score": 0.2927178,
+            "score": 0.29250807,
             "description": "Wood"
           }
         ],
         "visuallySimilarImages": [
           {
-            "url": "https://lookaside.instagram.com/seo/google_widget/crawler/?media_id=3923181928713604095"
+            "url": "https://lookaside.instagram.com/seo/google_widget/crawler/?media_id=3961258368257764494"
           },
           {
-            "url": "https://media.printables.com/media/prints/1179219/images/8871559_4fe5b79c-fae0-47ef-829c-aeb563084313_c85089eb-027e-484c-91fe-c2f734306553/thumbs/inside/1280x960/jpeg/image2-1.webp"
+            "url": "https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=10163633791678667"
+          },
+          {
+            "url": "https://contemporarylynx.co.uk/wp-content/uploads/2024/11/04_Sound-system-or-a-score-for-eight-fans_detail_photo-by-Wu-Bingze.jpg"
+          },
+          {
+            "url": "https://www.tiktok.com/api/img/?itemId=7384116195139620129&location=3&aid=1988&index=1"
+          },
+          {
+            "url": "https://www.oxy.edu/sites/default/files/styles/open_graph_image/public/landing-page/banner-images/cslc_main_1440x800_0.jpg?h=5823a141"
+          },
+          {
+            "url": "https://www.tandfonline.com/cms/asset/06f0f4c9-1b92-4d16-a0b7-e471da71e18e/ybac_a_2458946_f0002_ob.jpg"
           },
           {
             "url": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/32/c5/a6/79/caption.jpg?w=1000&h=1000&s=1"
           },
           {
-            "url": "https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=1214436079514000"
+            "url": "https://contemporarylynx.co.uk/wp-content/uploads/2025/10/Teresa-Tyszkiewicz-Argent-acrylic-alumnium-pins-on-canvas-80-x-52-cm-1999.-Courtesy-of-Folta-Collection.jpg"
           },
           {
-            "url": "https://d7hftxdivxxvm.cloudfront.net/?height=445&quality=85&resize_to=fill&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2Fknn8ZyQKfleIaFOHTZ8fNw%2Flarger.jpg&width=445"
+            "url": "https://lookaside.instagram.com/seo/google_widget/crawler/?media_id=3973410353290213072"
           },
           {
-            "url": "https://artblart.com/wp-content/uploads/2023/12/ian-lobb-the-path-from-the-coffee-shop-4-february-2023-sm.jpg?w=768"
-          },
-          {
-            "url": "https://freight.cargo.site/w/800/q/75/i/R1821649015231443397217193783645/49e7aa8393b972a9-erasure020.jpg"
-          },
-          {
-            "url": "https://plus.unsplash.com/premium_photo-1768314895665-df3ac876cc72?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDE5fHx8ZW58MHx8fHx8"
-          },
-          {
-            "url": "https://plus.unsplash.com/premium_photo-1768314895513-d7fee3ab0be8?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-          },
-          {
-            "url": "https://www.oxy.edu/sites/default/files/styles/open_graph_image/public/landing-page/banner-images/cslc_main_1440x800_0.jpg?h=5823a141"
+            "url": "https://images.pexels.com/photos/32648221/pexels-photo-32648221/free-photo-of-rain-drenched-window-with-water-droplets.jpeg?cs=tinysrgb&dpr=1&w=500"
           }
         ],
         "bestGuessLabels": [
@@ -524,19 +534,19 @@
     "6d744d5806de7fb6ab86d63354e0733e571628788957c4c80d4c7e54a8cb3745": {
       "asset_id": "bafybeie7tm534wz7nm6wib6icnfhnpqus5ex4r2tqjq3nqecwnirl5y4fm",
       "query_image_ref": "https://dia-cdn.numbersprotocol.io/thumbnails/2025/08/31/10/51/17/PYrQGj1O6wFg9TDeNnAd_5.jpg",
-      "created_at": "2026-08-13T04:00:48.437Z",
-      "expires_at": "2026-09-12T04:00:48.437Z",
+      "created_at": "2026-09-13T03:32:44.057Z",
+      "expires_at": "2026-10-13T03:32:44.057Z",
       "max_results": 10,
       "webDetection": {
         "webEntities": [
           {
             "entityId": "/m/05qb9l1",
-            "score": 0.43045267,
+            "score": 0.42888445,
             "description": "Fish pond"
           },
           {
             "entityId": "/m/0184rb",
-            "score": 0.3877,
+            "score": 0.3878,
             "description": "Pond"
           },
           {
@@ -546,40 +556,40 @@
           },
           {
             "entityId": "/m/01zgr",
-            "score": 0.28862974,
+            "score": 0.28889844,
             "description": "Green algae"
           }
         ],
         "visuallySimilarImages": [
           {
-            "url": "https://lookaside.instagram.com/seo/google_widget/crawler/?media_id=3938815530146988779"
+            "url": "https://images.pexels.com/photos/37496945/pexels-photo-37496945.jpeg"
           },
           {
-            "url": "https://www.tiktok.com/api/img/?itemId=7470136261429267720&location=0&aid=1988"
+            "url": "http://www.olofstromsnatur.se/wp-content/uploads/2017/02/Gyl-Skalmershult-0261.jpg"
           },
           {
-            "url": "https://www.tiktok.com/api/img/?itemId=7616532442605767943&location=0&aid=1988"
+            "url": "https://lookaside.instagram.com/seo/google_widget/crawler/?media_id=3953366604968777362"
+          },
+          {
+            "url": "https://kartin.papik.pro/uploads/posts/2023-07/thumbs/1688298738_kartin-papik-pro-p-kartinki-zvezdi-v-luzhe-47.jpg"
+          },
+          {
+            "url": "http://www.vandevertranch.org/images/Operations/Lake%20Maintenance/mixed_weeds_algae.jpg"
+          },
+          {
+            "url": "https://cache.willhaben.at/mmo/3/976/140/333_-1654399489.jpg"
           },
           {
             "url": "https://viewlegal.com.au/wp-content/uploads/2020/11/14372621181_cf070e8887_m-w320h275.jpg"
           },
           {
-            "url": "https://www.tiktok.com/api/img/?itemId=7494267730036575534&location=0&aid=1988"
+            "url": "https://images.pexels.com/photos/39115770/pexels-photo-39115770/free-photo-of-serene-pond-with-ripples-and-water-lilies.jpeg?cs=tinysrgb&dpr=1&w=500"
           },
           {
-            "url": "https://www.tiktok.com/api/img/?itemId=7672460714564439316&location=0&aid=1988"
+            "url": "https://images.pexels.com/photos/12654822/pexels-photo-12654822.jpeg?cs=srgb&dl=pexels-hatice-baran-153179658-12654822.jpg&fm=jpg"
           },
           {
-            "url": "https://pbs.twimg.com/media/Fo_oOTFXEAE4oUH.jpg"
-          },
-          {
-            "url": "https://thumbs.dreamstime.com/b/water-blue-pond-green-lily-leaves-403667026.jpg"
-          },
-          {
-            "url": "https://pokaa.fr/wp-content/uploads/2025/08/10/parc-pourtales-3-750x500.jpg"
-          },
-          {
-            "url": "https://stat.ameba.jp/user_images/20231211/09/ogiwaka/f1/13/j/o1024102415375557158.jpg"
+            "url": "https://eu.community.samsung.com/t5/image/serverpage/image-id/3699039iA74F965CC8515178?v=v2"
           }
         ],
         "bestGuessLabels": [
@@ -592,67 +602,72 @@
     "c9b6c1cb1eadf0d83fc13bbc5c5a767569b34bd4ed863856f3aa8b0639effa61": {
       "asset_id": "bafybeicfsturomryz5lounf3ya3qz25e7wxco3uqqcwl2vpe2hiqwja6ya",
       "query_image_ref": "https://dia-cdn.numbersprotocol.io/thumbnails/2025/08/31/10/50/48/gg9qghgefVoJGLWugeby_6.jpg",
-      "created_at": "2026-08-13T04:00:55.174Z",
-      "expires_at": "2026-09-12T04:00:55.174Z",
+      "created_at": "2026-09-13T03:32:54.705Z",
+      "expires_at": "2026-10-13T03:32:54.705Z",
       "max_results": 10,
       "webDetection": {
         "webEntities": [
           {
+            "entityId": "/m/01c8br",
+            "score": 0.4683481,
+            "description": "Street"
+          },
+          {
             "entityId": "/m/09p3jz",
-            "score": 0.4231352,
+            "score": 0.4326888,
             "description": "Curb"
           },
           {
+            "entityId": "/m/06gfj",
+            "score": 0.3783,
+            "description": "Road"
+          },
+          {
             "entityId": "/m/0dnhy",
-            "score": 0.36640525,
+            "score": 0.3732605,
             "description": "Sidewalk"
           },
           {
             "entityId": "/m/07j7r",
-            "score": 0.3021863,
+            "score": 0.2980652,
             "description": "Tree"
           },
           {
-            "entityId": "/m/06gfj",
-            "score": 0.2924,
-            "description": "Road"
-          },
-          {
             "entityId": "/m/04p5cr",
-            "score": 0.04239,
+            "score": 0.042225003,
             "description": "House"
           }
         ],
         "visuallySimilarImages": [
           {
-            "url": "https://lookaside.instagram.com/seo/google_widget/crawler/?media_id=3719061155542711110"
+            "url": "https://www.info-toyama.com/storage/blog_article_paragraphs/3607/responsive_images/57fOROiWMhFk1V3iMm2cevduD5cpljefQFZ8KzEW__1692_2256.jpeg"
           },
           {
-            "url": "https://www.tiktok.com/api/img/?itemId=7531776823240166674&location=3&aid=1988&index=0"
+            "url": "https://tlife.thsrc.com.tw/s3/quill/20240326-XoOnpQC5XVVxpJsYktHFH8zz9o6l5IR1N3krCuaT.jpg"
           },
           {
-            "url": "https://media.cntravellerme.com/photos/6a3cc659bc44e74222fbbdd1/2:3/w_2474,h_3711,c_limit/tuktuks%20in%20village.jpg"
+            "url": "https://www.pioneeringeastriftvalleygranaryfestivities.com.tw/wp-content/uploads/2019/04/%E5%9C%961-20190626-WPC_2068.jpg"
           },
           {
-            "url": "https://pgw.udn.com.tw/gw/photo.php?u=https://uc.udn.com.tw/photo/t3/2026/07/08/35117399.jpg&M=1&s=Y&x=0&y=0&sw=999&sh=666&exp=3600&w=740"
+            "url": "https://www.0226462868.com.tw/templates/cache/26792/images/567a112e58b3b.jpg"
           },
           {
-            "url": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/33/f8/f5/7d/caption.jpg?w=1200&h=1200&s=1"
+            "url": "https://www.nta.co.jp/media/tripa/static_contents/nta-tripa/item_images/images/000/257/672/medium/73c8046d-a34f-4288-9f6b-13dc55cfb87d.jpg?1755752553"
           },
           {
-            "url": "https://p16-common-sign.tiktokcdn-us.com/tos-alisg-p-0037/ogeUQFDJGRGzIQBefjEINAFA4CtAo0lKxifIql~tplv-tiktokx-origin.image"
+            "url": "https://place-inn.bangkokshotels.com/data/Pictures/OriginalPhoto/10019/1001928/1001928846/bangkok-oyo-938-place-inn-picture-2.JPEG"
           },
           {
-            "url": "https://www.maolin-nsa.gov.tw/_api/content/images/attractions/60365/1024x768_attractions-image-wxdetdywmu2zk0g5nnlkqq.jpg"
+            "url": "https://politiken.dk/incoming/img10489687.8g0ntz/ORIGINALS/original_450/DSC09768"
           },
           {
-            "url": "https://www.tiktok.com/api/img/?itemId=7572775089792404756&location=3&aid=1988&index=18"
+            "url": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/30/0f/60/2e/caption.jpg?w=1200&h=1200&s=1"
           },
           {
-            "url": "https://static1.evcdn.net/images/reduction/1823894_w-400_h-400_q-70_m-crop.jpg"
+            "url": "https://kagoshima-barrierfree.com/wp-content/uploads/2024/11/IMG_8077-640x480.jpg"
           },
           {
-            "url": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/18/ab/d9/8f/caption.jpg?w=1200&h=-1&s=1"
+            "url": "https://kingcar.org.tw/sites/default/files/civicrm/custom/taoyuan-15_IRc2ariZ.jpg"
           }
         ],
         "bestGuessLabels": [
@@ -665,55 +680,60 @@
     "7e508707f69f7e707988d02eb2a599c742d656a2d5a7e631a287ca794b81ed02": {
       "asset_id": "bafybeie4kelfqph3anq4pszs4o65xsnldwv2q3pxjw4zizm3t3ksoxsxce",
       "query_image_ref": "https://dia-cdn.numbersprotocol.io/thumbnails/2025/08/31/10/51/16/7ia2tRoy0eXk1xEp0LDy_10.jpg",
-      "created_at": "2026-08-13T04:01:03.295Z",
-      "expires_at": "2026-09-12T04:01:03.295Z",
+      "created_at": "2026-09-13T03:33:11.610Z",
+      "expires_at": "2026-10-13T03:33:11.610Z",
       "max_results": 10,
       "webDetection": {
         "webEntities": [
           {
             "entityId": "/m/0ncj8",
-            "score": 0.48509997,
+            "score": 0.4896,
             "description": "Boulder"
           },
           {
             "entityId": "/m/01rsdb",
-            "score": 0.41930965,
+            "score": 0.43829256,
             "description": "Stream bed"
           },
           {
             "entityId": "/m/0jj_h",
-            "score": 0.41009024,
+            "score": 0.4116266,
             "description": "Tributary"
           },
           {
-            "entityId": "/m/0j6m2",
-            "score": 0.398,
-            "description": "Stream"
-          },
-          {
             "entityId": "/m/05mk1s",
-            "score": 0.38044617,
+            "score": 0.4054839,
             "description": "Riparian forest"
           },
           {
-            "entityId": "/m/07j7r",
-            "score": 0.31299365,
-            "description": "Tree"
+            "entityId": "/m/0j6m2",
+            "score": 0.3865,
+            "description": "Stream"
           },
           {
             "entityId": "/m/09d_r",
-            "score": 0.2944,
+            "score": 0.3795,
             "description": "Mountain"
           },
           {
-            "entityId": "/m/02zr8",
-            "score": 0.2838,
-            "description": "Forest"
+            "entityId": "/m/0w7qcy1",
+            "score": 0.374015,
+            "description": "Mountain river"
           },
           {
-            "entityId": "/g/11l869b5t2",
-            "score": 0.2711,
-            "description": "Fast"
+            "entityId": "/m/06cnp",
+            "score": 0.3102,
+            "description": "River"
+          },
+          {
+            "entityId": "/m/07j7r",
+            "score": 0.3086414,
+            "description": "Tree"
+          },
+          {
+            "entityId": "/m/02zr8",
+            "score": 0.2872,
+            "description": "Forest"
           }
         ],
         "visuallySimilarImages": [
@@ -721,10 +741,16 @@
             "url": "https://joinforwater.ngo/wp-content/uploads/2022/04/climate-water-klimaatverandering-klimaat-scaled-e1651045920608-480x480.jpg"
           },
           {
+            "url": "https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=122142167865241778"
+          },
+          {
+            "url": "https://www.trimt-nsa.gov.tw/_api/Image/7284/?r=1692261719653"
+          },
+          {
             "url": "https://eeft.org.tw/wp-content/uploads/2018/03/river-1-1920.jpg"
           },
           {
-            "url": "https://pbs.twimg.com/media/HPVeyHNaIAA9jAC.jpg"
+            "url": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2f/5d/7a/b5/caption.jpg?w=1200&h=1200&s=1"
           },
           {
             "url": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/01/62/4a/1c/rio-celeste.jpg?w=600&h=400&s=1"
@@ -733,19 +759,13 @@
             "url": "https://media.licdn.com/dms/image/v2/C4E12AQEwx7jADPm8nA/article-cover_image-shrink_600_2000/article-cover_image-shrink_600_2000/0/1567793401014?e=2147483647&v=beta&t=VnJ0yHUtqknX9vAWN1Jvj50RoNlZG648cDqX1HmQyMs"
           },
           {
-            "url": "https://www.ipsnews.net/Library/2025/10/Campesinos-Guatemala-y-la-sequia-2.jpg.webp"
+            "url": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/11/e2/14/a3/photo3jpg.jpg?w=1400&h=-1&s=1"
+          },
+          {
+            "url": "https://lookaside.instagram.com/seo/google_widget/crawler/?media_id=3840098518472710936"
           },
           {
             "url": "https://upload.wikimedia.org/wikipedia/commons/8/81/Rio_Macacu.JPG?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=original"
-          },
-          {
-            "url": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/33/81/71/93/caption.jpg?w=1200&h=1200&s=1"
-          },
-          {
-            "url": "https://autm.net/AUTM/media/Better-World/STORIES%20M%20-%20P/Passive-Flux-Meter_188-LG.jpg?ext=.jpg"
-          },
-          {
-            "url": "https://thetrustees.org/wp-content/uploads/2020/07/IMG_3927-scaled-608x0-c-default.jpg"
           }
         ],
         "bestGuessLabels": [
@@ -758,67 +778,62 @@
     "3202dda18c1ca54f563c225b4581c28b0adc9c7bbcb4c4245ea97cb87fd0a812": {
       "asset_id": "bafybeidumnvfbf3wglwczer3nkb2sz3so5rvcg442dt4gcpzwbr4wdnvey",
       "query_image_ref": "https://dia-cdn.numbersprotocol.io/thumbnails/2025/08/31/10/51/21/Mrh52AbzAg1wGguHyZKG_9.jpg",
-      "created_at": "2026-08-13T04:01:09.467Z",
-      "expires_at": "2026-09-12T04:01:09.467Z",
+      "created_at": "2026-09-13T03:33:22.799Z",
+      "expires_at": "2026-10-13T03:33:22.799Z",
       "max_results": 10,
       "webDetection": {
         "webEntities": [
           {
             "entityId": "/m/0838f",
-            "score": 0.62025,
+            "score": 0.62205,
             "description": "Water"
           },
           {
             "entityId": "/m/090j23",
-            "score": 0.37762862,
+            "score": 0.37891108,
             "description": "Water feature"
           },
           {
             "entityId": "/m/0jj_h",
-            "score": 0.34847552,
+            "score": 0.34497488,
             "description": "Tributary"
           },
           {
             "entityId": "/m/07j7r",
-            "score": 0.328714,
+            "score": 0.32403123,
             "description": "Tree"
-          },
-          {
-            "entityId": "/m/0308t8",
-            "score": 0.28588068,
-            "description": "Bedrock"
           }
         ],
         "visuallySimilarImages": [
           {
-            "url": "https://lookaside.instagram.com/seo/google_widget/crawler/?media_id=3546150794904220953"
+            "url": "https://www.tiktok.com/api/img/?itemId=7676254536582892818&location=0&aid=1988"
           },
           {
-            "url": "https://lookaside.instagram.com/seo/google_widget/crawler/?media_id=3853109050561607658"
+            "url": "https://lookaside.instagram.com/seo/google_widget/crawler/?media_id=3932102220991216260"
           },
           {
-            "url": "https://p19-common-sign.tiktokcdn-us.com/tos-alisg-p-0037/osfjEIKxp7e9DAtnfyE5ILOoAAFVDTA0zHD4AE~tplv-tiktokx-origin.image"
+            "url": "https://lookaside.instagram.com/seo/google_widget/crawler/?media_id=3980014453941930105"
           },
           {
-            "url": "https://lookaside.fbsbx.com/lookaside/crawler/threads/Daz8Lrfklzw/0/image.jpg"
+            "url": "https://lookaside.instagram.com/seo/google_widget/crawler/?media_id=3975329770927459453"
           },
           {
-            "url": "https://lookaside.instagram.com/seo/google_widget/crawler/?media_id=3931717782123663942"
+            "url": "https://media.licdn.com/dms/image/v2/D4D22AQGKowYsBAjwZg/feedshare-shrink_800/B4DZ_xoyg4GYAc-/0/1786465429938?e=2147483647&v=beta&t=AxdQjPX2kPLYbG2709BnnTbWKcS0j6HutzF-9kxLJn0"
           },
           {
-            "url": "https://lookaside.instagram.com/seo/google_widget/crawler/?media_id=3938158812561400403"
+            "url": "https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=1742953403660274&get_thumbnail=1"
           },
           {
-            "url": "https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=10240704291442909"
+            "url": "https://www.fisheries.noaa.gov/s3/2024-10/2000x1333-Waihee-NOAA-1_0.jpg"
           },
           {
-            "url": "https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=1668792018507583"
+            "url": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/33/c1/93/9c/caption.jpg?w=1200&h=1200&s=1"
           },
           {
-            "url": "https://i.ytimg.com/vi/wrSA1QMaTNA/oardefault.jpg?sqp=-oaymwEYCJUDENAFSFqQAgHyq4qpAwcIARUAAIhC&rs=AOn4CLCxrQAVjrtWYunR76Wpv3zJROA0KA&usqp=CCk"
+            "url": "https://p19-common-sign.tiktokcdn-us.com/tos-alisg-p-0037/o08SC1ixEe3Fo54AhAwI6eBHjaTmDDJ0IfcIho~tplv-tiktokx-origin.image"
           },
           {
-            "url": "https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=1597649625696576"
+            "url": "https://p16-common-sign.tiktokcdn-us.com/tos-alisg-p-0037/okcEBh8UdIAW28VSKoZNFfD8ngEfuBDSoEPRsF~tplv-tiktokx-origin.image"
           }
         ],
         "bestGuessLabels": [
@@ -831,40 +846,40 @@
     "535f6217a9e8ba1d424fc675036c4a6f0bc4ce8562d6e9cf3487b7738acfa43a": {
       "asset_id": "bafybeibom65zrzoxv7hfuep6ksa4rzyvo2mkql2ef2wcicvcflththxmxm",
       "query_image_ref": "https://dia-cdn.numbersprotocol.io/thumbnails/2025/08/31/10/51/23/oh8UAyNDq02F2xswDMdH_17.jpg",
-      "created_at": "2026-08-13T04:01:11.279Z",
-      "expires_at": "2026-09-12T04:01:11.279Z",
+      "created_at": "2026-09-13T03:33:27.611Z",
+      "expires_at": "2026-10-13T03:33:27.611Z",
       "max_results": 10,
       "webDetection": {
         "visuallySimilarImages": [
           {
-            "url": "https://media.licdn.com/dms/image/v2/D5622AQEpylRRd6PSMw/feedshare-shrink_800/B56Z.yS.fyKoAc-/0/1785402747144?e=2147483647&v=beta&t=TB8vPwZ6Y-TWkeINli4W7k_2FKPlHiXKc3n6bHBXEGM"
+            "url": "https://web-cdnprod.aa.com.tr/uploads/PhotoGallery/2026/09/07/thumbs_b2_3cee67f275ff52e149482f3c9fcd26ec.jpg"
           },
           {
-            "url": "https://www.tiktok.com/api/img/?itemId=7672418702691700001&location=3&aid=1988&index=6"
+            "url": "https://media.licdn.com/dms/image/v2/D4E22AQHJYz4jvRHS_w/feedshare-shrink_800/B4EaBc3YKvG4Ac-/0/1788264416208?e=2147483647&v=beta&t=JGtLE2sw4wcMzVP9AOVEGqJsIGVfzA6BIjCOQMV4M7k"
           },
           {
-            "url": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/24/6e/61/cb/my-nephews-playing-in.jpg?w=1100&h=1100&s=1"
+            "url": "https://www.wojsko-polskie.pl/dgw/u/f6/27/f62744ac-f47d-4a52-b45d-a375932511da/whatsapp_image_2026-08-27_at_125134.jpeg"
           },
           {
-            "url": "https://www.tiktok.com/api/img/?itemId=7525074325389495574&location=0&aid=1988"
+            "url": "https://lookaside.instagram.com/seo/google_widget/crawler/?media_id=3941079708372910281"
           },
           {
-            "url": "https://hydrometrie.wallonie.be/files/Walhydro/Illustration%20Page/Actualit%C3%A9s/20240612_111810.jpg"
+            "url": "x-raw-image:///7cb4722c4516d18b65a97fd985d9a7878be30504c669f8c1908ec0b84b1cffbd"
           },
           {
-            "url": "https://www.hollins.edu/wp-content/uploads/2023/05/CampusLife-Outdoor-TAB-copy.jpg"
+            "url": "https://i0.wp.com/newspack-coloradosun.s3.amazonaws.com/wp-content/uploads/2026/05/Mines-microplastic-research-AJC-05-1200x800.jpg?resize=1200%2C800&ssl=1"
           },
           {
-            "url": "https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=1687257869023670&get_thumbnail=1"
+            "url": "https://uwaterloo.ca/civil-environmental-engineering/sites/default/files/styles/uw_is_ig_medium/public/uploads/images/img_0901.jpg?itok=DwHj2Pw-"
           },
           {
-            "url": "https://www.acha.org/wp-content/uploads/NCCHA26.png"
+            "url": "https://www.tiktok.com/api/img/?itemId=7625640384533761301&location=0&aid=1988"
           },
           {
-            "url": "https://e1.nmcdn.io/hussman/wp-content/uploads/2025/12/Aayas-films-with-his-story-partner-at-hte-river_Floodlines-2025-BTS_IMG_5382-scaled-1.jpeg/v:1-dynamic:1-aspect:0.71428571428571-fit:cover/Aayas-films-with-his-story-partner-at-hte-river_Floodlines-2025-BTS_IMG_5382-scaled-1--600.webp"
+            "url": "https://www.toyota.co.jp/jpn/sustainability/social_contribution/feature/forest/sustainable_plant/images/photo03-sp.jpg"
           },
           {
-            "url": "https://p16-common-sign.tiktokcdn-us.com/tos-maliva-p-0068/oo2YjLlHbrXII1fLCAgnVsteVnegqLQGFpSCYG~tplv-tiktokx-origin.image"
+            "url": "https://img.rts.ch/articles/2026/image/olsgoj-29302584.image?w=640&h=360"
           }
         ],
         "bestGuessLabels": [
@@ -877,72 +892,72 @@
     "721c3f57551cc1f4a840d7a16337e1e9862853777b396c3bd668e91b62db234c": {
       "asset_id": "bafybeicz5zxe2bzbeyyhhn2djqbvxfghohtshrebpsxhorknu2ebqko4te",
       "query_image_ref": "https://dia-cdn.numbersprotocol.io/thumbnails/2025/08/31/10/51/08/raq83B30A86mPuLdihRI_4.jpg",
-      "created_at": "2026-08-13T04:01:17.674Z",
-      "expires_at": "2026-09-12T04:01:17.674Z",
+      "created_at": "2026-09-13T03:33:49.645Z",
+      "expires_at": "2026-10-13T03:33:49.645Z",
       "max_results": 10,
       "webDetection": {
         "webEntities": [
           {
             "entityId": "/m/05qb9l1",
-            "score": 0.4255471,
+            "score": 0.42648435,
             "description": "Fish pond"
           },
           {
             "entityId": "/m/0184rb",
-            "score": 0.4041,
+            "score": 0.4056,
             "description": "Pond"
           },
           {
             "entityId": "/m/0ch_cf",
-            "score": 0.379,
+            "score": 0.3794,
             "description": "Fish"
           },
           {
             "entityId": "/m/0bl0l",
-            "score": 0.3714,
+            "score": 0.3792,
             "description": "Garden"
           },
           {
-            "entityId": "/m/07j7r",
-            "score": 0.33636612,
-            "description": "Tree"
+            "entityId": "/m/0j2hg",
+            "score": 0.33287448,
+            "description": "Botanical garden"
           },
           {
-            "entityId": "/m/0j2hg",
-            "score": 0.3295659,
-            "description": "Botanical garden"
+            "entityId": "/m/07j7r",
+            "score": 0.33201408,
+            "description": "Tree"
           }
         ],
         "visuallySimilarImages": [
           {
+            "url": "https://p16-common-sign.tiktokcdn-us.com/tos-maliva-p-0068/ocI9agkiPFyFhWQo0SNEIFB5BsGGUAiKqHiBa~tplv-tiktokx-origin.image"
+          },
+          {
             "url": "x-raw-image:///8254680a931edfbb4e9637f485de4707ce655694e00cb1ecdf2e21620ed6f3fa"
           },
           {
-            "url": "https://www.tiktok.com/api/img/?itemId=7520586012091895048&location=3&aid=1988&index=4"
+            "url": "https://lookaside.instagram.com/seo/google_widget/crawler/?media_id=3685586437391207317"
           },
           {
-            "url": "https://live.staticflickr.com/65535/55424196398_0742f3ee52.jpg"
+            "url": "https://www.tiktok.com/api/img/?itemId=7674973653288684814&location=0&aid=1988"
           },
           {
-            "url": "https://travel.taichung.gov.tw/content/images/attractions/23803/480x360_image636341882908680378.jpg"
+            "url": "https://lookaside.instagram.com/seo/google_widget/crawler/?media_id=3813544317059735072"
           },
           {
-            "url": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2b/e3/b1/23/caption.jpg?w=300&h=300&s=1"
+            "url": "https://lookaside.instagram.com/seo/google_widget/crawler/?media_id=3836813233060122469"
           },
           {
-            "url": "https://travel.tycg.gov.tw/content/images/tours/19434/480x360_image636178377946116485.jpg"
+            "url": "https://www.tiktok.com/api/img/?itemId=7609055986933894408&location=0&aid=1988"
           },
           {
-            "url": "https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=1465773908913226"
+            "url": "https://lookaside.instagram.com/seo/google_widget/crawler/?media_id=3967360728408614542"
           },
           {
-            "url": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/33/3d/c6/57/caption.jpg?w=1200&h=1200&s=1"
+            "url": "https://lookaside.instagram.com/seo/google_widget/crawler/?media_id=3956569417162461458"
           },
           {
-            "url": "https://otherplacestw.com/wp-content/uploads/2024/10/DSCF4290.jpg"
-          },
-          {
-            "url": "https://www.ntu.edu.tw/spotlight/2016/752_20160225_3.jpg"
+            "url": "https://www.nadaciavub.sk/images/novinky/oziva-legenda-bratislavy-kochova-zahrada-so-slnecnym-kupelom-po-rokoch-otvorila-svoje-brany/nadacia-koch-439-x-422-px.jpg"
           }
         ],
         "bestGuessLabels": [
@@ -955,30 +970,40 @@
     "d5db72cc78fbc5eb16532117410ab6ba9f0d43e22a505ed82ae6dd44600fffaa": {
       "asset_id": "bafybeibc2yfvot3szel7l73got3bwq3vjkkd6b7mniihgqconggekp3lka",
       "query_image_ref": "https://dia-cdn.numbersprotocol.io/thumbnails/2025/08/31/10/51/22/73fq2ZeLPNgplkpzn9nh_13.jpg",
-      "created_at": "2026-08-13T04:01:25.781Z",
-      "expires_at": "2026-09-12T04:01:25.781Z",
+      "created_at": "2026-09-13T03:33:56.061Z",
+      "expires_at": "2026-10-13T03:33:56.061Z",
       "max_results": 10,
       "webDetection": {
         "webEntities": [
           {
             "entityId": "/g/11v56mhn66",
-            "score": 0.5233,
+            "score": 0.5208,
             "description": "M-049"
           },
           {
-            "entityId": "/m/07j7r",
-            "score": 0.32954353,
-            "description": "Tree"
+            "entityId": "/m/0bl0l",
+            "score": 0.3584,
+            "description": "Garden"
           },
           {
             "entityId": "/m/0j2hg",
-            "score": 0.30788195,
+            "score": 0.35281697,
             "description": "Botanical garden"
           },
           {
+            "entityId": "/m/07j7r",
+            "score": 0.325593,
+            "description": "Tree"
+          },
+          {
             "entityId": "/m/0j2kx",
-            "score": 0.298268,
+            "score": 0.2980566,
             "description": "Waterfall"
+          },
+          {
+            "entityId": "/m/0735l",
+            "score": 0.2272,
+            "description": "Streaming media"
           }
         ],
         "visuallySimilarImages": [
@@ -986,31 +1011,31 @@
             "url": "https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=4607959582615312"
           },
           {
-            "url": "https://i0.wp.com/www.glosarioarquitectonico.com/wp-content/uploads/2015/12/mach%C3%B3n4-1.jpg?ssl=1"
+            "url": "https://s3.ppllstatics.com/diariosur/www/multimedia/2026/06/18/4-kx6G-U30354837482EyB-650x455@Diario%20Sur.jpg"
           },
           {
-            "url": "https://mungero.com/wp-content/uploads/2021/06/img_tosashimizu_04.jpg"
-          },
-          {
-            "url": "http://repositorio.utn.edu.ec/bitstream/123456789/10583/1/03%20RNR%20361%20logo.jpg"
+            "url": "https://s0.wklcdn.com/image_329/9886619/169437746/105877737.400x300.jpg"
           },
           {
             "url": "https://daifuku-consultant.co.jp/wp-content/uploads/2021/06/%E4%B8%B8%E6%B1%A0%E5%85%AC%E5%9C%92%E3%83%AC%E3%83%B3%E3%82%AB%E3%82%99%E6%A9%8B-740x440.jpg"
           },
           {
-            "url": "https://cm-lousa.pt/wp-content/uploads/2023/07/FotoPR1-17.jpg"
+            "url": "https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=100085448445262"
           },
           {
-            "url": "https://lookaside.instagram.com/seo/google_widget/crawler/?media_id=3946235755542499359"
+            "url": "https://repositorio.utn.edu.ec/bitstream/123456789/10583/1/03%20RNR%20361%20logo.jpg"
           },
           {
-            "url": "https://www.hakone-ryokan.or.jp/assets/img/area/yumoto/yumoto_img_10.jpg"
-          },
-          {
-            "url": "https://pbs.twimg.com/media/EDoeoF4WwAACZgw.jpg"
+            "url": "https://www.discovercars.com/_next/image?url=https%3A%2F%2Ffrontend-images-locations.s3.eu-central-1.amazonaws.com%2Fuser-images%2Fapproved%2Fdesktop%2F803be8d97923db6bb247e4e95da4656e.jpg&w=640&q=75"
           },
           {
             "url": "https://yamagatakanko.com/lsc/upfile/spot/0001/4284/14284_9_l.jpg"
+          },
+          {
+            "url": "https://www.frabosasottana.com/attachments/Image/torrente-maudagna.jpg?template=generic"
+          },
+          {
+            "url": "https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=10161064098190565"
           }
         ],
         "bestGuessLabels": [
@@ -1023,47 +1048,47 @@
     "015ff36b5ee7783246b62a09f05754e2c0174afa34181e237d070b5efdbb7f37": {
       "asset_id": "bafybeiajryrwstia22issgebjjfmo72j44nhlowe4wr6zn5lmppkykrzmm",
       "query_image_ref": "https://dia-cdn.numbersprotocol.io/thumbnails/2025/08/31/10/51/26/6bwLVrjnw7X2F5CMZEeK_15.jpg",
-      "created_at": "2026-08-13T04:01:35.584Z",
-      "expires_at": "2026-09-12T04:01:35.584Z",
+      "created_at": "2026-09-13T03:34:06.733Z",
+      "expires_at": "2026-10-13T03:34:06.733Z",
       "max_results": 10,
       "webDetection": {
         "webEntities": [
           {
             "entityId": "/m/0hhr07c",
-            "score": 0.2875,
+            "score": 0.3187,
             "description": "Canal M"
           }
         ],
         "visuallySimilarImages": [
           {
+            "url": "https://oem.com.mx/eloccidental/img/31945140/1788779446/BASE_LANDSCAPE/800/Inundaciones%20GDL%20PC%20Guadalajara%20(3).webp"
+          },
+          {
+            "url": "https://www.informador.mx/__export/1788743011931/sites/elinformador/img/2026/09/06/whatsapp_image_2026-09-06_at_6_45_11_pm.jpeg_674994428.jpeg"
+          },
+          {
             "url": "https://www.raaltd.co.uk/wp-content/uploads/2017/11/Boverton.jpg"
           },
           {
-            "url": "https://media.licdn.com/dms/image/v2/C5612AQGQiTMigzn3OA/article-cover_image-shrink_600_2000/article-cover_image-shrink_600_2000/0/1520168047470?e=2147483647&v=beta&t=OX_CG_Qz2KMYA55eN28u19GRWrzNH7WO_Mvk3iqKBfk"
-          },
-          {
-            "url": "https://prmeng.rosselcdn.net/sites/default/files/dpistyles_v2/prm_16_9_606w/2026/08/09/node_737611/60992222/public/2026/08/09/94803880.jpeg?itok=C4Q-LZ-61786252065"
-          },
-          {
-            "url": "https://a-era-qua-terra.com/wp-content/uploads/2026/02/img_20260123_131543.jpg?w=1024"
-          },
-          {
-            "url": "https://e-nepujsag.ro/storage/headline/1784815070.png"
+            "url": "https://www.geoenv.tsukuba.ac.jp/~akio/images/CIMG2728.JPG"
           },
           {
             "url": "https://cloudfront-eu-central-1.images.arcpublishing.com/leparisien/5IHJGNC3PBSSZO4MNGPU74GN7Y.jpg"
           },
           {
-            "url": "https://pbs.twimg.com/media/HPC-MJmWUAAQpbj.jpg"
+            "url": "https://a-era-qua-terra.com/wp-content/uploads/2026/02/img_20260123_131543.jpg?w=1024"
           },
           {
-            "url": "x-raw-image:///b5f98c3b9f799fd9fb6287fe46f9298d58cd4674e67cfe0d4bf366fd58e96bdb"
+            "url": "https://media.licdn.com/dms/image/v2/C5612AQGQiTMigzn3OA/article-cover_image-shrink_600_2000/article-cover_image-shrink_600_2000/0/1520168047470?e=2147483647&v=beta&t=OX_CG_Qz2KMYA55eN28u19GRWrzNH7WO_Mvk3iqKBfk"
           },
           {
-            "url": "https://lookaside.instagram.com/seo/google_widget/crawler/?media_id=3955737027192872083"
+            "url": "https://lookaside.instagram.com/seo/google_widget/crawler/?media_id=3954076473434153565"
           },
           {
-            "url": "https://gpjs3bucket.s3.amazonaws.com/wp-content/uploads/2024/11/18092409/02_GPJNews_Argentina_LP_UrbanizationsStopped_086_web.jpg"
+            "url": "https://oeverwerk.at/media/pages/werke/11/f77966ca7b-1645028163/11-oeverwerk.jpg"
+          },
+          {
+            "url": "https://isep-prod.s3.amazonaws.com/image/7991/original.jpg?1787343665"
           }
         ],
         "bestGuessLabels": [
@@ -1076,55 +1101,60 @@
     "754004efca5ad75521e8031a274830c67ca916ea3d539b29939b71a075ba47b4": {
       "asset_id": "bafybeidf4lmgsw7e6xfren7lprlvp66ci6ogm3d5dr2kstikjlilobognq",
       "query_image_ref": "https://dia-cdn.numbersprotocol.io/thumbnails/2025/08/31/10/51/27/n6busrxkrVAc8Ft36mM7_11.jpg",
-      "created_at": "2026-08-13T04:01:42.246Z",
-      "expires_at": "2026-09-12T04:01:42.246Z",
+      "created_at": "2026-09-13T03:34:17.443Z",
+      "expires_at": "2026-10-13T03:34:17.443Z",
       "max_results": 10,
       "webDetection": {
         "webEntities": [
           {
             "entityId": "/m/0ncj8",
-            "score": 0.49425,
+            "score": 0.49230003,
             "description": "Boulder"
           },
           {
             "entityId": "/m/01rsdb",
-            "score": 0.40137118,
+            "score": 0.42190114,
             "description": "Stream bed"
           },
           {
-            "entityId": "/m/0jj_h",
-            "score": 0.39563167,
-            "description": "Tributary"
-          },
-          {
             "entityId": "/m/05mk1s",
-            "score": 0.39060563,
+            "score": 0.41168782,
             "description": "Riparian forest"
           },
           {
+            "entityId": "/m/0w7qcy1",
+            "score": 0.40273303,
+            "description": "Mountain river"
+          },
+          {
+            "entityId": "/m/0jj_h",
+            "score": 0.39389795,
+            "description": "Tributary"
+          },
+          {
             "entityId": "/m/0j6m2",
-            "score": 0.3742,
+            "score": 0.3885,
             "description": "Stream"
           },
           {
-            "entityId": "/m/07j7r",
-            "score": 0.31939015,
-            "description": "Tree"
-          },
-          {
             "entityId": "/m/09d_r",
-            "score": 0.2952,
+            "score": 0.3814,
             "description": "Mountain"
           },
           {
-            "entityId": "/m/02zr8",
-            "score": 0.2865,
-            "description": "Forest"
+            "entityId": "/m/07j7r",
+            "score": 0.3158462,
+            "description": "Tree"
           },
           {
-            "entityId": "/g/11l869b5t2",
-            "score": 0.2708,
-            "description": "Fast"
+            "entityId": "/m/06cnp",
+            "score": 0.313,
+            "description": "River"
+          },
+          {
+            "entityId": "/m/02zr8",
+            "score": 0.2876,
+            "description": "Forest"
           }
         ],
         "visuallySimilarImages": [
@@ -1135,28 +1165,28 @@
             "url": "https://lalrp.net/_next/image?url=https%3A%2F%2Fstorage.googleapis.com%2Fjnl-lasa-j-lalr-public%2Fjournals%2F1%2Fcarousel%2Fslide98_en.jpg&w=3840&q=75"
           },
           {
-            "url": "https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=2126288631618312&get_thumbnail=1"
+            "url": "https://upload.wikimedia.org/wikipedia/commons/8/81/Rio_Macacu.JPG?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=original"
           },
           {
-            "url": "https://cdn.crowdriff.com/in-use/4de657af-4a70-15ab-268d-bdff2efa3d86/orig.jpg"
+            "url": "https://klimaneutralit%C3%A4t.boku.ac.at/wp-content/uploads/2025/06/Apacuar-2-Website-1024x771.webp"
           },
           {
-            "url": "https://pgw.udn.com.tw/gw/photo.php?u=https://uc.udn.com.tw/photo/t3/2026/07/20/35153999.jpg&M=1&s=Y&x=0&y=0&sw=1000&sh=750&sl=W&fw=800&exp=3600&w=800"
+            "url": "https://s3.mababy.com/mababy-production/knowledge/284a293b-2271-46a0-88cd-37e26b7b20cb"
           },
           {
-            "url": "https://media.licdn.com/dms/image/v2/D4E22AQEvJ9AemyrYCg/feedshare-shrink_800/B4EZ87b8ssHkAo-/0/1783408610406?e=2147483647&v=beta&t=PSVFxP9UriAj_ZPCdMnNYNO5Vw5oQ1ZUt5xgDE7g2wc"
+            "url": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/33/db/1b/00/caption.jpg?w=1200&h=1200&s=1"
           },
           {
-            "url": "https://cdn.kudyznudy.cz/files/36/36ab96ea-6d06-42fa-bed7-15e9fe3a0b05.webp?v=20260621170055"
+            "url": "https://i.redd.it/la-fortuna-is-everything-v0-uamtmxj4btjh1.jpg?width=4284&format=pjpg&auto=webp&s=d1150308731f2de1801ac78bc4dc766d9ec19451"
+          },
+          {
+            "url": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/32/a6/c5/e4/caption.jpg?w=1100&h=1100&s=1"
           },
           {
             "url": "https://www.popsci.com/wp-content/uploads/2020/02/05/TYV47H4TLFH2FF3UUGPKYXKXUM.jpg?quality=85&w=768"
           },
           {
-            "url": "https://www.cgr.go.cr/assets/images/img-banner-01-1000x650px-80-1000x650.jpg"
-          },
-          {
-            "url": "x-raw-image:///20fe8889250865bf5945515901b207410a5ca667f6355d993145fcaba11130be"
+            "url": "https://cdn.crowdriff.com/in-use/4de657af-4a70-15ab-268d-bdff2efa3d86/orig.jpg"
           }
         ],
         "bestGuessLabels": [
@@ -1169,52 +1199,47 @@
     "40db62a2f91726e9f08bfb9eed443a233cb8ec16af373cc175a2e849530acfbd": {
       "asset_id": "bafybeih2e5ztq74vn3g52ojbtkdddm3ddz4kyqd5f47dxbehnx76h3jagq",
       "query_image_ref": "https://dia-cdn.numbersprotocol.io/thumbnails/2021/08/31/07/22/37/UJRKK65xQNq46D1E5LaT_proof.jpg",
-      "created_at": "2026-08-13T04:01:56.981Z",
-      "expires_at": "2026-09-12T04:01:56.981Z",
+      "created_at": "2026-09-13T03:34:36.834Z",
+      "expires_at": "2026-10-13T03:34:36.834Z",
       "max_results": 10,
       "webDetection": {
         "webEntities": [
           {
-            "entityId": "/m/0bysjw",
-            "score": 0.433496,
-            "description": "Stone wall"
-          },
-          {
             "entityId": "/m/01f4td",
-            "score": 0.34658512,
+            "score": 0.30811855,
             "description": "Rural area"
           }
         ],
         "visuallySimilarImages": [
           {
-            "url": "https://midias.correiobraziliense.com.br/_midias/jpg/2026/07/09/1200x801/1_rio-67141227.jpg"
+            "url": "https://media.licdn.com/dms/image/v2/D4D12AQEnVvGdHaMWMA/article-cover_image-shrink_600_2000/article-cover_image-shrink_600_2000/0/1657268722750?e=2147483647&v=beta&t=TWVtQmda35rL7n46yvSRfIzD-1atP--z_tcwk2nUsos"
           },
           {
-            "url": "https://www.tiktok.com/api/img/?itemId=7549797539684470034&location=0&aid=1988"
+            "url": "https://www.researchgate.net/publication/371526996/figure/fig4/AS:11431281417669526@1746129279127/Mycenaean-anti-flood-dams-a-General-view-of-Tiryns-dam-photo-A-N-Angelakis-and-b_Q320.jpg"
           },
           {
-            "url": "https://www.wwf.de/fileadmin/_processed_/2/4/csm_ausgetrocknetes-Flussbett-Kenia-WW139018-c-Brent-Stirton-GettyImages_b2212e2747.jpg"
+            "url": "https://figures.academia-assets.com/110781444/figure_016.jpg"
           },
           {
-            "url": "https://english-kyodo.ismcdn.jp/mwimgs/c/f/414mw/img_cfc7b045ee742fda3daca67a7acb7998497635.jpg"
+            "url": "https://www.hu.edu.et/web/image/11254-6d0f63b9/Picture07.webp"
           },
           {
-            "url": "https://cdn1-m.alittihad.ae/store/archive/image/2026/8/6/ae393fb1-42f7-4868-ac13-412d94db0e83.jpg"
+            "url": "https://media.springernature.com/lw685/springer-static/image/art%3A10.1007%2Fs10661-020-08842-w/MediaObjects/10661_2020_8842_Fig5_HTML.jpg"
           },
           {
-            "url": "https://th-thumbnailer.cdn-si-edu.com/M7XwaI0Rnc9kILEwMgPJYRnv_U0=/450x300/filters:no_upscale():focal(2000x1124:2001x1125)/https://tf-cmsv2-smithsonianmag-media.s3.amazonaws.com/filer_public/1a/79/1a79eeb7-afc7-4186-b48b-8b46217a3dbc/gettyimages-2151137738.jpg"
+            "url": "https://media.springernature.com/lw685/springer-static/image/art%3A10.1186%2Fs12982-026-02351-w/MediaObjects/12982_2026_2351_Fig3_HTML.png"
           },
           {
-            "url": "https://p19-common-sign.tiktokcdn-us.com/tos-alisg-p-0037/oEULoAv2QCZIeAFjfD3IoOrEK3IIAOf9Fg6DE0~tplv-tiktokx-origin.image"
+            "url": "https://figures.academia-assets.com/78561380/figure_029.jpg"
           },
           {
-            "url": "http://koreabizwire.com/wp/wp-content/uploads/2026/08/PYH2026072315900005200-370x248.jpg"
+            "url": "https://www.researchgate.net/profile/Klaus-Kaiser-3/publication/412230942/figure/fig2/AS:11431282348912926@1786649974758/A-large-scale-agricultural-use-after-termite-mound-levelling-b-soil-profile-with_Q320.jpg"
           },
           {
-            "url": "https://athina984.gr/wp-content/uploads/2024/02/6162748-768x509.jpg"
+            "url": "https://www.researchgate.net/profile/Feleke-Kuraz/publication/364926425/figure/fig1/AS:11431281093238450@1667145747754/The-Robit-Bata-watershed-a-landscape-view-b-fractured-quaternary-basalt-bedrock_Q320.jpg"
           },
           {
-            "url": "https://pimg.mk.co.kr/news/cms/202608/11/news-p.v1.20260811.850021643eee4a3e9062174a889bb69f_P1.jpg"
+            "url": "https://media.springernature.com/lw685/springer-static/image/chp%3A10.1007%2F978-981-13-6830-1_5/MediaObjects/464386_1_En_5_Fig20_HTML.jpg"
           }
         ],
         "bestGuessLabels": [
@@ -1227,62 +1252,57 @@
     "050ef7aee8752421535d57a5e47ce9e95e285e3f2ceb8455e15860c0bb3ce8fb": {
       "asset_id": "bafybeiable3ldt5idu3wlrvg5yklj2gj5dspfil6bikcjznb5wlgqfqnwq",
       "query_image_ref": "https://dia-cdn.numbersprotocol.io/thumbnails/2024/01/08/04/43/58/YLzZrlcBezhGRzGcHYoA_014_wix_20240103.jpg",
-      "created_at": "2026-08-13T04:02:05.161Z",
-      "expires_at": "2026-09-12T04:02:05.161Z",
+      "created_at": "2026-09-13T03:34:47.963Z",
+      "expires_at": "2026-10-13T03:34:47.963Z",
       "max_results": 10,
       "webDetection": {
         "webEntities": [
           {
             "entityId": "/m/0p9xx",
-            "score": 0.40646443,
+            "score": 0.41312554,
             "description": "Visual Arts"
           },
           {
             "entityId": "/m/0jjw",
-            "score": 0.3478,
+            "score": 0.3542,
             "description": "Art"
           },
           {
             "entityId": "/g/120yrv6h",
-            "score": 0.3376,
+            "score": 0.3216,
             "description": "Tourism"
-          },
-          {
-            "entityId": "/m/06gfj",
-            "score": 0.252,
-            "description": "Road"
           }
         ],
         "visuallySimilarImages": [
           {
-            "url": "https://lookaside.instagram.com/seo/google_widget/crawler/?media_id=3765868902699100804"
+            "url": "https://static.accupass.com/eventintro/2608210914208830851370.jpg"
           },
           {
-            "url": "https://land-in-bewegung.rlp.de/fileadmin/_processed_/2/e/csm__CH54132_d19807757d.jpg"
+            "url": "https://mack.group/fileadmin/user_upload/1985-er%C3%B6ffnung-schweizer-themenbereich.jpg"
           },
           {
-            "url": "https://media.licdn.com/dms/image/v2/D4D22AQEdQ89fXrCbCw/feedshare-shrink_800/B4DZ.FWAJ4JwAc-/0/1784648565910?e=2147483647&v=beta&t=l-_bv1JFynE2R2FlR30cU-xJk9CzSEMc8R551hRKqLA"
+            "url": "https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=1538084914790133"
           },
           {
-            "url": "https://www.publichealth.pitt.edu/sites/default/files/styles/lan/public/landing-img/53687063239_571a10baa7_c.jpg?h=24ef4fb8&itok=AKPfzx5F"
-          },
-          {
-            "url": "https://pbs.twimg.com/media/Gie0eI3WwAAirKh.jpg"
-          },
-          {
-            "url": "https://assets.app.luxembourg-city.com/data/thumbs/a24f4be0-f079-11ec-93ce-a3a5ec3c9f82.jpg"
-          },
-          {
-            "url": "https://carnevale.venezia.it/wp-content/uploads/2019/03/GIR_-CARNEVALE-MESTRE-1068.jpg"
-          },
-          {
-            "url": "https://lookaside.fbsbx.com/lookaside/crawler/threads/DXzmx3XjtSd/0/image.jpg"
-          },
-          {
-            "url": "https://media.npr.org/assets/img/2021/01/06/gettyimages-1230455089_custom-5b74b29c2ef5e759a98475c8f2bc8b4e2dc1e282.jpg"
+            "url": "https://www.svenskakyrkan.se/bilder/ikon/5001-Nationella-bilder/1141643.jpg?doprocessing=1&w=800"
           },
           {
             "url": "https://www.barcelona.cat/imatges/ca/downloadfile"
+          },
+          {
+            "url": "https://www.nationalobserver.com/sites/default/files/styles/article_card_default_xs_2x/public/img/2020/02/14/womens_march-9.jpg.jpeg?itok=SdMrHygk"
+          },
+          {
+            "url": "https://static01.nyt.com/images/2021/03/23/us/23boulder-victims2/merlin_185453850_66fe7239-1af2-4f92-bcac-5a1b4f8269a6-videoSixteenByNineJumbo1600.jpg"
+          },
+          {
+            "url": "https://media.wired.com/photos/5ff75c5a45291e6236508543/1:1/w_1600,h_1600,c_limit/OpEd-Mob-1230459369.jpg"
+          },
+          {
+            "url": "https://i0.wp.com/www.newwaysministry.org/wp-content/uploads/2025/09/06int-vatican-lgbtq-jubilee-qwkg-superJumbo.webp?fit=2048%2C1365&ssl=1"
+          },
+          {
+            "url": "https://images.wral.com/099b1088-6a94-5de6-96f6-7e644858ebee?w=1200&h=630"
           }
         ],
         "bestGuessLabels": [
@@ -1295,62 +1315,57 @@
     "9db5da31119ab9d43570593c7df41024f094f2fc9cd75d4ad22042a1779e4425": {
       "asset_id": "bafybeihzpay7fnbrcltlcqucemfc3gepc2zrfpkqmyb73pnbehrranedva",
       "query_image_ref": "https://dia-cdn.numbersprotocol.io/thumbnails/2024/01/08/05/05/57/K0D9QqanuwYQT7C7yhV2_014_wix_20240103.jpg",
-      "created_at": "2026-08-13T04:02:10.706Z",
-      "expires_at": "2026-09-12T04:02:10.706Z",
+      "created_at": "2026-09-13T03:34:59.160Z",
+      "expires_at": "2026-10-13T03:34:59.160Z",
       "max_results": 10,
       "webDetection": {
         "webEntities": [
           {
             "entityId": "/m/0p9xx",
-            "score": 0.40646443,
+            "score": 0.41312554,
             "description": "Visual Arts"
           },
           {
             "entityId": "/m/0jjw",
-            "score": 0.3478,
+            "score": 0.3542,
             "description": "Art"
           },
           {
             "entityId": "/g/120yrv6h",
-            "score": 0.3376,
+            "score": 0.3216,
             "description": "Tourism"
-          },
-          {
-            "entityId": "/m/06gfj",
-            "score": 0.252,
-            "description": "Road"
           }
         ],
         "visuallySimilarImages": [
           {
-            "url": "https://lookaside.instagram.com/seo/google_widget/crawler/?media_id=3765868902699100804"
+            "url": "https://static.accupass.com/eventintro/2608210914208830851370.jpg"
           },
           {
-            "url": "https://land-in-bewegung.rlp.de/fileadmin/_processed_/2/e/csm__CH54132_d19807757d.jpg"
+            "url": "https://mack.group/fileadmin/user_upload/1985-er%C3%B6ffnung-schweizer-themenbereich.jpg"
           },
           {
-            "url": "https://media.licdn.com/dms/image/v2/D4D22AQEdQ89fXrCbCw/feedshare-shrink_800/B4DZ.FWAJ4JwAc-/0/1784648565910?e=2147483647&v=beta&t=l-_bv1JFynE2R2FlR30cU-xJk9CzSEMc8R551hRKqLA"
+            "url": "https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=1538084914790133"
           },
           {
-            "url": "https://www.publichealth.pitt.edu/sites/default/files/styles/lan/public/landing-img/53687063239_571a10baa7_c.jpg?h=24ef4fb8&itok=AKPfzx5F"
-          },
-          {
-            "url": "https://pbs.twimg.com/media/Gie0eI3WwAAirKh.jpg"
-          },
-          {
-            "url": "https://assets.app.luxembourg-city.com/data/thumbs/a24f4be0-f079-11ec-93ce-a3a5ec3c9f82.jpg"
-          },
-          {
-            "url": "https://carnevale.venezia.it/wp-content/uploads/2019/03/GIR_-CARNEVALE-MESTRE-1068.jpg"
-          },
-          {
-            "url": "https://lookaside.fbsbx.com/lookaside/crawler/threads/DXzmx3XjtSd/0/image.jpg"
-          },
-          {
-            "url": "https://media.npr.org/assets/img/2021/01/06/gettyimages-1230455089_custom-5b74b29c2ef5e759a98475c8f2bc8b4e2dc1e282.jpg"
+            "url": "https://www.svenskakyrkan.se/bilder/ikon/5001-Nationella-bilder/1141643.jpg?doprocessing=1&w=800"
           },
           {
             "url": "https://www.barcelona.cat/imatges/ca/downloadfile"
+          },
+          {
+            "url": "https://www.nationalobserver.com/sites/default/files/styles/article_card_default_xs_2x/public/img/2020/02/14/womens_march-9.jpg.jpeg?itok=SdMrHygk"
+          },
+          {
+            "url": "https://static01.nyt.com/images/2021/03/23/us/23boulder-victims2/merlin_185453850_66fe7239-1af2-4f92-bcac-5a1b4f8269a6-videoSixteenByNineJumbo1600.jpg"
+          },
+          {
+            "url": "https://media.wired.com/photos/5ff75c5a45291e6236508543/1:1/w_1600,h_1600,c_limit/OpEd-Mob-1230459369.jpg"
+          },
+          {
+            "url": "https://i0.wp.com/www.newwaysministry.org/wp-content/uploads/2025/09/06int-vatican-lgbtq-jubilee-qwkg-superJumbo.webp?fit=2048%2C1365&ssl=1"
+          },
+          {
+            "url": "https://images.wral.com/099b1088-6a94-5de6-96f6-7e644858ebee?w=1200&h=630"
           }
         ],
         "bestGuessLabels": [
@@ -1363,40 +1378,40 @@
     "a3a773f6af7e7274c25b8dd37950293d7a9af77c1f714432bf0845b6c741bda0": {
       "asset_id": "bafybeif4yy6k2zw5qmbwduanbo5uwrjbdeubvqugdigvuwmsozpq5fj2yi",
       "query_image_ref": "https://dia-cdn.numbersprotocol.io/thumbnails/2024/01/08/05/19/26/0X84FoHbyhaDXm09bmIw_015_wix_20240103.jpg",
-      "created_at": "2026-08-13T04:02:14.008Z",
-      "expires_at": "2026-09-12T04:02:14.008Z",
+      "created_at": "2026-09-13T03:35:04.706Z",
+      "expires_at": "2026-10-13T03:35:04.706Z",
       "max_results": 10,
       "webDetection": {
         "visuallySimilarImages": [
           {
-            "url": "https://media.licdn.com/dms/image/v2/D5622AQEhr_0wOoHFJg/feedshare-shrink_800/B56Z_h5cvWG4Ac-/0/1786201361579?e=2147483647&v=beta&t=TNtr2mQjEQNalOIyD77NPJ3_paPc0Mxe3koJcJA3pkw"
+            "url": "https://www.tiktok.com/api/img/?itemId=7682396322019921172&location=0&aid=1988"
           },
           {
-            "url": "https://www.news.cn/asia/20260810/9c20ad80725c4692a1aeb6d1ac8c17e7/ea38cad3badd4d3aa2dc92c7d69e7895.jpg"
+            "url": "https://i.ytimg.com/vi/sFS8uxD5hcA/hqdefault.jpg"
           },
           {
-            "url": "https://pds.joongang.co.kr/news/component/htmlphoto_mmdata/202608/13/45265076-3d16-451f-b5bd-1f8edfb23b35.jpg/_ir_966x542_/t.jpg"
+            "url": "https://www.mofe.go.kr/upload/img/2026/08/20260813152905_7418583.jpg"
           },
           {
-            "url": "https://live.staticflickr.com/65535/55431973688_5e483a9525_z.jpg"
+            "url": "https://i.ytimg.com/vi/Td5kWEYy0cg/hqdefault.jpg"
           },
           {
-            "url": "https://web.komdigi.go.id/resource/dXBsb2Fkcy8yMDI1LzkvMTkvYTJiMzEzZDItOTEwNy00YjgwLWJmOTEtYjdiZGNjNjc5MWYwLmpwZWc="
+            "url": "https://i.ytimg.com/vi/IhBKbc213ws/hqdefault_custom_1.jpg?sqp=CKzRl9UG&rs=AOn4CLDhaSG_T84kEcRrv1XWzxgn4ODkzg"
           },
           {
-            "url": "https://www.cnpiw.cn/uploads/allimg/260526/74-2605260Z144519-lp.png"
+            "url": "https://i.ytimg.com/vi/h7fNAHlLPiQ/hqdefault.jpg"
           },
           {
-            "url": "https://media.licdn.com/dms/image/v2/D5622AQG5FYDBPaxNyQ/feedshare-shrink_800/B56ZyO4hp3IAAg-/0/1771923708850?e=2147483647&v=beta&t=dkuy6rboT60Qv0jpeqvR8GIQ9sJ4uwbxLw4b60D4_jY"
+            "url": "https://i.ytimg.com/vi/2uuwjSQCJ6k/sddefault.jpg"
           },
           {
-            "url": "https://pbs.twimg.com/media/HOufFCKacAA7TkV.jpg"
+            "url": "https://i.ytimg.com/vi/N03pgsnWHQI/hqdefault.jpg"
           },
           {
-            "url": "https://www.shhuangpu.gov.cn/main/CommonDataPics/bef62cb9-b6fa-4e37-bbfa-a1c94b64b515/bef62cb9-b6fa-4e37-bbfa-a1c94b64b515.jpg"
+            "url": "https://aiesec.org/_next/image?url=%2Fassets%2Fimages%2Fgv-youth-support-image.png&w=1440&q=75"
           },
           {
-            "url": "https://www.dlc.ntu.edu.tw/wp-content/uploads/2020/10/1080906_2_%E9%96%8B%E5%B9%95%E9%A0%92%E7%8D%8E-33-400x284.jpg"
+            "url": "http://img.youtube.com/vi/PfsDBq5jsw4/maxresdefault.jpg"
           }
         ],
         "bestGuessLabels": [
@@ -1409,47 +1424,40 @@
     "eace126ef2587eaba8d72424a26d02b9fc1a7abcc9119fff4996667bad59595e": {
       "asset_id": "bafybeiegg7bclrpstiiz674gilpvhgtw7go5dfz6eqirp2p6uvn73ichtq",
       "query_image_ref": "https://dia-cdn.numbersprotocol.io/thumbnails/2024/01/08/05/33/18/yT2kLm0sGDWqYG7LAgMI_012_wix_20240103.jpg",
-      "created_at": "2026-08-13T04:02:25.218Z",
-      "expires_at": "2026-09-12T04:02:25.218Z",
+      "created_at": "2026-09-13T03:35:17.411Z",
+      "expires_at": "2026-10-13T03:35:17.411Z",
       "max_results": 10,
       "webDetection": {
-        "webEntities": [
-          {
-            "entityId": "/m/06gfj",
-            "score": 0.2537,
-            "description": "Road"
-          }
-        ],
         "visuallySimilarImages": [
           {
-            "url": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/30/16/6f/d3/caption.jpg?w=1100&h=1100&s=1"
+            "url": "https://lookaside.instagram.com/seo/google_widget/crawler/?media_id=3976374462894894929"
           },
           {
-            "url": "https://source.ichongqing.info/2021/11/Jiefangbei-2020-0014.jpg?x-oss-process=image/resize,m_fill,w_2000,h_1333"
-          },
-          {
-            "url": "https://media.cnn.com/api/v1/images/stellar/prod/gettyimages-2235198789.jpg?c=original"
+            "url": "https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=1218589163637500"
           },
           {
             "url": "https://images.theconversation.com/files/602843/original/file-20240625-18-jjyasg.jpg?ixlib=rb-4.1.1&q=45&auto=format&w=754&fit=clip"
           },
           {
-            "url": "https://assets3.thrillist.com/v1/image/3191755/792x528/scale;webp=auto;jpeg_quality=60;progressive.jpg"
+            "url": "https://cms-image-bucket-productionv3-ap-northeast-1-a7d2.s3.ap-northeast-1.amazonaws.com/images/5/1/3/9/12109315-1-eng-GB/a2b14aa10177-fff.jpg"
           },
           {
-            "url": "https://dw-media.dotdotnews.com/dams/share/image/202505/02/68145645e4b0e62e723b3bfb_v1.jpg"
+            "url": "https://dw-media.dotdotnews.com/dams/product/image/202504/17/6800d79be4b0e62e72364ca2_v1.png"
           },
           {
-            "url": "https://admin.expatica.com/jp/wp-content/uploads/sites/18/2023/11/cost-of-living-in-japan.jpg"
+            "url": "https://asiafoundation.org/wp-content/uploads/2022/02/KualaLumpur_Malaysia_women-with-umbrella-in-sunshine_LeandroJusten.jpg"
           },
           {
-            "url": "https://www.taiwantourism.org/th/wp-content/uploads/2023/08/pic-30.jpeg"
+            "url": "https://widerimage.reuters.com/images/e9hyHkaRFZdDV_jLZuTS6lFFT91IqJoyBjkqGs7w0JPvJbqe6ysJf5l76ZHxq1FLydnzM-JK74xPAy7SCBZ95Q.jfif"
           },
           {
-            "url": "https://images.ft.com/v3/image/raw/https%3A%2F%2Fcms-image-bucket-productionv3-ap-northeast-1-a7d2.s3.ap-northeast-1.amazonaws.com%2Fimages%2F7%2F4%2F4%2F5%2F12755447-2-eng-GB%2F90dce52d4240-photo_SXM2026070600003917.jpg?fit=cover&gravity=faces&dpr=2&quality=medium&source=nar-cms&format=auto&width=300&height=168"
+            "url": "https://static01.nyt.com/images/2023/03/25/travel/cn16-36hours-taipei-03-htbl-copy/16-36hours-taipei-03-htbl-master1050.jpg"
           },
           {
-            "url": "https://media.istockphoto.com/id/803226558/photo/the-busy-streets-of-hongkong.jpg?s=612x612&w=0&k=20&c=DyZ_tZG6IP8gxODiTnRBz12l7_G2ja8nmMOMjcO0TH4="
+            "url": "https://theedgemalaysia.com/_next/image?url=https%3A%2F%2Fassets.theedgemarkets.com%2F20250217_PLA_STREET%20VIEW_BUKIT%20BINTANG_4_LYY_theedgemalaysia_20250514163217_theedgemalaysia_2.jpg&w=640&q=75"
+          },
+          {
+            "url": "https://www.landesa.org/wp-content/uploads/2016/05/slide-6.jpg"
           }
         ],
         "bestGuessLabels": [
@@ -1462,47 +1470,40 @@
     "77cb1dc7f4fdc8e188d8b5ce76bd36c7530adf5a842380157561f238043cb348": {
       "asset_id": "bafybeiegmheqitc4n5u7hlviqo5nu6yb4tz66ihcchni7zikwzctunrscm",
       "query_image_ref": "https://dia-cdn.numbersprotocol.io/thumbnails/2024/01/08/05/35/21/7ZOMuHITit7Zr4w9SZty_013_wix_20240103.jpg",
-      "created_at": "2026-08-13T04:02:32.922Z",
-      "expires_at": "2026-09-12T04:02:32.922Z",
+      "created_at": "2026-09-13T03:35:26.349Z",
+      "expires_at": "2026-10-13T03:35:26.349Z",
       "max_results": 10,
       "webDetection": {
-        "webEntities": [
-          {
-            "entityId": "/m/02cwf_",
-            "score": 0.31219906,
-            "description": "Shrine"
-          }
-        ],
         "visuallySimilarImages": [
           {
             "url": "https://avatars.mds.yandex.net/get-vertis-journal/4469561/matze-bob-td_n8EEcDlE-unsplash.jpg_1715758545401/orig"
           },
           {
-            "url": "https://pbs.twimg.com/media/DtmQgOtWsAAEism.jpg"
+            "url": "https://cdn-ak.f.st-hatena.com/images/fotolife/c/clanker208/20260509/20260509120432.jpg"
           },
           {
             "url": "https://www.theparisianguide.com/wp-content/uploads/2024/03/Les-Pavillons-de-Bercy-%E2%80%93-Museum-of-Fairground-Arts-11.jpg"
           },
           {
-            "url": "https://lookaside.instagram.com/seo/google_widget/crawler/?media_id=3922724542833430342"
+            "url": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0d/d0/b0/82/exposicion-de-titeres.jpg?w=500&h=500&s=1"
           },
           {
-            "url": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0d/d0/b0/82/exposicion-de-titeres.jpg?w=1200&h=1200&s=1"
+            "url": "https://thumbs.dreamstime.com/b/india-uttarakhand-haridwar-priest-performs-aarti-ritual-india-uttarakhand-haridwar-priest-performs-aarti-ritual-471817425.jpg"
           },
           {
-            "url": "https://www.dolceresio.ch/wp-content/uploads/2022/03/Processioni-venerdi.jpg"
+            "url": "https://asia-concierge.com/fm/Files//Market%20Place/Singapore/singapore_LBPT6.webp"
           },
           {
-            "url": "https://archives.scu.edu.cn/__local/E/7E/F2/5E73CB1BD68B5D987040B294464_28FD8BC8_13C5A.jpg"
+            "url": "https://www.tiktok.com/api/img/?itemId=7679614325132184845&location=3&aid=1988&index=5"
           },
           {
-            "url": "https://www.taiwan66.com.tw/uploads/panoramas/355/thumbs/ec1470ddce4950dcbaf17510b7debb05.jpg"
+            "url": "https://lookaside.instagram.com/seo/google_widget/crawler/?media_id=2770349146957102053"
           },
           {
-            "url": "https://www.fototrek.com/wp-content/uploads/2015/01/nepal003-700x400.jpg"
+            "url": "https://www.mendrisiottoturismo.ch/dam/jcr:997181d8-bca6-4a40-856d-548ffa9ad3fa/Processioni%20venerdi.jpg"
           },
           {
-            "url": "https://cdnmedia.baotintuc.vn/Upload/EqV5H9rWgvy9oNikwkHLXA/files/IMG_9933%20(800x533).jpg"
+            "url": "https://espanol.buddhistdoor.net/wp-content/uploads/2023/11/Picture-2-1.png"
           }
         ],
         "bestGuessLabels": [
@@ -1515,47 +1516,47 @@
     "e5a559a46f579333edc8e12889b72f9768dbdace4fff681d7fec649f7cdfe044": {
       "asset_id": "bafybeifv4tr3hkkrxn5htczat2pgh75podmaj4vmxhofxf2bd6quevsf3u",
       "query_image_ref": "https://dia-cdn.numbersprotocol.io/thumbnails/2024/01/08/05/40/00/WJFlJRDJdGPtVMCDmebi_011_wix_20240103.jpg",
-      "created_at": "2026-08-13T04:02:43.482Z",
-      "expires_at": "2026-09-12T04:02:43.482Z",
+      "created_at": "2026-09-13T03:35:36.370Z",
+      "expires_at": "2026-10-13T03:35:36.370Z",
       "max_results": 10,
       "webDetection": {
         "webEntities": [
           {
             "entityId": "/g/11t7gznd8d",
-            "score": 0.4307,
+            "score": 0.431,
             "description": "light-hearted"
           }
         ],
         "visuallySimilarImages": [
           {
-            "url": "https://amee.org/wp-content/uploads/2026/03/Delegates-smiling-for-the-camera.webp"
+            "url": "https://pbs.twimg.com/media/HSBhW1HaMAAmf22?format=webp&name=medium"
           },
           {
-            "url": "https://media.licdn.com/dms/image/v2/D5622AQHSfYA81Y0Rvw/feedshare-shrink_800/B56Z_iGoUFHcAg-/0/1786204817626?e=2147483647&v=beta&t=7RHnzaAGQZsKl96lo73-Gtxw8oNdR00Kzh_p0D8zE1I"
+            "url": "https://i.ytimg.com/vi/cCBnMvtz8qM/hqdefault_custom_1.jpg?sqp=CKzRl9UG&rs=AOn4CLA7l2DnF7A3gHW9TkyMJXxU_s2xtA"
           },
           {
-            "url": "https://cdn.i-scmp.com/sites/default/files/d8/images/canvas/2026/02/13/0deddfc5-8561-497f-acae-e9f12fa98d72_3d2fa0d3.jpg"
+            "url": "https://i.ytimg.com/vi/MwVDX-xxZ4o/hqdefault.jpg"
           },
           {
-            "url": "https://www.news.cn/asia/20260810/9c20ad80725c4692a1aeb6d1ac8c17e7/ea38cad3badd4d3aa2dc92c7d69e7895.jpg"
+            "url": "https://i.ytimg.com/vi/1gD1Q5n7-cs/hqdefault.jpg"
           },
           {
-            "url": "https://framerusercontent.com/images/kzF3l4C0CmLREGMKztlMCsVA5mk.jpg?width=1622&height=1079"
+            "url": "https://i.ytimg.com/vi/sFS8uxD5hcA/hqdefault.jpg"
           },
           {
-            "url": "https://www.thetimes.com/imageserver/image/%2F30c16f97-b06e-4190-91e0-b8a1e483e555.jpg?crop=3500%2C2333%2C0%2C0&resize=750"
+            "url": "https://i.ytimg.com/vi/lay8y3yGsaE/hqdefault_custom_2.jpg?sqp=CKzRl9UG&rs=AOn4CLCwwrupNBWMHdgoqPFpz_RM5I-TZw"
           },
           {
-            "url": "https://img.ltn.com.tw/Upload/news/300/2026/08/12/phpWPy5O5.jpg"
+            "url": "https://i.ytimg.com/vi/Y2OOUeqFi3A/hqdefault.jpg"
           },
           {
-            "url": "https://www.viarail.ca/sites/all/files/media/autochtones/promote-inclusive.png"
+            "url": "https://img.youtube.com/vi/BP15EqvIQ_w/0.jpg"
           },
           {
-            "url": "https://i.ytimg.com/vi/rY_S9CP0Y6A/maxresdefault.jpg"
+            "url": "https://lookaside.instagram.com/seo/google_widget/crawler/?media_id=3972906568991900256"
           },
           {
-            "url": "https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=1612552570221985"
+            "url": "https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=1793850958638213&get_thumbnail=1"
           }
         ],
         "bestGuessLabels": [
@@ -1568,52 +1569,52 @@
     "9e97f2abcac223ec4f776010236515aa9e73200dd4a3a9b833e37965a8f3f1e9": {
       "asset_id": "bafybeicmcqcbsyfmoemzogrqga6rs6npwkif7y45yed7cbk7bz6dfnd57e",
       "query_image_ref": "https://dia-cdn.numbersprotocol.io/thumbnails/2024/01/08/05/42/55/K66xrnzEY0hCnxIBvaCt_009_wix_20240103.jpg",
-      "created_at": "2026-08-13T04:02:47.286Z",
-      "expires_at": "2026-09-12T04:02:47.286Z",
+      "created_at": "2026-09-13T03:35:38.852Z",
+      "expires_at": "2026-10-13T03:35:38.852Z",
       "max_results": 10,
       "webDetection": {
         "webEntities": [
           {
             "entityId": "/g/11t7gznd8d",
-            "score": 0.4307,
+            "score": 0.431,
             "description": "light-hearted"
           },
           {
             "entityId": "/m/016c4t",
-            "score": 0.33724082,
+            "score": 0.34771457,
             "description": "Ceremony"
           }
         ],
         "visuallySimilarImages": [
           {
-            "url": "https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=1470440385113970"
+            "url": "https://imgcdn.cna.com.tw/www/WebPhotos/800/20260906/1024x768_wmky_0_C20260906000095.jpg"
           },
           {
-            "url": "https://www.seu.edu.cn/_upload/article/images/bb/85/0d45afed4bab8fa523af8d2b70de/38b35ea7-3e31-4c5a-86f4-9346ee5f7395.jpg"
+            "url": "https://www-ws.gov.taipei/001/Upload/334/relpic/66455/9703796/c8666193-e6af-46af-bb24-d079a8ca2766@710x470.jpg"
           },
           {
-            "url": "https://en.jisu.edu.cn/__local/6/BB/3C/6B8306A5F26D93B938C0A0860EE_CDD72BFE_39C45.jpg"
+            "url": "https://www.bta.bg/upload/13861992/a60b8474a0954b30add0f67c68ca5abd--0--b91c809dbe5e458da3cf0ac2faf7d343.jpg?l=650&original="
           },
           {
-            "url": "https://wimg.mk.co.kr/svc/desking/1000/index/202608/A12126019_242_20260813055953.png"
+            "url": "https://img2.chinadaily.com.cn/images/202606/04/6a217af3a310d68600fed212.jpeg"
           },
           {
-            "url": "https://www.asahicom.jp/articles/images/AS20260721001755_comm.jpg"
+            "url": "https://p3.img.cctvpic.com/photoAlbum/page/performance/img/2019/3/12/1552397396395_121.jpg"
           },
           {
-            "url": "https://www.tpa.edu.tw/var/file/0/1000/randimg/mobileadv_1639_4255880_81216.jpg"
+            "url": "https://i.ytimg.com/vi/Lzpj36KgM0I/hq720.jpg?sqp=-oaymwE7CK4FEIIDSFryq4qpAy0IARUAAAAAGAElAADIQj0AgKJD8AEB-AH-CYAC0AWKAgwIABABGHIgRyg7MA8=&rs=AOn4CLB9NAtICycvIJVmrDtLfxZXIFr-RA"
           },
           {
-            "url": "https://www.chosun.com/resizer/v2/T6VWXNVTQJP6PHGYR7XSEV3LUE.JPG?auth=5815d98aec7271ceef541b4c5841f8c2373aac2acd1bcff8cbaa3a639b2ce2c0&width=616&height=462&smart=true"
+            "url": "https://www.sejong.go.kr/thumbnail/R0141/BBS_0000196068Yit0lDO0.jpg"
           },
           {
-            "url": "https://www.ph.emb-japan.go.jp/files/101025537.jpg"
+            "url": "https://www.thetimes.com/imageserver/image/%2F53af181c-1fc0-45d3-b166-4dfb51822bdf.jpg?crop=4367%2C2911%2C0%2C0&resize=750"
           },
           {
-            "url": "https://m.ktv.go.kr/media/contents/image/2026/08/07/DjlU4eRB1j.jpg"
+            "url": "https://cms-image-bucket-productionv3-ap-northeast-1-a7d2.s3.ap-northeast-1.amazonaws.com/images/1/1/6/4/12094611-1-eng-GB/7f73d7776bd6-20260205-CUC-img.jpg"
           },
           {
-            "url": "https://pbs.twimg.com/media/HPbIvnWbsAAMLbb.jpg"
+            "url": "https://lookaside.fbsbx.com/lookaside/crawler/threads/DdJPJKxgfC0/3/image.jpg"
           }
         ],
         "bestGuessLabels": [
@@ -1626,47 +1627,47 @@
     "37f9d1ced4d6e47591dc6937da36a7b04261724ee0a668ba07866fcbb6d3fbf2": {
       "asset_id": "bafybeig6itpwombitzsnyehlzb3f6nbhnl5d4xq7eljcquapwwwgpnah6i",
       "query_image_ref": "https://dia-cdn.numbersprotocol.io/thumbnails/2024/01/08/05/53/32/vy3KWaEzSEd81rd8Jdyn_008_wix_20240103.jpg",
-      "created_at": "2026-08-13T04:03:03.217Z",
-      "expires_at": "2026-09-12T04:03:03.217Z",
+      "created_at": "2026-09-13T03:35:50.280Z",
+      "expires_at": "2026-10-13T03:35:50.280Z",
       "max_results": 10,
       "webDetection": {
         "webEntities": [
           {
             "entityId": "/m/09cynt",
-            "score": 0.2891267,
+            "score": 0.29133332,
             "description": "Convention"
           }
         ],
         "visuallySimilarImages": [
           {
-            "url": "https://www.news.cn/asia/20260810/9c20ad80725c4692a1aeb6d1ac8c17e7/ea38cad3badd4d3aa2dc92c7d69e7895.jpg"
+            "url": "https://www.mafra.go.kr/sites/home/atchmnfl/bbs/797/thumbnail/thumb_temp_1788916486222100.jpg"
           },
           {
-            "url": "https://live.staticflickr.com/65535/55431973688_5e483a9525_z.jpg"
+            "url": "https://www.tiktok.com/api/img/?itemId=7418264050141875474&location=3&aid=1988&index=3"
           },
           {
-            "url": "https://english.ey.gov.tw/File/FD23CB7A2B24FFD1"
+            "url": "http://221.7.41.89:9114/filemanager/newDownloadFile?file_path=mXR4Rir+uR2r2TkHCstrMfIg3Mo8gLx+4isEB001Mc9lgp41qHLvD5IUxCOtrfZUwMmSCk2xeV40KaT2+r+EkTO8dj6wFSoY7KhbNiD4RJ8="
           },
           {
-            "url": "https://cdn.news.skbroadband.com/news/thumbnail/custom/20260812/234297_240201_5323_1786002805_500.jpg"
-          },
-          {
-            "url": "https://img2.yna.co.kr/photo/yna/YH/2026/08/11/PYH2026081104380001300_P1.jpg"
-          },
-          {
-            "url": "https://pds.joongang.co.kr/news/component/htmlphoto_mmdata/202608/11/d5df1221-109e-4bbd-8006-4d927ddb3c5a.jpg/_ir_410x230_/t.jpg"
-          },
-          {
-            "url": "https://imgcdn.cna.com.tw/www/WebPhotos/800/20260809/1365x768_wmky_0_C20260809000097.jpg"
-          },
-          {
-            "url": "https://www.acrc.go.kr/upload/chairPerson/a1/20260624104123341.jpg"
-          },
-          {
-            "url": "https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=1452868240203551"
+            "url": "https://lookaside.instagram.com/seo/google_widget/crawler/?media_id=3964278407717961402"
           },
           {
             "url": "https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=1547812384040338"
+          },
+          {
+            "url": "https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=1053439707432894"
+          },
+          {
+            "url": "https://www.mofe.go.kr/upload/img/2026/08/20260821110037_234156931.jpg"
+          },
+          {
+            "url": "https://images.ctfassets.net/hw8svez3e0ju/4Em4vr8uYXeCF4kx9qiY9z/5f74a3500737541b85e5653f257276a6/decision-makers_4x.png"
+          },
+          {
+            "url": "https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=1642518977225344"
+          },
+          {
+            "url": "https://lookaside.instagram.com/seo/google_widget/crawler/?media_id=3978116027647390173"
           }
         ],
         "bestGuessLabels": [
@@ -1679,40 +1680,40 @@
     "56a9c3c8c8c9b3bb3e2ff6b7b39493a1ab6e36fd4099a365371d02505eb0bf6a": {
       "asset_id": "bafybeihjhutmlnxszxiu5pck4kvxt6y5mgyskxyl6mjj6a3gdn2n6c4oc4",
       "query_image_ref": "https://dia-cdn.numbersprotocol.io/thumbnails/2024/01/08/05/54/57/J3vL7HzrZWu5l8aB9dUx_006_wix_20240103.jpg",
-      "created_at": "2026-08-13T04:03:25.678Z",
-      "expires_at": "2026-09-12T04:03:25.678Z",
+      "created_at": "2026-09-13T03:36:17.407Z",
+      "expires_at": "2026-10-13T03:36:17.407Z",
       "max_results": 10,
       "webDetection": {
         "visuallySimilarImages": [
           {
-            "url": "https://www.ey.gov.tw/File/53BDC09018F2F452"
+            "url": "https://www.dementia.org.au/_next/image?url=https%3A%2F%2Fcms.dementia.org.au%2Fsites%2Fdefault%2Ffiles%2Fstyles%2Fcard%2Fpublic%2F2026-08%2FDanny-Resina-Spring-2026-Spotlight-banner.png%3Fh%3D954c3d92%26itok%3DUFn5xslV&w=1920&q=75"
           },
           {
-            "url": "https://lookaside.fbsbx.com/lookaside/crawler/instagram/ngakorming.official/profile_pic.jpg"
+            "url": "https://i.ytimg.com/vi/mPgc3tdPzU0/maxresdefault.jpg"
           },
           {
-            "url": "https://cdn.news.skbroadband.com/news/thumbnail/custom/20260812/234297_240201_5323_1786002805_500.jpg"
+            "url": "https://www.osaka-u.ac.jp/ja/files/640r4s/@@images/image"
           },
           {
-            "url": "https://www.fao.org/media/images/loblibraries/agriculture-images/dg-portraitnew092025-cropped68b214b91526448c8438e26e2353b3c0.jpg?sfvrsn=9f9450f5_1"
+            "url": "https://dam.mediacorp.sg/image/upload/s--xbtMG50E--/c_crop,h_608,w_760,x_170,y_0/c_fill,g_center,h_598,w_747/fl_relative,g_south_east,l_mediacorp:cna:watermark:2021-08:cna,w_0.1/f_auto,q_auto/v1/mediacorp/cna/image/2026/08/14/otrd_oyk.jpg?itok=ow9wXtrJ"
           },
           {
-            "url": "https://amee.org/wp-content/uploads/2026/03/Delegates-smiling-for-the-camera.webp"
+            "url": "http://www.counsellor.gov.cn/20260708/cb659d7437ff4c0fa9508c1fd32c0af6/94eaafa17a784c0ab6389aa8739f7638.png"
           },
           {
-            "url": "https://www.thetimes.com/imageserver/image/%2F30c16f97-b06e-4190-91e0-b8a1e483e555.jpg?crop=3500%2C2333%2C0%2C0&resize=750"
+            "url": "https://www.morganstanley.com/content/dam/msdotcom/ideas/exceptional-leaders-exceptional-ideas-singtel/tile-exceptional-leaders-exceptional-ideas-singtel.jpg.img.410.medium.jpg/1755112299125.jpg"
           },
           {
-            "url": "https://www.imd.org/wp-content/uploads/2023/04/20231115-Centers-GFB-Overview-SmallCard-4a-740x374-1.jpg.webp"
+            "url": "https://p5.img.cctvpic.com/fmspic/2023/11/14/d7c599c2d11b4138850b5ce9252374db-1.jpg"
           },
           {
-            "url": "https://news-images.tvbs.com.tw/api/v1/image/019ff8bb-82f6-72c4-9f5d-82b94cca0fa9.jpg?w=1067&h=600&t=16x9&c=0,0,1200,675"
+            "url": "https://students.ieee.org/wp-content/uploads/2026/04/1544462812904-1.jpg"
           },
           {
-            "url": "https://scholars.cityu.edu.hk/ws/files/7274746/1_POL_FAN_Ruiping_Photo.jpg"
+            "url": "https://www.ateneo.edu/sites/default/files/styles/large/public/2022-01/rcy-photoshoot-informal-ofc.JPG?itok=fbQMcG5h"
           },
           {
-            "url": "https://energy.mit.edu/wp-content/uploads/2024/08/DurableMetals_061.jpg"
+            "url": "https://www.hkbu.edu.hk/content/dam/hongkongbaptistuniversity/hkbu-assets/image/about-hkbu/7.0_about_HKBU_04.jpg"
           }
         ],
         "bestGuessLabels": [
@@ -1725,51 +1726,51 @@
     "97e91554c68cb2dfa6d577fd284ef4478cd7a465f346558e5b51d2387c783019": {
       "asset_id": "bafybeihkxtfdc45qysbmhaf5uooigb5eg6347hfvseh3j3vj5eynp464je",
       "query_image_ref": "https://dia-cdn.numbersprotocol.io/thumbnails/2024/01/08/06/01/41/2WyRtcypb0V4qXSUHxLt_005_wix_20240103.jpg",
-      "created_at": "2026-08-13T04:03:33.801Z",
-      "expires_at": "2026-09-12T04:03:33.801Z",
+      "created_at": "2026-09-13T03:36:24.949Z",
+      "expires_at": "2026-10-13T03:36:24.949Z",
       "max_results": 10,
       "webDetection": {
         "webEntities": [
           {
-            "entityId": "/t/24mypdx4svpvn",
-            "score": 0.3034
+            "entityId": "/m/016c4t",
+            "score": 0.3155963,
+            "description": "Ceremony"
           },
           {
-            "entityId": "/m/06gfj",
-            "score": 0.2535,
-            "description": "Road"
+            "entityId": "/t/24mypdx4svpvn",
+            "score": 0.3031
           }
         ],
         "visuallySimilarImages": [
           {
-            "url": "https://lookaside.instagram.com/seo/google_widget/crawler/?media_id=3950698308655846129"
-          },
-          {
-            "url": "https://www.pdpc.gov.sg/assets/e956e7e5-4193-4fca-8298-5b5643ed7931.webp"
-          },
-          {
-            "url": "https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=1557227919195582&get_thumbnail=1"
-          },
-          {
-            "url": "https://www.news.cn/asia/20260810/9c20ad80725c4692a1aeb6d1ac8c17e7/ea38cad3badd4d3aa2dc92c7d69e7895.jpg"
-          },
-          {
-            "url": "https://media.licdn.com/dms/image/v2/D5622AQHSfYA81Y0Rvw/feedshare-shrink_800/B56Z_iGoUFHcAg-/0/1786204817626?e=2147483647&v=beta&t=7RHnzaAGQZsKl96lo73-Gtxw8oNdR00Kzh_p0D8zE1I"
-          },
-          {
-            "url": "https://www.deakin.edu.au/__data/assets/image/0030/256881/43474_284x387_international_student_story.jpg"
-          },
-          {
-            "url": "https://www.stern.nyu.edu/sites/default/files/styles/480w_x_590h/public/2024-08/53720989916_0da3d459b1_o.jpg?h=8a8e33fe&itok=InGVsM_H"
-          },
-          {
-            "url": "https://media.zenfs.com/ko/newtalk.tw/e7a962e9f234d516a0e71851c0a2bb45.jpg"
-          },
-          {
-            "url": "https://cdn-web-main.bibliocms.com/wp-content/uploads/sites/3/2025/10/woman-reading-a-book-with-her-kids-888x444.jpg?ver=251014152605"
+            "url": "https://vod-benshipin-xhncloud.voc.com.cn/208/2026/09/08/d7e88a3ab0991c1e44750e78b58dcae0ccf5be561788863424875.png?pid=45010440"
           },
           {
             "url": "https://media.licdn.com/dms/image/v2/D5622AQH1Hu8XD1ihSw/feedshare-shrink_800/B56Z5O2QlTIsAc-/0/1779439307586?e=2147483647&v=beta&t=3q3BBcxbehu9wYYAeP9rUgfMEfndX8QUNsnh1OTHkBc"
+          },
+          {
+            "url": "https://lookaside.instagram.com/seo/google_widget/crawler/?media_id=3900935987149368336"
+          },
+          {
+            "url": "https://cfvod.kaltura.com/p/2621712/sp/262171200/thumbnail/entry_id/1_i7byfxgd/version/100051/width/478/height/269/width/478/height/269/type/3/quality/100"
+          },
+          {
+            "url": "https://www.yomiuri.co.jp/media/2026/04/20260402-GYT1I00438-T.jpg?type=PCTB_xx-large"
+          },
+          {
+            "url": "https://www.chusho.meti.go.jp/keiei/100oku/dl/movie2.jpg"
+          },
+          {
+            "url": "https://cdn2.ettoday.net/images/8105/c8105830.jpg"
+          },
+          {
+            "url": "https://video.cgtn.com/news/2026-07-13/They-re-still-stuck-in-2016-The-South-China-Sea-isn-t--1OKrk23NwAw/video/wu_1jtdf9tdvhue1md1oen11f0j4ve/wu_1jtdf9tdvhue1md1oen11f0j4ve.jpg"
+          },
+          {
+            "url": "https://dss0.zbstatic5.com/image/zaobao/c9a4d312fba421cf9971f22f0d931633742f0d293624ad29778d0b3e83c5174a"
+          },
+          {
+            "url": "https://imgs.gvm.com.tw/upload/gallery/20260527/thumbnail_M_232356.jpg"
           }
         ],
         "bestGuessLabels": [
@@ -1782,40 +1783,40 @@
     "08423af0e74dcfb886eb90335616372642e84e1851dcbc79c6b7142265678226": {
       "asset_id": "bafybeiama2ehvgfad7uo4jrdbvycspglru4tx5jgxmrppeatek5tluhk3y",
       "query_image_ref": "https://dia-cdn.numbersprotocol.io/thumbnails/2024/01/08/06/03/00/CUQ6Sq8mTB3YfX19Gkqw_004_wix_20240103.jpg",
-      "created_at": "2026-08-13T04:03:37.604Z",
-      "expires_at": "2026-09-12T04:03:37.604Z",
+      "created_at": "2026-09-13T03:36:38.544Z",
+      "expires_at": "2026-10-13T03:36:38.544Z",
       "max_results": 10,
       "webDetection": {
         "visuallySimilarImages": [
           {
+            "url": "https://media.licdn.com/dms/image/v2/D5622AQF12bkryjkm1w/feedshare-shrink_800/B56ZrEm3hAH8Ag-/0/1764235117587?e=2147483647&v=beta&t=WOW-O9xz1wIhriy5r-un-JkjZEeh0E5f1duIsXnihHA"
+          },
+          {
+            "url": "https://lookaside.instagram.com/seo/google_widget/crawler/?media_id=3950698308655846129"
+          },
+          {
+            "url": "https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=1392382273108045"
+          },
+          {
+            "url": "https://media-cldnry.s-nbcnews.com/image/upload/rockcms/2025-12/251208-Fei-Yuanxin-Zheng-vl-407p-7c7587.jpg"
+          },
+          {
             "url": "https://cdn-web-main.bibliocms.com/wp-content/uploads/sites/3/2025/10/woman-reading-a-book-with-her-kids-888x444.jpg?ver=251014152605"
           },
           {
-            "url": "https://warwick.ac.uk/study/short-courses/pre-sessional-english/pse_student_experience-s.jpg"
+            "url": "https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=1469970938494678"
           },
           {
-            "url": "https://commisceo-global.com/wp-content/uploads/2016/01/young-chinese-family.jpg"
+            "url": "https://uceap.universityofcalifornia.edu/sites/default/files/testimonials/tim_huang_profile.jpg"
           },
           {
-            "url": "https://www.cdc.gov/global-hiv-tb/media/images/2024/05/2024-05_Impact_Vietnam-Mother-and-Child_660x372.jpg"
+            "url": "https://cdn2.ettoday.net/images/8105/c8105830.jpg"
           },
           {
-            "url": "https://cdn.who.int/media/images/default-source/hero-images/seongbuk-home-health-care-center-republic-of-korea.tmb-1200v.jpg?sfvrsn=c16e03f1_20"
+            "url": "https://pakolaisapu.fi/wp-content/uploads/2025/08/DSC02985-verkko-rotated-e1755170865105.jpg.webp"
           },
           {
-            "url": "https://rsimg.sedaily.com/news/cms/2026/08/10/rcv.NEWS1.NEWS1.20260807.2026-08-07T102729_1008045436_POLITICS_I_R.jpg?type=f&w=699&h=466&faceopt=true"
-          },
-          {
-            "url": "https://www.mofe.go.kr/upload/img/2026/08/20260806131058_199934862.jpg"
-          },
-          {
-            "url": "https://imgs.cwgv.com.tw/articles/66/36766/preview/36766.png"
-          },
-          {
-            "url": "https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=1458424636293284"
-          },
-          {
-            "url": "https://www.js.chinanews.com.cn/U982P5T82D1F3252DT20260811091056.png"
+            "url": "https://media.licdn.com/dms/image/v2/D4E10AQHmwu_IEudHgA/image-shrink_800/B4EZ_iXx9LIkAg-/0/1786209313226?e=2147483647&v=beta&t=JW1lRnZV18o8P2yfddYipIrKWVdVwcbrhqvx8h9SAeo"
           }
         ],
         "bestGuessLabels": [
@@ -1828,14 +1829,14 @@
     "347ebc3b6687c3efa1a926f0a7eb036c696d72b138feed019cf58c3b60858d17": {
       "asset_id": "bafybeihtmhvxti4crwij3y7axvepvhvrucltrvjmhy4a2rwrfmvprcpuhu",
       "query_image_ref": "https://dia-cdn.numbersprotocol.io/thumbnails/2024/01/08/06/04/14/aDveqR7jdQbHCechzFnc_003_wix_20240103.jpg",
-      "created_at": "2026-08-13T04:03:55.980Z",
-      "expires_at": "2026-09-12T04:03:55.980Z",
+      "created_at": "2026-09-13T03:36:45.220Z",
+      "expires_at": "2026-10-13T03:36:45.220Z",
       "max_results": 10,
       "webDetection": {
         "webEntities": [
           {
             "entityId": "/g/120yrv6h",
-            "score": 0.3421,
+            "score": 0.2972,
             "description": "Tourism"
           }
         ],
@@ -1853,10 +1854,10 @@
             "url": "https://i.la-croix.com/1400x933/smart/2016/04/28/1200756549/Lobsang-Sangay-Dharamshala-Inde-27-avril-2016_0.jpg"
           },
           {
-            "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Dharamsala-Lobsang_Sangay-04-gje.jpg/330px-Dharamsala-Lobsang_Sangay-04-gje.jpg"
+            "url": "https://s3.regru.cloud/monasterium/iblock/bb8/qfh9j1luosr9uhd8ment7zu1mciul9fd/111.jpg"
           },
           {
-            "url": "https://s3.regru.cloud/monasterium/iblock/bb8/qfh9j1luosr9uhd8ment7zu1mciul9fd/111.jpg"
+            "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Dharamsala-Lobsang_Sangay-04-gje.jpg/330px-Dharamsala-Lobsang_Sangay-04-gje.jpg?utm_source=th.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
           },
           {
             "url": "https://i.imgur.com/5MHebTv.jpg"
@@ -1865,10 +1866,10 @@
             "url": "https://lookaside.instagram.com/seo/google_widget/crawler/?media_id=2635106144787775584"
           },
           {
-            "url": "x-raw-image:///0f14ad250226e54ff656e0bfe2b9d0008737cba7cc85aa0bffe4c54cd58e4289"
+            "url": "http://ent.people.com.cn/NMediaFile/2024/0913/MAIN17262094493733BW7YX3G1Z.png"
           },
           {
-            "url": "http://ent.people.com.cn/NMediaFile/2024/0913/MAIN17262094493733BW7YX3G1Z.png"
+            "url": "https://p6.itc.cn/q_70/images01/20230909/3ac04f6db9b645cab821e23b372290ed.png"
           }
         ],
         "bestGuessLabels": [
@@ -1881,74 +1882,79 @@
     "4a7cb346faf973ebd1f0f4755daa5b99cb3649a64baf4a3a4a080b1eafeed81e": {
       "asset_id": "bafybeienxt25cs5k3wnixx2trg3m4r37c5jh4yrpc2d34jmczrfxcvutr4",
       "query_image_ref": "https://dia-cdn.numbersprotocol.io/thumbnails/2024/01/08/06/04/34/5ADfnVPKQ3q0tnDGVJ79_002_wix_20240103.jpg",
-      "created_at": "2026-08-13T04:04:05.880Z",
-      "expires_at": "2026-09-12T04:04:05.880Z",
+      "created_at": "2026-09-13T03:36:57.273Z",
+      "expires_at": "2026-10-13T03:36:57.273Z",
       "max_results": 10,
       "webDetection": {
         "webEntities": [
           {
             "entityId": "/g/11w4g3ps61",
-            "score": 0.4973,
+            "score": 0.4981,
             "description": "Bazaar M"
           },
           {
+            "entityId": "/m/01c8br",
+            "score": 0.44594815,
+            "description": "Street"
+          },
+          {
             "entityId": "/m/0k8by",
-            "score": 0.42284998,
+            "score": 0.4281,
             "description": "Flea"
           },
           {
+            "entityId": "/m/06gfj",
+            "score": 0.3809,
+            "description": "Road"
+          },
+          {
             "entityId": "/m/02kj24",
-            "score": 0.3620401,
+            "score": 0.36574712,
             "description": "Flea market"
           },
           {
             "entityId": "/m/017r8p",
-            "score": 0.3289621,
+            "score": 0.34493867,
             "description": "Pedestrian"
           },
           {
             "entityId": "/m/0dnhy",
-            "score": 0.3238809,
+            "score": 0.34002346,
             "description": "Sidewalk"
           },
           {
-            "entityId": "/m/06gfj",
-            "score": 0.2854,
-            "description": "Road"
-          },
-          {
             "entityId": "/g/121tbj7k",
-            "score": 0.2737,
+            "score": 0.2833,
             "description": "Urban area"
           }
         ],
         "visuallySimilarImages": [
           {
-            "url": "https://media.newyorker.com/photos/6543f34e75635ded66f5083f/4:3/w_1280%2Cc_limit/Lo-Alvarado_0698.jpg"
+            "url": "http://media.newyorker.com/photos/6543f34e75635ded66f5083f/master/pass/Lo-Alvarado_0698.jpg"
           },
           {
             "url": "https://ca-times.brightspotcdn.com/dims4/default/ac0c882/2147483647/strip/false/crop/3739x2103+0+195/resize/1200x675!/quality/75/?url=https%3A%2F%2Fcalifornia-times-brightspot.s3.amazonaws.com%2F61%2Fc6%2Fd247cd254bf28dde0579c4548d40%2F1245680-monterey-park-shooting-jja-0013.jpg"
           },
           {
-            "url": "https://media.g4media.ro/ZCBSPWmKSs0jyni6pDzlm7QJD1M=/1320x743/smart/filters:format(jpeg)/https%3A%2F%2Fwww.g4media.ro%2F%2Fwp-content%2Fuploads%2F2026%2F08%2Fprofimedia-1121676774.jpg"
+            "url": "https://lookaside.instagram.com/seo/google_widget/crawler/?media_id=3956112912648242998"
           },
           {
-            "url": "https://cassette.sphdigital.com.sg/image/zaobao/c5dceaa0bb77e93fed3a2b56e9dc1458082f97148d6e31a0a012de8677f74aef"
+            "url": "https://www.rfa.org/resizer/4cYaXdGWeRH5-eX1dzax0Ms0ynQ=/arc-photo-radiofreeasia/arc2-prod/public/2SVFGK5FWCAED3Y47P6AYJRRTY.jpg"
+          },
+          {
+            "url": "https://media.licdn.com/dms/image/v2/C5612AQGfHluV1n8dyA/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1587009729946?e=2147483647&v=beta&t=XZ5gPglz5dFb1G5AJVLSVsZUKCLY5_MrRivEQDw-XWw"
           },
           {
             "url": "https://static.ffx.io/images/$zoom_0.189%2C$multiply_0.7725%2C$ratio_1.5%2C$width_756%2C$x_0%2C$y_0/t_crop_custom/q_86%2Cf_auto/d2a95f5e253eec6e00382c5f4fd7090317cb2f88"
           },
           {
-            "url": "https://wm.observador.pt/wm/l/https%3A%2F%2Fbordalo.observador.pt%2Fv2%2Frs%3Afill%3A770%3A403%2Fc%3A2000%3A1122%3Anowe%3A0%3A211%2Fq%3A70%2Ff%3Awebp%2Fplain%2Fhttps%3A%2F%2Fs3.observador.pt%2Fwp-content%2Fuploads%2F2020%2F05%2F04071648%2F27907451.jpg?layer=obstop:T"
+            "url": "http://spanish.xinhuanet.com/2021-02/01/139712832_16122354861301n.jpg"
+          },
+          {
+            "url": "https://cassette.sphdigital.com.sg/image/zaobao/c5dceaa0bb77e93fed3a2b56e9dc1458082f97148d6e31a0a012de8677f74aef"
           },
           {
             "url": "https://j.people.com.cn/NMediaFile/2025/0228/FOREIGN1740729476673XAJ41Y7SD3.jpg"
-          },
-          {
-            "url": "https://static01.nyt.com/images/2021/11/22/world/00global-migration7/00global-migration7-master1050.jpg"
-          },
-          {
-            "url": "https://www.rfa.org/resizer/4cYaXdGWeRH5-eX1dzax0Ms0ynQ=/arc-photo-radiofreeasia/arc2-prod/public/2SVFGK5FWCAED3Y47P6AYJRRTY.jpg"
           },
           {
             "url": "https://image.news.kodansha.co.jp/tenants/1/resources/assets/000/055/756/original/revewer_tanakakaori.jpg?1727873055"
@@ -1964,47 +1970,47 @@
     "8a4e50992ec0eb5cb2d3ddc00861352a8b57d42404e4f5f4150ff39aef3dd968": {
       "asset_id": "bafybeieojd5yrfammrc4jqddccv4h7cedgwa7fpx55b7equ2i7h3oxry5q",
       "query_image_ref": "https://dia-cdn.numbersprotocol.io/thumbnails/2024/01/08/06/06/25/2bkHdGAIz7FlXxHriOfM_030_photo__20240103.jpg",
-      "created_at": "2026-08-13T04:04:14.089Z",
-      "expires_at": "2026-09-12T04:04:14.089Z",
+      "created_at": "2026-09-13T03:37:08.654Z",
+      "expires_at": "2026-10-13T03:37:08.654Z",
       "max_results": 10,
       "webDetection": {
         "webEntities": [
           {
             "entityId": "/m/07djv",
-            "score": 0.25296766,
+            "score": 0.25417063,
             "description": "Custom"
           }
         ],
         "visuallySimilarImages": [
           {
-            "url": "https://media.cnn.com/api/v1/images/stellar/prod/c-sipausa-25437412.jpg?c=original"
+            "url": "http://www.cppcc.gov.cn/zxww/2022/10/28/W020260622819083695680.jpg"
           },
           {
-            "url": "https://www.usatoday.com/gcdn/media/USATODAY/USATODAY/2013/03/02/cppcc_007-16_9.jpg?width=700&height=396&fit=crop&format=pjpg&auto=webp"
+            "url": "https://lookaside.instagram.com/seo/google_widget/crawler/?media_id=3974156595508791653"
           },
           {
-            "url": "https://cdn.ftvnews.com.tw/manasystem/FileData/News/febe91a5-2a5b-49e5-af46-9dddff57e80d.jpg"
+            "url": "https://www.au.tsinghua.edu.cn/__local/4/FB/DD/87270BC1593D769B7C2342480DD_BC9FEA6A_F3856.png"
           },
           {
-            "url": "https://www.president.gov.tw/img/Image/c12263b9-beba-4b91-b6d6-bda48cdea803.jpg"
+            "url": "https://oelab.nenu.edu.cn/__local/3/6C/9B/4D683766821719C16E65C4F4D94_8F296D5B_43E06.png?e=.png"
           },
           {
-            "url": "https://media.licdn.com/dms/image/v2/C5603AQF_SfNNhfOq8A/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1635412233497?e=2147483647&v=beta&t=4nYz27aU9jq0FAUFG0rpAk_P_-T6ydcjNKtxHEzO1oE"
+            "url": "http://paper.people.com.cn/rmrb/images/2022-10/28/01/rmrb2022102801p25_b.jpg"
           },
           {
-            "url": "https://eastasiaforum.org/wp-content/uploads/2023/05/2022-12-03T102405Z_2043265456_RC28YX9I1YCT_RTRMADP_3_MALAYSIA-POLITICS-scaled.jpg"
+            "url": "https://i.ytimg.com/vi/zchUeMN8tlY/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLAacZRyWoVM9LRtoGbUyDno1W4LiA"
           },
           {
-            "url": "https://live-production.wcms.abc-cdn.net.au/6df1b5774285901039fdc393a155e782?impolicy=wcms_crop_resize&cropH=1180&cropW=1770&xPos=332&yPos=221&width=862&height=575"
+            "url": "http://www.sorbonne.fr/wp-content/uploads/Illu2_Visite_Sorbonne_Mme_LIU.jpg"
           },
           {
-            "url": "https://szentkoronaradio.com/wp-content/uploads/2026/03/kina-etnikai-torveny.jpg"
+            "url": "https://www.agu.ac.jp/media/007/202607/2_1.jpg?v=20260707165716"
           },
           {
-            "url": "https://lookaside.instagram.com/seo/google_widget/crawler/?media_id=3841850498882540401"
+            "url": "https://www.kantei.go.jp/contents/topics/47848_ext_8_19.jpg"
           },
           {
-            "url": "https://pbs.twimg.com/media/Dqf3w1hXQAAUqri.jpg"
+            "url": "https://i0.wp.com/cepa.org/wp-content/uploads/2023/04/2020-05-22T000000Z_1784039109_RC2MTG979F2N_RTRMADP_3_CHINA-PARLIAMENT.jpg?resize=1024%2C683&ssl=1"
           }
         ],
         "bestGuessLabels": [
@@ -2017,40 +2023,35 @@
     "846f948e4001abff5073bcc69ad0408058664316d1bc20d67cff7cf7c27b60d9": {
       "asset_id": "bafybeifxcziudjpjc4anpu7ehm73ov7d47rroxxczkco6bwfi5kmkuaghy",
       "query_image_ref": "https://dia-cdn.numbersprotocol.io/thumbnails/2024/01/08/06/08/15/BKN3t06SLIAzPzDJm09G_027_photo__20240103.jpg",
-      "created_at": "2026-08-13T04:04:22.545Z",
-      "expires_at": "2026-09-12T04:04:22.545Z",
+      "created_at": "2026-09-13T03:37:23.877Z",
+      "expires_at": "2026-10-13T03:37:23.877Z",
       "max_results": 10,
       "webDetection": {
         "webEntities": [
           {
             "entityId": "/m/0p9xx",
-            "score": 0.40540212,
+            "score": 0.4091754,
             "description": "Visual Arts"
           },
           {
             "entityId": "/m/0jjw",
-            "score": 0.3438,
+            "score": 0.3479,
             "description": "Art"
           },
           {
             "entityId": "/g/120yrv6h",
-            "score": 0.3338,
+            "score": 0.3015,
             "description": "Tourism"
           },
           {
             "entityId": "/g/120z_g20",
-            "score": 0.2826,
+            "score": 0.2853,
             "description": "Epiphany"
           },
           {
             "entityId": "/m/07djv",
-            "score": 0.25814345,
+            "score": 0.25897887,
             "description": "Custom"
-          },
-          {
-            "entityId": "/m/06gfj",
-            "score": 0.2512,
-            "description": "Road"
           }
         ],
         "visuallySimilarImages": [
@@ -2058,31 +2059,31 @@
             "url": "https://lookaside.instagram.com/seo/google_widget/crawler/?media_id=3765868902699100804"
           },
           {
-            "url": "https://media.licdn.com/dms/image/v2/D4D22AQEdQ89fXrCbCw/feedshare-shrink_800/B4DZ.FWAJ4JwAc-/0/1784648565910?e=2147483647&v=beta&t=l-_bv1JFynE2R2FlR30cU-xJk9CzSEMc8R551hRKqLA"
+            "url": "https://land-in-bewegung.rlp.de/fileadmin/_processed_/2/e/csm__CH54132_d19807757d.jpg"
+          },
+          {
+            "url": "https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=3052497958415051"
           },
           {
             "url": "https://www.publichealth.pitt.edu/sites/default/files/styles/lan/public/landing-img/53687063239_571a10baa7_c.jpg?h=24ef4fb8&itok=AKPfzx5F"
           },
           {
-            "url": "https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=1636653695129176"
+            "url": "https://www.tiktok.com/api/img/?itemId=7384194219579067694&location=0&aid=1988"
           },
           {
-            "url": "https://www.tiktok.com/api/img/?itemId=7650309451513318677&location=0&aid=1988"
+            "url": "https://lookaside.instagram.com/seo/google_widget/crawler/?media_id=3973342517919661481"
           },
           {
-            "url": "https://media.wired.com/photos/5ff75c5a45291e6236508543/1:1/w_1600,h_1600,c_limit/OpEd-Mob-1230459369.jpg"
+            "url": "https://media.licdn.com/dms/image/v2/D4E10AQG4DHQK-pLDfA/image-shrink_800/B4EZxIfvPAGwAk-/0/1770742806377?e=2147483647&v=beta&t=wzMce-_ecX84qazx_pAi60u_9VzKRy8H91xtoBsjdYE"
           },
           {
-            "url": "https://lookaside.instagram.com/seo/google_widget/crawler/?media_id=3876665368685453813"
+            "url": "https://media.npr.org/assets/img/2021/01/06/gettyimages-1230455089_custom-5b74b29c2ef5e759a98475c8f2bc8b4e2dc1e282.jpg"
           },
           {
-            "url": "https://pbs.twimg.com/media/HPV0IcEWQAA5Pcr.jpg"
+            "url": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/29/56/8d/bf/my-wife-at-vatican.jpg?w=1200&h=1200&s=1"
           },
           {
-            "url": "https://i.ytimg.com/vi/HtyygpUTthU/maxresdefault.jpg"
-          },
-          {
-            "url": "https://media.licdn.com/dms/image/v2/D4E22AQHKAJCPam5mLw/feedshare-shrink_800/feedshare-shrink_800/0/1708890195717?e=2147483647&v=beta&t=4fJ2vVUsdD7quKNDL6-jgy4OfLkWkBrHL86SRZ-Ey6Y"
+            "url": "https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=1538084914790133"
           }
         ],
         "bestGuessLabels": [
@@ -2095,20 +2096,20 @@
     "cda3cabf6520819b2a1517e95dd42d6845bec306caa2d92d5960f2085f4dec14": {
       "asset_id": "bafybeia4z2yzudi3qmofonlqcxbyjhp4ybrr3f5ds6iathpmp6gdr5ot2a",
       "query_image_ref": "https://dia-cdn.numbersprotocol.io/thumbnails/2024/01/08/06/09/29/PGZ1PFQRayzMX1NSPlcT_025_photo__20240103.jpg",
-      "created_at": "2026-08-13T04:04:25.353Z",
-      "expires_at": "2026-09-12T04:04:25.353Z",
+      "created_at": "2026-09-13T03:37:31.121Z",
+      "expires_at": "2026-10-13T03:37:31.121Z",
       "max_results": 10,
       "webDetection": {
         "webEntities": [
           {
             "entityId": "/m/0cx45",
-            "score": 0.3946,
+            "score": 0.3803,
             "description": "Temple"
           },
           {
-            "entityId": "/m/02cwf_",
-            "score": 0.32645404,
-            "description": "Shrine"
+            "entityId": "/m/02jd5z",
+            "score": 0.32087353,
+            "description": "Wat"
           }
         ],
         "visuallySimilarImages": [
@@ -2119,28 +2120,28 @@
             "url": "https://images.iyp.com.tw/life/e8499258-df28-41c2-bf4b-9d3adc4b85de.jpg"
           },
           {
-            "url": "http://santamarialospalacios.com/Museo/Parroquia_Museo_IMG_0995_ps_web.jpg"
-          },
-          {
-            "url": "https://img.vogue.co.kr/vogue/2025/05/style_6813561e3dbdc-1400x933.jpg"
-          },
-          {
-            "url": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0d/d0/b0/82/exposicion-de-titeres.jpg?w=500&h=-1&s=1"
-          },
-          {
-            "url": "https://www.all-about-photo.com/images/photographer/W/PHOT-priyo-widdi-17.jpg"
-          },
-          {
-            "url": "https://alhurafi.com/wp-content/uploads/2026/04/dsc_3701-scaled.jpg"
+            "url": "https://espanol.buddhistdoor.net/wp-content/uploads/2023/11/Picture-2-1.png"
           },
           {
             "url": "https://p19-common-sign.tiktokcdn-us.com/tos-alisg-p-0037/owFCjiGBwNCA4rZifW1IABA1EmzxhOInYi3N9q~tplv-tiktokx-origin.image"
           },
           {
-            "url": "https://kcms.knn.co.kr/mam/data/CI2016123000000000006/CI2017072513315301673/2026/05/26/26052654447/catalog/7.jpg"
+            "url": "https://images.squarespace-cdn.com/content/v1/665c8e65d42721281bccc3c3/358154a2-00c0-4139-9350-5ae75fe302f0/38+-+Steven+Bernstein+-+Bernstein_photo+by+Andrew+Blackstein-7176.jpg?format=750w"
           },
           {
-            "url": "https://polarseafood.ua/assets/public/img/recipes/r4/buddha.jpg"
+            "url": "https://www.eliteplusmagazine.com/assets/img/content_gallery/643f8f4fe42ca_thumb.jpg"
+          },
+          {
+            "url": "https://setouchi-artfest.jp/files/BlogBlocks/bd20a83f-7835-4ccc-84b6-51df1eacb6b8/value01/45a44805c0e1fd0e54c997c515e2e433_l.jpg"
+          },
+          {
+            "url": "https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=1556251846541162"
+          },
+          {
+            "url": "https://yamagatakanko.com/lsc/upfile/article/0000/0335/335_1_l.jpg"
+          },
+          {
+            "url": "https://www.orthodoxianewsagency.gr/wp-content/uploads/2026/09/agrypnia.koimisws.prwtato.2026-6.jpg"
           }
         ],
         "bestGuessLabels": [
@@ -2153,47 +2154,40 @@
     "f8f3640bbde0cb31f256de68bd2346851411066d75e8f1c161116eea17769ad2": {
       "asset_id": "bafybeihsex2s2dyyalymqukkv2q7wd6giftxlh353wfb76yljvxmf4zbmy",
       "query_image_ref": "https://dia-cdn.numbersprotocol.io/thumbnails/2024/01/08/06/18/29/tBpVOi99J1qXUmoSISGB_024_photo__20240103.jpg",
-      "created_at": "2026-08-13T04:04:37.738Z",
-      "expires_at": "2026-09-12T04:04:37.738Z",
+      "created_at": "2026-09-13T03:37:40.796Z",
+      "expires_at": "2026-10-13T03:37:40.796Z",
       "max_results": 10,
       "webDetection": {
-        "webEntities": [
-          {
-            "entityId": "/m/06gfj",
-            "score": 0.2529,
-            "description": "Road"
-          }
-        ],
         "visuallySimilarImages": [
           {
             "url": "https://media.licdn.com/dms/image/v2/D4E22AQH0Sl6sbplOBw/feedshare-shrink_800/B4EZ6F8ooSLAAc-/0/1780363728749?e=2147483647&v=beta&t=fD9om5C51UqCCeKdGt78UT7gUDokTfehpwX_8WhPig0"
           },
           {
-            "url": "https://images.wsj.net/im-884203?width=1280&size=1.33333333"
+            "url": "https://lookaside.instagram.com/seo/google_widget/crawler/?media_id=3869868454283108547"
           },
           {
-            "url": "https://news.hit.edu.cn/_upload/article/images/c8/57/83d4b807447ba55d52212c420314/32d57b71-ee9f-4ced-9b53-43feb546547c.jpg"
+            "url": "https://foreignpolicy.com/wp-content/uploads/2019/09/GettyImages-1165932702.jpg"
           },
           {
-            "url": "https://mcc.hu/uploads/default/0001/73/thumb_72733_default_big.jpeg"
+            "url": "https://www.tiktok.com/api/img/?itemId=7675165576825752840&location=0&aid=1988"
           },
           {
-            "url": "https://imgcdn.cna.com.tw/www/WebPhotos/800/20260309/1024x768_wmky_0_C20260309000002.jpg"
+            "url": "https://www.stirlingschools.co.uk/images/news/japan-shibuya-crossing.jpg"
           },
           {
-            "url": "https://policyoptions.irpp.org/wp-content/uploads/2025/08/shutterstock_1711454107-768x512.jpg"
+            "url": "https://media.licdn.com/dms/image/v2/D5612AQFD0l3MhA_-xQ/article-cover_image-shrink_720_1280/B56Z1CHVOCJIAI-/0/1774930751143?e=2147483647&v=beta&t=n3ISIRUVg2jiqU7kdk0NRJV3pqCRbra00ekXDyWC-1M"
           },
           {
-            "url": "https://s.yimg.com/lo/api/res/1.2/Srb2BbKjcvrgqQYYYMiMCw--~A/YXBwaWQ9dHdhYnVuZXdzO3c9NjcwO2g9Mzc2O2ZpPWZpbGw-/https://media.zenfs.com/ko/bbc_trad_chinese_tw_489/63f48cef2dc5e24662fa64d6150c2fc9"
+            "url": "https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=1459529985696047&get_thumbnail=1"
           },
           {
-            "url": "https://cdn.getyourguide.com/image/format=auto,fit=crop,gravity=auto,quality=60,width=400,height=265,dpr=2/tour_img/d7def2dc0f343562b259c097e4634a83a81ed5c30fbfe6f675c98dc752afe3a9.jpeg"
+            "url": "https://hongkongfp.com/wp-content/uploads/2021/06/photo_2021-06-04_20-56-10-Copy-1050x700.jpg"
           },
           {
-            "url": "https://tabiiro.brimgs.com/lpimg/leisure/206524//main/img1.jpg"
+            "url": "https://web14.bernama.com/storage/photos/25dda61e43770da02d7f5d6c078760b86a02cdd44a057"
           },
           {
-            "url": "https://media.licdn.com/dms/image/v2/D4E22AQEG6DQYtI7m3Q/feedshare-shrink_800/B4EZ.rURoBIUAc-/0/1785285647209?e=2147483647&v=beta&t=UUkKaQlGjPNDN8lpdVtbA9VbP7Rs0_lgsEswTWyTlxA"
+            "url": "https://p19-common-sign.tiktokcdn-us.com/tos-no1a-p-0037-no/okAAZkIQILATT7UetaLIQIFgeevG0EAmGFGrAE~tplv-tiktokx-origin.image"
           }
         ],
         "bestGuessLabels": [
@@ -2206,20 +2200,15 @@
     "84a9cf2d619302434827b7c2c4543c8d1829fc3f1334366aac830d9173536c09": {
       "asset_id": "bafybeibjmohq325dfsupanais4euv22sxg5vrh7jlsruh2jplw2xj7at2u",
       "query_image_ref": "https://dia-cdn.numbersprotocol.io/thumbnails/2024/01/08/06/19/38/VSNiX9ZajTpuR8I4ZZk2_018_photo__20240103.jpg",
-      "created_at": "2026-08-13T04:04:50.198Z",
-      "expires_at": "2026-09-12T04:04:50.198Z",
+      "created_at": "2026-09-13T03:37:46.040Z",
+      "expires_at": "2026-10-13T03:37:46.040Z",
       "max_results": 10,
       "webDetection": {
         "webEntities": [
           {
             "entityId": "/g/11t7gznd8d",
-            "score": 0.4307,
+            "score": 0.431,
             "description": "light-hearted"
-          },
-          {
-            "entityId": "/m/06gfj",
-            "score": 0.2527,
-            "description": "Road"
           }
         ],
         "visuallySimilarImages": [
@@ -2227,31 +2216,31 @@
             "url": "https://image.pbs.org/video-assets/JA8mSWn-asset-mezzanine-16x9-0NSJhws.jpg"
           },
           {
-            "url": "https://cdn.hk01.com/di/media/images/2099772/org/8ec58e7b4afd2758414173aa28363404.jpg/gidqkiT6RPaJ2D82q0ldUnZfyTkb2xiCuzE4K7sxOCs"
+            "url": "https://ciac.co.uk/wp-content/uploads/2016/07/4-Young-volunteers-at-CNY-1.jpg"
           },
           {
-            "url": "https://techart.nthu.edu.tw/wp-content/uploads/2022/12/321663288_3388674974720976_659718293613465293_n.jpg"
-          },
-          {
-            "url": "https://vanderbiltpoliticalreview.com/wp-content/uploads/2021/04/macau-photo-agency-gzXGOKmk-1I-unsplash-900x600.jpg"
+            "url": "https://imgcdn.cna.com.tw/Ind/WebIndPhotos/800/2026/20260901/2000x1125_199641272928.jpg"
           },
           {
             "url": "https://www.chinafile.com/sites/default/files/styles/system/public/assets/images/article/system/gettyimages-503235652.jpg?itok=TVUkdy4N"
           },
           {
-            "url": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2e/86/39/21/experience-japanese-hospitalit.jpg?w=1200&h=900&s=1"
-          },
-          {
-            "url": "https://images.ft.com/v3/image/raw/https%3A%2F%2Fd1e00ek4ebabms.cloudfront.net%2Fproduction%2F60b5126d-53b2-417e-aad7-233f6485e2ac.jpg?source=next&fit=scale-down&dpr=2&width=340"
-          },
-          {
-            "url": "https://ca-times.brightspotcdn.com/dims4/default/bab8a25/2147483647/strip/true/crop/600x338+0+31/resize/1200x675!/quality/75/?url=https%3A%2F%2Fcalifornia-times-brightspot.s3.amazonaws.com%2F92%2F29%2Fada3419d20c9394d51c5bdc4a1bf%2Fla-me-rr-times-updates-its-guidelines-on-cover-001"
-          },
-          {
             "url": "https://media.licdn.com/dms/image/v2/D5622AQEP8Y_Q5-TOCw/feedshare-shrink_800/B56Z76tYD5HYAg-/0/1782322659825?e=2147483647&v=beta&t=mdug3rPYLnOJ0dPTWYuo2UG16kLdgrKq7Uu60PsTY2w"
           },
           {
+            "url": "https://techart.nthu.edu.tw/wp-content/uploads/2022/12/321663288_3388674974720976_659718293613465293_n.jpg"
+          },
+          {
+            "url": "https://static.kmedia.com.tw/prd/2026/0903/4458F940B7FF6F8884A5301FA12A468D/7b6d4ce28be2432274972f46733b8254.webp"
+          },
+          {
             "url": "https://asianews.network/wp-content/uploads/2026/07/IMG_20260711_112909_692-2048x1365-1.jpg"
+          },
+          {
+            "url": "https://engage.nsysu.edu.tw/wp-content/uploads/2020/10/mczh-tw1200x1200_large149587_462154430091.jpg"
+          },
+          {
+            "url": "https://d1qd3zoyy91a2c.cloudfront.net/image/rti/images/listimg/2026/9/large/509c7b74-1594-419c-95e2-3fb10356b18f.jpg"
           }
         ],
         "bestGuessLabels": [
@@ -2264,47 +2253,47 @@
     "6a74338036602176c6718a7c8e7f7a8fa8e2292c3328c880c841f13ac8c683cd": {
       "asset_id": "bafybeid6lvg7uwm7y36movq5ue34rtc55xxild4v5jig3tbmdj2gjb25cm",
       "query_image_ref": "https://dia-cdn.numbersprotocol.io/thumbnails/2024/01/08/06/20/28/luuvPXUHCtrxHb3j0uqe_021_photo__20240103.jpg",
-      "created_at": "2026-08-13T04:04:55.217Z",
-      "expires_at": "2026-09-12T04:04:55.217Z",
+      "created_at": "2026-09-13T03:37:54.400Z",
+      "expires_at": "2026-10-13T03:37:54.400Z",
       "max_results": 10,
       "webDetection": {
         "webEntities": [
           {
             "entityId": "/g/11t7gznd8d",
-            "score": 0.4307,
+            "score": 0.431,
             "description": "light-hearted"
           }
         ],
         "visuallySimilarImages": [
           {
-            "url": "https://www.thetimes.com/imageserver/image/%2F30c16f97-b06e-4190-91e0-b8a1e483e555.jpg?crop=3500%2C2333%2C0%2C0&resize=750"
-          },
-          {
             "url": "https://amee.org/wp-content/uploads/2026/03/Delegates-smiling-for-the-camera.webp"
           },
           {
-            "url": "https://pds.joongang.co.kr/joongangplus/card/202608/dd5a9b99-3696-4598-9ed7-cac7a2518826.jpg/_ir_card_556_/"
+            "url": "https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=1642518977225344"
           },
           {
-            "url": "https://cdnph.upi.com/ph/st/th/8531786357219/2026/i/17863575885865/v1.5/S-Korea-govt-to-enact-special-law-this-year-to-designate-special-zone-for-AI-investment-projects.jpg"
+            "url": "https://file-spark-journal.kddi.com/v=1786943772/files/topics/1059_ext_1_0.jpg"
           },
           {
-            "url": "https://www.redcross.org/content/dam/redcross/donations/local-designation-family-with-escape-plan-480x320.jpg.transform/1288/q82/feature/image.jpeg"
+            "url": "https://cdn.i-scmp.com/sites/default/files/styles/wide_landscape/public/d8/images/canvas/2026/02/13/0deddfc5-8561-497f-acae-e9f12fa98d72_3d2fa0d3.jpg?itok=RkPxoDOn"
           },
           {
-            "url": "https://www.news.cn/asia/20260810/9c20ad80725c4692a1aeb6d1ac8c17e7/ea38cad3badd4d3aa2dc92c7d69e7895.jpg"
+            "url": "https://pgw.udn.com.tw/gw/photo.php?u=https://uc.udn.com.tw/photo/t3/2026/09/13/35322676.jpg&M=1&s=Y&x=0&y=0&sw=1280&sh=853&sl=W&fw=800&exp=3600&w=970"
           },
           {
-            "url": "https://mb.com.ph/manilabulletin/uploads/images/2026/08/12/123108.webp"
+            "url": "https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=1618372909652660"
           },
           {
-            "url": "https://unu.edu/sites/default/files/styles/card_view_big/public/2026-07/Bambang-Brodjonegoro_Aya-Suzuki_UNU-Centre.jpg?itok=C4bJrJ0l"
+            "url": "https://imagedelivery.net/B3aR18lLMvcGgAp8NIV2xQ/d693da23-e272-40ed-51b5-db1f3fec8d00/public"
           },
           {
-            "url": "https://journal.meti.go.jp/wp-content/uploads/2026/04/30154424/a11b4bb3ba448d1fa402ac3dc62cc91f-3-520x348.png"
+            "url": "https://careers.ucalgary.ca/system/production/assets/418219/original/careers-home__category--04.jpg"
           },
           {
-            "url": "https://www.sginnovate.com/sites/default/files/2023-11/startup.jpeg"
+            "url": "https://www.cmu.edu/sites/default/files/styles/large_box_800_x_600/public/images/AD_CBD_2-2a.jpg%201.jpg.webp?itok=YnQEOuyC"
+          },
+          {
+            "url": "https://www.waseda.jp/top/assets/uploads/2026/07/4927208105875a52538d4aadf6e8a441-360x270.jpg"
           }
         ],
         "bestGuessLabels": [
@@ -2317,52 +2306,57 @@
     "41d23eaaa493ba8f24e3220b18a2e9aea68a23c83c202ed93b4996e79e4bd436": {
       "asset_id": "bafybeify3t2jzkdlae5k3k7v6gdmjgyybigrvlgqvwhzpiuf3ht327dvfq",
       "query_image_ref": "https://dia-cdn.numbersprotocol.io/thumbnails/2024/01/08/06/21/42/MR7iaVVwu13wCORhP5SX_017_photo__20240103.jpg",
-      "created_at": "2026-08-13T04:05:01.085Z",
-      "expires_at": "2026-09-12T04:05:01.085Z",
+      "created_at": "2026-09-13T03:38:00.483Z",
+      "expires_at": "2026-10-13T03:38:00.483Z",
       "max_results": 10,
       "webDetection": {
         "webEntities": [
           {
             "entityId": "/g/11t7gznd8d",
-            "score": 0.4309,
+            "score": 0.431,
             "description": "light-hearted"
           },
           {
             "entityId": "/m/01t98f",
-            "score": 0.33037484,
+            "score": 0.33072224,
             "description": "Mid-Autumn Festival"
+          },
+          {
+            "entityId": "/m/016c4t",
+            "score": 0.2944675,
+            "description": "Ceremony"
           }
         ],
         "visuallySimilarImages": [
           {
-            "url": "https://lookaside.instagram.com/seo/google_widget/crawler/?media_id=3951975423978083050"
+            "url": "https://lookaside.fbsbx.com/lookaside/crawler/threads/DdJPJKxgfC0/3/image.jpg"
           },
           {
-            "url": "https://i.ytimg.com/vi/2A1Zs_NtM9g/hqdefault.jpg"
+            "url": "https://www.ey.gov.tw/File/CFFA80FFCBAC24A5"
           },
           {
-            "url": "https://i.ytimg.com/vi/D6xoPw4LRoI/hqdefault.jpg"
+            "url": "https://p2.img.cctvpic.com/photoAlbum/page/performance/img/2026/4/14/1776132889355_301.jpg"
           },
           {
-            "url": "https://i.ytimg.com/vi/emSBD3hPNNs/hqdefault.jpg"
+            "url": "https://www.ey.gov.tw/File/2760F557296C9ED6"
           },
           {
-            "url": "https://i.ytimg.com/vi/8hfsdyjHz1Y/hqdefault.jpg"
+            "url": "https://www.tpa.edu.tw/var/file/0/1000/randimg/mobileadv_1639_4255880_81216.jpg"
           },
           {
-            "url": "https://image.hkhl.hk/f/1024p0/0x0/100/none/c1f315d7daa4ef3744574a73d23eec6e/2026-08/20260807_fin___2.png"
+            "url": "https://www.cpu.edu.tw/var/file/0/1000/randimg/mobileadv_1417_4114529_65952.jpg"
           },
           {
-            "url": "https://i.ytimg.com/vi/OwnrKvDFWFI/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLDS7Rfr3IX5HIQbC9CPIFlxfRDBRQ"
+            "url": "http://www.cea.org.cn/upload/image/20260225/20260225155551_87164.png"
           },
           {
-            "url": "https://www.waseda.jp/inst/fro/assets/uploads/2024/02/3497c1bb3820abe7a04bcb9e718360ae.png"
+            "url": "https://pgw.udn.com.tw/gw/photo.php?u=/t3/2026/09/12/35321753.jpg&M=1&s=Y&x=0&y=112&sw=1280&sh=853&w=378&exp=3600&nt=1"
           },
           {
-            "url": "https://www.tiktok.com/api/img/?itemId=7673085867791191303&location=0&aid=1988"
+            "url": "https://pds.joongang.co.kr/news/component/htmlphoto_mmdata/202608/25/825dc168-5519-46b0-bbd8-3258f37d69ec.jpg/_ir_410x230_/t.jpg"
           },
           {
-            "url": "https://p3.img.cctvpic.com/photoAlbum/page/performance/img/2026/1/9/1767943440778_591.jpg"
+            "url": "https://news-images.tvbs.com.tw/api/v1/image/01a08f70-e1ff-714b-b907-6b4bfa244dc0.png?w=1067&h=600&t=16x9&c=0,0,1920,1080"
           }
         ],
         "bestGuessLabels": [
@@ -2375,47 +2369,47 @@
     "022bf5fd4c1ca74a2039d185aa708be3d46ea126045ba44564ae51628b9dcaaf": {
       "asset_id": "bafybeig5irc53opbyljtf35jky6u6cvlaedroafbjxuicmavrtskqz7fx4",
       "query_image_ref": "https://dia-cdn.numbersprotocol.io/thumbnails/2024/01/08/06/24/21/ZwIUaougZxfsfsWBEwfP_015_photo__20240103.jpg",
-      "created_at": "2026-08-13T04:05:05.640Z",
-      "expires_at": "2026-09-12T04:05:05.640Z",
+      "created_at": "2026-09-13T03:38:29.017Z",
+      "expires_at": "2026-10-13T03:38:29.017Z",
       "max_results": 10,
       "webDetection": {
         "webEntities": [
           {
             "entityId": "/m/09cynt",
-            "score": 0.2890036,
+            "score": 0.2910135,
             "description": "Convention"
           }
         ],
         "visuallySimilarImages": [
           {
-            "url": "https://www.news.cn/asia/20260810/9c20ad80725c4692a1aeb6d1ac8c17e7/ea38cad3badd4d3aa2dc92c7d69e7895.jpg"
+            "url": "https://www.mafra.go.kr/sites/home/atchmnfl/bbs/797/thumbnail/thumb_temp_1788916486222100.jpg"
           },
           {
-            "url": "https://live.staticflickr.com/65535/55431973688_5e483a9525_z.jpg"
+            "url": "https://www.tiktok.com/api/img/?itemId=7418264050141875474&location=3&aid=1988&index=3"
           },
           {
-            "url": "https://english.ey.gov.tw/File/FD23CB7A2B24FFD1"
+            "url": "http://221.7.41.89:9114/filemanager/newDownloadFile?file_path=mXR4Rir+uR2r2TkHCstrMfIg3Mo8gLx+4isEB001Mc9lgp41qHLvD5IUxCOtrfZUwMmSCk2xeV40KaT2+r+EkTO8dj6wFSoY7KhbNiD4RJ8="
           },
           {
-            "url": "https://cdn.news.skbroadband.com/news/thumbnail/custom/20260812/234297_240201_5323_1786002805_500.jpg"
+            "url": "https://lookaside.instagram.com/seo/google_widget/crawler/?media_id=3964278407717961402"
           },
           {
-            "url": "https://media.licdn.com/dms/image/v2/D5622AQG_D3In-RcvsQ/feedshare-shrink_800/B56Z_bgCYnJ8Ac-/0/1786094036821?e=2147483647&v=beta&t=A7hAlpyhzvWQqyhD4mxtTLQiUL9DqIBcTxe2GBNXwsc"
-          },
-          {
-            "url": "https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=1452868240203551"
+            "url": "https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=1053439707432894"
           },
           {
             "url": "https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=1547812384040338"
           },
           {
-            "url": "https://www.acrc.go.kr/upload/chairPerson/a1/20260624104123341.jpg"
+            "url": "https://www.mofe.go.kr/upload/img/2026/08/20260821110037_234156931.jpg"
           },
           {
-            "url": "https://media.licdn.com/dms/image/v2/D5622AQHGkHnxBr2Pug/feedshare-shrink_800/B56Z_bXNqRH4Ag-/0/1786091723630?e=2147483647&v=beta&t=NnTPazMMX7Egzmqu2WBoye0Rrapz7gOJXwGb-GcLU0w"
+            "url": "https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=1058343556942509"
           },
           {
-            "url": "https://img2.chinadaily.com.cn/images/202608/01/6a6d2dd5a310986e101ab456.jpeg"
+            "url": "https://images.ctfassets.net/hw8svez3e0ju/4Em4vr8uYXeCF4kx9qiY9z/5f74a3500737541b85e5653f257276a6/decision-makers_4x.png"
+          },
+          {
+            "url": "https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=1642518977225344"
           }
         ],
         "bestGuessLabels": [
@@ -2428,47 +2422,52 @@
     "b7587f4f8b26ba61e791dec2642f2e785f99e80f70bc4553efa8cfcabc6f8ce6": {
       "asset_id": "bafybeib52iw6fgejbsyqkaljfbjl6ka2wekunvkuy42kkx4haraxhgy5xa",
       "query_image_ref": "https://dia-cdn.numbersprotocol.io/thumbnails/2024/01/08/06/25/28/28twJafKf9Be8Jj37fGK_013_photo__20240103.jpg",
-      "created_at": "2026-08-13T04:05:23.032Z",
-      "expires_at": "2026-09-12T04:05:23.032Z",
+      "created_at": "2026-09-13T03:38:58.024Z",
+      "expires_at": "2026-10-13T03:38:58.024Z",
       "max_results": 10,
       "webDetection": {
         "webEntities": [
           {
             "entityId": "/m/0dgw9r",
-            "score": 0.4623379,
+            "score": 0.46186844,
             "description": "Human"
+          },
+          {
+            "entityId": "/m/016c4t",
+            "score": 0.29540434,
+            "description": "Ceremony"
           }
         ],
         "visuallySimilarImages": [
           {
-            "url": "https://www.ey.gov.tw/File/53BDC09018F2F452"
+            "url": "https://www.tiktok.com/api/img/?itemId=7418264050141875474&location=3&aid=1988&index=5"
           },
           {
-            "url": "https://cdn.news.skbroadband.com/news/thumbnail/custom/20260812/234297_240201_5323_1786002805_500.jpg"
+            "url": "https://lookaside.instagram.com/seo/google_widget/crawler/?media_id=3978116027647390173"
           },
           {
-            "url": "https://www.cnpiw.cn/uploads/allimg/260526/74-2605260Z144519-lp.png"
+            "url": "https://static.bangkokpost.com/media/content/20260913/c1_3318540_260913054606_790.jpg"
           },
           {
-            "url": "https://amee.org/wp-content/uploads/2026/03/Delegates-smiling-for-the-camera.webp"
+            "url": "https://media.licdn.com/dms/image/v2/D5622AQGUW6uWjeDegA/feedshare-shrink_800/B56aANQyjXK4Ac-/0/1786928900694?e=2147483647&v=beta&t=gKUJJqetf5zQeXkOKhNTuL4xrloa-XPBdbo6tDNx-rs"
           },
           {
-            "url": "https://www.thetimes.com/imageserver/image/%2F30c16f97-b06e-4190-91e0-b8a1e483e555.jpg?crop=3500%2C2333%2C0%2C0&resize=750"
+            "url": "https://www.unicef.org/sites/default/files/styles/large/public/UN0892921.webp?itok=ayen8vbU"
           },
           {
-            "url": "https://www.news.cn/asia/20260810/9c20ad80725c4692a1aeb6d1ac8c17e7/ea38cad3badd4d3aa2dc92c7d69e7895.jpg"
+            "url": "https://i.ytimg.com/vi/mPgc3tdPzU0/maxresdefault.jpg"
           },
           {
-            "url": "https://www.manulife.co.id/content/dam/insurance/id/images/carousel/Ultima%20Plus%20carousel%20mobile.jpg/jcr:content/renditions/cq5dam.web.1280.1280.jpeg"
+            "url": "https://www.thetimes.com/imageserver/image/%2Fbb9af3c3-018a-415b-928b-c0b78c6c34ca.jpg?crop=6770%2C4513%2C368%2C289"
           },
           {
-            "url": "https://asset.kompas.com/crops/nzHVR6QlAl8kMHLRckp3tT64q6c=/0x0:1536x1024/500x281/data/photo/2026/08/03/6a706ec3b5afc.jpg"
+            "url": "https://cdn.i-scmp.com/sites/default/files/d8/images/canvas/2026/02/13/0deddfc5-8561-497f-acae-e9f12fa98d72_3d2fa0d3.jpg"
           },
           {
-            "url": "https://www.fao.org/media/images/loblibraries/agriculture-images/dg-portraitnew092025-cropped68b214b91526448c8438e26e2353b3c0.jpg?sfvrsn=9f9450f5_1"
+            "url": "https://www.mafra.go.kr/sites/home/atchmnfl/bbs/797/thumbnail/thumb_temp_1788916486222100.jpg"
           },
           {
-            "url": "https://images.ctfassets.net/hw8svez3e0ju/3WPvpCmvLOor0GaBddCMUl/8c0adac2a4ca647bef81404876bdb3b8/media_4x.png"
+            "url": "https://mb.com.ph/manilabulletin/uploads/images/2026/09/12/131099.webp"
           }
         ],
         "bestGuessLabels": [
@@ -2481,51 +2480,51 @@
     "26d3eec126ec41f2e112de3f0b1d5bec7d549f3795c3e0bbdfdd5b718a6a8672": {
       "asset_id": "bafybeifdujlcmbak5zc2finjacdt3ikrofceqkifmfooi6st6yuq6xlwma",
       "query_image_ref": "https://dia-cdn.numbersprotocol.io/thumbnails/2024/01/08/06/27/22/pPh9JCA0NBF7FpGqnbV8_011_photo__20240103.jpg",
-      "created_at": "2026-08-13T04:05:29.218Z",
-      "expires_at": "2026-09-12T04:05:29.218Z",
+      "created_at": "2026-09-13T03:39:05.126Z",
+      "expires_at": "2026-10-13T03:39:05.126Z",
       "max_results": 10,
       "webDetection": {
         "webEntities": [
           {
-            "entityId": "/t/24mypdx4svpvn",
-            "score": 0.3034
+            "entityId": "/m/016c4t",
+            "score": 0.31234106,
+            "description": "Ceremony"
           },
           {
-            "entityId": "/m/06gfj",
-            "score": 0.2535,
-            "description": "Road"
+            "entityId": "/t/24mypdx4svpvn",
+            "score": 0.3031
           }
         ],
         "visuallySimilarImages": [
           {
-            "url": "https://lookaside.instagram.com/seo/google_widget/crawler/?media_id=3950698308655846129"
+            "url": "http://www.news.cn/politics/xxjxs/20260819/a59e0c064754461b88ebdf61658cc312/4f577246fb674505a8ac54a2282ddd9f.png"
           },
           {
-            "url": "https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=1557227919195582&get_thumbnail=1"
+            "url": "https://p4.img.cctvpic.com/photoworkspace/2026/01/15/2026011518345792929.jpg"
           },
           {
-            "url": "https://www.news.cn/asia/20260810/9c20ad80725c4692a1aeb6d1ac8c17e7/ea38cad3badd4d3aa2dc92c7d69e7895.jpg"
+            "url": "https://lookaside.instagram.com/seo/google_widget/crawler/?media_id=3946223849041351230"
           },
           {
-            "url": "https://media.zenfs.com/ko/newtalk.tw/e7a962e9f234d516a0e71851c0a2bb45.jpg"
-          },
-          {
-            "url": "https://media.licdn.com/dms/image/v2/D5622AQHSfYA81Y0Rvw/feedshare-shrink_800/B56Z_iGoUFHcAg-/0/1786204817626?e=2147483647&v=beta&t=7RHnzaAGQZsKl96lo73-Gtxw8oNdR00Kzh_p0D8zE1I"
-          },
-          {
-            "url": "https://www.pdpc.gov.sg/assets/e956e7e5-4193-4fca-8298-5b5643ed7931.webp"
-          },
-          {
-            "url": "https://media.licdn.com/dms/image/v2/D5622AQH1Hu8XD1ihSw/feedshare-shrink_800/B56Z5O2QlTIsAc-/0/1779439307586?e=2147483647&v=beta&t=3q3BBcxbehu9wYYAeP9rUgfMEfndX8QUNsnh1OTHkBc"
+            "url": "https://www.univ-rouen.fr/wp-content/uploads/2025/07/International-accueil.jpg"
           },
           {
             "url": "https://live.staticflickr.com/65535/55431973688_5e483a9525_z.jpg"
           },
           {
-            "url": "https://www.deakin.edu.au/__data/assets/image/0030/256881/43474_284x387_international_student_story.jpg"
+            "url": "https://pbs.twimg.com/media/GG8oq8ObUAAdaHA?format=webp&name=large"
           },
           {
-            "url": "https://www.usbank.com/content/dam/usbank/en/images/photos/personal-banking/photo-smartly-checking-smart-rewards-friends-at-lunch-earning-checking-rewards.webp"
+            "url": "https://www.yomiuri.co.jp/media/2026/08/20260815-GYT1I00249-T.jpg?type=PCTB_xx-large"
+          },
+          {
+            "url": "https://pgw.udn.com.tw/gw/photo.php?u=/t3/2026/09/12/35321753.jpg&M=1&s=Y&x=0&y=112&sw=1280&sh=853&w=378&exp=3600&nt=1"
+          },
+          {
+            "url": "https://www.chntheatre.edu.cn/Uploads/Cad/Picture/2026/09/03/s6a999913cb051.JPG"
+          },
+          {
+            "url": "https://www.hokudai.ac.jp/news/img/260901_news_th.png"
           }
         ],
         "bestGuessLabels": [
@@ -2538,40 +2537,40 @@
     "8b05456d20c312cb01000e75a364e4c580f90045b34bbb54c01be255e51e5deb": {
       "asset_id": "bafybeiaopdtmc3bv5ptwlyc4x2p2crr7rkwuaza3wj5uh2kmxtzj62m5pm",
       "query_image_ref": "https://dia-cdn.numbersprotocol.io/thumbnails/2024/01/08/06/34/26/tre6PEPxCRddBvKEzgv3_008_photo__20240103.jpg",
-      "created_at": "2026-08-13T04:05:31.633Z",
-      "expires_at": "2026-09-12T04:05:31.633Z",
+      "created_at": "2026-09-13T03:39:14.662Z",
+      "expires_at": "2026-10-13T03:39:14.662Z",
       "max_results": 10,
       "webDetection": {
         "visuallySimilarImages": [
           {
-            "url": "https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=1506632494833603"
+            "url": "http://www.news.cn/politics/xxjxs/20260819/a59e0c064754461b88ebdf61658cc312/4f577246fb674505a8ac54a2282ddd9f.png"
           },
           {
-            "url": "https://lookaside.instagram.com/seo/google_widget/crawler/?media_id=3961207838848815985"
+            "url": "https://www.ntu.edu.sg/media/images/librariesprovider123/spms-thumbnails/alumni-eventbb713c21-40ae-43d5-bbeb-3de112f1098a.jpg?sfvrsn=b2aeb80d_3"
           },
           {
-            "url": "https://lookaside.instagram.com/seo/google_widget/crawler/?media_id=3900935987149368336"
+            "url": "https://www.chntheatre.edu.cn/Uploads/Cad/Picture/2026/09/03/s6a999913cb051.JPG"
           },
           {
-            "url": "https://image.hkhl.hk/f/1024p0/0x0/100/none/c1f315d7daa4ef3744574a73d23eec6e/2026-08/20260807_fin___2.png"
+            "url": "https://res.cqhlw.cn/contentcloud/1/REPRINT/MEDIA/PICTURE/2026/9/11/29843a4c5a0e4be99acc033380368d7c_wh948x533.jpg"
           },
           {
-            "url": "https://cdn.hk01.com/di/media/images/dw/20260812/1164242331939901440756243.jpeg/3vb4jFilmBp09kgv3e-qX3Q3U7PtKFKLXHPeNlxz3jY"
+            "url": "https://pbs.twimg.com/media/GG8oq8ObUAAdaHA?format=webp&name=large"
           },
           {
-            "url": "https://www.icac.org.hk/filemanager/Drama/tc/upload/20/ICAC-drama-2014.jpg"
+            "url": "https://p4.img.cctvpic.com/photoworkspace/2026/01/15/2026011518345792929.jpg"
           },
           {
-            "url": "https://i.ytimg.com/vi/f3EbxPeKXAg/maxresdefault.jpg"
+            "url": "https://www.discoverhongkong.com/content/dam/dhk-cloud/main/food-and-drink/interactive-and-entertaining-family-dining-in-hong-kong/interactive-and-entertaining-family-dining-1920x1080.jpg"
           },
           {
-            "url": "https://lookaside.instagram.com/seo/google_widget/crawler/?media_id=3961850859743587663"
+            "url": "https://www.tiktok.com/api/img/?itemId=7418264050141875474&location=3&aid=1988&index=1"
           },
           {
-            "url": "https://cdn.hk01.com/di/media/images/dw/20260409/1119054108414709760092314.jpeg/_6yz9BoIGC653toSgG_solzIp7eoEMgGmjOARJozgEQ"
+            "url": "https://www.sutd.edu.sg/wp-content/uploads/2024/12/News.jpg"
           },
           {
-            "url": "https://media.licdn.com/dms/image/v2/D5622AQH1Hu8XD1ihSw/feedshare-shrink_800/B56Z5O2QlTIsAc-/0/1779439307586?e=2147483647&v=beta&t=3q3BBcxbehu9wYYAeP9rUgfMEfndX8QUNsnh1OTHkBc"
+            "url": "https://cdn.i-scmp.com/sites/default/files/styles/wide_landscape/public/d8/images/canvas/2026/02/13/0deddfc5-8561-497f-acae-e9f12fa98d72_3d2fa0d3.jpg?itok=RkPxoDOn"
           }
         ],
         "bestGuessLabels": [
@@ -2584,8 +2583,8 @@
     "e3c05e557bf21f152037322355e69195831e7383e30488bd3388ccab0db7584d": {
       "asset_id": "bafybeidfu6vvfvhcm6hee43yol3exskjzrincme33azlexnahbt3fcwak4",
       "query_image_ref": "https://dia-cdn.numbersprotocol.io/thumbnails/2024/01/08/06/35/12/Zny5RpsF7U27jjpNHFFH_007_photo__20240103.jpg",
-      "created_at": "2026-08-13T04:05:35.835Z",
-      "expires_at": "2026-09-12T04:05:35.835Z",
+      "created_at": "2026-09-13T03:39:22.553Z",
+      "expires_at": "2026-10-13T03:39:22.553Z",
       "max_results": 10,
       "webDetection": {
         "webEntities": [
@@ -2596,40 +2595,40 @@
           },
           {
             "entityId": "/m/02w3_2",
-            "score": 0.32051474,
+            "score": 0.32098272,
             "description": "Formal wear"
           }
         ],
         "visuallySimilarImages": [
           {
-            "url": "https://lookaside.instagram.com/seo/google_widget/crawler/?media_id=3927916387712494700"
+            "url": "https://images.chinatimes.com/newsphoto/2026-09-13/656/20260913000102.jpg"
           },
           {
-            "url": "https://my.ksu.edu.tw/img/normal/vE27wvZ_i9RcMGHubR67XuZSs0TQCpLsnJyLETGiETBwJuEeqjFQfuKq0FHTFwbpMV3OWo5JQEoVFTtyxW9X647enW3J!ELvBI7t5SgnyJY4bA1pl68EcVfEmAKWX51Q.jpg"
+            "url": "https://img.ltn.com.tw/Upload/news/600/2026/09/11/5570955_2_1.jpg"
           },
           {
-            "url": "https://media.zenfs.com/ko/mirrormedia.mg/546075206020f4876bfa352413c59796.jpg"
-          },
-          {
-            "url": "https://www.dali.gov.cn/dlzrmzf/c101530/2079117954048380928/faZtFC75.jpg"
-          },
-          {
-            "url": "https://www.ntt.com/content/dam/nttcom/hq/jp/business/lp/regional-effort/local-goverments/img/column_img09.png"
-          },
-          {
-            "url": "https://kikin.keio.ac.jp/wp-content/uploads/2023/04/hori04-scaled-1.jpg"
+            "url": "https://lookaside.instagram.com/seo/google_widget/crawler/?media_id=3977928439822774272"
           },
           {
             "url": "https://i3.ytimg.com/vi/fAJtN6fxpuY/maxresdefault.jpg"
           },
           {
+            "url": "https://reading.udn.com/readingimg/covert_page/book/235755.jpg"
+          },
+          {
+            "url": "http://rms.guorent.com/dev/upload/article/79DAE35F6E0A9B547D571741EA32338E/1598943460.jpg"
+          },
+          {
+            "url": "https://cms-image-bucket-productionv3-ap-northeast-1-a7d2.s3.ap-northeast-1.amazonaws.com/images/3/8/2/5/13065283-2-eng-GB/bcf50be64b29-2026-09-08T052141Z_66974078_RC2XANANZXIB_RTRMADP_3_SINGAPORE-POLITICS.JPG"
+          },
+          {
+            "url": "https://static06.hket.com/res/v3/image/manual-list/highlight/165000/169179/4192259_WhatsAppImage2026-09-12at113227_1_1024.jpeg"
+          },
+          {
+            "url": "https://p19-common-sign.tiktokcdn-us.com/tos-useast8-p-0068-tx2/oQVIIDwBAvDZSihRkIssmBTAa3E91mxkmiVvV~tplv-tiktokx-origin.image"
+          },
+          {
             "url": "https://www.se.cuhk.edu.hk/wp-content/uploads/2019/06/Prof.-YU-Gang_02-1024x768.jpg"
-          },
-          {
-            "url": "https://www.news.cn/sports/20250513/a8300f948e7d4a29b5987148e07d5920/fab8b3bbb9c4425bad4901c76f59b2cf.jpg"
-          },
-          {
-            "url": "https://www.pref.hiroshima.lg.jp/img/site/brand/my-eop/62/img01.jpg"
           }
         ],
         "bestGuessLabels": [
@@ -2642,52 +2641,52 @@
     "d61dabe3a6e615bd927ba2da2b7348fb5b2a82b13019043438e877b97d7f32e3": {
       "asset_id": "bafybeigwx5vsuh426v5bavtw6gvkpkxqqyeazautizo5yqytungoxi4qou",
       "query_image_ref": "https://dia-cdn.numbersprotocol.io/thumbnails/2024/01/08/06/36/08/eUmKPiMNTsSHiwt7Jxj1_006_photo__20240103.jpg",
-      "created_at": "2026-08-13T04:05:46.371Z",
-      "expires_at": "2026-09-12T04:05:46.371Z",
+      "created_at": "2026-09-13T03:39:31.615Z",
+      "expires_at": "2026-10-13T03:39:31.615Z",
       "max_results": 10,
       "webDetection": {
         "webEntities": [
           {
             "entityId": "/m/016c4t",
-            "score": 0.31186485,
+            "score": 0.2982102,
             "description": "Ceremony"
           },
           {
             "entityId": "/g/122czv1_",
-            "score": 0.2723,
+            "score": 0.27,
             "description": "Tuxedo"
           }
         ],
         "visuallySimilarImages": [
           {
-            "url": "https://www.tiktok.com/api/img/?itemId=7642347985426418965&location=0&aid=1988"
+            "url": "https://pgw.udn.com.tw/gw/photo.php?u=https://uc.udn.com.tw/photo/t3/2026/09/11/35317748.jpg&M=1&s=Y&x=0&y=0&sw=1279&sh=853&exp=3600&w=970"
           },
           {
-            "url": "https://www.globalpeople.com.cn/NMediaFile/WIRELESS_2_305913/2026/0811/WIRELESS178641733252029TF1URH2X.jpg"
+            "url": "https://www.reuters.com/resizer/v2/DFYNCK3WIJKPXNZIUMXO4CF2PA.jpg?auth=5730a5908027c9a5209a7b92426387c826b6002b91214ce01f44fc7e4c50886b"
           },
           {
-            "url": "https://p16-common-sign.tiktokcdn-us.com/tos-alisg-p-0037/1f4316b66f84486d92f713cd5b244fa6_1686304923~tplv-tiktokx-origin.image"
+            "url": "https://p3.img.cctvpic.com/fmspic/2023/11/13/e8faf4af553a4ef0b4278f8e27240394-1.jpg"
+          },
+          {
+            "url": "https://p5.img.cctvpic.com/fmspic/2023/11/16/f984b45fbcb744cb89d8d000f1b3ac62-1.jpg"
+          },
+          {
+            "url": "https://ichef.bbci.co.uk/ace/ws/640/cpsprodpb/fc9e/live/09d921c0-96e8-11f1-a7ab-8b30adf0800a.jpg.webp"
+          },
+          {
+            "url": "https://app7.rthk.hk/special/chinaseries830/upload_media/1778490635_th.jpg"
+          },
+          {
+            "url": "https://www.chathamhouse.org/sites/default/files/styles/16_9_media_small/public/2023-05/2023-05-30-twt-review-the-sister-hero-image.jpg?h=c8de77ea&itok=z23is5Kd"
+          },
+          {
+            "url": "https://ichef.bbci.co.uk/ace/ws/640/cpsprodpb/65e0/live/6856e410-7c32-11f1-bee8-53ce494e1abc.jpg.webp"
           },
           {
             "url": "https://www.tsinghua.edu.cn/__local/6/61/4C/6D265AA09DBB1587B39B00B065B_9AAB6111_156262.jpg"
           },
           {
-            "url": "https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=2222232111960912&get_thumbnail=1"
-          },
-          {
-            "url": "https://www.dali.gov.cn/dlzrmzf/c101530/2079117954048380928/faZtFC75.jpg"
-          },
-          {
-            "url": "https://lookaside.instagram.com/seo/google_widget/crawler/?media_id=3955983687326087709"
-          },
-          {
-            "url": "https://guanwang-private-read-produ.oss-cn-zhangjiakou.aliyuncs.com/attachment/20220616/9aafd1d34e36459e9076ca5f1d6c5886.png"
-          },
-          {
-            "url": "http://www.law.ruc.edu.cn/2024upic/lmpic/20260512/2026051219540953079.png"
-          },
-          {
-            "url": "http://f3.xhinst.net/group1/M00/00/76/CgoMnGWFe5yAP7WpAALyJh_ECs098.jpeg"
+            "url": "https://media.licdn.com/dms/image/v2/D5622AQEvThe3QiFgSg/feedshare-shrink_800/B56aBlccU0HEAc-/0/1788408350944?e=2147483647&v=beta&t=qJOpm3C7Ka9aq2A74chN-RKwjQk8uuVFO-52DESIrlk"
           }
         ],
         "bestGuessLabels": [
@@ -2700,24 +2699,24 @@
     "b34b7fb7a8d49c1734d5981cbb3473522d7e01ee5c432b47cc73420b51a79052": {
       "asset_id": "bafybeicw2ytzibie76r3nnp2ovmefdsjpr7vxgqlnotrjpnn6h4eaoat7m",
       "query_image_ref": "https://dia-cdn.numbersprotocol.io/thumbnails/2024/01/08/06/36/51/K8YB4pTna0wzi26do05X_005_photo__20240103.jpg",
-      "created_at": "2026-08-13T04:06:02.071Z",
-      "expires_at": "2026-09-12T04:06:02.071Z",
+      "created_at": "2026-09-13T03:39:41.943Z",
+      "expires_at": "2026-10-13T03:39:41.943Z",
       "max_results": 10,
       "webDetection": {
         "webEntities": [
           {
             "entityId": "/m/0p9xx",
-            "score": 0.40534788,
+            "score": 0.41006964,
             "description": "Visual Arts"
           },
           {
             "entityId": "/m/0jjw",
-            "score": 0.3451,
+            "score": 0.3498,
             "description": "Art"
           },
           {
             "entityId": "/g/120yrv6h",
-            "score": 0.3358,
+            "score": 0.3038,
             "description": "Tourism"
           }
         ],
@@ -2735,7 +2734,7 @@
             "url": "https://i.la-croix.com/1400x933/smart/2016/04/28/1200756549/Lobsang-Sangay-Dharamshala-Inde-27-avril-2016_0.jpg"
           },
           {
-            "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Dharamsala-Lobsang_Sangay-04-gje.jpg/330px-Dharamsala-Lobsang_Sangay-04-gje.jpg"
+            "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Dharamsala-Lobsang_Sangay-04-gje.jpg/330px-Dharamsala-Lobsang_Sangay-04-gje.jpg?utm_source=th.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
           },
           {
             "url": "https://i.imgur.com/5MHebTv.jpg"
@@ -2744,13 +2743,13 @@
             "url": "x-raw-image:///0f14ad250226e54ff656e0bfe2b9d0008737cba7cc85aa0bffe4c54cd58e4289"
           },
           {
+            "url": "https://s3.regru.cloud/monasterium/iblock/bb8/qfh9j1luosr9uhd8ment7zu1mciul9fd/111.jpg"
+          },
+          {
             "url": "http://ent.people.com.cn/NMediaFile/2024/0913/MAIN17262094493733BW7YX3G1Z.png"
           },
           {
-            "url": "https://lookaside.instagram.com/seo/google_widget/crawler/?media_id=2635106144787775584"
-          },
-          {
-            "url": "https://s3.regru.cloud/monasterium/iblock/bb8/qfh9j1luosr9uhd8ment7zu1mciul9fd/111.jpg"
+            "url": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiVRGOC85wF1TRxgaIOiLqSCb_cmaPLir6_Ed0XCPFzIOuYwtrmPOL-nXGOFwZg4X3HCO1co-4l-BByFTs8dm08voSDdKe0DHuVaBoTe_FxaAVkVtmCMWPgGT-RK6U3edvDSuLsIaIGKBk/s400/PC133021.JPG"
           }
         ],
         "bestGuessLabels": [
@@ -2763,62 +2762,52 @@
     "611eec309ae1032cb3d04edb8b1797da1e8057de8ef1c7e70b1db60eacb5698e": {
       "asset_id": "bafybeihezo44iktwrpkdgluvp5anp24vqlxeamf4jcwkirkb3v56wguhsa",
       "query_image_ref": "https://dia-cdn.numbersprotocol.io/thumbnails/2024/01/08/06/40/00/eEc8SFE1dqRE5oSPOFrs_004_photo__20240103.jpg",
-      "created_at": "2026-08-13T04:06:11.333Z",
-      "expires_at": "2026-09-12T04:06:11.333Z",
+      "created_at": "2026-09-13T03:39:56.997Z",
+      "expires_at": "2026-10-13T03:39:56.997Z",
       "max_results": 10,
       "webDetection": {
         "webEntities": [
           {
-            "entityId": "/m/02k88w",
-            "score": 0.34932765,
-            "description": "Rebellion"
-          },
-          {
             "entityId": "/m/0hr5k",
-            "score": 0.3298397,
+            "score": 0.34823126,
             "description": "Festival"
           },
           {
             "entityId": "/g/120ry1nd",
-            "score": 0.3143,
+            "score": 0.3248,
             "description": "Demonstration"
-          },
-          {
-            "entityId": "/m/06gfj",
-            "score": 0.2518,
-            "description": "Road"
           }
         ],
         "visuallySimilarImages": [
           {
-            "url": "https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=10153944966752774"
+            "url": "https://www.dess.tsinghua.edu.cn/__local/1/1C/82/54F3EC362451CF4980B90367941_C7F33812_2900F.jpeg"
           },
           {
-            "url": "https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=1442118927963189"
+            "url": "https://ws.wda.gov.tw/001/Upload/331/relpic/10656/3002/96476e1a-9698-4c8b-9d83-06b7e09b2d17.jpg"
           },
           {
-            "url": "https://www.sobyanin.ru/front_static/images/strategy/strategy-intro/tourism.jpg"
+            "url": "https://38picres.cgtn.com/photoAlbum/page/performance/img/2026/9/11/1789092068759_93.jpg"
           },
           {
-            "url": "https://www.news.cn/politics/leaders/20260211/2bb9e0c734ee4f069c17d845f6926c68/202602112bb9e0c734ee4f069c17d845f6926c68_b18f799fc8e048a6bc66fe57586e0372.jpg"
+            "url": "https://www.hsu.edu.hk/wp-content/uploads/2017/03/squre-1140x915.jpg"
           },
           {
-            "url": "https://media.licdn.com/dms/image/v2/D5622AQEP8Y_Q5-TOCw/feedshare-shrink_800/B56Z76tYD5HYAg-/0/1782322659825?e=2147483647&v=beta&t=mdug3rPYLnOJ0dPTWYuo2UG16kLdgrKq7Uu60PsTY2w"
+            "url": "https://file3.qdnd.vn/data/images/0/2026/09/11/upload_2277/0d99ba55b901395f6010.jpg?dpi=150&mode=crop&anchor=topcenter&quality=100&w=500"
           },
           {
-            "url": "https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=2026901018590566"
+            "url": "https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=972056519264883&get_thumbnail=1"
           },
           {
-            "url": "https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=1853491296132385"
+            "url": "https://images2.thanhnien.vn/zoom/642_401/528068263637045248/2026/9/10/tnw-tnw-nhung-thanh-nien-so-dua-cong-nghe-truc-tiep-den-voi-nguoi-dananh-nu-vuong-17890487825901265667407-5-0-1605-2560-crop-1789048845844854931308-1789048855972125406059.gif.png"
           },
           {
-            "url": "http://c.files.bbci.co.uk/2998/production/_108084601_gettyimages-460094234.jpg"
+            "url": "https://www.fulbrightteacherexchanges.org/sites/default/files/inline-images/Screenshot%202024-08-01%20182730_1.png"
           },
           {
-            "url": "https://lookaside.instagram.com/seo/google_widget/crawler/?media_id=3943575231232251762"
+            "url": "https://vcdn1-vnexpress.vnecdn.net/2026/06/02/edit-1780365688-6282-1780365708.jpg?w=380&h=228&q=100&dpr=2&fit=crop&s=v5HpP2VZwWRNs9FUl0kx5Q"
           },
           {
-            "url": "https://bkzs.pku.edu.cn/images/2026-04/4cee7fba15d448d2b73fef894d6136a0.jpeg"
+            "url": "https://global.media.uconn.edu/wp-content/uploads/sites/173/2024/04/img-for-CISS-scaled.jpg"
           }
         ],
         "bestGuessLabels": [
@@ -2831,62 +2820,67 @@
     "02b578d5a3ae6a6a136f8bfbdb77fe6aa0685040aab3d5a75f228ad17a031ffd": {
       "asset_id": "bafybeief3glrxbo76w23lnnfmkiahe6ennh7g6twd6juibzcoo3n42mf7u",
       "query_image_ref": "https://dia-cdn.numbersprotocol.io/thumbnails/2024/01/08/06/40/40/GhTvRbGdXpRFQEExyWua_003_photo__20240103.jpg",
-      "created_at": "2026-08-13T04:06:20.353Z",
-      "expires_at": "2026-09-12T04:06:20.353Z",
+      "created_at": "2026-09-13T03:40:12.410Z",
+      "expires_at": "2026-10-13T03:40:12.410Z",
       "max_results": 10,
       "webDetection": {
         "webEntities": [
           {
             "entityId": "/g/11w4g3ps61",
-            "score": 0.4981,
+            "score": 0.5002,
             "description": "Bazaar M"
           },
           {
+            "entityId": "/m/01c8br",
+            "score": 0.44988623,
+            "description": "Street"
+          },
+          {
+            "entityId": "/m/06gfj",
+            "score": 0.3874,
+            "description": "Road"
+          },
+          {
             "entityId": "/m/017r8p",
-            "score": 0.33496222,
+            "score": 0.35533136,
             "description": "Pedestrian"
           },
           {
             "entityId": "/m/0dnhy",
-            "score": 0.32378978,
+            "score": 0.3443366,
             "description": "Sidewalk"
-          },
-          {
-            "entityId": "/m/06gfj",
-            "score": 0.287,
-            "description": "Road"
           }
         ],
         "visuallySimilarImages": [
           {
-            "url": "https://media.newyorker.com/photos/6543f34e75635ded66f5083f/4:3/w_1280%2Cc_limit/Lo-Alvarado_0698.jpg"
+            "url": "http://media.newyorker.com/photos/6543f34e75635ded66f5083f/master/pass/Lo-Alvarado_0698.jpg"
           },
           {
-            "url": "https://www.g4media.ro//wp-content/uploads/2026/08/profimedia-1121676774.jpg"
+            "url": "https://img.haarets.co.il/bs/0000019c-cdf9-d7ea-abdd-ddffe37a0000/5e/a6/3e392a7f45e887fee92e35453278/64912901.JPG"
           },
           {
-            "url": "https://cassette.sphdigital.com.sg/image/zaobao/c5dceaa0bb77e93fed3a2b56e9dc1458082f97148d6e31a0a012de8677f74aef"
+            "url": "https://pbs.twimg.com/media/HR9CeVIWEAsgL7z?format=webp&name=medium"
           },
           {
-            "url": "https://static01.nyt.com/images/2026/01/28/multimedia/Biz-China-Dichotomy-01-jwzm/Biz-China-Dichotomy-01-jwzm-master1050.jpg"
-          },
-          {
-            "url": "https://i0.wp.com/taiwaninsight.org/wp-content/uploads/2024/06/uygkhljl-2.jpeg?fit=840%2C630&ssl=1"
-          },
-          {
-            "url": "https://static.ffx.io/images/$zoom_0.189%2C$multiply_0.7725%2C$ratio_1.5%2C$width_756%2C$x_0%2C$y_0/t_crop_custom/q_86%2Cf_auto/d2a95f5e253eec6e00382c5f4fd7090317cb2f88"
+            "url": "https://cdnx.premiumread.com/?url=https://www.japantimes.co.jp/japantimes/uploads/images/2025/11/27/508512.JPG&q=100&f=webp&t=1.53"
           },
           {
             "url": "https://static01.nyt.com/images/2021/11/22/world/00global-migration7/00global-migration7-master1050.jpg"
           },
           {
+            "url": "https://asset.japanwondertravel.com/variants/9c6wXhgVcrWXZo3owNbM1ytN/a230bf137297d029127b6300a2b5d31a81b5446533bc2f734fa7c734d90ebffe"
+          },
+          {
             "url": "https://image.news.kodansha.co.jp/tenants/1/resources/assets/000/055/756/original/revewer_tanakakaori.jpg?1727873055"
           },
           {
-            "url": "https://s.abcnews.com/images/Business/hate-crimes-asian-mental-health-01-gty-llr-210304_1614885722526_hpEmbed_3x2_992.jpg"
+            "url": "https://static.ffx.io/images/$zoom_0.189%2C$multiply_0.7725%2C$ratio_1.5%2C$width_756%2C$x_0%2C$y_0/t_crop_custom/q_86%2Cf_auto/d2a95f5e253eec6e00382c5f4fd7090317cb2f88"
           },
           {
-            "url": "https://www.rfa.org/resizer/4cYaXdGWeRH5-eX1dzax0Ms0ynQ=/arc-photo-radiofreeasia/arc2-prod/public/2SVFGK5FWCAED3Y47P6AYJRRTY.jpg"
+            "url": "https://nypost.com/wp-content/uploads/sites/2/2021/03/asain-hate-crimes-01.jpg?quality=75&strip=all&w=744"
+          },
+          {
+            "url": "https://lookaside.instagram.com/seo/google_widget/crawler/?media_id=3956112912648242998"
           }
         ],
         "bestGuessLabels": [
@@ -2899,40 +2893,40 @@
     "aacec784215ba12cc21ca546b6a533f2f99851edcf2b4271997c7ea8e4273b43": {
       "asset_id": "bafybeie4xc4bygcnuwyezolpkcgm5fgan2n3h6gvlzyqxhmnde6m4k45ge",
       "query_image_ref": "https://dia-cdn.numbersprotocol.io/thumbnails/2024/01/08/07/01/40/Vool9bXiAftSooReZdYe_016_wix_20240103.jpg",
-      "created_at": "2026-08-13T04:06:24.841Z",
-      "expires_at": "2026-09-12T04:06:24.841Z",
+      "created_at": "2026-09-13T03:40:19.954Z",
+      "expires_at": "2026-10-13T03:40:19.954Z",
       "max_results": 10,
       "webDetection": {
         "visuallySimilarImages": [
           {
-            "url": "https://media.cnn.com/api/v1/images/stellar/prod/c-sipausa-25437412.jpg?c=original"
-          },
-          {
-            "url": "https://www.usatoday.com/gcdn/media/USATODAY/USATODAY/2013/03/02/cppcc_007-16_9.jpg?width=700&height=396&fit=crop&format=pjpg&auto=webp"
-          },
-          {
-            "url": "https://cdn.ftvnews.com.tw/manasystem/FileData/News/febe91a5-2a5b-49e5-af46-9dddff57e80d.jpg"
-          },
-          {
-            "url": "https://www.president.gov.tw/img/Image/c12263b9-beba-4b91-b6d6-bda48cdea803.jpg"
+            "url": "https://lookaside.instagram.com/seo/google_widget/crawler/?media_id=3979939275608850517"
           },
           {
             "url": "https://media.licdn.com/dms/image/v2/C5603AQF_SfNNhfOq8A/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1635412233497?e=2147483647&v=beta&t=4nYz27aU9jq0FAUFG0rpAk_P_-T6ydcjNKtxHEzO1oE"
           },
           {
-            "url": "https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=1599525968201570"
+            "url": "https://www.president.gov.tw/img/Image/c12263b9-beba-4b91-b6d6-bda48cdea803.jpg"
           },
           {
-            "url": "https://live-production.wcms.abc-cdn.net.au/6df1b5774285901039fdc393a155e782?impolicy=wcms_crop_resize&cropH=1180&cropW=1770&xPos=332&yPos=221&width=862&height=575"
+            "url": "https://mna.mnd.gov.tw/Cms_Data/Contents/MNA/Media/images/news/58334211-1640-4021-a520-9ebbce24383e.jpg"
           },
           {
-            "url": "https://szentkoronaradio.com/wp-content/uploads/2026/03/kina-etnikai-torveny.jpg"
+            "url": "https://imgcdn.cna.com.tw/www/WebPhotos/1024/20251204/1024x768_wmkn_0_C20251204000157.jpg"
           },
           {
-            "url": "https://eastasiaforum.org/wp-content/uploads/2023/05/2022-12-03T102405Z_2043265456_RC28YX9I1YCT_RTRMADP_3_MALAYSIA-POLITICS-scaled.jpg"
+            "url": "https://www.usatoday.com/gcdn/media/USATODAY/USATODAY/2013/03/02/cppcc_007-16_9.jpg?width=700&height=396&fit=crop&format=pjpg&auto=webp"
           },
           {
-            "url": "https://lookaside.instagram.com/seo/google_widget/crawler/?media_id=3841850498882540401"
+            "url": "https://imgcdn.cna.com.tw/www/WebPhotos/800/20241115/1024x768_wmky_0_C20241115000155.jpg"
+          },
+          {
+            "url": "https://www.ro.emb-japan.go.jp/files/100925256.jpg"
+          },
+          {
+            "url": "https://prcdn.freetls.fastly.net/release_image/106376/48/106376-48-064fb9773094758daf526ad8820b7afb-3900x2600.jpg?width=1950&height=1350&quality=85%2C65&format=jpeg&auto=webp&fit=bounds&bg-color=fff"
+          },
+          {
+            "url": "http://bc.edu/content/bc-web/sites/bc-news/articles/2026/spring/commencement-honorary-degree-citations/jcr:content/articleimage.transform/banner-medium/image.jpg"
           }
         ],
         "bestGuessLabels": [
@@ -2945,57 +2939,57 @@
     "e4748ab083c6d750e6edc88ddef32a1c0caeaa5f3b48266bb073fc46545dfb06": {
       "asset_id": "bafybeicak5opr2pqhm7cweggwixyj5bok4ajprva6tlqiifrunnevlen4q",
       "query_image_ref": "https://dia-cdn.numbersprotocol.io/thumbnails/2024/01/08/13/05/10/tJdAffb9AacnGBTHDxlE_005_wix_20240106.jpg",
-      "created_at": "2026-08-13T04:06:30.421Z",
-      "expires_at": "2026-09-12T04:06:30.421Z",
+      "created_at": "2026-09-13T03:40:37.507Z",
+      "expires_at": "2026-10-13T03:40:37.507Z",
       "max_results": 10,
       "webDetection": {
         "webEntities": [
           {
             "entityId": "/g/11k99zr4hj",
-            "score": 0.3132,
+            "score": 0.3149,
             "description": "Performance M"
           },
           {
-            "entityId": "/m/07j7r",
-            "score": 0.31036916,
-            "description": "Tree"
+            "entityId": "/m/07bb2_",
+            "score": 0.3072405,
+            "description": "Fête"
           },
           {
-            "entityId": "/m/07bb2_",
-            "score": 0.30684742,
-            "description": "Fête"
+            "entityId": "/m/07j7r",
+            "score": 0.30585033,
+            "description": "Tree"
           }
         ],
         "visuallySimilarImages": [
           {
-            "url": "https://lookaside.instagram.com/seo/google_widget/crawler/?media_id=3957648990987617599"
+            "url": "https://www.tiktok.com/api/img/?itemId=7673076994443169045&location=0&aid=1988"
           },
           {
-            "url": "https://www.4us.com.au/wp-content/uploads/2018/04/NAIDOC-March-2013-Community-entering-the-cricket-grounds-601x669.jpg"
+            "url": "https://lookaside.fbsbx.com/lookaside/crawler/instagram/DWZWl7WjQYe/0/image.jpg"
           },
           {
-            "url": "https://www.nps.gov/common/uploads/grid_builder/music/crop16_9/414BC3D8-DDB2-0430-AB4DBC3849FCE93A.jpg?width=640&quality=90&mode=crop"
+            "url": "https://www.cuhk.edu.hk/ugallery/images/milestones/2010s/2013-cu50.jpg"
           },
           {
-            "url": "https://static.ccbb.com.br/site-2025/2025/09/gente-8.jpg"
+            "url": "https://www.utp.edu.my/PublishingImages/Pages/Sustainability/Low-Carbon-Campus/gutta01.jpg"
           },
           {
-            "url": "https://uwc.no/wp-content/uploads/2020/10/LPC_Courtyard-1024x576-1.jpg"
+            "url": "https://lookaside.instagram.com/seo/google_widget/crawler/?media_id=3957725047552811991"
           },
           {
-            "url": "https://www.yayasansimedarby.com/sites/default/files/styles/wide/public/2025-04/OurWorkSection4PinkPhoto4%401x.png.webp?itok=mTvsF6tP"
+            "url": "https://revistaconcolon.com/wp-content/uploads/2023/11/WhatsApp-Image-2023-11-07-at-16.32.45.jpeg"
           },
           {
-            "url": "https://covab.mak.ac.ug/wp-content/uploads/2026/03/GROUP-480x360.jpg"
+            "url": "https://www.zctu.co.zw/sites/default/files/styles/slideshow/public/slideshow/_MG_6813.JPG?itok=muqfXDlP"
           },
           {
-            "url": "https://amazonfrontlines.org/wp-content/uploads/2026/01/Derecho_Encuentro-de-Guardias-Indigenas-de-la-Amazonia_Diciembre-2025_Daris.Payaguaje-04-1200x800-1.jpg"
+            "url": "https://static01.nyt.com/images/2026/06/19/multimedia/19nat-worldcup-koreatown-01-cgpw/19nat-worldcup-koreatown-01-cgpw-articleLarge.jpg?quality=75&auto=webp&disable=upscale"
           },
           {
-            "url": "https://cdn.prod.www.spiegel.de/images/5ee4eccf-fbf0-4134-b312-80c96fbf39cd_w520_r0.667_fpx48_fpy55.jpg"
+            "url": "https://lookaside.instagram.com/seo/google_widget/crawler/?media_id=3475622368851732155"
           },
           {
-            "url": "https://lookaside.instagram.com/seo/google_widget/crawler/?media_id=3857680533497445995"
+            "url": "https://www.fundobrasil.org.br/app/uploads/2024/11/menu-fb.webp"
           }
         ],
         "bestGuessLabels": [
@@ -3006,5 +3000,5 @@
       }
     }
   },
-  "updated_at": "2026-09-08T03:31:12.688Z"
+  "updated_at": "2026-09-13T03:40:37.507Z"
 }
