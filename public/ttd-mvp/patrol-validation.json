@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-09-14T03:40:37.959Z",
-  "run_id": "ttd-patrol-20260914T033448Z",
+  "generated_at": "2026-09-15T03:37:46.155Z",
+  "run_id": "ttd-patrol-20260915T033228Z",
   "adapter": "visionWebDetection+namedChannelCrawler",
   "expected_filter": "all",
   "threshold": 16,
@@ -87,7 +87,7 @@
       "expected": "unknown",
       "pass": true,
       "warning": true,
-      "error": "non-image response content-type=text/html; charset=\"utf-8\" for https://lookaside.instagram.com/seo/google_widget/crawler/"
+      "error": "HTTP 403 for https://lookaside.instagram.com/seo/google_widget/crawler/"
     },
     {
       "candidate_id": "vision_66eb78fa756f9ae6",
@@ -1228,8 +1228,8 @@
       "candidate_id": "vision_d9462f6b44672f01",
       "expected": "unknown",
       "verdict": "no_match",
-      "protected_asset_distance": 71,
-      "top_index_match_asset_id": "bafybeida6dh4uu4eh42wpeqphqudejzn77hjhktha2swpy272w7xkon5qa",
+      "protected_asset_distance": 73,
+      "top_index_match_asset_id": "bafybeig5irc53opbyljtf35jky6u6cvlaedroafbjxuicmavrtskqz7fx4",
       "pass": true
     },
     {
@@ -1839,10 +1839,9 @@
     {
       "candidate_id": "vision_cf51f09cad14074f",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 54,
-      "top_index_match_asset_id": "bafybeieeotpvfwb527kd52fnju3dfrwh4h5q4ivdu5yqg6xlphi5b5iuaa",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "fetch failed"
     },
     {
       "candidate_id": "vision_e02463973219841b",
@@ -2233,9 +2232,10 @@
     {
       "candidate_id": "vision_b518cf2c4f2be2a9",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "fetch failed"
+      "verdict": "no_match",
+      "protected_asset_distance": 68,
+      "top_index_match_asset_id": "bafybeiaqbojqsx7q2lt4b2znsyndiuolajxo72dd5nmuheevwuzjtlqy4q",
+      "pass": true
     },
     {
       "candidate_id": "vision_44fda9c7f750069d",
@@ -2416,9 +2416,10 @@
     {
       "candidate_id": "vision_f2be61af62ef1129",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "HTTP 429 for https://www.yomiuri.co.jp/media/2026/08/20260815-GYT1I00249-T.jpg"
+      "verdict": "no_match",
+      "protected_asset_distance": 66,
+      "top_index_match_asset_id": "bafybeiexghclletfobvoegyq4atbtz4fseayvj3zpxawu4shuax6mf57xy",
+      "pass": true
     },
     {
       "candidate_id": "vision_f96c709ac70d5f26",
@@ -2533,9 +2534,10 @@
     {
       "candidate_id": "vision_4094f00765fa1b07",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "fetch failed"
+      "verdict": "no_match",
+      "protected_asset_distance": 65,
+      "top_index_match_asset_id": "bafybeie5ymr7euxsocvxwfsawo23ymh4p75676cgvpellui4kavwquqoma",
+      "pass": true
     },
     {
       "candidate_id": "vision_eac8ce2b5799fa2f",
