@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-09-15T03:37:46.155Z",
-  "run_id": "ttd-patrol-20260915T033228Z",
+  "generated_at": "2026-09-16T03:37:34.872Z",
+  "run_id": "ttd-patrol-20260916T033215Z",
   "adapter": "visionWebDetection+namedChannelCrawler",
   "expected_filter": "all",
   "threshold": 16,
@@ -525,10 +525,9 @@
     {
       "candidate_id": "vision_0fcb21c00de55989",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 61,
-      "top_index_match_asset_id": "bafybeiasixb43gfbhad4byuhzyqawcdoiazxt5drlkez3dbkhdicyq5vfu",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "terminated"
     },
     {
       "candidate_id": "vision_546d0bb92a6b2ce9",
@@ -926,10 +925,9 @@
     {
       "candidate_id": "vision_ace2685c68cd32ec",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 55,
-      "top_index_match_asset_id": "bafybeifu6xivhsnhad72exu3yv7ou2phiben3d7uoo3fyafyiybvzlfxge",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "fetch failed"
     },
     {
       "candidate_id": "vision_47a0ce11b71ec1c3",
@@ -1574,10 +1572,9 @@
     {
       "candidate_id": "vision_4ba20209e8b8fa4d",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 60,
-      "top_index_match_asset_id": "bafybeiat6z3stjwq45wfyn3u5tyepoyedeg4urzdwxsnl4uzxncfbeddsi",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "fetch failed"
     },
     {
       "candidate_id": "vision_8db3427b91d9bbac",
@@ -1846,10 +1843,9 @@
     {
       "candidate_id": "vision_e02463973219841b",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 54,
-      "top_index_match_asset_id": "bafybeihbkmyxux36ho7mjuu7t2k3wrgjio6ywbi5cml65bqlhdafgw7rjq",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "fetch failed"
     },
     {
       "candidate_id": "vision_0bf9ba73acec7638",
@@ -2208,10 +2204,9 @@
     {
       "candidate_id": "vision_aa3e57cb1ac3175e",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 68,
-      "top_index_match_asset_id": "bafybeiaycmwxdqvzadrnqs2u3bmpds4c24aeictfm3yhey2ukq3asa3t4e",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "fetch failed"
     },
     {
       "candidate_id": "vision_97afc756e6ac9e9d",
@@ -2232,10 +2227,9 @@
     {
       "candidate_id": "vision_b518cf2c4f2be2a9",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 68,
-      "top_index_match_asset_id": "bafybeiaqbojqsx7q2lt4b2znsyndiuolajxo72dd5nmuheevwuzjtlqy4q",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "fetch failed"
     },
     {
       "candidate_id": "vision_44fda9c7f750069d",
@@ -2416,10 +2410,9 @@
     {
       "candidate_id": "vision_f2be61af62ef1129",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 66,
-      "top_index_match_asset_id": "bafybeiexghclletfobvoegyq4atbtz4fseayvj3zpxawu4shuax6mf57xy",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "HTTP 429 for https://www.yomiuri.co.jp/media/2026/08/20260815-GYT1I00249-T.jpg"
     },
     {
       "candidate_id": "vision_f96c709ac70d5f26",
