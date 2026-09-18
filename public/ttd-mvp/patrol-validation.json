@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-09-17T03:38:07.913Z",
-  "run_id": "ttd-patrol-20260917T033215Z",
+  "generated_at": "2026-09-18T03:37:04.598Z",
+  "run_id": "ttd-patrol-20260918T033121Z",
   "adapter": "visionWebDetection+namedChannelCrawler",
   "expected_filter": "all",
   "threshold": 16,
@@ -525,9 +525,10 @@
     {
       "candidate_id": "vision_0fcb21c00de55989",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "terminated"
+      "verdict": "no_match",
+      "protected_asset_distance": 61,
+      "top_index_match_asset_id": "bafybeiasixb43gfbhad4byuhzyqawcdoiazxt5drlkez3dbkhdicyq5vfu",
+      "pass": true
     },
     {
       "candidate_id": "vision_546d0bb92a6b2ce9",
@@ -857,7 +858,7 @@
       "expected": "unknown",
       "pass": true,
       "warning": true,
-      "error": "non-image response content-type=text/html for https://www.raaltd.co.uk/wp-content/uploads/2017/11/Boverton.jpg"
+      "error": "fetch failed"
     },
     {
       "candidate_id": "vision_c49979604c1dbc17",
@@ -1164,9 +1165,10 @@
     {
       "candidate_id": "vision_15ad20b7b9cfaa36",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "fetch failed"
+      "verdict": "no_match",
+      "protected_asset_distance": 50,
+      "top_index_match_asset_id": "bafybeihceo3haj7wyxdksqq23wxyahrlrbleqolcm3skvcblg4q5ny6tg4",
+      "pass": true
     },
     {
       "candidate_id": "vision_17f25b0f75a92351",
@@ -1455,9 +1457,10 @@
     {
       "candidate_id": "vision_7818c9f1e8101b8a",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "fetch failed"
+      "verdict": "no_match",
+      "protected_asset_distance": 72,
+      "top_index_match_asset_id": "bafybeigns36zbxgt4gdcaqwp6tdvh6img3ejcrg5ocaofvlytrdyl7ku64",
+      "pass": true
     },
     {
       "candidate_id": "vision_e89c7e2dee06a6f1",
@@ -1491,9 +1494,10 @@
     {
       "candidate_id": "vision_0d7cf35cc9e3d9e7",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "fetch failed"
+      "verdict": "no_match",
+      "protected_asset_distance": 54,
+      "top_index_match_asset_id": "bafybeicbawuibw7idnx3w6rvncojo2wzve4vydohodm33pw4cgiditctza",
+      "pass": true
     },
     {
       "candidate_id": "vision_f5ee2af9e7d698b0",
@@ -1569,9 +1573,10 @@
     {
       "candidate_id": "vision_4ba20209e8b8fa4d",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "fetch failed"
+      "verdict": "no_match",
+      "protected_asset_distance": 60,
+      "top_index_match_asset_id": "bafybeiat6z3stjwq45wfyn3u5tyepoyedeg4urzdwxsnl4uzxncfbeddsi",
+      "pass": true
     },
     {
       "candidate_id": "vision_8db3427b91d9bbac",
@@ -1599,10 +1604,9 @@
     {
       "candidate_id": "vision_52f4ebb4b79fd6c1",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 66,
-      "top_index_match_asset_id": "bafybeiegmheqitc4n5u7hlviqo5nu6yb4tz66ihcchni7zikwzctunrscm",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "HTTP 429 for https://www.yomiuri.co.jp/media/2026/04/20260402-GYT1I00438-T.jpg"
     },
     {
       "candidate_id": "vision_381a9a46af5bca57",
@@ -1778,9 +1782,10 @@
     {
       "candidate_id": "vision_b0027c14500152e0",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "fetch failed"
+      "verdict": "no_match",
+      "protected_asset_distance": 73,
+      "top_index_match_asset_id": "bafybeiao5liqb7iephko7ofsfncxn6ebaipfgablq3upnlhwgdh3iv63uu",
+      "pass": true
     },
     {
       "candidate_id": "vision_781a13b8ee612788",
@@ -1832,16 +1837,18 @@
     {
       "candidate_id": "vision_cf51f09cad14074f",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "fetch failed"
+      "verdict": "no_match",
+      "protected_asset_distance": 54,
+      "top_index_match_asset_id": "bafybeieeotpvfwb527kd52fnju3dfrwh4h5q4ivdu5yqg6xlphi5b5iuaa",
+      "pass": true
     },
     {
       "candidate_id": "vision_e02463973219841b",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "fetch failed"
+      "verdict": "no_match",
+      "protected_asset_distance": 54,
+      "top_index_match_asset_id": "bafybeihbkmyxux36ho7mjuu7t2k3wrgjio6ywbi5cml65bqlhdafgw7rjq",
+      "pass": true
     },
     {
       "candidate_id": "vision_0bf9ba73acec7638",
@@ -2200,9 +2207,10 @@
     {
       "candidate_id": "vision_aa3e57cb1ac3175e",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "fetch failed"
+      "verdict": "no_match",
+      "protected_asset_distance": 68,
+      "top_index_match_asset_id": "bafybeiaycmwxdqvzadrnqs2u3bmpds4c24aeictfm3yhey2ukq3asa3t4e",
+      "pass": true
     },
     {
       "candidate_id": "vision_97afc756e6ac9e9d",
@@ -2247,9 +2255,10 @@
     {
       "candidate_id": "vision_cb33a042f9d64325",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "fetch failed"
+      "verdict": "no_match",
+      "protected_asset_distance": 73,
+      "top_index_match_asset_id": "bafybeigns36zbxgt4gdcaqwp6tdvh6img3ejcrg5ocaofvlytrdyl7ku64",
+      "pass": true
     },
     {
       "candidate_id": "vision_1aa595959242fee2",
@@ -2283,9 +2292,10 @@
     {
       "candidate_id": "vision_71e22aa7348cb987",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "fetch failed"
+      "verdict": "no_match",
+      "protected_asset_distance": 53,
+      "top_index_match_asset_id": "bafybeicbawuibw7idnx3w6rvncojo2wzve4vydohodm33pw4cgiditctza",
+      "pass": true
     },
     {
       "candidate_id": "vision_564c5aff352214d2",
@@ -2405,9 +2415,10 @@
     {
       "candidate_id": "vision_f2be61af62ef1129",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "HTTP 429 for https://www.yomiuri.co.jp/media/2026/08/20260815-GYT1I00249-T.jpg"
+      "verdict": "no_match",
+      "protected_asset_distance": 66,
+      "top_index_match_asset_id": "bafybeiexghclletfobvoegyq4atbtz4fseayvj3zpxawu4shuax6mf57xy",
+      "pass": true
     },
     {
       "candidate_id": "vision_f96c709ac70d5f26",
@@ -2522,9 +2533,10 @@
     {
       "candidate_id": "vision_4094f00765fa1b07",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "fetch failed"
+      "verdict": "no_match",
+      "protected_asset_distance": 65,
+      "top_index_match_asset_id": "bafybeie5ymr7euxsocvxwfsawo23ymh4p75676cgvpellui4kavwquqoma",
+      "pass": true
     },
     {
       "candidate_id": "vision_eac8ce2b5799fa2f",
@@ -2671,9 +2683,10 @@
     {
       "candidate_id": "vision_7ee81efc8d38279a",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "fetch failed"
+      "verdict": "no_match",
+      "protected_asset_distance": 64,
+      "top_index_match_asset_id": "bafybeibjnrrfecwqtjcx46q3xpxf3bwky3chhy2wp5s7nia5j2ypexzltq",
+      "pass": true
     },
     {
       "candidate_id": "vision_8c05895b1ce99973",
