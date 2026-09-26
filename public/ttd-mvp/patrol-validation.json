@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-09-25T03:37:05.940Z",
-  "run_id": "ttd-patrol-20260925T033149Z",
+  "generated_at": "2026-09-26T03:37:28.085Z",
+  "run_id": "ttd-patrol-20260926T033130Z",
   "adapter": "visionWebDetection+namedChannelCrawler",
   "expected_filter": "all",
   "threshold": 16,
@@ -1573,9 +1573,10 @@
     {
       "candidate_id": "vision_4ba20209e8b8fa4d",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "fetch failed"
+      "verdict": "no_match",
+      "protected_asset_distance": 60,
+      "top_index_match_asset_id": "bafybeiat6z3stjwq45wfyn3u5tyepoyedeg4urzdwxsnl4uzxncfbeddsi",
+      "pass": true
     },
     {
       "candidate_id": "vision_8db3427b91d9bbac",
@@ -1837,16 +1838,18 @@
     {
       "candidate_id": "vision_cf51f09cad14074f",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "fetch failed"
+      "verdict": "no_match",
+      "protected_asset_distance": 54,
+      "top_index_match_asset_id": "bafybeieeotpvfwb527kd52fnju3dfrwh4h5q4ivdu5yqg6xlphi5b5iuaa",
+      "pass": true
     },
     {
       "candidate_id": "vision_e02463973219841b",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "fetch failed"
+      "verdict": "no_match",
+      "protected_asset_distance": 54,
+      "top_index_match_asset_id": "bafybeihbkmyxux36ho7mjuu7t2k3wrgjio6ywbi5cml65bqlhdafgw7rjq",
+      "pass": true
     },
     {
       "candidate_id": "vision_0bf9ba73acec7638",
@@ -2205,9 +2208,10 @@
     {
       "candidate_id": "vision_aa3e57cb1ac3175e",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "fetch failed"
+      "verdict": "no_match",
+      "protected_asset_distance": 68,
+      "top_index_match_asset_id": "bafybeiaycmwxdqvzadrnqs2u3bmpds4c24aeictfm3yhey2ukq3asa3t4e",
+      "pass": true
     },
     {
       "candidate_id": "vision_97afc756e6ac9e9d",
@@ -2228,10 +2232,9 @@
     {
       "candidate_id": "vision_b518cf2c4f2be2a9",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 68,
-      "top_index_match_asset_id": "bafybeiaqbojqsx7q2lt4b2znsyndiuolajxo72dd5nmuheevwuzjtlqy4q",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "fetch failed"
     },
     {
       "candidate_id": "vision_44fda9c7f750069d",
@@ -2412,9 +2415,10 @@
     {
       "candidate_id": "vision_f2be61af62ef1129",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "HTTP 429 for https://www.yomiuri.co.jp/media/2026/08/20260815-GYT1I00249-T.jpg"
+      "verdict": "no_match",
+      "protected_asset_distance": 66,
+      "top_index_match_asset_id": "bafybeiexghclletfobvoegyq4atbtz4fseayvj3zpxawu4shuax6mf57xy",
+      "pass": true
     },
     {
       "candidate_id": "vision_f96c709ac70d5f26",
@@ -2521,17 +2525,17 @@
     {
       "candidate_id": "vision_0e3cb79dde3591cc",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 64,
-      "top_index_match_asset_id": "bafybeiczqijzi45y64alei2k3oifz3oygoykds4fguv7fmhy3ks3pybjdy",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "This operation was aborted"
     },
     {
       "candidate_id": "vision_4094f00765fa1b07",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "fetch failed"
+      "verdict": "no_match",
+      "protected_asset_distance": 65,
+      "top_index_match_asset_id": "bafybeie5ymr7euxsocvxwfsawo23ymh4p75676cgvpellui4kavwquqoma",
+      "pass": true
     },
     {
       "candidate_id": "vision_eac8ce2b5799fa2f",
@@ -2677,9 +2681,10 @@
     {
       "candidate_id": "vision_7ee81efc8d38279a",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "fetch failed"
+      "verdict": "no_match",
+      "protected_asset_distance": 64,
+      "top_index_match_asset_id": "bafybeibjnrrfecwqtjcx46q3xpxf3bwky3chhy2wp5s7nia5j2ypexzltq",
+      "pass": true
     },
     {
       "candidate_id": "vision_8c05895b1ce99973",
