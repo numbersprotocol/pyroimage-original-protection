@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-09-26T03:37:28.085Z",
-  "run_id": "ttd-patrol-20260926T033130Z",
+  "generated_at": "2026-09-27T03:40:48.403Z",
+  "run_id": "ttd-patrol-20260927T033432Z",
   "adapter": "visionWebDetection+namedChannelCrawler",
   "expected_filter": "all",
   "threshold": 16,
@@ -703,9 +703,10 @@
     {
       "candidate_id": "vision_00ee0606df5313b5",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "fetch failed"
+      "verdict": "no_match",
+      "protected_asset_distance": 83,
+      "top_index_match_asset_id": "bafybeibjnrrfecwqtjcx46q3xpxf3bwky3chhy2wp5s7nia5j2ypexzltq",
+      "pass": true
     },
     {
       "candidate_id": "vision_80e311d5d0921b20",
@@ -808,10 +809,9 @@
     {
       "candidate_id": "vision_5d43b00f8920326f",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 66,
-      "top_index_match_asset_id": "bafybeifbnxd4wmh2bozake7tvbfkfza56wepcgbsqpq4ocjxi2voajbkwa",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "This operation was aborted"
     },
     {
       "candidate_id": "vision_039de2659fdbeacc",
@@ -1065,7 +1065,7 @@
       "candidate_id": "vision_f5aca132b5aa36a4",
       "expected": "unknown",
       "verdict": "no_match",
-      "protected_asset_distance": 60,
+      "protected_asset_distance": 58,
       "top_index_match_asset_id": "bafybeignxpwriuhvsdvj3dwk4sc6v54fxzpgawz7hsiqwzsnh7av3h3svu",
       "pass": true
     },
@@ -1127,7 +1127,7 @@
       "candidate_id": "vision_f3ef46751f7c5e5d",
       "expected": "unknown",
       "verdict": "no_match",
-      "protected_asset_distance": 60,
+      "protected_asset_distance": 58,
       "top_index_match_asset_id": "bafybeignxpwriuhvsdvj3dwk4sc6v54fxzpgawz7hsiqwzsnh7av3h3svu",
       "pass": true
     },
@@ -1444,7 +1444,7 @@
       "expected": "unknown",
       "pass": true,
       "warning": true,
-      "error": "image exceeds max bytes (3398939 > 2000000) for https://www.sejong.go.kr/thumbnail/R0141/BBS_0000196068Yit0lDO0.jpg"
+      "error": "This operation was aborted"
     },
     {
       "candidate_id": "vision_68d37cf87f4a52bb",
@@ -1838,10 +1838,9 @@
     {
       "candidate_id": "vision_cf51f09cad14074f",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 54,
-      "top_index_match_asset_id": "bafybeieeotpvfwb527kd52fnju3dfrwh4h5q4ivdu5yqg6xlphi5b5iuaa",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "fetch failed"
     },
     {
       "candidate_id": "vision_e02463973219841b",
@@ -2525,9 +2524,10 @@
     {
       "candidate_id": "vision_0e3cb79dde3591cc",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "This operation was aborted"
+      "verdict": "no_match",
+      "protected_asset_distance": 64,
+      "top_index_match_asset_id": "bafybeiczqijzi45y64alei2k3oifz3oygoykds4fguv7fmhy3ks3pybjdy",
+      "pass": true
     },
     {
       "candidate_id": "vision_4094f00765fa1b07",
@@ -2681,10 +2681,9 @@
     {
       "candidate_id": "vision_7ee81efc8d38279a",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 64,
-      "top_index_match_asset_id": "bafybeibjnrrfecwqtjcx46q3xpxf3bwky3chhy2wp5s7nia5j2ypexzltq",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "fetch failed"
     },
     {
       "candidate_id": "vision_8c05895b1ce99973",
