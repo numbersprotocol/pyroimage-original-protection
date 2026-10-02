@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-10-01T03:46:30.304Z",
-  "run_id": "ttd-patrol-20261001T034103Z",
+  "generated_at": "2026-10-02T03:40:51.930Z",
+  "run_id": "ttd-patrol-20261002T033503Z",
   "adapter": "visionWebDetection+namedChannelCrawler",
   "expected_filter": "all",
   "threshold": 16,
@@ -87,7 +87,7 @@
       "expected": "unknown",
       "pass": true,
       "warning": true,
-      "error": "HTTP 403 for https://lookaside.instagram.com/seo/google_widget/crawler/"
+      "error": "non-image response content-type=text/html; charset=\"utf-8\" for https://lookaside.instagram.com/seo/google_widget/crawler/"
     },
     {
       "candidate_id": "vision_66eb78fa756f9ae6",
@@ -703,9 +703,10 @@
     {
       "candidate_id": "vision_00ee0606df5313b5",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "fetch failed"
+      "verdict": "no_match",
+      "protected_asset_distance": 83,
+      "top_index_match_asset_id": "bafybeibjnrrfecwqtjcx46q3xpxf3bwky3chhy2wp5s7nia5j2ypexzltq",
+      "pass": true
     },
     {
       "candidate_id": "vision_80e311d5d0921b20",
@@ -840,10 +841,9 @@
     {
       "candidate_id": "vision_2b379750acf6bf52",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 70,
-      "top_index_match_asset_id": "bafybeifcxdueifp6de6z5xjdjyt6f7jijgp7iq62cjbybvmdcqgt6b3gh4",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "HTTP 403 for https://oem.com.mx/eloccidental/img/31945140/1788779446/BASE_LANDSCAPE/800/Inundaciones%20GDL%20PC%20Guadalajara%20(3).webp"
     },
     {
       "candidate_id": "vision_7f859fc0219a62c6",
@@ -2534,10 +2534,9 @@
     {
       "candidate_id": "vision_4094f00765fa1b07",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 65,
-      "top_index_match_asset_id": "bafybeie5ymr7euxsocvxwfsawo23ymh4p75676cgvpellui4kavwquqoma",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "fetch failed"
     },
     {
       "candidate_id": "vision_eac8ce2b5799fa2f",
@@ -2893,10 +2892,9 @@
     {
       "candidate_id": "vision_19402eb6d21d839a",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 84,
-      "top_index_match_asset_id": "bafybeihhcplzdfvfmdxw6rdhuxvwhbomgwkkjznmeiupxdbzv2cd4b3amq",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "fetch failed"
     },
     {
       "candidate_id": "vision_26484375911e979a",
