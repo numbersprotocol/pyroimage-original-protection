@@ -93,52 +93,52 @@
     "8fd1751c651238543e07d8d07f7d44ad8237a160a1a47afba205dfa5639e51f5": {
       "asset_id": "bafybeigzo5rkfshhubaazvw2xsvruskzrglb3gefyjtln3w3r4crhufmwm",
       "query_image_ref": "https://dia-cdn.numbersprotocol.io/thumbnails/2025/08/31/10/49/13/HISCZ8fDjdPj3HURcZt4_1.jpg",
-      "created_at": "2026-09-08T03:31:12.687Z",
-      "expires_at": "2026-10-08T03:31:12.687Z",
+      "created_at": "2026-10-08T03:38:44.599Z",
+      "expires_at": "2026-11-07T03:38:44.599Z",
       "max_results": 10,
       "webDetection": {
         "webEntities": [
           {
             "entityId": "/m/0j2kx",
-            "score": 0.33003336,
+            "score": 0.3301498,
             "description": "Waterfall"
           },
           {
             "entityId": "/m/07j7r",
-            "score": 0.30448267,
+            "score": 0.30491138,
             "description": "Tree"
           }
         ],
         "visuallySimilarImages": [
           {
-            "url": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0f/1a/fa/5a/prehistoric-garden.jpg?w=500&h=500&s=1"
+            "url": "https://p19-common-sign.tiktokcdn-us.com/tos-maliva-p-0068/ca30de7847ba4579a1b436ff160c6fb7_1708445403~tplv-tiktokx-origin.image"
           },
           {
-            "url": "https://www.tiktok.com/api/img/?itemId=7665194390008220935&location=0&aid=1988"
+            "url": "https://www.tiktok.com/api/img/?itemId=7689418179633827093&location=0&aid=1988"
           },
           {
-            "url": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/17/c5/dd/b3/the-falls-cascade-over.jpg?w=900&h=-1&s=1"
+            "url": "https://www.guiadoturismobrasil.com/up/img/1497406492.jpg"
           },
           {
-            "url": "https://s3-media0.fl.yelpcdn.com/bphoto/8zGsJ8K8XKoAzwOqcRSBHg/348s.jpg"
+            "url": "https://upload.wikimedia.org/wikipedia/commons/2/21/La_Escalera.JPG?utm_source=es.wikivoyage.org&utm_campaign=index&utm_content=original"
           },
           {
-            "url": "https://www.areavibes.com/photos/livability/round-rock-tx.jpg"
+            "url": "https://www.cathaypacific.com/content/dam/focal-point/cx/inspiration/2026/08/easy-hong-kong-hikes-brides-pool-nature-trail-10.renditionimage.900.900.jpg"
           },
           {
-            "url": "https://image.foresttrip.go.kr/bb/202303/714e303d-8593-4397-9640-0760059104fd.JPG"
+            "url": "https://i0.wp.com/www.sjwd.com/wp-content/uploads/2026/05/24.png?fit=576%2C1024&ssl=1"
           },
           {
-            "url": "https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=1377207834548261"
+            "url": "https://ek5jbm9x6ox.exactdn.com/wp-content/uploads/2020/07/19053416/received_980621462402597.jpg"
           },
           {
-            "url": "https://www.africamuseum.be/sites/default/files/media/research/img/discover_460.jpg"
+            "url": "https://assets.dm.rccl.com/is/image/RoyalCaribbeanCruises/content/dam/royal/ports-and-destinations/ports/ho-chi-minh-city-phuoc-an-vietnam/overview/giang-dien-waterfall-dong-nai-province-vietnam.jpg?$400x620$"
           },
           {
-            "url": "https://www.thespacereview.com/archive/4801c.jpg"
+            "url": "https://images.trvl-media.com/place/553248635964243225/c7240409-da27-417f-8c18-7a037fd9b605.jpg?impolicy=fcrop&w=600&h=400&p=1&q=medium"
           },
           {
-            "url": "https://upload.wikimedia.org/wikipedia/commons/6/63/Cascades_de_Karfiguela_%2812567794645%29.jpg?utm_source=ha.wikipedia.org&utm_campaign=index&utm_content=original"
+            "url": "https://www.edf.org/sites/default/files/styles/800_wide_scaled/public/2025-09/Nassau%20Partner%20picture.jpg?itok=OpR5ip5Y"
           }
         ],
         "bestGuessLabels": [
@@ -3000,5 +3000,5 @@
       }
     }
   },
-  "updated_at": "2026-09-13T03:40:37.507Z"
+  "updated_at": "2026-10-08T03:38:44.600Z"
 }
