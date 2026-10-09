@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-10-08T03:44:38.915Z",
-  "run_id": "ttd-patrol-20261008T033842Z",
+  "generated_at": "2026-10-09T03:45:10.245Z",
+  "run_id": "ttd-patrol-20261009T033940Z",
   "adapter": "visionWebDetection+namedChannelCrawler",
   "expected_filter": "all",
   "threshold": 16,
   "validations": [
     {
-      "candidate_id": "vision_3836abadec535ec7",
+      "candidate_id": "vision_b74251cbbd241f8f",
       "expected": "unknown",
       "pass": true,
       "warning": true,
@@ -394,10 +394,9 @@
     {
       "candidate_id": "vision_fd78d08a28773b4e",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 54,
-      "top_index_match_asset_id": "bafybeiezccszs3trq27fzcd4lkjqkar5taehtbsdpkjyjmxjdlmm2juyby",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "HTTP 403 for https://contemporarylynx.co.uk/wp-content/uploads/2024/11/04_Sound-system-or-a-score-for-eight-fans_detail_photo-by-Wu-Bingze.jpg"
     },
     {
       "candidate_id": "vision_c56c29b89d5bef98",
@@ -432,10 +431,9 @@
     {
       "candidate_id": "vision_0cc162329413fc0f",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 72,
-      "top_index_match_asset_id": "bafybeic2qk6gh5loosth7xcd23drzkf7jbn7locfm5wkzq4fyr2sy6ify4",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "HTTP 403 for https://contemporarylynx.co.uk/wp-content/uploads/2025/10/Teresa-Tyszkiewicz-Argent-acrylic-alumnium-pins-on-canvas-80-x-52-cm-1999.-Courtesy-of-Folta-Collection.jpg"
     },
     {
       "candidate_id": "vision_8f825ffcb5eb4fc7",
@@ -808,9 +806,10 @@
     {
       "candidate_id": "vision_5d43b00f8920326f",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "This operation was aborted"
+      "verdict": "no_match",
+      "protected_asset_distance": 66,
+      "top_index_match_asset_id": "bafybeifbnxd4wmh2bozake7tvbfkfza56wepcgbsqpq4ocjxi2voajbkwa",
+      "pass": true
     },
     {
       "candidate_id": "vision_039de2659fdbeacc",
@@ -856,7 +855,7 @@
       "expected": "unknown",
       "pass": true,
       "warning": true,
-      "error": "fetch failed"
+      "error": "HTTP 404 for https://www.raaltd.co.uk/wp-content/uploads/2017/11/Boverton.jpg"
     },
     {
       "candidate_id": "vision_c49979604c1dbc17",
@@ -1602,10 +1601,9 @@
     {
       "candidate_id": "vision_52f4ebb4b79fd6c1",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 66,
-      "top_index_match_asset_id": "bafybeiegmheqitc4n5u7hlviqo5nu6yb4tz66ihcchni7zikwzctunrscm",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "HTTP 429 for https://www.yomiuri.co.jp/media/2026/04/20260402-GYT1I00438-T.jpg"
     },
     {
       "candidate_id": "vision_381a9a46af5bca57",
@@ -2221,16 +2219,18 @@
     {
       "candidate_id": "vision_89ca4194af95632d",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "fetch failed"
+      "verdict": "no_match",
+      "protected_asset_distance": 65,
+      "top_index_match_asset_id": "bafybeibgp5xuj5fqipcacsmws7rgckpj2ntpg3kbkwamcnj3mcrql56ja4",
+      "pass": true
     },
     {
       "candidate_id": "vision_b518cf2c4f2be2a9",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "fetch failed"
+      "verdict": "no_match",
+      "protected_asset_distance": 68,
+      "top_index_match_asset_id": "bafybeiaqbojqsx7q2lt4b2znsyndiuolajxo72dd5nmuheevwuzjtlqy4q",
+      "pass": true
     },
     {
       "candidate_id": "vision_44fda9c7f750069d",
