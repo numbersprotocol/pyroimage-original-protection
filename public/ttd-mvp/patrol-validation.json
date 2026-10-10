@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-10-09T03:45:10.245Z",
-  "run_id": "ttd-patrol-20261009T033940Z",
+  "generated_at": "2026-10-10T03:44:14.885Z",
+  "run_id": "ttd-patrol-20261010T033752Z",
   "adapter": "visionWebDetection+namedChannelCrawler",
   "expected_filter": "all",
   "threshold": 16,
@@ -87,7 +87,7 @@
       "expected": "unknown",
       "pass": true,
       "warning": true,
-      "error": "non-image response content-type=text/html; charset=\"utf-8\" for https://lookaside.instagram.com/seo/google_widget/crawler/"
+      "error": "HTTP 403 for https://lookaside.instagram.com/seo/google_widget/crawler/"
     },
     {
       "candidate_id": "vision_66eb78fa756f9ae6",
@@ -755,7 +755,7 @@
       "expected": "unknown",
       "pass": true,
       "warning": true,
-      "error": "non-image response content-type=text/html; charset=\"utf-8\" for https://lookaside.instagram.com/seo/google_widget/crawler/"
+      "error": "HTTP 403 for https://lookaside.instagram.com/seo/google_widget/crawler/"
     },
     {
       "candidate_id": "vision_f09a05158a12cc7d",
@@ -1601,9 +1601,10 @@
     {
       "candidate_id": "vision_52f4ebb4b79fd6c1",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "HTTP 429 for https://www.yomiuri.co.jp/media/2026/04/20260402-GYT1I00438-T.jpg"
+      "verdict": "no_match",
+      "protected_asset_distance": 66,
+      "top_index_match_asset_id": "bafybeiegmheqitc4n5u7hlviqo5nu6yb4tz66ihcchni7zikwzctunrscm",
+      "pass": true
     },
     {
       "candidate_id": "vision_381a9a46af5bca57",
@@ -1834,9 +1835,10 @@
     {
       "candidate_id": "vision_cf51f09cad14074f",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "fetch failed"
+      "verdict": "no_match",
+      "protected_asset_distance": 54,
+      "top_index_match_asset_id": "bafybeieeotpvfwb527kd52fnju3dfrwh4h5q4ivdu5yqg6xlphi5b5iuaa",
+      "pass": true
     },
     {
       "candidate_id": "vision_e02463973219841b",
@@ -2678,9 +2680,10 @@
     {
       "candidate_id": "vision_7ee81efc8d38279a",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "fetch failed"
+      "verdict": "no_match",
+      "protected_asset_distance": 64,
+      "top_index_match_asset_id": "bafybeibjnrrfecwqtjcx46q3xpxf3bwky3chhy2wp5s7nia5j2ypexzltq",
+      "pass": true
     },
     {
       "candidate_id": "vision_8c05895b1ce99973",
@@ -2857,10 +2860,9 @@
     {
       "candidate_id": "vision_2e32aaae1c2dc380",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 52,
-      "top_index_match_asset_id": "bafybeiek63jibrkbsblrnokgmbohn2y3uafgsg3gnimkcbkw5ivcfdd3nq",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "HTTP 403 for https://www.ro.emb-japan.go.jp/files/100925256.jpg"
     },
     {
       "candidate_id": "vision_b7a0f291d6d18f6b",
