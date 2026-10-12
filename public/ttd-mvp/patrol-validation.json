@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-10-11T03:48:34.352Z",
-  "run_id": "ttd-patrol-20261011T034134Z",
+  "generated_at": "2026-10-12T03:53:58.583Z",
+  "run_id": "ttd-patrol-20261012T034807Z",
   "adapter": "visionWebDetection+namedChannelCrawler",
   "expected_filter": "all",
   "threshold": 16,
@@ -312,9 +312,10 @@
     {
       "candidate_id": "vision_1ac9ca274a09ace5",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "non-image response content-type=text/html for https://pixnio.com/free-images/2025/02/24/2025-02-24-07-20-16-576x434.jpg"
+      "verdict": "no_match",
+      "protected_asset_distance": 65,
+      "top_index_match_asset_id": "bafybeifbnxd4wmh2bozake7tvbfkfza56wepcgbsqpq4ocjxi2voajbkwa",
+      "pass": true
     },
     {
       "candidate_id": "vision_15c1af904ce1d11d",
@@ -754,7 +755,7 @@
       "expected": "unknown",
       "pass": true,
       "warning": true,
-      "error": "HTTP 403 for https://lookaside.instagram.com/seo/google_widget/crawler/"
+      "error": "non-image response content-type=text/html; charset=\"utf-8\" for https://lookaside.instagram.com/seo/google_widget/crawler/"
     },
     {
       "candidate_id": "vision_f09a05158a12cc7d",
@@ -1626,7 +1627,7 @@
       "expected": "unknown",
       "pass": true,
       "warning": true,
-      "error": "This operation was aborted"
+      "error": "image exceeds max bytes (2955774 > 2000000) for https://video.cgtn.com/news/2026-07-13/They-re-still-stuck-in-2016-The-South-China-Sea-isn-t--1OKrk23NwAw/video/wu_1jtdf9tdvhue1md1oen11f0j4ve/wu_1jtdf9tdvhue1md1oen11f0j4ve.jpg"
     },
     {
       "candidate_id": "vision_5a598e7ed7517803",
@@ -1834,9 +1835,10 @@
     {
       "candidate_id": "vision_cf51f09cad14074f",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "fetch failed"
+      "verdict": "no_match",
+      "protected_asset_distance": 54,
+      "top_index_match_asset_id": "bafybeieeotpvfwb527kd52fnju3dfrwh4h5q4ivdu5yqg6xlphi5b5iuaa",
+      "pass": true
     },
     {
       "candidate_id": "vision_e02463973219841b",
@@ -1890,7 +1892,7 @@
       "expected": "unknown",
       "pass": true,
       "warning": true,
-      "error": "HTTP 503 for https://land-in-bewegung.rlp.de/fileadmin/_processed_/2/e/csm__CH54132_d19807757d.jpg"
+      "error": "image exceeds max bytes (2260651 > 2000000) for https://land-in-bewegung.rlp.de/fileadmin/_processed_/2/e/csm__CH54132_d19807757d.jpg"
     },
     {
       "candidate_id": "vision_67f2a39777aa8968",
@@ -2070,9 +2072,10 @@
     {
       "candidate_id": "vision_99a6e99c64d13ab6",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "non-image response content-type=text/html for https://ciac.co.uk/wp-content/uploads/2016/07/4-Young-volunteers-at-CNY-1.jpg"
+      "verdict": "no_match",
+      "protected_asset_distance": 53,
+      "top_index_match_asset_id": "bafybeigzxwghhuw5fjtb6rlbc3qoqzmsomkttjafagxpywpejjqbhsfole",
+      "pass": true
     },
     {
       "candidate_id": "vision_66d9421e0509e0b5",
@@ -2117,9 +2120,10 @@
     {
       "candidate_id": "vision_e4477509881d8dde",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "non-image response content-type=text/html for https://asianews.network/wp-content/uploads/2026/07/IMG_20260711_112909_692-2048x1365-1.jpg"
+      "verdict": "no_match",
+      "protected_asset_distance": 54,
+      "top_index_match_asset_id": "bafybeifawedjtr5h5k2arfwxsw3zrbcdskhsjiudpwzlpf35zzhzqtlc5m",
+      "pass": true
     },
     {
       "candidate_id": "vision_56e3716ba22628bc",
@@ -2217,9 +2221,10 @@
     {
       "candidate_id": "vision_89ca4194af95632d",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "fetch failed"
+      "verdict": "no_match",
+      "protected_asset_distance": 65,
+      "top_index_match_asset_id": "bafybeibgp5xuj5fqipcacsmws7rgckpj2ntpg3kbkwamcnj3mcrql56ja4",
+      "pass": true
     },
     {
       "candidate_id": "vision_b518cf2c4f2be2a9",
@@ -2675,9 +2680,10 @@
     {
       "candidate_id": "vision_7ee81efc8d38279a",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "fetch failed"
+      "verdict": "no_match",
+      "protected_asset_distance": 64,
+      "top_index_match_asset_id": "bafybeibjnrrfecwqtjcx46q3xpxf3bwky3chhy2wp5s7nia5j2ypexzltq",
+      "pass": true
     },
     {
       "candidate_id": "vision_8c05895b1ce99973",
