@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-10-13T03:50:34.286Z",
-  "run_id": "ttd-patrol-20261013T034241Z",
+  "generated_at": "2026-10-14T03:39:46.455Z",
+  "run_id": "ttd-patrol-20261014T033307Z",
   "adapter": "visionWebDetection+namedChannelCrawler",
   "expected_filter": "all",
   "threshold": 16,
@@ -167,7 +167,7 @@
       "pass": true
     },
     {
-      "candidate_id": "vision_8d2b3968c38141d0",
+      "candidate_id": "vision_61b36ccde91b486f",
       "expected": "unknown",
       "pass": true,
       "warning": true,
@@ -388,7 +388,7 @@
       "error": "non-image response content-type=text/html; charset=\"utf-8\" for https://lookaside.instagram.com/seo/google_widget/crawler/"
     },
     {
-      "candidate_id": "vision_760b5b4905889d2a",
+      "candidate_id": "vision_d9df53cb2af73b0f",
       "expected": "unknown",
       "pass": true,
       "warning": true,
@@ -589,9 +589,10 @@
     {
       "candidate_id": "vision_b887178c247a6c5e",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "HTTP 403 for https://www.studieren-weltweit.de/content/uploads/2021/09/costa-rica-studium-1631661613-640x640.jpg"
+      "verdict": "no_match",
+      "protected_asset_distance": 55,
+      "top_index_match_asset_id": "bafybeidid3xprryemk7ky5rwec2u3y72r3ajizx5n4m55gh25c73cwer54",
+      "pass": true
     },
     {
       "candidate_id": "vision_a5d789507ecb5395",
@@ -739,7 +740,7 @@
       "error": "image exceeds max bytes (2094890 > 2000000) for https://www.postfinance.ch/content/dam/pfch/image/kampagnen/pk26_302_izv_push.jpg/_jcr_content/renditions/original./pk26_302_izv_push.jpg"
     },
     {
-      "candidate_id": "vision_a025d046df00ff7c",
+      "candidate_id": "vision_e2387651ad6a6771",
       "expected": "unknown",
       "pass": true,
       "warning": true,
@@ -1012,12 +1013,11 @@
       "pass": true
     },
     {
-      "candidate_id": "vision_e9482398820dcf1b",
+      "candidate_id": "vision_1a039e1e9fcb25ff",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 56,
-      "top_index_match_asset_id": "bafybeifcdrqfpax5lhpasvvnndlglkspihh4wrr5hiu5bm5mdidjwih6uq",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "HTTP 403 for https://p16-common-sign.tiktokcdn-us.com/tos-maliva-p-0068/o0CbfADdsFFBxFRynd63aIJEQIu1BvxQZekREy~tplv-tiktokx-origin.image"
     },
     {
       "candidate_id": "vision_7c3403f37981174d",
@@ -1057,7 +1057,7 @@
       "error": "image exceeds max bytes (2260651 > 2000000) for https://land-in-bewegung.rlp.de/fileadmin/_processed_/2/e/csm__CH54132_d19807757d.jpg"
     },
     {
-      "candidate_id": "vision_9d0dba237b23f1db",
+      "candidate_id": "vision_73718b03746f5227",
       "expected": "unknown",
       "pass": true,
       "warning": true,
@@ -1117,7 +1117,7 @@
       "error": "image exceeds max bytes (2260651 > 2000000) for https://land-in-bewegung.rlp.de/fileadmin/_processed_/2/e/csm__CH54132_d19807757d.jpg"
     },
     {
-      "candidate_id": "vision_46f65d14d8cab6e1",
+      "candidate_id": "vision_0876094c56d5ae0d",
       "expected": "unknown",
       "pass": true,
       "warning": true,
@@ -1165,9 +1165,10 @@
     {
       "candidate_id": "vision_b218b535f012364b",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "HTTP 403 for https://www.hrw.org/sites/default/files/styles/16x9_small/public/media_2026/01/202601asia_thailand_wr.jpg"
+      "verdict": "no_match",
+      "protected_asset_distance": 56,
+      "top_index_match_asset_id": "bafybeiamcxpxxpas7sizx7pxbvg4hg4fh7mytmrenjq6n6uyx6z4ysolhq",
+      "pass": true
     },
     {
       "candidate_id": "vision_70663e24633b2cf9",
@@ -1369,18 +1370,16 @@
     {
       "candidate_id": "vision_fbee8f1948416b01",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 56,
-      "top_index_match_asset_id": "bafybeifwdwlpan5udlz4ei7ezxtq4vltvzju4j3ayzlkdtvj52yadz3cgi",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "HTTP 404 for https://i.ytimg.com/vi/khsuP85Au-U/hqdefault_custom_3.jpg"
     },
     {
       "candidate_id": "vision_d9770b896c414425",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 62,
-      "top_index_match_asset_id": "bafybeigsocpheuovdv46km2ch5ppjcnb6xntx56shxldevnerqlyzj2vpm",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "HTTP 404 for https://i.ytimg.com/vi/9KVFIsXtC_k/hqdefault_custom_1.jpg"
     },
     {
       "candidate_id": "vision_a4a484c3e9e2f7cf",
@@ -1505,8 +1504,8 @@
       "candidate_id": "vision_e80657d47cb10cb5",
       "expected": "unknown",
       "verdict": "no_match",
-      "protected_asset_distance": 73,
-      "top_index_match_asset_id": "bafybeigrd4ueuajjbxluq6hg4izh24fvvgt7yozkgz34hvgnfesvtyuxdm",
+      "protected_asset_distance": 57,
+      "top_index_match_asset_id": "bafybeicivrg2ft4caoejb2h2d3sv4ijmwjnsxvnpeq4cfxhqbctq5xkqhy",
       "pass": true
     },
     {
@@ -1653,9 +1652,10 @@
     {
       "candidate_id": "vision_7d74a2d27c1eaea4",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "HTTP 429 for https://www.yomiuri.co.jp/media/2026/04/20260402-GYT1I00438-T.jpg"
+      "verdict": "no_match",
+      "protected_asset_distance": 66,
+      "top_index_match_asset_id": "bafybeiegmheqitc4n5u7hlviqo5nu6yb4tz66ihcchni7zikwzctunrscm",
+      "pass": true
     },
     {
       "candidate_id": "vision_c264f9624e750c79",
@@ -2240,10 +2240,9 @@
     {
       "candidate_id": "vision_6cbd848c59e8e92e",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 47,
-      "top_index_match_asset_id": "bafybeidkomxglqf5oelv3fjjzfctgnk4fluuvgelwsmnpi3b7fevhwgi4i",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "HTTP 429 for https://www.yomiuri.co.jp/media/2026/10/20261008-GYTNI00147-T.jpg"
     },
     {
       "candidate_id": "vision_902f3632c10a5049",
@@ -2313,8 +2312,8 @@
       "candidate_id": "vision_b0f8486ac0639033",
       "expected": "unknown",
       "verdict": "no_match",
-      "protected_asset_distance": 74,
-      "top_index_match_asset_id": "bafybeigrd4ueuajjbxluq6hg4izh24fvvgt7yozkgz34hvgnfesvtyuxdm",
+      "protected_asset_distance": 56,
+      "top_index_match_asset_id": "bafybeicivrg2ft4caoejb2h2d3sv4ijmwjnsxvnpeq4cfxhqbctq5xkqhy",
       "pass": true
     },
     {
@@ -2328,10 +2327,9 @@
     {
       "candidate_id": "vision_5cd4b61fbca810fb",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 50,
-      "top_index_match_asset_id": "bafybeidkomxglqf5oelv3fjjzfctgnk4fluuvgelwsmnpi3b7fevhwgi4i",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "HTTP 429 for https://www.yomiuri.co.jp/media/2026/10/20261008-GYTNI00147-T.jpg"
     },
     {
       "candidate_id": "vision_28491b335c87b06f",
@@ -2667,9 +2665,10 @@
     {
       "candidate_id": "vision_d302f140cc56bce9",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "HTTP 429 for https://www.yomiuri.co.jp/media/2026/04/20260402-GYT1I00438-T.jpg"
+      "verdict": "no_match",
+      "protected_asset_distance": 49,
+      "top_index_match_asset_id": "bafybeiegmheqitc4n5u7hlviqo5nu6yb4tz66ihcchni7zikwzctunrscm",
+      "pass": true
     },
     {
       "candidate_id": "vision_19ad937036a73e9c",
@@ -2761,9 +2760,10 @@
     {
       "candidate_id": "vision_d0976eb6e854be3f",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "HTTP 403 for https://www.hrw.org/sites/default/files/styles/square/public/media_2026/04/202604asia_vietnam_courthouse_protest.jpg"
+      "verdict": "no_match",
+      "protected_asset_distance": 62,
+      "top_index_match_asset_id": "bafybeicrnj276lt4swahauc4sx6tp6gm6mltrnnwpr6agxauj4uxkipklm",
+      "pass": true
     },
     {
       "candidate_id": "vision_9e45954d17064c52",
