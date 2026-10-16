@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-10-15T03:40:08.223Z",
-  "run_id": "ttd-patrol-20261015T033237Z",
+  "generated_at": "2026-10-16T03:39:19.404Z",
+  "run_id": "ttd-patrol-20261016T033247Z",
   "adapter": "visionWebDetection+namedChannelCrawler",
   "expected_filter": "all",
   "threshold": 16,
@@ -113,10 +113,9 @@
     {
       "candidate_id": "vision_64e51744f5d255c0",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 56,
-      "top_index_match_asset_id": "bafybeiagx3w75nzkdab46peprab3fppyay5qiq42qjxcylmxifg3cppomq",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "HTTP 403 for https://lh3.googleusercontent.com/meT3BfPT059vfVWEz1fnKbvifJE1nxASRsLer_NQNwpOMAUG2pzsTB37aoV7kE_LxE8ZFODSnKuIWurHOfymQ3NNWdlr-76IJjiBbw=rw-w700-h660-l80"
     },
     {
       "candidate_id": "vision_d104ef00ef145b03",
@@ -208,10 +207,9 @@
     {
       "candidate_id": "vision_8b0108150212be31",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 55,
-      "top_index_match_asset_id": "bafybeifbnxd4wmh2bozake7tvbfkfza56wepcgbsqpq4ocjxi2voajbkwa",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "HTTP 513 for https://www.cyta.com.cy/mp/informational/images/annualreports/annual-report-2025.jpg"
     },
     {
       "candidate_id": "vision_6e873aa5b60cf5be",
@@ -399,7 +397,7 @@
       "expected": "unknown",
       "pass": true,
       "warning": true,
-      "error": "fetch failed"
+      "error": "HTTP 403 for https://www.nik.com.tr/content/insaat/brbs28.jpg"
     },
     {
       "candidate_id": "vision_d7fde269f94a2e84",
@@ -589,10 +587,9 @@
     {
       "candidate_id": "vision_b887178c247a6c5e",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 55,
-      "top_index_match_asset_id": "bafybeidid3xprryemk7ky5rwec2u3y72r3ajizx5n4m55gh25c73cwer54",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "HTTP 403 for https://www.studieren-weltweit.de/content/uploads/2021/09/costa-rica-studium-1631661613-640x640.jpg"
     },
     {
       "candidate_id": "vision_a5d789507ecb5395",
@@ -943,10 +940,9 @@
     {
       "candidate_id": "vision_ace2685c68cd32ec",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 55,
-      "top_index_match_asset_id": "bafybeifu6xivhsnhad72exu3yv7ou2phiben3d7uoo3fyafyiybvzlfxge",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "fetch failed"
     },
     {
       "candidate_id": "vision_a00b42625d3dced3",
@@ -1254,7 +1250,7 @@
       "expected": "unknown",
       "pass": true,
       "warning": true,
-      "error": "This operation was aborted"
+      "error": "image exceeds max bytes (8135366 > 2000000) for https://dw-media.dotdotnews.com/dams/product/image/202504/17/6800d79be4b0e62e72364ca2_v1.png"
     },
     {
       "candidate_id": "vision_dfa5bf79c97d4fca",
@@ -1518,9 +1514,10 @@
     {
       "candidate_id": "vision_6cb57f04347d1539",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "fetch failed"
+      "verdict": "no_match",
+      "protected_asset_distance": 73,
+      "top_index_match_asset_id": "bafybeifcdrqfpax5lhpasvvnndlglkspihh4wrr5hiu5bm5mdidjwih6uq",
+      "pass": true
     },
     {
       "candidate_id": "vision_7511bbd5c8359c57",
@@ -1564,10 +1561,9 @@
     {
       "candidate_id": "vision_192ae421ea7fb89c",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 80,
-      "top_index_match_asset_id": "bafybeicbawuibw7idnx3w6rvncojo2wzve4vydohodm33pw4cgiditctza",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "fetch failed"
     },
     {
       "candidate_id": "vision_3200087d1d4d29cc",
@@ -1587,10 +1583,9 @@
     {
       "candidate_id": "vision_53defafae1158c23",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 76,
-      "top_index_match_asset_id": "bafybeigns36zbxgt4gdcaqwp6tdvh6img3ejcrg5ocaofvlytrdyl7ku64",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "fetch failed"
     },
     {
       "candidate_id": "vision_162431785b8fa271",
@@ -1603,10 +1598,9 @@
     {
       "candidate_id": "vision_4ba20209e8b8fa4d",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 60,
-      "top_index_match_asset_id": "bafybeiat6z3stjwq45wfyn3u5tyepoyedeg4urzdwxsnl4uzxncfbeddsi",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "fetch failed"
     },
     {
       "candidate_id": "vision_8db3427b91d9bbac",
@@ -2246,9 +2240,10 @@
     {
       "candidate_id": "vision_902f3632c10a5049",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "This operation was aborted"
+      "verdict": "no_match",
+      "protected_asset_distance": 70,
+      "top_index_match_asset_id": "bafybeiejg6qhyxxcfrbsovhisvjrnnmn2gxp4mz3q3fkhbjr65babjtnju",
+      "pass": true
     },
     {
       "candidate_id": "vision_6695e7d5ec1d1c2e",
@@ -2459,17 +2454,16 @@
     {
       "candidate_id": "vision_07d83bf993fb91ae",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 60,
-      "top_index_match_asset_id": "bafybeiat6z3stjwq45wfyn3u5tyepoyedeg4urzdwxsnl4uzxncfbeddsi",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "fetch failed"
     },
     {
       "candidate_id": "vision_a4c58790c8fea430",
       "expected": "unknown",
       "pass": true,
       "warning": true,
-      "error": "This operation was aborted"
+      "error": "image exceeds max bytes (2094262 > 2000000) for https://kcginfonews.kcg.gov.tw/upload/RelPic/42064/6c5842a1-804e-4c9e-9da0-ff9ea5d96ae9.jpg"
     },
     {
       "candidate_id": "vision_f509ae0a1cbadc51",
@@ -2607,10 +2601,9 @@
     {
       "candidate_id": "vision_4299f9b07f2fe5d9",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 71,
-      "top_index_match_asset_id": "bafybeiat6z3stjwq45wfyn3u5tyepoyedeg4urzdwxsnl4uzxncfbeddsi",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "fetch failed"
     },
     {
       "candidate_id": "vision_194e1e655c6af25f",
