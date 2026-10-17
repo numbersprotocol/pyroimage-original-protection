@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-10-16T03:39:19.404Z",
-  "run_id": "ttd-patrol-20261016T033247Z",
+  "generated_at": "2026-10-17T03:36:57.688Z",
+  "run_id": "ttd-patrol-20261017T033031Z",
   "adapter": "visionWebDetection+namedChannelCrawler",
   "expected_filter": "all",
   "threshold": 16,
@@ -783,10 +783,9 @@
     {
       "candidate_id": "vision_82bc7064de7556c1",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 71,
-      "top_index_match_asset_id": "bafybeici4ywe43tyi6ugugt3jcfss4no3pqtxkfkcn5ky4dtrf2b4tvmli",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "fetch failed"
     },
     {
       "candidate_id": "vision_1278c94dfeba609d",
@@ -940,9 +939,10 @@
     {
       "candidate_id": "vision_ace2685c68cd32ec",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "fetch failed"
+      "verdict": "no_match",
+      "protected_asset_distance": 55,
+      "top_index_match_asset_id": "bafybeifu6xivhsnhad72exu3yv7ou2phiben3d7uoo3fyafyiybvzlfxge",
+      "pass": true
     },
     {
       "candidate_id": "vision_a00b42625d3dced3",
@@ -1498,10 +1498,9 @@
     {
       "candidate_id": "vision_e80657d47cb10cb5",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 57,
-      "top_index_match_asset_id": "bafybeicivrg2ft4caoejb2h2d3sv4ijmwjnsxvnpeq4cfxhqbctq5xkqhy",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "HTTP 404 for https://www.mlit.go.jp/content/002020045.jpg"
     },
     {
       "candidate_id": "vision_9e5e702d5d4fc4b4",
@@ -1598,9 +1597,10 @@
     {
       "candidate_id": "vision_4ba20209e8b8fa4d",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "fetch failed"
+      "verdict": "no_match",
+      "protected_asset_distance": 60,
+      "top_index_match_asset_id": "bafybeiat6z3stjwq45wfyn3u5tyepoyedeg4urzdwxsnl4uzxncfbeddsi",
+      "pass": true
     },
     {
       "candidate_id": "vision_8db3427b91d9bbac",
@@ -2304,10 +2304,9 @@
     {
       "candidate_id": "vision_b0f8486ac0639033",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 56,
-      "top_index_match_asset_id": "bafybeicivrg2ft4caoejb2h2d3sv4ijmwjnsxvnpeq4cfxhqbctq5xkqhy",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "HTTP 404 for https://www.mlit.go.jp/content/002020045.jpg"
     },
     {
       "candidate_id": "vision_38e3d22edb1d29a3",
@@ -2454,9 +2453,10 @@
     {
       "candidate_id": "vision_07d83bf993fb91ae",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "fetch failed"
+      "verdict": "no_match",
+      "protected_asset_distance": 60,
+      "top_index_match_asset_id": "bafybeiat6z3stjwq45wfyn3u5tyepoyedeg4urzdwxsnl4uzxncfbeddsi",
+      "pass": true
     },
     {
       "candidate_id": "vision_a4c58790c8fea430",
@@ -2601,9 +2601,10 @@
     {
       "candidate_id": "vision_4299f9b07f2fe5d9",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "fetch failed"
+      "verdict": "no_match",
+      "protected_asset_distance": 71,
+      "top_index_match_asset_id": "bafybeiat6z3stjwq45wfyn3u5tyepoyedeg4urzdwxsnl4uzxncfbeddsi",
+      "pass": true
     },
     {
       "candidate_id": "vision_194e1e655c6af25f",
