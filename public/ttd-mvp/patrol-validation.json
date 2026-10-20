@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-10-19T03:42:36.103Z",
-  "run_id": "ttd-patrol-20261019T033602Z",
+  "generated_at": "2026-10-20T03:39:20.060Z",
+  "run_id": "ttd-patrol-20261020T033305Z",
   "adapter": "visionWebDetection+namedChannelCrawler",
   "expected_filter": "all",
   "threshold": 16,
@@ -71,7 +71,7 @@
       "expected": "unknown",
       "pass": true,
       "warning": true,
-      "error": "image exceeds max bytes (2792303 > 2000000) for https://www.sow.org.tw/sites/sow/files/u43058/qing_shui_huan_jing_-dian_gao__gong_zuo_qu_yu__1.png"
+      "error": "non-image response content-type=text/html for https://www.sow.org.tw/sites/sow/files/u43058/qing_shui_huan_jing_-dian_gao__gong_zuo_qu_yu__1.png"
     },
     {
       "candidate_id": "vision_08a8f3aad1f2b695",
@@ -1562,10 +1562,9 @@
     {
       "candidate_id": "vision_192ae421ea7fb89c",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 80,
-      "top_index_match_asset_id": "bafybeicbawuibw7idnx3w6rvncojo2wzve4vydohodm33pw4cgiditctza",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "fetch failed"
     },
     {
       "candidate_id": "vision_3200087d1d4d29cc",
@@ -1585,10 +1584,9 @@
     {
       "candidate_id": "vision_53defafae1158c23",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 76,
-      "top_index_match_asset_id": "bafybeigns36zbxgt4gdcaqwp6tdvh6img3ejcrg5ocaofvlytrdyl7ku64",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "fetch failed"
     },
     {
       "candidate_id": "vision_162431785b8fa271",
@@ -2236,9 +2234,10 @@
     {
       "candidate_id": "vision_6cbd848c59e8e92e",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "HTTP 429 for https://www.yomiuri.co.jp/media/2026/10/20261008-GYTNI00147-T.jpg"
+      "verdict": "no_match",
+      "protected_asset_distance": 47,
+      "top_index_match_asset_id": "bafybeidkomxglqf5oelv3fjjzfctgnk4fluuvgelwsmnpi3b7fevhwgi4i",
+      "pass": true
     },
     {
       "candidate_id": "vision_902f3632c10a5049",
@@ -2322,9 +2321,10 @@
     {
       "candidate_id": "vision_5cd4b61fbca810fb",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "HTTP 429 for https://www.yomiuri.co.jp/media/2026/10/20261008-GYTNI00147-T.jpg"
+      "verdict": "no_match",
+      "protected_asset_distance": 50,
+      "top_index_match_asset_id": "bafybeidkomxglqf5oelv3fjjzfctgnk4fluuvgelwsmnpi3b7fevhwgi4i",
+      "pass": true
     },
     {
       "candidate_id": "vision_28491b335c87b06f",
