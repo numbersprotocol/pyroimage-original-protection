@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-10-20T03:39:20.060Z",
-  "run_id": "ttd-patrol-20261020T033305Z",
+  "generated_at": "2026-10-21T03:40:37.274Z",
+  "run_id": "ttd-patrol-20261021T033357Z",
   "adapter": "visionWebDetection+namedChannelCrawler",
   "expected_filter": "all",
   "threshold": 16,
@@ -1599,10 +1599,9 @@
     {
       "candidate_id": "vision_4ba20209e8b8fa4d",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 60,
-      "top_index_match_asset_id": "bafybeiat6z3stjwq45wfyn3u5tyepoyedeg4urzdwxsnl4uzxncfbeddsi",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "fetch failed"
     },
     {
       "candidate_id": "vision_8db3427b91d9bbac",
@@ -2242,10 +2241,9 @@
     {
       "candidate_id": "vision_902f3632c10a5049",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 70,
-      "top_index_match_asset_id": "bafybeiejg6qhyxxcfrbsovhisvjrnnmn2gxp4mz3q3fkhbjr65babjtnju",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "fetch failed"
     },
     {
       "candidate_id": "vision_6695e7d5ec1d1c2e",
@@ -2385,10 +2383,9 @@
     {
       "candidate_id": "vision_f009ca2e83e5ab1b",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 80,
-      "top_index_match_asset_id": "bafybeicbawuibw7idnx3w6rvncojo2wzve4vydohodm33pw4cgiditctza",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "fetch failed"
     },
     {
       "candidate_id": "vision_2423fe79896aacc4",
@@ -2456,10 +2453,9 @@
     {
       "candidate_id": "vision_07d83bf993fb91ae",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 60,
-      "top_index_match_asset_id": "bafybeiat6z3stjwq45wfyn3u5tyepoyedeg4urzdwxsnl4uzxncfbeddsi",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "fetch failed"
     },
     {
       "candidate_id": "vision_a4c58790c8fea430",
@@ -2511,9 +2507,10 @@
     {
       "candidate_id": "vision_b9c00997decdf858",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "non-image response content-type=text/html for https://www.jetro.go.jp/ext_images/consortium/images/thum_cs_tv.jpg"
+      "verdict": "no_match",
+      "protected_asset_distance": 76,
+      "top_index_match_asset_id": "bafybeiejg6qhyxxcfrbsovhisvjrnnmn2gxp4mz3q3fkhbjr65babjtnju",
+      "pass": true
     },
     {
       "candidate_id": "vision_24a1f8d5319875fd",
@@ -2603,10 +2600,9 @@
     {
       "candidate_id": "vision_4299f9b07f2fe5d9",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 71,
-      "top_index_match_asset_id": "bafybeiat6z3stjwq45wfyn3u5tyepoyedeg4urzdwxsnl4uzxncfbeddsi",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "fetch failed"
     },
     {
       "candidate_id": "vision_194e1e655c6af25f",
