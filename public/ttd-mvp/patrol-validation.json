@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-10-21T03:40:37.274Z",
-  "run_id": "ttd-patrol-20261021T033357Z",
+  "generated_at": "2026-10-22T03:41:43.357Z",
+  "run_id": "ttd-patrol-20261022T033402Z",
   "adapter": "visionWebDetection+namedChannelCrawler",
   "expected_filter": "all",
   "threshold": 16,
@@ -71,7 +71,7 @@
       "expected": "unknown",
       "pass": true,
       "warning": true,
-      "error": "non-image response content-type=text/html for https://www.sow.org.tw/sites/sow/files/u43058/qing_shui_huan_jing_-dian_gao__gong_zuo_qu_yu__1.png"
+      "error": "image exceeds max bytes (2792303 > 2000000) for https://www.sow.org.tw/sites/sow/files/u43058/qing_shui_huan_jing_-dian_gao__gong_zuo_qu_yu__1.png"
     },
     {
       "candidate_id": "vision_08a8f3aad1f2b695",
@@ -229,10 +229,9 @@
     {
       "candidate_id": "vision_7bc635689f203434",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 69,
-      "top_index_match_asset_id": "bafybeihq6di2numeccarc2zitbcobj7y4mipkkfbtzszztmtvmvchf4kom",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "fetch failed"
     },
     {
       "candidate_id": "vision_a2d45d17be73eec3",
@@ -587,10 +586,9 @@
     {
       "candidate_id": "vision_b887178c247a6c5e",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 55,
-      "top_index_match_asset_id": "bafybeidid3xprryemk7ky5rwec2u3y72r3ajizx5n4m55gh25c73cwer54",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "fetch failed"
     },
     {
       "candidate_id": "vision_a5d789507ecb5395",
@@ -672,10 +670,9 @@
     {
       "candidate_id": "vision_11e0b75c89ef89c2",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 66,
-      "top_index_match_asset_id": "bafybeicz5zxe2bzbeyyhhn2djqbvxfghohtshrebpsxhorknu2ebqko4te",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "HTTP 502 for https://www.yomiuriland.com/hanabiyori/assets/images/kakeinoyu/ofuro-sauna/watergarden.jpg"
     },
     {
       "candidate_id": "vision_7536eda41b527264",
@@ -863,10 +860,9 @@
     {
       "candidate_id": "vision_68e5ec991ea46517",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 56,
-      "top_index_match_asset_id": "bafybeifc7tejyupzzvod7dmilw5ev2ewl4ku2bkjxe6djxy2ha4gnnfrqu",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "fetch failed"
     },
     {
       "candidate_id": "vision_38e7fd957a6a4267",
@@ -941,10 +937,9 @@
     {
       "candidate_id": "vision_ace2685c68cd32ec",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 55,
-      "top_index_match_asset_id": "bafybeifu6xivhsnhad72exu3yv7ou2phiben3d7uoo3fyafyiybvzlfxge",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "fetch failed"
     },
     {
       "candidate_id": "vision_a00b42625d3dced3",
@@ -1344,9 +1339,10 @@
     {
       "candidate_id": "vision_8e19e1bc5d790a9c",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "fetch failed"
+      "verdict": "no_match",
+      "protected_asset_distance": 60,
+      "top_index_match_asset_id": "bafybeihbkmyxux36ho7mjuu7t2k3wrgjio6ywbi5cml65bqlhdafgw7rjq",
+      "pass": true
     },
     {
       "candidate_id": "vision_873aa7dc1b36ce6d",
@@ -1562,9 +1558,10 @@
     {
       "candidate_id": "vision_192ae421ea7fb89c",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "fetch failed"
+      "verdict": "no_match",
+      "protected_asset_distance": 80,
+      "top_index_match_asset_id": "bafybeicbawuibw7idnx3w6rvncojo2wzve4vydohodm33pw4cgiditctza",
+      "pass": true
     },
     {
       "candidate_id": "vision_3200087d1d4d29cc",
@@ -1584,9 +1581,10 @@
     {
       "candidate_id": "vision_53defafae1158c23",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "fetch failed"
+      "verdict": "no_match",
+      "protected_asset_distance": 76,
+      "top_index_match_asset_id": "bafybeigns36zbxgt4gdcaqwp6tdvh6img3ejcrg5ocaofvlytrdyl7ku64",
+      "pass": true
     },
     {
       "candidate_id": "vision_162431785b8fa271",
@@ -1599,9 +1597,10 @@
     {
       "candidate_id": "vision_4ba20209e8b8fa4d",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "fetch failed"
+      "verdict": "no_match",
+      "protected_asset_distance": 60,
+      "top_index_match_asset_id": "bafybeiat6z3stjwq45wfyn3u5tyepoyedeg4urzdwxsnl4uzxncfbeddsi",
+      "pass": true
     },
     {
       "candidate_id": "vision_8db3427b91d9bbac",
@@ -1645,10 +1644,9 @@
     {
       "candidate_id": "vision_7d74a2d27c1eaea4",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 66,
-      "top_index_match_asset_id": "bafybeiegmheqitc4n5u7hlviqo5nu6yb4tz66ihcchni7zikwzctunrscm",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "HTTP 429 for https://www.yomiuri.co.jp/media/2026/04/20260402-GYT1I00438-T.jpg"
     },
     {
       "candidate_id": "vision_c264f9624e750c79",
@@ -2233,10 +2231,9 @@
     {
       "candidate_id": "vision_6cbd848c59e8e92e",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 47,
-      "top_index_match_asset_id": "bafybeidkomxglqf5oelv3fjjzfctgnk4fluuvgelwsmnpi3b7fevhwgi4i",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "HTTP 429 for https://www.yomiuri.co.jp/media/2026/10/20261008-GYTNI00147-T.jpg"
     },
     {
       "candidate_id": "vision_902f3632c10a5049",
@@ -2319,10 +2316,9 @@
     {
       "candidate_id": "vision_5cd4b61fbca810fb",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 50,
-      "top_index_match_asset_id": "bafybeidkomxglqf5oelv3fjjzfctgnk4fluuvgelwsmnpi3b7fevhwgi4i",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "HTTP 429 for https://www.yomiuri.co.jp/media/2026/10/20261008-GYTNI00147-T.jpg"
     },
     {
       "candidate_id": "vision_28491b335c87b06f",
@@ -2383,9 +2379,10 @@
     {
       "candidate_id": "vision_f009ca2e83e5ab1b",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "fetch failed"
+      "verdict": "no_match",
+      "protected_asset_distance": 80,
+      "top_index_match_asset_id": "bafybeicbawuibw7idnx3w6rvncojo2wzve4vydohodm33pw4cgiditctza",
+      "pass": true
     },
     {
       "candidate_id": "vision_2423fe79896aacc4",
@@ -2453,9 +2450,10 @@
     {
       "candidate_id": "vision_07d83bf993fb91ae",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "fetch failed"
+      "verdict": "no_match",
+      "protected_asset_distance": 60,
+      "top_index_match_asset_id": "bafybeiat6z3stjwq45wfyn3u5tyepoyedeg4urzdwxsnl4uzxncfbeddsi",
+      "pass": true
     },
     {
       "candidate_id": "vision_a4c58790c8fea430",
@@ -2600,9 +2598,10 @@
     {
       "candidate_id": "vision_4299f9b07f2fe5d9",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "fetch failed"
+      "verdict": "no_match",
+      "protected_asset_distance": 71,
+      "top_index_match_asset_id": "bafybeiat6z3stjwq45wfyn3u5tyepoyedeg4urzdwxsnl4uzxncfbeddsi",
+      "pass": true
     },
     {
       "candidate_id": "vision_194e1e655c6af25f",
@@ -2655,10 +2654,9 @@
     {
       "candidate_id": "vision_d302f140cc56bce9",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 49,
-      "top_index_match_asset_id": "bafybeiegmheqitc4n5u7hlviqo5nu6yb4tz66ihcchni7zikwzctunrscm",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "HTTP 429 for https://www.yomiuri.co.jp/media/2026/04/20260402-GYT1I00438-T.jpg"
     },
     {
       "candidate_id": "vision_19ad937036a73e9c",
@@ -2804,9 +2802,10 @@
     {
       "candidate_id": "vision_7e09a5ac2b935189",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "fetch failed"
+      "verdict": "no_match",
+      "protected_asset_distance": 64,
+      "top_index_match_asset_id": "bafybeiazfwp5qmd5vduneeu2i3yj4okzqvqyagr4hdr5qyiracglwoikpq",
+      "pass": true
     },
     {
       "candidate_id": "vision_f558fdd8ee580074",
