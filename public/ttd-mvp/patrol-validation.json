@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-10-22T03:41:43.357Z",
-  "run_id": "ttd-patrol-20261022T033402Z",
+  "generated_at": "2026-10-23T03:41:18.343Z",
+  "run_id": "ttd-patrol-20261023T033358Z",
   "adapter": "visionWebDetection+namedChannelCrawler",
   "expected_filter": "all",
   "threshold": 16,
@@ -588,7 +588,7 @@
       "expected": "unknown",
       "pass": true,
       "warning": true,
-      "error": "fetch failed"
+      "error": "HTTP 403 for https://www.studieren-weltweit.de/content/uploads/2021/09/costa-rica-studium-1631661613-640x640.jpg"
     },
     {
       "candidate_id": "vision_a5d789507ecb5395",
@@ -670,9 +670,10 @@
     {
       "candidate_id": "vision_11e0b75c89ef89c2",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "HTTP 502 for https://www.yomiuriland.com/hanabiyori/assets/images/kakeinoyu/ofuro-sauna/watergarden.jpg"
+      "verdict": "no_match",
+      "protected_asset_distance": 66,
+      "top_index_match_asset_id": "bafybeicz5zxe2bzbeyyhhn2djqbvxfghohtshrebpsxhorknu2ebqko4te",
+      "pass": true
     },
     {
       "candidate_id": "vision_7536eda41b527264",
@@ -828,10 +829,9 @@
     {
       "candidate_id": "vision_7dfd10bf15a6cbba",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 62,
-      "top_index_match_asset_id": "bafybeidzww6rc64qc7f5krivjrvvuqikv5f457nf53srjnys5cc6tp5gwa",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "HTTP 503 for https://yamagatakanko.com/lsc/upfile/spot/0001/4284/14284_9_l.jpg"
     },
     {
       "candidate_id": "vision_d621641b8d60a7b3",
@@ -860,9 +860,10 @@
     {
       "candidate_id": "vision_68e5ec991ea46517",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "fetch failed"
+      "verdict": "no_match",
+      "protected_asset_distance": 56,
+      "top_index_match_asset_id": "bafybeifc7tejyupzzvod7dmilw5ev2ewl4ku2bkjxe6djxy2ha4gnnfrqu",
+      "pass": true
     },
     {
       "candidate_id": "vision_38e7fd957a6a4267",
@@ -1644,9 +1645,10 @@
     {
       "candidate_id": "vision_7d74a2d27c1eaea4",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "HTTP 429 for https://www.yomiuri.co.jp/media/2026/04/20260402-GYT1I00438-T.jpg"
+      "verdict": "no_match",
+      "protected_asset_distance": 66,
+      "top_index_match_asset_id": "bafybeiegmheqitc4n5u7hlviqo5nu6yb4tz66ihcchni7zikwzctunrscm",
+      "pass": true
     },
     {
       "candidate_id": "vision_c264f9624e750c79",
@@ -2231,9 +2233,10 @@
     {
       "candidate_id": "vision_6cbd848c59e8e92e",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "HTTP 429 for https://www.yomiuri.co.jp/media/2026/10/20261008-GYTNI00147-T.jpg"
+      "verdict": "no_match",
+      "protected_asset_distance": 47,
+      "top_index_match_asset_id": "bafybeidkomxglqf5oelv3fjjzfctgnk4fluuvgelwsmnpi3b7fevhwgi4i",
+      "pass": true
     },
     {
       "candidate_id": "vision_902f3632c10a5049",
@@ -2316,9 +2319,10 @@
     {
       "candidate_id": "vision_5cd4b61fbca810fb",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "HTTP 429 for https://www.yomiuri.co.jp/media/2026/10/20261008-GYTNI00147-T.jpg"
+      "verdict": "no_match",
+      "protected_asset_distance": 50,
+      "top_index_match_asset_id": "bafybeidkomxglqf5oelv3fjjzfctgnk4fluuvgelwsmnpi3b7fevhwgi4i",
+      "pass": true
     },
     {
       "candidate_id": "vision_28491b335c87b06f",
@@ -2460,7 +2464,7 @@
       "expected": "unknown",
       "pass": true,
       "warning": true,
-      "error": "image exceeds max bytes (2094262 > 2000000) for https://kcginfonews.kcg.gov.tw/upload/RelPic/42064/6c5842a1-804e-4c9e-9da0-ff9ea5d96ae9.jpg"
+      "error": "This operation was aborted"
     },
     {
       "candidate_id": "vision_f509ae0a1cbadc51",
@@ -2654,9 +2658,10 @@
     {
       "candidate_id": "vision_d302f140cc56bce9",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "HTTP 429 for https://www.yomiuri.co.jp/media/2026/04/20260402-GYT1I00438-T.jpg"
+      "verdict": "no_match",
+      "protected_asset_distance": 49,
+      "top_index_match_asset_id": "bafybeiegmheqitc4n5u7hlviqo5nu6yb4tz66ihcchni7zikwzctunrscm",
+      "pass": true
     },
     {
       "candidate_id": "vision_19ad937036a73e9c",
