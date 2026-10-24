@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-10-23T03:41:18.343Z",
-  "run_id": "ttd-patrol-20261023T033358Z",
+  "generated_at": "2026-10-24T03:38:40.546Z",
+  "run_id": "ttd-patrol-20261024T033209Z",
   "adapter": "visionWebDetection+namedChannelCrawler",
   "expected_filter": "all",
   "threshold": 16,
@@ -207,9 +207,10 @@
     {
       "candidate_id": "vision_8b0108150212be31",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "HTTP 513 for https://www.cyta.com.cy/mp/informational/images/annualreports/annual-report-2025.jpg"
+      "verdict": "no_match",
+      "protected_asset_distance": 55,
+      "top_index_match_asset_id": "bafybeifbnxd4wmh2bozake7tvbfkfza56wepcgbsqpq4ocjxi2voajbkwa",
+      "pass": true
     },
     {
       "candidate_id": "vision_6e873aa5b60cf5be",
@@ -938,9 +939,10 @@
     {
       "candidate_id": "vision_ace2685c68cd32ec",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "fetch failed"
+      "verdict": "no_match",
+      "protected_asset_distance": 55,
+      "top_index_match_asset_id": "bafybeifu6xivhsnhad72exu3yv7ou2phiben3d7uoo3fyafyiybvzlfxge",
+      "pass": true
     },
     {
       "candidate_id": "vision_a00b42625d3dced3",
@@ -2123,10 +2125,9 @@
     {
       "candidate_id": "vision_012a3ff1694da268",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 51,
-      "top_index_match_asset_id": "bafybeifcdrqfpax5lhpasvvnndlglkspihh4wrr5hiu5bm5mdidjwih6uq",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "fetch failed"
     },
     {
       "candidate_id": "vision_a2c45779f307b796",
@@ -2233,10 +2234,9 @@
     {
       "candidate_id": "vision_6cbd848c59e8e92e",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 47,
-      "top_index_match_asset_id": "bafybeidkomxglqf5oelv3fjjzfctgnk4fluuvgelwsmnpi3b7fevhwgi4i",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "HTTP 429 for https://www.yomiuri.co.jp/media/2026/10/20261008-GYTNI00147-T.jpg"
     },
     {
       "candidate_id": "vision_902f3632c10a5049",
@@ -2319,10 +2319,9 @@
     {
       "candidate_id": "vision_5cd4b61fbca810fb",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 50,
-      "top_index_match_asset_id": "bafybeidkomxglqf5oelv3fjjzfctgnk4fluuvgelwsmnpi3b7fevhwgi4i",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "HTTP 429 for https://www.yomiuri.co.jp/media/2026/10/20261008-GYTNI00147-T.jpg"
     },
     {
       "candidate_id": "vision_28491b335c87b06f",
@@ -2464,7 +2463,7 @@
       "expected": "unknown",
       "pass": true,
       "warning": true,
-      "error": "This operation was aborted"
+      "error": "image exceeds max bytes (2094262 > 2000000) for https://kcginfonews.kcg.gov.tw/upload/RelPic/42064/6c5842a1-804e-4c9e-9da0-ff9ea5d96ae9.jpg"
     },
     {
       "candidate_id": "vision_f509ae0a1cbadc51",
