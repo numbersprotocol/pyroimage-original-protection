@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-10-25T03:41:31.373Z",
-  "run_id": "ttd-patrol-20261025T033454Z",
+  "generated_at": "2026-10-26T03:50:34.857Z",
+  "run_id": "ttd-patrol-20261026T034348Z",
   "adapter": "visionWebDetection+namedChannelCrawler",
   "expected_filter": "all",
   "threshold": 16,
@@ -136,9 +136,10 @@
     {
       "candidate_id": "vision_39fabf6e75e72294",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "This operation was aborted"
+      "verdict": "no_match",
+      "protected_asset_distance": 59,
+      "top_index_match_asset_id": "bafybeibjnrrfecwqtjcx46q3xpxf3bwky3chhy2wp5s7nia5j2ypexzltq",
+      "pass": true
     },
     {
       "candidate_id": "vision_d81833387d7a1955",
@@ -1513,10 +1514,9 @@
     {
       "candidate_id": "vision_6cb57f04347d1539",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 73,
-      "top_index_match_asset_id": "bafybeifcdrqfpax5lhpasvvnndlglkspihh4wrr5hiu5bm5mdidjwih6uq",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "fetch failed"
     },
     {
       "candidate_id": "vision_7511bbd5c8359c57",
@@ -1646,9 +1646,10 @@
     {
       "candidate_id": "vision_7d74a2d27c1eaea4",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "HTTP 429 for https://www.yomiuri.co.jp/media/2026/04/20260402-GYT1I00438-T.jpg"
+      "verdict": "no_match",
+      "protected_asset_distance": 66,
+      "top_index_match_asset_id": "bafybeiegmheqitc4n5u7hlviqo5nu6yb4tz66ihcchni7zikwzctunrscm",
+      "pass": true
     },
     {
       "candidate_id": "vision_c264f9624e750c79",
@@ -2658,9 +2659,10 @@
     {
       "candidate_id": "vision_d302f140cc56bce9",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "HTTP 429 for https://www.yomiuri.co.jp/media/2026/04/20260402-GYT1I00438-T.jpg"
+      "verdict": "no_match",
+      "protected_asset_distance": 49,
+      "top_index_match_asset_id": "bafybeiegmheqitc4n5u7hlviqo5nu6yb4tz66ihcchni7zikwzctunrscm",
+      "pass": true
     },
     {
       "candidate_id": "vision_19ad937036a73e9c",
@@ -2806,9 +2808,10 @@
     {
       "candidate_id": "vision_7e09a5ac2b935189",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "fetch failed"
+      "verdict": "no_match",
+      "protected_asset_distance": 64,
+      "top_index_match_asset_id": "bafybeiazfwp5qmd5vduneeu2i3yj4okzqvqyagr4hdr5qyiracglwoikpq",
+      "pass": true
     },
     {
       "candidate_id": "vision_f558fdd8ee580074",
