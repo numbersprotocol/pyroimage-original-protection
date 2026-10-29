@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-10-28T03:33:10.792Z",
-  "run_id": "ttd-patrol-20261028T032619Z",
+  "generated_at": "2026-10-29T03:32:57.604Z",
+  "run_id": "ttd-patrol-20261029T032612Z",
   "adapter": "visionWebDetection+namedChannelCrawler",
   "expected_filter": "all",
   "threshold": 16,
@@ -230,9 +230,10 @@
     {
       "candidate_id": "vision_7bc635689f203434",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "fetch failed"
+      "verdict": "no_match",
+      "protected_asset_distance": 69,
+      "top_index_match_asset_id": "bafybeihq6di2numeccarc2zitbcobj7y4mipkkfbtzszztmtvmvchf4kom",
+      "pass": true
     },
     {
       "candidate_id": "vision_a2d45d17be73eec3",
@@ -527,7 +528,7 @@
       "expected": "unknown",
       "pass": true,
       "warning": true,
-      "error": "fetch failed"
+      "error": "image exceeds max bytes (3288381 > 2000000) for http://innovation.npo.fju.edu.tw/uploads/root/%E9%A6%99%E9%A6%99%E6%BE%A1%E5%A0%82%E5%A4%96%E8%B2%8C.JPG"
     },
     {
       "candidate_id": "vision_5fbbda6ddf916ba4",
@@ -1343,10 +1344,9 @@
     {
       "candidate_id": "vision_8e19e1bc5d790a9c",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 60,
-      "top_index_match_asset_id": "bafybeihbkmyxux36ho7mjuu7t2k3wrgjio6ywbi5cml65bqlhdafgw7rjq",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "fetch failed"
     },
     {
       "candidate_id": "vision_873aa7dc1b36ce6d",
@@ -1515,9 +1515,10 @@
     {
       "candidate_id": "vision_6cb57f04347d1539",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "fetch failed"
+      "verdict": "no_match",
+      "protected_asset_distance": 73,
+      "top_index_match_asset_id": "bafybeifcdrqfpax5lhpasvvnndlglkspihh4wrr5hiu5bm5mdidjwih6uq",
+      "pass": true
     },
     {
       "candidate_id": "vision_7511bbd5c8359c57",
@@ -1583,10 +1584,9 @@
     {
       "candidate_id": "vision_53defafae1158c23",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 76,
-      "top_index_match_asset_id": "bafybeigns36zbxgt4gdcaqwp6tdvh6img3ejcrg5ocaofvlytrdyl7ku64",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "fetch failed"
     },
     {
       "candidate_id": "vision_162431785b8fa271",
@@ -1810,9 +1810,10 @@
     {
       "candidate_id": "vision_fe3618c83e612f63",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "This operation was aborted"
+      "verdict": "no_match",
+      "protected_asset_distance": 64,
+      "top_index_match_asset_id": "bafybeidmsvdkrlberpfdgowgtr5vb2spmh6ffl6jnu5ab4n44tkcq3ll5u",
+      "pass": true
     },
     {
       "candidate_id": "vision_1cdf2dde8a6369d0",
@@ -2335,9 +2336,10 @@
     {
       "candidate_id": "vision_372419eba754bfad",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "HTTP 502 for https://www.bkn.go.id/storage/2026/10/nggallery_import/mt1-436x256.jpg"
+      "verdict": "no_match",
+      "protected_asset_distance": 74,
+      "top_index_match_asset_id": "bafybeifcdrqfpax5lhpasvvnndlglkspihh4wrr5hiu5bm5mdidjwih6uq",
+      "pass": true
     },
     {
       "candidate_id": "vision_dcf3f3287c8b9ed2",
@@ -2382,10 +2384,9 @@
     {
       "candidate_id": "vision_f009ca2e83e5ab1b",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 80,
-      "top_index_match_asset_id": "bafybeicbawuibw7idnx3w6rvncojo2wzve4vydohodm33pw4cgiditctza",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "fetch failed"
     },
     {
       "candidate_id": "vision_2423fe79896aacc4",
@@ -2657,10 +2658,9 @@
     {
       "candidate_id": "vision_d302f140cc56bce9",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 49,
-      "top_index_match_asset_id": "bafybeiegmheqitc4n5u7hlviqo5nu6yb4tz66ihcchni7zikwzctunrscm",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "HTTP 429 for https://www.yomiuri.co.jp/media/2026/04/20260402-GYT1I00438-T.jpg"
     },
     {
       "candidate_id": "vision_19ad937036a73e9c",
@@ -2806,10 +2806,9 @@
     {
       "candidate_id": "vision_7e09a5ac2b935189",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 64,
-      "top_index_match_asset_id": "bafybeiazfwp5qmd5vduneeu2i3yj4okzqvqyagr4hdr5qyiracglwoikpq",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "fetch failed"
     },
     {
       "candidate_id": "vision_f558fdd8ee580074",
