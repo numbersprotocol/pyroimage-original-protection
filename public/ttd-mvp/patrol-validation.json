@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-10-31T03:28:07.701Z",
-  "run_id": "ttd-patrol-20261031T032145Z",
+  "generated_at": "2026-11-01T03:31:13.697Z",
+  "run_id": "ttd-patrol-20261101T032456Z",
   "adapter": "visionWebDetection+namedChannelCrawler",
   "expected_filter": "all",
   "threshold": 16,
@@ -588,10 +588,9 @@
     {
       "candidate_id": "vision_b887178c247a6c5e",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 55,
-      "top_index_match_asset_id": "bafybeidid3xprryemk7ky5rwec2u3y72r3ajizx5n4m55gh25c73cwer54",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "HTTP 403 for https://www.studieren-weltweit.de/content/uploads/2021/09/costa-rica-studium-1631661613-640x640.jpg"
     },
     {
       "candidate_id": "vision_a5d789507ecb5395",
@@ -887,9 +886,10 @@
     {
       "candidate_id": "vision_d56d348a9e1a677a",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "HTTP 429 for https://www.berlin.de/imgscale4/r4zu3/sen/uvk/_assets/verkehr/infrastruktur/wasserbau/ausbau-von-gewaessern/panke/upload__5a49590337806ae8be32e27b6f295033_panke-unterhalb-der-walter-roeber-bruecke.jpg"
+      "verdict": "no_match",
+      "protected_asset_distance": 67,
+      "top_index_match_asset_id": "bafybeibjnrrfecwqtjcx46q3xpxf3bwky3chhy2wp5s7nia5j2ypexzltq",
+      "pass": true
     },
     {
       "candidate_id": "vision_c1fa7f0a0fb5313e",
@@ -1887,10 +1887,9 @@
     {
       "candidate_id": "vision_996b45fc7816fdff",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 60,
-      "top_index_match_asset_id": "bafybeici4ywe43tyi6ugugt3jcfss4no3pqtxkfkcn5ky4dtrf2b4tvmli",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "HTTP 404 for https://cdn-images.vtv.vn/zoom/554_346/66349b6076cb4dee98746cf1/2026/04/14/tong-bi-thu-chu-tich-nuoc-to-lam-cong-dong-nguoi-viet-trung-quoc-4-38294888176326360799201-60459464699437823795914.png"
     },
     {
       "candidate_id": "vision_c3c7bbcaa0b12ea6",
@@ -1987,10 +1986,9 @@
     {
       "candidate_id": "vision_5b589c600af8c5e3",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 66,
-      "top_index_match_asset_id": "bafybeiadwyxr6sdzgse4i373lqzhuo27wtmihibrzqisppyxju4cbkbqf4",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "fetch failed"
     },
     {
       "candidate_id": "vision_1b5340dd344b404d",
