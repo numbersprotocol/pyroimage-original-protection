@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-11-05T03:29:54.902Z",
-  "run_id": "ttd-patrol-20261105T032319Z",
+  "generated_at": "2026-11-06T04:06:39.591Z",
+  "run_id": "ttd-patrol-20261106T040013Z",
   "adapter": "visionWebDetection+namedChannelCrawler",
   "expected_filter": "all",
   "threshold": 16,
@@ -588,9 +588,10 @@
     {
       "candidate_id": "vision_b887178c247a6c5e",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "HTTP 403 for https://www.studieren-weltweit.de/content/uploads/2021/09/costa-rica-studium-1631661613-640x640.jpg"
+      "verdict": "no_match",
+      "protected_asset_distance": 55,
+      "top_index_match_asset_id": "bafybeidid3xprryemk7ky5rwec2u3y72r3ajizx5n4m55gh25c73cwer54",
+      "pass": true
     },
     {
       "candidate_id": "vision_a5d789507ecb5395",
@@ -831,9 +832,10 @@
     {
       "candidate_id": "vision_7dfd10bf15a6cbba",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "HTTP 503 for https://yamagatakanko.com/lsc/upfile/spot/0001/4284/14284_9_l.jpg"
+      "verdict": "no_match",
+      "protected_asset_distance": 62,
+      "top_index_match_asset_id": "bafybeidzww6rc64qc7f5krivjrvvuqikv5f457nf53srjnys5cc6tp5gwa",
+      "pass": true
     },
     {
       "candidate_id": "vision_d621641b8d60a7b3",
@@ -1597,9 +1599,10 @@
     {
       "candidate_id": "vision_4ba20209e8b8fa4d",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "fetch failed"
+      "verdict": "no_match",
+      "protected_asset_distance": 60,
+      "top_index_match_asset_id": "bafybeiat6z3stjwq45wfyn3u5tyepoyedeg4urzdwxsnl4uzxncfbeddsi",
+      "pass": true
     },
     {
       "candidate_id": "vision_8db3427b91d9bbac",
@@ -1855,9 +1858,10 @@
     {
       "candidate_id": "vision_dde16d413468b167",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "fetch failed"
+      "verdict": "no_match",
+      "protected_asset_distance": 74,
+      "top_index_match_asset_id": "bafybeifwdwlpan5udlz4ei7ezxtq4vltvzju4j3ayzlkdtvj52yadz3cgi",
+      "pass": true
     },
     {
       "candidate_id": "vision_5c3eb88bcc5581c2",
@@ -2450,9 +2454,10 @@
     {
       "candidate_id": "vision_07d83bf993fb91ae",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "fetch failed"
+      "verdict": "no_match",
+      "protected_asset_distance": 60,
+      "top_index_match_asset_id": "bafybeiat6z3stjwq45wfyn3u5tyepoyedeg4urzdwxsnl4uzxncfbeddsi",
+      "pass": true
     },
     {
       "candidate_id": "vision_a4c58790c8fea430",
@@ -2597,9 +2602,10 @@
     {
       "candidate_id": "vision_4299f9b07f2fe5d9",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "fetch failed"
+      "verdict": "no_match",
+      "protected_asset_distance": 71,
+      "top_index_match_asset_id": "bafybeiat6z3stjwq45wfyn3u5tyepoyedeg4urzdwxsnl4uzxncfbeddsi",
+      "pass": true
     },
     {
       "candidate_id": "vision_194e1e655c6af25f",
