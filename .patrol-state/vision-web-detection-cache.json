@@ -93,52 +93,52 @@
     "8fd1751c651238543e07d8d07f7d44ad8237a160a1a47afba205dfa5639e51f5": {
       "asset_id": "bafybeigzo5rkfshhubaazvw2xsvruskzrglb3gefyjtln3w3r4crhufmwm",
       "query_image_ref": "https://dia-cdn.numbersprotocol.io/thumbnails/2025/08/31/10/49/13/HISCZ8fDjdPj3HURcZt4_1.jpg",
-      "created_at": "2026-10-08T03:38:44.599Z",
-      "expires_at": "2026-11-07T03:38:44.599Z",
+      "created_at": "2026-11-08T03:23:16.089Z",
+      "expires_at": "2026-12-08T03:23:16.089Z",
       "max_results": 10,
       "webDetection": {
         "webEntities": [
           {
             "entityId": "/m/0j2kx",
-            "score": 0.3301498,
+            "score": 0.33003336,
             "description": "Waterfall"
           },
           {
             "entityId": "/m/07j7r",
-            "score": 0.30491138,
+            "score": 0.3050185,
             "description": "Tree"
           }
         ],
         "visuallySimilarImages": [
           {
-            "url": "https://p19-common-sign.tiktokcdn-us.com/tos-maliva-p-0068/ca30de7847ba4579a1b436ff160c6fb7_1708445403~tplv-tiktokx-origin.image"
+            "url": "https://www.tiktok.com/api/img/?itemId=7567656613037853970&location=3&aid=1988&index=13"
           },
           {
-            "url": "https://www.tiktok.com/api/img/?itemId=7689418179633827093&location=0&aid=1988"
+            "url": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/19/28/4e/dc/eisenhower-park.jpg?w=1100&h=1100&s=1"
           },
           {
-            "url": "https://www.guiadoturismobrasil.com/up/img/1497406492.jpg"
+            "url": "https://www.tiktok.com/api/img/?itemId=7661279764338068756&location=3&aid=1988&index=6"
           },
           {
-            "url": "https://upload.wikimedia.org/wikipedia/commons/2/21/La_Escalera.JPG?utm_source=es.wikivoyage.org&utm_campaign=index&utm_content=original"
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2089331608075575296/img/tELZwLSfimOKqfQR?format=webp&name=medium"
           },
           {
-            "url": "https://www.cathaypacific.com/content/dam/focal-point/cx/inspiration/2026/08/easy-hong-kong-hikes-brides-pool-nature-trail-10.renditionimage.900.900.jpg"
+            "url": "https://climate.ncsu.edu/wp-content/uploads/2026/07/CooleemeeFalls_waterfall.jpg"
           },
           {
-            "url": "https://i0.wp.com/www.sjwd.com/wp-content/uploads/2026/05/24.png?fit=576%2C1024&ssl=1"
+            "url": "https://travel.tycg.gov.tw/content/images/shops/102263/1024x768_shops-image-wutkgzwjousivkna9on5ja.jpg"
           },
           {
-            "url": "https://ek5jbm9x6ox.exactdn.com/wp-content/uploads/2020/07/19053416/received_980621462402597.jpg"
+            "url": "https://www.tiktok.com/api/img/?itemId=7658870866607934738&location=3&aid=1988&index=4"
           },
           {
-            "url": "https://assets.dm.rccl.com/is/image/RoyalCaribbeanCruises/content/dam/royal/ports-and-destinations/ports/ho-chi-minh-city-phuoc-an-vietnam/overview/giang-dien-waterfall-dong-nai-province-vietnam.jpg?$400x620$"
+            "url": "https://p19-common-sign.tiktokcdn-us.com/tos-maliva-p-0068/11de062de7e748a2af3c04d5276e1a8d_1727959192~tplv-tiktokx-origin.image"
           },
           {
-            "url": "https://images.trvl-media.com/place/553248635964243225/c7240409-da27-417f-8c18-7a037fd9b605.jpg?impolicy=fcrop&w=600&h=400&p=1&q=medium"
+            "url": "https://p16-common-sign.tiktokcdn-us.com/tos-useast8-p-0068-tx2/o0RmmAtFawlOZRV7IvCARxP3EoUHivBEBE6iI~tplv-tiktokx-origin.image"
           },
           {
-            "url": "https://www.edf.org/sites/default/files/styles/800_wide_scaled/public/2025-09/Nassau%20Partner%20picture.jpg?itok=OpR5ip5Y"
+            "url": "https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=122208885620372493"
           }
         ],
         "bestGuessLabels": [
@@ -3005,5 +3005,5 @@
       }
     }
   },
-  "updated_at": "2026-10-13T03:50:15.925Z"
+  "updated_at": "2026-11-08T03:23:16.090Z"
 }
