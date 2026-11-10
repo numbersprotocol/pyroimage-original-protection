@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-11-09T03:31:22.221Z",
-  "run_id": "ttd-patrol-20261109T032514Z",
+  "generated_at": "2026-11-10T03:30:26.733Z",
+  "run_id": "ttd-patrol-20261110T032319Z",
   "adapter": "visionWebDetection+namedChannelCrawler",
   "expected_filter": "all",
   "threshold": 16,
@@ -527,7 +527,7 @@
       "expected": "unknown",
       "pass": true,
       "warning": true,
-      "error": "fetch failed"
+      "error": "image exceeds max bytes (3288381 > 2000000) for http://innovation.npo.fju.edu.tw/uploads/root/%E9%A6%99%E9%A6%99%E6%BE%A1%E5%A0%82%E5%A4%96%E8%B2%8C.JPG"
     },
     {
       "candidate_id": "vision_5fbbda6ddf916ba4",
@@ -1515,9 +1515,10 @@
     {
       "candidate_id": "vision_6cb57f04347d1539",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "This operation was aborted"
+      "verdict": "no_match",
+      "protected_asset_distance": 73,
+      "top_index_match_asset_id": "bafybeifcdrqfpax5lhpasvvnndlglkspihh4wrr5hiu5bm5mdidjwih6uq",
+      "pass": true
     },
     {
       "candidate_id": "vision_7511bbd5c8359c57",
@@ -1597,9 +1598,10 @@
     {
       "candidate_id": "vision_4ba20209e8b8fa4d",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "fetch failed"
+      "verdict": "no_match",
+      "protected_asset_distance": 60,
+      "top_index_match_asset_id": "bafybeiat6z3stjwq45wfyn3u5tyepoyedeg4urzdwxsnl4uzxncfbeddsi",
+      "pass": true
     },
     {
       "candidate_id": "vision_8db3427b91d9bbac",
@@ -2381,9 +2383,10 @@
     {
       "candidate_id": "vision_f009ca2e83e5ab1b",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "fetch failed"
+      "verdict": "no_match",
+      "protected_asset_distance": 80,
+      "top_index_match_asset_id": "bafybeicbawuibw7idnx3w6rvncojo2wzve4vydohodm33pw4cgiditctza",
+      "pass": true
     },
     {
       "candidate_id": "vision_2423fe79896aacc4",
@@ -2451,9 +2454,10 @@
     {
       "candidate_id": "vision_07d83bf993fb91ae",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "fetch failed"
+      "verdict": "no_match",
+      "protected_asset_distance": 60,
+      "top_index_match_asset_id": "bafybeiat6z3stjwq45wfyn3u5tyepoyedeg4urzdwxsnl4uzxncfbeddsi",
+      "pass": true
     },
     {
       "candidate_id": "vision_a4c58790c8fea430",
@@ -2598,9 +2602,10 @@
     {
       "candidate_id": "vision_4299f9b07f2fe5d9",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "fetch failed"
+      "verdict": "no_match",
+      "protected_asset_distance": 71,
+      "top_index_match_asset_id": "bafybeiat6z3stjwq45wfyn3u5tyepoyedeg4urzdwxsnl4uzxncfbeddsi",
+      "pass": true
     },
     {
       "candidate_id": "vision_194e1e655c6af25f",
@@ -2944,10 +2949,9 @@
     {
       "candidate_id": "vision_5538427f6183fdac",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 70,
-      "top_index_match_asset_id": "bafybeignxpwriuhvsdvj3dwk4sc6v54fxzpgawz7hsiqwzsnh7av3h3svu",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "fetch failed"
     },
     {
       "candidate_id": "vision_2d4beb3ea72a036b",
