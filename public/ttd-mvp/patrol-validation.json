@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-11-10T03:30:26.733Z",
-  "run_id": "ttd-patrol-20261110T032319Z",
+  "generated_at": "2026-11-11T03:30:34.877Z",
+  "run_id": "ttd-patrol-20261111T032348Z",
   "adapter": "visionWebDetection+namedChannelCrawler",
   "expected_filter": "all",
   "threshold": 16,
@@ -527,7 +527,7 @@
       "expected": "unknown",
       "pass": true,
       "warning": true,
-      "error": "image exceeds max bytes (3288381 > 2000000) for http://innovation.npo.fju.edu.tw/uploads/root/%E9%A6%99%E9%A6%99%E6%BE%A1%E5%A0%82%E5%A4%96%E8%B2%8C.JPG"
+      "error": "This operation was aborted"
     },
     {
       "candidate_id": "vision_5fbbda6ddf916ba4",
@@ -2383,10 +2383,9 @@
     {
       "candidate_id": "vision_f009ca2e83e5ab1b",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 80,
-      "top_index_match_asset_id": "bafybeicbawuibw7idnx3w6rvncojo2wzve4vydohodm33pw4cgiditctza",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "fetch failed"
     },
     {
       "candidate_id": "vision_2423fe79896aacc4",
@@ -2949,9 +2948,10 @@
     {
       "candidate_id": "vision_5538427f6183fdac",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "fetch failed"
+      "verdict": "no_match",
+      "protected_asset_distance": 70,
+      "top_index_match_asset_id": "bafybeignxpwriuhvsdvj3dwk4sc6v54fxzpgawz7hsiqwzsnh7av3h3svu",
+      "pass": true
     },
     {
       "candidate_id": "vision_2d4beb3ea72a036b",
