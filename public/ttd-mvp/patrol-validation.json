@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-11-11T03:30:34.877Z",
-  "run_id": "ttd-patrol-20261111T032348Z",
+  "generated_at": "2026-11-12T03:30:11.175Z",
+  "run_id": "ttd-patrol-20261112T032340Z",
   "adapter": "visionWebDetection+namedChannelCrawler",
   "expected_filter": "all",
   "threshold": 16,
@@ -527,7 +527,7 @@
       "expected": "unknown",
       "pass": true,
       "warning": true,
-      "error": "This operation was aborted"
+      "error": "image exceeds max bytes (3288381 > 2000000) for http://innovation.npo.fju.edu.tw/uploads/root/%E9%A6%99%E9%A6%99%E6%BE%A1%E5%A0%82%E5%A4%96%E8%B2%8C.JPG"
     },
     {
       "candidate_id": "vision_5fbbda6ddf916ba4",
@@ -587,10 +587,9 @@
     {
       "candidate_id": "vision_b887178c247a6c5e",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 55,
-      "top_index_match_asset_id": "bafybeidid3xprryemk7ky5rwec2u3y72r3ajizx5n4m55gh25c73cwer54",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "HTTP 403 for https://www.studieren-weltweit.de/content/uploads/2021/09/costa-rica-studium-1631661613-640x640.jpg"
     },
     {
       "candidate_id": "vision_a5d789507ecb5395",
@@ -1171,10 +1170,9 @@
     {
       "candidate_id": "vision_70663e24633b2cf9",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 69,
-      "top_index_match_asset_id": "bafybeieh6skhdge225kjnlnrfl23jqroqx3vcq4uk3ajnfrmzgityde4ri",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "This operation was aborted"
     },
     {
       "candidate_id": "vision_86ca3226c468e592",
@@ -1598,10 +1596,9 @@
     {
       "candidate_id": "vision_4ba20209e8b8fa4d",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 60,
-      "top_index_match_asset_id": "bafybeiat6z3stjwq45wfyn3u5tyepoyedeg4urzdwxsnl4uzxncfbeddsi",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "fetch failed"
     },
     {
       "candidate_id": "vision_8db3427b91d9bbac",
@@ -2453,10 +2450,9 @@
     {
       "candidate_id": "vision_07d83bf993fb91ae",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 60,
-      "top_index_match_asset_id": "bafybeiat6z3stjwq45wfyn3u5tyepoyedeg4urzdwxsnl4uzxncfbeddsi",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "fetch failed"
     },
     {
       "candidate_id": "vision_a4c58790c8fea430",
@@ -2601,10 +2597,9 @@
     {
       "candidate_id": "vision_4299f9b07f2fe5d9",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 71,
-      "top_index_match_asset_id": "bafybeiat6z3stjwq45wfyn3u5tyepoyedeg4urzdwxsnl4uzxncfbeddsi",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "fetch failed"
     },
     {
       "candidate_id": "vision_194e1e655c6af25f",
