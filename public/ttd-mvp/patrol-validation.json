@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-11-13T03:31:07.554Z",
-  "run_id": "ttd-patrol-20261113T032402Z",
+  "generated_at": "2026-11-14T03:27:43.802Z",
+  "run_id": "ttd-patrol-20261114T032204Z",
   "adapter": "visionWebDetection+namedChannelCrawler",
   "expected_filter": "all",
   "threshold": 16,
@@ -570,10 +570,9 @@
     {
       "candidate_id": "vision_515b8fd3284bc3c2",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 55,
-      "top_index_match_asset_id": "bafybeidid3xprryemk7ky5rwec2u3y72r3ajizx5n4m55gh25c73cwer54",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "HTTP 403 for https://www.studieren-weltweit.de/content/uploads/2021/09/costa-rica-studium-1631661613-640x640.jpg"
     },
     {
       "candidate_id": "vision_407da9237fe4c70c",
@@ -608,7 +607,7 @@
       "pass": true
     },
     {
-      "candidate_id": "vision_48792b9cb53513e7",
+      "candidate_id": "vision_bf08afd763cadd3d",
       "expected": "unknown",
       "pass": true,
       "warning": true,
@@ -637,7 +636,7 @@
       "error": "image exceeds max bytes (2119669 > 2000000) for https://www.imt-mines-ales.fr/sites/default/files/inline-images/Echantillonneur%20passif%20de%20type%20POCIS%20pos%C3%A9%20dans%20la%20rivi%C3%A8re%20Galion%20en%20Martinique_1.jpg"
     },
     {
-      "candidate_id": "vision_4273abd9b0f25932",
+      "candidate_id": "vision_a646193ea8ef24df",
       "expected": "unknown",
       "pass": true,
       "warning": true,
@@ -939,7 +938,7 @@
       "pass": true
     },
     {
-      "candidate_id": "vision_f7c52570d9fb54d5",
+      "candidate_id": "vision_fd756ea58826bda0",
       "expected": "unknown",
       "pass": true,
       "warning": true,
@@ -1054,7 +1053,7 @@
       "candidate_id": "vision_6d558171a59390ef",
       "expected": "unknown",
       "verdict": "no_match",
-      "protected_asset_distance": 63,
+      "protected_asset_distance": 61,
       "top_index_match_asset_id": "bafybeidzww6rc64qc7f5krivjrvvuqikv5f457nf53srjnys5cc6tp5gwa",
       "pass": true
     },
@@ -1116,7 +1115,7 @@
       "candidate_id": "vision_d89ab5e130aaea8a",
       "expected": "unknown",
       "verdict": "no_match",
-      "protected_asset_distance": 63,
+      "protected_asset_distance": 61,
       "top_index_match_asset_id": "bafybeidzww6rc64qc7f5krivjrvvuqikv5f457nf53srjnys5cc6tp5gwa",
       "pass": true
     },
@@ -1436,9 +1435,10 @@
     {
       "candidate_id": "vision_126426cb90dfa220",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "fetch failed"
+      "verdict": "no_match",
+      "protected_asset_distance": 66,
+      "top_index_match_asset_id": "bafybeiccqah3est5ksdl3pkklittghylv4vk4ssgfvmnhlyauacvpgrlti",
+      "pass": true
     },
     {
       "candidate_id": "vision_c8b56e3abeaa01a2",
@@ -1507,7 +1507,7 @@
       "expected": "unknown",
       "pass": true,
       "warning": true,
-      "error": "This operation was aborted"
+      "error": "image exceeds max bytes (6375441 > 2000000) for https://www.chinapostdoctor.org.cn/prod-api/profile/upload/2026/11/10/image_1793890084004_20261110140656A002.jpg"
     },
     {
       "candidate_id": "vision_889ef63b09eb22eb",
@@ -1800,7 +1800,7 @@
       "pass": true
     },
     {
-      "candidate_id": "vision_587e63f14e91d90e",
+      "candidate_id": "vision_d3cf7ac27330edba",
       "expected": "unknown",
       "pass": true,
       "warning": true,
@@ -1815,7 +1815,7 @@
       "pass": true
     },
     {
-      "candidate_id": "vision_0fdd1f031b84b626",
+      "candidate_id": "vision_af5cfc27c8d24c5f",
       "expected": "unknown",
       "pass": true,
       "warning": true,
@@ -1928,7 +1928,7 @@
       "pass": true
     },
     {
-      "candidate_id": "vision_2b5192d9bd13fd58",
+      "candidate_id": "vision_7e499731d17a11af",
       "expected": "unknown",
       "pass": true,
       "warning": true,
@@ -1945,7 +1945,7 @@
       "candidate_id": "vision_65a90fb7263b76f5",
       "expected": "unknown",
       "verdict": "no_match",
-      "protected_asset_distance": 63,
+      "protected_asset_distance": 61,
       "top_index_match_asset_id": "bafybeidzww6rc64qc7f5krivjrvvuqikv5f457nf53srjnys5cc6tp5gwa",
       "pass": true
     },
@@ -2300,7 +2300,7 @@
       "expected": "unknown",
       "pass": true,
       "warning": true,
-      "error": "This operation was aborted"
+      "error": "image exceeds max bytes (6375441 > 2000000) for https://www.chinapostdoctor.org.cn/prod-api/profile/upload/2026/11/10/image_1793890084004_20261110140656A002.jpg"
     },
     {
       "candidate_id": "vision_d80c145d3ed9591f",
@@ -2555,9 +2555,10 @@
     {
       "candidate_id": "vision_1fd002ad7b3cd881",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "fetch failed"
+      "verdict": "no_match",
+      "protected_asset_distance": 65,
+      "top_index_match_asset_id": "bafybeie5ymr7euxsocvxwfsawo23ymh4p75676cgvpellui4kavwquqoma",
+      "pass": true
     },
     {
       "candidate_id": "vision_bedff0dd1a3d96e3",

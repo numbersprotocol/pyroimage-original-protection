@@ -1,9 +1,9 @@
 # PyroImage Patrol Evidence Reports
 
-Generated at: 2026-11-13T03:31:07.747Z
+Generated at: 2026-11-14T03:27:43.930Z
 
 No evidence reports were generated for the latest patrol run.
 
 Reason: latest_patrol_created_no_alerts
-Run ID: ttd-patrol-20261113T032402Z
+Run ID: ttd-patrol-20261114T032204Z
 Adapter: visionWebDetection+namedChannelCrawler
