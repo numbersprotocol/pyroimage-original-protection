@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-11-14T03:27:43.802Z",
-  "run_id": "ttd-patrol-20261114T032204Z",
+  "generated_at": "2026-11-15T03:29:16.705Z",
+  "run_id": "ttd-patrol-20261115T032327Z",
   "adapter": "visionWebDetection+namedChannelCrawler",
   "expected_filter": "all",
   "threshold": 16,
@@ -570,9 +570,10 @@
     {
       "candidate_id": "vision_515b8fd3284bc3c2",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "HTTP 403 for https://www.studieren-weltweit.de/content/uploads/2021/09/costa-rica-studium-1631661613-640x640.jpg"
+      "verdict": "no_match",
+      "protected_asset_distance": 55,
+      "top_index_match_asset_id": "bafybeidid3xprryemk7ky5rwec2u3y72r3ajizx5n4m55gh25c73cwer54",
+      "pass": true
     },
     {
       "candidate_id": "vision_407da9237fe4c70c",
@@ -1584,9 +1585,10 @@
     {
       "candidate_id": "vision_9bfb6b753328c46f",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "fetch failed"
+      "verdict": "no_match",
+      "protected_asset_distance": 80,
+      "top_index_match_asset_id": "bafybeicbawuibw7idnx3w6rvncojo2wzve4vydohodm33pw4cgiditctza",
+      "pass": true
     },
     {
       "candidate_id": "vision_0412187f4ad9cb2a",
