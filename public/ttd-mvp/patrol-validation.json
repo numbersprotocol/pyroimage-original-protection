@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-11-17T03:29:17.602Z",
-  "run_id": "ttd-patrol-20261117T032337Z",
+  "generated_at": "2026-11-18T03:30:23.164Z",
+  "run_id": "ttd-patrol-20261118T032418Z",
   "adapter": "visionWebDetection+namedChannelCrawler",
   "expected_filter": "all",
   "threshold": 16,
@@ -570,9 +570,10 @@
     {
       "candidate_id": "vision_515b8fd3284bc3c2",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "HTTP 403 for https://www.studieren-weltweit.de/content/uploads/2021/09/costa-rica-studium-1631661613-640x640.jpg"
+      "verdict": "no_match",
+      "protected_asset_distance": 55,
+      "top_index_match_asset_id": "bafybeidid3xprryemk7ky5rwec2u3y72r3ajizx5n4m55gh25c73cwer54",
+      "pass": true
     },
     {
       "candidate_id": "vision_407da9237fe4c70c",
@@ -1435,10 +1436,9 @@
     {
       "candidate_id": "vision_126426cb90dfa220",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 66,
-      "top_index_match_asset_id": "bafybeiccqah3est5ksdl3pkklittghylv4vk4ssgfvmnhlyauacvpgrlti",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "fetch failed"
     },
     {
       "candidate_id": "vision_c8b56e3abeaa01a2",
@@ -1507,7 +1507,7 @@
       "expected": "unknown",
       "pass": true,
       "warning": true,
-      "error": "This operation was aborted"
+      "error": "image exceeds max bytes (6375441 > 2000000) for https://www.chinapostdoctor.org.cn/prod-api/profile/upload/2026/11/10/image_1793890084004_20261110140656A002.jpg"
     },
     {
       "candidate_id": "vision_889ef63b09eb22eb",
@@ -2300,7 +2300,7 @@
       "expected": "unknown",
       "pass": true,
       "warning": true,
-      "error": "image exceeds max bytes (6375441 > 2000000) for https://www.chinapostdoctor.org.cn/prod-api/profile/upload/2026/11/10/image_1793890084004_20261110140656A002.jpg"
+      "error": "This operation was aborted"
     },
     {
       "candidate_id": "vision_d80c145d3ed9591f",
@@ -2421,10 +2421,9 @@
     {
       "candidate_id": "vision_b84fafa62268a3ce",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 64,
-      "top_index_match_asset_id": "bafybeieeotpvfwb527kd52fnju3dfrwh4h5q4ivdu5yqg6xlphi5b5iuaa",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "This operation was aborted"
     },
     {
       "candidate_id": "vision_519eda8ef25a868e",
@@ -2941,10 +2940,9 @@
     {
       "candidate_id": "vision_e3b2bd8eb92c0a39",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 49,
-      "top_index_match_asset_id": "bafybeida6dh4uu4eh42wpeqphqudejzn77hjhktha2swpy272w7xkon5qa",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "non-image response content-type=text/html; charset=utf-8 for https://www.gzeromedia.com/media-library/venezuelan-opposition-leader-maria-corina-machado-holds-a-venezuela-flag-while-greeting-supporters-as-she-arrives-in-caracas-aft.jpg"
     },
     {
       "candidate_id": "channel_SRC-01_a5f9ec820882cfe3",
