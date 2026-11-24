@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-11-23T03:32:32.088Z",
-  "run_id": "ttd-patrol-20261123T032636Z",
+  "generated_at": "2026-11-24T03:30:55.924Z",
+  "run_id": "ttd-patrol-20261124T032456Z",
   "adapter": "visionWebDetection+namedChannelCrawler",
   "expected_filter": "all",
   "threshold": 16,
@@ -570,9 +570,10 @@
     {
       "candidate_id": "vision_515b8fd3284bc3c2",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "HTTP 403 for https://www.studieren-weltweit.de/content/uploads/2021/09/costa-rica-studium-1631661613-640x640.jpg"
+      "verdict": "no_match",
+      "protected_asset_distance": 55,
+      "top_index_match_asset_id": "bafybeidid3xprryemk7ky5rwec2u3y72r3ajizx5n4m55gh25c73cwer54",
+      "pass": true
     },
     {
       "candidate_id": "vision_407da9237fe4c70c",
@@ -886,9 +887,10 @@
     {
       "candidate_id": "vision_623a590296a50df9",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "This operation was aborted"
+      "verdict": "no_match",
+      "protected_asset_distance": 56,
+      "top_index_match_asset_id": "bafybeiejlqrch63rcxikajlpdvwk5qjw2gfk4ebrmxitaewv5xdyqu2lve",
+      "pass": true
     },
     {
       "candidate_id": "vision_531a895b03666963",
@@ -1161,9 +1163,10 @@
     {
       "candidate_id": "vision_1e287d2e7ec7f085",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "HTTP 500 for https://asset.kompas.com/crops/Dmp6HJuo8mhbNggYGfGXEOfDubU=/120x449:4446x3333/740x400/data/photo/2026/11/13/6af646bdcaf15.jpg"
+      "verdict": "no_match",
+      "protected_asset_distance": 50,
+      "top_index_match_asset_id": "bafybeifctnfg2oyginsubnwctxhngahvip2vznxvq2h5we2tkfxo5xzum4",
+      "pass": true
     },
     {
       "candidate_id": "vision_b64170e129b8e52e",
@@ -1700,10 +1703,9 @@
     {
       "candidate_id": "vision_1a8d761d0dd42e92",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 59,
-      "top_index_match_asset_id": "bafybeicw2ytzibie76r3nnp2ovmefdsjpr7vxgqlnotrjpnn6h4eaoat7m",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "fetch failed"
     },
     {
       "candidate_id": "vision_5fd539989eda496a",
@@ -1845,10 +1847,9 @@
     {
       "candidate_id": "vision_8aa6fcec5e070565",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 72,
-      "top_index_match_asset_id": "bafybeiama2ehvgfad7uo4jrdbvycspglru4tx5jgxmrppeatek5tluhk3y",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "fetch failed"
     },
     {
       "candidate_id": "vision_dde16d413468b167",
@@ -2299,7 +2300,7 @@
       "expected": "unknown",
       "pass": true,
       "warning": true,
-      "error": "image exceeds max bytes (6375441 > 2000000) for https://www.chinapostdoctor.org.cn/prod-api/profile/upload/2026/11/10/image_1793890084004_20261110140656A002.jpg"
+      "error": "This operation was aborted"
     },
     {
       "candidate_id": "vision_d80c145d3ed9591f",
@@ -2491,10 +2492,9 @@
     {
       "candidate_id": "vision_f817e4f3aeb6968d",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 59,
-      "top_index_match_asset_id": "bafybeicw2ytzibie76r3nnp2ovmefdsjpr7vxgqlnotrjpnn6h4eaoat7m",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "fetch failed"
     },
     {
       "candidate_id": "vision_caf6a57a55d39bef",
