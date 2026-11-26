@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-11-25T03:32:43.086Z",
-  "run_id": "ttd-patrol-20261125T032549Z",
+  "generated_at": "2026-11-26T03:30:37.187Z",
+  "run_id": "ttd-patrol-20261126T032431Z",
   "adapter": "visionWebDetection+namedChannelCrawler",
   "expected_filter": "all",
   "threshold": 16,
@@ -570,10 +570,9 @@
     {
       "candidate_id": "vision_515b8fd3284bc3c2",
       "expected": "unknown",
-      "verdict": "no_match",
-      "protected_asset_distance": 55,
-      "top_index_match_asset_id": "bafybeidid3xprryemk7ky5rwec2u3y72r3ajizx5n4m55gh25c73cwer54",
-      "pass": true
+      "pass": true,
+      "warning": true,
+      "error": "HTTP 403 for https://www.studieren-weltweit.de/content/uploads/2021/09/costa-rica-studium-1631661613-640x640.jpg"
     },
     {
       "candidate_id": "vision_407da9237fe4c70c",
@@ -1507,7 +1506,7 @@
       "expected": "unknown",
       "pass": true,
       "warning": true,
-      "error": "This operation was aborted"
+      "error": "image exceeds max bytes (6375441 > 2000000) for https://www.chinapostdoctor.org.cn/prod-api/profile/upload/2026/11/10/image_1793890084004_20261110140656A002.jpg"
     },
     {
       "candidate_id": "vision_889ef63b09eb22eb",
@@ -2555,9 +2554,10 @@
     {
       "candidate_id": "vision_1fd002ad7b3cd881",
       "expected": "unknown",
-      "pass": true,
-      "warning": true,
-      "error": "fetch failed"
+      "verdict": "no_match",
+      "protected_asset_distance": 65,
+      "top_index_match_asset_id": "bafybeie5ymr7euxsocvxwfsawo23ymh4p75676cgvpellui4kavwquqoma",
+      "pass": true
     },
     {
       "candidate_id": "vision_bedff0dd1a3d96e3",
